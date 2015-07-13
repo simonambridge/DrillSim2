@@ -10,7 +10,7 @@
         <UnitName Value="DrillSim2"/>
         <EditorIndex Value="0"/>
         <WindowIndex Value="0"/>
-        <TopLine Value="1"/>
+        <TopLine Value="16"/>
         <CursorPos X="24" Y="18"/>
         <UsageCount Value="218"/>
         <Loaded Value="True"/>
@@ -53,10 +53,11 @@
         <HasResources Value="True"/>
         <ResourceBaseClass Value="Form"/>
         <UnitName Value="DrillSimGUI"/>
+        <IsVisibleTab Value="True"/>
         <EditorIndex Value="1"/>
         <WindowIndex Value="0"/>
-        <TopLine Value="270"/>
-        <CursorPos X="27" Y="277"/>
+        <TopLine Value="576"/>
+        <CursorPos X="1" Y="596"/>
         <UsageCount Value="100"/>
         <Loaded Value="True"/>
         <LoadedDesigner Value="True"/>
@@ -314,7 +315,6 @@
       <Unit33>
         <Filename Value="SimulateCommandProcessor.pas"/>
         <UnitName Value="SimulateCommandProcessor"/>
-        <IsVisibleTab Value="True"/>
         <EditorIndex Value="4"/>
         <WindowIndex Value="0"/>
         <TopLine Value="420"/>
