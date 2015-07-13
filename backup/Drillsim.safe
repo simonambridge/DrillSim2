@@ -1,0 +1,46 @@
+Program DrillSim2;  { Simulation for Drilling Systems }
+
+{ To make a demo copy, delete procedure SaveData and replace with
+  the file in NoSave.Pas which prints a message screen }
+
+
+Uses
+  //Crt,
+  {Dos,}
+  //DrillSimVarDec,
+  {Qwik,}
+  DrillSimVideo,
+  DrillSimStart,
+  DrillSimFileIO,
+  DrillSimFile,
+  DrillSimMenu{,
+  HycSim};
+
+
+Begin
+  writeln('Starting...');
+  //exit;
+
+  {ModCursor(CursorOff);}
+  TextColor(LightGray);
+  TextBackground(Blue);
+  Window(1,1,80,25);
+  ClrScr;
+  StartUp;
+  ChDir(LoggedDirectory);
+  SelectMenu;
+
+  if Edited then
+  Begin
+    if ExitCheck then SaveData;
+  End;
+  TextBackground(Black);
+  TextColor(Yellow);
+  ClrScr;
+  SetColorSet(YellowOnBlack);
+  Disp(1,1,'Controlled Termination');
+  Writeln;
+  ChDir(OriginDirectory);
+  {ModCursor(CursorOn);}
+
+End.
