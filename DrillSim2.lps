@@ -45,7 +45,7 @@
         <WindowIndex Value="0"/>
         <TopLine Value="1"/>
         <CursorPos X="3" Y="12"/>
-        <UsageCount Value="69"/>
+        <UsageCount Value="68"/>
       </Unit3>
       <Unit4>
         <Filename Value="DrillSimGUI.pas"/>
@@ -55,11 +55,10 @@
         <UnitName Value="DrillSimGUI"/>
         <EditorIndex Value="1"/>
         <WindowIndex Value="0"/>
-        <TopLine Value="576"/>
-        <CursorPos X="26" Y="586"/>
+        <TopLine Value="607"/>
+        <CursorPos X="26" Y="587"/>
         <UsageCount Value="100"/>
         <Loaded Value="True"/>
-        <LoadedDesigner Value="True"/>
       </Unit4>
       <Unit5>
         <Filename Value="DrillSimStart.pas"/>
@@ -119,7 +118,7 @@
         <WindowIndex Value="0"/>
         <TopLine Value="1"/>
         <CursorPos X="1" Y="19"/>
-        <UsageCount Value="40"/>
+        <UsageCount Value="39"/>
       </Unit11>
       <Unit12>
         <Filename Value="SimulateUserInput.pas"/>
@@ -171,7 +170,7 @@
         <WindowIndex Value="0"/>
         <TopLine Value="9"/>
         <CursorPos X="18" Y="263"/>
-        <UsageCount Value="7"/>
+        <UsageCount Value="6"/>
       </Unit17>
       <Unit18>
         <Filename Value="SimulateRheology.pas"/>
@@ -251,8 +250,8 @@
         <IsVisibleTab Value="True"/>
         <EditorIndex Value="4"/>
         <WindowIndex Value="0"/>
-        <TopLine Value="238"/>
-        <CursorPos X="1" Y="221"/>
+        <TopLine Value="463"/>
+        <CursorPos X="2" Y="279"/>
         <UsageCount Value="108"/>
         <Loaded Value="True"/>
       </Unit26>
@@ -293,7 +292,7 @@
         <WindowIndex Value="0"/>
         <TopLine Value="1"/>
         <CursorPos X="19" Y="13"/>
-        <UsageCount Value="60"/>
+        <UsageCount Value="61"/>
         <Loaded Value="True"/>
       </Unit30>
       <Unit31>
@@ -310,7 +309,7 @@
         <WindowIndex Value="0"/>
         <TopLine Value="1"/>
         <CursorPos X="23" Y="5"/>
-        <UsageCount Value="31"/>
+        <UsageCount Value="30"/>
       </Unit32>
       <Unit33>
         <Filename Value="SimulateCommandProcessor.pas"/>
@@ -372,7 +371,7 @@
     <General>
       <ActiveWindowIndexAtStart Value="0"/>
     </General>
-    <JumpHistory Count="29" HistoryIndex="28">
+    <JumpHistory Count="30" HistoryIndex="29">
       <Position1>
         <Filename Value="DrillSimGUI.pas"/>
         <Caret Line="561" Column="1" TopLine="548"/>
@@ -489,6 +488,10 @@
         <Filename Value="SimulateCommandProcessor.pas"/>
         <Caret Line="102" Column="1" TopLine="86"/>
       </Position29>
+      <Position30>
+        <Filename Value="DrillSimGUI.pas"/>
+        <Caret Line="586" Column="26" TopLine="576"/>
+      </Position30>
     </JumpHistory>
   </ProjectSession>
   <EditorMacros Count="0"/>

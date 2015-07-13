@@ -361,28 +361,30 @@ procedure TDrillSim.KellyUpClick(Sender: TObject);
 begin
   With Data do
   Begin
-              if not ShutIn then  { cannot move kelly if shut in }
-              Begin
-                if abs(Hole[MaxHoles,1]-BitTD) >= 1 then KelHt:=KelHt - 0.1
-                                      else KelHt:=KelHt-0.01;
-                if KelHt<3 then KelHt:=3;
-                DrawKelly;
-              End;
-          end;
+    if not ShutIn then  { cannot move kelly if shut in }
+    Begin
+      if abs(Hole[MaxHoles,1]-BitTD) >= 1
+        then KelHt:=KelHt - 0.1
+        else KelHt:=KelHt-0.01;
+      if KelHt<3 then KelHt:=3;
+      DrawKelly;
+    End;
+  end;
 end;
 
 procedure TDrillSim.KellyDownClick(Sender: TObject);
 begin
   With Data do
   Begin
-              if not ShutIn then  { cannot move kelly if shut in }
-               Begin
-                 if abs(Hole[MaxHoles,1]-BitTD) >= 1 then KelHt:=KelHt + 0.1
-                                       else KelHt:=KelHt+0.01;
-                 if KelHt>33 then KelHt:=33;
-                 DrawKelly;
-               End;
-             End;
+    if not ShutIn then  { cannot move kelly if shut in }
+    Begin
+      if abs(Hole[MaxHoles,1]-BitTD) >= 1
+        then KelHt:=KelHt + 0.1
+        else KelHt:=KelHt+0.01;
+      if KelHt>33 then KelHt:=33;
+      DrawKelly;
+    End;
+  End;
 
 end;
 
@@ -390,27 +392,27 @@ procedure TDrillSim.ChokeMinusClick(Sender: TObject);
 begin
   With Data do
   Begin
-  Choke:=Choke - 1;
-  if Choke=4 then CloseChoke;
-  if Choke < 5 then Choke:=Zero;
-  if Choke = Zero then
-  Begin
-    DeltaCsgPr:=DeltaCsgPr + PlChoke;
-    PlChoke:=Zero;
+    Choke:=Choke - 1;
+    if Choke=4 then CloseChoke;
+    if Choke < 5 then Choke:=Zero;
+    if Choke = Zero then
+    Begin
+      DeltaCsgPr:=DeltaCsgPr + PlChoke;
+      PlChoke:=Zero;
+    End;
   End;
- End;
 end;
 
 procedure TDrillSim.ChokePlusClick(Sender: TObject);
 begin
   With Data do
   Begin
-  Choke:=Choke + 1;
-  if Choke < 5 then Choke:=5;
-  if Choke = 5 then OpenChoke;
-  if Choke>100 then Choke:=100;
+    Choke:=Choke + 1;
+    if Choke < 5 then Choke:=5;
+    if Choke = 5 then OpenChoke;
+    if Choke>100 then Choke:=100;
+  End;
 End;
- End;
 
 procedure TDrillSim.PipeMinusClick(Sender: TObject);
 begin
@@ -491,12 +493,6 @@ begin
   writeln(InputString);
   Key:=#0;
 end;
-
-procedure TDrillSim.MenuItem2HoleProfileClick(Sender: TObject);
-begin
-  CallHoleData;
-end;
-
 
 procedure TDrillSim.Edit1Click(Sender: TObject);
 begin
@@ -590,6 +586,11 @@ begin
   MessageToMemo(100);               { courtesy message         }
   Simulator;                               { do Simulate }
   StartUp;                { convert back to DrillSim units and load help     }
+end;
+
+procedure TDrillSim.MenuItem2HoleProfileClick(Sender: TObject);
+begin
+  CallHoleData;
 end;
 
 procedure TDrillSim.MenuItem2GeneralDataClick(Sender: TObject);

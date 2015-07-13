@@ -43,6 +43,7 @@ type
     BitDepthValue: TLabel;
     BitDepthUoM: TStaticText;
     AutoDrillCheckBox: TCheckBox;
+    Button1: TButton;
     HydrilValue: TLabel;
     BlindRAMsValue: TLabel;
     FlowInValue: TLabel;

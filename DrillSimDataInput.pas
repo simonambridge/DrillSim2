@@ -253,9 +253,7 @@ Begin
       End;
 
       GetState(Riser);
-      //SetColorSet(DataColors);
       //Disp(63-length(YesNo),17,YesNo);
-      //SetColorSet(NormColors);
 
       if Riser then
       Begin
@@ -267,21 +265,17 @@ Begin
         if Valid then ChokeLineID:=RResult;
         Str(ChokeLineID:8:2,TempString);
         //Disp(63-length(TempString),18,TempString);
-        //SetColorSet(NormColors);
-      End else //Disp(10,18,'No Choke Line');
+       End else //Disp(10,18,'No Choke Line');
 
       Str(WaterDepth:8:2,TempString);
       //Disp(10,19,'Water depth'+Blank7+':');
       //Disp(50-length(TempString)-4,19,TempString + ' ' + lab[1] + ' ? ');
-      //SetColorSet(DataColors);
-      GetReal(55,19,2000/con[1]);
+       GetReal(55,19,2000/con[1]);
       if Valid then WaterDepth:=RResult;
       Str(WaterDepth:8:2,TempString);
       //Disp(63-length(TempString),19,TempString);
     End;
   End;
-  //SetColorSet(NormColors);
-  {ModCursor(CursorOff); }
   ExitPrompt;
 End;
 
