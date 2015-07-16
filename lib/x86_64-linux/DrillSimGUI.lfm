@@ -1,7 +1,7 @@
 object DrillSim: TDrillSim
-  Left = 783
+  Left = 439
   Height = 668
-  Top = 182
+  Top = 84
   Width = 999
   Caption = 'DrillSim 3.0'
   ClientHeight = 645
@@ -570,14 +570,6 @@ object DrillSim: TDrillSim
       TabOrder = 0
       Text = 'Type your commands here....'
     end
-    object Button1: TButton
-      Left = 141
-      Height = 25
-      Top = 18
-      Width = 75
-      Caption = 'Button1'
-      TabOrder = 1
-    end
   end
   object FlowBox: TGroupBox
     Left = 624
@@ -884,30 +876,30 @@ object DrillSim: TDrillSim
           OnClick = MenuItem2DrillingDataClick
         end
       end
-      object MenuItem1Preferences: TMenuItem
+      object MenuItem2Preferences: TMenuItem
         Caption = 'Preferences'
-        OnClick = MenuItem1PreferencesClick
+        OnClick = MenuItem2PreferencesClick
       end
     end
-    object MenuItem1Simulate: TMenuItem
+    object MenuItem3Simulate: TMenuItem
       Caption = 'Simulate'
-      object MenuItem1Start: TMenuItem
+      object MenuItem3Start: TMenuItem
         Caption = 'Start'
-        OnClick = MenuItem1StartClick
+        OnClick = MenuItem3StartClick
       end
-      object MenuItem1Stop: TMenuItem
+      object MenuItem3Stop: TMenuItem
         Caption = 'Stop'
       end
-      object MenuItem1Pause: TMenuItem
+      object MenuItem3Pause: TMenuItem
         Caption = 'Pause'
       end
     end
-    object MenuItem3Help: TMenuItem
+    object MenuItem4Help: TMenuItem
       Caption = 'Help'
-      object MenuItem3About: TMenuItem
+      object MenuItem4About: TMenuItem
         Caption = 'About'
       end
-      object MenuItem3ShowHelp: TMenuItem
+      object MenuItem4ShowHelp: TMenuItem
         Caption = 'Show Help'
       end
     end

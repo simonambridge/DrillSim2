@@ -189,8 +189,8 @@ Begin
 
   With Data do
   Begin
-//    SetColorSet(NormColors);
-    {ModCursor(CursorOn); }
+
+
     //Disp(10,10,'Operator' + Blank9+' :');
     //Disp(50-length(WellOperator),10,WellOperator + ' ?');
 
@@ -205,7 +205,6 @@ Begin
     //Disp(10,16,'Offshore '+Blank9+':');
     //Disp(50-length(TempString)-1,16,YesNo + ' (Y/N) ?');
 
-    //SetColorSet(DataColors);
 
     GetString(58,10,20);
     if Valid then WellOperator:=Instring;
@@ -218,9 +217,7 @@ Begin
     GetReal(55,14,500/con[1]);
     if Valid then Rkb:=RResult;
     Str(Rkb:8:2,TempString);      { 1 below corresponds to space after lab[1] }
-    //Disp(63-length(TempString),14,TempString);
 
-    gotoxy(55,16);
     Repeat
       Input:=ReadKey;
     Until UpCase(CharInput) in ['Y','N',^M];
@@ -256,9 +253,7 @@ Begin
       End;
 
       GetState(Riser);
-      //SetColorSet(DataColors);
       //Disp(63-length(YesNo),17,YesNo);
-      //SetColorSet(NormColors);
 
       if Riser then
       Begin
@@ -270,21 +265,17 @@ Begin
         if Valid then ChokeLineID:=RResult;
         Str(ChokeLineID:8:2,TempString);
         //Disp(63-length(TempString),18,TempString);
-        //SetColorSet(NormColors);
-      End else //Disp(10,18,'No Choke Line');
+       End else //Disp(10,18,'No Choke Line');
 
       Str(WaterDepth:8:2,TempString);
       //Disp(10,19,'Water depth'+Blank7+':');
       //Disp(50-length(TempString)-4,19,TempString + ' ' + lab[1] + ' ? ');
-      //SetColorSet(DataColors);
-      GetReal(55,19,2000/con[1]);
+       GetReal(55,19,2000/con[1]);
       if Valid then WaterDepth:=RResult;
       Str(WaterDepth:8:2,TempString);
       //Disp(63-length(TempString),19,TempString);
     End;
   End;
-  //SetColorSet(NormColors);
-  {ModCursor(CursorOff); }
   ExitPrompt;
 End;
 

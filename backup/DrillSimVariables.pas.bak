@@ -10,7 +10,8 @@ Type
 
 
     ROPString     =  string[7];
-    AnyString     =  string[80];
+    PathString    =  string[120];
+    AnyString     =  string[120];
     BitString     =  string[10];
     StringLength  =  string[20];
     FileString    =  string[12];
@@ -292,7 +293,7 @@ Var
    d                   : Date;
    t                   : Time;
 
-   FileName            : string[8];
+   FileName            : AnyString;
    FileSpec            : AnyString;
    //FullName            : FileString;
    NewFile             : boolean;
@@ -331,8 +332,8 @@ Var
 
    DefaultFile         : FileString;        { used for .CFG file }
    DefaultDirectory    : AnyString;
-   TextLine            : AnyString;
-   PathString          : AnyString;         { Used for DOS Path }
+   TextFileLine        : AnyString;
+//   PathString          : AnyString;         { Used for DOS Path - replaced }
    OriginDirectory     : AnyString;
    LoggedDirectory     : AnyString;
    OriginalExitProc    : Pointer;

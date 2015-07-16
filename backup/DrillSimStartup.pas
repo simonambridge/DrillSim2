@@ -114,17 +114,24 @@ Begin
 End;
 
 
-Procedure LoadDefaultWellDataFile(S : AnyString);
-Var i : integer;
+Procedure LoadDefaultWellDataFile(S : PathString);
 Begin                                        { Extract path string }
-  for i:=1 to length(S) do S[i]:=UpCase(S[i]);
   if FileExists(S) then
   Begin
     FileName:=S;               { set file to user defined file }
     NewFile:=False;
     NoFileDefined:=False;
+    StringToMemo(' - Loading well data file ' + FileName + '...');
     LoadData;
-    StringToMemo('Default well data file ' + FileName + 'loaded');
+    if NoFileDefined=True then
+    Begin
+      StringToMemo(' - Error loading well data file ' + FileName);
+      SystemError(6);
+    end else
+    Begin
+      StringToMemo(' - Default well data file ' + FileName + ' loaded');
+      StringToMemo('Simulating Well ' + Data.Well);
+    End;
   End;
 End;
 
@@ -132,13 +139,13 @@ End;
 
 Procedure StartUp;
 Begin
-  writeln('Running StartUp');
+  StringToMemo('Running DrillSim StartUp.................');
   OriginalExitProc:=ExitProc;
 {  ExitProc:=@Abort; }                  { Set Error trap vector  }
 
   Quit:=False;                          { Initialise Simulator Quit indicator }
   Enter := chr($11) + chr($cd) + chr($bc);
-  NoFileDefined:=True;
+  NoFileDefined:=True;  // we are a blank
   NoData:=True;
   NewFile:=True;
   Error:=False;                              { Hydraulic calculation }
@@ -151,68 +158,60 @@ Begin
   DefaultFile:='';
   DefaultDirectory:='';
   LstString:='';
-  BlankString:='';
-  For IResult:=1 to 80 do
-  Begin
-    LstString:=LstString+Space;
-    BlankString:=BlankString+Space;
-  End;
 
-    APIUnits;     { Initial default unit type   }
-    InitData;     { zero all main file variables }
+  APIUnits;     { Initial default unit type   }
+  InitData;     { zero all main file variables }
 
     { ------- get default directory ------- }
 
-    GetDir(0,Instring);                 { get current directory spec}
-    StringToMemo('Current directory is ' + Instring);
-    OriginDirectory:=Instring;               { save original direc'y }
-    LoggedDirectory:=Instring;               { default to original   }
+  GetDir(0,Instring);                 { get current directory spec}
+  StringToMemo('Current directory is ' + Instring);
+  OriginDirectory:=Instring;               { save original direc'y }
+  LoggedDirectory:=Instring;               { default to original   }
 
     { ------- get defaults file ------- }
 
-    Assign(TextFile,'DrillSim.cfg');         { load drillsim.cfg }
+  Assign(TextFile,OriginDirectory + '/' + 'DrillSim.cfg');         { load drillsim.cfg }
+  MessageToMemo(102); // 'Loading application configuration file'
+  StringToMemo('Configuration file is ' + OriginDirectory + '/' + 'DrillSim.cfg');
 
-    StringToMemo('Loading ' + OriginDirectory + '/' + 'DrillSim.cfg');
-    MessageToMemo(102); // 'Loading application configuration file'
-
-    {$I-}
-    Reset(TextFile);
-    {$I+}
-    IResult:=0;
-    if OK then                  { drillsim.CFG found }
+  {$I-}
+  Reset(TextFile);
+  {$I+}
+  IResult:=0;
+  if OK then                  { drillsim.CFG found }
+  Begin
+    While not EOF(TextFile) do
     Begin
-      While not EOF(TextFile) do
-      Begin
-        Readln(TextFile,TextFileLine);
+      Readln(TextFile,TextFileLine); { read location of default well file }
       End;
-      Close(TextFile);
-      LoadDefaultWellDataFile(TextFileLine);
-    End else
-    Begin                  { defaults file not found }
-      SystemError(1);      // pop up error message
-      ExitPrompt;
-    End;
-
-  ChDir(OriginDirectory);     { Change here after first-time intro above }
+    Close(TextFile);
+    StringToMemo('Default well data file is ' + TextFileLine);
+    LoadDefaultWellDataFile(TextFileLine);     // Load the data file !!!
+  End else
+  Begin                  { defaults file not found }
+    SystemError(1);      // pop up error message
+  End;
 
   {* --------- Load Help File --------- *}
-  MessageToMemo(103); // 'Loading application help file'
+
+  MessageToMemo(103); // 'Loading application help file...'
 
   Assign(HelpFile,'DrillSim.hlp');                   { load help messages }
-    {$I-}
-    Reset(HelpFile);
-    {$I+}
-    if OK then
-    Begin
-      HelpFileFound:=True;
-      //Read(HelpFile,Help);
-      Close(HelpFile);
-    End else
-    Begin
-      HelpFileFound:=False;
-      SystemError(3);
-      ExitPrompt;                   { exit from error message }
-    End;
+  {$I-}
+  Reset(HelpFile);
+  {$I+}
+  if OK then
+  Begin
+    HelpFileFound:=True;
+    //Read(HelpFile,Help);
+    Close(HelpFile);
+  End else
+  Begin
+    HelpFileFound:=False;
+    SystemError(3);
+  End;
+  StringToMemo('DrillSim Startup complete');
 End;
 
 Begin

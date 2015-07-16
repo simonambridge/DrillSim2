@@ -10,7 +10,8 @@ Type
 
 
     ROPString     =  string[7];
-    AnyString     =  string[80];
+    PathString    =  string[120];
+    AnyString     =  string[120];
     BitString     =  string[10];
     StringLength  =  string[20];
     FileString    =  string[12];
@@ -232,9 +233,9 @@ Const
     Rheocon13 = 0.2;                Rheocon14 = 1.86;
     Rheocon15 = 0.00015;            Rheocon16 = 38780.0;
     Rheocon17 = 0.000001;           Rheocon18 = 2.8;
-    VersionNumber = '1.10';
-    VersionDate   = '(12/87)';
-    Title         = 'DRILLSIM';
+    VersionNumber = '2.0.0';
+    VersionDate   = '(6/2015)';
+    Title         = 'DrillSim';
 
     PressPrompt = 'Press any key...';
     CommandLine = '>                     ';
@@ -292,7 +293,7 @@ Var
    d                   : Date;
    t                   : Time;
 
-   FileName            : string[8];
+   FileName            : AnyString;
    FileSpec            : AnyString;
    //FullName            : FileString;
    NewFile             : boolean;
@@ -332,7 +333,7 @@ Var
    DefaultFile         : FileString;        { used for .CFG file }
    DefaultDirectory    : AnyString;
    TextFileLine        : AnyString;
-   PathString          : AnyString;         { Used for DOS Path }
+//   PathString          : AnyString;         { Used for DOS Path - replaced }
    OriginDirectory     : AnyString;
    LoggedDirectory     : AnyString;
    OriginalExitProc    : Pointer;

@@ -5,9 +5,9 @@ program DrillSim2;
   the file in NoSave.Pas which prints a message screen }
 
 uses
-  {$IFDEF UNIX}
+  {$IFDEF UNIX} //{$IFDEF UseCThreads}
   cthreads,
-  {$ENDIF}
+  {$ENDIF} //{$ENDIF}
   Interfaces, // this includes the LCL widgetset
   Forms, DrillSimGUI,
   { you can add units after this }
@@ -22,17 +22,23 @@ uses
 begin
 
   RequireDerivedFormResource := True;
+
+  writeln('DrillSim2.lpr : Application.Initialize');
   Application.Initialize;
+
+  // Build GUI, run DrillSim StartUp : DrillSimGUI and DrillSimStartup
+  writeln('DrillSim2.lpr : Application.CreateForm');
   Application.CreateForm(TDrillSim, DrillSim);
 
-  writeln('Application.Run');
+  StringToMemo('DrillSim2.lpr : Application.Run');
   Application.Run;
 
 
+  // if ExitCheck then SaveData;       <- where's this set?
   if Edited then
   Begin
- //   if ExitCheck then SaveData;
     writeln('Edited');
+    // do some exit file save check
   End;
 
   writeln('Exiting');

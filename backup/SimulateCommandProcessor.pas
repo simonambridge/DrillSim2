@@ -432,14 +432,11 @@ Var
   i : integer;
 Begin
   Quit:=False;
-  writeln('CommandProcessor Started');
+  StringToMemo('CommandProcessor Started');
 
   if length(InputString) > Zero then
-  Begin                            { convert to upper case }
-    for i:=1 to length(InputString) do InputString[i]:=UpCase(InputString[i]);
-
-    DrillSim.Memo1.Lines.Add('Running with ' + InputString);
-    writeln('Running with ' + InputString);
+  Begin
+    StringToMemo('Running with ' + InputString);
 
     Input:=copy(InputString,1,1);
     Case Input[1] of

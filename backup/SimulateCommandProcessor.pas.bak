@@ -80,7 +80,7 @@ Begin
               MessageToMemo(73);
             End;
     End;
-  End;
+  End else MessageToMemo(5);
 End;
 
 { ------------------------------------------------------- }
@@ -112,7 +112,7 @@ Begin
             End;
       'P' : MessageToMemo(69);
       End;
-    End;
+    End else MessageToMemo(5);
   End;
 End;
 
@@ -135,7 +135,7 @@ Begin
       'A' : MessageToMemo(63);  { Hhd Ann. }
       'W' : MessageToMemo(30);  { Ave Hhd }
     End;
-  End;
+  End else MessageToMemo(5);
 End;
 
 Procedure KCommands;
@@ -146,7 +146,7 @@ Begin
     Case Input[1] of
       'D' : MessageToMemo(76);
     End;
-  End;
+  End else MessageToMemo(5);
 End;
 
 
@@ -228,7 +228,7 @@ Begin
                 MessageToMemo(23);
               End;
       End;
-    End;
+    End else MessageToMemo(5);
   End;
 End; { procedure MudCommands; }
 
@@ -265,7 +265,7 @@ Begin
               MessageToMemo(77);
             End;
     End;
-  End;
+  End else MessageToMemo(5);
 End;
 
 
@@ -369,7 +369,7 @@ Begin
               Edited:=True;
             End;
     End;
-  End;
+  End else MessageToMemo(5);
 End;
 
 Procedure UCommands;
@@ -382,7 +382,7 @@ Begin
       'S' : MessageToMemo(46);  { Up strokes }
       'T' : MessageToMemo(47);  { Up time }
     End;
-  End;
+  End else MessageToMemo(5);
 End;
 
 
@@ -403,7 +403,7 @@ Begin
       'O' : MessageToMemo(57);     { Oil   fraction }
       'S' : MessageToMemo(58);     { Solid fraction }
     End;
-  End;
+  End else MessageToMemo(5);
 End;
 
 
@@ -423,7 +423,7 @@ Begin
       'N' : MessageToMemo(44);  { Exp n }
       'K' : MessageToMemo(45);  { Exp k }
     End;
-  End;
+  End else MessageToMemo(5);
 End;
 
 {* ==================== Command Processor =================== *}

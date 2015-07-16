@@ -100,7 +100,9 @@ End;
 
 Procedure LoadData;            { Entry : FullName = filename.WDF    }
 Var i : integer;               {       : NewFile  = True if new     }
+    ErrorString : AnyString;
 Begin                          { Exit  : NewFile  = True if new     }
+  NoFileDefined:=True;
   if NewFile then              {       : NoData   = True if NewFile }
   Begin                        {       : NoFileD'd= False           }
     NoData:=True;              {       : Edited   = False           }
@@ -109,18 +111,19 @@ Begin                          { Exit  : NewFile  = True if new     }
   Begin                        { any file loaded in DrillSim, and called  }
     Assign(DataFile,FileName); { in LoadFile in Simulate so all files are covered }
     Reset(DataFile);
-    {$I-}                      { I/O error checking off }
-    Read(DataFile,Data);
-    {$I+}
-    if not OK then
-    Begin
-      LowBeep;
-      NoFileDefined:=True;
-      FileName:='';
-      Exit;
+    try                      { I/O error checking off }
+      Read(DataFile,Data);
+      CloseFile(DataFile);
+    except
+      on E: EInOutError do
+      Begin
+        StringToMemo('File handling error occurred. Details: ' + E.Message);
+        Exit;
+      end;
     End;
-    Close(DataFile);
+    NoFileDefined:=False;
     NoData:=False;
+    Edited:=False;              { set this for entry into Simulate }
     For i:=1 to 7 do
     Begin
       Lab[i]:=Data.UserLab[i];
@@ -129,8 +132,6 @@ Begin                          { Exit  : NewFile  = True if new     }
     ConUser;                              { Load in API - then convert }
     ConUserKickData;
   End;
-  NoFileDefined:=False;
-  Edited:=False;              { set this for entry into Simulate }
 End;
 
 Procedure LoadFile;

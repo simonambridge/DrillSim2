@@ -80,7 +80,7 @@ Begin
     3 : ShowMessage('Error 3 : DrillSim.Hlp missing');
     4 : ShowMessage('Error 4 : ');
     5 : ShowMessage('Error 5 : HyCalc.Exe missing');
-    6 : ShowMessage('Error 6 : Unable to load COMMAND.COM');
+    6 : ShowMessage('Error 6 : Unable to load well data file');
   End;
 End;
 

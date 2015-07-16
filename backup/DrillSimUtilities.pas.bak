@@ -243,7 +243,6 @@ Begin
   Begin
     //Disp(12,12,NoHelp1);  { "help not found" }
     //Disp(12,14,NoHelp2);  { "no help available" }
-    LowBeep;
   End;
   {ModCursor(CursorOn);}
   //Disp(12,17,PressPrompt);

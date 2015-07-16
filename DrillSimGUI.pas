@@ -43,7 +43,6 @@ type
     BitDepthValue: TLabel;
     BitDepthUoM: TStaticText;
     AutoDrillCheckBox: TCheckBox;
-    Button1: TButton;
     HydrilValue: TLabel;
     BlindRAMsValue: TLabel;
     FlowInValue: TLabel;
@@ -51,11 +50,11 @@ type
     DiffFlowValue: TLabel;
     MenuItem2HoleProfile: TMenuItem;
     MenuItem2GeneralData: TMenuItem;
-    MenuItem1Preferences: TMenuItem;
-    MenuItem1Pause: TMenuItem;
-    MenuItem1Stop: TMenuItem;
-    MenuItem1Start: TMenuItem;
-    MenuItem1Simulate: TMenuItem;
+    MenuItem2Preferences: TMenuItem;
+    MenuItem3Pause: TMenuItem;
+    MenuItem3Stop: TMenuItem;
+    MenuItem3Start: TMenuItem;
+    MenuItem3Simulate: TMenuItem;
     MenuItem1CreateFile: TMenuItem;
     MenuItem2DrillString: TMenuItem;
     MenuItem2BitData: TMenuItem;
@@ -90,9 +89,9 @@ type
     MainMenu1: TMainMenu;
     Memo1: TMemo;
     MenuItem1Quit: TMenuItem;
-    MenuItem3ShowHelp: TMenuItem;
-    MenuItem3About: TMenuItem;
-    MenuItem3Help: TMenuItem;
+    MenuItem4ShowHelp: TMenuItem;
+    MenuItem4About: TMenuItem;
+    MenuItem4Help: TMenuItem;
     MenuItem1SaveAs: TMenuItem;
     MenuItem1SaveFile: TMenuItem;
     MenuItem2Edit: TMenuItem;
@@ -165,14 +164,14 @@ type
     procedure MenuItem2HoleProfileClick(Sender: TObject);
     procedure MenuItem1CreateFileClick(Sender: TObject);
     procedure MenuItem2GeneralDataClick(Sender: TObject);
-    procedure MenuItem1PreferencesClick(Sender: TObject);
+    procedure MenuItem2PreferencesClick(Sender: TObject);
     procedure MenuItem1QuitClick(Sender: TObject);
 
     procedure KellyDownClick(Sender: TObject);
     procedure KellyUpClick(Sender: TObject);
 
     procedure BinghamRadioButtonChange(Sender: TObject);
-    procedure MenuItem1StartClick(Sender: TObject);
+    procedure MenuItem3StartClick(Sender: TObject);
     procedure MenuItem2DrillStringClick(Sender: TObject);
     procedure MenuItem2BitDataClick(Sender: TObject);
     procedure MenuItem2MudDataClick(Sender: TObject);
@@ -510,21 +509,19 @@ end;
 
 procedure TDrillSim.FormCreate(Sender: TObject);
 begin
-  Memo1.Lines.Add('FormCreate');
-  writeln('FormCreate');
+  StringToMemo('Running FormCreate...'); // please wait....
+
   splash := TSplashAbout.Create(nil);
   SetDefaultValues; // Optional
   splash.ShowSplash;
   Memo1.SelStart:=Length(Memo1.Text);
 
   // get paths etc
- //ChDir(LoggedDirectory);
-   Edited:=True;  { ...if it is then it's been edited }
+  //ChDir(LoggedDirectory); currentdirectory, default directory?
+  Edited:=False;  { start clean }
 
-
- StringToMemo('Test'); // please wait....
- StartUp;
- //SelectMenu;
+  StringToMemo('Running DrillSim Startup From FormCreate');
+  StartUp;
 
 end;
 
@@ -571,22 +568,6 @@ begin
     CreateFile;                  { otherwise create it and redisplay screen }
   End;
 
-end;
-
-procedure TDrillSim.MenuItem1PreferencesClick(Sender: TObject);
-begin
-  SetDefaultDirectory;
-  SetDefaultFile;
-end;
-
-procedure TDrillSim.MenuItem1StartClick(Sender: TObject);
-begin
-  ConAPI;                 { convert DrillSim file - internally in user units }
-  ConAPIKickData;         { Simulator uses internal API units                }
-  ChDir(OriginDirectory); { ExecuteFlag gets set in Simulator when returning }
-  MessageToMemo(100);               { courtesy message         }
-  Simulator;                               { do Simulate }
-  StartUp;                { convert back to DrillSim units and load help     }
 end;
 
 procedure TDrillSim.MenuItem2HoleProfileClick(Sender: TObject);
@@ -639,6 +620,22 @@ begin
   UpdateKick;
 end;
 
+procedure TDrillSim.MenuItem3StartClick(Sender: TObject);
+begin
+  ConAPI;                 { convert DrillSim file - internally in user units }
+  ConAPIKickData;         { Simulator uses internal API units                }
+//  ChDir(OriginDirectory); { ExecuteFlag gets set in Simulator when returning }
+  MessageToMemo(100);               { courtesy message         }
+  if NoFIleDefined=false then Simulator;  { do Simulate }
+  StartUp;                { convert back to DrillSim units and load help     }
+end;
+
+procedure TDrillSim.MenuItem2PreferencesClick(Sender: TObject);
+begin
+  SetDefaultDirectory;
+  SetDefaultFile;
+end;
+
 
 {* ============================ Threads ================================= *}
 
@@ -686,13 +683,13 @@ end;
 
 
 Initialization
- writeln('Initialization');
+ writeln('DrillSimGUI : Initialization - creating Thread before FormCreate is run');
 
-   MyThread := TMyThread.Create(True); // set True = it doesn't start automatically
+ MyThread := TMyThread.Create(True); // set True = it doesn't start automatically
 
-   {* Here initialise anything required before the threads starts executing *}
+ {* Here initialise anything required before the threads starts executing *}
 
-   MyThread.Start;
+ MyThread.Start;
 
 end.
 
