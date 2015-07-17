@@ -570,14 +570,6 @@ object DrillSim: TDrillSim
       TabOrder = 0
       Text = 'Type your commands here....'
     end
-    object Button1: TButton
-      Left = 141
-      Height = 25
-      Top = 18
-      Width = 75
-      Caption = 'Button1'
-      TabOrder = 1
-    end
   end
   object FlowBox: TGroupBox
     Left = 624

@@ -1,0 +1,41 @@
+unit FormGeneralData;
+
+{$mode objfpc}{$H+}
+
+interface
+
+uses
+  Classes,
+  FileUtil, Forms, Controls, Graphics, Dialogs, StdCtrls;
+
+type
+
+  { TFormGeneralData }
+
+  TFormGeneralData = class(TForm)
+    ElevationRKBData: TEdit;
+    ElevationRKBUoMLabel: TLabel;
+    OffshoreYNDataYes: TRadioButton;
+    OffshoreYNDataNo: TRadioButton;
+    WellNameData: TEdit;
+    WellOperatorData: TEdit;
+    ElevationRKB: TStaticText;
+    OffshoreYN: TStaticText;
+    WellOperator: TStaticText;
+    Label1Title: TLabel;
+    WellName: TStaticText;
+  private
+    { private declarations }
+  public
+    { public declarations }
+  end;
+
+//var
+//  FormGeneralData: TFormGeneralData;
+
+implementation
+
+{$R *.lfm}
+
+end.
+

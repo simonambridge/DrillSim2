@@ -9,13 +9,13 @@ uses
   cthreads,
   {$ENDIF} //{$ENDIF}
   Interfaces, // this includes the LCL widgetset
-  Forms, DrillSimGUI,
+  Forms,
   { you can add units after this }
   DrillSimVariables,
   DrillSimStartup,
   DrillSimFile,
   DrillSimMenu,
-  SimulateMessageToMemo;
+  SimulateMessageToMemo, DrillSimGUI, FormGeneralData, FormHoleData;
 
 {$R *.res}
 
@@ -29,8 +29,10 @@ begin
   // Build GUI, run DrillSim StartUp : DrillSimGUI and DrillSimStartup
   writeln('DrillSim2.lpr : Application.CreateForm');
   Application.CreateForm(TDrillSim, DrillSim);
+  Application.CreateForm(TGeneralData, GeneralData);
 
   StringToMemo('DrillSim2.lpr : Application.Run');
+  Application.CreateForm(TForm1, Form1);
   Application.Run;
 
 

@@ -1,0 +1,101 @@
+object Form2GeneralData: TForm2GeneralData
+  Left = 388
+  Height = 240
+  Top = 334
+  Width = 497
+  Caption = 'DrillSim General Data'
+  ClientHeight = 240
+  ClientWidth = 497
+  LCLVersion = '1.2.6.0'
+  object Label1Title: TLabel
+    Left = 64
+    Height = 17
+    Top = 16
+    Width = 183
+    Caption = 'DrillSim - General Well Data'
+    ParentColor = False
+  end
+  object WellOperator: TStaticText
+    Left = 24
+    Height = 24
+    Top = 48
+    Width = 112
+    Caption = 'Well Operator'
+    TabOrder = 0
+  end
+  object WellName: TStaticText
+    Left = 24
+    Height = 24
+    Top = 88
+    Width = 112
+    Caption = 'Well Name'
+    TabOrder = 1
+  end
+  object ElevationRKB: TStaticText
+    Left = 24
+    Height = 24
+    Top = 128
+    Width = 112
+    Caption = 'ElevationRKB'
+    TabOrder = 2
+  end
+  object OffshoreYN: TStaticText
+    Left = 24
+    Height = 24
+    Top = 168
+    Width = 112
+    Caption = 'OffshoreYN'
+    TabOrder = 3
+  end
+  object WellOperatorData: TEdit
+    Left = 152
+    Height = 27
+    Top = 45
+    Width = 328
+    Color = clScrollBar
+    TabOrder = 4
+    Text = 'WellOperatorData'
+  end
+  object WellNameData: TEdit
+    Left = 152
+    Height = 27
+    Top = 80
+    Width = 325
+    TabOrder = 5
+    Text = 'WellNameData'
+  end
+  object ElevationRKBData: TEdit
+    Left = 153
+    Height = 27
+    Top = 122
+    Width = 145
+    TabOrder = 6
+    Text = 'ElevationRKBData'
+  end
+  object OffshoreYNDataYes: TRadioButton
+    Left = 163
+    Height = 24
+    Top = 168
+    Width = 49
+    Caption = 'Yes'
+    Checked = True
+    TabOrder = 7
+  end
+  object OffshoreYNDataNo: TRadioButton
+    Left = 303
+    Height = 24
+    Top = 168
+    Width = 46
+    Caption = 'No'
+    TabOrder = 8
+  end
+  object ElevationRKBUoMLabel: TLabel
+    Left = 320
+    Height = 22
+    Top = 122
+    Width = 24
+    AutoSize = False
+    Caption = 'Ft'
+    ParentColor = False
+  end
+end

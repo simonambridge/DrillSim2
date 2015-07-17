@@ -6,7 +6,7 @@ interface
 
 uses
   cthreads,
-  crt, // for Readkey
+  crt,      // for Readkey
   SysUtils, // for FileExists
   Forms,
   Graphics,
@@ -30,7 +30,8 @@ uses
   SimulateMessageToMemo,
   SimulateCommandProcessor,
   SimulateUpdate,
-  SimulateSurfaceControls;
+  SimulateSurfaceControls,
+  FormGeneralData;
 
 
 type
@@ -212,11 +213,10 @@ type
     public
       Constructor Create(CreateSuspended : boolean);
     end;
-
-
 var
   DrillSim: TDrillSim;
   MyThread : TMyThread;
+  GeneralData: TGeneralData;
 
 implementation
 
@@ -570,19 +570,21 @@ begin
 
 end;
 
+procedure TDrillSim.MenuItem2GeneralDataClick(Sender: TObject);
+begin
+  try
+    GeneralData:=TGeneralData.Create(Nil);  //Form2 is created
+    GeneralData.ShowModal;
+  finally
+    GeneralData.Free;
+  end;
+
+end;
+
+
 procedure TDrillSim.MenuItem2HoleProfileClick(Sender: TObject);
 begin
   CallHoleData;
-end;
-
-procedure TDrillSim.MenuItem2GeneralDataClick(Sender: TObject);
-begin
-  if NoFileDefined then LoadFile;
-  if not NoFileDefined then
-  Begin
-    if not NewFile then Data.NewIf0:=Zero;               { force an initialisation in Simulator }
-  End;
-  UpdateGen;
 end;
 
 procedure TDrillSim.MenuItem2DrillStringClick(Sender: TObject);
