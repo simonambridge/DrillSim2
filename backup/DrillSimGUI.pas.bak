@@ -31,7 +31,9 @@ uses
   SimulateCommandProcessor,
   SimulateUpdate,
   SimulateSurfaceControls,
-  FormGeneralData;
+  FormDisplayWellData,
+  FormGeneralData,
+  FormHolelData;
 
 
 type
@@ -49,6 +51,7 @@ type
     FlowInValue: TLabel;
     FlowOutValue: TLabel;
     DiffFlowValue: TLabel;
+    MenuItem2DisplayWellData: TMenuItem;
     MenuItem2HoleProfile: TMenuItem;
     MenuItem2GeneralData: TMenuItem;
     MenuItem2Preferences: TMenuItem;
@@ -162,9 +165,10 @@ type
     procedure ChokePlusClick(Sender: TObject);
     procedure Edit1Click(Sender: TObject);
     procedure Edit1KeyPress(Sender: TObject; var Key: char);
+    procedure MenuItem2DisplayWellDataClick(Sender: TObject);
+    procedure MenuItem2GeneralDataClick(Sender: TObject);
     procedure MenuItem2HoleProfileClick(Sender: TObject);
     procedure MenuItem1CreateFileClick(Sender: TObject);
-    procedure MenuItem2GeneralDataClick(Sender: TObject);
     procedure MenuItem2PreferencesClick(Sender: TObject);
     procedure MenuItem1QuitClick(Sender: TObject);
 
@@ -216,8 +220,9 @@ type
 var
   DrillSim: TDrillSim;
   MyThread : TMyThread;
+  DisplayWellData: TDisplayWellData;
   GeneralData: TGeneralData;
-
+  HoleData: THoleData;
 implementation
 
 {$R *.lfm}
@@ -570,10 +575,18 @@ begin
 
 end;
 
-procedure TDrillSim.MenuItem2GeneralDataClick(Sender: TObject);
-var
-GeneralData:TGeneralData;
+procedure TDrillSim.MenuItem2DisplayWellDataClick(Sender: TObject);
+begin
+  try
+    DisplayWellData:=TDisplayWellData.Create(Nil);  //Form2 is created
+    DisplayWellData.ShowModal;
+  finally
+    DisplayWellData.Free;
+end;
 
+end;
+
+procedure TDrillSim.MenuItem2GeneralDataClick(Sender: TObject);
 begin
   try
     GeneralData:=TGeneralData.Create(Nil);  //Form2 is created
@@ -587,7 +600,13 @@ end;
 
 procedure TDrillSim.MenuItem2HoleProfileClick(Sender: TObject);
 begin
-  CallHoleData;
+  try
+    HoleData:=THoleData.Create(Nil);  //Form2 is created
+    HoleData.ShowModal;
+  finally
+    HoleData.Free;
+  end;
+
 end;
 
 procedure TDrillSim.MenuItem2DrillStringClick(Sender: TObject);

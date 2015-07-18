@@ -40,7 +40,6 @@ End;
 
 Begin
   Mode := KickMode;
-  WriteTitle(False,False,True);
   With Data do
   Begin
     gotoxy(10,6);
@@ -93,7 +92,6 @@ Begin
 
 { ===================== Formation Parameter Table ==========================}
 
-    WriteTitle(False,True,True);
     //Disp(14,4,'Horizon Top');
     //Disp(16,5,'('+lab[1]+')');
 
@@ -185,7 +183,6 @@ End;
 Procedure UpdateGen;
 Begin
   Mode := GenMode;
-  WriteTitle(False,False,True);
 
   With Data do
   Begin
@@ -289,7 +286,6 @@ Var J, i,k : integer;
     Str1 : String[10];
 Begin
   Mode := HoleMode;
-  WriteTitle(False,False,True);
   With Data do
   Begin
     LineCnt:=4;  J:=4;
@@ -517,7 +513,6 @@ Var i, j : integer;
     Str1,Str2 : String[10];
 Begin
   Mode := PipeMode;
-  WriteTitle(False,False,True);
   With Data do
   Begin
     Repeat
@@ -589,7 +584,6 @@ Var i : integer;
     InputError : boolean;
 Begin
   Mode := BitMode;
-  WriteTitle(False,False,True);
   With Data do
   Begin
     Repeat
@@ -649,7 +643,6 @@ Procedure UpdateMud;
 Var InputError : boolean;
 Begin
   Mode := MudMode;
-  WriteTitle(False,False,True);
   With Data do
   Begin
     Repeat
@@ -699,7 +692,6 @@ Var i : integer;
     InputError : boolean;
 Begin
   Mode := PumpMode;
-  WriteTitle(False,False,True);
   With Data do
   Begin
     Repeat
@@ -778,7 +770,6 @@ Begin
   Begin
     Repeat
       Mode := SurfMode;
-      WriteTitle(False,False,True);
 
       Str(Surf[1,1]:9:3,Str1);
       //Disp(10,7,'Kelly  Length      : '+Str1+' '+lab[1]+' ?');

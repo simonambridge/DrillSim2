@@ -46,7 +46,6 @@ Procedure SetDefaultDirectory;
 Begin        {row,col,rows,cols,wattr,battr,brdr,name}
   {MakeWindow (10,10, 6,60,Blue+LightGrayBG,Blue+LightGrayBG,HdoubleBrdr,
                Window1); }
-  Window(1,1,80,25);
   Instring:='';
   //Disp(12,12,'Currently  ' + LoggedDirectory);
   //Disp(12,13,'New Path : ');

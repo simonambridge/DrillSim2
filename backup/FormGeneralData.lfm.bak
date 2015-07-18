@@ -44,9 +44,7 @@ object GeneralData: TGeneralData
     Height = 27
     Top = 45
     Width = 328
-    Color = clScrollBar
     TabOrder = 4
-    Text = 'WellOperatorData'
   end
   object WellNameData: TEdit
     Left = 152
@@ -54,15 +52,14 @@ object GeneralData: TGeneralData
     Top = 80
     Width = 325
     TabOrder = 5
-    Text = 'WellNameData'
   end
   object ElevationRKBData: TEdit
     Left = 153
     Height = 27
     Top = 122
     Width = 145
+    Alignment = taRightJustify
     TabOrder = 6
-    Text = 'ElevationRKBData'
   end
   object OffshoreYNDataYes: TRadioButton
     Left = 163
@@ -85,7 +82,7 @@ object GeneralData: TGeneralData
   object ElevationRKBUoMLabel: TLabel
     Left = 320
     Height = 22
-    Top = 122
+    Top = 127
     Width = 24
     AutoSize = False
     Caption = 'Ft'
@@ -97,6 +94,7 @@ object GeneralData: TGeneralData
     Top = 201
     Width = 86
     Caption = 'Save'
+    OnClick = SaveClick
     TabOrder = 9
   end
   object Quit: TButton

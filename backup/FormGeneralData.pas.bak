@@ -10,8 +10,6 @@ uses
 
 type
 
-  { TFormGeneralData }
-
   { TGeneralData }
 
   TGeneralData = class(TForm)
@@ -28,6 +26,7 @@ type
     WellOperator: TStaticText;
     WellName: TStaticText;
     procedure QuitClick(Sender: TObject);
+    procedure SaveClick(Sender: TObject);
   private
     { private declarations }
   public
@@ -49,6 +48,11 @@ Uses DrillSimGUI;
 procedure TGeneralData.QuitClick(Sender: TObject);
 begin
   Close;
+end;
+
+procedure TGeneralData.SaveClick(Sender: TObject);
+begin
+
 end;
 
 end.

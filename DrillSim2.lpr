@@ -15,7 +15,7 @@ uses
   DrillSimStartup,
   DrillSimFile,
   DrillSimMenu,
-  SimulateMessageToMemo, DrillSimGUI, FormGeneralData, FormHoleData;
+  SimulateMessageToMemo, DrillSimGUI, FormGeneralData, FormDisplayWellData;
 
 {$R *.res}
 
@@ -30,9 +30,9 @@ begin
   writeln('DrillSim2.lpr : Application.CreateForm');
   Application.CreateForm(TDrillSim, DrillSim);
   Application.CreateForm(TGeneralData, GeneralData);
+  Application.CreateForm(TDisplayWellData, DisplayWellData);
 
   StringToMemo('DrillSim2.lpr : Application.Run');
-  Application.CreateForm(TForm1, Form1);
   Application.Run;
 
 

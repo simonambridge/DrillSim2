@@ -40,7 +40,6 @@ End;
 
 Begin
   Mode := KickMode;
-  WriteTitle(False,False,True);
   With Data do
   Begin
     gotoxy(10,6);
@@ -93,7 +92,6 @@ Begin
 
 { ===================== Formation Parameter Table ==========================}
 
-    WriteTitle(False,True,True);
     //Disp(14,4,'Horizon Top');
     //Disp(16,5,'('+lab[1]+')');
 
@@ -185,7 +183,6 @@ End;
 Procedure UpdateGen;
 Begin
   Mode := GenMode;
-  WriteTitle(False,False,True);
 
   With Data do
   Begin
@@ -253,9 +250,7 @@ Begin
       End;
 
       GetState(Riser);
-      //SetColorSet(DataColors);
       //Disp(63-length(YesNo),17,YesNo);
-      //SetColorSet(NormColors);
 
       if Riser then
       Begin
@@ -267,21 +262,17 @@ Begin
         if Valid then ChokeLineID:=RResult;
         Str(ChokeLineID:8:2,TempString);
         //Disp(63-length(TempString),18,TempString);
-        //SetColorSet(NormColors);
-      End else //Disp(10,18,'No Choke Line');
+       End else //Disp(10,18,'No Choke Line');
 
       Str(WaterDepth:8:2,TempString);
       //Disp(10,19,'Water depth'+Blank7+':');
       //Disp(50-length(TempString)-4,19,TempString + ' ' + lab[1] + ' ? ');
-      //SetColorSet(DataColors);
-      GetReal(55,19,2000/con[1]);
+       GetReal(55,19,2000/con[1]);
       if Valid then WaterDepth:=RResult;
       Str(WaterDepth:8:2,TempString);
       //Disp(63-length(TempString),19,TempString);
     End;
   End;
-  //SetColorSet(NormColors);
-  {ModCursor(CursorOff); }
   ExitPrompt;
 End;
 
@@ -295,7 +286,6 @@ Var J, i,k : integer;
     Str1 : String[10];
 Begin
   Mode := HoleMode;
-  WriteTitle(False,False,True);
   With Data do
   Begin
     LineCnt:=4;  J:=4;
@@ -523,7 +513,6 @@ Var i, j : integer;
     Str1,Str2 : String[10];
 Begin
   Mode := PipeMode;
-  WriteTitle(False,False,True);
   With Data do
   Begin
     Repeat
@@ -595,7 +584,6 @@ Var i : integer;
     InputError : boolean;
 Begin
   Mode := BitMode;
-  WriteTitle(False,False,True);
   With Data do
   Begin
     Repeat
@@ -655,7 +643,6 @@ Procedure UpdateMud;
 Var InputError : boolean;
 Begin
   Mode := MudMode;
-  WriteTitle(False,False,True);
   With Data do
   Begin
     Repeat
@@ -705,7 +692,6 @@ Var i : integer;
     InputError : boolean;
 Begin
   Mode := PumpMode;
-  WriteTitle(False,False,True);
   With Data do
   Begin
     Repeat

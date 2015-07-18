@@ -35,7 +35,7 @@
         <PackageName Value="LCL"/>
       </Item1>
     </RequiredPackages>
-    <Units Count="3">
+    <Units Count="5">
       <Unit0>
         <Filename Value="DrillSim2.lpr"/>
         <IsPartOfProject Value="True"/>
@@ -53,6 +53,17 @@
         <Filename Value="FormGeneralData.lfm"/>
         <IsPartOfProject Value="True"/>
       </Unit2>
+      <Unit3>
+        <Filename Value="FormHoleData.lfm"/>
+        <IsPartOfProject Value="True"/>
+      </Unit3>
+      <Unit4>
+        <Filename Value="formdisplaywelldata.pas"/>
+        <IsPartOfProject Value="True"/>
+        <ComponentName Value="Form1"/>
+        <ResourceBaseClass Value="Form"/>
+        <UnitName Value="FormDisplayWellData"/>
+      </Unit4>
     </Units>
   </ProjectOptions>
   <CompilerOptions>

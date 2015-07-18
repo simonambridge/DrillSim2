@@ -1,0 +1,28 @@
+unit FormDisplayWellData;
+
+{$mode objfpc}{$H+}
+
+interface
+
+uses
+  Classes, SysUtils, FileUtil, Forms, Controls, Graphics, Dialogs;
+
+type
+  TDisplayWellData = class(TForm)
+  private
+    { private declarations }
+  public
+    { public declarations }
+  end;
+
+var
+  DisplayWellData: TDisplayWellData;
+
+implementation
+
+Uses DrillSimGUI;
+
+{$R *.lfm}
+
+end.
+

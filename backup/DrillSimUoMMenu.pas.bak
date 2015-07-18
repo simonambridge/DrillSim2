@@ -56,7 +56,7 @@ Begin
     gotoxy(58,LineNumber); { read new value, if any }
     read(Instring);
     if length(Instring) > Zero then Val(Instring,Con[UnitNumber],i);
-    if Con[UnitNumber]=Zero then LowBeep;
+//    if Con[UnitNumber]=Zero then LowBeep;
   Until Con[UnitNumber]<>Zero;
 
   gotoxy(58,LineNumber);
@@ -80,7 +80,6 @@ End;
 
 Procedure UnitScreen;
 Begin
-  WriteTitle(False,True,True);
   StringToMemo('Selected Units : ' + Data.UserType);
 
   //Box(10,4,70,20);

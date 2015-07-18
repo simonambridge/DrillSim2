@@ -839,6 +839,11 @@ object DrillSim: TDrillSim
       Caption = 'Edit'
       object MenuItem2EditFile: TMenuItem
         Caption = 'Edit Well File'
+        object MenuItem2DisplayWellData: TMenuItem
+          Caption = 'Well Data Summary'
+          Default = True
+          OnClick = MenuItem2DisplayWellDataClick
+        end
         object MenuItem2GeneralData: TMenuItem
           Caption = 'General Well Data'
           OnClick = MenuItem2GeneralDataClick

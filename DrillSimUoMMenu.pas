@@ -80,7 +80,6 @@ End;
 
 Procedure UnitScreen;
 Begin
-  WriteTitle(False,True,True);
   StringToMemo('Selected Units : ' + Data.UserType);
 
   //Box(10,4,70,20);
@@ -125,7 +124,6 @@ End;
 
 Begin
   Mode  := UnitMode;
-  WriteTitle(False,False,True);
   Menu[1]:='API.......................1';
   Menu[2]:='Metric....................2';
   Menu[3]:='User......................3';

@@ -5,10 +5,16 @@ unit FormHoleData;
 interface
 
 uses
-  Classes, SysUtils, FileUtil, Forms, Controls, Graphics, Dialogs;
+  Classes, SysUtils, FileUtil, Forms, Controls, Graphics, Dialogs, StdCtrls;
 
 type
-  TForm1 = class(TForm)
+
+  { THoleData }
+
+  THoleData = class(TForm)
+    RiserTD: TStaticText;
+    CasingYN: TStaticText;
+    RiserID: TStaticText;
   private
     { private declarations }
   public
@@ -16,7 +22,7 @@ type
   end;
 
 var
-  Form1: TForm1;
+  HoleData: THoleData;
 
 implementation
 
