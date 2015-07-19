@@ -40,6 +40,7 @@ Begin
     SetKelly;                        { use SetKelly to set it up for future}
                                      { use                                 }
     MessageToMemo(5);
+    gotoxy(39,12);
   End;
 End;
 

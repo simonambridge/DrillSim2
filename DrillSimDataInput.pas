@@ -643,7 +643,7 @@ Procedure UpdateMud;
 Var InputError : boolean;
 Begin
   Mode := MudMode;
-  With Data do
+ With Data do
   Begin
     Repeat
       gotoxy(10,10);
