@@ -3,6 +3,7 @@ Unit DrillSimUtilities;
 Interface
 
 Uses Crt,
+     Dos,
      DrillSimVariables,
      HyCalcVariables,
      Dialogs, StdCtrls;
@@ -18,8 +19,20 @@ Procedure GetInt(x, y, z : integer);
 Procedure HelpWindow(Index : integer);
 Procedure ConReal(Variable : real; Field,DPlaces : integer);
 Procedure ConInt(Variable : integer; Field : integer);
+Procedure GetCurrentDate (Var d : Date);
+Procedure GetCurrentTime (Var t : Time);
 
 Implementation
+
+Procedure GetCurrentDate (Var d : Date);
+Begin
+  GetDate(d.Year, d.Month, d.day, d.DayOfWeek);
+End;
+
+Procedure GetCurrentTime (Var t : Time);
+Begin
+  GetTime(t.Hours, t.Minutes, t.Seconds, t.Hundredths);
+End;
 
 
 

@@ -27,14 +27,16 @@ uses
   DrillSimDataInput,
   DrillSimConversions,
   DrillSimUoMMenu,
-  DrillSimSimulate,
+  DrillSimUtilities,
   SimulateMessageToMemo,
   SimulateCommandProcessor,
   SimulateUpdate,
   SimulateSurfaceControls,
   FormDisplayWellData,
   FormGeneralData,
-  FormHoleData;
+  FormHoleData,
+  SimulateInit,
+  SimulateHoleCalcs;
 
 
 type
@@ -679,22 +681,15 @@ begin
                                    { table. Also done on Load and Clear     }
      GetCurrentTime (t);
      Data.t2:=t.Seconds;             { initialize time                    }
-     Screen;                         { display screen and kelly.          }
-                                     { do HoleCalc in DrillSim/HyCalc     }
-                                     { so that Screen can be done first   }
-                                     { to reduce the delay for the user.  }
 
      SimHoleCalc;                    { calculate volumes                  }
 
-
-
      FlowUpdate;                     { set up flow in                     }
-     InitialiseKelly;                { draw it at the top                 }
+     //InitialiseKelly;                { draw it at the top                 }
      SetKelly;                       { move kelly to drilling position    }
      SetSurfControls;                { set RAMs and choke line            }
      Control;                        { Call simulater controller, fall    }
                                      { through to SelectMenu when Quit=T  }
-
    End;                              { still no file, then return to DrillSim }
  End;
 
@@ -703,9 +698,6 @@ begin
                                    { and any subsequently loaded will be    }
                                    { able to detect if the data is altered  }
                                    { even when going in and out of DrillSim }
-
-
-
  End;
    StartUp;                { convert back to DrillSim units and load help     }
 end;

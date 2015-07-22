@@ -27,7 +27,7 @@ uses
   DrillSimDataInput,
   DrillSimConversions,
   DrillSimUoMMenu,
-  DrillSimSimulate,
+  DrillSimUtilities,
   SimulateMessageToMemo,
   SimulateCommandProcessor,
   SimulateUpdate,
@@ -35,7 +35,9 @@ uses
   FormDisplayWellData,
   FormGeneralData,
   FormHoleData,
-  SimulateInit;
+  SimulateInit,
+  SimulateHoleCalcs,
+  SimulateControl;
 
 
 type
@@ -653,63 +655,55 @@ begin
 //  ChDir(OriginDirectory); { ExecuteFlag gets set in Simulator when returning }
   MessageToMemo(100);               { courtesy message         }
   if NoFIleDefined=false then
- Begin
-   ChDir(LoggedDirectory);         { set to Logged directory first          }
+  Begin
+    ChDir(LoggedDirectory);         { set to Logged directory first          }
 
                                    { if Quit=T  resets to Origin directory  }
                                    { All file and Path functions use the    }
                                    { Logged directory                       }
 
-   if NoFileDefined then           { check for no file in use               }
-   Begin
-     FileName:='no file';          { set file name for load window          }
-     SimulateLoadFile;                     { and go prompt for one                  }
-   End;
+    if NoFileDefined then           { check for no file in use               }
+    Begin
+      FileName:='no file';          { set file name for load window          }
+      SimulateLoadFile;                     { and go prompt for one                  }
+    End;
 
-   if not NoFileDefined then       { if file defined, continue into Simulator }
-   Begin
-     InitMud;                      { set the system OriginalMudWt etc.      }
+    if not NoFileDefined then       { if file defined, continue into Simulator }
+    Begin
+      InitMud;                      { set the system OriginalMudWt etc.      }
 
-     InitDepth;                    { depths used for reset are the current  }
+      InitDepth;                    { depths used for reset are the current  }
                                    { depths at the start of this session    }
                                    { which may not be the original depths   }
 
-     InitKick;                     { Set up and initialise if NewIf0=0      }
+      InitKick;                     { Set up and initialise if NewIf0=0      }
 
-     InitGeology;                  { find current position within geological}
+      InitGeology;                  { find current position within geological}
                                    { table. Also done on Load and Clear     }
-     GetCurrentTime (t);
-     Data.t2:=t.Seconds;             { initialize time                    }
-     Screen;                         { display screen and kelly.          }
-                                     { do HoleCalc in DrillSim/HyCalc     }
-                                     { so that Screen can be done first   }
-                                     { to reduce the delay for the user.  }
+      GetCurrentTime (t);
+      Data.t2:=t.Seconds;             { initialize time                    }
 
-     SimHoleCalc;                    { calculate volumes                  }
+      SimHoleCalc;                    { calculate volumes                  }
+
+      FlowUpdate;                     { set up flow in                     }
+      //InitialiseKelly;                { draw it at the top                 }
+      SetKelly;                       { move kelly to drilling position    }
+      SetSurfControls;                { set RAMs and choke line            }
 
 
-
-     FlowUpdate;                     { set up flow in                     }
-     InitialiseKelly;                { draw it at the top                 }
-     SetKelly;                       { move kelly to drilling position    }
-     SetSurfControls;                { set RAMs and choke line            }
-     Control;                        { Call simulater controller, fall    }
+      // THIS GOES IN THE THREAD !!!
+      //Control;                        { Call simulater controller, fall    }
                                      { through to SelectMenu when Quit=T  }
-
-   End;                              { still no file, then return to DrillSim }
- End;
+    End;                              { still no file, then return to DrillSim }
+  End;
 
                                    { Edited set to FALSE when a file is     }
                                    { loaded. Therefore the start up file    }
                                    { and any subsequently loaded will be    }
                                    { able to detect if the data is altered  }
                                    { even when going in and out of DrillSim }
-
-
-
- End;
-   StartUp;                { convert back to DrillSim units and load help     }
-end;
+   // StartUp;                { convert back to DrillSim units and load help     }
+End;
 
 procedure TDrillSim.MenuItem2PreferencesClick(Sender: TObject);
 begin
