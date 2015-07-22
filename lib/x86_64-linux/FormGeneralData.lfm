@@ -1,11 +1,12 @@
 object GeneralData: TGeneralData
-  Left = 521
+  Left = 397
   Height = 240
-  Top = 285
+  Top = 457
   Width = 497
-  Caption = 'General Data'
+  Caption = 'General Well Data'
   ClientHeight = 240
   ClientWidth = 497
+  OnKeyPress = FormKeyPress
   LCLVersion = '1.2.6.0'
   object WellOperator: TStaticText
     Left = 24
@@ -44,6 +45,7 @@ object GeneralData: TGeneralData
     Height = 27
     Top = 45
     Width = 328
+    OnChange = WellOperatorDataChange
     TabOrder = 4
   end
   object WellNameData: TEdit
@@ -51,6 +53,7 @@ object GeneralData: TGeneralData
     Height = 27
     Top = 80
     Width = 325
+    OnChange = WellNameDataChange
     TabOrder = 5
   end
   object ElevationRKBData: TEdit
@@ -59,6 +62,7 @@ object GeneralData: TGeneralData
     Top = 122
     Width = 145
     Alignment = taRightJustify
+    OnChange = ElevationRKBDataChange
     TabOrder = 6
   end
   object OffshoreYNDataYes: TRadioButton
@@ -67,9 +71,8 @@ object GeneralData: TGeneralData
     Top = 168
     Width = 49
     Caption = 'Yes'
-    Checked = True
+    OnChange = OffshoreYNDataYesChange
     TabOrder = 7
-    TabStop = True
   end
   object OffshoreYNDataNo: TRadioButton
     Left = 303
@@ -77,7 +80,9 @@ object GeneralData: TGeneralData
     Top = 168
     Width = 46
     Caption = 'No'
+    Checked = True
     TabOrder = 8
+    TabStop = True
   end
   object ElevationRKBUoMLabel: TLabel
     Left = 320

@@ -100,7 +100,7 @@ End;
 
 Procedure LoadData;            { Entry : FullName = filename.WDF    }
 Var i : integer;               {       : NewFile  = True if new     }
-    ErrorString : AnyString;
+    ErrorString : String[120];
 Begin                          { Exit  : NewFile  = True if new     }
   NoFileDefined:=True;
   if NewFile then              {       : NoData   = True if NewFile }

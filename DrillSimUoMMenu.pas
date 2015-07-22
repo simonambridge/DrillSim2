@@ -14,7 +14,7 @@ Implementation
 
 {*********************** Units Definition **************************}
 
-Procedure ShowUnits(UnitType : AnyString; UnitNumber, LineNumber : integer);
+Procedure ShowUnits(UnitType : String120; UnitNumber, LineNumber : integer);
 Begin
   Str(con[UnitNumber]:10:5,TempString);
   //Disp(12,LineNumber,UnitType);
@@ -37,7 +37,7 @@ Begin
 End;
 
 
-Procedure GetUserUnits(UnitType : AnyString; UnitNumber, LineNumber : integer);
+Procedure GetUserUnits(UnitType : String120; UnitNumber, LineNumber : integer);
 var i : integer;
 Begin
   //Disp(12,LineNumber,UnitType);                   { display unit type }

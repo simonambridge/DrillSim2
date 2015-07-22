@@ -117,7 +117,7 @@ Begin                          { Exit  : NewFile  = True if new     }
     except
       on E: EInOutError do
       Begin
-        StringToMemo('File handling error occurred. Details: ' + E.Message);
+        StringToMemo(' - File handling error occurred. Details: ' + E.Message);
         Exit;
       end;
     End;

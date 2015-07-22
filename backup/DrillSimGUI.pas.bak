@@ -23,6 +23,7 @@ uses
   DrillSimStartup,
   DrillSimMenu,
   DrillSimFile,
+  SimulateFile,
   DrillSimDataInput,
   DrillSimConversions,
   DrillSimUoMMenu,
@@ -33,7 +34,7 @@ uses
   SimulateSurfaceControls,
   FormDisplayWellData,
   FormGeneralData,
-  FormHolelData;
+  FormHoleData;
 
 
 type
@@ -517,7 +518,7 @@ begin
   StringToMemo('Running FormCreate...'); // please wait....
 
   splash := TSplashAbout.Create(nil);
-  SetDefaultValues; // Optional
+  SetDefaultValues; // splash - optional
   splash.ShowSplash;
   Memo1.SelStart:=Length(Memo1.Text);
 
@@ -526,7 +527,7 @@ begin
   Edited:=False;  { start clean }
 
   StringToMemo('Running DrillSim Startup From FormCreate');
-  StartUp;
+  StartUp;     { call DrillSim StartUp }
 
 end;
 
@@ -578,7 +579,7 @@ end;
 procedure TDrillSim.MenuItem2DisplayWellDataClick(Sender: TObject);
 begin
   try
-    DisplayWellData:=TDisplayWellData.Create(Nil);  //Form2 is created
+    DisplayWellData:=TDisplayWellData.Create(Nil);  //DisplayWellData is created
     DisplayWellData.ShowModal;
   finally
     DisplayWellData.Free;
@@ -589,7 +590,7 @@ end;
 procedure TDrillSim.MenuItem2GeneralDataClick(Sender: TObject);
 begin
   try
-    GeneralData:=TGeneralData.Create(Nil);  //Form2 is created
+    GeneralData:=TGeneralData.Create(Nil);  //General Data Input is created
     GeneralData.ShowModal;
   finally
     GeneralData.Free;
@@ -601,7 +602,7 @@ end;
 procedure TDrillSim.MenuItem2HoleProfileClick(Sender: TObject);
 begin
   try
-    HoleData:=THoleData.Create(Nil);  //Form2 is created
+    HoleData:=THoleData.Create(Nil);  //Hole Data Input is created
     HoleData.ShowModal;
   finally
     HoleData.Free;
@@ -650,8 +651,63 @@ begin
   ConAPIKickData;         { Simulator uses internal API units                }
 //  ChDir(OriginDirectory); { ExecuteFlag gets set in Simulator when returning }
   MessageToMemo(100);               { courtesy message         }
-  if NoFIleDefined=false then Simulator;  { do Simulate }
-  StartUp;                { convert back to DrillSim units and load help     }
+  if NoFIleDefined=false then
+ Begin
+   ChDir(LoggedDirectory);         { set to Logged directory first          }
+
+                                   { if Quit=T  resets to Origin directory  }
+                                   { All file and Path functions use the    }
+                                   { Logged directory                       }
+
+   if NoFileDefined then           { check for no file in use               }
+   Begin
+     FileName:='no file';          { set file name for load window          }
+     SimulateLoadFile;                     { and go prompt for one                  }
+   End;
+
+   if not NoFileDefined then       { if file defined, continue into Simulator }
+   Begin
+     InitMud;                      { set the system OriginalMudWt etc.      }
+
+     InitDepth;                    { depths used for reset are the current  }
+                                   { depths at the start of this session    }
+                                   { which may not be the original depths   }
+
+     InitKick;                     { Set up and initialise if NewIf0=0      }
+
+     InitGeology;                  { find current position within geological}
+                                   { table. Also done on Load and Clear     }
+     GetCurrentTime (t);
+     Data.t2:=t.Seconds;             { initialize time                    }
+     Screen;                         { display screen and kelly.          }
+                                     { do HoleCalc in DrillSim/HyCalc     }
+                                     { so that Screen can be done first   }
+                                     { to reduce the delay for the user.  }
+
+     SimHoleCalc;                    { calculate volumes                  }
+
+
+
+     FlowUpdate;                     { set up flow in                     }
+     InitialiseKelly;                { draw it at the top                 }
+     SetKelly;                       { move kelly to drilling position    }
+     SetSurfControls;                { set RAMs and choke line            }
+     Control;                        { Call simulater controller, fall    }
+                                     { through to SelectMenu when Quit=T  }
+
+   End;                              { still no file, then return to DrillSim }
+ End;
+
+                                   { Edited set to FALSE when a file is     }
+                                   { loaded. Therefore the start up file    }
+                                   { and any subsequently loaded will be    }
+                                   { able to detect if the data is altered  }
+                                   { even when going in and out of DrillSim }
+
+
+
+ End;
+   StartUp;                { convert back to DrillSim units and load help     }
 end;
 
 procedure TDrillSim.MenuItem2PreferencesClick(Sender: TObject);

@@ -5,13 +5,26 @@ unit FormDisplayWellData;
 interface
 
 uses
-  Classes, SysUtils, FileUtil, Forms, Controls, Graphics, Dialogs, StdCtrls;
+  Classes,
+  SysUtils,
+  FileUtil,
+  Forms,
+  Controls,
+  Graphics,
+  Dialogs,
+  StdCtrls,
+  ExtCtrls,
+  DrillSimVariables,
+  SimulateMessageToMemo;
 
 type
 
   { TDisplayWellData }
 
   TDisplayWellData = class(TForm)
+    ElevationRKBValue: TLabel;
+    OffshoreYNValue: TLabel;
+    WellOperatorValue: TLabel;
     OpenHoleSection2IDUoMLabel: TLabel;
     OpenHoleSection1TDUoMLabel: TLabel;
     LinerID: TStaticText;
@@ -55,7 +68,11 @@ type
     CasingYN: TStaticText;
     WellName: TStaticText;
     WellOperator: TStaticText;
+    WellNameValue: TLabel;
+    Procedure OnClose(Sender: TObject);
+    procedure CloseDisplayWellDataClick(Sender: TObject);
     procedure FormCreate(Sender: TObject);
+    procedure FormCreateActions;
   private
     { private declarations }
   public
@@ -73,9 +90,29 @@ Uses DrillSimGUI;
 
 { TDisplayWellData }
 
+Procedure TDisplayWellData.FormCreateActions;
+Begin
+  WellOperatorValue.Caption:=Data.WellOperator;
+  WellNameValue.Caption:=Data.WellName;
+  ElevationRKBValue.Caption:=FloatToStr(Data.ElevationRKB);
+  OffshoreYNValue.Caption:=BoolToStr(Data.Offshore);
+end;
+
+{ ------------- Form Procedures ------------ }
+
 procedure TDisplayWellData.FormCreate(Sender: TObject);
 begin
+  FormCreateActions;
+end;
 
+procedure TDisplayWellData.CloseDisplayWellDataClick(Sender: TObject);
+begin
+  Close;
+end;
+
+Procedure TDisplayWellData.OnClose(Sender: TObject);
+begin
+ Close;
 end;
 
 end.

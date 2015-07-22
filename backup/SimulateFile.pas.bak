@@ -10,7 +10,7 @@ Uses Crt,
      SimulateInit;
 
 Procedure SaveFile;
-Procedure LoadFile;
+Procedure SimulateLoadFile;
 
 Implementation
 
@@ -71,7 +71,7 @@ Begin
 End;
 
 
-Procedure LoadFile;
+Procedure SimulateLoadFile;
 Var i : integer;
 Begin
   if Edited then

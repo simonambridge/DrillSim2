@@ -116,7 +116,6 @@ End;
 Procedure ErrorScreen;
 Begin
   Mode:=ErrorMode;                    { Hole/Pipe data error screen }
-  WriteTitle(False,False,False);
 
   Window(13,5,67,19);
   TextBackground(Red);

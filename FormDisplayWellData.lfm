@@ -1,11 +1,11 @@
 object DisplayWellData: TDisplayWellData
-  Left = 116
-  Height = 541
-  Top = 157
-  Width = 1224
+  Left = 753
+  Height = 722
+  Top = 24
+  Width = 687
   Caption = 'DisplayWellData'
-  ClientHeight = 541
-  ClientWidth = 1224
+  ClientHeight = 722
+  ClientWidth = 687
   OnCreate = FormCreate
   LCLVersion = '1.2.6.0'
   object WellDataSummaryTitle: TStaticText
@@ -49,9 +49,9 @@ object DisplayWellData: TDisplayWellData
     TabOrder = 4
   end
   object ElevationRKBUoMLabel: TLabel
-    Left = 223
+    Left = 241
     Height = 22
-    Top = 88
+    Top = 96
     Width = 24
     AutoSize = False
     Caption = 'Ft'
@@ -63,6 +63,7 @@ object DisplayWellData: TDisplayWellData
     Top = 504
     Width = 86
     Caption = 'Close'
+    OnClick = CloseDisplayWellDataClick
     TabOrder = 5
   end
   object RiserTD: TStaticText
@@ -74,7 +75,7 @@ object DisplayWellData: TDisplayWellData
     TabOrder = 6
   end
   object RiserTDUoMLabel: TLabel
-    Left = 223
+    Left = 240
     Height = 22
     Top = 208
     Width = 24
@@ -91,7 +92,7 @@ object DisplayWellData: TDisplayWellData
     TabOrder = 7
   end
   object RiserIDUoMLabel: TLabel
-    Left = 223
+    Left = 240
     Height = 22
     Top = 232
     Width = 32
@@ -124,7 +125,7 @@ object DisplayWellData: TDisplayWellData
     TabOrder = 10
   end
   object ChokeLineLengthUoMLabel: TLabel
-    Left = 223
+    Left = 240
     Height = 22
     Top = 264
     Width = 24
@@ -141,7 +142,7 @@ object DisplayWellData: TDisplayWellData
     TabOrder = 11
   end
   object ChokeLineIDUoMLabel: TLabel
-    Left = 223
+    Left = 240
     Height = 22
     Top = 288
     Width = 32
@@ -150,7 +151,7 @@ object DisplayWellData: TDisplayWellData
     ParentColor = False
   end
   object WaterDepthUoMLabel: TLabel
-    Left = 223
+    Left = 240
     Height = 22
     Top = 176
     Width = 24
@@ -175,7 +176,7 @@ object DisplayWellData: TDisplayWellData
     TabOrder = 13
   end
   object CasingShoeTDUoMLabel: TLabel
-    Left = 223
+    Left = 240
     Height = 22
     Top = 352
     Width = 24
@@ -184,7 +185,7 @@ object DisplayWellData: TDisplayWellData
     ParentColor = False
   end
   object CasingIDUoMLabel: TLabel
-    Left = 223
+    Left = 240
     Height = 22
     Top = 376
     Width = 32
@@ -217,7 +218,7 @@ object DisplayWellData: TDisplayWellData
     TabOrder = 16
   end
   object LinerHangerUoMLabel: TLabel
-    Left = 223
+    Left = 240
     Height = 22
     Top = 432
     Width = 24
@@ -234,7 +235,7 @@ object DisplayWellData: TDisplayWellData
     TabOrder = 17
   end
   object LinerShoeTDUoMLabel: TLabel
-    Left = 223
+    Left = 240
     Height = 22
     Top = 456
     Width = 24
@@ -251,7 +252,7 @@ object DisplayWellData: TDisplayWellData
     TabOrder = 18
   end
   object LinerIDUoMLabel: TLabel
-    Left = 223
+    Left = 240
     Height = 22
     Top = 480
     Width = 32
@@ -367,6 +368,38 @@ object DisplayWellData: TDisplayWellData
     Width = 32
     AutoSize = False
     Caption = 'Ins'
+    ParentColor = False
+  end
+  object WellOperatorValue: TLabel
+    Left = 122
+    Height = 17
+    Top = 56
+    Width = 110
+    AutoSize = False
+    ParentColor = False
+  end
+  object WellNameValue: TLabel
+    Left = 120
+    Height = 17
+    Top = 72
+    Width = 110
+    AutoSize = False
+    ParentColor = False
+  end
+  object ElevationRKBValue: TLabel
+    Left = 112
+    Height = 17
+    Top = 96
+    Width = 110
+    AutoSize = False
+    ParentColor = False
+  end
+  object OffshoreYNValue: TLabel
+    Left = 122
+    Height = 17
+    Top = 120
+    Width = 110
+    AutoSize = False
     ParentColor = False
   end
 end

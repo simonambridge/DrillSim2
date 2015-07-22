@@ -195,7 +195,7 @@ Begin
     //Disp(50-length(Well),12,Well + ' ?');
 
     //Disp(10,14,'Elevation RKB     :');
-    Str(Rkb:8:2,TempString);      { 1 below corresponds to space after lab[1] }
+    Str(ElevationRKB:8:2,TempString);      { 1 below corresponds to space after lab[1] }
     //Disp(50-length(TempString)-length(lab[1])-1,14,TempString+' '+lab[1]+' ?');
 
     GetState(OffShore);                    { set YesNo according to OffShore }
@@ -208,12 +208,12 @@ Begin
     //Disp(58,10,WellOperator);
 
     GetString(58,12,20);
-    if Valid then Well:=Instring;
+    if Valid then WellName:=Instring;
     //Disp(58,12,Well);
 
     GetReal(55,14,500/con[1]);
-    if Valid then Rkb:=RResult;
-    Str(Rkb:8:2,TempString);      { 1 below corresponds to space after lab[1] }
+    if Valid then ElevationRKB:=RResult;
+    Str(ElevationRKB:8:2,TempString);      { 1 below corresponds to space after lab[1] }
 
     Repeat
       Input:=ReadKey;

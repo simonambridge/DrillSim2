@@ -5,7 +5,7 @@ Interface
 Uses DrillSimVariables;
 
 
-Procedure ResetToOriginal;               { call this from CLEAR to reset to }
+Procedure ResetToLoadedValues;               { call this from CLEAR to reset to }
 Procedure InitKick;  { only used by Simulate.Chn at startup, Load and CLEAR }
 Procedure InitMud; { called from LoadData }
 Procedure InitDepth;
@@ -14,7 +14,7 @@ Procedure InitGeology;        { called on each entry into Simulator, and    }
 
 Implementation
 
-Procedure ResetToOriginal;               { call this from CLEAR to reset to }
+Procedure ResetToLoadedValues;               { call this from CLEAR to reset to }
 Begin                                    { start-up values                  }
   With Data do
   Begin

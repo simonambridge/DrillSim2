@@ -1,0 +1,85 @@
+Unit DrillSimSimulate;
+{ !!!!! Simulate does not use ConAPI or ConUser because it converts all
+  !!!!! parameters for display purposes - all data is maintained
+  !!!!! internally in API units to speed up calculations }
+
+
+Interface
+
+Uses
+  DrillSimVariables,
+  DrillSimUnitsOfMeasure,
+  DrillSimStartup,
+  SimulateFile,
+  SimulateHoleCalcs,
+  SimulateControl,
+  SimulateInit,
+  DrillSimDateTime,
+  SimulateScreen,
+  SimulateUpdate,
+  SimulateSurfaceControls;
+
+Procedure Simulator;
+
+Implementation
+
+{***********************  main program block  *************************}
+
+Procedure Simulator;
+Begin
+  ChDir(LoggedDirectory);         { set to Logged directory first          }
+
+                                  { if Quit=T  resets to Origin directory  }
+                                  { All file and Path functions use the    }
+                                  { Logged directory                       }
+
+  if NoFileDefined then           { check for no file in use               }
+  Begin
+    FileName:='no file';          { set file name for load window          }
+    SimulateLoadFile;                     { and go prompt for one                  }
+  End;
+
+  if not NoFileDefined then       { if file defined, continue into Simulator }
+  Begin
+    InitMud;                      { set the system OriginalMudWt etc.      }
+
+    InitDepth;                    { depths used for reset are the current  }
+                                  { depths at the start of this session    }
+                                  { which may not be the original depths   }
+
+    InitKick;                     { Set up and initialise if NewIf0=0      }
+
+    InitGeology;                  { find current position within geological}
+                                  { table. Also done on Load and Clear     }
+    GetCurrentTime (t);
+    Data.t2:=t.Seconds;             { initialize time                    }
+    Screen;                         { display screen and kelly.          }
+                                    { do HoleCalc in DrillSim/HyCalc     }
+                                    { so that Screen can be done first   }
+                                    { to reduce the delay for the user.  }
+
+    SimHoleCalc;                    { calculate volumes                  }
+
+
+
+    FlowUpdate;                     { set up flow in                     }
+    InitialiseKelly;                { draw it at the top                 }
+    SetKelly;                       { move kelly to drilling position    }
+    SetSurfControls;                { set RAMs and choke line            }
+    Control;                        { Call simulater controller, fall    }
+                                    { through to SelectMenu when Quit=T  }
+
+  End;                              { still no file, then return to DrillSim }
+End;
+
+                                  { Edited set to FALSE when a file is     }
+                                  { loaded. Therefore the start up file    }
+                                  { and any subsequently loaded will be    }
+                                  { able to detect if the data is altered  }
+                                  { even when going in and out of DrillSim }
+
+
+Begin
+End.
+
+
