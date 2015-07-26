@@ -13,7 +13,8 @@ Uses Dos,Crt,
      DrillSimUoMMenu,
      DrillSimDataInput,
      DrillSimStartup,
-     SimulateMessageToMemo;
+     SimulateMessageToMemo,
+     SimulateClear;
 
 Procedure CallHoleData;
 Procedure CreateFile;

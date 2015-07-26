@@ -19,9 +19,9 @@ uses
 
 type
 
-  { TDisplayWellData }
+  { TDisplayWellDataForm }
 
-  TDisplayWellData = class(TForm)
+  TDisplayWellDataForm = class(TForm)
     ElevationRKBValue: TLabel;
     OffshoreYNValue: TLabel;
     WellOperatorValue: TLabel;
@@ -80,7 +80,7 @@ type
   end;
 
 var
-  DisplayWellData: TDisplayWellData;
+  DisplayWellDataForm: TDisplayWellDataForm;
 
 implementation
 
@@ -88,9 +88,9 @@ Uses DrillSimGUI;
 
 {$R *.lfm}
 
-{ TDisplayWellData }
+{ TDisplayWellDataForm }
 
-Procedure TDisplayWellData.FormCreateActions;
+Procedure TDisplayWellDataForm.FormCreateActions;
 Begin
   WellOperatorValue.Caption:=Data.WellOperator;
   WellNameValue.Caption:=Data.WellName;
@@ -100,17 +100,17 @@ end;
 
 { ------------- Form Procedures ------------ }
 
-procedure TDisplayWellData.FormCreate(Sender: TObject);
+procedure TDisplayWellDataForm.FormCreate(Sender: TObject);
 begin
   FormCreateActions;
 end;
 
-procedure TDisplayWellData.CloseDisplayWellDataClick(Sender: TObject);
+procedure TDisplayWellDataForm.CloseDisplayWellDataClick(Sender: TObject);
 begin
   Close;
 end;
 
-Procedure TDisplayWellData.OnClose(Sender: TObject);
+Procedure TDisplayWellDataForm.OnClose(Sender: TObject);
 begin
  Close;
 end;

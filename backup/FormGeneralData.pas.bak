@@ -10,9 +10,9 @@ uses
 
 type
 
-  { TGeneralData }
+  { TGeneralDataForm }
 
-  TGeneralData = class(TForm)
+  TGeneralDataForm = class(TForm)
     ElevationRKBData: TEdit;
     ElevationRKBUoMLabel: TLabel;
     OffshoreYNDataYes: TRadioButton;
@@ -38,7 +38,7 @@ type
     { public declarations }
   end;
 var
-  GeneralData: TGeneralData;
+  GeneralDataForm: TGeneralDataForm;
 
 
 implementation
@@ -47,26 +47,26 @@ Uses DrillSimGUI;
 
 {$R *.lfm}
 
-{ TGeneralData }
+{ TGeneralDataForm }
 
-procedure TGeneralData.FormKeyPress(Sender: TObject; var Key: char);
+procedure TGeneralDataForm.FormKeyPress(Sender: TObject; var Key: char);
 begin
 
 end;
 
-procedure TGeneralData.QuitClick(Sender: TObject);
+procedure TGeneralDataForm.QuitClick(Sender: TObject);
 begin
   Close;
 end;
 
-procedure TGeneralData.SaveClick(Sender: TObject);
+procedure TGeneralDataForm.SaveClick(Sender: TObject);
 begin
 
 end;
 
 { ------------------------------- Edit ------------------------------}
 
-procedure TGeneralData.WellOperatorDataChange(Sender: TObject);
+procedure TGeneralDataForm.WellOperatorDataChange(Sender: TObject);
 var
   MyEdit: TEdit;
   Success: boolean;
@@ -90,7 +90,7 @@ begin
   if Success then Data.WellOperator:=WellOperatorData.Text;
 end;
 
-procedure TGeneralData.WellNameDataChange(Sender: TObject);
+procedure TGeneralDataForm.WellNameDataChange(Sender: TObject);
 var
   MyEdit: TEdit;
   Success: boolean;
@@ -114,7 +114,7 @@ begin
   if Success then Data.WellName:=WellNameData.Text;
 end;
 
-procedure TGeneralData.ElevationRKBDataChange(Sender: TObject);
+procedure TGeneralDataForm.ElevationRKBDataChange(Sender: TObject);
 var
 MyEdit: TEdit;
 Success: boolean;
@@ -138,7 +138,7 @@ end;
 if Success then Data.ElevationRKB:=StrToFloat(ElevationRKBData.Text);
 end;
 
-procedure TGeneralData.OffshoreYNDataYesChange(Sender: TObject);
+procedure TGeneralDataForm.OffshoreYNDataYesChange(Sender: TObject);
 var
   MyEdit: TEdit;
   Success: boolean;
@@ -159,7 +159,7 @@ begin
       Success:= false;
     end;
   end;
-  if Success then Data.Offshore:=OffshoreYNDataYes.Checked);
+  if Success then Data.Offshore:=OffshoreYNDataYes.Checked;
 end;
 
 

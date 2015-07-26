@@ -1,7 +1,7 @@
 object HoleData: THoleData
-  Left = 244
+  Left = 402
   Height = 240
-  Top = 120
+  Top = 284
   Width = 320
   Caption = 'Hole Data'
   ClientHeight = 240

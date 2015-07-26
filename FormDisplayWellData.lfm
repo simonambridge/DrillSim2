@@ -1,9 +1,9 @@
-object DisplayWellData: TDisplayWellData
-  Left = 753
+object DisplayWellDataForm: TDisplayWellDataForm
+  Left = 751
   Height = 722
   Top = 24
   Width = 687
-  Caption = 'DisplayWellData'
+  Caption = 'Well Data Summary'
   ClientHeight = 722
   ClientWidth = 687
   OnCreate = FormCreate

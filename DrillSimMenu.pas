@@ -200,7 +200,7 @@ Begin
   UpdateMud;
   UpdatePump;
   UpdateSurf;
-  UpDateKick;
+  UpDateWellTests;
   NoData:=False;
   SaveData;
   Create:=False;

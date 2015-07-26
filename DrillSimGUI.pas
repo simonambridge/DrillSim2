@@ -35,6 +35,7 @@ uses
   FormDisplayWellData,
   FormGeneralData,
   FormHoleData,
+  FormUnitsOfMeasure,
   SimulateInit,
   SimulateHoleCalcs,
   SimulateControl;
@@ -55,6 +56,9 @@ type
     FlowInValue: TLabel;
     FlowOutValue: TLabel;
     DiffFlowValue: TLabel;
+    MenuItem2Geology: TMenuItem;
+    MenuItem2Defaults: TMenuItem;
+    MenuItem2Units: TMenuItem;
     MenuItem2DisplayWellData: TMenuItem;
     MenuItem2HoleProfile: TMenuItem;
     MenuItem2GeneralData: TMenuItem;
@@ -69,8 +73,7 @@ type
     MenuItem2SurfaceEquipment: TMenuItem;
     MenuItem2PumpData: TMenuItem;
     MenuItem2MudData: TMenuItem;
-    MenuItem2DrillingData: TMenuItem;
-    MenuItem2Units: TMenuItem;
+    MenuItem2WellTestData: TMenuItem;
     StandPipePressureValue: TLabel;
     ReturnPitValue: TLabel;
     PipeRamsValue: TLabel;
@@ -169,11 +172,12 @@ type
     procedure ChokePlusClick(Sender: TObject);
     procedure Edit1Click(Sender: TObject);
     procedure Edit1KeyPress(Sender: TObject; var Key: char);
+    procedure MenuItem2DefaultsClick(Sender: TObject);
     procedure MenuItem2DisplayWellDataClick(Sender: TObject);
     procedure MenuItem2GeneralDataClick(Sender: TObject);
+    procedure MenuItem2GeologyClick(Sender: TObject);
     procedure MenuItem2HoleProfileClick(Sender: TObject);
     procedure MenuItem1CreateFileClick(Sender: TObject);
-    procedure MenuItem2PreferencesClick(Sender: TObject);
     procedure MenuItem1QuitClick(Sender: TObject);
 
     procedure KellyDownClick(Sender: TObject);
@@ -186,7 +190,7 @@ type
     procedure MenuItem2MudDataClick(Sender: TObject);
     procedure MenuItem2PumpDataClick(Sender: TObject);
     procedure MenuItem2SurfaceEquipmentClick(Sender: TObject);
-    procedure MenuItem2DrillingDataClick(Sender: TObject);
+    procedure MenuItem2WellTestDataClick(Sender: TObject);
     procedure MenuItem2UnitsClick(Sender: TObject);
     procedure PipeMinusClick(Sender: TObject);
     procedure PipePlusClick(Sender: TObject);
@@ -224,9 +228,11 @@ type
 var
   DrillSim: TDrillSim;
   MyThread : TMyThread;
-  DisplayWellData: TDisplayWellData;
-  GeneralData: TGeneralData;
-  HoleData: THoleData;
+  DisplayWellDataForm: TDisplayWellDataForm;
+  GeneralDataForm: TGeneralDataForm;
+  HoleDataForm: THoleDataForm;
+  UnitsOfMeasureForm: TUnitsOfMeasureForm;
+
 implementation
 
 {$R *.lfm}
@@ -579,13 +585,15 @@ begin
 
 end;
 
+//--------------- Edit Well File Menu
+
 procedure TDrillSim.MenuItem2DisplayWellDataClick(Sender: TObject);
 begin
   try
-    DisplayWellData:=TDisplayWellData.Create(Nil);  //DisplayWellData is created
-    DisplayWellData.ShowModal;
+    DisplayWellDataForm:=TDisplayWellDataForm.Create(Nil);  //DisplayWellData is created
+    DisplayWellDataForm.ShowModal;
   finally
-    DisplayWellData.Free;
+    DisplayWellDataForm.Free;
 end;
 
 end;
@@ -593,22 +601,21 @@ end;
 procedure TDrillSim.MenuItem2GeneralDataClick(Sender: TObject);
 begin
   try
-    GeneralData:=TGeneralData.Create(Nil);  //General Data Input is created
-    GeneralData.ShowModal;
+    GeneralDataForm:=TGeneralDataForm.Create(Nil);  //General Data Input is created
+    GeneralDataForm.ShowModal;
   finally
-    GeneralData.Free;
+    GeneralDataForm.Free;
   end;
 
 end;
 
-
 procedure TDrillSim.MenuItem2HoleProfileClick(Sender: TObject);
 begin
   try
-    HoleData:=THoleData.Create(Nil);  //Hole Data Input is created
-    HoleData.ShowModal;
+    HoleDataForm:=THoleDataForm.Create(Nil);  //Hole Data Input is created
+    HoleDataForm.ShowModal;
   finally
-    HoleData.Free;
+    HoleDataForm.Free;
   end;
 
 end;
@@ -638,16 +645,34 @@ begin
   UpdateSurf;
 end;
 
+procedure TDrillSim.MenuItem2WellTestDataClick(Sender: TObject);
+begin
+  UpdateWellTests;
+end;
+
+procedure TDrillSim.MenuItem2GeologyClick(Sender: TObject);
+begin
+
+end;
+
+// ---------- Preferences Menu
+procedure TDrillSim.MenuItem2DefaultsClick(Sender: TObject);
+begin
+
+end;
+
 procedure TDrillSim.MenuItem2UnitsClick(Sender: TObject);
 begin
-  UnitMenu;
+  try
+    UnitsOfMeasureForm:=TUnitsOfMeasureForm.Create(Nil);  //Hole Data Input is created
+    UnitsOfMeasureForm.ShowModal;
+  finally
+    UnitsOfMeasureForm.Free;
+  end;
+
 end;
 
-procedure TDrillSim.MenuItem2DrillingDataClick(Sender: TObject);
-begin
-  UpdateKick;
-end;
-
+// ----------- Simulate Menu
 procedure TDrillSim.MenuItem3StartClick(Sender: TObject);
 begin
   ConAPI;                 { convert DrillSim file - internally in user units }
@@ -694,6 +719,7 @@ begin
       // THIS GOES IN THE THREAD !!!
       //Control;                        { Call simulater controller, fall    }
                                      { through to SelectMenu when Quit=T  }
+
     End;                              { still no file, then return to DrillSim }
   End;
 
@@ -705,11 +731,6 @@ begin
    // StartUp;                { convert back to DrillSim units and load help     }
 End;
 
-procedure TDrillSim.MenuItem2PreferencesClick(Sender: TObject);
-begin
-  SetDefaultDirectory;
-  SetDefaultFile;
-end;
 
 
 {* ============================ Threads ================================= *}

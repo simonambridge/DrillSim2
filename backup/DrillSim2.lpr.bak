@@ -29,10 +29,10 @@ begin
   // Build GUI, run DrillSim StartUp : DrillSimGUI and DrillSimStartup
   writeln('DrillSim2.lpr : Application.CreateForm');
   Application.CreateForm(TDrillSim, DrillSim);
-  Application.CreateForm(TGeneralData, GeneralData);
+  Application.CreateForm(TGeneralDataForm, GeneralDataForm);
+  Application.CreateForm(TDisplayWellDataForm, DisplayWellDataForm);
 
   StringToMemo('DrillSim2.lpr : Application.Run');
-  Application.CreateForm(TDisplayWellData, DisplayWellData);
   Application.Run;
 
 

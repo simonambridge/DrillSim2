@@ -7,7 +7,7 @@ Uses Crt,
      DrillSimUtilities,
      SimulateMessageToMemo;
 
-Procedure UpdateKick;
+Procedure UpdateWellTests;
 Procedure UpdateGen;
 Procedure UpdateHole;
 Procedure UpdatePipe;
@@ -25,7 +25,7 @@ End;
 
 {*********************** Input Procedures ******************}
 
-Procedure UpdateKick;
+Procedure UpdateWellTests;
 Var i,j : integer;
     ZeroFound : boolean;
     EscPressed: boolean;

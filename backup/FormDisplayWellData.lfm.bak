@@ -1,11 +1,11 @@
 object DisplayWellData: TDisplayWellData
-  Left = -1226
-  Height = 541
-  Top = 128
-  Width = 1224
+  Left = 751
+  Height = 722
+  Top = 24
+  Width = 687
   Caption = 'DisplayWellData'
-  ClientHeight = 541
-  ClientWidth = 1224
+  ClientHeight = 722
+  ClientWidth = 687
   OnCreate = FormCreate
   LCLVersion = '1.2.6.0'
   object WellDataSummaryTitle: TStaticText

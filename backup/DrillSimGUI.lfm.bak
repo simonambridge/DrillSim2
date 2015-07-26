@@ -1,7 +1,7 @@
 object DrillSim: TDrillSim
-  Left = 439
+  Left = 767
   Height = 668
-  Top = 77
+  Top = 177
   Width = 999
   Caption = 'DrillSim 3.0'
   ClientHeight = 645
@@ -872,18 +872,25 @@ object DrillSim: TDrillSim
           Caption = 'Surface Equipment Data'
           OnClick = MenuItem2SurfaceEquipmentClick
         end
-        object MenuItem2Units: TMenuItem
-          Caption = 'Units Of Measure'
-          OnClick = MenuItem2UnitsClick
+        object MenuItem2WellTestData: TMenuItem
+          Caption = 'Well Test Data'
+          OnClick = MenuItem2WellTestDataClick
         end
-        object MenuItem2DrillingData: TMenuItem
-          Caption = 'Drilling Data'
-          OnClick = MenuItem2DrillingDataClick
+        object MenuItem2Geology: TMenuItem
+          Caption = 'Geology'
+          OnClick = MenuItem2GeologyClick
         end
       end
       object MenuItem2Preferences: TMenuItem
         Caption = 'Preferences'
-        OnClick = MenuItem2PreferencesClick
+        object MenuItem2Defaults: TMenuItem
+          Caption = 'Defaults'
+          OnClick = MenuItem2DefaultsClick
+        end
+        object MenuItem2Units: TMenuItem
+          Caption = 'Units Of Measure'
+          OnClick = MenuItem2UnitsClick
+        end
       end
     end
     object MenuItem3Simulate: TMenuItem
