@@ -304,7 +304,7 @@ Var
    HelpFileFound       : boolean;
    con                 : array[1..7] of real;
    lab                 : array[1..7] of String3;
-   ROPLab              : ROPString;
+   ROPLab              : String[20];
    TurbFlag            : boolean;
    FlowMode            : String20;
    Model               : String20;

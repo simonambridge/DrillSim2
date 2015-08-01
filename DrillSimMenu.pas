@@ -13,8 +13,8 @@ Uses Dos,Crt,
      DrillSimUoMMenu,
      DrillSimDataInput,
      DrillSimStartup,
-     SimulateMessageToMemo,
-     SimulateClear;
+     DrillSimClear,
+     SimulateMessageToMemo;
 
 Procedure CallHoleData;
 Procedure CreateFile;
@@ -190,7 +190,7 @@ End;
 Procedure CreateFile;
 Begin
   Create:=True;
-  InitData;                             { and sets NewIf0 to Zero }
+  InitData;                             { Set NeverSimulated }
   APIUnits;                             { Default to API units    }
   UnitMenu;                             { then get selected units }
   UpdateGen;

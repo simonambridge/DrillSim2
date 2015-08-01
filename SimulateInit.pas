@@ -51,13 +51,13 @@ End;
 
 
 Procedure InitKick;  { only used by Simulate.Chn at startup, Load and CLEAR }
-Var i : integer;     { CLEAR sets NewIf0 to 0 to force complete init'sation }
+Var i : integer;     { CLEAR sets NeverSimulated to force complete initialisation }
 Begin
   With Data do
   Begin
-    if NewIf0 <> 1 then   { if never initialised for Simulate then set up   }
+    if NeverSimulated <>True then   { if never initialised for Simulate then set up   }
     Begin
-      NewIf0:=1;           { reset flag to 1 so don't do again when called }
+      NeverSimulated:=False;           { set to false so don't do again when called }
       t1           :=Zero;                  { no problem if file not saved }
       t2           :=Zero;                     { after this initialisation }
                                                { because it will be reset  }

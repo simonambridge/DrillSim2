@@ -12,7 +12,7 @@ Uses Crt,
      DrillSimUtilities,
      DrillSimFile,
      SimulateMessageToMemo,
-     SimulateClear;
+     DrillSimClear;
 
 Procedure StartUp;
 
@@ -50,7 +50,6 @@ Begin
 {  ExitProc:=@Abort; }                  { Set Error trap vector  }
 
   Quit:=False;                          { Initialise Simulator Quit indicator }
-  Enter := chr($11) + chr($cd) + chr($bc);
   NoFileDefined:=True;  // we are a blank
   NoData:=True;
   NewFile:=True;
@@ -94,7 +93,7 @@ Begin
       End;
     Close(TextFile);
     StringToMemo('Default well data file is ' + TextFileLine);
-    LoadDefaultWellDataFile(TextFileLine);     // Load the data file !!!
+    LoadDefaultWellDataFile(TextFileLine);     // Load the default data file !!!
   End else
   Begin                  { defaults file not found }
     SystemError(1);      // pop up error message

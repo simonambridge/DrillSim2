@@ -13,8 +13,8 @@ Uses Dos,Crt,
      DrillSimUoMMenu,
      DrillSimDataInput,
      DrillSimStartup,
-     SimulateMessageToMemo,
-     SimulateClear;
+     DrillSimClear,
+     SimulateMessageToMemo;
 
 Procedure CallHoleData;
 Procedure CreateFile;
@@ -200,7 +200,7 @@ Begin
   UpdateMud;
   UpdatePump;
   UpdateSurf;
-  UpDateKick;
+  UpDateWellTests;
   NoData:=False;
   SaveData;
   Create:=False;

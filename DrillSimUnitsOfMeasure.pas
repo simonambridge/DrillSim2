@@ -31,7 +31,7 @@ Begin
 End;
 
 
-Procedure APIUnits;
+Procedure APIUnits;      {* Assign values to con[] and lab[] arrays *}
 Begin
   Data.UserType:='API';
   con[1]:=1;

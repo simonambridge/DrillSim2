@@ -39,6 +39,8 @@ type
     FlowRateText: TStaticText;
     WeightMultiplierData: TEdit;
     WeightText: TStaticText;
+    procedure FormCreateActions;
+    procedure FormCreate(Sender: TObject);
   private
     { private declarations }
   public
@@ -50,7 +52,16 @@ var
 
 implementation
 
+{ TUnitsOfMeasureForm }
+
 {$R *.lfm}
+
+Procedure TUnitsOfMeasureForm.FormCreateActions;
+Begin
+end;
+
+{ ------------- Form Procedures ------------ }
+
 procedure TUnitsOfMeasureForm.FormCreate(Sender: TObject);
 begin
   FormCreateActions;

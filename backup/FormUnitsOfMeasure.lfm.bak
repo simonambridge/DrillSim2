@@ -23,6 +23,7 @@ object UnitsOfMeasureForm: TUnitsOfMeasureForm
     Caption = 'API Units'
     Checked = True
     TabOrder = 1
+    TabStop = True
   end
   object MetricRadioButton: TRadioButton
     Left = 80
@@ -35,7 +36,7 @@ object UnitsOfMeasureForm: TUnitsOfMeasureForm
   object UserRadioButton: TRadioButton
     Left = 80
     Height = 24
-    Top = 116
+    Top = 112
     Width = 150
     Caption = 'User Defined Units'
     TabOrder = 3

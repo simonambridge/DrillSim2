@@ -3,7 +3,7 @@ Unit SimulateUpdate;
 Interface
 
 Uses DrillSimVariables,
-     DrillSimDateTime;
+     DrillSimUtilities;
 
 Procedure ScreenService;
 Procedure DrawKelly;    { draws appropriate kelly and bushing @ KelHt }

@@ -57,7 +57,6 @@ Begin
       Begin
         MessageToMemo(71);
         MessageToMemo(74);
-        LowBeep;
         Repeat Until KeyPressed;
         Input:=ReadKey;
         Clear;                    { reset screen and restart simulation }

@@ -4,7 +4,7 @@ Interface
 
 Uses  DrillSimVariables,
       SimulateUpdate,
-      DrillSimDateTime,
+      DrillSimUtilities,
       SimulateHydrostaticCalcs,
       SimulateRheology;
 

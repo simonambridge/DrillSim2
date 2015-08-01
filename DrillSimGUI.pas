@@ -701,7 +701,7 @@ begin
                                    { depths at the start of this session    }
                                    { which may not be the original depths   }
 
-      InitKick;                     { Set up and initialise if NewIf0=0      }
+      InitKick;                     { Set up and initialise if NeverSimulated }
 
       InitGeology;                  { find current position within geological}
                                    { table. Also done on Load and Clear     }

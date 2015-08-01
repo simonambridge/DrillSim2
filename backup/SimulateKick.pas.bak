@@ -4,7 +4,7 @@ Interface
 
 Uses Crt,
      DrillSimVariables,
-     DrillSimDateTime,
+     DrillSimUtilities,
      SimulateUpdate,
      SimulateMessageToMemo,
      SimulateClear,
@@ -222,7 +222,6 @@ Begin
     Begin                             { empty pits (72), or burst casing (70) }
       if (Data.RetPitVol <= Zero) then MessageToMemo(72) else MessageToMemo(70);
       MessageToMemo(71);                 { "Press any key...." }
-      LowBeep;
       Repeat Until KeyPressed;
       Util:=ReadKey;                           { clear buffer }
       if (Data.RetPitVol <= Zero) then Clear   { reset and restart simulation }

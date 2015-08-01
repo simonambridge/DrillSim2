@@ -41,7 +41,7 @@ End;
 
 
 Procedure SaveFile;
-Var OriginalFileName : AnyString;
+Var OriginalFileName : String120;
 Begin
   Instring:='';
   Repeat

@@ -6,7 +6,6 @@ Uses Crt,
      DrillSimVariables,
      DrillSimFile,
      SimulateMessageToMemo,
-     SimulateScreen,
      SimulateVolumes,
      SimulateFile,
      SimulateInit,
@@ -15,7 +14,7 @@ Uses Crt,
      SimulateHydrostaticCalcs,
      SimulateHelp,
      SimulateSurfaceControls,
-     SimulateClear,
+     DrillSimClear,
      SimulateRAMs;
 
 Procedure CommandProcessor;
@@ -100,13 +99,13 @@ Begin
       'L' : Begin
               SimulateLoadFile;
               SimHoleCalc;         { do HoleCalc and initialise volumes }
-              PitBox;              { Display correct parameters }
-              SPPBox;
-              FlowBox;
-              DepthBox;
-              MWBox;
-              InitialiseKelly;   { clear box, draw scale and set up }
-              SetKelly;          { move it to drilling position    }
+//              PitBox;              { Display correct parameters }
+//              SPPBox;
+//              FlowBox;
+//              DepthBox;
+//              MWBox;
+//              InitialiseKelly;   { clear box, draw scale and set up }
+//              SetKelly;          { move it to drilling position    }
               SetSurfControls;
               StackCalc;
             End;

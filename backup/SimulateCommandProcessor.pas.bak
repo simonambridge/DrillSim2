@@ -6,7 +6,6 @@ Uses Crt,
      DrillSimVariables,
      DrillSimFile,
      SimulateMessageToMemo,
-     SimulateScreen,
      SimulateVolumes,
      SimulateFile,
      SimulateInit,
@@ -15,7 +14,7 @@ Uses Crt,
      SimulateHydrostaticCalcs,
      SimulateHelp,
      SimulateSurfaceControls,
-     SimulateClear,
+     DrillSimClear,
      SimulateRAMs;
 
 Procedure CommandProcessor;
@@ -440,7 +439,7 @@ Begin
     Input:=copy(InputString,1,1);
     Case Input[1] of
       'B' : BOPCommands;
-      'C' : Clear;
+      'C' : Clear;         { clear all data, no file defined }
       'D' : DCommands;
       'F' : FCommands;
       'H' : HCommands;

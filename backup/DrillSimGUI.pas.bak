@@ -35,6 +35,7 @@ uses
   FormDisplayWellData,
   FormGeneralData,
   FormHoleData,
+  FormUnitsOfMeasure,
   SimulateInit,
   SimulateHoleCalcs,
   SimulateControl;

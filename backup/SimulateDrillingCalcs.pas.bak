@@ -31,7 +31,6 @@ Var
 
 Procedure DrillingError;
 Begin
-  Beep;
   Delay(1000);
   Data.KelHt:=Data.KelHt + 0.5;
   DrawKelly;

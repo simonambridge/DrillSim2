@@ -99,7 +99,7 @@ Begin
   if NoFileDefined then           { check for no file in use               }
   Begin
     FileName:='no file';          { set file name for load window          }
-    LoadFile;                     { and go prompt for one                  }
+    SimulateLoadFile;                     { and go prompt for one                  }
   End;
 
   if not NoFileDefined then       { if file defined, continue into Simulator }

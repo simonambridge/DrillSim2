@@ -12,7 +12,7 @@ Uses Crt,
      DrillSimUtilities,
      DrillSimFile,
      SimulateMessageToMemo,
-     SimulateClear;
+     DrillSimClear;
 
 Procedure StartUp;
 
@@ -20,7 +20,7 @@ Implementation
 
 { ----------------- Initialize Data --------------------- }
 
-Procedure LoadDefaultWellDataFile(S : PathString);
+Procedure LoadDefaultWellDataFile(S : String120);
 Begin                                        { Extract path string }
   if FileExists(S) then
   Begin
@@ -50,7 +50,6 @@ Begin
 {  ExitProc:=@Abort; }                  { Set Error trap vector  }
 
   Quit:=False;                          { Initialise Simulator Quit indicator }
-  Enter := chr($11) + chr($cd) + chr($bc);
   NoFileDefined:=True;  // we are a blank
   NoData:=True;
   NewFile:=True;

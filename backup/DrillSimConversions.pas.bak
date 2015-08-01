@@ -47,7 +47,7 @@ Begin
     LinerTop:=LinerTop*con[1];
     LinerTD :=LinerTD *con[1];
     MaxPress:=MaxPress*con[3];
-    Rkb     :=Rkb*con[1];
+    ElevationRKB     :=ElevationRKB*con[1];
     WaterDepth:=WaterDepth*con[1];
     For i:=1 to maxholes do Hole[i,1]:=Hole[i,1]*con[1];
     For i:=1 to maxpipes do Pipe[i,1]:=Pipe[i,1]*con[1];

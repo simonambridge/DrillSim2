@@ -17,7 +17,7 @@ Procedure InitData;
 
 Implementation
 
-Procedure InitData;              { Start-up status }
+Procedure InitData;     { Used to set everything to empty at start-up}
 Var i : integer;
     x : real;
 Begin
@@ -111,7 +111,7 @@ Begin
 End;
 
 
-Procedure Clear;
+Procedure Clear;  { used to reset a running simulation }
 Var i : integer;
 Begin
   With Data do
@@ -128,7 +128,7 @@ Begin
                                 { resets Choke                               }
     For i:=1 to MaxPumps do Pump[i,3]:=Zero;
 
-    SimHoleCalc;                        { do HoleCalc and initialise volumes  }
+    SimHoleCalc;                     { do HoleCalc and initialise volumes  }
     MudVol:=HoleVol;
     KelHt:=33;                       { initialise kelly height             }
     InitialiseKelly;                 { clear box, draw scale and set up    }

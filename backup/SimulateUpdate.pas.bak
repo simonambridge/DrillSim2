@@ -3,7 +3,6 @@ Unit SimulateUpdate;
 Interface
 
 Uses DrillSimVariables,
-     DrillSimVideo,
      DrillSimDateTime;
 
 Procedure ScreenService;
