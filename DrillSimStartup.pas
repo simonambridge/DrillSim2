@@ -12,7 +12,7 @@ Uses Crt,
      DrillSimUtilities,
      DrillSimFile,
      SimulateMessageToMemo,
-     DrillSimClear;
+     DrillSimDataResets;
 
 Procedure StartUp;
 

@@ -36,7 +36,7 @@ uses
   FormGeneralData,
   FormHoleData,
   FormUnitsOfMeasure,
-  SimulateInit,
+  DrillSimDataResets,
   SimulateHoleCalcs,
   SimulateControl;
 

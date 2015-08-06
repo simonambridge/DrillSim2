@@ -37,7 +37,7 @@ Begin
 End;
 
 
-Procedure GetUserUnits(UnitType : AnyString; UnitNumber, LineNumber : integer);
+Procedure GetUserUnits(UnitType : String120; UnitNumber, LineNumber : integer);
 var i : integer;
 Begin
   //Disp(12,LineNumber,UnitType);                   { display unit type }
@@ -80,7 +80,7 @@ End;
 
 Procedure UnitScreen;
 Begin
-  StringToMemo('Selected Units : ' + Data.UserType);
+  StringToMemo('Selected Units : ' + Data.UnitType);
 
   //Box(10,4,70,20);
   gotoxy(12,5); write('TYPE');
@@ -116,8 +116,8 @@ End;
 
 Procedure MenuChoice3;
 Begin
-  if NewFile then APIUnits;
-  Data.UserType:='User Defined';
+  if NewFile then APIUnits;     { initialise them }
+  Data.UnitType:='User Defined';
   UnitScreen;
   UserScreen;
 End;

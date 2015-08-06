@@ -126,7 +126,7 @@ Begin
     InitMud;            { set OriginalMuds (to current mud W,Pv,Yp)           }
     InitDepth;          { save the original depth for this session            }
     InitGeology;        { locate correct current position within geology table}
-    InitKick;           { initialise system variables, and set up if NewIf0=0 }
+    InitKick;           { initialise system variables, and set up if NeverSimulated }
     NoFileDefined:=False;
     Edited:=False;
   End;

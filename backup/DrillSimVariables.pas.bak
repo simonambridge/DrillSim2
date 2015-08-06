@@ -166,7 +166,7 @@ Type
                    KillLineID  : real;
 
                    DrillMult   : integer;
-                   NewIf0      : integer;  { has this file been 'simulated'? }
+                   NeverSimulated      : boolean;  { has this file ever been 'simulated'? }
 
                    FormationPressureGradient    : real;
                    BurstPressure                : real;

@@ -7,7 +7,6 @@ Uses Crt,
      DrillSimUtilities,
      SimulateUpdate,
      SimulateMessageToMemo,
-     SimulateClear,
      DrillSimMath;
 
 Procedure KickCalc;

@@ -93,7 +93,7 @@ Begin
       End;
     Close(TextFile);
     StringToMemo('Default well data file is ' + TextFileLine);
-    LoadDefaultWellDataFile(TextFileLine);     // Load the data file !!!
+    LoadDefaultWellDataFile(TextFileLine);     // Load the default data file !!!
   End else
   Begin                  { defaults file not found }
     SystemError(1);      // pop up error message

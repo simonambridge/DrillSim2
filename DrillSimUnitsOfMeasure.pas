@@ -11,7 +11,7 @@ Implementation
 
 Procedure MetricUnits;
 Begin
-  Data.UserType:='Metric';          { divide by these numbers to get API }
+  Data.UnitType:='Metric';          { divide by these numbers to get API }
   con[1]:=3.28084;
   con[2]:=8.345;
   con[3]:=1.45033;
@@ -33,7 +33,7 @@ End;
 
 Procedure APIUnits;      {* Assign values to con[] and lab[] arrays *}
 Begin
-  Data.UserType:='API';
+  Data.UnitType:='API';
   con[1]:=1;
   con[2]:=1;
   con[3]:=1;

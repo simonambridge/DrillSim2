@@ -80,7 +80,7 @@ End;
 
 Procedure UnitScreen;
 Begin
-  StringToMemo('Selected Units : ' + Data.UserType);
+  StringToMemo('Selected Units : ' + Data.UnitType);
 
   //Box(10,4,70,20);
   gotoxy(12,5); write('TYPE');
@@ -116,8 +116,8 @@ End;
 
 Procedure MenuChoice3;
 Begin
-  if NewFile then APIUnits;
-  Data.UserType:='User Defined';
+  if NewFile then APIUnits;     { initialise them }
+  Data.UnitType:='User Defined';
   UnitScreen;
   UserScreen;
 End;
@@ -138,7 +138,7 @@ Begin
   NewChoice:=1;
   ConAPI;                        { Convert to API prior to selection }
   ConAPIKickData;
-  StringToMemo('Current units are '+Data.UserType);
+  StringToMemo('Current units are '+Data.UnitType);
 
   Repeat
     Normal(OldChoice);

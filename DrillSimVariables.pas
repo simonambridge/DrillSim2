@@ -192,7 +192,7 @@ Type
 
                    UserCon    : array[1..7] of real;
                    UserLab    : array[1..7] of String3;
-                   UserType   : String20;
+                   UnitType   : String20; { Text string describing Units in use }
 
                    SpareInt1 : integer; { * }
                    SpareInt2 : integer; { * }

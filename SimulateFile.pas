@@ -7,7 +7,7 @@ Uses Crt,
      DrillSimVariables,
      DrillSimFile,
      SimulateMessageToMemo,
-     SimulateInit;
+     DrillSimDataResets;
 
 Procedure SaveFile;
 Procedure SimulateLoadFile;

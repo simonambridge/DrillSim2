@@ -5,16 +5,15 @@ Interface
 Uses Crt,
      DrillSimVariables,
      DrillSimFile,
+     DrillSimDataResets,
      SimulateMessageToMemo,
      SimulateVolumes,
      SimulateFile,
-     SimulateInit,
      SimulateUpdate,
      SimulateHoleCalcs,
      SimulateHydrostaticCalcs,
      SimulateHelp,
      SimulateSurfaceControls,
-     DrillSimClear,
      SimulateRAMs;
 
 Procedure CommandProcessor;
