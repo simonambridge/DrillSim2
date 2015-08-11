@@ -172,6 +172,7 @@ type
     procedure ChokePlusClick(Sender: TObject);
     procedure Edit1Click(Sender: TObject);
     procedure Edit1KeyPress(Sender: TObject; var Key: char);
+    procedure FormActivate(Sender: TObject);
     procedure MenuItem2DefaultsClick(Sender: TObject);
     procedure MenuItem2DisplayWellDataClick(Sender: TObject);
     procedure MenuItem2GeneralDataClick(Sender: TObject);
@@ -518,26 +519,27 @@ begin
 
 end;
 
-
-
 {* ======================== Entry / Exit Controls =========================== *}
 
-procedure TDrillSim.FormCreate(Sender: TObject);
+procedure TDrillSim.FormActivate(Sender: TObject);
 begin
-  StringToMemo('Running FormCreate...'); // please wait....
-
-  splash := TSplashAbout.Create(nil);
-  SetDefaultValues; // splash - optional
-  splash.ShowSplash;
-  Memo1.SelStart:=Length(Memo1.Text);
-
+  StringToMemo('Running DrillSimGUI FormActivate...'); // please wait....
   // get paths etc
   //ChDir(LoggedDirectory); currentdirectory, default directory?
   Edited:=False;  { start clean }
 
-  StringToMemo('Running DrillSim Startup From FormCreate');
+  StringToMemo('Running DrillSim start up sequence');
   StartUp;     { call DrillSim StartUp }
+end;
 
+procedure TDrillSim.FormCreate(Sender: TObject);
+begin
+  Memo1.SelStart:=Length(Memo1.Text);
+  StringToMemo('Running DrillSimGUI FormCreate...'); // please wait....
+
+  splash := TSplashAbout.Create(nil);
+  SetDefaultValues; // splash - optional
+  splash.ShowSplash;
 end;
 
 Procedure TDrillSim.OnClose(Sender: TObject);

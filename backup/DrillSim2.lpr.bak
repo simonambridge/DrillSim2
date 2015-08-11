@@ -35,11 +35,14 @@ begin
   Application.CreateForm(TDrillSim, DrillSim);
   StringToMemo('Initialise Form: DrillSim');
   Application.CreateForm(TGeneralDataForm, GeneralDataForm);
+  StringToMemo('Initialise Form: General Well Data');
   Application.CreateForm(TDisplayWellDataForm, DisplayWellDataForm);
+  StringToMemo('Initialise Form: Summary Well Data');
   Application.CreateForm(TUnitsOfMeasureForm, UnitsOfMeasureForm);
+  StringToMemo('Initialise Form: Units Of Measure');
 
   StringToMemo('===============================');
-  StringToMemo('Initialisation complete:');
+  StringToMemo('Form Initialisation complete.');
   StringToMemo('DrillSim2.lpr : Application.Run');
   StringToMemo('===============================');
   Application.Run;

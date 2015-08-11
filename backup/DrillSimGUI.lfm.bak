@@ -1,12 +1,13 @@
 object DrillSim: TDrillSim
-  Left = 767
+  Left = 439
   Height = 668
-  Top = 177
+  Top = 84
   Width = 999
   Caption = 'DrillSim 3.0'
   ClientHeight = 645
   ClientWidth = 999
   Menu = MainMenu1
+  OnActivate = FormActivate
   OnCreate = FormCreate
   Position = poScreenCenter
   LCLVersion = '1.2.6.0'
