@@ -6,6 +6,7 @@ object DisplayWellDataForm: TDisplayWellDataForm
   Caption = 'Well Data Summary'
   ClientHeight = 722
   ClientWidth = 687
+  OnActivate = FormActivate
   OnCreate = FormCreate
   LCLVersion = '1.2.6.0'
   object WellDataSummaryTitle: TStaticText

@@ -1,11 +1,12 @@
 object GeneralDataForm: TGeneralDataForm
-  Left = 645
+  Left = 499
   Height = 240
-  Top = 451
+  Top = 168
   Width = 497
   Caption = 'General Well Data'
   ClientHeight = 240
   ClientWidth = 497
+  OnActivate = FormActivate
   OnKeyPress = FormKeyPress
   LCLVersion = '1.2.6.0'
   object WellOperator: TStaticText

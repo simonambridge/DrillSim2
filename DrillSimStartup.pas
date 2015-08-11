@@ -8,10 +8,10 @@ Uses Crt,
      SimulateVariables,
      HyCalcVariables,
      DrillSimUnitsOfMeasure,
-     DrillSimConversions,
+     DrillSimDataUoMConversions,
      DrillSimUtilities,
      DrillSimFile,
-     SimulateMessageToMemo,
+     DrillSimMessageToMemo,
      DrillSimDataResets;
 
 Procedure StartUp;
@@ -45,6 +45,7 @@ End;
 
 Procedure StartUp;
 Begin
+  writeln('Running DrillSim StartUp.................');
   StringToMemo('Running DrillSim StartUp.................');
   OriginalExitProc:=ExitProc;
 {  ExitProc:=@Abort; }                  { Set Error trap vector  }
@@ -79,6 +80,7 @@ Begin
 
   Assign(TextFile,OriginDirectory + '/' + 'DrillSim.cfg');         { load drillsim.cfg }
   MessageToMemo(102); // 'Loading application configuration file'
+  writeln('Configuration file is ' + OriginDirectory + '/' + 'DrillSim.cfg');
   StringToMemo('Configuration file is ' + OriginDirectory + '/' + 'DrillSim.cfg');
 
   {$I-}
@@ -92,6 +94,7 @@ Begin
       Readln(TextFile,TextFileLine); { read location of default well file }
       End;
     Close(TextFile);
+    writeln('Default well data file is ' + TextFileLine);
     StringToMemo('Default well data file is ' + TextFileLine);
     LoadDefaultWellDataFile(TextFileLine);     // Load the default data file !!!
   End else
@@ -118,7 +121,10 @@ Begin
     SystemError(3);
   End;
   StringToMemo('DrillSim Startup complete');
-  writeln('Well <' + Data.WellName + '>');
+
+  StringToMemo('Well <' + Data.WellName + '>');
+  StringToMemo('Units selected: '+ Data.UoMLabel);
+  StringToMemo('API: ' + BoolToStr(Data.API));
 
 End;
 

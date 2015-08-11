@@ -6,9 +6,9 @@ Uses Crt,
      sysutils,
      DrillSimVariables,
      DrillSimUnitsOfMeasure,
-     DrillSimConversions,
+     DrillSimDataUoMConversions,
      DrillSimUtilities,
-     SimulateMessageToMemo;
+     DrillSimMessageToMemo;
 
 Procedure LoadData;            { Entry : FullName = filename.WDF    }
 Procedure SaveData;
@@ -124,11 +124,11 @@ Begin                          { Exit  : NewFile  = True if new     }
     NoFileDefined:=False;
     NoData:=False;
     Edited:=False;              { set this for entry into Simulate }
-    For i:=1 to 7 do
+{*     For i:=1 to 7 do
     Begin
       Lab[i]:=Data.UserLab[i];
       Con[i]:=Data.UserCon[i];
-    End;
+    End;    *}
     ConUser;                              { Load in API - then convert }
     ConUserKickData;
   End;
@@ -196,11 +196,12 @@ Begin
   StringToMemo('Saving ' + FileName);
   ConAPI;                                  { Convert to API for SAVE }
   ConAPIKickData;
-  For i:=1 to 7 do
+{*   For i:=1 to 7 do                user defined units no longer supported
   Begin
     Data.UserLab[i]:=Lab[i];
     Data.UserCon[i]:=Con[i];
   End;
+  *}
   if NewFile then
   Begin
     Assign(DataFile,FileName);

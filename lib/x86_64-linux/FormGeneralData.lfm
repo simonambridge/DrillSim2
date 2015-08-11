@@ -6,6 +6,7 @@ object GeneralDataForm: TGeneralDataForm
   Caption = 'General Well Data'
   ClientHeight = 240
   ClientWidth = 497
+  OnActivate = FormActivate
   OnKeyPress = FormKeyPress
   LCLVersion = '1.2.6.0'
   object WellOperator: TStaticText

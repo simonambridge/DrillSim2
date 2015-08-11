@@ -6,7 +6,9 @@ interface
 
 uses
   Classes, SysUtils,
-  FileUtil, Forms, Controls, Graphics, Dialogs, StdCtrls, DrillSimVariables;
+  FileUtil, Forms, Controls, Graphics, Dialogs, StdCtrls,
+  DrillSimVariables,
+  DrillSimMessageToMemo;
 
 type
 
@@ -26,6 +28,7 @@ type
     WellOperator: TStaticText;
     WellName: TStaticText;
     procedure ElevationRKBDataChange(Sender: TObject);
+    procedure FormActivate(Sender: TObject);
     procedure FormKeyPress(Sender: TObject; var Key: char);
     procedure OffshoreYNDataYesChange(Sender: TObject);
     procedure QuitClick(Sender: TObject);
@@ -136,6 +139,11 @@ if (Sender is TEdit) then begin
   end;
 end;
 if Success then Data.ElevationRKB:=StrToFloat(ElevationRKBData.Text);
+end;
+
+procedure TGeneralDataForm.FormActivate(Sender: TObject);
+begin
+  StringToMemo('Form General Well Data activated....');
 end;
 
 procedure TGeneralDataForm.OffshoreYNDataYesChange(Sender: TObject);

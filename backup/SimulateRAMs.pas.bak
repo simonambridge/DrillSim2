@@ -51,7 +51,7 @@ Begin
       End;
     End else
     Begin
-      ShutInWindow;
+      //ShutInWindow;
       if not ShutIn then   { change status to shut in if not already shut in }
       Begin                { ie only do this if rams have just been closed   }
         ShutIn:=True;

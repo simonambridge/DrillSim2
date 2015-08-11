@@ -6,7 +6,7 @@ Uses Crt,
      DrillSimVariables,
      SimulateSurfaceControls,
      SimulateHoleCalcs,
-     SimulateMessageToMemo,
+     DrillSimMessageToMemo,
      SimulateUpdate;
 
 {* Called from:
@@ -110,12 +110,13 @@ Begin
       Rock[i].FP:=Zero;
     End;
 
-    For i:=1 to 5 do
+{*     For i:=1 to 5 do        user defined units not supported
     Begin
       UserCon[i]:=Zero;
       UserLab[i]:='   ';
       UnitType:='Undefined';
     End;
+    *}
   End;
 End;
 
@@ -302,20 +303,7 @@ Begin
         Vel[i,3]:=Zero;
       End;
 
-      SpareReal1       :=Zero;   { initialise for future use }
-      SpareReal2       :=Zero;
-      SpareReal3       :=Zero;
-      SpareReal4       :=Zero;
-      SpareReal5       :=Zero;
-      SpareReal6       :=Zero;
-      SpareReal7       :=Zero;
-      SpareReal8       :=Zero;
-      SpareInt1        :=Zero;
-      SpareInt2        :=Zero;
-      SpareBoolean1    :=false;
-      SpareBoolean2    :=false;
-      SpareBoolean3    :=false;
-      SpareBoolean4    :=false;
+
     End;
                                     { PipeTD initialised in HyCalc/DrillSim  }
                                     { and also in Proc. DrillCalc. PipeTD is }

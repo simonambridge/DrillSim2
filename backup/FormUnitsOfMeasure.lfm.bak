@@ -1,11 +1,13 @@
 object UnitsOfMeasureForm: TUnitsOfMeasureForm
-  Left = 565
+  Left = 78
   Height = 467
-  Top = 91
+  Top = 259
   Width = 464
   Caption = 'Units Of Measure'
   ClientHeight = 467
   ClientWidth = 464
+  OnActivate = FormActivate
+  OnCreate = FormCreate
   LCLVersion = '1.2.6.0'
   object UoMFormTitle: TStaticText
     Left = 13
@@ -33,21 +35,13 @@ object UnitsOfMeasureForm: TUnitsOfMeasureForm
     Caption = 'Metric Units'
     TabOrder = 2
   end
-  object UserRadioButton: TRadioButton
-    Left = 80
-    Height = 24
-    Top = 112
-    Width = 150
-    Caption = 'User Defined Units'
-    TabOrder = 3
-  end
   object LengthText: TStaticText
     Left = 20
     Height = 22
     Top = 184
     Width = 60
     Caption = 'Length'
-    TabOrder = 4
+    TabOrder = 3
   end
   object DensityText: TStaticText
     Left = 21
@@ -55,7 +49,7 @@ object UnitsOfMeasureForm: TUnitsOfMeasureForm
     Top = 216
     Width = 72
     Caption = 'Density'
-    TabOrder = 5
+    TabOrder = 4
   end
   object PressureText: TStaticText
     Left = 20
@@ -63,7 +57,7 @@ object UnitsOfMeasureForm: TUnitsOfMeasureForm
     Top = 248
     Width = 73
     Caption = 'Pressure'
-    TabOrder = 6
+    TabOrder = 5
   end
   object VolumeText: TStaticText
     Left = 20
@@ -71,7 +65,7 @@ object UnitsOfMeasureForm: TUnitsOfMeasureForm
     Top = 280
     Width = 89
     Caption = 'Volume'
-    TabOrder = 7
+    TabOrder = 6
   end
   object FlowVolumeText: TStaticText
     Left = 20
@@ -79,7 +73,7 @@ object UnitsOfMeasureForm: TUnitsOfMeasureForm
     Top = 312
     Width = 100
     Caption = 'Flow Volume'
-    TabOrder = 8
+    TabOrder = 7
   end
   object FlowRateText: TStaticText
     Left = 20
@@ -87,7 +81,7 @@ object UnitsOfMeasureForm: TUnitsOfMeasureForm
     Top = 348
     Width = 92
     Caption = 'Flow Rate'
-    TabOrder = 9
+    TabOrder = 8
   end
   object WeightText: TStaticText
     Left = 21
@@ -95,105 +89,105 @@ object UnitsOfMeasureForm: TUnitsOfMeasureForm
     Top = 379
     Width = 107
     Caption = 'Weight'
-    TabOrder = 10
+    TabOrder = 9
   end
   object LengthLabelData: TEdit
     Left = 152
     Height = 27
     Top = 184
     Width = 76
-    TabOrder = 11
+    TabOrder = 10
   end
   object DensityLabelData: TEdit
     Left = 152
     Height = 27
     Top = 216
     Width = 76
-    TabOrder = 12
+    TabOrder = 11
   end
   object PressureLabelData: TEdit
     Left = 152
     Height = 27
     Top = 248
     Width = 76
-    TabOrder = 13
+    TabOrder = 12
   end
   object VolumeLabelData: TEdit
     Left = 152
     Height = 27
     Top = 280
     Width = 76
-    TabOrder = 14
+    TabOrder = 13
   end
   object FlowVolumeLabelData: TEdit
     Left = 152
     Height = 27
     Top = 312
     Width = 76
-    TabOrder = 15
+    TabOrder = 14
   end
   object FlowRateLabelData: TEdit
     Left = 152
     Height = 27
     Top = 344
     Width = 76
-    TabOrder = 16
+    TabOrder = 15
   end
   object WeightLabelData: TEdit
     Left = 152
     Height = 27
     Top = 376
     Width = 76
-    TabOrder = 17
+    TabOrder = 16
   end
   object LengthMultiplierData: TEdit
     Left = 264
     Height = 27
     Top = 184
     Width = 76
-    TabOrder = 18
+    TabOrder = 17
   end
   object DensityMultiplierData: TEdit
     Left = 264
     Height = 27
     Top = 216
     Width = 76
-    TabOrder = 19
+    TabOrder = 18
   end
   object PressureMultiplierData: TEdit
     Left = 264
     Height = 27
     Top = 248
     Width = 76
-    TabOrder = 20
+    TabOrder = 19
   end
   object VolumeMultiplierData: TEdit
     Left = 264
     Height = 27
     Top = 280
     Width = 76
-    TabOrder = 21
+    TabOrder = 20
   end
   object FlowRateMultiplierData: TEdit
     Left = 264
     Height = 27
     Top = 344
     Width = 76
-    TabOrder = 22
+    TabOrder = 21
   end
   object WeightMultiplierData: TEdit
     Left = 264
     Height = 27
     Top = 376
     Width = 76
-    TabOrder = 23
+    TabOrder = 22
   end
   object FlowMultiplierLabelData: TEdit
     Left = 264
     Height = 27
     Top = 312
     Width = 76
-    TabOrder = 24
+    TabOrder = 23
   end
   object UoMUnitLabel: TStaticText
     Left = 168
@@ -201,7 +195,7 @@ object UnitsOfMeasureForm: TUnitsOfMeasureForm
     Top = 155
     Width = 45
     Caption = 'Unit'
-    TabOrder = 25
+    TabOrder = 24
   end
   object UoMMultiplierLabel: TStaticText
     Left = 264
@@ -209,6 +203,24 @@ object UnitsOfMeasureForm: TUnitsOfMeasureForm
     Top = 155
     Width = 78
     Caption = 'Multiplier'
+    TabOrder = 25
+  end
+  object CancelButton: TButton
+    Left = 280
+    Height = 25
+    Top = 432
+    Width = 75
+    Caption = 'Cancel'
+    OnClick = CancelButtonClick
     TabOrder = 26
+  end
+  object SaveButton: TButton
+    Left = 360
+    Height = 25
+    Top = 432
+    Width = 75
+    Caption = 'Save'
+    OnClick = SaveButtonClick
+    TabOrder = 27
   end
 end

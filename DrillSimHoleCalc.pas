@@ -3,7 +3,7 @@ Unit DrillSimHoleCalc;
 Interface
 
 Uses DrillSimVariables,
-     DrillSimConversions;
+     DrillSimDataUoMConversions;
 
 Procedure DSHoleCalc;                  { Procedure To Determine Hole Profile }
 

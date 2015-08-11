@@ -6,7 +6,7 @@ Uses Crt,
      DrillSimVariables,
      DrillSimUtilities,
      SimulateUpdate,
-     SimulateMessageToMemo,
+     DrillSimMessageToMemo,
      DrillSimDataResets,
      DrillSimMath;
 

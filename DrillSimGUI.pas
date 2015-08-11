@@ -23,12 +23,13 @@ uses
   DrillSimStartup,
   DrillSimMenu,
   DrillSimFile,
+  DrillSimDataResets,
   SimulateFile,
   DrillSimDataInput,
-  DrillSimConversions,
   DrillSimUoMMenu,
+  DrillSimDataUoMConversions,
   DrillSimUtilities,
-  SimulateMessageToMemo,
+  DrillSimMessageToMemo,
   SimulateCommandProcessor,
   SimulateUpdate,
   SimulateSurfaceControls,
@@ -36,7 +37,6 @@ uses
   FormGeneralData,
   FormHoleData,
   FormUnitsOfMeasure,
-  DrillSimDataResets,
   SimulateHoleCalcs,
   SimulateControl;
 
@@ -661,10 +661,10 @@ begin
 
 end;
 
-procedure TDrillSim.MenuItem2UnitsClick(Sender: TObject);
+procedure TDrillSim.MenuItem2UnitsClick(Sender: TObject);  // UoM
 begin
   try
-    UnitsOfMeasureForm:=TUnitsOfMeasureForm.Create(Nil);  //Hole Data Input is created
+    UnitsOfMeasureForm:=TUnitsOfMeasureForm.Create(Nil);
     UnitsOfMeasureForm.ShowModal;
   finally
     UnitsOfMeasureForm.Free;

@@ -15,13 +15,14 @@ uses
   StdCtrls,
   ExtCtrls,
   DrillSimVariables,
-  SimulateMessageToMemo;
+ DrillSimMessageToMemo;
 
 type
 
-  { TDisplayWellData }
+  { TDisplayWellDataForm }
 
   TDisplayWellDataForm = class(TForm)
+    Button1: TButton;
     ElevationRKBValue: TLabel;
     OffshoreYNValue: TLabel;
     WellOperatorValue: TLabel;
@@ -86,9 +87,9 @@ implementation
 
 Uses DrillSimGUI;
 
-{$R *.lfm}
+{ TDisplayWellDataForm }
 
-{ TDisplayWellData }
+{$R *.lfm}
 
 Procedure TDisplayWellDataForm.FormCreateActions;
 Begin

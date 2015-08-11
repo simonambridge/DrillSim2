@@ -4,7 +4,7 @@ Interface
 
 Uses DrillSimVariables,
      SimulateRAMs,
-     SimulateMessageToMemo;
+     DrillSimMessageToMemo;
 
 Procedure SetSurfControls;
 Procedure CloseChoke;

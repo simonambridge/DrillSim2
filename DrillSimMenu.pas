@@ -8,13 +8,13 @@ Uses Dos,Crt,
      DrillSimFile,
      DrillSimUtilities,
      DrillSimUnitsOfMeasure,
-     DrillSimConversions,
+     DrillSimDataUoMConversions,
      DrillSimHoleCalc,
      DrillSimUoMMenu,
      DrillSimDataInput,
      DrillSimStartup,
      DrillSimDataResets,
-     SimulateMessageToMemo;
+     DrillSimMessageToMemo;
 
 Procedure CallHoleData;
 Procedure CreateFile;

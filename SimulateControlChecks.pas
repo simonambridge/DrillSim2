@@ -4,7 +4,7 @@ Interface
 
 Uses Crt,
      DrillSimVariables,
-     SimulateMessageToMemo,
+     DrillSimMessageToMemo,
      SimulateUpdate,
      DrillSimDataResets;
 

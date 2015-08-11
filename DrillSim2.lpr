@@ -11,8 +11,14 @@ uses
   Interfaces, // this includes the LCL widgetset
   Forms,
   { you can add units after this }
-  DrillSimVariables, DrillSimStartup, DrillSimFile, DrillSimMenu,
-  SimulateMessageToMemo, DrillSimGUI, FormGeneralData, FormDisplayWellData,
+  DrillSimVariables,
+  DrillSimStartup,
+  DrillSimFile,
+  DrillSimMenu,
+  DrillSimMessageToMemo,
+  DrillSimGUI,
+  FormGeneralData,
+  FormDisplayWellData,
   FormUnitsOfMeasure;
 
 {$R *.res}
@@ -29,9 +35,9 @@ begin
   Application.CreateForm(TDrillSim, DrillSim);
   Application.CreateForm(TGeneralDataForm, GeneralDataForm);
   Application.CreateForm(TDisplayWellDataForm, DisplayWellDataForm);
+  Application.CreateForm(TUnitsOfMeasureForm, UnitsOfMeasureForm);
 
   StringToMemo('DrillSim2.lpr : Application.Run');
-  Application.CreateForm(TUnitsOfMeasureForm, UnitsOfMeasureForm);
   Application.Run;
 
 

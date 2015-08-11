@@ -6,7 +6,7 @@ Uses Crt,
      sysutils,
      DrillSimVariables,
      DrillSimFile,
-     SimulateMessageToMemo,
+     DrillSimMessageToMemo,
      DrillSimDataResets;
 
 Procedure SaveFile;
@@ -18,11 +18,11 @@ Procedure SaveData;
 Var i : integer;
 Begin
   MessageToMemo(78);
-  For i:=1 to 7 do                   { FCommands and call to MessageToMemo }
-  Begin
+{*  For i:=1 to 7 do                   { FCommands and call to MessageToMemo }
+  Begin                                user defined units no longer supported
     Data.UserLab[i]:=Lab[i];
     Data.UserCon[i]:=Con[i];
-  End;
+  End;           *}
   if NewFile then
   Begin
     Assign(DataFile,FileName);       { if it's not the current file }
@@ -118,11 +118,11 @@ Begin
     Close(DataFile);
     FileName:=Instring;
     NoData:=False;
-    For i:=1 to 7 do
+{*    For i:=1 to 7 do             user defined units no longer supported
     Begin
       Lab[i]:=Data.UserLab[i];
       Con[i]:=Data.UserCon[i];
-    End;
+    End;      *}
     InitMud;            { set OriginalMuds (to current mud W,Pv,Yp)           }
     InitDepth;          { save the original depth for this session            }
     InitGeology;        { locate correct current position within geology table}

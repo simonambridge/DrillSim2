@@ -3,7 +3,7 @@ Unit SimulateRAMs;
 Interface
 
 Uses DrillSimVariables,
-     SimulateMessageToMemo,
+     DrillSimMessageToMemo,
      SimulateVolumes;
 
 Procedure RamCheck;  { called from BOPCommands and SetSurfControls }

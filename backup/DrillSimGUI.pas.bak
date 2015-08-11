@@ -23,12 +23,13 @@ uses
   DrillSimStartup,
   DrillSimMenu,
   DrillSimFile,
+  DrillSimDataResets,
   SimulateFile,
   DrillSimDataInput,
-  DrillSimConversions,
   DrillSimUoMMenu,
+  DrillSimDataUoMConversions,
   DrillSimUtilities,
-  SimulateMessageToMemo,
+  DrillSimMessageToMemo,
   SimulateCommandProcessor,
   SimulateUpdate,
   SimulateSurfaceControls,
@@ -36,7 +37,6 @@ uses
   FormGeneralData,
   FormHoleData,
   FormUnitsOfMeasure,
-  SimulateInit,
   SimulateHoleCalcs,
   SimulateControl;
 

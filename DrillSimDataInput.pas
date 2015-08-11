@@ -5,7 +5,7 @@ Interface
 Uses Crt,
      DrillSimVariables,
      DrillSimUtilities,
-     SimulateMessageToMemo;
+     DrillSimMessageToMemo;
 
 Procedure UpdateWellTests;
 Procedure UpdateGen;

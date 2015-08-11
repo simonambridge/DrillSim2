@@ -15,13 +15,14 @@ uses
   StdCtrls,
   ExtCtrls,
   DrillSimVariables,
-  SimulateMessageToMemo;
+ DrillSimMessageToMemo;
 
 type
 
   { TDisplayWellDataForm }
 
   TDisplayWellDataForm = class(TForm)
+    Button1: TButton;
     ElevationRKBValue: TLabel;
     OffshoreYNValue: TLabel;
     WellOperatorValue: TLabel;
@@ -69,6 +70,7 @@ type
     WellName: TStaticText;
     WellOperator: TStaticText;
     WellNameValue: TLabel;
+    procedure FormActivate(Sender: TObject);
     Procedure OnClose(Sender: TObject);
     procedure CloseDisplayWellDataClick(Sender: TObject);
     procedure FormCreate(Sender: TObject);
@@ -86,16 +88,12 @@ implementation
 
 Uses DrillSimGUI;
 
-{$R *.lfm}
-
 { TDisplayWellDataForm }
+
+{$R *.lfm}
 
 Procedure TDisplayWellDataForm.FormCreateActions;
 Begin
-  WellOperatorValue.Caption:=Data.WellOperator;
-  WellNameValue.Caption:=Data.WellName;
-  ElevationRKBValue.Caption:=FloatToStr(Data.ElevationRKB);
-  OffshoreYNValue.Caption:=BoolToStr(Data.Offshore);
 end;
 
 { ------------- Form Procedures ------------ }
@@ -113,6 +111,15 @@ end;
 Procedure TDisplayWellDataForm.OnClose(Sender: TObject);
 begin
  Close;
+end;
+
+procedure TDisplayWellDataForm.FormActivate(Sender: TObject);
+begin
+ StringToMemo('Form Well Data Summary activated....');
+ WellOperatorValue.Caption:=Data.WellOperator;
+ WellNameValue.Caption:=Data.WellName;
+ ElevationRKBValue.Caption:=FloatToStr(Data.ElevationRKB);
+ OffshoreYNValue.Caption:=BoolToStr(Data.Offshore);
 end;
 
 end.

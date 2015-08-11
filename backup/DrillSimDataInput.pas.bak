@@ -7,7 +7,7 @@ Uses Crt,
      DrillSimUtilities,
      SimulateMessageToMemo;
 
-Procedure UpdateKick;
+Procedure UpdateWellTests;
 Procedure UpdateGen;
 Procedure UpdateHole;
 Procedure UpdatePipe;

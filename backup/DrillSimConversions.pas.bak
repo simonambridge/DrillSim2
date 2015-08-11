@@ -12,8 +12,8 @@ Procedure ConAPIKickData;
 
 Implementation
 
-Procedure ConUser;
-Var i : integer;
+Procedure ConUser;  {* Convert primary well data to user units e.g. *}
+Var i : integer;    {* For i:=1 to Maxholes do Hole[i,1]:=Hole[i,1]/con[1]; *}
 Begin
   With Data do
   Begin
@@ -100,7 +100,7 @@ Begin
   End;
 End;
 
-Procedure ConUserKickData;
+Procedure ConUserKickData; {* Convert kick variables to user units *}
 Var i : integer;
 Begin
   With Data do

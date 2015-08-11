@@ -2,7 +2,9 @@ Unit DrillSimUnitsOfMeasure;
 
 Interface
 
-Uses DrillSimVariables;
+Uses SysUtils,
+  DrillSimVariables,
+  DrillSimMessageToMemo;
 
 Procedure MetricUnits;
 Procedure APIUnits;
@@ -11,7 +13,9 @@ Implementation
 
 Procedure MetricUnits;
 Begin
-  Data.UnitType:='Metric';          { divide by these numbers to get API }
+  Data.API:=False;
+  Data.UoMLabel:='Metric';          { divide by these numbers to get API }
+  ROPLab:='min/met';
   con[1]:=3.28084;
   con[2]:=8.345;
   con[3]:=1.45033;
@@ -26,14 +30,15 @@ Begin
   lab[5]:='ltr';
   lab[6]:='lpm';
   lab[7]:='ton';
-  ROPLab:='min/met';
-  Data.API:=False;
+  StringToMemo('Metric Units selected. Depth units are '+lab[1]);
 End;
 
 
 Procedure APIUnits;      {* Assign values to con[] and lab[] arrays *}
 Begin
-  Data.UnitType:='API';
+  Data.API:=True;
+  Data.UoMLabel:='API';
+  ROPLab:='min/ft';
   con[1]:=1;
   con[2]:=1;
   con[3]:=1;
@@ -48,8 +53,7 @@ Begin
   lab[5]:='gal';
   lab[6]:='gpm';
   lab[7]:='Klb';
-  ROPLab:='min/ft';
-  Data.API:=True;
+  StringToMemo('API Units selected. Depth units are '+lab[1]);
 End;
 
 Begin

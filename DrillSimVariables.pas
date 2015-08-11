@@ -170,11 +170,6 @@ Type
 
                    FormationPressureGradient    : real;
                    BurstPressure                : real;
-                   SpareReal3                   : real; { * }
-                   SpareReal4                   : real; { * }
-                   SpareReal5                   : real; { * }
-                   SpareReal6                   : real; { * }
-                   SpareReal7                   : real; { * }
                    InfluxDensity                : real;
                    PipeRAMRating                : real;
                    HydrilRating                 : real;
@@ -188,14 +183,11 @@ Type
                    MudYp               : real;
                    MudGel              : real;
                    RetPitVol           : real;
-                   SpareReal8 : real; { * }
 
-                   UserCon    : array[1..7] of real;
-                   UserLab    : array[1..7] of String3;
-                   UnitType   : String20; { Text string describing Units in use }
+                   Con    : array[1..7] of real;
+                   Lab    : array[1..7] of String3;
+                   UoMLabel   : String20; { Text string describing Units in use }
 
-                   SpareInt1 : integer; { * }
-                   SpareInt2 : integer; { * }
                  End;
 
       ColorSet        = (NormColors, { grey on blue }
