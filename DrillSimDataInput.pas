@@ -43,38 +43,38 @@ Begin
   With Data do
   Begin
     gotoxy(10,6);
-    write('Last Leak-off depth      : ',LotTD:9:3,' ',lab[1]);
+    write('Last Leak-off depth      : ',LotTD:9:3,' ',UoMLabel[1]);
     gotoxy(10,8);
-    write('Last Leak-off Mud Weight : ',LotMW:9:3,' ',lab[2]);
+    write('Last Leak-off Mud Weight : ',LotMW:9:3,' ',UoMLabel[2]);
     gotoxy(10,10);
-    write('Last Leak-off EMW        : ',LotEMW:9:3,' ',lab[2]);
+    write('Last Leak-off EMW        : ',LotEMW:9:3,' ',UoMLabel[2]);
     gotoxy(10,12);
-    write('Last Leak-off Pressure   : ',LotPressure:9:3,' ',lab[3]);
+    write('Last Leak-off Pressure   : ',LotPressure:9:3,' ',UoMLabel[3]);
     gotoxy(10,14);
-    write('Casing Burst Pressure    : ',BurstPressure:9:3,' ',lab[3]);
+    write('Casing Burst Pressure    : ',BurstPressure:9:3,' ',UoMLabel[3]);
     For i:=1 to MaxPipes do
     Begin
       gotoxy(10,16+(i-1));
       write('Pipe #',i,' Weight           : ',Pipe[i,4]:9:3,' lb/ft');
     End;
 
-    GetReal(55,6,25000/con[1]);
+    GetReal(55,6,25000/UoMConverter[1]);
     if Valid then LotTD:=RResult;
     gotoxy(55,6); write(LotTD:9:3);
 
-    GetReal(55,8,25/con[2]);
+    GetReal(55,8,25/UoMConverter[2]);
     if Valid then LotMW:=RResult;
     gotoxy(55,8); write(LotMW:9:3);
 
-    GetReal(55,10,25/con[2]);
+    GetReal(55,10,25/UoMConverter[2]);
     if Valid then LotEMW:=RResult;
     gotoxy(55,10); write(LotEMW:9:3);
 
-    GetReal(55,12,5000/con[3]);
+    GetReal(55,12,5000/UoMConverter[3]);
     if Valid then LotPressure:=RResult;
     gotoxy(55,12); write(LotPressure:9:3);
 
-    GetReal(55,14,15000/con[3]);
+    GetReal(55,14,15000/UoMConverter[3]);
     if Valid then BurstPressure:=RResult;
     gotoxy(55,14); write(BurstPressure:9:3);
 
@@ -93,13 +93,13 @@ Begin
 { ===================== Formation Parameter Table ==========================}
 
     //Disp(14,4,'Horizon Top');
-    //Disp(16,5,'('+lab[1]+')');
+    //Disp(16,5,'('+UoMLabel[1]+')');
 
     //Disp(36,4, 'Hardness');
     //Disp(35,5,'(0.1 - 1.0)');
 
     //Disp(50,4,'Formation Pressure');
-    //Disp(57,5,'('+lab[3]+')');
+    //Disp(57,5,'('+UoMLabel[3]+')');
 
     //Box(10,6,70,17);
     //DrawSingleLine(10,70,6);
@@ -128,7 +128,7 @@ Begin
       j:=7+(i-1);
       TextColor(White);                             { select input text color }
 
-      GetReal(22,j,25000/con[1]);                   { get depth }
+      GetReal(22,j,25000/UoMConverter[1]);                   { get depth }
       if Esc then EscPressed:=True;                 { ESC ?     }
       if Valid then Rock[i].Depth:=RResult;         { valid ? if yes, use it  }
       gotoxy(22,j); write(Rock[i].Depth:9:3);       { display current value   }
@@ -141,7 +141,7 @@ Begin
 
         if not EscPressed then                      { not if exit requested }
         Begin
-          GetReal(60,j,20000/con[1]);               { get formation pressure }
+          GetReal(60,j,20000/UoMConverter[1]);               { get formation pressure }
           if Esc then EscPressed:=True;
           if Valid then Rock[i].FP:=RResult;
           gotoxy(60,j); write(Rock[i].FP:9:3);
@@ -173,7 +173,7 @@ Begin
     RockPointer:=1;          { set up for drilling - gets set up in Simulate }
                              { anyway but needs initialisation               }
     FormationPressureGradient:=
-             ((Rock[1].FP * con[3]) / (Rock[1].Depth * con[1])) / Presscon;
+             ((Rock[1].FP * UoMConverter[3]) / (Rock[1].Depth * UoMConverter[1])) / Presscon;
   End;
   ExitPrompt;
 End;
@@ -195,8 +195,8 @@ Begin
     //Disp(50-length(Well),12,Well + ' ?');
 
     //Disp(10,14,'Elevation RKB     :');
-    Str(ElevationRKB:8:2,TempString);      { 1 below corresponds to space after lab[1] }
-    //Disp(50-length(TempString)-length(lab[1])-1,14,TempString+' '+lab[1]+' ?');
+    Str(ElevationRKB:8:2,TempString);      { 1 below corresponds to space after UoMLabel[1] }
+    //Disp(50-length(TempString)-length(UoMLabel[1])-1,14,TempString+' '+UoMLabel[1]+' ?');
 
     GetState(OffShore);                    { set YesNo according to OffShore }
     //Disp(10,16,'Offshore '+Blank9+':');
@@ -211,9 +211,9 @@ Begin
     if Valid then WellName:=Instring;
     //Disp(58,12,Well);
 
-    GetReal(55,14,500/con[1]);
+    GetReal(55,14,500/UoMConverter[1]);
     if Valid then ElevationRKB:=RResult;
-    Str(ElevationRKB:8:2,TempString);      { 1 below corresponds to space after lab[1] }
+    Str(ElevationRKB:8:2,TempString);      { 1 below corresponds to space after UoMLabel[1] }
 
     Repeat
       Input:=ReadKey;
@@ -266,8 +266,8 @@ Begin
 
       Str(WaterDepth:8:2,TempString);
       //Disp(10,19,'Water depth'+Blank7+':');
-      //Disp(50-length(TempString)-4,19,TempString + ' ' + lab[1] + ' ? ');
-       GetReal(55,19,2000/con[1]);
+      //Disp(50-length(TempString)-4,19,TempString + ' ' + UoMLabel[1] + ' ? ');
+       GetReal(55,19,2000/UoMConverter[1]);
       if Valid then WaterDepth:=RResult;
       Str(WaterDepth:8:2,TempString);
       //Disp(63-length(TempString),19,TempString);
@@ -295,8 +295,8 @@ Begin
     Begin
       Repeat
         Str(RsrTD:9:3,Str1);
-        //Disp(10,LineCnt,'Riser Length'+Blank11+': '+ Str1 +'  '+lab[1]+' ?');
-        GetReal(55,LineCnt,5000/con[1]);
+        //Disp(10,LineCnt,'Riser Length'+Blank11+': '+ Str1 +'  '+UoMLabel[1]+' ?');
+        GetReal(55,LineCnt,5000/UoMConverter[1]);
         if Valid then RsrTD:=RResult;
         Str(RsrTD:9:3,Str1);
         //Disp(55,LineCnt,Str1);
@@ -344,8 +344,8 @@ Begin
         LineCnt:=LineCnt+1;
 
         gotoxy(10,LineCnt);
-        write('Casing Shoe '+Blank11+': ',CsgTD:9:3,'  ',lab[1],' ?');
-        GetReal(55,LineCnt,30000/con[1]);
+        write('Casing Shoe '+Blank11+': ',CsgTD:9:3,'  ',UoMLabel[1],' ?');
+        GetReal(55,LineCnt,30000/UoMConverter[1]);
         if Valid then CsgTD:=RResult;
         gotoxy(55,LineCnt); write(CsgTD:9:3);
 
@@ -404,17 +404,17 @@ Begin
         Begin
           LineCnt:=LineCnt+1;
           gotoxy(10,LineCnt);
-          write('Liner Hanger TD '+Blank7+': ',LinerTop:9:3,'  ',lab[1],' ?');
+          write('Liner Hanger TD '+Blank7+': ',LinerTop:9:3,'  ',UoMLabel[1],' ?');
           ClrEol;
-          GetReal(55,LineCnt,30000/con[1]);
+          GetReal(55,LineCnt,30000/UoMConverter[1]);
           if Valid then LinerTop:=RResult;
           gotoxy(55,LineCnt); write(LinerTop:9:3);
 
           LineCnt:=LineCnt+1;
           gotoxy(10,LineCnt);
-          write('Liner Shoe   TD '+Blank7+': ',LinerTD:9:3,'  ',lab[1],' ?');
+          write('Liner Shoe   TD '+Blank7+': ',LinerTD:9:3,'  ',UoMLabel[1],' ?');
           ClrEol;
-          GetReal(55,LineCnt,30000/con[1]);
+          GetReal(55,LineCnt,30000/UoMConverter[1]);
           if Valid then LinerTD:=RResult;
           gotoxy(55,LineCnt); write(LinerTD:9:3);
 
@@ -458,14 +458,14 @@ Begin
       For i:=1 to MaxHoles do
       Begin
         gotoxy(10,LineCnt+(i-1)*3);
-        write('Open Hole #',i,' TD '+Blank7+': ',Hole[i,1]:9:3,'  ',lab[1],' ?');
+        write('Open Hole #',i,' TD '+Blank7+': ',Hole[i,1]:9:3,'  ',UoMLabel[1],' ?');
         gotoxy(10,LineCnt+1+(i-1)*3);
         write(Blank11+'  ID'+Blank7+' : ',Hole[i,2]:9:3,'  ins ?');
       End;
 
       For i:=1 to MaxHoles do
       Begin
-        GetReal(55,LineCnt+(i-1)*3,35000.0/con[1]);        { get open hole td }
+        GetReal(55,LineCnt+(i-1)*3,35000.0/UoMConverter[1]);        { get open hole td }
         if Valid then Hole[i,1]:=RResult;
         gotoxy(55,LineCnt+(i-1)*3); write(Hole[i,1]:9:3);
         GetReal(55,LineCnt+1+(i-1)*3,40);                { get hole id }
@@ -496,7 +496,7 @@ Begin
     Str(Hole[MaxHoles,1]:9:3,TempString);
     While length(TempString) < 10 do TempString:=TempString + Space;
     Str(Dev:9:3,Str1);
-    //Disp(10,LineCnt+3+(i-1)*3,'Dev @ '+TempString+' '+lab[1]+'   : '+Str1+'  deg ?');
+    //Disp(10,LineCnt+3+(i-1)*3,'Dev @ '+TempString+' '+UoMLabel[1]+'   : '+Str1+'  deg ?');
     GetReal(55,LineCnt+3+(i-1)*3,20);
     if Valid then Dev:=RResult;
     gotoxy(55,LineCnt+3+(i-1)*3); write(Dev:9:3);
@@ -533,7 +533,7 @@ Begin
       Begin
         Str(i:3,Str1);
         Str(Pipe[i,1]:9:3,Str2);
-        //Disp(10,6+(i-1)*4,'Pipe #'+Str1+' Length : '+Str2 + ' '+lab[1]+' ?');
+        //Disp(10,6+(i-1)*4,'Pipe #'+Str1+' Length : '+Str2 + ' '+UoMLabel[1]+' ?');
 
         Str(Pipe[i,2]:9:3,Str2);
         //Disp(20,7+(i-1)*4,'ID     : '+Str2+' ins ?');
@@ -544,7 +544,7 @@ Begin
 
       For i:=1 to MaxPipes do
       Begin
-        GetReal(55,6+(i-1)*4,35000.0/con[1]);   { get pipe length }
+        GetReal(55,6+(i-1)*4,35000.0/UoMConverter[1]);   { get pipe length }
         if Valid then Pipe[i,1]:=RResult;
         Str(Pipe[i,1]:9:3,Str2);
         //Disp(55,6+(i-1)*4,Str2);
@@ -647,7 +647,7 @@ Begin
   Begin
     Repeat
       gotoxy(10,10);
-      write('Mud Weight',Blank9,': ',MudWt:9:3,' ',lab[2],Blank7,' ?');
+      write('Mud Weight',Blank9,': ',MudWt:9:3,' ',UoMLabel[2],Blank7,' ?');
 
       gotoxy(10,11);
       write('Plastic Viscosity  :   ',MudPv:7:1,' centipoise ?');
@@ -658,7 +658,7 @@ Begin
       gotoxy(10,13);
       write('Gel Strength       :   ',MudGel:7:1,Blank11,' ?');
 
-      GetReal(55,10,25/con[2]);
+      GetReal(55,10,25/UoMConverter[2]);
       if Valid then MudWt:=RResult;
       gotoxy(55,10); write(MudWt:9:3);
 
@@ -706,8 +706,8 @@ Begin
     Until MaxPumps in [1..3];
 
     Str(MaxPress:9:3,Str1);
-    //Disp(10,7,'Max. Pump Pressure  : '+Str1+' '+lab[3]+' ?');
-    GetReal(55,7,5000/con[3]);
+    //Disp(10,7,'Max. Pump Pressure  : '+Str1+' '+UoMLabel[3]+' ?');
+    GetReal(55,7,5000/UoMConverter[3]);
     if Valid then MaxPress:=RResult;
     gotoxy(55,7); write(MaxPress:9:1);
 
@@ -716,7 +716,7 @@ Begin
       Begin
         Str(i:3,Str2);
         Str(Pump[i,1]:9:3,Str1);
-        //Disp(10,9+(i-1)*4,'Pump #'+Str2+'  Output     : '+Str1+' '+lab[5]+' ?');
+        //Disp(10,9+(i-1)*4,'Pump #'+Str2+'  Output     : '+Str1+' '+UoMLabel[5]+' ?');
 
         Str(Pump[i,2]:9:3,Str1);
         //Disp(21,10+(i-1)*4,'Efficiency : '+Str1+' %   ?');
@@ -727,7 +727,7 @@ Begin
 
       For i:=1 to MaxPumps do            { then get the data required }
       Begin
-        GetReal(55,9+(i-1)*4,5000/con[5]);
+        GetReal(55,9+(i-1)*4,5000/UoMConverter[5]);
         if Valid then Pump[i,1]:=RResult;
         gotoxy(55,9+(i-1)*4); write(Pump[i,1]:9:1);
 
@@ -772,30 +772,30 @@ Begin
       Mode := SurfMode;
 
       Str(Surf[1,1]:9:3,Str1);
-      //Disp(10,7,'Kelly  Length      : '+Str1+' '+lab[1]+' ?');
+      //Disp(10,7,'Kelly  Length      : '+Str1+' '+UoMLabel[1]+' ?');
 
       Str(Surf[1,2]:9:3,Str1);
       //Disp(17,8,'ID          : '+Str1+' ins ?');
 
       Str(Surf[2,1]:9:3,Str1);
-      //Disp(10,10,'Swivel Length      : '+Str1+' '+lab[1]+' ?');
+      //Disp(10,10,'Swivel Length      : '+Str1+' '+UoMLabel[1]+' ?');
 
       Str(Surf[2,2]:9:3,Str1);
       //Disp(17,11,'ID          : '+Str1+' ins ?');
 
       Str(Surf[3,1]:9:3,Str1);
-      //Disp(10,13,'Hose   Length      : '+Str1+' '+lab[1]+' ?');
+      //Disp(10,13,'Hose   Length      : '+Str1+' '+UoMLabel[1]+' ?');
 
       Str(Surf[3,2]:9:3,Str1);
       //Disp(17,14,'ID          : '+Str1+' ins ?');
 
       Str(Surf[4,1]:9:3,Str1);
-      //Disp(10,16,'StandPipe Length   : '+Str1+' '+lab[1]+' ?');
+      //Disp(10,16,'StandPipe Length   : '+Str1+' '+UoMLabel[1]+' ?');
 
       Str(Surf[4,2]:9:3,Str1);
       //Disp(17,17,'ID          : '+Str1+' ins ?');
 
-      GetReal(55,7,40/con[1]);
+      GetReal(55,7,40/UoMConverter[1]);
       if Valid then Surf[1,1]:=RResult;
       gotoxy(55,7); write(Surf[1,1]:9:3);
 
@@ -803,7 +803,7 @@ Begin
       if Valid then Surf[1,2]:=RResult;
       gotoxy(55,8); write(Surf[1,2]:9:3);
 
-      GetReal(55,10,20/con[1]);
+      GetReal(55,10,20/UoMConverter[1]);
       if Valid then Surf[2,1]:=RResult;
       gotoxy(55,10); write(Surf[2,1]:9:3);
 
@@ -811,7 +811,7 @@ Begin
       if Valid then Surf[2,2]:=RResult;
       gotoxy(55,11); write(Surf[2,2]:9:3);
 
-      GetReal(55,13,150/con[1]);
+      GetReal(55,13,150/UoMConverter[1]);
       if Valid then Surf[3,1]:=RResult;
       gotoxy(55,13); write(Surf[3,1]:9:3);
 
@@ -819,7 +819,7 @@ Begin
       if Valid then Surf[3,2]:=RResult;
       gotoxy(55,14); write(Surf[3,2]:9:3);
 
-      GetReal(55,16,200/con[1]);
+      GetReal(55,16,200/UoMConverter[1]);
       if Valid then Surf[4,1]:=RResult;
       gotoxy(55,16); write(Surf[4,1]:9:3);
 

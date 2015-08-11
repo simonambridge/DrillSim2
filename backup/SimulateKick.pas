@@ -4,10 +4,10 @@ Interface
 
 Uses Crt,
      DrillSimVariables,
-     DrillSimDateTime,
+     DrillSimUtilities,
      SimulateUpdate,
-     SimulateMessageToMemo,
-     SimulateClear,
+     DrillSimMessageToMemo,
+     DrillSimDataResets,
      DrillSimMath;
 
 Procedure KickCalc;

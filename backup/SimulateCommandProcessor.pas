@@ -5,17 +5,15 @@ Interface
 Uses Crt,
      DrillSimVariables,
      DrillSimFile,
-     SimulateMessageToMemo,
-     SimulateScreen,
+     DrillSimDataResets,
+     DrillSimMessageToMemo,
      SimulateVolumes,
      SimulateFile,
-     SimulateInit,
      SimulateUpdate,
      SimulateHoleCalcs,
      SimulateHydrostaticCalcs,
      SimulateHelp,
      SimulateSurfaceControls,
-     SimulateClear,
      SimulateRAMs;
 
 Procedure CommandProcessor;
@@ -100,13 +98,13 @@ Begin
       'L' : Begin
               SimulateLoadFile;
               SimHoleCalc;         { do HoleCalc and initialise volumes }
-              PitBox;              { Display correct parameters }
-              SPPBox;
-              FlowBox;
-              DepthBox;
-              MWBox;
-              InitialiseKelly;   { clear box, draw scale and set up }
-              SetKelly;          { move it to drilling position    }
+//              PitBox;              { Display correct parameters }
+//              SPPBox;
+//              FlowBox;
+//              DepthBox;
+//              MWBox;
+//              InitialiseKelly;   { clear box, draw scale and set up }
+//              SetKelly;          { move it to drilling position    }
               SetSurfControls;
               StackCalc;
             End;
@@ -432,16 +430,15 @@ Var
   i : integer;
 Begin
   Quit:=False;
-  StringToMemo('CommandProcessor Started');
+  StringToMemo('Command: ' + InputString);
 
   if length(InputString) > Zero then
   Begin
-    StringToMemo('Running with ' + InputString);
 
     Input:=copy(InputString,1,1);
     Case Input[1] of
       'B' : BOPCommands;
-      'C' : Clear;
+      'C' : Clear;         { clear all data, no file defined }
       'D' : DCommands;
       'F' : FCommands;
       'H' : HCommands;

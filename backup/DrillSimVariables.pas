@@ -9,38 +9,12 @@ Forms, Controls, Graphics, Dialogs, Menus, StdCtrls, ExtCtrls,
 Type
 
 
-    ROPString     =  string[7];
-    PathString    =  string[120];
-    AnyString     =  string[120];
-    BitString     =  string[10];
-    StringLength  =  string[20];
-    FileString    =  string[12];
-    HelpString    =  string[60];
-    LabelString   =  string[3];
-    DisplayString =  string[120];
+    String120     =  string[120];
+    String20      = string[20];
+    String60    =  string[60];
+    String3   =  string[3];
+
     AttrType      =  byte;
-
-  ColorSet        = (NormColors, { grey on blue }
-                     BlueonGray,
-                     WhiteOnBlue,
-                     YellowOnBlack,
-                     GrayOnBlack,
-                     DataColors,   { high cyan on blue }
-                     TitleColors,  { yellow on blue }
-                     RedOnGray,
-                     RedOnBlue,
-                     FlashColors,  { red on blue }
-                     BlackOnGreen,
-                     WhiteOnGreen,
-                     WhiteOnRed);
-
-    Date       =  Record
-                    DayOfWeek, Year, Month, Day               : word;
-                  End;
-
-    Time       =  Record
-                    Hours, Minutes, Seconds, Hundredths       : word;
-                  End;
 
     MudRec     =  Record
                     StartStrokes : real;  { StrokeCounter @ start circ' }
@@ -64,7 +38,7 @@ Type
                  End;
 
     HelpSet    = Record
-                   HelpText : array[1..200] of HelpString;
+                   HelpText : array[1..200] of String60;
                  End;
 
     WellData   = Record
@@ -162,19 +136,23 @@ Type
                    BleedOffRate        : real;
                    BleedOff            : real;
 
-                   WellOperator            : StringLength;
-                   Well                : StringLength;
-                   MaxPumps : integer;        MaxHoles : integer;
-                   MaxPipes : integer;        MaxJets  : integer;
-                   Offshore : boolean;        Riser    : boolean;
-                   Casing   : boolean;        Liner    : boolean;
+                   WellOperator        : String120;
+                   WellName             : String120;
+                   MaxPumps : integer;
+                   MaxHoles : integer;
+                   MaxPipes : integer;
+                   MaxJets  : integer;
+                   Offshore : boolean;
+                   Riser    : boolean;
+                   Casing   : boolean;
+                   Liner    : boolean;
                    Surf     : array[1..4,1..2] of real;
                    Hole     : array[1..2,1..2] of real;
                    Pipe     : array[1..4,1..4] of real;
                    RsrTD, CsgTD, Tvd            : real;
                    RsrID, CsgID, Dev            : real;
                    LinerTop, LinerTD, LinerID   : real;
-                   Rkb, WaterDepth              : real;
+                   ElevationRKB, WaterDepth     : real;
                    LotTD                        : real;
                    LotEMW                       : real;
                    LotMW                        : real;
@@ -188,21 +166,16 @@ Type
                    KillLineID  : real;
 
                    DrillMult   : integer;
-                   NewIf0      : integer;  { has this file been 'simulated'? }
+                   NeverSimulated      : boolean;  { has this file ever been 'simulated'? }
 
                    FormationPressureGradient    : real;
                    BurstPressure                : real;
-                   SpareReal3                   : real; { * }
-                   SpareReal4                   : real; { * }
-                   SpareReal5                   : real; { * }
-                   SpareReal6                   : real; { * }
-                   SpareReal7                   : real; { * }
                    InfluxDensity                : real;
                    PipeRAMRating                : real;
                    HydrilRating                 : real;
                    Jet      : array[1..4] of integer;
                    Bit      : integer;
-                   BitType  : BitString;
+                   BitType  : String20;
                    Pump     : array[1..3,1..5] of real;
                    MaxPress : real;
                    ExcessMud: real;
@@ -210,15 +183,35 @@ Type
                    MudYp               : real;
                    MudGel              : real;
                    RetPitVol           : real;
-                   SpareReal8 : real; { * }
 
-                   UserCon    : array[1..7] of real;
-                   UserLab    : array[1..7] of LabelString;
-                   UserType   : StringLength;
+                   Con    : array[1..7] of real;
+                   Lab    : array[1..7] of String3;
+                   UoMLabel   : String20; { Text string describing Units in use }
 
-                   SpareInt1 : integer; { * }
-                   SpareInt2 : integer; { * }
                  End;
+
+      ColorSet        = (NormColors, { grey on blue }
+                     BlueonGray,
+                     WhiteOnBlue,
+                     YellowOnBlack,
+                     GrayOnBlack,
+                     DataColors,   { high cyan on blue }
+                     TitleColors,  { yellow on blue }
+                     RedOnGray,
+                     RedOnBlue,
+                     FlashColors,  { red on blue }
+                     BlackOnGreen,
+                     WhiteOnGreen,
+                     WhiteOnRed);
+
+    Date       =  Record
+                    DayOfWeek, Year, Month, Day               : word;
+                  End;
+
+    Time       =  Record
+                    Hours, Minutes, Seconds, Hundredths       : word;
+                  End;
+
 
 Const
     VolCon    = 1029;               HHPcon    = 1714;
@@ -293,49 +286,49 @@ Var
    d                   : Date;
    t                   : Time;
 
-   FileName            : AnyString;
-   FileSpec            : AnyString;
-   //FullName            : FileString;
+   FileName            : String120;
+   FileSpec            : String120;
+   //FullName            : String20;
    NewFile             : boolean;
    Quit                : boolean;
    Error               : boolean;
    NoFileDefined       : boolean;
    HelpFileFound       : boolean;
    con                 : array[1..7] of real;
-   lab                 : array[1..7] of LabelString;
-   ROPLab              : ROPString;
+   lab                 : array[1..7] of String3;
+   ROPLab              : String[20];
    TurbFlag            : boolean;
-   FlowMode            : StringLength;
-   Model               : StringLength;
-   InString            : AnyString;          { Utility input string }
-   BlankString         : AnyString;
-   LstString           : AnyString;           { spacer print string }
-   InputString         : DisplayString;
-   OutputString        : DisplayString;
-   LastString          : DisplayString;
-   PreviousString      : DisplayString;
-   ThisString          : DisplayString;
+   FlowMode            : String20;
+   Model               : String20;
+   InString            : String120;          { Utility input string }
+   BlankString         : String120;
+   LstString           : String120;           { spacer print string }
+   InputString         : String120;
+   OutputString        : String120;
+   LastString          : String120;
+   PreviousString      : String120;
+   ThisString          : String120;
    Enter               : String[3];
    YesNo               : string[4];
    Input               : String[1]; { was char; }  { Utility input char' }
    CharInput           : char;                     {   ----- " -----     }
    Util                : char;                { Box building  char' }
 
-   OutString           : AnyString;    { FastDisp variables }
-   TempString          : AnyString;    { utility diplsy string }
+   OutString           : String120;    { FastDisp variables }
+   TempString          : String120;    { utility diplsy string }
    Row, Col            : integer;
    AttrByte            : byte;         { current Disp colour }
    TAttr               : byte;         { store current Disp Colour }
 
    Code                : integer;           { used by Proc. }
-   Name                : FileString;        { GetDirectory  }
+   Name                : String20;        { GetDirectory  }
 
-   DefaultFile         : FileString;        { used for .CFG file }
-   DefaultDirectory    : AnyString;
-   TextFileLine        : AnyString;
-//   PathString          : AnyString;         { Used for DOS Path - replaced }
-   OriginDirectory     : AnyString;
-   LoggedDirectory     : AnyString;
+   DefaultFile         : String20;        { used for .CFG file }
+   DefaultDirectory    : String120;
+   TextFileLine        : String120;
+//   PathString          : String120;         { Used for DOS Path - replaced }
+   OriginDirectory     : String120;
+   LoggedDirectory     : String120;
    OriginalExitProc    : Pointer;
 
    RResult             : real;          { used by Proc. GetReal, GetInt }
@@ -355,7 +348,7 @@ Var
    OldChoice           : integer;
    NewChoice           : integer;
    Choice              : integer;
-   Menu                : array [1..10] of AnyString;
+   Menu                : array [1..10] of String120;
 
 { Hydvar vars }
    Bhcp                             : real;

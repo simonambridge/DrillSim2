@@ -3,8 +3,7 @@ Unit SimulateRAMs;
 Interface
 
 Uses DrillSimVariables,
-     SimulateMessageToMemo,
-     SimulateScreen,
+     DrillSimMessageToMemo,
      SimulateVolumes;
 
 Procedure RamCheck;  { called from BOPCommands and SetSurfControls }
@@ -35,7 +34,7 @@ Begin
 
     if not (Hydril or BlindRam or PipeRam) then
     Begin
-      DrillingWindow;       { display drilling parameters               }
+      //DrillingWindow;       { display drilling parameters               }
       if ShutIn then        { change status to open if not already open }
       Begin
         ShutIn:=False;      { change to shut-in                   }
@@ -52,7 +51,7 @@ Begin
       End;
     End else
     Begin
-      ShutInWindow;
+      //ShutInWindow;
       if not ShutIn then   { change status to shut in if not already shut in }
       Begin                { ie only do this if rams have just been closed   }
         ShutIn:=True;

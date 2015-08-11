@@ -6,7 +6,7 @@ interface
 
 uses
   cthreads,
-  crt, // for Readkey
+  crt,      // for Readkey
   SysUtils, // for FileExists
   Forms,
   Graphics,
@@ -23,14 +23,22 @@ uses
   DrillSimStartup,
   DrillSimMenu,
   DrillSimFile,
+  DrillSimDataResets,
+  SimulateFile,
   DrillSimDataInput,
-  DrillSimConversions,
   DrillSimUoMMenu,
-  DrillSimSimulate,
-  SimulateMessageToMemo,
+  DrillSimDataUoMConversions,
+  DrillSimUtilities,
+  DrillSimMessageToMemo,
   SimulateCommandProcessor,
   SimulateUpdate,
-  SimulateSurfaceControls;
+  SimulateSurfaceControls,
+  FormDisplayWellData,
+  FormGeneralData,
+  FormHoleData,
+  FormUnitsOfMeasure,
+  SimulateHoleCalcs,
+  SimulateControl;
 
 
 type
@@ -48,6 +56,10 @@ type
     FlowInValue: TLabel;
     FlowOutValue: TLabel;
     DiffFlowValue: TLabel;
+    MenuItem2Geology: TMenuItem;
+    MenuItem2Defaults: TMenuItem;
+    MenuItem2Units: TMenuItem;
+    MenuItem2DisplayWellData: TMenuItem;
     MenuItem2HoleProfile: TMenuItem;
     MenuItem2GeneralData: TMenuItem;
     MenuItem2Preferences: TMenuItem;
@@ -61,8 +73,7 @@ type
     MenuItem2SurfaceEquipment: TMenuItem;
     MenuItem2PumpData: TMenuItem;
     MenuItem2MudData: TMenuItem;
-    MenuItem2DrillingData: TMenuItem;
-    MenuItem2Units: TMenuItem;
+    MenuItem2WellTestData: TMenuItem;
     StandPipePressureValue: TLabel;
     ReturnPitValue: TLabel;
     PipeRamsValue: TLabel;
@@ -161,10 +172,12 @@ type
     procedure ChokePlusClick(Sender: TObject);
     procedure Edit1Click(Sender: TObject);
     procedure Edit1KeyPress(Sender: TObject; var Key: char);
+    procedure MenuItem2DefaultsClick(Sender: TObject);
+    procedure MenuItem2DisplayWellDataClick(Sender: TObject);
+    procedure MenuItem2GeneralDataClick(Sender: TObject);
+    procedure MenuItem2GeologyClick(Sender: TObject);
     procedure MenuItem2HoleProfileClick(Sender: TObject);
     procedure MenuItem1CreateFileClick(Sender: TObject);
-    procedure MenuItem2GeneralDataClick(Sender: TObject);
-    procedure MenuItem2PreferencesClick(Sender: TObject);
     procedure MenuItem1QuitClick(Sender: TObject);
 
     procedure KellyDownClick(Sender: TObject);
@@ -177,7 +190,7 @@ type
     procedure MenuItem2MudDataClick(Sender: TObject);
     procedure MenuItem2PumpDataClick(Sender: TObject);
     procedure MenuItem2SurfaceEquipmentClick(Sender: TObject);
-    procedure MenuItem2DrillingDataClick(Sender: TObject);
+    procedure MenuItem2WellTestDataClick(Sender: TObject);
     procedure MenuItem2UnitsClick(Sender: TObject);
     procedure PipeMinusClick(Sender: TObject);
     procedure PipePlusClick(Sender: TObject);
@@ -212,11 +225,13 @@ type
     public
       Constructor Create(CreateSuspended : boolean);
     end;
-
-
 var
   DrillSim: TDrillSim;
   MyThread : TMyThread;
+  DisplayWellDataForm: TDisplayWellDataForm;
+  GeneralDataForm: TGeneralDataForm;
+  HoleDataForm: THoleDataForm;
+  UnitsOfMeasureForm: TUnitsOfMeasureForm;
 
 implementation
 
@@ -512,7 +527,7 @@ begin
   StringToMemo('Running FormCreate...'); // please wait....
 
   splash := TSplashAbout.Create(nil);
-  SetDefaultValues; // Optional
+  SetDefaultValues; // splash - optional
   splash.ShowSplash;
   Memo1.SelStart:=Length(Memo1.Text);
 
@@ -521,7 +536,7 @@ begin
   Edited:=False;  { start clean }
 
   StringToMemo('Running DrillSim Startup From FormCreate');
-  StartUp;
+  StartUp;     { call DrillSim StartUp }
 
 end;
 
@@ -570,19 +585,39 @@ begin
 
 end;
 
-procedure TDrillSim.MenuItem2HoleProfileClick(Sender: TObject);
+//--------------- Edit Well File Menu
+
+procedure TDrillSim.MenuItem2DisplayWellDataClick(Sender: TObject);
 begin
-  CallHoleData;
+  try
+    DisplayWellDataForm:=TDisplayWellDataForm.Create(Nil);  //DisplayWellData is created
+    DisplayWellDataForm.ShowModal;
+  finally
+    DisplayWellDataForm.Free;
+end;
+
 end;
 
 procedure TDrillSim.MenuItem2GeneralDataClick(Sender: TObject);
 begin
-  if NoFileDefined then LoadFile;
-  if not NoFileDefined then
-  Begin
-    if not NewFile then Data.NewIf0:=Zero;               { force an initialisation in Simulator }
-  End;
-  UpdateGen;
+  try
+    GeneralDataForm:=TGeneralDataForm.Create(Nil);  //General Data Input is created
+    GeneralDataForm.ShowModal;
+  finally
+    GeneralDataForm.Free;
+  end;
+
+end;
+
+procedure TDrillSim.MenuItem2HoleProfileClick(Sender: TObject);
+begin
+  try
+    HoleDataForm:=THoleDataForm.Create(Nil);  //Hole Data Input is created
+    HoleDataForm.ShowModal;
+  finally
+    HoleDataForm.Free;
+  end;
+
 end;
 
 procedure TDrillSim.MenuItem2DrillStringClick(Sender: TObject);
@@ -610,31 +645,92 @@ begin
   UpdateSurf;
 end;
 
-procedure TDrillSim.MenuItem2UnitsClick(Sender: TObject);
+procedure TDrillSim.MenuItem2WellTestDataClick(Sender: TObject);
 begin
-  UnitMenu;
+  UpdateWellTests;
 end;
 
-procedure TDrillSim.MenuItem2DrillingDataClick(Sender: TObject);
+procedure TDrillSim.MenuItem2GeologyClick(Sender: TObject);
 begin
-  UpdateKick;
+
 end;
 
+// ---------- Preferences Menu
+procedure TDrillSim.MenuItem2DefaultsClick(Sender: TObject);
+begin
+
+end;
+
+procedure TDrillSim.MenuItem2UnitsClick(Sender: TObject);  // UoM
+begin
+  try
+    UnitsOfMeasureForm:=TUnitsOfMeasureForm.Create(Nil);
+    UnitsOfMeasureForm.ShowModal;
+  finally
+    UnitsOfMeasureForm.Free;
+  end;
+
+end;
+
+// ----------- Simulate Menu
 procedure TDrillSim.MenuItem3StartClick(Sender: TObject);
 begin
   ConAPI;                 { convert DrillSim file - internally in user units }
   ConAPIKickData;         { Simulator uses internal API units                }
 //  ChDir(OriginDirectory); { ExecuteFlag gets set in Simulator when returning }
   MessageToMemo(100);               { courtesy message         }
-  if NoFIleDefined=false then Simulator;  { do Simulate }
-  StartUp;                { convert back to DrillSim units and load help     }
-end;
+  if NoFIleDefined=false then
+  Begin
+    ChDir(LoggedDirectory);         { set to Logged directory first          }
 
-procedure TDrillSim.MenuItem2PreferencesClick(Sender: TObject);
-begin
-  SetDefaultDirectory;
-  SetDefaultFile;
-end;
+                                   { if Quit=T  resets to Origin directory  }
+                                   { All file and Path functions use the    }
+                                   { Logged directory                       }
+
+    if NoFileDefined then           { check for no file in use               }
+    Begin
+      FileName:='no file';          { set file name for load window          }
+      SimulateLoadFile;                     { and go prompt for one                  }
+    End;
+
+    if not NoFileDefined then       { if file defined, continue into Simulator }
+    Begin
+      InitMud;                      { set the system OriginalMudWt etc.      }
+
+      InitDepth;                    { depths used for reset are the current  }
+                                   { depths at the start of this session    }
+                                   { which may not be the original depths   }
+
+      InitKick;                     { Set up and initialise if NeverSimulated }
+
+      InitGeology;                  { find current position within geological}
+                                   { table. Also done on Load and Clear     }
+      GetCurrentTime (t);
+      Data.t2:=t.Seconds;             { initialize time                    }
+
+      SimHoleCalc;                    { calculate volumes                  }
+
+      FlowUpdate;                     { set up flow in                     }
+      //InitialiseKelly;                { draw it at the top                 }
+      SetKelly;                       { move kelly to drilling position    }
+      SetSurfControls;                { set RAMs and choke line            }
+
+
+      // THIS GOES IN THE THREAD !!!
+      //Control;                        { Call simulater controller, fall    }
+                                     { through to SelectMenu when Quit=T  }
+
+    End;                              { still no file, then return to DrillSim }
+  End;
+
+                                   { Edited set to FALSE when a file is     }
+                                   { loaded. Therefore the start up file    }
+                                   { and any subsequently loaded will be    }
+                                   { able to detect if the data is altered  }
+                                   { even when going in and out of DrillSim }
+   // StartUp;                { convert back to DrillSim units and load help     }
+End;
+
 
 
 {* ============================ Threads ================================= *}

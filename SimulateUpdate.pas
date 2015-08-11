@@ -45,7 +45,7 @@ Begin
                                           { correct erasure of bushing if KD }
     if Data.KelHt < 4.5 then ////Disp(37,13,Bushing[CurrentBushing]);
   End;
-  Str(Data.KelHt / con[1]:5:2,TempString);
+  Str(Data.KelHt / UoMConverter[1]:5:2,TempString);
   LastKelHt:=Data.KelHt;
   AttrByte:=TAttr;
   ////Disp(46,3,TempString);     { must be done after resetting color attr to }
@@ -69,7 +69,7 @@ Begin
       End;
     End else DrawKelly;           { draw it in case KelHt=33               }
     LastKelHt:=KelHt;
-    Str(Data.KelHt / con[1]:5:2,TempString);
+    Str(Data.KelHt / UoMConverter[1]:5:2,TempString);
     ////Disp(46,3,TempString);
   End;
 End;
@@ -119,14 +119,14 @@ Begin
 
     if MwIn <> LastMwIn then
     Begin
-      Str(MwIn / con[2]:6:3,TempString);
+      Str(MwIn / UoMConverter[2]:6:3,TempString);
       ////Disp(43,17,TempString);
       LastMwIn:=MwIn;
     End;
 
     if MwOut <> LastMwOut then
     Begin
-      Str(MwOut / con[2]:6:3,TempString);
+      Str(MwOut / UoMConverter[2]:6:3,TempString);
       ////Disp(43,19,TempString);
       LastMwOut:=MwOut;
     End;
@@ -140,28 +140,28 @@ Begin
 
     if FlowIn <> LastFlowIn then
     Begin
-      Str(FlowIn / con[5]:8:2,TempString);
+      Str(FlowIn / UoMConverter[5]:8:2,TempString);
       ////Disp(66,13,TempString);
       LastFlowIn:=FlowIn;
     End;
 
     if FlowOut <> LastFlowOut then
     Begin
-      Str(FlowOut / con[5]:8:2,TempString);
+      Str(FlowOut / UoMConverter[5]:8:2,TempString);
       ////Disp(66,15,TempString);
       LastFlowOut:=FlowOut;
     End;
 
     if PlCirc <> LastPlCirc then
     Begin
-      Str(PlCirc / con[3]:8:2,TempString);
+      Str(PlCirc / UoMConverter[3]:8:2,TempString);
       ////Disp(66,18,TempString);
       LastPlCirc:=PlCirc;
     End;
 
     if RetPitVol <> LastRetPitVol then
     Begin
-      Str(RetPitVol / con[4]:8:2,TempString);
+      Str(RetPitVol / UoMConverter[4]:8:2,TempString);
       ////Disp(66,21,TempString);
       LastRetPitVol:=RetPitVol;
     End;
@@ -169,7 +169,7 @@ Begin
     PitGain:=FlowOut - FlowIn;              { Check Differential Flow }
     if PitGain <> LastPitGain then
     Begin
-      Str(PitGain / Bbl2Gal / con[4]:8:3,TempString);
+      Str(PitGain / Bbl2Gal / UoMConverter[4]:8:3,TempString);
       ////Disp(66,23,TempString);
       LastPitGain:=PitGain;
     End;
@@ -189,13 +189,13 @@ Begin
   Begin
     if BitTD <> LastBitTD then
     Begin
-      Str(BitTD / con[1]:8:2,TempString);
+      Str(BitTD / UoMConverter[1]:8:2,TempString);
       ////Disp(15,3,TempString);
       LastBitTD:=BitTD;
     End;
     if TD <> LastTD then
     Begin
-      Str(TD / con[1]:8:2,TempString);
+      Str(TD / UoMConverter[1]:8:2,TempString);
       ////Disp(15,6,TempString);
       LastTD:=TD;
     End;
@@ -209,13 +209,13 @@ Begin
   Begin
     if BHPAnn <> LastBHPAnn then
     Begin
-      Str(BHPAnn / con[3]:8:2,TempString);
+      Str(BHPAnn / UoMConverter[3]:8:2,TempString);
       ////Disp(15,9,TempString);
       LastBHPAnn:=BHPAnn;
     End;
     if CasingPressure <> LastCasingPressure then
     Begin
-      Str(CasingPressure / con[3]:8:2,TempString);
+      Str(CasingPressure / UoMConverter[3]:8:2,TempString);
       ////Disp(15,12,TempString);
       LastCasingPressure:=CasingPressure;
     End;
@@ -230,7 +230,7 @@ Begin
     DepthUpdate;
     if WOB <> LastWOB then
     Begin
-      Str(WOB / con[7]:8:2,TempString);
+      Str(WOB / UoMConverter[7]:8:2,TempString);
       ////Disp(15,9,TempString);
       LastWOB:=WOB;
     End;
@@ -242,7 +242,7 @@ Begin
     End;
     if ROP <> LastROP then
     Begin
-      Str(ROP * con[1]:6:2,TempString);
+      Str(ROP * UoMConverter[1]:6:2,TempString);
       ////Disp(46,13,TempString);
       LastROP:=ROP;
     End;

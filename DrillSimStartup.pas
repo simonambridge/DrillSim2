@@ -66,6 +66,7 @@ Begin
   LstString:='';
 
   APIUnits;     { Initial default unit type   }
+                {* set UoMLabel, UoMCOnverter and UoMDescriptor *}
   InitData;     { zero all main file variables }
   writeln('Well <' + Data.WellName + '>');
 
@@ -123,8 +124,7 @@ Begin
   StringToMemo('DrillSim Startup complete');
 
   StringToMemo('Well <' + Data.WellName + '>');
-  StringToMemo('Units selected: '+ Data.UoMLabel);
-  StringToMemo('API: ' + BoolToStr(Data.API));
+  StringToMemo('Units selected: '+ UoMDescriptor);
 
 End;
 

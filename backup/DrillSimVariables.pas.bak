@@ -3,18 +3,17 @@ Unit DrillSimVariables;
 Interface
 
 uses
-Forms, Controls, Graphics, Dialogs, Menus, StdCtrls, ExtCtrls,
-  usplashabout;
+Forms, Controls, Graphics, Dialogs, Menus, ExtCtrls;
 
 Type
 
 
-    String120     =  string[120];
-    String20      = string[20];
-    String60    =  string[60];
+    String120 =  string[120];
+    String20  = string[20];
+    String60  =  string[60];
     String3   =  string[3];
 
-    AttrType      =  byte;
+    AttrType  =  byte;
 
     MudRec     =  Record
                     StartStrokes : real;  { StrokeCounter @ start circ' }
@@ -40,11 +39,11 @@ Type
     HelpSet    = Record
                    HelpText : array[1..200] of String60;
                  End;
+    Test              = array[1..7] of real;
 
     WellData   = Record
                    TD, BitTD           : real;
                    API                 : boolean;
-                   SpareBoolean1       : boolean; { * }
                    Pumping             : boolean;
                    Drilling            : boolean;
                    AutoDrill           : boolean;
@@ -53,15 +52,8 @@ Type
                    PipeRam             : boolean;
                    Hydril              : boolean;
                    FlowLine            : boolean;
-
-                   SpareBoolean2       : boolean; { * }
-
                    Bingham             : boolean;
                    UpdateFlow          : boolean;
-
-                   SpareBoolean3       : boolean; { * }
-                   SpareBoolean4       : boolean; { * }
-
                    PmpOp               : array[1..3] of real;
                    FillCE              : array[1..4] of real;
                    FillOE              : array[1..4] of real;
@@ -170,11 +162,6 @@ Type
 
                    FormationPressureGradient    : real;
                    BurstPressure                : real;
-                   SpareReal3                   : real; { * }
-                   SpareReal4                   : real; { * }
-                   SpareReal5                   : real; { * }
-                   SpareReal6                   : real; { * }
-                   SpareReal7                   : real; { * }
                    InfluxDensity                : real;
                    PipeRAMRating                : real;
                    HydrilRating                 : real;
@@ -188,14 +175,8 @@ Type
                    MudYp               : real;
                    MudGel              : real;
                    RetPitVol           : real;
-                   SpareReal8 : real; { * }
 
-                   Con    : array[1..7] of real;
-                   Lab    : array[1..7] of String3;
-                   UoMLabel   : String20; { Text string describing Units in use }
 
-                   SpareInt1 : integer; { * }
-                   SpareInt2 : integer; { * }
                  End;
 
       ColorSet        = (NormColors, { grey on blue }
@@ -302,9 +283,11 @@ Var
    Error               : boolean;
    NoFileDefined       : boolean;
    HelpFileFound       : boolean;
-   con                 : array[1..7] of real;
-   lab                 : array[1..7] of String3;
+
+   UoMConverter        : array[1..7] of real;
+   UoMLabel            : array[1..7] of String3;
    ROPLab              : String[20];
+
    TurbFlag            : boolean;
    FlowMode            : String20;
    Model               : String20;

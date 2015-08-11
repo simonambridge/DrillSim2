@@ -16,9 +16,9 @@ Implementation
 
 Procedure ShowUnits(UnitType : String120; UnitNumber, LineNumber : integer);
 Begin
-  Str(con[UnitNumber]:10:5,TempString);
+  Str(UoMConverter[UnitNumber]:10:5,TempString);
   //Disp(12,LineNumber,UnitType);
-  //Disp(36,LineNumber,lab[UnitNumber]);
+  //Disp(36,LineNumber,UoMLabel[UnitNumber]);
   //Disp(50,LineNumber,TempString);
 End;
 
@@ -46,21 +46,21 @@ Begin
 
   gotoxy(38,LineNumber); { read new value, if any }
   read(Instring);
-  if length(Instring) > Zero then Lab[UnitNumber]:=Instring;
-  gotoxy(38,LineNumber); write(Lab[UnitNumber]);  { write new/old value }
+  if length(Instring) > Zero then  UoMLabel[UnitNumber]:=Instring;
+  gotoxy(38,LineNumber); write(UoMLabel[UnitNumber]);  { write new/old value }
 
   Repeat
-    Str(Con[UnitNumber]:10:5,TempString);
-    //Disp(45,LineNumber,TempString + ' :');  { write current conversion factor }
+    Str(UoMConverter[UnitNumber]:10:5,TempString);
+    //Disp(45,LineNumber,TempString + ' :');  { write current UoMConverter }
 
     gotoxy(58,LineNumber); { read new value, if any }
     read(Instring);
-    if length(Instring) > Zero then Val(Instring,Con[UnitNumber],i);
-//    if Con[UnitNumber]=Zero then LowBeep;
-  Until Con[UnitNumber]<>Zero;
+    if length(Instring) > Zero then Val(Instring,UoMConverter[UnitNumber],i);
+//    if UoMConverter[UnitNumber]=Zero then LowBeep;
+  Until UoMConverter[UnitNumber]<>Zero;
 
   gotoxy(58,LineNumber);
-  write(Con[UnitNumber]:8:5);                      { write new/old value }
+  write(UoMConverter[UnitNumber]:8:5);                      { write new/old value }
   TextColor(LightGray);
 End;
 
@@ -80,7 +80,7 @@ End;
 
 Procedure UnitScreen;
 Begin
-  StringToMemo('Selected Units : ' + Data.UoMLabel);
+  StringToMemo('Selected Units : ' + UoMDescriptor);
 
   //Box(10,4,70,20);
   gotoxy(12,5); write('TYPE');
@@ -141,7 +141,7 @@ Begin
   NewChoice:=1;
   ConAPI;                        { Convert to API prior to selection }
   ConAPIKickData;
-  StringToMemo('Current units are '+Data.UoMLabel);
+  StringToMemo('Current units are '+ UoMDescriptor);
 
   Repeat
     Normal(OldChoice);

@@ -3,11 +3,11 @@ Unit DrillSimUtilities;
 Interface
 
 Uses Crt,
+     Dos,
      DrillSimVariables,
      HyCalcVariables,
      Dialogs, StdCtrls;
 
-Procedure WriteTitle(Help, ESC, CR : boolean);
 Procedure SystemError(x: integer);
 Procedure GetKey;
 Procedure ExitPrompt;    { display "press any key..." and clear all messages }
@@ -19,57 +19,21 @@ Procedure GetInt(x, y, z : integer);
 Procedure HelpWindow(Index : integer);
 Procedure ConReal(Variable : real; Field,DPlaces : integer);
 Procedure ConInt(Variable : integer; Field : integer);
+Procedure GetCurrentDate (Var d : Date);
+Procedure GetCurrentTime (Var t : Time);
 
 Implementation
 
-Procedure WriteTitle(Help, ESC, CR : boolean);
-Var ModeString : AnyString;
+Procedure GetCurrentDate (Var d : Date);
 Begin
-  TAttr:=AttrByte;
-  //SetColorSet(NormColors);
-  Window(1,1,80,25);           { set full window addressing }
-  TextBackground(Blue);
-  TextColor(LightGray);
-  ClrScr;
-
-  //LineDraw(1,80,2);            { top horizontal line }
-  //Disp(17,1,chr($b3));         { top vertical separators }
-  //Disp(17,2,chr($c1));
-  //Disp(63,1,chr($b3));
-  //Disp(63,2,chr($c1));
-
-//  LineDraw(1,80,24);           { bottom horizontal line }
-  //Disp(40,24,chr($c2));        { bottom vertical separators }
-  //Disp(40,25,chr($b3));
-
-  //Disp(64,24,chr($c2));
-  //Disp(64,25,chr($b3));
-
-  //Disp(70,24,chr($c2));
-  //Disp(70,25,chr($b3));
-
-  //Disp(76,24,chr($c2));
-  //Disp(76,25,chr($b3));
-
-
-  //SetColorSet(TitleColors);                  { yellow on blue }
-  //Disp(2,1,Title+' V' + VersionNumber);
-  //Disp(65,1,'File : ' + FileName);
-
-  if CR   then //Disp(66,25,Enter);
-  if ESC  then //Disp(72,25,'ESC');
-  if Help then //Disp(78,25,'F1');
-
-  //Disp(19,1,CurrentMode);
-
-  //SetColorSet(DataColors);
-  if Create then ModeString:='Create - ' + Mode
-            else ModeString:=Mode;
-
-  //Disp(26,1,ModeString);
-
-  AttrByte:=TAttr;
+  GetDate(d.Year, d.Month, d.day, d.DayOfWeek);
 End;
+
+Procedure GetCurrentTime (Var t : Time);
+Begin
+  GetTime(t.Hours, t.Minutes, t.Seconds, t.Hundredths);
+End;
+
 
 
 Procedure SystemError(x: integer);

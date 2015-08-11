@@ -3,18 +3,17 @@ Unit DrillSimVariables;
 Interface
 
 uses
-Forms, Controls, Graphics, Dialogs, Menus, StdCtrls, ExtCtrls,
-  usplashabout;
+Forms, Controls, Graphics, Dialogs, Menus, ExtCtrls;
 
 Type
 
 
-    String120     =  string[120];
-    String20      = string[20];
-    String60    =  string[60];
+    String120 =  string[120];
+    String20  = string[20];
+    String60  =  string[60];
     String3   =  string[3];
 
-    AttrType      =  byte;
+    AttrType  =  byte;
 
     MudRec     =  Record
                     StartStrokes : real;  { StrokeCounter @ start circ' }
@@ -40,11 +39,11 @@ Type
     HelpSet    = Record
                    HelpText : array[1..200] of String60;
                  End;
+    Test              = array[1..7] of real;
 
     WellData   = Record
                    TD, BitTD           : real;
                    API                 : boolean;
-                   SpareBoolean1       : boolean; { * }
                    Pumping             : boolean;
                    Drilling            : boolean;
                    AutoDrill           : boolean;
@@ -53,15 +52,8 @@ Type
                    PipeRam             : boolean;
                    Hydril              : boolean;
                    FlowLine            : boolean;
-
-                   SpareBoolean2       : boolean; { * }
-
                    Bingham             : boolean;
                    UpdateFlow          : boolean;
-
-                   SpareBoolean3       : boolean; { * }
-                   SpareBoolean4       : boolean; { * }
-
                    PmpOp               : array[1..3] of real;
                    FillCE              : array[1..4] of real;
                    FillOE              : array[1..4] of real;
@@ -184,9 +176,6 @@ Type
                    MudGel              : real;
                    RetPitVol           : real;
 
-                   Con    : array[1..7] of real;
-                   Lab    : array[1..7] of String3;
-                   UoMLabel   : String20; { Text string describing Units in use }
 
                  End;
 
@@ -294,9 +283,12 @@ Var
    Error               : boolean;
    NoFileDefined       : boolean;
    HelpFileFound       : boolean;
-   con                 : array[1..7] of real;
-   lab                 : array[1..7] of String3;
+
+   UoMConverter        : array[1..7] of real;
+   UoMLabel            : array[1..7] of String3;
+   UoMDescriptor       : String[20];
    ROPLab              : String[20];
+
    TurbFlag            : boolean;
    FlowMode            : String20;
    Model               : String20;

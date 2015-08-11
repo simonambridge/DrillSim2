@@ -102,7 +102,7 @@ Begin
     Rock[1].Depth:=Hole[MaxHoles,1];   { define default formation }
     Rock[1].Hardness:=1;
     if Offshore then x:=0.442 else x:=0.4332; { x = norm. gradient * 0.052 }
-    Rock[1].FP:=((Hole[MaxHoles,1] * con[1]) * x) / con[3];
+    Rock[1].FP:=((Hole[MaxHoles,1] * UoMConverter[1]) * x) / UoMConverter[3];
     For i:=2 to 10 do                  { and zero the rest        }
     Begin
       Rock[i].Depth:=Zero;

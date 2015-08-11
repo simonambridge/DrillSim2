@@ -123,7 +123,8 @@ Begin
   StringToMemo('DrillSim Startup complete');
 
   StringToMemo('Well <' + Data.WellName + '>');
-  StringToMemo('Units are : '+ Data.UoMLabel);
+  StringToMemo('Units selected: '+ UoMDescriptor);
+  StringToMemo('API: ' + BoolToStr(Data.API));
 
 End;
 

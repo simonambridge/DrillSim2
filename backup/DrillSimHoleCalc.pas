@@ -3,7 +3,7 @@ Unit DrillSimHoleCalc;
 Interface
 
 Uses DrillSimVariables,
-     DrillSimConversions;
+     DrillSimDataUoMConversions;
 
 Procedure DSHoleCalc;                  { Procedure To Determine Hole Profile }
 
@@ -41,7 +41,7 @@ Begin
   ConAPIKickData;
   With Data do
   Begin
-    TempCount:=Zero;                   { Create and Edit set NewIf0 to 0 }
+    TempCount:=Zero;                   { Create and Edit set NeverSimulated }
 
     if Riser then                      { Assign Hole Sections To Temp[*] }
     Begin

@@ -8,12 +8,13 @@ Uses Dos,Crt,
      DrillSimFile,
      DrillSimUtilities,
      DrillSimUnitsOfMeasure,
-     DrillSimConversions,
+     DrillSimDataUoMConversions,
      DrillSimHoleCalc,
      DrillSimUoMMenu,
      DrillSimDataInput,
      DrillSimStartup,
-     SimulateMessageToMemo;
+     DrillSimDataResets,
+     DrillSimMessageToMemo;
 
 Procedure CallHoleData;
 Procedure CreateFile;
@@ -116,7 +117,6 @@ End;
 Procedure ErrorScreen;
 Begin
   Mode:=ErrorMode;                    { Hole/Pipe data error screen }
-  WriteTitle(False,False,False);
 
   Window(13,5,67,19);
   TextBackground(Red);
@@ -190,7 +190,7 @@ End;
 Procedure CreateFile;
 Begin
   Create:=True;
-  InitData;                             { and sets NewIf0 to Zero }
+  InitData;                             { Set NeverSimulated }
   APIUnits;                             { Default to API units    }
   UnitMenu;                             { then get selected units }
   UpdateGen;
@@ -200,7 +200,7 @@ Begin
   UpdateMud;
   UpdatePump;
   UpdateSurf;
-  UpDateKick;
+  UpDateWellTests;
   NoData:=False;
   SaveData;
   Create:=False;

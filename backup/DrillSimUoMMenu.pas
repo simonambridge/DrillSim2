@@ -4,9 +4,9 @@ Interface
 Uses Crt,
      DrillSimVariables,
      DrillSimUnitsOfMeasure,
-     DrillSimConversions,
+     DrillSimDataUoMConversions,
      DrillSimUtilities,
-     SimulateMessageToMemo;
+     DrillSimMessageToMemo;
 
 Procedure UnitMenu;
 
@@ -14,7 +14,7 @@ Implementation
 
 {*********************** Units Definition **************************}
 
-Procedure ShowUnits(UnitType : AnyString; UnitNumber, LineNumber : integer);
+Procedure ShowUnits(UnitType : String120; UnitNumber, LineNumber : integer);
 Begin
   Str(con[UnitNumber]:10:5,TempString);
   //Disp(12,LineNumber,UnitType);
@@ -37,7 +37,7 @@ Begin
 End;
 
 
-Procedure GetUserUnits(UnitType : AnyString; UnitNumber, LineNumber : integer);
+Procedure GetUserUnits(UnitType : String120; UnitNumber, LineNumber : integer);
 var i : integer;
 Begin
   //Disp(12,LineNumber,UnitType);                   { display unit type }
@@ -80,8 +80,7 @@ End;
 
 Procedure UnitScreen;
 Begin
-  WriteTitle(False,True,True);
-  StringToMemo('Selected Units : ' + Data.UserType);
+  StringToMemo('Selected Units : ' + Data.UoMLabel);
 
   //Box(10,4,70,20);
   gotoxy(12,5); write('TYPE');
@@ -115,20 +114,22 @@ Begin
   DisplayUnits;
 End;
 
+{*
 Procedure MenuChoice3;
 Begin
-  if NewFile then APIUnits;
-  Data.UserType:='User Defined';
+  if NewFile then APIUnits;     { initialise them }
+  Data.UnitType:='User Defined';
   UnitScreen;
   UserScreen;
 End;
 
+*}
+
 Begin
   Mode  := UnitMode;
-  WriteTitle(False,False,True);
   Menu[1]:='API.......................1';
   Menu[2]:='Metric....................2';
-  Menu[3]:='User......................3';
+{*  Menu[3]:='User......................3'; *}
   Menu[4]:='Accept Current Units......4';
 
   //Box(25,6,55,12);            { set menu box colours and draw box }
@@ -140,7 +141,7 @@ Begin
   NewChoice:=1;
   ConAPI;                        { Convert to API prior to selection }
   ConAPIKickData;
-  StringToMemo('Current units are '+Data.UserType);
+  StringToMemo('Current units are '+Data.UoMLabel);
 
   Repeat
     Normal(OldChoice);
@@ -152,13 +153,13 @@ Begin
     Case CharInput of
       '1' : MenuChoice1;
       '2' : MenuChoice2;
-      '3' : MenuChoice3;    { choice=4 will fall through - no change }
+    {*  '3' : MenuChoice3;    { choice=4 will fall through - no change }    *}
       ' ' : Choice:=Choice+1;
       ^M  : Begin
               Case Choice of
                 1 : MenuChoice1;
                 2 : MenuChoice2;
-                3 : MenuChoice3;
+             {*   3 : MenuChoice3;  *}
               End;
             End;
       #0  : Begin

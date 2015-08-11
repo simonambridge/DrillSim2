@@ -4,9 +4,9 @@ Interface
 
 Uses Crt,
      DrillSimVariables,
-     SimulateMessageToMemo,
-     SimulateClear,
-     SimulateUpdate;
+     DrillSimMessageToMemo,
+     SimulateUpdate,
+     DrillSimDataResets;
 
 Procedure ControlChecks;
 

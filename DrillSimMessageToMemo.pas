@@ -65,8 +65,8 @@ Begin
             ThisString:='HHP Total : ' + ThisString;
           End;
      20 : Begin
-            Str(MWIn / con[2]:5:2,ThisString);
-            ThisString:='MW in : ' + ThisString + Space + lab[2];
+            Str(MWIn / UoMConverter[2]:5:2,ThisString);
+            ThisString:='MW in : ' + ThisString + Space + UoMLabel[2];
           End;
      21 : Begin
             Str(MudPv:3:Zero,ThisString);
@@ -81,32 +81,32 @@ Begin
             ThisString:='Gel in : ' + ThisString;
           End;
      24 : Begin
-            Str(PlSurf / con[3]:5:2,ThisString);
-            ThisString:='Pl S.Eqpt : ' + ThisString + Space + lab[3];
+            Str(PlSurf / UoMConverter[3]:5:2,ThisString);
+            ThisString:='Pl S.Eqpt : ' + ThisString + Space + UoMLabel[3];
           End;
      25 : Begin
-            Str(PlPipe / con[3]:5:2,ThisString);
-            ThisString:='Pl Pipe : ' + ThisString + Space + lab[3];
+            Str(PlPipe / UoMConverter[3]:5:2,ThisString);
+            ThisString:='Pl Pipe : ' + ThisString + Space + UoMLabel[3];
           End;
      26 : Begin
-            Str(PlBit / con[3]:5:2,ThisString);
-            ThisString:='Pl Bit : ' + ThisString  + Space + lab[3];
+            Str(PlBit / UoMConverter[3]:5:2,ThisString);
+            ThisString:='Pl Bit : ' + ThisString  + Space + UoMLabel[3];
           End;
      27 : Begin
-            Str(PlAnn / con[3]:5:2,ThisString);
-            ThisString:='Pl Ann. : ' + ThisString  + Space + lab[3];
+            Str(PlAnn / UoMConverter[3]:5:2,ThisString);
+            ThisString:='Pl Ann. : ' + ThisString  + Space + UoMLabel[3];
           End;
      28 : Begin
-            Str((PlSurf+PlAnn+PlBit+PlPipe+PlChoke+ChokeLinePl) / con[3]:5:2,ThisString);
-            ThisString:='Total : ' + ThisString  + Space + lab[3];
+            Str((PlSurf+PlAnn+PlBit+PlPipe+PlChoke+ChokeLinePl) / UoMConverter[3]:5:2,ThisString);
+            ThisString:='Total : ' + ThisString  + Space + UoMLabel[3];
           End;
      29 : Begin
-            Str(BHPAnn / con[3]:5:2,ThisString);
-            ThisString:='BHP Ann : ' + ThisString  + Space + lab[3];
+            Str(BHPAnn / UoMConverter[3]:5:2,ThisString);
+            ThisString:='BHP Ann : ' + ThisString  + Space + UoMLabel[3];
           End;
      30 : Begin
-            Str(AverageHhd / con[3]:5:2,ThisString);
-            ThisString:='Ave Hhd : ' + ThisString  + Space + lab[3];
+            Str(AverageHhd / UoMConverter[3]:5:2,ThisString);
+            ThisString:='Ave Hhd : ' + ThisString  + Space + UoMLabel[3];
           End;
      31 : ThisString:='Mode = Bingham';
      32 : ThisString:='Mode = Power Law';
@@ -116,40 +116,40 @@ Begin
             ThisString:='' + ThisString  + Space + '   SPM ?'
           End;
      35 : Begin
-            Str(Pump[1,5] / con[3]:8:2,ThisString);
-            ThisString:='' + ThisString  + Space + lab[3] + ' ? ';
+            Str(Pump[1,5] / UoMConverter[3]:8:2,ThisString);
+            ThisString:='' + ThisString  + Space + UoMLabel[3] + ' ? ';
           End;
      36 : Begin
             Str(Pump[2,4]:5:Zero,ThisString);
             ThisString:='' + ThisString  + Space + '   SPM ?';
           End;
      37 : Begin
-            Str(Pump[2,5] / con[3]:8:2,ThisString);
-            ThisString:='' + ThisString  + Space + lab[3] + ' ? ';
+            Str(Pump[2,5] / UoMConverter[3]:8:2,ThisString);
+            ThisString:='' + ThisString  + Space + UoMLabel[3] + ' ? ';
           End;
      38 : Begin
-            Str(WOH / con[7]:6:2,ThisString);
-            ThisString:='WOH : ' + ThisString + Space + lab[7];
+            Str(WOH / UoMConverter[7]:6:2,ThisString);
+            ThisString:='WOH : ' + ThisString + Space + UoMLabel[7];
           End;
      39 : Begin
-            Str(StrWt / con[7]:6:2,ThisString);
-            ThisString:='Str. Wt : ' + ThisString  + Space + lab[7];
+            Str(StrWt / UoMConverter[7]:6:2,ThisString);
+            ThisString:='Str. Wt : ' + ThisString  + Space + UoMLabel[7];
           End;
      40 : Begin
-            Str(ECD / con[2]:6:3,ThisString);
-            ThisString:='ECD : ' + ThisString  + Space + lab[2];
+            Str(ECD / UoMConverter[2]:6:3,ThisString);
+            ThisString:='ECD : ' + ThisString  + Space + UoMLabel[2];
           End;
      41 : Begin
-            Str(MudWt / con[2]:6:3,ThisString);
-            ThisString:='Av. MW : ' + ThisString  + Space + lab[2];
+            Str(MudWt / UoMConverter[2]:6:3,ThisString);
+            ThisString:='Av. MW : ' + ThisString  + Space + UoMLabel[2];
           End;
      42 : Begin
-            Str(AnnMW / con[2]:6:3,ThisString);
-            ThisString:='Ann. MW : ' + ThisString  + Space + lab[2];
+            Str(AnnMW / UoMConverter[2]:6:3,ThisString);
+            ThisString:='Ann. MW : ' + ThisString  + Space + UoMLabel[2];
           End;
      43 : Begin
-            Str(PipeMW / con[2]:6:3,ThisString);
-            ThisString:='Pipe MW : ' + ThisString  + Space + lab[2];
+            Str(PipeMW / UoMConverter[2]:6:3,ThisString);
+            ThisString:='Pipe MW : ' + ThisString  + Space + UoMLabel[2];
           End;
      44 : Begin
             Str(Fn:6:2,ThisString);
@@ -157,7 +157,7 @@ Begin
           End;
      45 : Begin
             Str(Fk:6:2,ThisString);
-            ThisString:='Exp "k" : ' + ThisString  + Space + lab[3];
+            ThisString:='Exp "k" : ' + ThisString  + Space + UoMLabel[3];
           End;
      46 : Begin
             Str(LagUS:8:Zero,ThisString);
@@ -168,30 +168,30 @@ Begin
             ThisString:='Lag Up : ' + ThisString  + ' min';
           End;
      48 : Begin
-            Str(AnnVol/con[4]:6:2,ThisString);
-            ThisString:='Ann. Vol. : ' + ThisString  + Space + lab[4];
+            Str(AnnVol/UoMConverter[4]:6:2,ThisString);
+            ThisString:='Ann. Vol. : ' + ThisString  + Space + UoMLabel[4];
           End;
      49 : Begin
-            Str(PipeCap/con[4]:6:2,ThisString);
-            ThisString:='Pipe Vol. : ' + ThisString  + Space + lab[4];
+            Str(PipeCap/UoMConverter[4]:6:2,ThisString);
+            ThisString:='Pipe Vol. : ' + ThisString  + Space + UoMLabel[4];
           End;
      50 : Begin
-            Str(MudVol/con[4]:6:2,ThisString);
-            ThisString:='Mud Vol. : ' + ThisString  + Space + lab[4];
+            Str(MudVol/UoMConverter[4]:6:2,ThisString);
+            ThisString:='Mud Vol. : ' + ThisString  + Space + UoMLabel[4];
           End;
      51 : Begin
-            Str(WellVol/con[4]:6:2,ThisString);
-            ThisString:='Well ' + ThisString  + Space + lab[4];
+            Str(WellVol/UoMConverter[4]:6:2,ThisString);
+            ThisString:='Well ' + ThisString  + Space + UoMLabel[4];
           End;
      52 : ThisString:='Bushing not in table';
      53 : Begin
-            Str((Rock[RockPointer].FP + MACP) / con[3]:5:2,ThisString);
-            ThisString:='MACP : ' + ThisString  + Space + lab[3];
+            Str((Rock[RockPointer].FP + MACP) / UoMConverter[3]:5:2,ThisString);
+            ThisString:='MACP : ' + ThisString  + Space + UoMLabel[3];
           End;
      54 : ThisString:='Losing to formation';
      55 : Begin
-            Str((PlChoke+ChokeLinePl) / con[3]:5:2,ThisString);
-            ThisString:='Pl Choke: ' + ThisString + Space + lab[3];
+            Str((PlChoke+ChokeLinePl) / UoMConverter[3]:5:2,ThisString);
+            ThisString:='Pl Choke: ' + ThisString + Space + UoMLabel[3];
           End;
      56 : Begin
             Str(WaterFraction * 100:5:2,ThisString);
@@ -207,20 +207,20 @@ Begin
           End;
      59 : ThisString:='Version ' + VersionNumber + ' ' + VersionDate;
      60 : Begin
-            Str(HoleVol / con[4]:6:2,ThisString);
-            ThisString:='Hole Vol. : ' + ThisString  + Space + lab[4];
+            Str(HoleVol / UoMConverter[4]:6:2,ThisString);
+            ThisString:='Hole Vol. : ' + ThisString  + Space + UoMLabel[4];
           End;
      61 : Begin
-            Str(AnnUnderbalance / con[3]:5:2,ThisString);
-            ThisString:='Ann U/b : ' + ThisString  + Space + lab[3];
+            Str(AnnUnderbalance / UoMConverter[3]:5:2,ThisString);
+            ThisString:='Ann U/b : ' + ThisString  + Space + UoMLabel[3];
           End;
      62 : Begin
-            Str(PipeHhd / con[3]:5:2,ThisString);
-            ThisString:='P.Head : ' + ThisString  + Space + lab[3];
+            Str(PipeHhd / UoMConverter[3]:5:2,ThisString);
+            ThisString:='P.Head : ' + ThisString  + Space + UoMLabel[3];
           End;
      63 : Begin
-            Str(AnnHhd / con[3]:5:2,ThisString);
-            ThisString:='A.Head : ' + ThisString  + Space + lab[3];
+            Str(AnnHhd / UoMConverter[3]:5:2,ThisString);
+            ThisString:='A.Head : ' + ThisString  + Space + UoMLabel[3];
           End;
      64 : ThisString:='Chokeline is open';
 
@@ -233,8 +233,8 @@ Begin
      68 : ThisString:='Turn off pumps';
 
      69 : Begin
-            Str(Data.Rock[RockPointer].FP / con[3]:5:2,ThisString);
-            ThisString:='Form Pr.: ' + ThisString + Space + lab[3];
+            Str(Data.Rock[RockPointer].FP / UoMConverter[3]:5:2,ThisString);
+            ThisString:='Form Pr.: ' + ThisString + Space + UoMLabel[3];
           End;
 
      70 : ThisString:='Casing Failure!!!!!!!';
@@ -251,16 +251,16 @@ Begin
      74 : ThisString:='Twisted off!!!!!!!';
 
      75 : Begin
-            Str(TwistOff / con[7]:5:2,ThisString);
-            ThisString:='Twist off @ ' + ThisString + Space + lab[7];
+            Str(TwistOff / UoMConverter[7]:5:2,ThisString);
+            ThisString:='Twist off @ ' + ThisString + Space + UoMLabel[7];
           End;
      76 : Begin
-            Str((LastKD + 27) / con[1]:8:2,ThisString);
-            ThisString:='K. down :' + ThisString + Space + lab[1];
+            Str((LastKD + 27) / UoMConverter[1]:8:2,ThisString);
+            ThisString:='K. down :' + ThisString + Space + UoMLabel[1];
           End;
      77 : Begin
-            Str((RetPitVol) / con[4]:8:2,ThisString);
-            ThisString:='Pit Vol :' + ThisString + Space + lab[4];
+            Str((RetPitVol) / UoMConverter[4]:8:2,ThisString);
+            ThisString:='Pit Vol :' + ThisString + Space + UoMLabel[4];
           End;
      78 : Begin
             ThisString:='Saving '+ FileName;    { called by SaveData }

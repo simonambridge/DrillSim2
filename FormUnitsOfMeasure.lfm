@@ -182,7 +182,7 @@ object UnitsOfMeasureForm: TUnitsOfMeasureForm
     Width = 76
     TabOrder = 22
   end
-  object FlowMultiplierLabelData: TEdit
+  object FlowVolumeMultiplierData: TEdit
     Left = 264
     Height = 27
     Top = 312

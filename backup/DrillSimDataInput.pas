@@ -5,9 +5,9 @@ Interface
 Uses Crt,
      DrillSimVariables,
      DrillSimUtilities,
-     SimulateMessageToMemo;
+     DrillSimMessageToMemo;
 
-Procedure UpdateKick;
+Procedure UpdateWellTests;
 Procedure UpdateGen;
 Procedure UpdateHole;
 Procedure UpdatePipe;
@@ -25,7 +25,7 @@ End;
 
 {*********************** Input Procedures ******************}
 
-Procedure UpdateKick;
+Procedure UpdateWellTests;
 Var i,j : integer;
     ZeroFound : boolean;
     EscPressed: boolean;
@@ -40,7 +40,6 @@ End;
 
 Begin
   Mode := KickMode;
-  WriteTitle(False,False,True);
   With Data do
   Begin
     gotoxy(10,6);
@@ -93,7 +92,6 @@ Begin
 
 { ===================== Formation Parameter Table ==========================}
 
-    WriteTitle(False,True,True);
     //Disp(14,4,'Horizon Top');
     //Disp(16,5,'('+lab[1]+')');
 
@@ -185,7 +183,6 @@ End;
 Procedure UpdateGen;
 Begin
   Mode := GenMode;
-  WriteTitle(False,False,True);
 
   With Data do
   Begin
@@ -198,7 +195,7 @@ Begin
     //Disp(50-length(Well),12,Well + ' ?');
 
     //Disp(10,14,'Elevation RKB     :');
-    Str(Rkb:8:2,TempString);      { 1 below corresponds to space after lab[1] }
+    Str(ElevationRKB:8:2,TempString);      { 1 below corresponds to space after lab[1] }
     //Disp(50-length(TempString)-length(lab[1])-1,14,TempString+' '+lab[1]+' ?');
 
     GetState(OffShore);                    { set YesNo according to OffShore }
@@ -211,12 +208,12 @@ Begin
     //Disp(58,10,WellOperator);
 
     GetString(58,12,20);
-    if Valid then Well:=Instring;
+    if Valid then WellName:=Instring;
     //Disp(58,12,Well);
 
     GetReal(55,14,500/con[1]);
-    if Valid then Rkb:=RResult;
-    Str(Rkb:8:2,TempString);      { 1 below corresponds to space after lab[1] }
+    if Valid then ElevationRKB:=RResult;
+    Str(ElevationRKB:8:2,TempString);      { 1 below corresponds to space after lab[1] }
 
     Repeat
       Input:=ReadKey;
@@ -289,7 +286,6 @@ Var J, i,k : integer;
     Str1 : String[10];
 Begin
   Mode := HoleMode;
-  WriteTitle(False,False,True);
   With Data do
   Begin
     LineCnt:=4;  J:=4;
@@ -517,7 +513,6 @@ Var i, j : integer;
     Str1,Str2 : String[10];
 Begin
   Mode := PipeMode;
-  WriteTitle(False,False,True);
   With Data do
   Begin
     Repeat
@@ -589,7 +584,6 @@ Var i : integer;
     InputError : boolean;
 Begin
   Mode := BitMode;
-  WriteTitle(False,False,True);
   With Data do
   Begin
     Repeat
@@ -649,8 +643,7 @@ Procedure UpdateMud;
 Var InputError : boolean;
 Begin
   Mode := MudMode;
-  WriteTitle(False,False,True);
-  With Data do
+ With Data do
   Begin
     Repeat
       gotoxy(10,10);
@@ -699,7 +692,6 @@ Var i : integer;
     InputError : boolean;
 Begin
   Mode := PumpMode;
-  WriteTitle(False,False,True);
   With Data do
   Begin
     Repeat
@@ -778,7 +770,6 @@ Begin
   Begin
     Repeat
       Mode := SurfMode;
-      WriteTitle(False,False,True);
 
       Str(Surf[1,1]:9:3,Str1);
       //Disp(10,7,'Kelly  Length      : '+Str1+' '+lab[1]+' ?');

@@ -19,7 +19,7 @@ type
     DensityMultiplierData: TEdit;
     FlowRateLabelData: TEdit;
     FlowRateMultiplierData: TEdit;
-    FlowMultiplierLabelData: TEdit;
+    FlowVolumeMultiplierData: TEdit;
     LengthMultiplierData: TEdit;
     PressureMultiplierData: TEdit;
     UoMUnitLabel: TStaticText;
@@ -86,11 +86,11 @@ end;
 procedure TUnitsOfMeasureForm.FormActivate(Sender: TObject);
 begin
  StringToMemo('Form Units Of Measure activated....');
- StringToMemo('=>Units selected: '+ Data.UoMLabel);
+ StringToMemo('=>Units selected: '+ UoMDescriptor);
  If Data.API=True then
  StringToMemo('=>API=true') else StringToMemo('=>API=false');
- stringtomemo('length = ' + lab[1]);
- stringtomemo('conv = ' + con[1]);
+ stringtomemo('length = ' + UoMLabel[1]);
+ stringtomemo('conv = ' + FloatToStr(UoMConverter[1]));
 
   if Data.API=true then
   Begin
@@ -98,14 +98,28 @@ begin
     MetricRadioButton.checked:=False;
     With Data do
     Begin
-     LengthLabelData.Text:=Data.lab[1];     {*  "ft." or "met" *}
-     LengthMultiplierData.Text:=FloatToStr(con[1]);
+     LengthLabelData.Text:=UoMLabel[1];     {*  "ft." or "met" *}
+     LengthMultiplierData.Text:=FloatToStr(UoMConverter[1]);
 
-     DensityLabelData.Text:=Data.lab[2];    {* "ppg" or "sg" *}
-     DensityMultiplierData.Text:=FloatToStr(con[2]);
+     DensityLabelData.Text:=UoMLabel[2];    {* "ppg" or "sg" *}
+     DensityMultiplierData.Text:=FloatToStr(UoMConverter[2]);
 
-     PressureLabelData.Text:=Data.lab[3];    {* "psi" or "KPa" *}
-     PressureMultiplierData.Text:=FloatToStr(con[3]);
+     PressureLabelData.Text:=UoMLabel[3];    {* "psi" or "KPa" *}
+     PressureMultiplierData.Text:=FloatToStr(UoMConverter[3]);
+
+     VolumeLabelData.Text:=UoMLabel[4];    {* "psi" or "KPa" *}
+     VolumeMultiplierData.Text:=FloatToStr(UoMConverter[4]);
+
+     FlowVolumeLabelData.Text:=UoMLabel[5];    {* "psi" or "KPa" *}
+     FlowVolumeMultiplierData.Text:=FloatToStr(UoMConverter[5]);
+
+     FlowRateLabelData.Text:=UoMLabel[6];    {* "psi" or "KPa" *}
+     FlowRateMultiplierData.Text:=FloatToStr(UoMConverter[6]);
+
+     WeightLabelData.Text:=UoMLabel[7];    {* "psi" or "KPa" *}
+     WeightMultiplierData.Text:=FloatToStr(UoMConverter[7]);
+
+
 
     end;
   end else
@@ -113,14 +127,14 @@ begin
     APIRadioButton.checked:=False;
     MetricRadioButton.checked:=True;
 
-    LengthLabelData.Text:=lab[1];     {*  "ft." or "met" *}
-    LengthMultiplierData.Text:=FloatToStr(con[1]);
+    LengthLabelData.Text:=UoMLabel[1];     {*  "ft." or "met" *}
+    LengthMultiplierData.Text:=FloatToStr(UoMConverter[1]);
 
-    DensityLabelData.Text:=lab[2];    {* "ppg" or "sg" *}
-    DensityMultiplierData.Text:=FloatToStr(con[2]);
+    DensityLabelData.Text:=UoMLabel[2];    {* "ppg" or "sg" *}
+    DensityMultiplierData.Text:=FloatToStr(UoMConverter[2]);
 
-    PressureLabelData.Text:=lab[3];    {* "psi" or "KPa" *}
-    PressureMultiplierData.Text:=FloatToStr(con[3]);
+    PressureLabelData.Text:=UoMLabel[3];    {* "psi" or "KPa" *}
+    PressureMultiplierData.Text:=FloatToStr(UoMConverter[3]);
 
   End;
 end;
