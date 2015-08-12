@@ -66,6 +66,7 @@ Begin
   LstString:='';
 
   APIUnits;     { Initial default unit type   }
+                {* set UoMLabel, UoMCOnverter and UoMDescriptor *}
   InitData;     { zero all main file variables }
   writeln('Well <' + Data.WellName + '>');
 
@@ -124,7 +125,6 @@ Begin
 
   StringToMemo('Well <' + Data.WellName + '>');
   StringToMemo('Units selected: '+ UoMDescriptor);
-  StringToMemo('API: ' + BoolToStr(Data.API));
 
 End;
 

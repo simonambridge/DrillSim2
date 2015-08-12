@@ -45,7 +45,6 @@ End;
 
 Procedure StartUp;
 Begin
-  writeln('Running DrillSim StartUp.................');
   StringToMemo('Running DrillSim StartUp.................');
   OriginalExitProc:=ExitProc;
 {  ExitProc:=@Abort; }                  { Set Error trap vector  }
@@ -95,7 +94,6 @@ Begin
       Readln(TextFile,TextFileLine); { read location of default well file }
       End;
     Close(TextFile);
-    writeln('Default well data file is ' + TextFileLine);
     StringToMemo('Default well data file is ' + TextFileLine);
     LoadDefaultWellDataFile(TextFileLine);     // Load the default data file !!!
   End else

@@ -1,13 +1,12 @@
 object GeneralDataForm: TGeneralDataForm
-  Left = 499
-  Height = 240
-  Top = 168
+  Left = 65
+  Height = 322
+  Top = 29
   Width = 497
   Caption = 'General Well Data'
-  ClientHeight = 240
+  ClientHeight = 322
   ClientWidth = 497
   OnActivate = FormActivate
-  OnKeyPress = FormKeyPress
   LCLVersion = '1.2.6.0'
   object WellOperator: TStaticText
     Left = 24
@@ -33,21 +32,13 @@ object GeneralDataForm: TGeneralDataForm
     Caption = 'Elevation RKB'
     TabOrder = 2
   end
-  object OffshoreYN: TStaticText
-    Left = 24
-    Height = 24
-    Top = 168
-    Width = 112
-    Caption = 'Offshore (Y/N)'
-    TabOrder = 3
-  end
   object WellOperatorData: TEdit
     Left = 152
     Height = 27
     Top = 45
     Width = 328
     OnChange = WellOperatorDataChange
-    TabOrder = 4
+    TabOrder = 3
   end
   object WellNameData: TEdit
     Left = 152
@@ -55,7 +46,7 @@ object GeneralDataForm: TGeneralDataForm
     Top = 80
     Width = 325
     OnChange = WellNameDataChange
-    TabOrder = 5
+    TabOrder = 4
   end
   object ElevationRKBData: TEdit
     Left = 153
@@ -64,52 +55,57 @@ object GeneralDataForm: TGeneralDataForm
     Width = 145
     Alignment = taRightJustify
     OnChange = ElevationRKBDataChange
-    TabOrder = 6
-  end
-  object OffshoreYNDataYes: TRadioButton
-    Left = 163
-    Height = 24
-    Top = 168
-    Width = 49
-    Caption = 'Yes'
-    OnChange = OffshoreYNDataYesChange
-    TabOrder = 7
-  end
-  object OffshoreYNDataNo: TRadioButton
-    Left = 303
-    Height = 24
-    Top = 168
-    Width = 46
-    Caption = 'No'
-    Checked = True
-    TabOrder = 8
-    TabStop = True
+    TabOrder = 5
   end
   object ElevationRKBUoMLabel: TLabel
     Left = 320
     Height = 22
     Top = 127
-    Width = 24
+    Width = 32
     AutoSize = False
-    Caption = 'Ft'
+    Caption = '<fill>'
     ParentColor = False
   end
   object Save: TButton
-    Left = 153
+    Left = 152
     Height = 26
-    Top = 201
+    Top = 272
     Width = 86
     Caption = 'Save'
     OnClick = SaveClick
-    TabOrder = 9
+    TabOrder = 6
   end
   object Quit: TButton
-    Left = 272
+    Left = 264
     Height = 26
-    Top = 201
+    Top = 272
     Width = 86
     Caption = 'Quit'
     OnClick = QuitClick
-    TabOrder = 10
+    TabOrder = 7
+  end
+  object OffshoreYNRadioGroup: TRadioGroup
+    Left = 24
+    Height = 72
+    Top = 168
+    Width = 352
+    AutoFill = True
+    Caption = 'Well Type'
+    ChildSizing.LeftRightSpacing = 6
+    ChildSizing.EnlargeHorizontal = crsHomogenousChildResize
+    ChildSizing.EnlargeVertical = crsHomogenousChildResize
+    ChildSizing.ShrinkHorizontal = crsScaleChilds
+    ChildSizing.ShrinkVertical = crsScaleChilds
+    ChildSizing.Layout = cclLeftToRightThenTopToBottom
+    ChildSizing.ControlsPerLine = 2
+    ClientHeight = 53
+    ClientWidth = 348
+    Columns = 2
+    Items.Strings = (
+      'Offshore'
+      'Onshore'
+    )
+    OnClick = OffshoreYNRadioGroupClick
+    TabOrder = 8
   end
 end

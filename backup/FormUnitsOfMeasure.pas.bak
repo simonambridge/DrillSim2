@@ -55,6 +55,7 @@ type
 
 var
   UnitsOfMeasureForm: TUnitsOfMeasureForm;
+  OriginalUnits: boolean;
 
 implementation
 
@@ -65,12 +66,6 @@ implementation
 
 Procedure TUnitsOfMeasureForm.FormDisplayUnits;
 Begin
-  StringToMemo('=>Units selected: '+ UoMDescriptor);
-  If Data.API=True then
-    StringToMemo('=>API=true')
-  else StringToMemo('=>API=false');
-  stringtomemo('length = ' + UoMLabel[1]);
-  stringtomemo('conv = ' + FloatToStr(UoMConverter[1]));
   if Data.API = True then
     APIUnits
   else MetricUnits;
@@ -123,6 +118,10 @@ end;
 procedure TUnitsOfMeasureForm.FormActivate(Sender: TObject);
 begin
  StringToMemo('Form Units Of Measure activated....');
+ OriginalUnits:=Data.API; // preserve state on entry to form
+ if Data.API= True
+ then SelectUoMRadioGroup.ItemIndex:=0
+ else SelectUoMRadioGroup.ItemIndex:=1;
  FormDisplayUnits;
 End;
 
@@ -138,6 +137,7 @@ end;
 
 procedure TUnitsOfMeasureForm.CancelButtonClick(Sender: TObject);
 begin
+  Data.API:=OriginalUnits;
   Close
 end;
 

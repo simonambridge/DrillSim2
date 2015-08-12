@@ -42,6 +42,8 @@ Type
     Test              = array[1..7] of real;
 
     WellData   = Record
+                   WellOperator        : String120;
+                   WellName            : String120;
                    TD, BitTD           : real;
                    API                 : boolean;
                    Pumping             : boolean;
@@ -89,7 +91,6 @@ Type
                    PlBit, PlAnn        : real;
                    PlCirc              : real;
                    MACP                : real;
-                   SpareReal1          : real; { * }           { = spare }
                    AnnUnderbalance     : real;
                    CasingPressure      : real;
                    DeltaCsgPr          : real;
@@ -101,7 +102,6 @@ Type
                    AverageHhd          : real;
                    PipeHhd, AnnHhd     : real;
                    BHPAnn              : real;
-                   SpareReal2          : real; { * }
                    Ecd                 : real;
                    Ff, Rn              : real;
                    Fn, Fk              : real;
@@ -128,8 +128,6 @@ Type
                    BleedOffRate        : real;
                    BleedOff            : real;
 
-                   WellOperator        : String120;
-                   WellName             : String120;
                    MaxPumps : integer;
                    MaxHoles : integer;
                    MaxPipes : integer;
@@ -144,7 +142,8 @@ Type
                    RsrTD, CsgTD, Tvd            : real;
                    RsrID, CsgID, Dev            : real;
                    LinerTop, LinerTD, LinerID   : real;
-                   ElevationRKB, WaterDepth     : real;
+                   ElevationRKB                 : real;
+                   WaterDepth                   : real;
                    LotTD                        : real;
                    LotEMW                       : real;
                    LotMW                        : real;

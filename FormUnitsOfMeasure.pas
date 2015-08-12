@@ -66,12 +66,6 @@ implementation
 
 Procedure TUnitsOfMeasureForm.FormDisplayUnits;
 Begin
-  StringToMemo('=>Units selected: '+ UoMDescriptor);
-  If Data.API=True then
-    StringToMemo('=>API=true')
-  else StringToMemo('=>API=false');
-  stringtomemo('length = ' + UoMLabel[1]);
-  stringtomemo('conv = ' + FloatToStr(UoMConverter[1]));
   if Data.API = True then
     APIUnits
   else MetricUnits;
@@ -101,6 +95,8 @@ Begin
   end;
 end;
 
+{ ------------- Edit Procedures ------------ }
+
 procedure TUnitsOfMeasureForm.SelectUoMRadioGroupClick(Sender: TObject);
 begin
 case SelectUoMRadioGroup.ItemIndex of
@@ -115,23 +111,26 @@ case SelectUoMRadioGroup.ItemIndex of
 FormDisplayUnits;
 end;
 
+{ ------------- Form Procedures ------------ }
+
 Procedure TUnitsOfMeasureForm.FormCreateActions;
 Begin
 end;
-
-{ ------------- Form Procedures ------------ }
-
-procedure TUnitsOfMeasureForm.FormActivate(Sender: TObject);
-begin
- StringToMemo('Form Units Of Measure activated....');
- OriginalUnits:=Data.API; // preserve state on entry to form
- FormDisplayUnits;
-End;
 
 procedure TUnitsOfMeasureForm.FormCreate(Sender: TObject);
 begin
   FormCreateActions;
 end;
+
+procedure TUnitsOfMeasureForm.FormActivate(Sender: TObject);
+begin
+ StringToMemo('Form Units Of Measure activated....');
+ OriginalUnits:=Data.API; // preserve state on entry to form
+ if Data.API= True
+ then SelectUoMRadioGroup.ItemIndex:=0
+ else SelectUoMRadioGroup.ItemIndex:=1;
+ FormDisplayUnits;
+End;
 
 procedure TUnitsOfMeasureForm.SaveButtonClick(Sender: TObject);
 begin
