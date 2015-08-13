@@ -14,7 +14,7 @@ Uses Dos,Crt,
      DrillSimDataInput,
      DrillSimStartup,
      DrillSimDataResets,
-     SimulateMessageToMemo;
+     DrillSimMessageToMemo;
 
 Procedure CallHoleData;
 Procedure CreateFile;

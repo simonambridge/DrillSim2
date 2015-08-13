@@ -1,5 +1,5 @@
 object DrillSim: TDrillSim
-  Left = 439
+  Left = -1001
   Height = 668
   Top = 84
   Width = 999

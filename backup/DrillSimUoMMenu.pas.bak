@@ -4,7 +4,6 @@ Interface
 Uses Crt,
      DrillSimVariables,
      DrillSimUnitsOfMeasure,
-     DrillSimDataUoMConversions,
      DrillSimUtilities,
      DrillSimMessageToMemo;
 
@@ -139,9 +138,9 @@ Begin
   Choice:=1;
   OldChoice:=1;
   NewChoice:=1;
-  ConAPI;                        { Convert to API prior to selection }
-  ConAPIKickData;
-  StringToMemo('Current units are '+Data.UoMDescriptor);
+//  ConAPI;                        { Convert to API prior to selection }
+//  ConAPIKickData;
+  StringToMemo('Current units are '+ UoMDescriptor);
 
   Repeat
     Normal(OldChoice);

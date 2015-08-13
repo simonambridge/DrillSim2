@@ -27,7 +27,6 @@ uses
   SimulateFile,
   DrillSimDataInput,
   DrillSimUoMMenu,
-  DrillSimDataUoMConversions,
   DrillSimUtilities,
   DrillSimMessageToMemo,
   SimulateCommandProcessor,
@@ -173,6 +172,8 @@ type
     procedure Edit1Click(Sender: TObject);
     procedure Edit1KeyPress(Sender: TObject; var Key: char);
     procedure FormActivate(Sender: TObject);
+    procedure MenuItem1OpenFileClick(Sender: TObject);
+    procedure MenuItem1SaveFileClick(Sender: TObject);
     procedure MenuItem2DefaultsClick(Sender: TObject);
     procedure MenuItem2DisplayWellDataClick(Sender: TObject);
     procedure MenuItem2GeneralDataClick(Sender: TObject);
@@ -528,14 +529,15 @@ begin
   //ChDir(LoggedDirectory); currentdirectory, default directory?
   Edited:=False;  { start clean }
 
-  StringToMemo('Running DrillSim start up sequence');
+  StringToMemo('DrillSimGUI.FormaActivate: Running DrillSim start up sequence');
   StartUp;     { call DrillSim StartUp }
 end;
+
 
 procedure TDrillSim.FormCreate(Sender: TObject);
 begin
   Memo1.SelStart:=Length(Memo1.Text);
-  StringToMemo('Running DrillSimGUI FormCreate...'); // please wait....
+  StringToMemo('DrillSimGUI.FormaCreate:Running DrillSimGUI FormCreate...'); // please wait....
 
   splash := TSplashAbout.Create(nil);
   SetDefaultValues; // splash - optional
@@ -562,6 +564,55 @@ begin
   if Reply = IDYES then Application.Terminate;
 end;
 
+procedure TDrillSim.MenuItem1OpenFileClick(Sender: TObject);
+Var NoCreate : boolean;
+    FileToLoad : string[12];
+Begin
+  if Edited then
+  Begin
+    if ExitCheck then SaveData; { save current file ? }
+  End;
+  NoCreate:=False;
+  NewFile:=False;
+  Instring:='';
+  //Disp(20,12,'File Name : '); { 8 char's  for file name }
+  Repeat
+    //Disp(32,12,Instring);
+    gotoxy(32 + length(Instring),12);
+    CharInput:=UpCase(ReadKey);
+    if CharInput in ['!','#'..'&','(',')','0'..'9','@'..'_'] then
+    Begin
+      if length(Instring) < 8 then Instring:=Instring + CharInput;
+    End;
+    if (CharInput=^H) and (length(Instring) > Zero) then
+    Begin
+        //Disp(32 + length(Instring)-1,12,' ');
+      Delete(Instring,length(Instring),1);
+    End;
+  Until (CharInput=^M) or (CharInput=^[);             { until end or abort }
+  if CharInput<>^[ then                           { if not abort... }
+  Begin
+    if length(Instring) > Zero then           { check for any input }
+    Begin
+      FileToLoad:=Instring + Extension;
+      if not FileExists(FileToLoad) then             { if it doesn't exist... }
+      Begin
+          //Disp(20,12,FileToLoad + ' not found. Continue? (Y/N)');
+        gotoxy(47+length(FileToLoad),12);
+        Repeat                           { do you really want to continue ? }
+          CharInput:=ReadKey;
+        Until UpCase(CharInput) in ['Y','N'];
+        if UpCase(CharInput)='N' then NoCreate:=True else NewFile:=True;
+      End;
+      if not NoCreate then             { if not abandoning create... }
+      Begin
+        FileName:=FileToLoad;
+        LoadData;
+      End;
+    End;                                     { if no input then no change }
+  End;
+end;
+
 procedure TDrillSim.MenuItem1CreateFileClick(Sender: TObject);
 begin
   LoadFile;
@@ -569,10 +620,7 @@ begin
   Begin
     if not NewFile then              { confirm create if existing file }
     Begin
-      {MakeWindow (10,18, 5,44,Blue+LightGrayBG,Blue+LightGrayBG,HdoubleBrdr,
-               Window1);}
-      //Disp(20,12,copy(BlankString,1,39));
-      //Disp(20,12,FullName + ' exists. Continue? (Y/N)');
+       //Disp(20,12,FullName + ' exists. Continue? (Y/N)');
       Repeat
         CharInput:=ReadKey;
       Until UpCase(CharInput) in ['Y','N'];
@@ -584,8 +632,14 @@ begin
     End;
     CreateFile;                  { otherwise create it and redisplay screen }
   End;
+end;
+
+procedure TDrillSim.MenuItem1SaveFileClick(Sender: TObject);
+begin
 
 end;
+
+
 
 //--------------- Edit Well File Menu
 
@@ -677,11 +731,11 @@ end;
 // ----------- Simulate Menu
 procedure TDrillSim.MenuItem3StartClick(Sender: TObject);
 begin
-  ConAPI;                 { convert DrillSim file - internally in user units }
-  ConAPIKickData;         { Simulator uses internal API units                }
+//  ConAPI;                 { convert DrillSim file - internally in user units }
+//  ConAPIKickData;         { Simulator uses internal API units                }
 //  ChDir(OriginDirectory); { ExecuteFlag gets set in Simulator when returning }
   MessageToMemo(100);               { courtesy message         }
-  if NoFIleDefined=false then
+  if NoFileDefined=false then
   Begin
     ChDir(LoggedDirectory);         { set to Logged directory first          }
 

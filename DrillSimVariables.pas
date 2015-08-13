@@ -9,7 +9,7 @@ Type
 
 
     String120 =  string[120];
-    String20  = string[20];
+    String20  =  string[20];
     String60  =  string[60];
     String3   =  string[3];
 
@@ -178,7 +178,7 @@ Type
 
                  End;
 
-      ColorSet        = (NormColors, { grey on blue }
+      ColorSet    = (NormColors, { grey on blue }
                      BlueonGray,
                      WhiteOnBlue,
                      YellowOnBlack,

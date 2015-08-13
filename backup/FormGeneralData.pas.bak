@@ -147,14 +147,14 @@ end;
 
 procedure TGeneralDataForm.FormActivate(Sender: TObject);
 begin
-  StringToMemo('Form General Well Data activated....');
-  StringToMemo('Wel name is ' + Data.WellName);
+{*  StringToMemo('Form General Well Data activated....');
+  StringToMemo('Well name is ' + Data.WellName);
   WellOperatorData.Caption:=Data.WellOperator;
   WellNameData.Caption:=Data.WellName;
   ElevationRKBData.Caption:=FloatToStr(Data.ElevationRKB);
   if Data.Offshore= True
   then OffshoreYNRadioGroup.ItemIndex:=1
-  else OffshoreYNRadioGroup.ItemIndex:=0;
+  else OffshoreYNRadioGroup.ItemIndex:=0;     *}
 end;
 
 procedure TGeneralDataForm.QuitClick(Sender: TObject);

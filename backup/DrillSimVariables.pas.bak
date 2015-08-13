@@ -142,7 +142,8 @@ Type
                    RsrTD, CsgTD, Tvd            : real;
                    RsrID, CsgID, Dev            : real;
                    LinerTop, LinerTD, LinerID   : real;
-                   ElevationRKB, WaterDepth     : real;
+                   ElevationRKB                 : real;
+                   WaterDepth                   : real;
                    LotTD                        : real;
                    LotEMW                       : real;
                    LotMW                        : real;

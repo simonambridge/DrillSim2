@@ -8,7 +8,6 @@ Uses Crt,
      SimulateVariables,
      HyCalcVariables,
      DrillSimUnitsOfMeasure,
-     DrillSimDataUoMConversions,
      DrillSimUtilities,
      DrillSimFile,
      DrillSimMessageToMemo,
@@ -27,16 +26,17 @@ Begin                                        { Extract path string }
     FileName:=S;               { set file to user defined file }
     NewFile:=False;
     NoFileDefined:=False;
-    StringToMemo(' - Loading well data file ' + FileName + '...');
+    StringToMemo('DrillSimStartup.LoadDefaultWellDataFile: Loading well data file ' + FileName + '...');
     LoadData;
-    if NoFileDefined=True then
-    Begin
-      StringToMemo(' - Error loading well data file ' + FileName);
-      SystemError(6);
+
+    if NoFileDefined=True then // on return, is a valid file loaded?
+    Begin                      // then notify the error
+      StringToMemo('DrillSimStartup.LoadDefaultWellDataFile: Error loading well data file ' + FileName);
+      SystemError(6);  // DrillSimUtilities - cannot load file
     end else
-    Begin
-      StringToMemo(' - Default well data file ' + FileName + ' loaded');
-      StringToMemo('Simulating Well ' + Data.WellName);
+    Begin                      // otherwise confirm well name loaded
+      StringToMemo('DrillSimStartup.LoadDefaultWellDataFile: Default well data file ' + FileName + ' loaded');
+      StringToMemo('DrillSimStartup.LoadDefaultWellDataFile: Simulating Well ' + Data.WellName);
     End;
   End;
 End;
@@ -45,8 +45,7 @@ End;
 
 Procedure StartUp;
 Begin
-  writeln('Running DrillSim StartUp.................');
-  StringToMemo('Running DrillSim StartUp.................');
+  StringToMemo('DrillSimStartup.StartUp: Running DrillSim StartUp.................');
   OriginalExitProc:=ExitProc;
 {  ExitProc:=@Abort; }                  { Set Error trap vector  }
 
@@ -67,13 +66,15 @@ Begin
 
   APIUnits;     { Initial default unit type   }
                 {* set UoMLabel, UoMCOnverter and UoMDescriptor *}
+
   InitData;     { zero all main file variables }
-  writeln('Well <' + Data.WellName + '>');
+
+//  StringToMemo('Well <' + Data.WellName + '>');
 
     { ------- get default directory ------- }
 
   GetDir(0,Instring);                 { get current directory spec}
-  StringToMemo('Current directory is ' + Instring);
+  StringToMemo('DrillSimStartup.StartUp: Current directory is ' + Instring);
   OriginDirectory:=Instring;               { save original direc'y }
   LoggedDirectory:=Instring;               { default to original   }
 
@@ -81,8 +82,8 @@ Begin
 
   Assign(TextFile,OriginDirectory + '/' + 'DrillSim.cfg');         { load drillsim.cfg }
   MessageToMemo(102); // 'Loading application configuration file'
-  writeln('Configuration file is ' + OriginDirectory + '/' + 'DrillSim.cfg');
-  StringToMemo('Configuration file is ' + OriginDirectory + '/' + 'DrillSim.cfg');
+  writeln('DrillSimStartup.StartUp: Configuration file is ' + OriginDirectory + '/' + 'DrillSim.cfg');
+  StringToMemo('DrillSimStartup.StartUp: Configuration file is ' + OriginDirectory + '/' + 'DrillSim.cfg');
 
   {$I-}
   Reset(TextFile);
@@ -95,13 +96,13 @@ Begin
       Readln(TextFile,TextFileLine); { read location of default well file }
       End;
     Close(TextFile);
-    writeln('Default well data file is ' + TextFileLine);
-    StringToMemo('Default well data file is ' + TextFileLine);
+    StringToMemo('DrillSimStartup.StartUp: Default well data file is ' + TextFileLine);
     LoadDefaultWellDataFile(TextFileLine);     // Load the default data file !!!
   End else
   Begin                  { defaults file not found }
     SystemError(1);      // pop up error message
   End;
+  Data.WellName:='poop';
 
   {* --------- Load Help File --------- *}
 
@@ -121,10 +122,12 @@ Begin
     HelpFileFound:=False;
     SystemError(3);
   End;
-  StringToMemo('DrillSim Startup complete');
+  StringToMemo('DrillSimStartup.StartUp: DrillSim Startup complete');
+  ThisString:=Data.WellName;
+    writeln(ThisString);
 
-  StringToMemo('Well <' + Data.WellName + '>');
-  StringToMemo('Units selected: '+ UoMDescriptor);
+  StringToMemo('DrillSimStartup.StartUp: Well <' + ThisString + '>');
+  StringToMemo('DrillSimStartup.StartUp: Units selected: '+ UoMDescriptor);
 
 End;
 

@@ -27,7 +27,6 @@ uses
   SimulateFile,
   DrillSimDataInput,
   DrillSimUoMMenu,
-  DrillSimDataUoMConversions,
   DrillSimUtilities,
   DrillSimMessageToMemo,
   SimulateCommandProcessor,
@@ -528,14 +527,14 @@ begin
   //ChDir(LoggedDirectory); currentdirectory, default directory?
   Edited:=False;  { start clean }
 
-  StringToMemo('Running DrillSim start up sequence');
+  StringToMemo('DrillSimGUI.FormaActivate: Running DrillSim start up sequence');
   StartUp;     { call DrillSim StartUp }
 end;
 
 procedure TDrillSim.FormCreate(Sender: TObject);
 begin
   Memo1.SelStart:=Length(Memo1.Text);
-  StringToMemo('Running DrillSimGUI FormCreate...'); // please wait....
+  StringToMemo('DrillSimGUI.FormaCreate:Running DrillSimGUI FormCreate...'); // please wait....
 
   splash := TSplashAbout.Create(nil);
   SetDefaultValues; // splash - optional
@@ -677,11 +676,11 @@ end;
 // ----------- Simulate Menu
 procedure TDrillSim.MenuItem3StartClick(Sender: TObject);
 begin
-  ConAPI;                 { convert DrillSim file - internally in user units }
-  ConAPIKickData;         { Simulator uses internal API units                }
+//  ConAPI;                 { convert DrillSim file - internally in user units }
+//  ConAPIKickData;         { Simulator uses internal API units                }
 //  ChDir(OriginDirectory); { ExecuteFlag gets set in Simulator when returning }
   MessageToMemo(100);               { courtesy message         }
-  if NoFIleDefined=false then
+  if NoFileDefined=false then
   Begin
     ChDir(LoggedDirectory);         { set to Logged directory first          }
 

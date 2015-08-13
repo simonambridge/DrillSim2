@@ -2,8 +2,7 @@ Unit DrillSimHoleCalc;
 
 Interface
 
-Uses DrillSimVariables,
-     DrillSimDataUoMConversions;
+Uses DrillSimVariables;
 
 Procedure DSHoleCalc;                  { Procedure To Determine Hole Profile }
 
@@ -37,8 +36,8 @@ Begin
 End;
 
 Begin
-  ConAPI;
-  ConAPIKickData;
+//  ConAPI;
+//  ConAPIKickData;
   With Data do
   Begin
     TempCount:=Zero;                   { Create and Edit set NeverSimulated }
@@ -212,8 +211,8 @@ Begin
     HoleVol:=AnnVol + PipeCap + ExtraVolume;
     MudVol:=HoleVol;             { set to correct hole volume }
   End;
-  ConUser;
-  ConUserKickData;
+//  ConUser;
+//  ConUserKickData;
 End;
 
 Begin
