@@ -1,0 +1,30 @@
+unit FormLoadFile;
+
+{$mode objfpc}{$H+}
+
+interface
+
+uses
+  Classes, SysUtils, FileUtil, Forms, Controls, Graphics, Dialogs;
+
+type
+
+  { TForm2 }
+
+  TLoadFileForm = class(TForm)
+    OpenDialog1: TOpenDialog;
+  private
+    { private declarations }
+  public
+    { public declarations }
+  end;
+
+var
+  LoadFileForm: TLoadFileForm;
+
+implementation
+
+{$R *.lfm}
+
+end.
+

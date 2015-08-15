@@ -1,0 +1,12 @@
+object Form2: TForm2
+  Left = 710
+  Height = 240
+  Top = 352
+  Width = 320
+  Caption = 'Form2'
+  LCLVersion = '1.2.6.0'
+  object OpenDialog1: TOpenDialog
+    left = 59
+    top = 64
+  end
+end

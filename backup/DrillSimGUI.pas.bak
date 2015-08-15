@@ -21,14 +21,13 @@ uses
   usplashabout,
   DrillSimVariables,
   DrillSimStartup,
-  DrillSimMenu,
   DrillSimFile,
   DrillSimDataResets,
   SimulateFile,
   DrillSimDataInput,
-  DrillSimUoMMenu,
   DrillSimUtilities,
   DrillSimMessageToMemo,
+  DrillSimUnitsOfMeasure,
   SimulateCommandProcessor,
   SimulateUpdate,
   SimulateSurfaceControls,
@@ -73,12 +72,17 @@ type
     MenuItem2PumpData: TMenuItem;
     MenuItem2MudData: TMenuItem;
     MenuItem2WellTestData: TMenuItem;
+
+    FileOpenDialog1: TOpenDialog;
+    FileSaveDialog1: TSaveDialog;
+
+    SelectDirectoryDialog1: TSelectDirectoryDialog;
     StandPipePressureValue: TLabel;
     ReturnPitValue: TLabel;
     PipeRamsValue: TLabel;
     ChokeValue: TLabel;
     StandPipePressureUoM: TStaticText;
-    Edit1: TEdit;
+    CommandLine: TEdit;
     Commands: TGroupBox;
     FlowOutUoM: TStaticText;
     DiffFlowUoM: TStaticText;
@@ -169,9 +173,11 @@ type
     procedure AutoDrillCheckBoxChange(Sender: TObject);
     procedure ChokeMinusClick(Sender: TObject);
     procedure ChokePlusClick(Sender: TObject);
-    procedure Edit1Click(Sender: TObject);
-    procedure Edit1KeyPress(Sender: TObject; var Key: char);
+    procedure CommandLineClick(Sender: TObject);
+    procedure CommandLineKeyPress(Sender: TObject; var Key: char);
     procedure FormActivate(Sender: TObject);
+    procedure MenuItem1OpenFileClick(Sender: TObject);
+    procedure MenuItem1SaveFileClick(Sender: TObject);
     procedure MenuItem2DefaultsClick(Sender: TObject);
     procedure MenuItem2DisplayWellDataClick(Sender: TObject);
     procedure MenuItem2GeneralDataClick(Sender: TObject);
@@ -212,6 +218,7 @@ type
     { private declarations }
     splash:TSplashAbout;
     procedure SetDefaultValues;
+
   public
     { public declarations }
   end;
@@ -483,7 +490,7 @@ end;
 
 {* ======================= Memo Input ======================================= *}
 
-procedure TDrillSim.Edit1KeyPress(Sender: TObject; var Key: char);
+procedure TDrillSim.CommandLineKeyPress(Sender: TObject; var Key: char);
 begin
   if Key=^M then      // if ENTER
   Begin
@@ -503,17 +510,17 @@ begin
     InputString:=InputString + Key;
   End;
 
-  Edit1.Text := InputString;    // update text entry
-  Edit1.SelStart:=Length(Edit1.Text);
+  CommandLine.Text := InputString;    // update text entry
+  CommandLine.SelStart:=Length(CommandLine.Text);
   writeln(InputString);
   Key:=#0;
 end;
 
-procedure TDrillSim.Edit1Click(Sender: TObject);
+procedure TDrillSim.CommandLineClick(Sender: TObject);
 begin
   InputString:='';
-  Edit1.Text := InputString;
-  Edit1.SelStart:=Length(Edit1.Text);
+  CommandLine.Text := InputString;
+  CommandLine.SelStart:=Length(CommandLine.Text);
   writeln('Clicked in TEdit');
 
 end;
@@ -531,6 +538,7 @@ begin
   StartUp;     { call DrillSim StartUp }
 end;
 
+
 procedure TDrillSim.FormCreate(Sender: TObject);
 begin
   Memo1.SelStart:=Length(Memo1.Text);
@@ -547,7 +555,7 @@ begin
   Memo1.Lines.Add('OnClose');
   writeln('OnClose');
   BoxStyle := MB_ICONQUESTION + MB_YESNO;
-  Reply := Application.MessageBox('Press either button', 'MessageBoxDemo', BoxStyle);
+  Reply := Application.MessageBox('Are you Sure?', 'Exit Check', BoxStyle);
   if Reply = IDYES then Application.Terminate;
 end;
 
@@ -557,34 +565,117 @@ procedure TDrillSim.MenuItem1QuitClick(Sender: TObject);
 var Reply, BoxStyle: Integer;
 begin
   BoxStyle := MB_ICONQUESTION + MB_YESNO;
-  Reply := Application.MessageBox('Press either button', 'MessageBoxDemo', BoxStyle);
+  Reply := Application.MessageBox('Are you Sure?', 'Exit Check', BoxStyle);
   if Reply = IDYES then Application.Terminate;
 end;
 
+procedure TDrillSim.MenuItem1OpenFileClick(Sender: TObject);
+var
+  openDialog : TOpenDialog;    // Open dialog variable
+  filename : String;
+begin
+  if Edited then
+  Begin
+    if ExitCheck then SaveData; { save current file ? }
+  End;
+  CreateNewFile:=False;    { we dont know what sort of file we'll load... }
+
+  begin
+    // Create the open dialog object - assign to our open dialog variable
+    openDialog := TOpenDialog.Create(self);
+
+    // Set up the starting directory to be the current one
+    openDialog.InitialDir := GetCurrentDir;
+
+    // Only allow existing files to be selected
+    openDialog.Options := [ofFileMustExist];
+
+    // Allow only .dpr and .pas files to be selected
+    openDialog.Filter :=
+      'DrillSim Well files|*.wdf';
+
+    // Select pascal files as the starting filter type
+    openDialog.FilterIndex := 2;
+
+    // Display the open file dialog
+    if openDialog.Execute
+    then
+    Begin
+      ShowMessage('File : '+openDialog.FileName);
+      if FileExists(openDialog.FileName)
+      then LoadData
+      else ShowMessage('File not found!');
+
+      // Free up the dialog
+      openDialog.Free;
+    end;
+  end;
+end;
+
+
 procedure TDrillSim.MenuItem1CreateFileClick(Sender: TObject);
 begin
-  LoadFile;
-  if not(NoFileDefined) and not(CharInput=^[) then { ESC if abort from file load }
+  CreateNewFile:=True;
+  InitData;                             { Set NeverSimulated }
+  APIUnits;                             { Default to API units    }
+  UpdateGen;
+  CallHoleData;         { get hole data and redo pipe/hole screens if error }
+  CallPipeData;         { get pipe data and redo hole/pipe screens if error }
+  UpdateBit;
+  UpdateMud;
+  UpdatePump;
+  UpdateSurf;
+  UpDateWellTests;
+  NoData:=False;
+  SaveData;
+  CreateNewFile:=False;
+end;
+
+procedure TDrillSim.MenuItem1SaveFileClick(Sender: TObject);
+var
+ saveDialog : TSaveDialog;    // Save dialog variable
+ Reply, BoxStyle: Integer;
+begin
+  // Create the save dialog object - assign to our save dialog variable
+  saveDialog := TSaveDialog.Create(self);
+
+  // Give the dialog a title
+  saveDialog.Title := 'Save Well Data File';
+
+  // Set up the starting directory to be the current one
+  saveDialog.InitialDir := GetCurrentDir;
+
+  // Allow only filtered file types to be saved
+  saveDialog.Filter := 'DrillSim file|*.wdf|All Files|*.*';
+
+  // Set the default extension
+  saveDialog.DefaultExt := 'wdf';
+
+  // Select text files as the starting filter type
+  saveDialog.FilterIndex := 1;
+
+  // Display the open file dialog
+  if saveDialog.Execute
+  then
   Begin
-    if not NewFile then              { confirm create if existing file }
+    ShowMessage('File : '+saveDialog.FileName);
+    if FileExists(saveDialog.FileName) then
     Begin
-      {MakeWindow (10,18, 5,44,Blue+LightGrayBG,Blue+LightGrayBG,HdoubleBrdr,
-               Window1);}
-      //Disp(20,12,copy(BlankString,1,39));
-      //Disp(20,12,FullName + ' exists. Continue? (Y/N)');
-      Repeat
-        CharInput:=ReadKey;
-      Until UpCase(CharInput) in ['Y','N'];
-     { RemoveWindow; }
-      if UpCase(CharInput)='N' then
-      Begin
-        Exit;
-      End;
-    End;
-    CreateFile;                  { otherwise create it and redisplay screen }
-  End;
+      BoxStyle := MB_ICONQUESTION + MB_YESNO;
+      Reply := Application.MessageBox(pchar('Overwrite '+saveDialog.FileName + '?'), 'File Exists!', BoxStyle);
+      if Reply = IDNO
+        then Exit;  //       else ShowMessage('Save file was cancelled');
+    end else CreateNewFile:=True;
+  end;
+  FileName:=saveDialog.FileName;  // set global active file name variable
+  SaveData;
+  // Free up the dialog
+  saveDialog.Free;
+
 
 end;
+
+
 
 //--------------- Edit Well File Menu
 

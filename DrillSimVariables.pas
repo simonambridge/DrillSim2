@@ -277,7 +277,7 @@ Var
    FileName            : String120;
    FileSpec            : String120;
    //FullName            : String20;
-   NewFile             : boolean;
+   CreateNewFile        : boolean;
    Quit                : boolean;
    Error               : boolean;
    NoFileDefined       : boolean;
@@ -292,10 +292,7 @@ Var
    FlowMode            : String20;
    Model               : String20;
    InString            : String120;          { Utility input string }
-   BlankString         : String120;
-   LstString           : String120;           { spacer print string }
    InputString         : String120;
-   OutputString        : String120;
    LastString          : String120;
    PreviousString      : String120;
    ThisString          : String120;

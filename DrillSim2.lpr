@@ -14,7 +14,6 @@ uses
   DrillSimVariables,
   DrillSimStartup,
   DrillSimFile,
-  DrillSimMenu,
   DrillSimMessageToMemo,
   DrillSimGUI,
   FormGeneralData,

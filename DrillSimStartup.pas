@@ -24,9 +24,10 @@ Begin                                        { Extract path string }
   if FileExists(S) then
   Begin
     FileName:=S;               { set file to user defined file }
-    NewFile:=False;
+    CreateNewFile:=False;      { its an existing file }
     NoFileDefined:=False;
     StringToMemo('DrillSimStartup.LoadDefaultWellDataFile: Loading well data file ' + FileName + '...');
+
     LoadData;
 
     if NoFileDefined=True then // on return, is a valid file loaded?
@@ -52,17 +53,18 @@ Begin
   Quit:=False;                          { Initialise Simulator Quit indicator }
   NoFileDefined:=True;  // we are a blank
   NoData:=True;
-  NewFile:=True;
-  Error:=False;                              { Hydraulic calculation }
-  HoleError:=False;
+  CreateNewFile:=True;                  { new file until we know otherwise... }
   Create:=False;
+
+  Error:=False;                         { Hydraulic calculation }
+  HoleError:=False;
+
   PosCounter:=1;
   TempString:='';
   Instring:='';
   FileName:='';
   DefaultFile:='';
   DefaultDirectory:='';
-  LstString:='';
 
   APIUnits;     { Initial default unit type   }
                 {* set UoMLabel, UoMCOnverter and UoMDescriptor *}

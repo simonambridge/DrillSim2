@@ -24,7 +24,7 @@ Begin                                        { Extract path string }
   if FileExists(S) then
   Begin
     FileName:=S;               { set file to user defined file }
-    NewFile:=False;
+    CreateNewFile:=False;      { its an existing file }
     NoFileDefined:=False;
     StringToMemo('DrillSimStartup.LoadDefaultWellDataFile: Loading well data file ' + FileName + '...');
     LoadData;
@@ -52,17 +52,18 @@ Begin
   Quit:=False;                          { Initialise Simulator Quit indicator }
   NoFileDefined:=True;  // we are a blank
   NoData:=True;
-  NewFile:=True;
-  Error:=False;                              { Hydraulic calculation }
-  HoleError:=False;
+  CreateNewFile:=True;                  { new file until we know otherwise... }
   Create:=False;
+
+  Error:=False;                         { Hydraulic calculation }
+  HoleError:=False;
+
   PosCounter:=1;
   TempString:='';
   Instring:='';
   FileName:='';
   DefaultFile:='';
   DefaultDirectory:='';
-  LstString:='';
 
   APIUnits;     { Initial default unit type   }
                 {* set UoMLabel, UoMCOnverter and UoMDescriptor *}
@@ -96,13 +97,14 @@ Begin
       Readln(TextFile,TextFileLine); { read location of default well file }
       End;
     Close(TextFile);
+
     StringToMemo('DrillSimStartup.StartUp: Default well data file is ' + TextFileLine);
+
     LoadDefaultWellDataFile(TextFileLine);     // Load the default data file !!!
   End else
   Begin                  { defaults file not found }
     SystemError(1);      // pop up error message
   End;
-  Data.WellName:='poop';
 
   {* --------- Load Help File --------- *}
 

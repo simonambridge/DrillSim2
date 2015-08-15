@@ -30,7 +30,7 @@ begin
   writeln('DrillSim2.lpr : Application.Initialize');
   Application.Initialize;
 
-  // Build GUI, run DrillSim StartUp : DrillSimGUI and DrillSimStartup
+  // Build GUI, run DrillSim StartUp
   writeln('DrillSim2.lpr : Application.CreateForm');
   Application.CreateForm(TDrillSim, DrillSim);
   StringToMemo('Initialise Form: DrillSim');

@@ -18,18 +18,13 @@ Procedure SaveData;
 Var i : integer;
 Begin
   MessageToMemo(78);
-{*  For i:=1 to 7 do                   { FCommands and call to MessageToMemo }
-  Begin                                user defined units no longer supported
-    Data.UserLab[i]:=Lab[i];
-    Data.UserCon[i]:=Con[i];
-  End;           *}
-  if NewFile then
+  if CreateNewFile then
   Begin
     Assign(DataFile,FileName);       { if it's not the current file }
     rewrite(DataFile);
     write(DataFile,Data);
     Close(DataFile);
-    NewFile:=False;                           { reset for next time }
+    CreateNewFile:=False;                     { reset for next time }
   End else
   Begin
     Reset(DataFile);                          { otherwise save current file }
@@ -60,7 +55,7 @@ Begin
   Begin
     if (Instring <> FileName) then { diff. from current }
     Begin
-      NewFile:=True;
+      CreateNewFile:=True;
       OriginalFileName:=FileName;        { save current file name          }
       FileName:=Instring;                { set FullName for file save      }
       SaveData;                          { save it                         }
