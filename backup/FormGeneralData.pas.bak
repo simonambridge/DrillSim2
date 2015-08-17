@@ -120,26 +120,26 @@ end;
 
 procedure TGeneralDataForm.ElevationRKBDataChange(Sender: TObject);
 var
-MyEdit: TEdit;
-Success: boolean;
+  MyEdit: TEdit;
+  Success: boolean;
 begin
-Success:= true;
-if (Sender is TEdit) then begin
-  MyEdit:= TEdit(Sender);
-  MyEdit.Hint:= '';
-  try
-    if MyEdit.Text = '' then
-    Begin
-      MyEdit.Hint:= 'Cannot be blank';
+  Success:= true;
+  if (Sender is TEdit) then begin
+    MyEdit:= TEdit(Sender);
+    MyEdit.Hint:= '';
+    try
+      if MyEdit.Text = '' then
+      Begin
+        MyEdit.Hint:= 'Cannot be blank';
+        Success:= false;
+      end else MyEdit.Color:= clWindow; //all is OK make edit standard white.
+    except
+      MyEdit.Color:= clRed;  //Let the user know the output is not valid.
+      MyEdit.Hint:= MyEdit.Text + 'not valid';
       Success:= false;
-    end else MyEdit.Color:= clWindow; //all is OK make edit standard white.
-  except
-    MyEdit.Color:= clRed;  //Let the user know the output is not valid.
-    MyEdit.Hint:= MyEdit.Text + 'not valid';
-    Success:= false;
+    end;
   end;
-end;
-if Success then _WellElevation:=StrToFloat(ElevationRKBData.Text);
+  if Success then _WellElevation:=StrToFloat(ElevationRKBData.Text);
 end;
 
 
@@ -147,14 +147,14 @@ end;
 
 procedure TGeneralDataForm.FormActivate(Sender: TObject);
 begin
-{*  StringToMemo('Form General Well Data activated....');
+  StringToMemo('Form General Well Data activated....');
   StringToMemo('Well name is ' + Data.WellName);
   WellOperatorData.Caption:=Data.WellOperator;
   WellNameData.Caption:=Data.WellName;
   ElevationRKBData.Caption:=FloatToStr(Data.ElevationRKB);
-  if Data.Offshore= True
+  if Data.Offshore=True
   then OffshoreYNRadioGroup.ItemIndex:=1
-  else OffshoreYNRadioGroup.ItemIndex:=0;     *}
+  else OffshoreYNRadioGroup.ItemIndex:=0;
 end;
 
 procedure TGeneralDataForm.QuitClick(Sender: TObject);
@@ -168,6 +168,8 @@ begin
   Data.WellName       :=_WellName;
   Data.ElevationRKB   :=_WellElevation;
   Data.Offshore       :=_WellOffshore;
+  Edited:=True;
+
   Close;
 end;
 

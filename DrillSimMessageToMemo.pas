@@ -5,8 +5,8 @@ Interface
 Uses DrillSimVariables,
      Dialogs;
 
-Procedure MessageToMemo(x : integer);
 Procedure StringToMemo(S : String);
+Procedure MessageToMemo(x : integer);
 
 
 Implementation
@@ -263,7 +263,7 @@ Begin
             ThisString:='Pit Vol :' + ThisString + Space + UoMLabel[4];
           End;
      78 : Begin
-            ThisString:='Saving '+ FileName;    { called by SaveData }
+            ThisString:='Saving '+ CurrentFQFileName;    { called by SaveData }
           End;
 
      80 : Begin

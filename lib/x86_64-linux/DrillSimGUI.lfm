@@ -831,7 +831,8 @@ object DrillSim: TDrillSim
         OnClick = MenuItem1SaveFileClick
       end
       object MenuItem1SaveAs: TMenuItem
-        Caption = 'Save Well File As...'
+        Caption = 'Save As...'
+        OnClick = MenuItem1SaveAsClick
       end
       object MenuItem1Quit: TMenuItem
         Caption = 'Quit'

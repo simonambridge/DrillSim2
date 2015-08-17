@@ -63,7 +63,6 @@ Begin
   Begin
     Input:=copy(InputString,2,1);
     Case Input[1] of
-      'D' : GetDirectory;
       'S' : MessageToMemo(15);  { Dn strokes }
       'T' : MessageToMemo(16);  { dn time }
       'A' : Begin

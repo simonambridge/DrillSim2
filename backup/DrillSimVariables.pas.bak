@@ -274,9 +274,9 @@ Var
    d                   : Date;
    t                   : Time;
 
-   FileName            : String120;
+   CurrentFQFileName     : String120;
    FileSpec            : String120;
-   //FullName            : String20;
+   //FullName          : String20;
    CreateNewFile        : boolean;
    Quit                : boolean;
    Error               : boolean;
@@ -292,10 +292,7 @@ Var
    FlowMode            : String20;
    Model               : String20;
    InString            : String120;          { Utility input string }
-   BlankString         : String120;
-   LstString           : String120;           { spacer print string }
    InputString         : String120;
-   OutputString        : String120;
    LastString          : String120;
    PreviousString      : String120;
    ThisString          : String120;
@@ -327,9 +324,7 @@ Var
    IntParam            : integer;
    RealParam           : real;
 
-   NoData              : boolean;
    HoleError           : boolean;
-   Create              : boolean;
    Edited              : boolean;
    Valid               : boolean;
    Esc                 : boolean;

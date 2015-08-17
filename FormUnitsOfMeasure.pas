@@ -55,7 +55,7 @@ type
 
 var
   UnitsOfMeasureForm: TUnitsOfMeasureForm;
-  OriginalUnits: boolean;
+  _WellAPI     : boolean;
 
 implementation
 
@@ -101,14 +101,14 @@ procedure TUnitsOfMeasureForm.SelectUoMRadioGroupClick(Sender: TObject);
 begin
 case SelectUoMRadioGroup.ItemIndex of
   0: Begin
-       Data.API    := True;
+       _WellAPI    := True;
      End;
 
   1: Begin
-       Data.API    := False;
+       _WellAPI    := False;
      End;
   end;
-FormDisplayUnits;
+  FormDisplayUnits;
 end;
 
 { ------------- Form Procedures ------------ }
@@ -124,22 +124,24 @@ end;
 
 procedure TUnitsOfMeasureForm.FormActivate(Sender: TObject);
 begin
- StringToMemo('Form Units Of Measure activated....');
- OriginalUnits:=Data.API; // preserve state on entry to form
- if Data.API= True
- then SelectUoMRadioGroup.ItemIndex:=0
- else SelectUoMRadioGroup.ItemIndex:=1;
- FormDisplayUnits;
+   StringToMemo('Form Units Of Measure activated....');
+   if Data.API= True
+   then
+     SelectUoMRadioGroup.ItemIndex:=0
+   else
+     SelectUoMRadioGroup.ItemIndex:=1;
+   FormDisplayUnits;
 End;
 
 procedure TUnitsOfMeasureForm.SaveButtonClick(Sender: TObject);
 begin
-  Close
+  Data.API:=_WellAPI;
+  Close;
+  Edited:=True;
 end;
 
 procedure TUnitsOfMeasureForm.CancelButtonClick(Sender: TObject);
 begin
-  Data.API:=OriginalUnits;
   Close
 end;
 

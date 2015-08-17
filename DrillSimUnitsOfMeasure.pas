@@ -15,7 +15,7 @@ Procedure MetricUnits;
 Begin
   Data.API:=False;
   UoMDescriptor:='Metric';          { divide by these numbers to get API }
-  ROPLab:='min/met';
+  ROPLabel:='min/met';
   UoMConverter[1] :=3.28084;
   UoMConverter[2]:=8.345;
   UoMConverter[3]:=1.45033;
@@ -38,7 +38,7 @@ Procedure APIUnits;      {* Assign values to UoMConverter[] and UoMLabel[] array
 Begin
   Data.API:=True;
   UoMDescriptor:='API';
-  ROPLab:='min/ft';
+  ROPLabel:='min/ft';
   UoMConverter[1]:=1;
   UoMConverter[2]:=1;
   UoMConverter[3]:=1;

@@ -15,9 +15,22 @@ type
   { TGeneralDataForm }
 
   TGeneralDataForm = class(TForm)
+    ChokeLineIDData: TEdit;
+    ChokeLineIDLabel: TLabel;
+    WaterDepthLabel: TLabel;
+    RiserTDLabel: TLabel;
+    RiserIDLabel: TLabel;
+    WaterDepthData: TEdit;
+    RiserTDData: TEdit;
+    RiserIDData: TEdit;
+    WaterDepth: TStaticText;
     ElevationRKBData: TEdit;
     ElevationRKBUoMLabel: TLabel;
     OffshoreYNRadioGroup: TRadioGroup;
+    ChokeLineID: TStaticText;
+    RiserTD: TStaticText;
+    RiserID: TStaticText;
+    SubSeaWellHeadYNRadioGroup1: TRadioGroup;
     Save: TButton;
     Quit: TButton;
     WellNameData: TEdit;
@@ -26,6 +39,8 @@ type
     WellOperator: TStaticText;
     WellName: TStaticText;
 
+    procedure ChokeLineIDClick(Sender: TObject);
+    procedure FormCreate(Sender: TObject);
     procedure WellNameDataChange(Sender: TObject);
     procedure WellOperatorDataChange(Sender: TObject);
     procedure ElevationRKBDataChange(Sender: TObject);
@@ -118,28 +133,38 @@ begin
   if Success then _WellName:=WellNameData.Text;
 end;
 
+procedure TGeneralDataForm.FormCreate(Sender: TObject);
+begin
+
+end;
+
+procedure TGeneralDataForm.ChokeLineIDClick(Sender: TObject);
+begin
+
+end;
+
 procedure TGeneralDataForm.ElevationRKBDataChange(Sender: TObject);
 var
-MyEdit: TEdit;
-Success: boolean;
+  MyEdit: TEdit;
+  Success: boolean;
 begin
-Success:= true;
-if (Sender is TEdit) then begin
-  MyEdit:= TEdit(Sender);
-  MyEdit.Hint:= '';
-  try
-    if MyEdit.Text = '' then
-    Begin
-      MyEdit.Hint:= 'Cannot be blank';
+  Success:= true;
+  if (Sender is TEdit) then begin
+    MyEdit:= TEdit(Sender);
+    MyEdit.Hint:= '';
+    try
+      if MyEdit.Text = '' then
+      Begin
+        MyEdit.Hint:= 'Cannot be blank';
+        Success:= false;
+      end else MyEdit.Color:= clWindow; //all is OK make edit standard white.
+    except
+      MyEdit.Color:= clRed;  //Let the user know the output is not valid.
+      MyEdit.Hint:= MyEdit.Text + 'not valid';
       Success:= false;
-    end else MyEdit.Color:= clWindow; //all is OK make edit standard white.
-  except
-    MyEdit.Color:= clRed;  //Let the user know the output is not valid.
-    MyEdit.Hint:= MyEdit.Text + 'not valid';
-    Success:= false;
+    end;
   end;
-end;
-if Success then _WellElevation:=StrToFloat(ElevationRKBData.Text);
+  if Success then _WellElevation:=StrToFloat(ElevationRKBData.Text);
 end;
 
 
@@ -152,7 +177,7 @@ begin
   WellOperatorData.Caption:=Data.WellOperator;
   WellNameData.Caption:=Data.WellName;
   ElevationRKBData.Caption:=FloatToStr(Data.ElevationRKB);
-  if Data.Offshore= True
+  if Data.Offshore=True
   then OffshoreYNRadioGroup.ItemIndex:=1
   else OffshoreYNRadioGroup.ItemIndex:=0;
 end;
@@ -168,6 +193,8 @@ begin
   Data.WellName       :=_WellName;
   Data.ElevationRKB   :=_WellElevation;
   Data.Offshore       :=_WellOffshore;
+  Edited:=True;
+
   Close;
 end;
 

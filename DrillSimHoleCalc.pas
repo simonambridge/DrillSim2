@@ -5,10 +5,60 @@ Interface
 Uses DrillSimVariables;
 
 Procedure DSHoleCalc;                  { Procedure To Determine Hole Profile }
+Procedure CheckHoleData;
+Procedure CheckPipeData;
 
 
 Implementation
 
+Procedure ErrorScreen;
+Begin
+  Mode:=ErrorMode;                    { Hole/Pipe data error screen }
+
+  //Box(13,5,67,19);
+  //Box(30,6,49,8);
+  //Disp(32,7,'INPUT DATA ERROR');
+  //Disp(16,9,Help.HelpText[191]);   { There is an error in the... }
+  //Disp(16,10,Help.HelpText[192]);
+  //Disp(16,11,Help.HelpText[193]);
+  //Disp(16,12,Help.HelpText[194]);
+  //Disp(16,13,Help.HelpText[195]);
+  //Disp(16,14,Help.HelpText[196]);
+  //Disp(16,15,Help.HelpText[197]);
+  //Disp(16,16,Help.HelpText[198]);
+  //Disp(16,17,Help.HelpText[199]);
+  //Disp(16,18,Help.HelpText[200]);
+End;
+
+Procedure CheckHoleData; // called when a file is loaded
+Begin
+  Repeat
+    UpdateHole;                  { call hole data entry form }
+    Begin
+      DSHoleCalc;                { Check hole for errors and initialise volumes  }
+                                 { mud volume reset when hole profile changed }
+      if HoleError then
+      Begin
+        ErrorScreen;
+        UpdatePipe;
+      End;
+    End;
+  Until not HoleError;
+End;
+
+Procedure CheckPipeData;  // called when a file is loaded
+Begin
+  Repeat
+    UpdatePipe;                { call pipe data entry form }
+    DSHoleCalc;                { Check hole for errors and initialise volumes }
+                               { mud volume reset when pipe profile changed }
+    if HoleError then
+    Begin
+      ErrorScreen;
+      UpdateHole;
+    End;
+  Until not HoleError;
+End;
 
 Procedure ErrorCheck(SectionNumber : integer);
 Begin

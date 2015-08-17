@@ -274,19 +274,16 @@ Var
    d                   : Date;
    t                   : Time;
 
-   FileName            : String120;
-   FileSpec            : String120;
-   //FullName            : String20;
-   CreateNewFile        : boolean;
+   CurrentFQFileName     : String120;
+   CreateNewFile       : boolean;
    Quit                : boolean;
-   Error               : boolean;
    NoFileDefined       : boolean;
    HelpFileFound       : boolean;
 
    UoMConverter        : array[1..7] of real;
    UoMLabel            : array[1..7] of String3;
    UoMDescriptor       : String[20];
-   ROPLab              : String[20];
+   ROPLabel            : String[20];
 
    TurbFlag            : boolean;
    FlowMode            : String20;
@@ -324,9 +321,7 @@ Var
    IntParam            : integer;
    RealParam           : real;
 
-   NoData              : boolean;
    HoleError           : boolean;
-   Create              : boolean;
    Edited              : boolean;
    Valid               : boolean;
    Esc                 : boolean;

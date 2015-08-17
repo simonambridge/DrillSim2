@@ -23,23 +23,26 @@ Procedure LoadDefaultWellDataFile(S : String120);
 Begin                                        { Extract path string }
   if FileExists(S) then
   Begin
-    FileName:=S;               { set file to user defined file }
+    CurrentFQFileName:=S;      { set file to user defined file }
     CreateNewFile:=False;      { its an existing file }
-    NoFileDefined:=False;
-    StringToMemo('DrillSimStartup.LoadDefaultWellDataFile: Loading well data file ' + FileName + '...');
+    StringToMemo('DrillSimStartup.LoadDefaultWellDataFile: Loading well data file ' + CurrentFQFileName + '...');
 
-    LoadData;
+    LoadData;  { sets NoFileDefined=True if error during read }
 
     if NoFileDefined=True then // on return, is a valid file loaded?
     Begin                      // then notify the error
-      StringToMemo('DrillSimStartup.LoadDefaultWellDataFile: Error loading well data file ' + FileName);
+      StringToMemo('DrillSimStartup.LoadDefaultWellDataFile: Error loading well data file ' + CurrentFQFileName);
       SystemError(6);  // DrillSimUtilities - cannot load file
     end else
     Begin                      // otherwise confirm well name loaded
-      StringToMemo('DrillSimStartup.LoadDefaultWellDataFile: Default well data file ' + FileName + ' loaded');
+      StringToMemo('DrillSimStartup.LoadDefaultWellDataFile: Default well data file ' + CurrentFQFileName + ' loaded');
       StringToMemo('DrillSimStartup.LoadDefaultWellDataFile: Simulating Well ' + Data.WellName);
     End;
-  End;
+  End else
+  Begin
+    StringToMemo('DrillSimStartup.LoadDefaultWellDataFile: Error - missing well data file ' + CurrentFQFileName);
+    NoFileDefined:=True;
+  end;
 End;
 
 
@@ -52,17 +55,14 @@ Begin
 
   Quit:=False;                          { Initialise Simulator Quit indicator }
   NoFileDefined:=True;  // we are a blank
-  NoData:=True;
   CreateNewFile:=True;                  { new file until we know otherwise... }
-  Create:=False;
 
-  Error:=False;                         { Hydraulic calculation }
   HoleError:=False;
 
   PosCounter:=1;
   TempString:='';
   Instring:='';
-  FileName:='';
+  CurrentFQFileName:='';
   DefaultFile:='';
   DefaultDirectory:='';
 
@@ -70,8 +70,6 @@ Begin
                 {* set UoMLabel, UoMCOnverter and UoMDescriptor *}
 
   InitData;     { zero all main file variables }
-
-//  StringToMemo('Well <' + Data.WellName + '>');
 
     { ------- get default directory ------- }
 
@@ -129,7 +127,7 @@ Begin
   ThisString:=Data.WellName;
     writeln(ThisString);
 
-  StringToMemo('DrillSimStartup.StartUp: Well <' + ThisString + '>');
+  StringToMemo('DrillSimStartup.StartUp: Using Well ' + ThisString + '');
   StringToMemo('DrillSimStartup.StartUp: Units selected: '+ UoMDescriptor);
 
 End;

@@ -88,7 +88,6 @@ Begin
     StrWt:=Zero;       { set up strwt in case pipe weights changed }
     For i:=1 to MaxPipes do StrWt:=StrWt + (Pipe[i,1] * Pipe[i,4]) / 1000;
 
-    ExitPrompt;
 
 { ===================== Formation Parameter Table ==========================}
 
@@ -151,7 +150,6 @@ Begin
       if (i=1) and CheckForZero then
       Begin
         StringToMemo('First entries cannot be zero');
-        ExitPrompt;
         EscPressed:=False;      { don't permit exit if bad data }
         i:=Zero;                { reset to start at first entry }
       End;
@@ -175,8 +173,7 @@ Begin
     FormationPressureGradient:=
              ((Rock[1].FP * UoMConverter[3]) / (Rock[1].Depth * UoMConverter[1])) / Presscon;
   End;
-  ExitPrompt;
-End;
+ End;
 
 { ===================== General Well Data ==========================}
 
@@ -273,8 +270,7 @@ Begin
       //Disp(63-length(TempString),19,TempString);
     End;
   End;
-  ExitPrompt;
-End;
+  End;
 
 
 { ===================== Hole Data ==========================}
@@ -501,7 +497,6 @@ Begin
     if Valid then Dev:=RResult;
     gotoxy(55,LineCnt+3+(i-1)*3); write(Dev:9:3);
   End;
-  ExitPrompt;
 End;
 
 
@@ -573,7 +568,6 @@ Begin
       End;
     Until not InputError;
   End;
-  ExitPrompt;
 End;
 
 
@@ -633,7 +627,6 @@ Begin
       if InputError then MessageToMemo(88); // Bit jets must be greater than zero
     Until not InputError;
   End;
-  ExitPrompt;
 End;
 
 
@@ -680,7 +673,6 @@ Begin
       End else InputError:=False;
     Until not InputError;
   End;
-  ExitPrompt;
 End;
 
 { ===================== Pump Data ==========================}
@@ -755,7 +747,6 @@ Begin
       End;
     Until not InputError;
   End;
-  ExitPrompt;
 End;
 
 
@@ -842,7 +833,6 @@ Begin
       End;
     Until not InputError;
   End;
-  ExitPrompt;
 End;
 
 Begin

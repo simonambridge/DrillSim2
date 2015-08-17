@@ -20,7 +20,7 @@ Begin
   MessageToMemo(78);
   if CreateNewFile then
   Begin
-    Assign(DataFile,FileName);       { if it's not the current file }
+    Assign(DataFile,CurrentFQFileName);       { if it's not the current file }
     rewrite(DataFile);
     write(DataFile,Data);
     Close(DataFile);
@@ -36,7 +36,7 @@ End;
 
 
 Procedure SaveFile;
-Var OriginalFileName : String120;
+Var OriginalFQFileName : String120;
 Begin
   Instring:='';
   Repeat
@@ -53,13 +53,13 @@ Begin
 
   if CharInput <> ^[ then  { will accept null entry as acceptance of current file }
   Begin
-    if (Instring <> FileName) then { diff. from current }
+    if (Instring <> CurrentFQFileName) then { diff. from current }
     Begin
-      NewFile:=True;
-      OriginalFileName:=FileName;        { save current file name          }
-      FileName:=Instring;                { set FullName for file save      }
+      CreateNewFile:=True;
+      OriginalFQFileName:=CurrentFQFileName;        { save current file name          }
+      CurrentFQFileName:=Instring;                { set FullName for file save      }
       SaveData;                          { save it                         }
-      FileName:=OriginalFileName;        { restore original "current" file }
+      CurrentFQFileName:=OriginalFQFileName;        { restore original "current" file }
     End else SaveData;          { if same file entered or only ENTER pressed }
   End;
   {RemoveWindow;  }
@@ -107,17 +107,12 @@ Begin
     if not OK then                    { if bad file type... }
     Begin
       NoFileDefined:=True;
-      FileName:='';
+      CurrentFQFileName:='';
+      InitData;
       Quit:=True;                           { back to DS - bad file }
     End;
     Close(DataFile);
-    FileName:=Instring;
-    NoData:=False;
-{*    For i:=1 to 7 do             user defined units no longer supported
-    Begin
-      Lab[i]:=Data.UserLab[i];
-      Con[i]:=Data.UserCon[i];
-    End;      *}
+    CurrentFQFileName:=Instring;
     InitMud;            { set OriginalMuds (to current mud W,Pv,Yp)           }
     InitDepth;          { save the original depth for this session            }
     InitGeology;        { locate correct current position within geology table}

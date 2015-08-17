@@ -10,7 +10,6 @@ Uses Crt,
 
 Procedure SystemError(x: integer);
 Procedure GetKey;
-Procedure ExitPrompt;    { display "press any key..." and clear all messages }
 Procedure Bright(MenuChoice : integer);
 Procedure Normal(MenuChoice : integer);
 Procedure GetString(x, y, z : integer);
@@ -23,6 +22,7 @@ Procedure GetCurrentDate (Var d : Date);
 Procedure GetCurrentTime (Var t : Time);
 
 Implementation
+
 
 Procedure GetCurrentDate (Var d : Date);
 Begin
@@ -53,14 +53,6 @@ Procedure GetKey;
 Begin
   Repeat Until Keypressed;
   CharInput:=UpCase(ReadKey);
-End;
-
-Procedure ExitPrompt;    { display "press any key..." and clear all messages }
-Begin
-  TAttr:=AttrByte;
-  gotoxy(58,25);                           { wait for input  }
-  GetKey;
-  AttrByte:=TAttr;
 End;
 
 Procedure Bright(MenuChoice : integer);

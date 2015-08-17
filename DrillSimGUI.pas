@@ -177,6 +177,7 @@ type
     procedure CommandLineKeyPress(Sender: TObject; var Key: char);
     procedure FormActivate(Sender: TObject);
     procedure MenuItem1OpenFileClick(Sender: TObject);
+    procedure MenuItem1SaveAsClick(Sender: TObject);
     procedure MenuItem1SaveFileClick(Sender: TObject);
     procedure MenuItem2DefaultsClick(Sender: TObject);
     procedure MenuItem2DisplayWellDataClick(Sender: TObject);
@@ -542,7 +543,7 @@ end;
 procedure TDrillSim.FormCreate(Sender: TObject);
 begin
   Memo1.SelStart:=Length(Memo1.Text);
-  StringToMemo('DrillSimGUI.FormaCreate:Running DrillSimGUI FormCreate...'); // please wait....
+  StringToMemo('DrillSimGUI.FormaCreate:Running DrillSimGUI FormCreate...');
 
   splash := TSplashAbout.Create(nil);
   SetDefaultValues; // splash - optional
@@ -556,13 +557,28 @@ begin
   writeln('OnClose');
   BoxStyle := MB_ICONQUESTION + MB_YESNO;
   Reply := Application.MessageBox('Are you Sure?', 'Exit Check', BoxStyle);
-  if Reply = IDYES then Application.Terminate;
+  if Reply = IDYES then
+  Begin
+    if Edited then
+    Begin
+      BoxStyle := MB_ICONQUESTION + MB_YESNO;
+      Reply := Application.MessageBox('File has been edited. Do you want to save?', 'Save Check', BoxStyle);
+      if Reply = IDYES then
+      Begin
+        SaveData;
+        StringToMemo('DrillSimGUI.OnClose: File ' + CurrentFQFileName + ' saved');
+      end;
+    end;
+    Application.Terminate;
+  end;
 end;
 
 {* ======================== Menus =========================== *}
 
 procedure TDrillSim.MenuItem1QuitClick(Sender: TObject);
-var Reply, BoxStyle: Integer;
+var
+  Reply: Integer;
+  BoxStyle: Integer;
 begin
   BoxStyle := MB_ICONQUESTION + MB_YESNO;
   Reply := Application.MessageBox('Are you Sure?', 'Exit Check', BoxStyle);
@@ -573,44 +589,49 @@ procedure TDrillSim.MenuItem1OpenFileClick(Sender: TObject);
 var
   openDialog : TOpenDialog;    // Open dialog variable
   filename : String;
+  Reply: Integer;
+  BoxStyle: Integer;
 begin
   if Edited then
   Begin
-    if ExitCheck then SaveData; { save current file ? }
-  End;
+    BoxStyle := MB_ICONQUESTION + MB_YESNO;
+    Reply := Application.MessageBox('File has been edited. Do you want to save?', 'Save Check', BoxStyle);
+    if Reply = IDYES then
+    Begin
+      SaveData;
+      StringToMemo('DrillSimGUI.MenuItem1OpenFileClick: File ' + CurrentFQFileName + ' saved');
+    end;
+  end;
   CreateNewFile:=False;    { we dont know what sort of file we'll load... }
 
-  begin
     // Create the open dialog object - assign to our open dialog variable
-    openDialog := TOpenDialog.Create(self);
+  openDialog := TOpenDialog.Create(self);
 
     // Set up the starting directory to be the current one
-    openDialog.InitialDir := GetCurrentDir;
+  openDialog.InitialDir := GetCurrentDir;
 
     // Only allow existing files to be selected
-    openDialog.Options := [ofFileMustExist];
+  openDialog.Options := [ofFileMustExist];
 
     // Allow only .dpr and .pas files to be selected
-    openDialog.Filter :=
+  openDialog.Filter :=
       'DrillSim Well files|*.wdf';
 
     // Select pascal files as the starting filter type
-    openDialog.FilterIndex := 2;
+  openDialog.FilterIndex := 2;
 
     // Display the open file dialog
-    if openDialog.Execute
-    then
+  if openDialog.Execute then
+  Begin
+    CurrentFQFileName:=openDialog.FileName;  // set global active file name variable
+    if FileExists(CurrentFQFileName) then
     Begin
-      if FileExists(openDialog.FileName)
-      then
-        Begin
-          LoadData;
-          ShowMessage('File : '+openDialog.FileName);
-        end
-      else ShowMessage('File not found!');
+        LoadData;
+        ShowMessage('File loaded: '+CurrentFQFileName);
+    end
+    else ShowMessage('File not found!');
       // Free up the dialog
       openDialog.Free;
-    end;
   end;
 end;
 
@@ -628,15 +649,22 @@ begin
   UpdatePump;
   UpdateSurf;
   UpDateWellTests;
-  NoData:=False;
   SaveData;
   CreateNewFile:=False;
 end;
 
+
 procedure TDrillSim.MenuItem1SaveFileClick(Sender: TObject);
+begin
+  SaveData;
+  ShowMessage('File saved: '+CurrentFQFileName);
+
+end;
+
+procedure TDrillSim.MenuItem1SaveAsClick(Sender: TObject);
 var
- saveDialog : TSaveDialog;    // Save dialog variable
- Reply, BoxStyle: Integer;
+  saveDialog : TSaveDialog;    // Save dialog variable
+  Reply, BoxStyle: Integer;
 begin
   // Create the save dialog object - assign to our save dialog variable
   saveDialog := TSaveDialog.Create(self);
@@ -657,25 +685,35 @@ begin
   saveDialog.FilterIndex := 1;
 
   // Display the open file dialog
-  if saveDialog.Execute
-  then
+  if saveDialog.Execute then
   Begin
-    if FileExists(saveDialog.FileName) then
+    CurrentFQFileName:=saveDialog.FileName;  // set global active file name variable
+    if FileExists(CurrentFQFileName) then
     Begin
       BoxStyle := MB_ICONQUESTION + MB_YESNO;
-      Reply := Application.MessageBox(pchar('Overwrite '+saveDialog.FileName + '?'), 'File Exists!', BoxStyle);
-      if Reply = IDNO
-        then Exit;  //       else ShowMessage('Save file was cancelled');
-    end else CreateNewFile:=True;
+      Reply := Application.MessageBox(pchar('Overwrite '+CurrentFQFileName + '?'), 'File Exists!', BoxStyle);
+      if Reply = IDYES then
+      Begin
+        CreateNewFile:=False;
+        SaveData;
+      end else
+      Begin
+        StringToMemo('DrillSimGUI.MenuItem1SaveAsClick: File exists, save cancelled');
+        ShowMessage('File exists, save cancelled');
+      end;
+    end else
+    Begin
+      CreateNewFile:=True;
+      SaveData;
+    end;
+  end else
+  Begin
+    StringToMemo('DrillSimGUI.MenuItem1SaveAsClick: Save cancelled');
+    ShowMessage('Save cancelled');
   end;
-  FileName:=saveDialog.FileName;  // set global active file name variable
-  SaveData;
-  ShowMessage('File saved: '+saveDialog.FileName);
-  // Free up the dialog
-  saveDialog.Free;
-
-
+  saveDialog.Free; // Free up the dialog
 end;
+
 
 
 
@@ -769,9 +807,6 @@ end;
 // ----------- Simulate Menu
 procedure TDrillSim.MenuItem3StartClick(Sender: TObject);
 begin
-//  ConAPI;                 { convert DrillSim file - internally in user units }
-//  ConAPIKickData;         { Simulator uses internal API units                }
-//  ChDir(OriginDirectory); { ExecuteFlag gets set in Simulator when returning }
   MessageToMemo(100);               { courtesy message         }
   if NoFileDefined=false then
   Begin
@@ -783,8 +818,8 @@ begin
 
     if NoFileDefined then           { check for no file in use               }
     Begin
-      FileName:='no file';          { set file name for load window          }
-      SimulateLoadFile;                     { and go prompt for one                  }
+      CurrentFQFileName:='no file';          { set file name for load window          }
+      MenuItem1OpenFileClick(nil);                     { and go prompt for one                  }
     End;
 
     if not NoFileDefined then       { if file defined, continue into Simulator }

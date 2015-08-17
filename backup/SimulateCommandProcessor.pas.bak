@@ -6,7 +6,7 @@ Uses Crt,
      DrillSimVariables,
      DrillSimFile,
      DrillSimDataResets,
-     SimulateMessageToMemo,
+     DrillSimMessageToMemo,
      SimulateVolumes,
      SimulateFile,
      SimulateUpdate,
@@ -168,7 +168,7 @@ Begin
                   if i=Zero then
                   Begin
                     Edited:=True;
-                    MWIn:=Temp * con[2];
+                    MWIn:=Temp * UoMConverter[2];
                     if StackPointer < 200 then StackPointer:=StackPointer+1
                     else
                                { free stack space by merging last two entries }
@@ -257,7 +257,7 @@ Begin
                 if (i=Zero) and (x<999) then
                 Begin
                   Edited:=True;
-                  Data.RetPitVol:=result * con[4];
+                  Data.RetPitVol:=result * UoMConverter[4];
                 End;
               End;
               MessageToMemo(77);
@@ -325,7 +325,7 @@ Begin
     Begin
       ThisString:=ThisString + InputString;
       Val(InputString,Temp,i);
-      if i=Zero then Pump[y,5]:=Temp * con[3];
+      if i=Zero then Pump[y,5]:=Temp * UoMConverter[3];
     End;
   End;
 End;

@@ -3,6 +3,7 @@ Unit DrillSimUtilities;
 Interface
 
 Uses Crt,
+     Dos,
      DrillSimVariables,
      HyCalcVariables,
      Dialogs, StdCtrls;
@@ -22,6 +23,7 @@ Procedure GetCurrentDate (Var d : Date);
 Procedure GetCurrentTime (Var t : Time);
 
 Implementation
+
 
 Procedure GetCurrentDate (Var d : Date);
 Begin
