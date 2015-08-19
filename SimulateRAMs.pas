@@ -13,12 +13,14 @@ Implementation
 Procedure CloseWell(x,z : integer);   { ypos, message # }
 Begin
   //Disp(70,x,'Shut');
+  x:=0; // keep compiler qiuet
   MessageToMemo(z);
 End;
 
 Procedure OpenWell(x,z : integer);    { ypos, message # }
 Begin
   //Disp(70,x,'Open');
+  x:=0; // keep compiler qiuet
   MessageToMemo(z);
 End;
 

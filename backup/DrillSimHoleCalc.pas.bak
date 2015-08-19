@@ -2,7 +2,8 @@ Unit DrillSimHoleCalc;
 
 Interface
 
-Uses DrillSimVariables;
+Uses DrillSimVariables,
+     DrillSimDataInput;
 
 Procedure DSHoleCalc;                  { Procedure To Determine Hole Profile }
 Procedure CheckHoleData;
@@ -33,7 +34,7 @@ End;
 Procedure CheckHoleData; // called when a file is loaded
 Begin
   Repeat
-    UpdateHole;
+    UpdateHole;                  { call hole data entry form }
     Begin
       DSHoleCalc;                { Check hole for errors and initialise volumes  }
                                  { mud volume reset when hole profile changed }
@@ -49,7 +50,7 @@ End;
 Procedure CheckPipeData;  // called when a file is loaded
 Begin
   Repeat
-    UpdatePipe;
+    UpdatePipe;                { call pipe data entry form }
     DSHoleCalc;                { Check hole for errors and initialise volumes }
                                { mud volume reset when pipe profile changed }
     if HoleError then
@@ -95,15 +96,15 @@ Begin
     if Riser then                      { Assign Hole Sections To Temp[*] }
     Begin
      TempCount:=TempCount+1;
-     Temp[TempCount,1]:=RsrTD; Temp[TempCount,2]:=RsrID;
+     Temp[TempCount,1]:=RiserTD; Temp[TempCount,2]:=RiserID;
     End;
 
     if Casing then
     Begin
       TempCount:=TempCount+1;
-      Temp[TempCount,1]:=CsgTD; Temp[TempCount,2]:=CsgID;
-      if Riser then Temp[TempCount,1]:=Temp[TempCount,1]-RsrTD;
-      if Liner then Temp[TempCount,1]:=Temp[TempCount,1]-(CsgTD-LinerTop);
+      Temp[TempCount,1]:=CasingTD; Temp[TempCount,2]:=CasingID;
+      if Riser then Temp[TempCount,1]:=Temp[TempCount,1]-RiserTD;
+      if Liner then Temp[TempCount,1]:=Temp[TempCount,1]-(CasingTD-LinerTop);
     End;
 
     if Liner then
@@ -122,7 +123,7 @@ Begin
         if Casing then
         Begin
           if Liner then Temp[TempCount,1]:=Temp[TempCount,1]-LinerTD else
-                                Temp[TempCount,1]:=Temp[TempCount,1]-CsgTD;
+                                Temp[TempCount,1]:=Temp[TempCount,1]-CasingTD;
         End;
         if i>1 then Temp[TempCount,1]:=Temp[TempCount,1]-Temp[TempCount-1,1];
       End;                                     { Deduct OH#1 }

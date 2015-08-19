@@ -133,14 +133,15 @@ Type
                    MaxPipes : integer;
                    MaxJets  : integer;
                    Offshore : boolean;
+                   SubSeaWellHead : boolean;
                    Riser    : boolean;
                    Casing   : boolean;
                    Liner    : boolean;
                    Surf     : array[1..4,1..2] of real;
                    Hole     : array[1..2,1..2] of real;
                    Pipe     : array[1..4,1..4] of real;
-                   RsrTD, CsgTD, Tvd            : real;
-                   RsrID, CsgID, Dev            : real;
+                   RiserTD, CasingTD, TVD              : real;
+                   RiserID, CasingID, DeviationDegrees : real;
                    LinerTop, LinerTD, LinerID   : real;
                    ElevationRKB                 : real;
                    WaterDepth                   : real;
@@ -275,18 +276,15 @@ Var
    t                   : Time;
 
    CurrentFQFileName     : String120;
-   FileSpec            : String120;
-   //FullName          : String20;
-   CreateNewFile        : boolean;
+   CreateNewFile       : boolean;
    Quit                : boolean;
-   Error               : boolean;
    NoFileDefined       : boolean;
    HelpFileFound       : boolean;
 
    UoMConverter        : array[1..7] of real;
    UoMLabel            : array[1..7] of String3;
    UoMDescriptor       : String[20];
-   ROPLab              : String[20];
+   ROPLabel            : String[20];
 
    TurbFlag            : boolean;
    FlowMode            : String20;

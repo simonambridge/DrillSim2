@@ -26,6 +26,7 @@ uses
   SimulateFile,
   DrillSimDataInput,
   DrillSimUtilities,
+  DrillSimHoleCalc,
   DrillSimMessageToMemo,
   DrillSimUnitsOfMeasure,
   SimulateCommandProcessor,
@@ -553,10 +554,9 @@ end;
 Procedure TDrillSim.OnClose(Sender: TObject);
 var Reply, BoxStyle: Integer;
 begin
-  Memo1.Lines.Add('OnClose');
-  writeln('OnClose');
+  if Edited then StringToMemo('Edited') else StringToMemo('Not Edited');
   BoxStyle := MB_ICONQUESTION + MB_YESNO;
-  Reply := Application.MessageBox('Are you Sure?', 'Exit Check', BoxStyle);
+  Reply := Application.MessageBox('Are you sure?', 'Exit Check', BoxStyle);
   if Reply = IDYES then
   Begin
     if Edited then
@@ -576,19 +576,30 @@ end;
 {* ======================== Menus =========================== *}
 
 procedure TDrillSim.MenuItem1QuitClick(Sender: TObject);
-var
-  Reply: Integer;
-  BoxStyle: Integer;
+var Reply, BoxStyle: Integer;
 begin
+  if Edited then StringToMemo('Edited') else StringToMemo('Not Edited');
   BoxStyle := MB_ICONQUESTION + MB_YESNO;
-  Reply := Application.MessageBox('Are you Sure?', 'Exit Check', BoxStyle);
-  if Reply = IDYES then Application.Terminate;
+  Reply := Application.MessageBox('Are you sure?', 'Exit Check', BoxStyle);
+  if Reply = IDYES then
+  Begin
+    if Edited then
+    Begin
+      BoxStyle := MB_ICONQUESTION + MB_YESNO;
+      Reply := Application.MessageBox('File has been edited. Do you want to save?', 'Save Check', BoxStyle);
+      if Reply = IDYES then
+      Begin
+        SaveData;
+        StringToMemo('DrillSimGUI.OnClose: File ' + CurrentFQFileName + ' saved');
+      end;
+    end;
+    Application.Terminate;
+  end;
 end;
 
 procedure TDrillSim.MenuItem1OpenFileClick(Sender: TObject);
 var
   openDialog : TOpenDialog;    // Open dialog variable
-  filename : String;
   Reply: Integer;
   BoxStyle: Integer;
 begin
@@ -642,8 +653,8 @@ begin
   InitData;                             { Set NeverSimulated }
   APIUnits;                             { Default to API units    }
   UpdateGen;
-  CallHoleData;         { get hole data and redo pipe/hole screens if error }
-  CallPipeData;         { get pipe data and redo hole/pipe screens if error }
+  CheckHoleData;         { get hole data and redo pipe/hole screens if error }
+  CheckPipeData;         { get pipe data and redo hole/pipe screens if error }
   UpdateBit;
   UpdateMud;
   UpdatePump;
@@ -754,7 +765,7 @@ end;
 
 procedure TDrillSim.MenuItem2DrillStringClick(Sender: TObject);
 begin
-  CallPipeData;
+  CheckPipeData;
 end;
 
 procedure TDrillSim.MenuItem2BitDataClick(Sender: TObject);

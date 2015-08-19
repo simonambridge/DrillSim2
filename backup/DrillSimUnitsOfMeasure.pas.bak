@@ -38,7 +38,7 @@ Procedure APIUnits;      {* Assign values to UoMConverter[] and UoMLabel[] array
 Begin
   Data.API:=True;
   UoMDescriptor:='API';
-  ROPLab:='min/ft';
+  ROPLabel:='min/ft';
   UoMConverter[1]:=1;
   UoMConverter[2]:=1;
   UoMConverter[3]:=1;

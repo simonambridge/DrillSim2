@@ -37,12 +37,13 @@ Begin
     WellOperator:='';
     WellName    :='';
     Offshore:=False;
+    SubSeaWellHead:=False;
     Riser   :=False;
     Casing  :=False;
     Liner   :=False;
-    CsgTD:=Zero; CsgID:=Zero;
-    RsrTD:=Zero; RsrID:=Zero;
-    LinerTop:=Zero; LinerTD:=Zero; LinerID:=Zero; Dev:=Zero;
+    CasingTD:=Zero; CasingID:=Zero;
+    RiserTD:=Zero; RiserID:=Zero;
+    LinerTop:=Zero; LinerTD:=Zero; LinerID:=Zero; DeviationDegrees:=Zero;
     WaterDepth:=Zero;
     ElevationRKB       :=Zero;
 

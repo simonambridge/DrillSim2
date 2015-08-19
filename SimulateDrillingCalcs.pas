@@ -68,7 +68,7 @@ Begin
             ScreenService;
           End;
           if TD > StringTD then TD:=StringTD;  { can't be longer than string }
-          Tvd:=TD * Cos(Dev * Pi / 180);
+          Tvd:=TD * Cos(DeviationDegrees * Pi / 180);
           ScreenService;
         End;
         OverDrill:=StringTD - TD;                 { calculate overdrill }
@@ -168,10 +168,10 @@ Begin
     Begin
       if KelHt < 33 then
       Begin
-        TAttr:=AttrByte;
+//        TAttr:=AttrByte;
         //SetColorSet(WhiteOnBlue);
         //Disp(37,13,DnBushing);
-        AttrByte:=TAttr;
+//        AttrByte:=TAttr;
       End;
     End;
     ScreenService;

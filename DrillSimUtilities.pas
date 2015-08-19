@@ -6,12 +6,10 @@ Uses Crt,
      Dos,
      DrillSimVariables,
      HyCalcVariables,
-     Dialogs, StdCtrls;
+     Dialogs;
 
 Procedure SystemError(x: integer);
 Procedure GetKey;
-Procedure Bright(MenuChoice : integer);
-Procedure Normal(MenuChoice : integer);
 Procedure GetString(x, y, z : integer);
 Procedure GetReal(x, y : integer; z : real);
 Procedure GetInt(x, y, z : integer);
@@ -55,21 +53,6 @@ Begin
   CharInput:=UpCase(ReadKey);
 End;
 
-Procedure Bright(MenuChoice : integer);
-Begin
-  TAttr:=AttrByte;
-  //SetColorSet(NormColors);
-  //Disp(27,7+MenuChoice-1,Menu[MenuChoice]);
-  AttrByte:=TAttr;
-End;
-
-Procedure Normal(MenuChoice : integer);
-Begin
-  TAttr:=AttrByte;
-  //SetColorSet(BlueOnGray);
-  //Disp(27,7+MenuChoice-1,Menu[MenuChoice]);
-  AttrByte:=TAttr;
-End;
 
 Procedure GetString(x, y, z : integer);  { cursor is set on in calling routine }
 Begin
@@ -186,7 +169,7 @@ End;
 Procedure HelpWindow(Index : integer);
 Var i,j : integer;
 Begin
-  TAttr:=AttrByte;
+//  TAttr:=AttrByte;
   j:=(Index-1)*10+1;  { ie 1=1-10, 2=11-20, etc }
   {MakeWindow (4,10,15,60,Blue+LightGrayBG,Blue+LightGrayBG,HdoubleBrdr,
                Window1); }
@@ -207,7 +190,7 @@ Begin
   CharInput:=ReadKey;
   {ModCursor(CursorOff); }
   {RemoveWindow; }
-  AttrByte:=TAttr;
+//  AttrByte:=TAttr;
 End;
 
 Begin

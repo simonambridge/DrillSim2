@@ -1,7 +1,7 @@
 object GeneralDataForm: TGeneralDataForm
-  Left = 1048
+  Left = 73
   Height = 555
-  Top = 337
+  Top = 309
   Width = 497
   Caption = 'General Well Data'
   ClientHeight = 555
@@ -64,7 +64,6 @@ object GeneralDataForm: TGeneralDataForm
     Top = 127
     Width = 32
     AutoSize = False
-    Caption = '<fill>'
     ParentColor = False
   end
   object Save: TButton
@@ -103,13 +102,13 @@ object GeneralDataForm: TGeneralDataForm
     ClientWidth = 348
     Columns = 2
     Items.Strings = (
-      'Offshore'
       'Onshore'
+      'Offshore'
     )
     OnClick = OffshoreYNRadioGroupClick
     TabOrder = 8
   end
-  object SubSeaWellHeadYNRadioGroup1: TRadioGroup
+  object SubSeaWellHeadYNRadioGroup: TRadioGroup
     Left = 24
     Height = 64
     Top = 240
@@ -127,10 +126,10 @@ object GeneralDataForm: TGeneralDataForm
     ClientWidth = 348
     Columns = 2
     Items.Strings = (
-      'Yes'
       'No'
+      'Yes'
     )
-    OnClick = OffshoreYNRadioGroupClick
+    OnClick = SubSeaWellHeadYNRadioGroupClick
     TabOrder = 9
   end
   object RiserTD: TStaticText
@@ -155,7 +154,6 @@ object GeneralDataForm: TGeneralDataForm
     Top = 384
     Width = 112
     Caption = 'Choke Line ID'
-    OnClick = ChokeLineIDClick
     TabOrder = 12
   end
   object WaterDepth: TStaticText
@@ -164,7 +162,6 @@ object GeneralDataForm: TGeneralDataForm
     Top = 412
     Width = 112
     Caption = 'Water Depth'
-    OnClick = ChokeLineIDClick
     TabOrder = 13
   end
   object RiserTDData: TEdit
@@ -172,6 +169,7 @@ object GeneralDataForm: TGeneralDataForm
     Height = 27
     Top = 328
     Width = 155
+    OnChange = RiserTDDataChange
     TabOrder = 14
   end
   object RiserIDData: TEdit
@@ -179,6 +177,7 @@ object GeneralDataForm: TGeneralDataForm
     Height = 27
     Top = 356
     Width = 155
+    OnChange = RiserIDDataChange
     TabOrder = 15
   end
   object ChokeLineIDData: TEdit
@@ -186,6 +185,8 @@ object GeneralDataForm: TGeneralDataForm
     Height = 27
     Top = 384
     Width = 155
+    OnChange = ChokeLineIDDataChange
+    OnKeyPress = NumericOnlyKeyPress
     TabOrder = 16
   end
   object WaterDepthData: TEdit
@@ -193,42 +194,40 @@ object GeneralDataForm: TGeneralDataForm
     Height = 27
     Top = 412
     Width = 155
+    OnChange = WaterDepthDataChange
+    OnKeyPress = NumericOnlyKeyPress
     TabOrder = 17
   end
-  object RiserTDLabel: TLabel
+  object RiserTDUoMLabel: TLabel
     Left = 310
     Height = 22
     Top = 328
     Width = 32
     AutoSize = False
-    Caption = '<fill>'
     ParentColor = False
   end
-  object RiserIDLabel: TLabel
+  object RiserIDUoMLabel: TLabel
     Left = 310
     Height = 22
     Top = 356
     Width = 32
     AutoSize = False
-    Caption = '<fill>'
     ParentColor = False
   end
-  object ChokeLineIDLabel: TLabel
+  object ChokeLineIDUoMLabel: TLabel
     Left = 310
     Height = 22
     Top = 384
     Width = 32
     AutoSize = False
-    Caption = '<fill>'
     ParentColor = False
   end
-  object WaterDepthLabel: TLabel
+  object WaterDepthUoMLabel: TLabel
     Left = 310
     Height = 22
     Top = 412
     Width = 32
     AutoSize = False
-    Caption = '<fill>'
     ParentColor = False
   end
 end

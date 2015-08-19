@@ -15,7 +15,6 @@ Procedure SimulateLoadFile;
 Implementation
 
 Procedure SaveData;
-Var i : integer;
 Begin
   MessageToMemo(78);
   if CreateNewFile then
@@ -67,7 +66,6 @@ End;
 
 
 Procedure SimulateLoadFile;
-Var i : integer;
 Begin
   if Edited then
   Begin

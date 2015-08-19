@@ -30,8 +30,7 @@ End;
 
 
 Procedure LoadData;{ Entry : "CurrentFQFileName" contains FQFN of file to load }
-Var i : integer;   {          e.g. /a/b/c/Offshore.wdf  }
-    ErrorString : String[120];
+                   {          e.g. /a/b/c/Offshore.wdf  }
 Begin
   NoFileDefined:=True;
   StringToMemo('DrillSimFile.LoadData: Loading ' + CurrentFQFileName + '....');
@@ -59,7 +58,6 @@ End;
 
 
 Procedure SaveData;
-Var i : integer;
 Begin
   StringToMemo('DrillSimFile.SaveData: Saving ' + CurrentFQFileName);
 

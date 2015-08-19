@@ -64,7 +64,7 @@ Begin
         M1:=Vl * Rheocon1 / Sqr(ChokeLineID);    { M = Mud velocity, ft/min }
         Rn:=15.47 * ChokeLineID * M1 * MudOut.MW / (MudOut.Pv/3.32);
         Ff:=Rheocon4 / Power(Rn,Rheocon6);
-        ChokeLinePl:=(Ff * MudOut.MW * Sqr(M1)/ (Rheocon7 * ChokeLineID)) * RsrTD;
+        ChokeLinePl:=(Ff * MudOut.MW * Sqr(M1)/ (Rheocon7 * ChokeLineID)) * RiserTD;
       End;
 
       Q:=((Vl * ElapsedTime) / 6000) / Bbl2Gal;   { Vl (Gals/min) to Bbl }
@@ -223,7 +223,7 @@ Begin
       if (Data.RetPitVol <= Zero) then MessageToMemo(72) else MessageToMemo(70);
       MessageToMemo(71);                 { "Press any key...." }
       Repeat Until KeyPressed;
-      Util:=ReadKey;                           { clear buffer }
+ //     Util:=ReadKey;                           { clear buffer }
       if (Data.RetPitVol <= Zero) then Clear   { reset and restart simulation }
         else Quit:=True                        { else quit to DrillSim        }
     End;

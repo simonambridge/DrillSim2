@@ -1,12 +1,13 @@
 object GeneralDataForm: TGeneralDataForm
-  Left = 65
-  Height = 322
-  Top = 29
+  Left = 73
+  Height = 555
+  Top = 309
   Width = 497
   Caption = 'General Well Data'
-  ClientHeight = 322
+  ClientHeight = 555
   ClientWidth = 497
   OnActivate = FormActivate
+  OnCreate = FormCreate
   LCLVersion = '1.2.6.0'
   object WellOperator: TStaticText
     Left = 24
@@ -63,22 +64,21 @@ object GeneralDataForm: TGeneralDataForm
     Top = 127
     Width = 32
     AutoSize = False
-    Caption = '<fill>'
     ParentColor = False
   end
   object Save: TButton
-    Left = 152
+    Left = 153
     Height = 26
-    Top = 272
+    Top = 488
     Width = 86
     Caption = 'Save'
     OnClick = SaveClick
     TabOrder = 6
   end
   object Quit: TButton
-    Left = 264
+    Left = 256
     Height = 26
-    Top = 272
+    Top = 488
     Width = 86
     Caption = 'Quit'
     OnClick = QuitClick
@@ -102,10 +102,132 @@ object GeneralDataForm: TGeneralDataForm
     ClientWidth = 348
     Columns = 2
     Items.Strings = (
-      'Offshore'
       'Onshore'
+      'Offshore'
     )
     OnClick = OffshoreYNRadioGroupClick
     TabOrder = 8
+  end
+  object SubSeaWellHeadYNRadioGroup: TRadioGroup
+    Left = 24
+    Height = 64
+    Top = 240
+    Width = 352
+    AutoFill = True
+    Caption = 'Sub-Sea Well Head'
+    ChildSizing.LeftRightSpacing = 6
+    ChildSizing.EnlargeHorizontal = crsHomogenousChildResize
+    ChildSizing.EnlargeVertical = crsHomogenousChildResize
+    ChildSizing.ShrinkHorizontal = crsScaleChilds
+    ChildSizing.ShrinkVertical = crsScaleChilds
+    ChildSizing.Layout = cclLeftToRightThenTopToBottom
+    ChildSizing.ControlsPerLine = 2
+    ClientHeight = 45
+    ClientWidth = 348
+    Columns = 2
+    Items.Strings = (
+      'No'
+      'Yes'
+    )
+    OnClick = SubSeaWellHeadYNRadioGroupClick
+    TabOrder = 9
+  end
+  object RiserTD: TStaticText
+    Left = 26
+    Height = 24
+    Top = 328
+    Width = 72
+    Caption = 'Riser TD'
+    TabOrder = 10
+  end
+  object RiserID: TStaticText
+    Left = 26
+    Height = 24
+    Top = 356
+    Width = 72
+    Caption = 'Riser ID'
+    TabOrder = 11
+  end
+  object ChokeLineID: TStaticText
+    Left = 24
+    Height = 24
+    Top = 384
+    Width = 112
+    Caption = 'Choke Line ID'
+    TabOrder = 12
+  end
+  object WaterDepth: TStaticText
+    Left = 24
+    Height = 24
+    Top = 412
+    Width = 112
+    Caption = 'Water Depth'
+    TabOrder = 13
+  end
+  object RiserTDData: TEdit
+    Left = 138
+    Height = 27
+    Top = 328
+    Width = 155
+    OnChange = RiserTDDataChange
+    TabOrder = 14
+  end
+  object RiserIDData: TEdit
+    Left = 138
+    Height = 27
+    Top = 356
+    Width = 155
+    OnChange = RiserIDDataChange
+    TabOrder = 15
+  end
+  object ChokeLineIDData: TEdit
+    Left = 138
+    Height = 27
+    Top = 384
+    Width = 155
+    OnChange = ChokeLineIDDataChange
+    OnKeyPress = NumericOnlyKeyPress
+    TabOrder = 16
+  end
+  object WaterDepthData: TEdit
+    Left = 138
+    Height = 27
+    Top = 412
+    Width = 155
+    OnChange = WaterDepthDataChange
+    OnKeyPress = NumericOnlyKeyPress
+    TabOrder = 17
+  end
+  object RiserTDUoMLabel: TLabel
+    Left = 310
+    Height = 22
+    Top = 328
+    Width = 32
+    AutoSize = False
+    ParentColor = False
+  end
+  object RiserIDUoMLabel: TLabel
+    Left = 310
+    Height = 22
+    Top = 356
+    Width = 32
+    AutoSize = False
+    ParentColor = False
+  end
+  object ChokeLineIDUoMLabel: TLabel
+    Left = 310
+    Height = 22
+    Top = 384
+    Width = 32
+    AutoSize = False
+    ParentColor = False
+  end
+  object WaterDepthUoMLabel: TLabel
+    Left = 310
+    Height = 22
+    Top = 412
+    Width = 32
+    AutoSize = False
+    ParentColor = False
   end
 end

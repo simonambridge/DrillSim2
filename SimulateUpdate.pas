@@ -18,9 +18,9 @@ Implementation
 { -------------------- Kelly Routines ------------------- }
 
 Procedure DrawKelly;    { draws appropriate kelly and bushing @ KelHt }
-Var x : integer;
+var x : real;
 Begin
-  TAttr:=AttrByte;
+//  TAttr:=AttrByte;
   //SetColorSet(WhiteOnBlue);
   if Data.KelHt = 33 then            { Set at top, move bushing off RT }
   Begin
@@ -47,7 +47,7 @@ Begin
   End;
   Str(Data.KelHt / UoMConverter[1]:5:2,TempString);
   LastKelHt:=Data.KelHt;
-  AttrByte:=TAttr;
+//  AttrByte:=TAttr;
   ////Disp(46,3,TempString);     { must be done after resetting color attr to }
 End; { procedure DrawKelly } { the grey on black default color }
 
@@ -79,7 +79,7 @@ End;
 Procedure TurnBushing;
 Var x : real;
 Begin
-  TAttr:=AttrByte;
+//  TAttr:=AttrByte;
   //SetColorSet(WhiteOnBlue);
   With Data do
   Begin
@@ -97,7 +97,7 @@ Begin
       ////Disp(37,13,Bushing[CurrentBushing]);
     End;
   End;
-  AttrByte:=TAttr;
+//  AttrByte:=TAttr;
 End;
 
 { -------------------- Screen  Updates ------------------- }

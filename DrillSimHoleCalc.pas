@@ -2,7 +2,8 @@ Unit DrillSimHoleCalc;
 
 Interface
 
-Uses DrillSimVariables;
+Uses DrillSimVariables,
+     DrillSimDataInput;
 
 Procedure DSHoleCalc;                  { Procedure To Determine Hole Profile }
 Procedure CheckHoleData;
@@ -95,15 +96,15 @@ Begin
     if Riser then                      { Assign Hole Sections To Temp[*] }
     Begin
      TempCount:=TempCount+1;
-     Temp[TempCount,1]:=RsrTD; Temp[TempCount,2]:=RsrID;
+     Temp[TempCount,1]:=RiserTD; Temp[TempCount,2]:=RiserID;
     End;
 
     if Casing then
     Begin
       TempCount:=TempCount+1;
-      Temp[TempCount,1]:=CsgTD; Temp[TempCount,2]:=CsgID;
-      if Riser then Temp[TempCount,1]:=Temp[TempCount,1]-RsrTD;
-      if Liner then Temp[TempCount,1]:=Temp[TempCount,1]-(CsgTD-LinerTop);
+      Temp[TempCount,1]:=CasingTD; Temp[TempCount,2]:=CasingID;
+      if Riser then Temp[TempCount,1]:=Temp[TempCount,1]-RiserTD;
+      if Liner then Temp[TempCount,1]:=Temp[TempCount,1]-(CasingTD-LinerTop);
     End;
 
     if Liner then
@@ -122,7 +123,7 @@ Begin
         if Casing then
         Begin
           if Liner then Temp[TempCount,1]:=Temp[TempCount,1]-LinerTD else
-                                Temp[TempCount,1]:=Temp[TempCount,1]-CsgTD;
+                                Temp[TempCount,1]:=Temp[TempCount,1]-CasingTD;
         End;
         if i>1 then Temp[TempCount,1]:=Temp[TempCount,1]-Temp[TempCount-1,1];
       End;                                     { Deduct OH#1 }
@@ -151,7 +152,7 @@ Begin
         LastKD:=PipeTD;                      { and set up for new kelly down }
       End;
     End;
-    Tvd:=TD * Cos(Dev * Pi / 180);
+    Tvd:=TD * Cos(DeviationDegrees * Pi / 180);
 
     J:=1; K:=MaxPipes;                   { Calculate Hole Profile }
     i:=1;

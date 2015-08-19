@@ -38,16 +38,13 @@ Begin
   Assign(DataFile,CurrentFQFileName);
   Reset(DataFile);
   try
-    StringToMemo('DrillSimFile.LoadData: Reading ' + CurrentFQFileName + '....');
-    StringToMemo('DrillSimFile.LoadData: Loaded ' + CurrentFQFileName);
-    StringToMemo('DrillSimFile.LoadData: Operator ' + Data.WellOperator);
-    StringToMemo('DrillSimFile.LoadData: Operator ' + Data.WellName);
     Read(DataFile,Data);
     CloseFile(DataFile);
 
     StringToMemo('DrillSimFile.LoadData: Loaded ' + CurrentFQFileName);
     StringToMemo('DrillSimFile.LoadData: Operator ' + Data.WellOperator);
     StringToMemo('DrillSimFile.LoadData: Operator ' + Data.WellName);
+
   except
     on E: EInOutError do
     Begin

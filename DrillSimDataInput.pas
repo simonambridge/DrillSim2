@@ -241,8 +241,8 @@ Begin
         'Y' : Riser:=True;
         'N' : Begin
                 Riser:=False;
-                RsrTD:=0;
-                RsrID:=0;
+                RiserTD:=0;
+                RiserID:=0;
               End;
       End;
 
@@ -290,28 +290,28 @@ Begin
     if Riser then
     Begin
       Repeat
-        Str(RsrTD:9:3,Str1);
+        Str(RiserTD:9:3,Str1);
         //Disp(10,LineCnt,'Riser Length'+Blank11+': '+ Str1 +'  '+UoMLabel[1]+' ?');
         GetReal(55,LineCnt,5000/UoMConverter[1]);
-        if Valid then RsrTD:=RResult;
-        Str(RsrTD:9:3,Str1);
+        if Valid then RiserTD:=RResult;
+        Str(RiserTD:9:3,Str1);
         //Disp(55,LineCnt,Str1);
 
         LineCnt:=LineCnt+1;
 
-        Str(RsrID:9:3,Str1);
+        Str(RiserID:9:3,Str1);
         //Disp(16,LineCnt,'ID'+Blank11+'    : '+Str1+'  ins ?');
         GetReal(55,LineCnt,100);
-        if Valid then RsrID:=RResult;
-        Str(RsrID:9:3,Str1);
+        if Valid then RiserID:=RResult;
+        Str(RiserID:9:3,Str1);
         //Disp(55,LineCnt,Str1);
 
-        if (RsrTD<=0) or (RsrID<=0) then                  { Error Check }
+        if (RiserTD<=0) or (RiserID<=0) then                  { Error Check }
         Begin
           MessageToMemo(80); // riser error
           LineCnt:=J;
         End;
-      Until not (RsrTD<=0) or (RsrID<=0);
+      Until not (RiserTD<=0) or (RiserID<=0);
       LineCnt:=J+3;  J:=LineCnt;
     End;
 
@@ -340,24 +340,24 @@ Begin
         LineCnt:=LineCnt+1;
 
         gotoxy(10,LineCnt);
-        write('Casing Shoe '+Blank11+': ',CsgTD:9:3,'  ',UoMLabel[1],' ?');
+        write('Casing Shoe '+Blank11+': ',CasingTD:9:3,'  ',UoMLabel[1],' ?');
         GetReal(55,LineCnt,30000/UoMConverter[1]);
-        if Valid then CsgTD:=RResult;
-        gotoxy(55,LineCnt); write(CsgTD:9:3);
+        if Valid then CasingTD:=RResult;
+        gotoxy(55,LineCnt); write(CasingTD:9:3);
 
         LineCnt:=LineCnt+1;
 
         gotoxy(10,LineCnt);
-        write('Casing ID   '+Blank11+': ',CsgID:9:3,'  ins ?');
+        write('Casing ID   '+Blank11+': ',CasingID:9:3,'  ins ?');
         GetReal(55,LineCnt,40);
-        if Valid then CsgID:=RResult;
-        gotoxy(55,LineCnt); write(CsgID:9:3);
+        if Valid then CasingID:=RResult;
+        gotoxy(55,LineCnt); write(CasingID:9:3);
 
         LineCnt:=LineCnt+1;
 
-        if ((CsgTD<=RsrTD) and Riser) or
-            (CsgTD<=0) or
-            (CsgID<=0) then InputError:=True
+        if ((CasingTD<=RiserTD) and Riser) or
+            (CasingTD<=0) or
+            (CasingID<=0) then InputError:=True
                        else InputError:=False; { Error Check }
         if InputError then
         Begin
@@ -422,7 +422,7 @@ Begin
           if Valid then LinerID:=RResult;
           gotoxy(55,LineCnt); write(LinerID:9:3);
 
-          if (LinerTop >=CsgTD)                    { check liner dimensions }
+          if (LinerTop >=CasingTD)                    { check liner dimensions }
             or (LinerTD<=LinerTop)
             or (LinerID<=0) then InputError:=True
                             else InputError:=False;
@@ -473,7 +473,7 @@ Begin
       For i:=1 to MaxHoles do
       Begin
         if(Hole[i,1]<=Zero) or                   { valid if no casing ?     }
-         ((Hole[i,1]<=CsgTD) and Casing) or      { higher than shoe ?       }
+         ((Hole[i,1]<=CasingTD) and Casing) or      { higher than shoe ?       }
           (Hole[i,1] >Hole[MaxHoles,1]) or       { deeper than hole 2 ?     }
          ((Hole[i,1] =Hole[MaxHoles,1]) and (i<MaxHoles)) or
          ((Hole[i,1]<=LinerTD) and Liner) or     { higher than liner shoe ? }
@@ -491,11 +491,11 @@ Begin
 
     Str(Hole[MaxHoles,1]:9:3,TempString);
     While length(TempString) < 10 do TempString:=TempString + Space;
-    Str(Dev:9:3,Str1);
+    Str(DeviationDegrees:9:3,Str1);
     //Disp(10,LineCnt+3+(i-1)*3,'Dev @ '+TempString+' '+UoMLabel[1]+'   : '+Str1+'  deg ?');
     GetReal(55,LineCnt+3+(i-1)*3,20);
-    if Valid then Dev:=RResult;
-    gotoxy(55,LineCnt+3+(i-1)*3); write(Dev:9:3);
+    if Valid then DeviationDegrees:=RResult;
+    gotoxy(55,LineCnt+3+(i-1)*3); write(DeviationDegrees:9:3);
   End;
 End;
 

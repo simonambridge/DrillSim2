@@ -133,14 +133,15 @@ Type
                    MaxPipes : integer;
                    MaxJets  : integer;
                    Offshore : boolean;
+                   SubSeaWellHead : boolean;
                    Riser    : boolean;
                    Casing   : boolean;
                    Liner    : boolean;
                    Surf     : array[1..4,1..2] of real;
                    Hole     : array[1..2,1..2] of real;
                    Pipe     : array[1..4,1..4] of real;
-                   RsrTD, CsgTD, Tvd            : real;
-                   RsrID, CsgID, Dev            : real;
+                   RiserTD, CasingTD, TVD              : real;
+                   RiserID, CasingID, DeviationDegrees : real;
                    LinerTop, LinerTD, LinerID   : real;
                    ElevationRKB                 : real;
                    WaterDepth                   : real;
@@ -280,8 +281,8 @@ Var
    NoFileDefined       : boolean;
    HelpFileFound       : boolean;
 
-   UoMConverter        : array[1..7] of real;
-   UoMLabel            : array[1..7] of String3;
+   UoMConverter        : array[1..8] of real;   { Units Of Measure }
+   UoMLabel            : array[1..8] of String3;
    UoMDescriptor       : String[20];
    ROPLabel            : String[20];
 
@@ -297,13 +298,13 @@ Var
    YesNo               : string[4];
    Input               : String[1]; { was char; }  { Utility input char' }
    CharInput           : char;                     {   ----- " -----     }
-   Util                : char;                { Box building  char' }
+//   Util                : char;                { Box building  char' }
 
    OutString           : String120;    { FastDisp variables }
    TempString          : String120;    { utility diplsy string }
-   Row, Col            : integer;
-   AttrByte            : byte;         { current Disp colour }
-   TAttr               : byte;         { store current Disp Colour }
+//   Row, Col            : integer;
+//   AttrByte            : byte;         { current Disp colour }
+//   TAttr               : byte;         { store current Disp Colour }
 
    Code                : integer;           { used by Proc. }
    Name                : String20;        { GetDirectory  }

@@ -71,7 +71,7 @@ Var i : integer;
 Begin
   if Edited then
   Begin
-    if ExitCheck then SaveData;         { save current file first }
+    if Edited then SaveData;         { save current file first }
   End;
   Repeat                           { repeat here because MUST be file defined }
     Instring:='';
