@@ -66,7 +66,7 @@ implementation
 
 Procedure TUnitsOfMeasureForm.FormDisplayUnits;
 Begin
-  if Data.API = True then
+  if _WellAPI = True then   { set array contents to api or metric }
     APIUnits
   else MetricUnits;
 
@@ -127,10 +127,16 @@ begin
    StringToMemo('Form Units Of Measure activated....');
    if Data.API= True
    then
-     SelectUoMRadioGroup.ItemIndex:=0
+   Begin
+     SelectUoMRadioGroup.ItemIndex:=0;   { set up radio buttons }
+     _WellAPI:=True;
+   end
    else
+   Begin
      SelectUoMRadioGroup.ItemIndex:=1;
-   FormDisplayUnits;
+     _WellAPI:=False;
+   end;
+   FormDisplayUnits;                     { display units }
 End;
 
 procedure TUnitsOfMeasureForm.SaveButtonClick(Sender: TObject);

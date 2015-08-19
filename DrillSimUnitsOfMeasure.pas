@@ -23,7 +23,7 @@ Begin
   UoMConverter[5]:=0.264;
   UoMConverter[6]:=0.264;
   UoMConverter[7]:=2.2046;
-  UoMConverter[8]:=2.54;   { hidden - not used - ID's are always inches }
+  UoMConverter[8]:=1;   { hidden - not used - ID's are always inches }
   UoMLabel[1]:='met';
   UoMLabel[2]:='sg ';
   UoMLabel[3]:='KPa';
@@ -31,7 +31,7 @@ Begin
   UoMLabel[5]:='ltr';
   UoMLabel[6]:='lpm';
   UoMLabel[7]:='ton';
-  UoMLabel[8]:='cm.';     { hidden - not used - ID's are always inches }
+  UoMLabel[8]:='ins';     { hidden - not used - ID's are always inches }
 
   StringToMemo('Metric Units selected. Depth units are '+UoMLabel[1]);
 End;
