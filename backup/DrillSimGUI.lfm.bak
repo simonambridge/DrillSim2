@@ -921,15 +921,15 @@ object DrillSim: TDrillSim
     end
   end
   object FileOpenDialog1: TOpenDialog
-    left = 128
-    top = 382
+    left = 152
+    top = 384
   end
   object FileSaveDialog1: TSaveDialog
-    left = 196
-    top = 382
+    left = 312
+    top = 384
   end
   object SelectDirectoryDialog1: TSelectDirectoryDialog
-    left = 253
-    top = 382
+    left = 472
+    top = 384
   end
 end

@@ -1,4 +1,4 @@
-object HoleData: THoleData
+object HoleDataForm: THoleDataForm
   Left = 402
   Height = 240
   Top = 284

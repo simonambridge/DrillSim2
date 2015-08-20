@@ -1,7 +1,7 @@
 object GeneralDataForm: TGeneralDataForm
-  Left = 73
+  Left = 390
   Height = 555
-  Top = 309
+  Top = 328
   Width = 497
   Caption = 'General Well Data'
   ClientHeight = 555
@@ -67,7 +67,7 @@ object GeneralDataForm: TGeneralDataForm
     ParentColor = False
   end
   object Save: TButton
-    Left = 153
+    Left = 312
     Height = 26
     Top = 488
     Width = 86
@@ -76,7 +76,7 @@ object GeneralDataForm: TGeneralDataForm
     TabOrder = 6
   end
   object Quit: TButton
-    Left = 256
+    Left = 216
     Height = 26
     Top = 488
     Width = 86

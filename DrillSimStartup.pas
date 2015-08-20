@@ -2,10 +2,9 @@ Unit DrillSimStartup;
 
 Interface
 
-Uses Crt,
-     sysutils,
+Uses Classes, SysUtils, FileUtil, Forms, Controls, Graphics, Dialogs, StdCtrls,
+  ExtCtrls,
      DrillSimVariables,
-     SimulateVariables,
      HyCalcVariables,
      DrillSimUnitsOfMeasure,
      DrillSimUtilities,
@@ -32,7 +31,7 @@ Begin                                        { Extract path string }
     if NoFileDefined=True then // on return, is a valid file loaded?
     Begin                      // then notify the error
       StringToMemo('DrillSimStartup.LoadDefaultWellDataFile: Error loading well data file ' + CurrentFQFileName);
-      SystemError(6);  // DrillSimUtilities - cannot load file
+      ShowMessage('Error loading well data file ' + CurrentFQFileName);
     end else
     Begin                      // otherwise confirm well name loaded
       StringToMemo('DrillSimStartup.LoadDefaultWellDataFile: Default well data file ' + CurrentFQFileName + ' loaded');
@@ -63,7 +62,7 @@ Begin
   TempString:='';
   Instring:='';
   CurrentFQFileName:='';
-  DefaultFile:='';
+  DefaultWellDataFile:='';
   DefaultDirectory:='';
 
   APIUnits;     { Initial default unit type   }
@@ -73,36 +72,37 @@ Begin
 
     { ------- get default directory ------- }
 
-  GetDir(0,Instring);                 { get current directory spec}
-  StringToMemo('DrillSimStartup.StartUp: Current directory is ' + Instring);
-  OriginDirectory:=Instring;               { save original direc'y }
-  LoggedDirectory:=Instring;               { default to original   }
+  GetDir(0,OriginDirectory);               { get current directory spec}
+  StringToMemo('DrillSimStartup.StartUp: Current directory is ' + OriginDirectory);
+  SystemPropertiesFile:=OriginDirectory + '/' + 'DrillSim.cfg';
+  StringToMemo('DrillSimStartup.StartUp: Configuration file is ' + SystemPropertiesFile);
+  StringToMemo('Loading system onfiguration');
 
     { ------- get defaults file ------- }
 
-  Assign(TextFile,OriginDirectory + '/' + 'DrillSim.cfg');         { load drillsim.cfg }
-  MessageToMemo(102); // 'Loading application configuration file'
-  writeln('DrillSimStartup.StartUp: Configuration file is ' + OriginDirectory + '/' + 'DrillSim.cfg');
-  StringToMemo('DrillSimStartup.StartUp: Configuration file is ' + OriginDirectory + '/' + 'DrillSim.cfg');
-
+  AssignFile(Textfile,SystemPropertiesFile);         { /path/drillsim.cfg }
   {$I-}
   Reset(TextFile);
   {$I+}
-  IResult:=0;
   if OK then                  { drillsim.CFG found }
   Begin
     While not EOF(TextFile) do
     Begin
-      Readln(TextFile,TextFileLine); { read location of default well file }
-      End;
-    Close(TextFile);
+      Readln(TextFile,DefaultWellDataFile); { read FQFN of default well file into DefaultWellDataFile }
+    End;
+    CloseFile(TextFile);
 
-    StringToMemo('DrillSimStartup.StartUp: Default well data file is ' + TextFileLine);
-
-    LoadDefaultWellDataFile(TextFileLine);     // Load the default data file !!!
+    if DefaultWellDataFile=''
+    then
+      StringToMemo('DrillSimStartup.StartUp: Default well not defined ')
+    else
+    Begin
+      StringToMemo('DrillSimStartup.StartUp: Default well data file is ' + DefaultWellDataFile);
+      LoadDefaultWellDataFile(DefaultWellDataFile);     // Load the default data file !!!
+    end;
   End else
-  Begin                  { defaults file not found }
-    SystemError(1);      // pop up error message
+  Begin
+    ShowMessage('Error loading ' + DefaultWellDataFile); { defaults file not found }
   End;
 
   {* --------- Load Help File --------- *}
@@ -121,7 +121,7 @@ Begin
   End else
   Begin
     HelpFileFound:=False;
-    SystemError(3);
+    ShowMessage('Error loading DrillSim help file');
   End;
   StringToMemo('DrillSimStartup.StartUp: DrillSim Startup complete');
   ThisString:=Data.WellName;

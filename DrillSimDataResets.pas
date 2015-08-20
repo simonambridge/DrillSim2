@@ -32,20 +32,28 @@ Var i : integer;
 Begin
   With Data do
   Begin
-    NeverSimulated:=True;       { set NeverSimulated - this will be a new file }
-    Bingham:=False;
-    WellOperator:='';
-    WellName    :='';
-    Offshore:=False;
-    SubSeaWellHead:=False;
-    Riser   :=False;
-    Casing  :=False;
-    Liner   :=False;
-    CasingTD:=Zero; CasingID:=Zero;
-    RiserTD:=Zero; RiserID:=Zero;
-    LinerTop:=Zero; LinerTD:=Zero; LinerID:=Zero; DeviationDegrees:=Zero;
-    WaterDepth:=Zero;
-    ElevationRKB       :=Zero;
+    NoFileDefined    :=True;
+    DefaultWellDataFile:='';
+    CurrentFQFileName:='';
+    NeverSimulated   :=True;       { set NeverSimulated - this will be a new file }
+    Bingham          :=False;
+    WellOperator     :='';
+    WellName         :='';
+    Offshore         :=False;
+    SubSeaWellHead   :=False;
+    Riser            :=False;
+    Casing           :=False;
+    Liner            :=False;
+    CasingTD         :=Zero;
+    CasingID         :=Zero;
+    RiserTD          :=Zero;
+    RiserID          :=Zero;
+    LinerTop         :=Zero;
+    LinerTD          :=Zero;
+    LinerID          :=Zero;
+    DeviationDegrees :=Zero;
+    WaterDepth       :=Zero;
+    ElevationRKB     :=Zero;
 
     Maxholes:=1;
     For i:=1 to 2 do

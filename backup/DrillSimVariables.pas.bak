@@ -281,8 +281,8 @@ Var
    NoFileDefined       : boolean;
    HelpFileFound       : boolean;
 
-   UoMConverter        : array[1..7] of real;
-   UoMLabel            : array[1..7] of String3;
+   UoMConverter        : array[1..8] of real;   { Units Of Measure }
+   UoMLabel            : array[1..8] of String3;
    UoMDescriptor       : String[20];
    ROPLabel            : String[20];
 
@@ -298,27 +298,26 @@ Var
    YesNo               : string[4];
    Input               : String[1]; { was char; }  { Utility input char' }
    CharInput           : char;                     {   ----- " -----     }
-   Util                : char;                { Box building  char' }
+//   Util                : char;                { Box building  char' }
 
    OutString           : String120;    { FastDisp variables }
    TempString          : String120;    { utility diplsy string }
-   Row, Col            : integer;
-   AttrByte            : byte;         { current Disp colour }
-   TAttr               : byte;         { store current Disp Colour }
+//   Row, Col            : integer;
+//   AttrByte            : byte;         { current Disp colour }
+//   TAttr               : byte;         { store current Disp Colour }
 
    Code                : integer;           { used by Proc. }
    Name                : String20;        { GetDirectory  }
 
-   DefaultFile         : String20;        { used for .CFG file }
+   ConfigFile          : String120;
+   DefaultFile         : String120;        { used for .CFG file }
    DefaultDirectory    : String120;
-   TextFileLine        : String120;
 //   PathString          : String120;         { Used for DOS Path - replaced }
    OriginDirectory     : String120;
-   LoggedDirectory     : String120;
    OriginalExitProc    : Pointer;
 
-   RResult             : real;          { used by Proc. GetReal, GetInt }
-   IResult             : integer;
+   RealResult          : real;          { used by Proc. GetReal, GetInt }
+   IntResult           : integer;
    IntParam            : integer;
    RealParam           : real;
 

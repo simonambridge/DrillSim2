@@ -23,19 +23,20 @@ uses
   DrillSimStartup,
   DrillSimFile,
   DrillSimDataResets,
-  SimulateFile,
   DrillSimDataInput,
   DrillSimUtilities,
   DrillSimHoleCalc,
   DrillSimMessageToMemo,
   DrillSimUnitsOfMeasure,
-  SimulateCommandProcessor,
-  SimulateUpdate,
-  SimulateSurfaceControls,
   FormDisplayWellData,
   FormGeneralData,
   FormHoleData,
+  FormConfigDefaults,
   FormUnitsOfMeasure,
+    SimulateCommandProcessor,
+  SimulateUpdate,
+  SimulateSurfaceControls,
+  SimulateFile,
   SimulateHoleCalcs,
   SimulateControl;
 
@@ -235,12 +236,13 @@ type
       Constructor Create(CreateSuspended : boolean);
     end;
 var
-  DrillSim: TDrillSim;
-  MyThread : TMyThread;
-  DisplayWellDataForm: TDisplayWellDataForm;
-  GeneralDataForm: TGeneralDataForm;
-  HoleDataForm: THoleDataForm;
-  UnitsOfMeasureForm: TUnitsOfMeasureForm;
+  DrillSim            : TDrillSim;
+  MyThread            : TMyThread;
+  DisplayWellDataForm : TDisplayWellDataForm;
+  GeneralDataForm     : TGeneralDataForm;
+  HoleDataForm        : THoleDataForm;
+  UnitsOfMeasureForm  : TUnitsOfMeasureForm;
+  SystemDefaultsForm  : TSystemDefaultsForm;
 
 implementation
 
@@ -523,11 +525,11 @@ begin
   InputString:='';
   CommandLine.Text := InputString;
   CommandLine.SelStart:=Length(CommandLine.Text);
-  writeln('Clicked in TEdit');
+//  writeln('Clicked in TEdit');
 
 end;
 
-{* ======================== Entry / Exit Controls =========================== *}
+{* ======================== Form Controls =========================== *}
 
 procedure TDrillSim.FormActivate(Sender: TObject);
 begin
@@ -573,8 +575,6 @@ begin
   end;
 end;
 
-{* ======================== Menus =========================== *}
-
 procedure TDrillSim.MenuItem1QuitClick(Sender: TObject);
 var Reply, BoxStyle: Integer;
 begin
@@ -596,6 +596,11 @@ begin
     Application.Terminate;
   end;
 end;
+
+
+{* ======================== Menus =========================== *}
+
+{ ---------------- File Menu Operations ------------------------ }
 
 procedure TDrillSim.MenuItem1OpenFileClick(Sender: TObject);
 var
@@ -638,7 +643,9 @@ begin
     if FileExists(CurrentFQFileName) then
     Begin
         LoadData;
-        ShowMessage('File loaded: '+CurrentFQFileName);
+        if not NoFileDefined
+          then ShowMessage('File loaded: '+ CurrentFQFileName)
+          else ShowMessage('File '+ CurrentFQFileName + ' failed to load successfully!');
     end
     else ShowMessage('File not found!');
       // Free up the dialog
@@ -726,9 +733,7 @@ begin
 end;
 
 
-
-
-//--------------- Edit Well File Menu
+{ --------------- Edit Well Menu Options ------------------------ }
 
 procedure TDrillSim.MenuItem2DisplayWellDataClick(Sender: TObject);
 begin
@@ -798,10 +803,16 @@ begin
 
 end;
 
-// ---------- Preferences Menu
+{ ---------- Preferences Menu Options -------------------------- }
+
 procedure TDrillSim.MenuItem2DefaultsClick(Sender: TObject);
 begin
-
+  try
+    SystemDefaultsForm:=TSystemDefaultsForm.Create(Nil);  //Hole Data Input is created
+    SystemDefaultsForm.ShowModal;
+  finally
+    SystemDefaultsForm.Free;
+  end;
 end;
 
 procedure TDrillSim.MenuItem2UnitsClick(Sender: TObject);  // UoM
@@ -815,18 +826,13 @@ begin
 
 end;
 
-// ----------- Simulate Menu
+{ ----------- Simulate Menu Options ---------------------------- }
+
 procedure TDrillSim.MenuItem3StartClick(Sender: TObject);
 begin
   MessageToMemo(100);               { courtesy message         }
   if NoFileDefined=false then
   Begin
-    ChDir(LoggedDirectory);         { set to Logged directory first          }
-
-                                   { if Quit=T  resets to Origin directory  }
-                                   { All file and Path functions use the    }
-                                   { Logged directory                       }
-
     if NoFileDefined then           { check for no file in use               }
     Begin
       CurrentFQFileName:='no file';          { set file name for load window          }
@@ -925,7 +931,7 @@ Initialization
 
  {* Here initialise anything required before the threads starts executing *}
 
- MyThread.Start;
+ //MyThread.Start;
 
 end.
 

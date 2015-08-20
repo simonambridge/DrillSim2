@@ -6,7 +6,10 @@ interface
 
 uses
   Classes, SysUtils, FileUtil, Forms, Controls, Graphics, Dialogs, StdCtrls,
-  ExtCtrls, DrillSimVariables, DrillSimMessageToMemo, DrillSimUnitsOfMeasure;
+  ExtCtrls,
+  DrillSimVariables,
+  DrillSimMessageToMemo,
+  DrillSimUnitsOfMeasure;
 
 type
 
@@ -66,7 +69,7 @@ implementation
 
 Procedure TUnitsOfMeasureForm.FormDisplayUnits;
 Begin
-  if Data.API = True then   { set array contents to api or metric }
+  if _WellAPI = True then   { set array contents to api or metric }
     APIUnits
   else MetricUnits;
 

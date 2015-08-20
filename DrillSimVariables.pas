@@ -309,16 +309,15 @@ Var
    Code                : integer;           { used by Proc. }
    Name                : String20;        { GetDirectory  }
 
-   DefaultFile         : String20;        { used for .CFG file }
+   SystemPropertiesFile  : String120;
+   DefaultWellDataFile   : String120;        { used for .CFG file }
    DefaultDirectory    : String120;
-   TextFileLine        : String120;
 //   PathString          : String120;         { Used for DOS Path - replaced }
    OriginDirectory     : String120;
-   LoggedDirectory     : String120;
    OriginalExitProc    : Pointer;
 
-   RResult             : real;          { used by Proc. GetReal, GetInt }
-   IResult             : integer;
+   RealResult          : real;          { used by Proc. GetReal, GetInt }
+   IntResult           : integer;
    IntParam            : integer;
    RealParam           : real;
 

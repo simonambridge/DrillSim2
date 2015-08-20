@@ -18,7 +18,8 @@ uses
   DrillSimGUI,
   FormGeneralData,
   FormDisplayWellData,
-  FormUnitsOfMeasure;
+  FormHoleData,
+  FormUnitsOfMeasure, FormConfigDefaults;
 
 {$R *.res}
 
@@ -39,6 +40,10 @@ begin
   StringToMemo('Initialise Form: Summary Well Data');
   Application.CreateForm(TUnitsOfMeasureForm, UnitsOfMeasureForm);
   StringToMemo('Initialise Form: Units Of Measure');
+  Application.CreateForm(TSystemDefaultsForm, SystemDefaultsForm);
+  StringToMemo('Initialise Form: System Defaults');
+  Application.CreateForm(THoleDataForm, HoleDataForm);
+  StringToMemo('Initialise Form: Well Hole Profile');
 
   StringToMemo('===============================');
   StringToMemo('Form Initialisation complete.');

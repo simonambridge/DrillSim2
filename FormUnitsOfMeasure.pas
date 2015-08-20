@@ -6,7 +6,10 @@ interface
 
 uses
   Classes, SysUtils, FileUtil, Forms, Controls, Graphics, Dialogs, StdCtrls,
-  ExtCtrls, DrillSimVariables, DrillSimMessageToMemo, DrillSimUnitsOfMeasure;
+  ExtCtrls,
+  DrillSimVariables,
+  DrillSimMessageToMemo,
+  DrillSimUnitsOfMeasure;
 
 type
 
@@ -40,9 +43,9 @@ type
     WeightMultiplierData: TEdit;
     WeightText: TStaticText;
     procedure CancelButtonClick(Sender: TObject);
-    procedure FormActivate(Sender: TObject);
     procedure OnClose(Sender: TObject);
     procedure SaveButtonClick(Sender: TObject);
+    procedure FormActivate(Sender: TObject);
     procedure FormCreate(Sender: TObject);
     procedure FormCreateActions;
     procedure FormDisplayUnits;

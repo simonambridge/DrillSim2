@@ -9,9 +9,9 @@ uses
 
 type
 
-  { THoleData }
+  { THoleDataForm }
 
-  THoleData = class(TForm)
+  THoleDataForm = class(TForm)
     RiserTD: TStaticText;
     CasingYN: TStaticText;
     RiserID: TStaticText;
@@ -22,7 +22,7 @@ type
   end;
 
 var
-  HoleData: THoleData;
+  HoleDataForm: THoleDataForm;
 
 implementation
 

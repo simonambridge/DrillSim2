@@ -92,11 +92,11 @@ Uses DrillSimGUI;
 
 {$R *.lfm}
 
+{ ------------- Form Procedures ------------ }
+
 Procedure TDisplayWellDataForm.FormCreateActions;
 Begin
 end;
-
-{ ------------- Form Procedures ------------ }
 
 procedure TDisplayWellDataForm.FormCreate(Sender: TObject);
 begin

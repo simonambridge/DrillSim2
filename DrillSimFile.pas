@@ -31,6 +31,8 @@ End;
 
 Procedure LoadData;{ Entry : "CurrentFQFileName" contains FQFN of file to load }
                    {          e.g. /a/b/c/Offshore.wdf  }
+                   {          NoFileDefined set to True  }
+                   { Exit  : if load fails then NoFileDefined set to False }
 Begin
   NoFileDefined:=True;
   StringToMemo('DrillSimFile.LoadData: Loading ' + CurrentFQFileName + '....');
@@ -40,7 +42,7 @@ Begin
     Read(DataFile,Data);
     CloseFile(DataFile);
 
-    StringToMemo('DrillSimFile.LoadData: Loaded ' + CurrentFQFileName);
+    StringToMemo('DrillSimFile.LoadData: Loaded '   + CurrentFQFileName);
     StringToMemo('DrillSimFile.LoadData: Operator ' + Data.WellOperator);
     StringToMemo('DrillSimFile.LoadData: Operator ' + Data.WellName);
 
@@ -48,8 +50,8 @@ Begin
     on E: EInOutError do
     Begin
       StringToMemo('DrillSimFile.LoadData: File handling error occurred. Details: ' + E.Message);
-      InitData;   // if load borks then clear all well data elements
-      Exit;
+      InitData;   // if load borks then clear all well data elements,
+      Exit;       // set NoFileDefine to True and clear CurrentFQFileName
     end;
   End;
   NoFileDefined:=False;

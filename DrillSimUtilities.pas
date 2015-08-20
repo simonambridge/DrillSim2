@@ -4,11 +4,11 @@ Interface
 
 Uses Crt,
      Dos,
+     Math,
      DrillSimVariables,
      HyCalcVariables,
      Dialogs;
 
-Procedure SystemError(x: integer);
 Procedure GetKey;
 Procedure GetString(x, y, z : integer);
 Procedure GetReal(x, y : integer; z : real);
@@ -18,9 +18,16 @@ Procedure ConReal(Variable : real; Field,DPlaces : integer);
 Procedure ConInt(Variable : integer; Field : integer);
 Procedure GetCurrentDate (Var d : Date);
 Procedure GetCurrentTime (Var t : Time);
+Function Round2(const Number: extended; const Places: longint): extended;
 
 Implementation
 
+function Round2(const Number: extended; const Places: longint): extended;
+var t: extended;
+begin
+   t := power(10, places);
+   Round2 := round(Number*t)/t;
+end;
 
 Procedure GetCurrentDate (Var d : Date);
 Begin
@@ -32,19 +39,6 @@ Begin
   GetTime(t.Hours, t.Minutes, t.Seconds, t.Hundredths);
 End;
 
-
-
-Procedure SystemError(x: integer);
-Begin
-  Case x of
-    1 : ShowMessage('Error 1 : DrillSim.Cfg missing');
-    2 : ShowMessage('Error 2 : Default directory error');
-    3 : ShowMessage('Error 3 : DrillSim.Hlp missing');
-    4 : ShowMessage('Error 4 : ');
-    5 : ShowMessage('Error 5 : HyCalc.Exe missing');
-    6 : ShowMessage('Error 6 : Unable to load well data file');
-  End;
-End;
 
 
 Procedure GetKey;
@@ -91,7 +85,7 @@ Begin
   Valid:=False;
   Esc:=False;
   Repeat
-    Instring:=''; i:=Zero; RResult:=Zero;
+    Instring:=''; i:=Zero; RealResult:=Zero;
     gotoxy(x,y);
     //Disp(x,y,copy(BlankString,1,9));
     Repeat
@@ -112,8 +106,8 @@ Begin
       End;
       gotoxy(x,y); write(Instring);
     Until CharInput=^M;
-    if length(Instring)>Zero then Val(Instring,RResult,i);
-  Until (i = Zero) and (RResult <= z);
+    if length(Instring)>Zero then Val(Instring,RealResult,i);
+  Until (i = Zero) and (RealResult <= z);
   if length(Instring) > Zero then Valid:=True;
   //Disp(x,y,copy(BlankString,1,length(Instring)));
 End;
@@ -126,7 +120,7 @@ Begin
   Valid:=False;
   Esc:=False;
   Repeat
-    Instring:=''; i:=Zero; IResult:=Zero;
+    Instring:=''; i:=Zero; IntResult:=Zero;
     gotoxy(x,y);
     //Disp(x,y,copy(BlankString,1,5));
     Repeat
@@ -147,8 +141,8 @@ Begin
       End;
       gotoxy(x,y); write(Instring);
     Until CharInput=^M;
-    if length(Instring)>Zero then Val(Instring,IResult,i);
-  Until (i = Zero) and (IResult <= z);
+    if length(Instring)>Zero then Val(Instring,IntResult,i);
+  Until (i = Zero) and (IntResult <= z);
   if length(Instring) > Zero then Valid:=True;
   //Disp(x,y,copy(BlankString,1,length(Instring)));
 End;
