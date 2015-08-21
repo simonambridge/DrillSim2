@@ -1,11 +1,12 @@
 object HoleDataForm: THoleDataForm
-  Left = 578
-  Height = 578
-  Top = 285
-  Width = 644
+  Left = 507
+  Height = 635
+  Top = 156
+  Width = 405
   Caption = 'Hole Profile Data'
-  ClientHeight = 578
-  ClientWidth = 644
+  ClientHeight = 635
+  ClientWidth = 405
+  OnActivate = FormActivate
   OnCreate = FormCreate
   LCLVersion = '1.2.6.0'
   object Casing: TRadioGroup
@@ -206,18 +207,19 @@ object HoleDataForm: THoleDataForm
     Caption = 'Deviation'
     ParentColor = False
   end
-  object Edit1: TEdit
+  object DeviationData: TEdit
     Left = 136
     Height = 27
     Top = 512
     Width = 80
     TabOrder = 12
   end
-  object Degrees: TLabel
+  object DeviationUoM: TLabel
     Left = 229
     Height = 17
     Top = 519
-    Width = 55
+    Width = 71
+    AutoSize = False
     Caption = 'Degrees'
     ParentColor = False
   end
@@ -339,5 +341,21 @@ object HoleDataForm: THoleDataForm
     Width = 52
     AutoSize = False
     ParentColor = False
+  end
+  object QuitButton: TButton
+    Left = 219
+    Height = 25
+    Top = 571
+    Width = 75
+    Caption = 'Quit'
+    TabOrder = 18
+  end
+  object SaveButton: TButton
+    Left = 304
+    Height = 25
+    Top = 571
+    Width = 75
+    Caption = 'Save'
+    TabOrder = 19
   end
 end

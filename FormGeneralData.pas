@@ -67,16 +67,17 @@ type
 var
   GeneralDataForm           : TGeneralDataForm;
 
-  _WellOperator     : String120;
-  _WellName         : String120;
-  _WellElevation    : real;
-  _WellOffshore     : boolean;
-  _WellSubSeaWellHead   : boolean;
-  _WellRiserTD      : real;
-  _WellRiserID      : real;
-  _WellChokeLineID  : real;
-  _WellKillLineID  : real;
-  _WellWaterDepth   : real;
+  _WellOperator             : String120;
+  _WellName           : String120;
+  _WellElevation      : real;
+  _WellOffshore       : boolean;
+  _WellSubSeaWellHead : boolean;
+  _WellRiser          : boolean;
+  _WellRiserTD        : real;
+  _WellRiserID        : real;
+  _WellChokeLineID    : real;
+  _WellKillLineID     : real;
+  _WellWaterDepth     : real;
 
 implementation
 
@@ -137,11 +138,11 @@ begin
          WaterDepthData.Enabled:=False;
 
          SubSeaWellHeadYNRadioGroup.ItemIndex:=0;
-         RiserTDData.Caption:=FloatToStr(0);
-         RiserIDData.Caption:=FloatToStr(0);
-         ChokeLineIDData.Caption:=FloatToStr(0);
-         KillLineIDData.Caption:=FloatToStr(0);
-         WaterDepthData.Caption:=FloatToStr(0);
+//         RiserTDData.Caption:=FloatToStr(0);     { leave data - no need to zero }
+//         RiserIDData.Caption:=FloatToStr(0);     { leave data - no need to zero }
+//         ChokeLineIDData.Caption:=FloatToStr(0); { leave data - no need to zero }
+//         KillLineIDData.Caption:=FloatToStr(0);  { leave data - no need to zero }
+//         WaterDepthData.Caption:=FloatToStr(0);  { leave data - no need to zero }
        End;
     1: Begin
          _WellOffshore:= True;
@@ -168,6 +169,7 @@ begin
   case SubSeaWellHeadYNRadioGroup.ItemIndex of
     0: Begin
          _WellSubSeaWellHead:=False;
+         _WellRiser:=False;
          RiserTDData.Enabled:=False;
          RiserIDData.Enabled:=False;
          ChokeLineIDData.Enabled:=False;
@@ -180,6 +182,7 @@ begin
        End;
     1: Begin
          _WellSubSeaWellHead:=True;
+         _WellRiser:=True;
          ChokeLineIDData.Enabled:=True;
          KillLineIDData.Enabled:=True;
          WaterDepthData.Enabled:=True;
@@ -292,10 +295,11 @@ begin
   Data.ElevationRKB   :=_WellElevation;
   Data.Offshore       :=_WellOffshore;
   Data.SubSeaWellHead :=_WellSubSeaWellHead;
+  Data.Riser          :=_WellRiser;
   Data.RiserTD        :=_WellRiserTD;
   Data.RiserID        :=_WellRiserID;
   Data.ChokeLineID    :=_WellChokeLineID;
-  Data.KillLineID    :=_WellKillLineID;
+  Data.KillLineID     :=_WellKillLineID;
   Data.WaterDepth     :=_WellWaterDepth;
   Edited              :=True;
   Close;

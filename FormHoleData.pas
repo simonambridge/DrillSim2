@@ -13,6 +13,8 @@ type
   { THoleDataForm }
 
   THoleDataForm = class(TForm)
+    QuitButton: TButton;
+    SaveButton: TButton;
     LinerHangerDepth: TLabel;
     LinerShoeDepth: TLabel;
     LinerHangerDepthData1: TEdit;
@@ -73,6 +75,19 @@ implementation
 procedure THoleDataForm.FormActivate(Sender: TObject);
 begin
     StringToMemo('Form Well Hole Profile Data activated....');
+    OffshoreYN.Enabled:=False;
+    SubSeaWellHead.Enabled:=False;
+    Riser.Enabled:=False;
+
+    if Data.Offshore
+    then OffshoreYN.Checked:=True
+    else OffshoreYN.Checked:=False;
+    if Data.SubSeaWellHead
+    then SubSeaWellHead.Checked:=True
+    else SubSeaWellHead.Checked:=False;
+    if Data.Riser
+    then Riser.Checked:=True
+    else Riser.Checked:=False;
 
 
 

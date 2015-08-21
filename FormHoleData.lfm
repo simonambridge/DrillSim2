@@ -1,16 +1,17 @@
 object HoleDataForm: THoleDataForm
-  Left = 578
-  Height = 578
-  Top = 285
-  Width = 644
+  Left = 507
+  Height = 635
+  Top = 156
+  Width = 405
   Caption = 'Hole Profile Data'
-  ClientHeight = 578
-  ClientWidth = 644
+  ClientHeight = 635
+  ClientWidth = 405
+  OnActivate = FormActivate
   OnCreate = FormCreate
   LCLVersion = '1.2.6.0'
   object Casing: TRadioGroup
     Left = 24
-    Height = 53
+    Height = 56
     Top = 56
     Width = 94
     AutoFill = True
@@ -22,7 +23,7 @@ object HoleDataForm: THoleDataForm
     ChildSizing.ShrinkVertical = crsScaleChilds
     ChildSizing.Layout = cclLeftToRightThenTopToBottom
     ChildSizing.ControlsPerLine = 1
-    ClientHeight = 34
+    ClientHeight = 37
     ClientWidth = 90
     Items.Strings = (
       'No'
@@ -56,7 +57,7 @@ object HoleDataForm: THoleDataForm
   end
   object Liner: TRadioGroup
     Left = 252
-    Height = 52
+    Height = 55
     Top = 57
     Width = 89
     AutoFill = True
@@ -68,7 +69,7 @@ object HoleDataForm: THoleDataForm
     ChildSizing.ShrinkVertical = crsScaleChilds
     ChildSizing.Layout = cclLeftToRightThenTopToBottom
     ChildSizing.ControlsPerLine = 1
-    ClientHeight = 33
+    ClientHeight = 36
     ClientWidth = 85
     Items.Strings = (
       'No'
@@ -225,7 +226,7 @@ object HoleDataForm: THoleDataForm
   object CashingShoeDepth: TLabel
     Left = 24
     Height = 17
-    Top = 122
+    Top = 128
     Width = 132
     Caption = 'Cashing Shoe Depth'
     ParentColor = False
@@ -233,14 +234,14 @@ object HoleDataForm: THoleDataForm
   object CasingShoeData: TEdit
     Left = 168
     Height = 27
-    Top = 122
+    Top = 128
     Width = 108
     TabOrder = 13
   end
   object CashingShoeDepthUoM: TLabel
     Left = 289
     Height = 17
-    Top = 126
+    Top = 132
     Width = 52
     AutoSize = False
     ParentColor = False
@@ -248,7 +249,7 @@ object HoleDataForm: THoleDataForm
   object CasingID: TLabel
     Left = 24
     Height = 17
-    Top = 156
+    Top = 162
     Width = 73
     AutoSize = False
     Caption = 'Casing ID'
@@ -257,14 +258,14 @@ object HoleDataForm: THoleDataForm
   object CasingIDData: TEdit
     Left = 168
     Height = 27
-    Top = 152
+    Top = 158
     Width = 109
     TabOrder = 14
   end
   object CasingIDUoM: TLabel
     Left = 289
     Height = 17
-    Top = 156
+    Top = 162
     Width = 42
     AutoSize = False
     Caption = 'inches'
@@ -273,7 +274,7 @@ object HoleDataForm: THoleDataForm
   object LinerHangerDepth: TLabel
     Left = 24
     Height = 17
-    Top = 192
+    Top = 198
     Width = 129
     Caption = 'Liner Hanger Depth'
     ParentColor = False
@@ -281,21 +282,21 @@ object HoleDataForm: THoleDataForm
   object LinerHangerDepthData: TEdit
     Left = 168
     Height = 27
-    Top = 192
+    Top = 198
     Width = 108
     TabOrder = 15
   end
   object LinerSHoe: TEdit
     Left = 168
     Height = 27
-    Top = 256
+    Top = 262
     Width = 109
     TabOrder = 16
   end
   object LinerIDUoM: TLabel
     Left = 289
     Height = 17
-    Top = 258
+    Top = 264
     Width = 42
     AutoSize = False
     Caption = 'inches'
@@ -304,7 +305,7 @@ object HoleDataForm: THoleDataForm
   object LinerHangerDepthUoM: TLabel
     Left = 289
     Height = 17
-    Top = 192
+    Top = 198
     Width = 52
     AutoSize = False
     ParentColor = False
@@ -312,7 +313,7 @@ object HoleDataForm: THoleDataForm
   object LinerID: TLabel
     Left = 24
     Height = 17
-    Top = 260
+    Top = 266
     Width = 73
     AutoSize = False
     Caption = 'Liner ID'
@@ -321,7 +322,7 @@ object HoleDataForm: THoleDataForm
   object LinerShoeDepth: TLabel
     Left = 24
     Height = 17
-    Top = 224
+    Top = 230
     Width = 114
     Caption = 'Liner Shoe Depth'
     ParentColor = False
@@ -329,16 +330,32 @@ object HoleDataForm: THoleDataForm
   object LinerHangerDepthData1: TEdit
     Left = 168
     Height = 27
-    Top = 224
+    Top = 230
     Width = 108
     TabOrder = 17
   end
   object LinerShoeDepthUoM: TLabel
     Left = 289
     Height = 17
-    Top = 224
+    Top = 230
     Width = 52
     AutoSize = False
     ParentColor = False
+  end
+  object QuitButton: TButton
+    Left = 219
+    Height = 25
+    Top = 571
+    Width = 75
+    Caption = 'Quit'
+    TabOrder = 18
+  end
+  object SaveButton: TButton
+    Left = 304
+    Height = 25
+    Top = 571
+    Width = 75
+    Caption = 'Save'
+    TabOrder = 19
   end
 end

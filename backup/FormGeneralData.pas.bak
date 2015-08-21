@@ -137,11 +137,11 @@ begin
          WaterDepthData.Enabled:=False;
 
          SubSeaWellHeadYNRadioGroup.ItemIndex:=0;
-         RiserTDData.Caption:=FloatToStr(0);
-         RiserIDData.Caption:=FloatToStr(0);
-         ChokeLineIDData.Caption:=FloatToStr(0);
-         KillLineIDData.Caption:=FloatToStr(0);
-         WaterDepthData.Caption:=FloatToStr(0);
+//         RiserTDData.Caption:=FloatToStr(0);     { leave data - no need to zero }
+//         RiserIDData.Caption:=FloatToStr(0);     { leave data - no need to zero }
+//         ChokeLineIDData.Caption:=FloatToStr(0); { leave data - no need to zero }
+//         KillLineIDData.Caption:=FloatToStr(0);  { leave data - no need to zero }
+//         WaterDepthData.Caption:=FloatToStr(0);  { leave data - no need to zero }
        End;
     1: Begin
          _WellOffshore:= True;
