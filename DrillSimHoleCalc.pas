@@ -14,7 +14,6 @@ Implementation
 
 Procedure ErrorScreen;
 Begin
-  Mode:=ErrorMode;                    { Hole/Pipe data error screen }
 
   //Box(13,5,67,19);
   //Box(30,6,49,8);

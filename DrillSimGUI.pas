@@ -659,7 +659,7 @@ begin
   CreateNewFile:=True;
   InitData;                             { Set NeverSimulated }
   APIUnits;                             { Default to API units    }
-  UpdateGen;
+//  UpdateGen;
   CheckHoleData;         { get hole data and redo pipe/hole screens if error }
   CheckPipeData;         { get pipe data and redo hole/pipe screens if error }
   UpdateBit;

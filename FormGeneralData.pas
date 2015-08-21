@@ -16,8 +16,11 @@ type
   { TGeneralDataForm }
 
   TGeneralDataForm = class(TForm)
+    KillLineID: TStaticText;
     ChokeLineIDData: TEdit;
+    KillLineIDData: TEdit;
     ChokeLineIDUoMLabel: TLabel;
+    KillLineIDUoMLabel: TLabel;
     WaterDepthUoMLabel: TLabel;
     RiserTDUoMLabel: TLabel;
     RiserIDUoMLabel: TLabel;
@@ -40,15 +43,16 @@ type
     WellOperator: TStaticText;
     WellName: TStaticText;
 
-    procedure ChokeLineIDDataChange(Sender: TObject);
-    procedure RiserIDDataChange(Sender: TObject);
-    procedure RiserTDDataChange(Sender: TObject);
-    procedure WaterDepthDataChange(Sender: TObject);
-    procedure WellNameDataChange(Sender: TObject);
     procedure WellOperatorDataChange(Sender: TObject);
+    procedure WellNameDataChange(Sender: TObject);
     procedure ElevationRKBDataChange(Sender: TObject);
     procedure OffshoreYNRadioGroupClick(Sender: TObject);
     procedure SubSeaWellHeadYNRadioGroupClick(Sender: TObject);
+    procedure RiserIDDataChange(Sender: TObject);
+    procedure RiserTDDataChange(Sender: TObject);
+    procedure ChokeLineIDDataChange(Sender: TObject);
+    procedure KillLineIDDataChange(Sender: TObject);
+    procedure WaterDepthDataChange(Sender: TObject);
     procedure NumericOnlyKeyPress(Sender: TObject; var Key: Char);
 
     procedure CancelClick(Sender: TObject);
@@ -71,6 +75,7 @@ var
   _WellRiserTD      : real;
   _WellRiserID      : real;
   _WellChokeLineID  : real;
+  _WellKillLineID  : real;
   _WellWaterDepth   : real;
 
 implementation
@@ -128,12 +133,14 @@ begin
          RiserTDData.Enabled:=False;
          RiserIDData.Enabled:=False;
          ChokeLineIDData.Enabled:=False;
+         KillLineIDData.Enabled:=False;
          WaterDepthData.Enabled:=False;
 
          SubSeaWellHeadYNRadioGroup.ItemIndex:=0;
          RiserTDData.Caption:=FloatToStr(0);
          RiserIDData.Caption:=FloatToStr(0);
          ChokeLineIDData.Caption:=FloatToStr(0);
+         KillLineIDData.Caption:=FloatToStr(0);
          WaterDepthData.Caption:=FloatToStr(0);
        End;
     1: Begin
@@ -144,11 +151,12 @@ begin
          Begin
            SubSeaWellHeadYNRadioGroup.ItemIndex:=1;
            ChokeLineIDData.Enabled:=True;
+           KillLineIDData.Enabled:=True;
+           RiserTDData.Enabled:=True;
+           RiserIDData.Enabled:=True;
          end else
          Begin
            SubSeaWellHeadYNRadioGroup.ItemIndex:=0;
-           RiserTDData.Enabled:=True;
-           RiserIDData.Enabled:=True;
          end;
          WaterDepthData.Enabled:=True;
        End;
@@ -159,24 +167,27 @@ procedure TGeneralDataForm.SubSeaWellHeadYNRadioGroupClick(Sender: TObject);
 begin
   case SubSeaWellHeadYNRadioGroup.ItemIndex of
     0: Begin
-         _WellSUbSeaWellHead:=False;
-         RiserTDData.Enabled:=True;
-         RiserIDData.Enabled:=True;
+         _WellSubSeaWellHead:=False;
+         RiserTDData.Enabled:=False;
+         RiserIDData.Enabled:=False;
          ChokeLineIDData.Enabled:=False;
-         WaterDepthData.Enabled:=True;
+         KillLineIDData.Enabled:=False;
+//         WaterDepthData.Enabled:=True;
 
-         SubSeaWellHeadYNRadioGroup.ItemIndex:=0;
+//         SubSeaWellHeadYNRadioGroup.ItemIndex:=0;
 //         RiserTDData.Caption:=FloatToStr(0);  { leave data - no need to zero }
-//         RiserIDData.Caption:=FloatToStr(0);
+//         RiserIDData.Caption:=FloatToStr(0);  { leave data - no need to zero }
        End;
     1: Begin
          _WellSubSeaWellHead:=True;
-         RiserTDData.Enabled:=False;
-         RiserIDData.Enabled:=False;
          ChokeLineIDData.Enabled:=True;
+         KillLineIDData.Enabled:=True;
          WaterDepthData.Enabled:=True;
+         RiserTDData.Enabled:=True;
+         RiserIDData.Enabled:=True;
+//         WaterDepthData.Enabled:=True;
 
-//         ChokeLineIDData.Caption:=FloatToStr(0);
+//         ChokeLineIDData.Caption:=FloatToStr(0); { leave data - no need to zero }
        End;
     end;
 end;
@@ -197,6 +208,12 @@ procedure TGeneralDataForm.ChokeLineIDDataChange(Sender: TObject);
 begin
   if TEdit(Sender).Text <> ''
           then _WellChokeLineID:=StrToFloat(ChokeLineIDData.Text)/UoMConverter[8]; { inches }
+end;
+
+procedure TGeneralDataForm.KillLineIDDataChange(Sender: TObject);
+begin
+  if TEdit(Sender).Text <> ''
+          then _WellKillLineID:=StrToFloat(KillLineIDData.Text)/UoMConverter[8]; { inches }
 end;
 
 procedure TGeneralDataForm.WaterDepthDataChange(Sender: TObject);
@@ -224,15 +241,17 @@ begin
     if Data.SubSeaWellHead=True then
     Begin
       SubSeaWellHeadYNRadioGroup.ItemIndex:=1;
-      ChokeLineIDData.Enabled:=True;
-      ChokeLineIDData.Caption:=FloatToStr(Data.ChokeLineID*UoMConverter[8]); { inches }
-    end else
-    Begin
-      SubSeaWellHeadYNRadioGroup.ItemIndex:=0;
       RiserTDData.Enabled:=True;
       RiserTDData.Caption:=FloatToStr(Round2(Data.RiserTD*UoMConverter[1],2));  { depth }
       RiserIDData.Enabled:=True;
       RiserIDData.Caption:=FloatToStr(Data.RiserID*UoMConverter[8]);   { inches }
+      ChokeLineIDData.Enabled:=True;
+      ChokeLineIDData.Caption:=FloatToStr(Data.ChokeLineID*UoMConverter[8]); { inches }
+      KillLineIDData.Enabled:=True;
+      KillLineIDData.Caption:=FloatToStr(Data.KillLineID*UoMConverter[8]); { inches }
+    end else
+    Begin
+      SubSeaWellHeadYNRadioGroup.ItemIndex:=0;
     end;
     WaterDepthData.Enabled:=True;
     WaterDepthData.Caption:=FloatToStr(Round2(Data.WaterDepth*UoMConverter[1],2)); { depth }
@@ -245,12 +264,14 @@ begin
     RiserTDData.Enabled:=False;
     RiserIDData.Enabled:=False;
     ChokeLineIDData.Enabled:=False;
+    KillLineIDData.Enabled:=False;
     WaterDepthData.Enabled:=False;
   end;
   ElevationRKBUoMLabel.Caption:=UoMLabel[1];         { depth }
   RiserTDUoMLabel.Caption:=UoMLabel[1];              { depth }
   RiserIDUoMLabel.Caption:=UoMLabel[8];              { inches }
   ChokeLineIDUoMLabel.Caption:=UoMLabel[8];          { inches }
+  KillLineIDUoMLabel.Caption:=UoMLabel[8];          { inches }
   WaterDepthUoMLabel.Caption:=UoMLabel[1];           { depth }
 end;
 
@@ -274,6 +295,7 @@ begin
   Data.RiserTD        :=_WellRiserTD;
   Data.RiserID        :=_WellRiserID;
   Data.ChokeLineID    :=_WellChokeLineID;
+  Data.KillLineID    :=_WellKillLineID;
   Data.WaterDepth     :=_WellWaterDepth;
   Edited              :=True;
   Close;

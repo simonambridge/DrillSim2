@@ -39,7 +39,6 @@ Begin
 End;
 
 Begin
-  Mode := KickMode;
   With Data do
   Begin
     gotoxy(10,6);
@@ -177,100 +176,6 @@ Begin
 
 { ===================== General Well Data ==========================}
 
-Procedure UpdateGen;
-Begin
-  Mode := GenMode;
-
-  With Data do
-  Begin
-
-
-    //Disp(10,10,'Operator' + Blank9+' :');
-    //Disp(50-length(WellOperator),10,WellOperator + ' ?');
-
-    //Disp(10,12,'Well Name'+Blank9+':');
-    //Disp(50-length(Well),12,Well + ' ?');
-
-    //Disp(10,14,'Elevation RKB     :');
-    Str(ElevationRKB:8:2,TempString);      { 1 below corresponds to space after UoMLabel[1] }
-    //Disp(50-length(TempString)-length(UoMLabel[1])-1,14,TempString+' '+UoMLabel[1]+' ?');
-
-    GetState(OffShore);                    { set YesNo according to OffShore }
-    //Disp(10,16,'Offshore '+Blank9+':');
-    //Disp(50-length(TempString)-1,16,YesNo + ' (Y/N) ?');
-
-
-    GetString(58,10,20);
-    if Valid then WellOperator:=Instring;
-    //Disp(58,10,WellOperator);
-
-    GetString(58,12,20);
-    if Valid then WellName:=Instring;
-    //Disp(58,12,Well);
-
-    GetReal(55,14,500/UoMConverter[1]);
-    if Valid then ElevationRKB:=RealResult;
-    Str(ElevationRKB:8:2,TempString);      { 1 below corresponds to space after UoMLabel[1] }
-
-    Repeat
-      Input:=ReadKey;
-    Until UpCase(CharInput) in ['Y','N',^M];
-    Case UpCase(CharInput) of
-      'Y' : Offshore:=True;
-      'N' : Begin
-              Offshore:=False;
-              Riser:=False;
-            End;
-    End;
-
-    GetState(Offshore);                      { set YesNo on Offshore status }
-    //Disp(63-length(YesNo),16,YesNo);              { display offshore status }
-
-    if Offshore then
-    Begin
-      GetState(Riser);
-      //SetColorSet(NormColors);
-      //Disp(10,17,'Sub-sea wellhead  :');
-      //Disp(50-length(TempString)-1,17,YesNo + ' (Y/N) ? ');
-
-      gotoxy(55,17);
-      Repeat
-        CharInput:=ReadKey;
-      Until UpCase(CharInput) in ['Y','N',^M];
-      Case UpCase(CharInput) of
-        'Y' : Riser:=True;
-        'N' : Begin
-                Riser:=False;
-                RiserTD:=0;
-                RiserID:=0;
-              End;
-      End;
-
-      GetState(Riser);
-      //Disp(63-length(YesNo),17,YesNo);
-
-      if Riser then
-      Begin
-        Str(ChokeLineID:8:2,TempString);
-        //Disp(10,18,'Choke line ID     :');
-        //Disp(50-length(TempString)-4,18,TempString + ' ins ? ');
-        //SetColorSet(DataColors);
-        GetReal(55,18,20);
-        if Valid then ChokeLineID:=RealResult;
-        Str(ChokeLineID:8:2,TempString);
-        //Disp(63-length(TempString),18,TempString);
-       End else //Disp(10,18,'No Choke Line');
-
-      Str(WaterDepth:8:2,TempString);
-      //Disp(10,19,'Water depth'+Blank7+':');
-      //Disp(50-length(TempString)-4,19,TempString + ' ' + UoMLabel[1] + ' ? ');
-       GetReal(55,19,2000/UoMConverter[1]);
-      if Valid then WaterDepth:=RealResult;
-      Str(WaterDepth:8:2,TempString);
-      //Disp(63-length(TempString),19,TempString);
-    End;
-  End;
-  End;
 
 
 { ===================== Hole Data ==========================}
@@ -281,7 +186,6 @@ Var J, i,k : integer;
     InputError : boolean;
     Str1 : String[10];
 Begin
-  Mode := HoleMode;
   With Data do
   Begin
     LineCnt:=4;  J:=4;
@@ -507,7 +411,6 @@ Var i, j : integer;
     InputError : boolean;
     Str1,Str2 : String[10];
 Begin
-  Mode := PipeMode;
   With Data do
   Begin
     Repeat
@@ -577,14 +480,13 @@ Procedure UpdateBit;
 Var i : integer;
     InputError : boolean;
 Begin
-  Mode := BitMode;
   With Data do
   Begin
     Repeat
       gotoxy(10,10);
       write('Current Bit #   : ',Bit:10,'  ?');
       GetInt(55,10,200);
-      if Valid then Bit:=IResult;
+      if Valid then Bit:=IntResult;
       gotoxy(55,10); write(Bit:9);
 
       //Disp(10,11,'Bit Type        :');
@@ -635,7 +537,6 @@ End;
 Procedure UpdateMud;
 Var InputError : boolean;
 Begin
-  Mode := MudMode;
  With Data do
   Begin
     Repeat
@@ -683,7 +584,6 @@ Var i : integer;
     Str1,Str2 : String[10];
     InputError : boolean;
 Begin
-  Mode := PumpMode;
   With Data do
   Begin
     Repeat
@@ -760,7 +660,6 @@ Begin
   With Data do
   Begin
     Repeat
-      Mode := SurfMode;
 
       Str(Surf[1,1]:9:3,Str1);
       //Disp(10,7,'Kelly  Length      : '+Str1+' '+UoMLabel[1]+' ?');

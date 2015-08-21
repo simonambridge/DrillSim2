@@ -243,7 +243,6 @@ var
   HoleDataForm        : THoleDataForm;
   UnitsOfMeasureForm  : TUnitsOfMeasureForm;
   SystemDefaultsForm  : TSystemDefaultsForm;
-  HoleDataForm        : THoleDataForm;
 
 implementation
 

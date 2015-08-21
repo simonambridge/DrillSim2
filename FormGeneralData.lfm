@@ -1,7 +1,7 @@
 object GeneralDataForm: TGeneralDataForm
-  Left = 390
+  Left = 519
   Height = 555
-  Top = 328
+  Top = 326
   Width = 497
   Caption = 'General Well Data'
   ClientHeight = 555
@@ -159,10 +159,10 @@ object GeneralDataForm: TGeneralDataForm
   object WaterDepth: TStaticText
     Left = 24
     Height = 24
-    Top = 412
+    Top = 440
     Width = 112
     Caption = 'Water Depth'
-    TabOrder = 13
+    TabOrder = 14
   end
   object RiserTDData: TEdit
     Left = 138
@@ -170,7 +170,7 @@ object GeneralDataForm: TGeneralDataForm
     Top = 328
     Width = 155
     OnChange = RiserTDDataChange
-    TabOrder = 14
+    TabOrder = 15
   end
   object RiserIDData: TEdit
     Left = 138
@@ -178,7 +178,7 @@ object GeneralDataForm: TGeneralDataForm
     Top = 356
     Width = 155
     OnChange = RiserIDDataChange
-    TabOrder = 15
+    TabOrder = 16
   end
   object ChokeLineIDData: TEdit
     Left = 138
@@ -187,16 +187,16 @@ object GeneralDataForm: TGeneralDataForm
     Width = 155
     OnChange = ChokeLineIDDataChange
     OnKeyPress = NumericOnlyKeyPress
-    TabOrder = 16
+    TabOrder = 17
   end
   object WaterDepthData: TEdit
     Left = 138
     Height = 27
-    Top = 412
+    Top = 437
     Width = 155
     OnChange = WaterDepthDataChange
     OnKeyPress = NumericOnlyKeyPress
-    TabOrder = 17
+    TabOrder = 19
   end
   object RiserTDUoMLabel: TLabel
     Left = 310
@@ -223,6 +223,31 @@ object GeneralDataForm: TGeneralDataForm
     ParentColor = False
   end
   object WaterDepthUoMLabel: TLabel
+    Left = 310
+    Height = 22
+    Top = 437
+    Width = 32
+    AutoSize = False
+    ParentColor = False
+  end
+  object KillLineID: TStaticText
+    Left = 24
+    Height = 24
+    Top = 412
+    Width = 112
+    Caption = 'Kill Line ID'
+    TabOrder = 13
+  end
+  object KillLineIDData: TEdit
+    Left = 138
+    Height = 27
+    Top = 412
+    Width = 155
+    OnChange = KillLineIDDataChange
+    OnKeyPress = NumericOnlyKeyPress
+    TabOrder = 18
+  end
+  object KillLineIDUoMLabel: TLabel
     Left = 310
     Height = 22
     Top = 412

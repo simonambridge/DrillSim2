@@ -152,7 +152,7 @@ Begin
         LastKD:=PipeTD;                      { and set up for new kelly down }
       End;
     End;
-    Tvd:=TD * Cos(Dev * Pi / 180);
+    Tvd:=TD * Cos(DeviationDegrees * Pi / 180);
 
     J:=1; K:=MaxPipes;                   { Calculate Hole Profile }
     i:=1;

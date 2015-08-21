@@ -309,8 +309,8 @@ Var
    Code                : integer;           { used by Proc. }
    Name                : String20;        { GetDirectory  }
 
-   ConfigFile          : String120;
-   DefaultFile         : String120;        { used for .CFG file }
+   SystemPropertiesFile  : String120;
+   DefaultWellDataFile   : String120;        { used for .CFG file }
    DefaultDirectory    : String120;
 //   PathString          : String120;         { Used for DOS Path - replaced }
    OriginDirectory     : String120;

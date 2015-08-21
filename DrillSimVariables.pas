@@ -335,7 +335,6 @@ Var
 
 { Hydvar vars }
    Bhcp                             : real;
-   Mode                             : string[20];
    PosCounter                       : integer;
    LineCnt                          : integer;
    ColorCount                       : integer;

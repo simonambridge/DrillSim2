@@ -1,7 +1,7 @@
 object GeneralDataForm: TGeneralDataForm
-  Left = 390
+  Left = 519
   Height = 555
-  Top = 328
+  Top = 326
   Width = 497
   Caption = 'General Well Data'
   ClientHeight = 555
@@ -75,13 +75,13 @@ object GeneralDataForm: TGeneralDataForm
     OnClick = SaveClick
     TabOrder = 6
   end
-  object Quit: TButton
+  object Cancel: TButton
     Left = 216
     Height = 26
     Top = 488
     Width = 86
-    Caption = 'Quit'
-    OnClick = QuitClick
+    Caption = 'Cancel'
+    OnClick = CancelClick
     TabOrder = 7
   end
   object OffshoreYNRadioGroup: TRadioGroup
@@ -159,7 +159,7 @@ object GeneralDataForm: TGeneralDataForm
   object WaterDepth: TStaticText
     Left = 24
     Height = 24
-    Top = 412
+    Top = 440
     Width = 112
     Caption = 'Water Depth'
     TabOrder = 13
@@ -192,7 +192,7 @@ object GeneralDataForm: TGeneralDataForm
   object WaterDepthData: TEdit
     Left = 138
     Height = 27
-    Top = 412
+    Top = 437
     Width = 155
     OnChange = WaterDepthDataChange
     OnKeyPress = NumericOnlyKeyPress
@@ -223,6 +223,31 @@ object GeneralDataForm: TGeneralDataForm
     ParentColor = False
   end
   object WaterDepthUoMLabel: TLabel
+    Left = 310
+    Height = 22
+    Top = 437
+    Width = 32
+    AutoSize = False
+    ParentColor = False
+  end
+  object KillLineID: TStaticText
+    Left = 24
+    Height = 24
+    Top = 412
+    Width = 112
+    Caption = 'Kill Line ID'
+    TabOrder = 18
+  end
+  object KillLineIDData: TEdit
+    Left = 138
+    Height = 27
+    Top = 412
+    Width = 155
+    OnChange = KillLineIDDataChange
+    OnKeyPress = NumericOnlyKeyPress
+    TabOrder = 19
+  end
+  object KillLineIDUoMLabel: TLabel
     Left = 310
     Height = 22
     Top = 412
