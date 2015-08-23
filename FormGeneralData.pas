@@ -43,7 +43,6 @@ type
     WellOperator: TStaticText;
     WellName: TStaticText;
 
-    procedure ElevationRKBDataKeyPress(Sender: TObject);
     procedure WellOperatorDataChange(Sender: TObject);
     procedure WellNameDataChange(Sender: TObject);
     procedure ElevationRKBDataChange(Sender: TObject);
@@ -106,11 +105,6 @@ begin
   Begin
     Key := #0;
   end;
-end;
-
-procedure TGeneralDataForm.ElevationRKBDataKeyPress(Sender: TObject);
-begin
-
 end;
 
 procedure TGeneralDataForm.WellOperatorDataChange(Sender: TObject);

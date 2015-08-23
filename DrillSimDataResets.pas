@@ -55,7 +55,7 @@ Begin
     WaterDepth       :=Zero;
     ElevationRKB     :=Zero;
 
-    Maxholes:=0;
+    MaxHoles:=0;
     For i:=1 to 3 do
     Begin
       Hole[i,1]:=Zero;

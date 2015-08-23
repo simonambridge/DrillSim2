@@ -12,6 +12,7 @@ object HoleDataForm: THoleDataForm
   object CasingYNRadioGroup: TRadioGroup
     Left = 24
     Height = 56
+    Hint = 'Select Yes if casing is present'
     Top = 56
     Width = 94
     AutoFill = True
@@ -30,35 +31,47 @@ object HoleDataForm: THoleDataForm
       'Yes'
     )
     OnClick = CasingYNRadioGroupClick
+    ParentShowHint = False
+    ShowHint = True
     TabOrder = 1
   end
   object OffshoreYN: TCheckBox
     Left = 32
     Height = 24
+    Hint = 'Ticked if this well is offshore'
     Top = 19
     Width = 86
     Caption = 'Offshore'
+    ParentShowHint = False
+    ShowHint = True
     TabOrder = 0
   end
   object SubSeaWellHead: TCheckBox
     Left = 136
     Height = 24
+    Hint = 'Ticked if this well has a sub-sea wellhead'
     Top = 19
     Width = 150
     Caption = 'Sub-Sea Well Head'
+    ParentShowHint = False
+    ShowHint = True
     TabOrder = 2
   end
   object Riser: TCheckBox
     Left = 304
     Height = 24
+    Hint = 'Ticked if this well has a riser'
     Top = 19
     Width = 60
     Caption = 'Riser'
+    ParentShowHint = False
+    ShowHint = True
     TabOrder = 3
   end
   object LinerYNRadioGroup: TRadioGroup
     Left = 252
     Height = 55
+    Hint = 'Select Yes if liner is present'
     Top = 57
     Width = 89
     AutoFill = True
@@ -77,12 +90,14 @@ object HoleDataForm: THoleDataForm
       'Yes'
     )
     OnClick = LinerYNRadioGroupClick
+    ParentShowHint = False
+    ShowHint = True
     TabOrder = 4
   end
   object NumOHSections: TLabel
     Left = 24
     Height = 27
-    Hint = 'plop'
+    Hint = '# of open hole sections (max 3)'
     Top = 336
     Width = 94
     AutoSize = False
@@ -94,11 +109,14 @@ object HoleDataForm: THoleDataForm
   object OHSection1: TLabel
     Left = 40
     Height = 24
+    Hint = 'Total depth of hole section 1'
     Top = 411
     Width = 85
     AutoSize = False
     Caption = 'OH Section 1'
     ParentColor = False
+    ParentShowHint = False
+    ShowHint = True
   end
   object TDColumnLabel: TLabel
     Left = 168
@@ -138,26 +156,34 @@ object HoleDataForm: THoleDataForm
     Top = 408
     Width = 109
     Alignment = taRightJustify
+    OnChange = OHSection1TDDataChange
     OnKeyPress = NumericOnlyKeyPress
     TabOrder = 5
   end
   object OHSection1IDData: TEdit
     Left = 272
     Height = 27
+    Hint = 'Internal diameter of hole section 1 in inches'
     Top = 408
     Width = 72
     Alignment = taRightJustify
+    OnChange = OHSection1IDDataChange
     OnKeyPress = NumericOnlyKeyPress
+    ParentShowHint = False
+    ShowHint = True
     TabOrder = 6
   end
   object OHSection2: TLabel
     Left = 40
     Height = 24
+    Hint = 'Total depth of hole section 2'
     Top = 439
     Width = 85
     AutoSize = False
     Caption = 'OH Section 2'
     ParentColor = False
+    ParentShowHint = False
+    ShowHint = True
   end
   object OHSection2TDData: TEdit
     Left = 136
@@ -165,26 +191,34 @@ object HoleDataForm: THoleDataForm
     Top = 436
     Width = 109
     Alignment = taRightJustify
+    OnChange = OHSection2TDDataChange
     OnKeyPress = NumericOnlyKeyPress
     TabOrder = 7
   end
   object OHSection2IDData: TEdit
     Left = 272
     Height = 27
+    Hint = 'Internal diameter of hole section 2 in inches'
     Top = 436
     Width = 72
     Alignment = taRightJustify
+    OnChange = OHSection2IDDataChange
     OnKeyPress = NumericOnlyKeyPress
+    ParentShowHint = False
+    ShowHint = True
     TabOrder = 8
   end
   object OHSection3: TLabel
     Left = 40
     Height = 24
+    Hint = 'Total depth of hole section 3'
     Top = 467
     Width = 85
     AutoSize = False
     Caption = 'OH Section 3'
     ParentColor = False
+    ParentShowHint = False
+    ShowHint = True
   end
   object OHSection3TDData: TEdit
     Left = 136
@@ -192,26 +226,34 @@ object HoleDataForm: THoleDataForm
     Top = 464
     Width = 109
     Alignment = taRightJustify
+    OnChange = OHSection3TDDataChange
     OnKeyPress = NumericOnlyKeyPress
     TabOrder = 9
   end
   object OHSection3IDData: TEdit
     Left = 272
     Height = 27
+    Hint = 'Internal diameter of hole section 3 in inches'
     Top = 464
     Width = 72
     Alignment = taRightJustify
+    OnChange = OHSection3IDDataChange
     OnKeyPress = NumericOnlyKeyPress
+    ParentShowHint = False
+    ShowHint = True
     TabOrder = 10
   end
   object Deviation: TLabel
     Left = 40
     Height = 25
+    Hint = 'Deviation survey (TOTCO) result'
     Top = 517
     Width = 82
     AutoSize = False
     Caption = 'Deviation'
     ParentColor = False
+    ParentShowHint = False
+    ShowHint = True
   end
   object DeviationData: TEdit
     Left = 136
@@ -219,6 +261,7 @@ object HoleDataForm: THoleDataForm
     Top = 512
     Width = 80
     Alignment = taRightJustify
+    OnChange = DeviationDataChange
     OnKeyPress = NumericOnlyKeyPress
     TabOrder = 11
   end
@@ -234,10 +277,13 @@ object HoleDataForm: THoleDataForm
   object CashingShoeDepth: TLabel
     Left = 24
     Height = 17
+    Hint = 'Total depth of casing'
     Top = 128
     Width = 132
     Caption = 'Cashing Shoe Depth'
     ParentColor = False
+    ParentShowHint = False
+    ShowHint = True
   end
   object CasingShoeDepthData: TEdit
     Left = 168
@@ -245,6 +291,7 @@ object HoleDataForm: THoleDataForm
     Top = 128
     Width = 108
     Alignment = taRightJustify
+    OnChange = CasingShoeDepthDataChange
     OnKeyPress = NumericOnlyKeyPress
     TabOrder = 12
   end
@@ -259,11 +306,14 @@ object HoleDataForm: THoleDataForm
   object CasingID: TLabel
     Left = 24
     Height = 17
+    Hint = 'Internal diameter of casing in inches'
     Top = 162
     Width = 73
     AutoSize = False
     Caption = 'Casing ID'
     ParentColor = False
+    ParentShowHint = False
+    ShowHint = True
   end
   object CasingIDData: TEdit
     Left = 168
@@ -271,6 +321,7 @@ object HoleDataForm: THoleDataForm
     Top = 158
     Width = 109
     Alignment = taRightJustify
+    OnChange = CasingIDDataChange
     OnKeyPress = NumericOnlyKeyPress
     TabOrder = 13
   end
@@ -285,10 +336,13 @@ object HoleDataForm: THoleDataForm
   object LinerTopDepth: TLabel
     Left = 24
     Height = 17
+    Hint = 'Total depth of liner top'
     Top = 198
     Width = 129
     Caption = 'Liner Hanger Depth'
     ParentColor = False
+    ParentShowHint = False
+    ShowHint = True
   end
   object LinerTopDepthData: TEdit
     Left = 168
@@ -296,6 +350,7 @@ object HoleDataForm: THoleDataForm
     Top = 198
     Width = 108
     Alignment = taRightJustify
+    OnChange = LinerTopDepthDataChange
     OnKeyPress = NumericOnlyKeyPress
     TabOrder = 14
   end
@@ -305,6 +360,7 @@ object HoleDataForm: THoleDataForm
     Top = 262
     Width = 109
     Alignment = taRightJustify
+    OnChange = LinerIDDataChange
     OnKeyPress = NumericOnlyKeyPress
     TabOrder = 15
   end
@@ -327,26 +383,34 @@ object HoleDataForm: THoleDataForm
   object LinerID: TLabel
     Left = 24
     Height = 17
+    Hint = 'Internal diameter of liner in inches'
     Top = 266
     Width = 73
     AutoSize = False
     Caption = 'Liner ID'
     ParentColor = False
+    ParentShowHint = False
+    ShowHint = True
   end
   object LinerBottomDepth: TLabel
     Left = 24
     Height = 17
+    Hint = 'Total depth of liner bottom'
     Top = 230
     Width = 114
     Caption = 'Liner Shoe Depth'
     ParentColor = False
+    ParentShowHint = False
+    ShowHint = True
   end
   object LinerBottomDepthData: TEdit
     Left = 168
     Height = 27
+    Hint = 'Total depth of liner bottom'
     Top = 230
     Width = 108
     Alignment = taRightJustify
+    OnChange = LinerBottomDepthDataChange
     OnKeyPress = NumericOnlyKeyPress
     TabOrder = 16
   end
@@ -361,31 +425,40 @@ object HoleDataForm: THoleDataForm
   object QuitButton: TButton
     Left = 219
     Height = 25
+    Hint = 'Click to exit without saving'
     Top = 571
     Width = 75
     Caption = 'Quit'
+    ParentShowHint = False
+    ShowHint = True
     TabOrder = 17
   end
   object SaveButton: TButton
     Left = 304
     Height = 25
+    Hint = 'Click to save and exit'
     Top = 571
     Width = 75
     Caption = 'Save'
     OnClick = SaveButtonClick
+    ParentShowHint = False
+    ShowHint = True
     TabOrder = 18
   end
   object NumOHSectionsComboBox: TComboBox
     Left = 136
     Height = 29
+    Hint = '# of open hole sections (max 3)'
     Top = 334
     Width = 100
     ItemHeight = 0
     Items.Strings = (
+      '0'
       '1'
       '2'
       '3'
     )
+    OnChange = NumOHSectionsComboBoxChange
     TabOrder = 19
     Text = '<select>'
   end

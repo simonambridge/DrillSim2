@@ -56,10 +56,23 @@ type
     Riser: TCheckBox;
     SubSeaWellHead: TCheckBox;
     OffshoreYN: TCheckBox;
+    procedure CasingIDDataChange(Sender: TObject);
+    procedure CasingShoeDepthDataChange(Sender: TObject);
     procedure CasingYNRadioGroupClick(Sender: TObject);
+    procedure DeviationDataChange(Sender: TObject);
+    procedure LinerBottomDepthDataChange(Sender: TObject);
+    procedure LinerIDDataChange(Sender: TObject);
+    procedure LinerTopDepthDataChange(Sender: TObject);
     procedure LinerYNRadioGroupClick(Sender: TObject);
     procedure NumericOnlyKeyPress(Sender: TObject; var Key: Char);
     procedure CancelClick(Sender: TObject);
+    procedure NumOHSectionsComboBoxChange(Sender: TObject);
+    procedure OHSection1IDDataChange(Sender: TObject);
+    procedure OHSection1TDDataChange(Sender: TObject);
+    procedure OHSection2IDDataChange(Sender: TObject);
+    procedure OHSection2TDDataChange(Sender: TObject);
+    procedure OHSection3IDDataChange(Sender: TObject);
+    procedure OHSection3TDDataChange(Sender: TObject);
     procedure SaveButtonClick(Sender: TObject);
     procedure FormActivate(Sender: TObject);
     procedure FormCreate(Sender: TObject);
@@ -70,10 +83,22 @@ type
   end;
 
 var
-  HoleDataForm: THoleDataForm;
-  _WellCasing : boolean;
-  _WellLiner: boolean;
+  i             : integer;
+  HoleDataForm  : THoleDataForm;
 
+  _WellCasing        : boolean;
+  _WellCasingTD      : real;
+  _WellCasingID      : real;
+
+  _WellLiner         : boolean;
+  _WellLinerTopTD    : real;
+  _WellLinerBottomTD : real;
+  _WellLinerID       : real;
+
+  _WellMaxHoles      : integer;
+  _WellHole          : array[1..3,1..3] of real;
+
+  _WellDeviation     : real;
 
 implementation
 
@@ -107,33 +132,34 @@ begin
          CasingYNRadioGroup.ItemIndex:=0;
 
          CasingShoeDepthData.Enabled:=False;
-         CasingShoeDepthData.Caption:=FloatToStr(0);  { depth }
+         //CasingShoeDepthData.Caption:=FloatToStr(0);  { depth }
 
          CasingIDData.Enabled:=False;
-         CasingIDData.Caption:=FloatToStr(0);   { inches }
+         //CasingIDData.Caption:=FloatToStr(0);   { inches }
 
          _WellLiner:=False;                  { ...so there can be no liner either }
          LinerYNRadioGroup.ItemIndex:=0;
          LinerYNRadioGroup.Enabled:=False;
 
          LinerTopDepthData.Enabled:=False;
-         LinerTopDepthData.Caption:=FloatToStr(0);  { depth }
+         //LinerTopDepthData.Caption:=FloatToStr(0);  { depth }
 
          LinerBottomDepthData.Enabled:=False;
-         LinerBottomDepthData.Caption:=FloatToStr(0);  { depth }
+         //LinerBottomDepthData.Caption:=FloatToStr(0);  { depth }
 
          LinerIDData.Enabled:=False;
-         LinerIDData.Caption:=FloatToStr(0);   { inches }
+         //LinerIDData.Caption:=FloatToStr(0);   { inches }
        End;
     1: Begin
+         _WellCasing:= True;               { there is casing... }
         CasingYNRadioGroup.ItemIndex:=1;
         LinerYNRadioGroup.Enabled:=True;
 
         CasingShoeDepthData.Enabled:=True;
-        CasingShoeDepthData.Caption:=FloatToStr(Round2(Data.CasingTD*UoMConverter[1],2));  { depth }
+        //CasingShoeDepthData.Caption:=FloatToStr(Round2(Data.CasingTD*UoMConverter[1],2));  { depth }
 
         CasingIDData.Enabled:=True;
-        CasingIDData.Caption:=FloatToStr(Data.CasingID*UoMConverter[8]);   { inches }
+        //CasingIDData.Caption:=FloatToStr(Data.CasingID*UoMConverter[8]);   { inches }
 
       end;
    End;
@@ -147,28 +173,180 @@ begin
          LinerYNRadioGroup.ItemIndex:=0;
 
          LinerTopDepthData.Enabled:=False;
-         LinerTopDepthData.Caption:=FloatToStr(0);  { depth }
+         //LinerTopDepthData.Caption:=FloatToStr(0);  { depth }
 
          LinerBottomDepthData.Enabled:=False;
-         LinerBottomDepthData.Caption:=FloatToStr(0);  { depth }
+         //LinerBottomDepthData.Caption:=FloatToStr(0);  { depth }
 
          LinerIDData.Enabled:=False;
-         LinerIDData.Caption:=FloatToStr(0);   { inches }
+         //LinerIDData.Caption:=FloatToStr(0);   { inches }
        End;
     1: Begin
-        _WellLiner:=True;                  { there is no Liner }
+        _WellLiner:=True;                  { there is a Liner }
         LinerYNRadioGroup.ItemIndex:=1;
         LinerTopDepthData.Enabled:=True;
-        LinerTopDepthData.Caption:=FloatToStr(0);     { depth }
+        //LinerTopDepthData.Caption:=FloatToStr(Round2(Data.LinerTopTD*UoMConverter[1],2));  { depth }
 
         LinerBottomDepthData.Enabled:=True;
-        LinerBottomDepthData.Caption:=FloatToStr(0);  { depth }
+        //LinerBottomDepthData.Caption:=FloatToStr(Round2(Data.LinerBottomTD*UoMConverter[1],2));  { depth }
 
         LinerIDData.Enabled:=True;
-        LinerIDData.Caption:=FloatToStr(0);           { inches }
+        //LinerIDData.Caption:=FloatToStr(Data.LinerID*UoMConverter[8]);   { inches }
       end;
    End;
 end;
+
+procedure THoleDataForm.NumOHSectionsComboBoxChange(Sender: TObject);
+begin
+  case NumOHSectionsComboBox.ItemIndex of
+    0: Begin
+         _WellMaxHoles:=0;
+         OHSection1TDData.Enabled:=False;
+         OHSection1IDData.Enabled:=False;
+         //OHSection1TDData.Text:=FloatToStr(0);  { depth }
+         //OHSection1TDData.Text:=FloatToStr(0);  { inches }
+
+         OHSection2TDData.Enabled:=False;
+         OHSection2IDData.Enabled:=False;
+         //OHSection2TDData.Text:=FloatToStr(0);  { depth }
+         //OHSection2TDData.Text:=FloatToStr(0);  { inches }
+
+         OHSection3TDData.Enabled:=False;
+         OHSection3IDData.Enabled:=False;
+         //OHSection3TDData.Text:=FloatToStr(0);  { depth }
+         //OHSection3TDData.Text:=FloatToStr(0);  { inches }
+       end;
+
+    1: Begin
+         _WellMaxHoles:=1;
+         OHSection1TDData.Enabled:=True;
+         OHSection1IDData.Enabled:=True;
+         //OHSection1TDData.Text:=FloatToStr(Round2(Data.Hole[1,1]*UoMConverter[1],2));  { depth }
+         //OHSection1TDData.Text:=FloatToStr(Round2(Data.Hole[1,2]*UoMConverter[8],2));  { inches }
+
+         OHSection2TDData.Enabled:=False;
+         OHSection2IDData.Enabled:=False;
+         //OHSection2TDData.Text:=FloatToStr(0);  { depth }
+         //OHSection2TDData.Text:=FloatToStr(0);  { inches }
+
+         OHSection3TDData.Enabled:=False;
+         OHSection3IDData.Enabled:=False;
+         //OHSection3TDData.Text:=FloatToStr(0);  { depth }
+         //OHSection3TDData.Text:=FloatToStr(0);  { inches }
+       end;
+
+  2: Begin
+       _WellMaxHoles:=2;
+       OHSection1TDData.Enabled:=True;
+       OHSection1IDData.Enabled:=True;
+       //OHSection1TDData.Text:=FloatToStr(Round2(Data.Hole[1,1]*UoMConverter[1],2));  { depth }
+       //OHSection1TDData.Text:=FloatToStr(Round2(Data.Hole[1,2]*UoMConverter[8],2));  { inches }
+
+       OHSection2TDData.Enabled:=True;
+       OHSection2IDData.Enabled:=True;
+       //OHSection2TDData.Text:=FloatToStr(Round2(Data.Hole[1,1]*UoMConverter[1],2));  { depth }
+       //OHSection2TDData.Text:=FloatToStr(Round2(Data.Hole[1,2]*UoMConverter[8],2));  { inches }
+
+       OHSection3TDData.Enabled:=False;
+       OHSection3IDData.Enabled:=False;
+       //OHSection3TDData.Text:=FloatToStr(0);  { depth }
+       //OHSection3TDData.Text:=FloatToStr(0);  { inches }
+     end;
+
+   3: Begin
+        _WellMaxHoles:=3;
+        OHSection1TDData.Enabled:=True;
+        OHSection1IDData.Enabled:=True;
+        //OHSection1TDData.Text:=FloatToStr(Round2(Data.Hole[1,1]*UoMConverter[1],2));  { depth }
+        //OHSection1TDData.Text:=FloatToStr(Round2(Data.Hole[1,2]*UoMConverter[8],2));  { inches }
+
+        OHSection2TDData.Enabled:=True;
+        OHSection2IDData.Enabled:=True;
+        //OHSection2TDData.Text:=FloatToStr(Round2(Data.Hole[1,1]*UoMConverter[1],2));  { depth }
+        //OHSection2TDData.Text:=FloatToStr(Round2(Data.Hole[1,2]*UoMConverter[8],2));  { inches }
+
+        OHSection3TDData.Enabled:=True;
+        OHSection3IDData.Enabled:=True;
+        //OHSection3TDData.Text:=FloatToStr(Round2(Data.Hole[1,1]*UoMConverter[1],2));  { depth }
+        //OHSection3TDData.Text:=FloatToStr(Round2(Data.Hole[1,2]*UoMConverter[8],2));  { inches }
+      end;
+    end;
+
+end;
+
+procedure THoleDataForm.CasingShoeDepthDataChange(Sender: TObject);
+begin
+  if TEdit(Sender).Text <> ''
+          then _WellCasingTD:=Round2(StrToFloat(CasingShoeDepthData.Text)/UoMConverter[1],2); { depth }
+end;
+
+procedure THoleDataForm.CasingIDDataChange(Sender: TObject);
+begin
+  if TEdit(Sender).Text <> ''
+          then _WellCasingID:=Round2(StrToFloat(CasingIDData.Text)/UoMConverter[8],2); { inches }
+end;
+
+procedure THoleDataForm.LinerTopDepthDataChange(Sender: TObject);
+begin
+  if TEdit(Sender).Text <> ''
+          then _WellLinerTopTD:=Round2(StrToFloat(LinerTopDepthData.Text)/UoMConverter[1],2); { depth }
+end;
+
+procedure THoleDataForm.LinerBottomDepthDataChange(Sender: TObject);
+begin
+  if TEdit(Sender).Text <> ''
+          then _WellLinerBottomTD:=Round2(StrToFloat(LinerBottomDepthData.Text)/UoMConverter[1],2); { depth }
+end;
+
+procedure THoleDataForm.LinerIDDataChange(Sender: TObject);
+begin
+  if TEdit(Sender).Text <> ''
+          then _WellLinerID:=Round2(StrToFloat(LinerIDData.Text)/UoMConverter[8],2); { inches }
+end;
+
+procedure THoleDataForm.OHSection1TDDataChange(Sender: TObject);
+begin
+  if TEdit(Sender).Text <> ''
+          then _WellHole[1,1]:=Round2(StrToFloat(OHSection1TDData.Text)/UoMConverter[1],2); { depth }
+end;
+
+procedure THoleDataForm.OHSection1IDDataChange(Sender: TObject);
+begin
+  if TEdit(Sender).Text <> ''
+          then _WellHole[1,2]:=Round2(StrToFloat(OHSection1IDData.Text)/UoMConverter[8],2); { inches }
+end;
+
+procedure THoleDataForm.OHSection2TDDataChange(Sender: TObject);
+begin
+  if TEdit(Sender).Text <> ''
+          then _WellHole[2,1]:=Round2(StrToFloat(OHSection2TDData.Text)/UoMConverter[1],2); { depth }
+end;
+
+procedure THoleDataForm.OHSection2IDDataChange(Sender: TObject);
+begin
+  if TEdit(Sender).Text <> ''
+          then _WellHole[2,2]:=Round2(StrToFloat(OHSection2IDData.Text)/UoMConverter[8],2); { inches }
+end;
+
+procedure THoleDataForm.OHSection3TDDataChange(Sender: TObject);
+begin
+  if TEdit(Sender).Text <> ''
+          then _WellHole[3,1]:=Round2(StrToFloat(OHSection3TDData.Text)/UoMConverter[1],2); { depth }
+end;
+
+procedure THoleDataForm.OHSection3IDDataChange(Sender: TObject);
+begin
+  if TEdit(Sender).Text <> ''
+          then _WellHole[3,2]:=Round2(StrToFloat(OHSection3IDData.Text)/UoMConverter[8],2); { inches }
+end;
+
+
+procedure THoleDataForm.DeviationDataChange(Sender: TObject);
+begin
+  if TEdit(Sender).Text <> ''
+          then _WellDeviation:=Round2(StrToFloat(DeviationData.Text),2); { degrees - no conversion }
+end;
+
 
 
 { ------------------ Form procedures ---------------------- }
@@ -176,18 +354,19 @@ end;
 procedure THoleDataForm.FormActivate(Sender: TObject);
 begin
     StringToMemo('Form Well Hole Profile Data activated....');
-    OffshoreYN.Enabled:=False;
-    SubSeaWellHead.Enabled:=False;
-    Riser.Enabled:=False;
 
+
+    OffshoreYN.Enabled:=False;
     if Data.Offshore
     then OffshoreYN.Checked:=True
     else OffshoreYN.Checked:=False;
 
+    SubSeaWellHead.Enabled:=False;
     if Data.SubSeaWellHead
     then SubSeaWellHead.Checked:=True
     else SubSeaWellHead.Checked:=False;
 
+    Riser.Enabled:=False;
     if Data.Riser
     then Riser.Checked:=True
     else Riser.Checked:=False;
@@ -251,27 +430,28 @@ begin
       LinerIDData.Enabled:=False;
       LinerIDData.Caption:=FloatToStr(0);           { inches }
     end;
-
-    case NumOHSectionsComboBox.ItemIndex of
+StringToMemo('Holes= ' + FloatToStr(Data.MaxHoles));
+    case Data.MaxHoles of
       0: Begin
+           NumOHSectionsComboBox.ItemIndex:=0;
            OHSection1TDData.Enabled:=False;
            OHSection1IDData.Enabled:=False;
-           OHSection1TDData.Text:=FloatToStr(0);  { depth }
-           OHSection1TDData.Text:=FloatToStr(0);  { inches }
+           //OHSection1TDData.Text:=FloatToStr(0);  { depth }
+           //OHSection1TDData.Text:=FloatToStr(0);  { inches }
 
            OHSection2TDData.Enabled:=False;
            OHSection2IDData.Enabled:=False;
-           OHSection2TDData.Text:=FloatToStr(0);  { depth }
-           OHSection2TDData.Text:=FloatToStr(0);  { inches }
+           //OHSection2TDData.Text:=FloatToStr(0);  { depth }
+           //OHSection2TDData.Text:=FloatToStr(0);  { inches }
 
            OHSection3TDData.Enabled:=False;
            OHSection3IDData.Enabled:=False;
-           OHSection3TDData.Text:=FloatToStr(0);  { depth }
-           OHSection3TDData.Text:=FloatToStr(0);  { inches }
+           //OHSection3TDData.Text:=FloatToStr(0);  { depth }
+           //OHSection3TDData.Text:=FloatToStr(0);  { inches }
          end;
 
-
       1: Begin
+           NumOHSectionsComboBox.ItemIndex:=1;
            OHSection1TDData.Enabled:=True;
            OHSection1IDData.Enabled:=True;
            OHSection1TDData.Text:=FloatToStr(Round2(Data.Hole[1,1]*UoMConverter[1],2));  { depth }
@@ -279,16 +459,17 @@ begin
 
            OHSection2TDData.Enabled:=False;
            OHSection2IDData.Enabled:=False;
-           OHSection2TDData.Text:=FloatToStr(0);  { depth }
-           OHSection2TDData.Text:=FloatToStr(0);  { inches }
+           //OHSection2TDData.Text:=FloatToStr(0);  { depth }
+           //OHSection2TDData.Text:=FloatToStr(0);  { inches }
 
            OHSection3TDData.Enabled:=False;
            OHSection3IDData.Enabled:=False;
-           OHSection3TDData.Text:=FloatToStr(0);  { depth }
-           OHSection3TDData.Text:=FloatToStr(0);  { inches }
+           //OHSection3TDData.Text:=FloatToStr(0);  { depth }
+           //OHSection3TDData.Text:=FloatToStr(0);  { inches }
          end;
 
       2: Begin
+           NumOHSectionsComboBox.ItemIndex:=2;
            OHSection1TDData.Enabled:=True;
            OHSection1IDData.Enabled:=True;
            OHSection1TDData.Text:=FloatToStr(Round2(Data.Hole[1,1]*UoMConverter[1],2));  { depth }
@@ -301,11 +482,12 @@ begin
 
            OHSection3TDData.Enabled:=False;
            OHSection3IDData.Enabled:=False;
-           OHSection3TDData.Text:=FloatToStr(0);  { depth }
-           OHSection3TDData.Text:=FloatToStr(0);  { inches }
+           //OHSection3TDData.Text:=FloatToStr(0);  { depth }
+           //OHSection3TDData.Text:=FloatToStr(0);  { inches }
          end;
 
       3: Begin
+           NumOHSectionsComboBox.ItemIndex:=3;
            OHSection1TDData.Enabled:=True;
            OHSection1IDData.Enabled:=True;
            OHSection1TDData.Text:=FloatToStr(Round2(Data.Hole[1,1]*UoMConverter[1],2));  { depth }
@@ -322,6 +504,9 @@ begin
            OHSection3TDData.Text:=FloatToStr(Round2(Data.Hole[1,2]*UoMConverter[8],2));  { inches }
          end;
     end;
+
+    // units of measure labels
+
     CasingShoeDepthUoMLabel.Caption:=UoMLabel[1];      { depth }
     CasingIDUoMLabel.Caption:=UoMLabel[8];             { inches }
 
@@ -347,6 +532,25 @@ procedure THoleDataForm.SaveButtonClick(Sender: TObject);
 begin
   Data.Casing:=_WellCasing;
   Data.Liner:=_WellLiner;
+  Data.Casing:=_WellCasing;
+  Data.CasingTD:=_WellCasingTD;
+  Data.CasingID:=_WellCasingID;
+
+  Data.Liner:=_WellLiner;
+  Data.LinerTopTD:=_WellLinerTopTD;
+  Data.LinerBottomTD:=_WellLinerBottomTD;
+  Data.LinerID:=_WellLinerID;
+
+  Data.MaxHoles:=_WellMaxHoles;
+
+  for i:=1 to Data.MaxHoles do
+  Begin
+    Data.Hole[i,1]:=_WellHole[i,1];
+    Data.Hole[i,2]:=_WellHole[i,2];
+  End;
+
+  Data.DeviationDegrees:=_WellDeviation;
+
   Close;
 end;
 
