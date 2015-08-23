@@ -100,7 +100,11 @@ begin
   Begin
     Key := #0;
   end
-  else if (Key = '-') and
+  else if (Key = '.') and
+          ((Sender as TEdit).SelStart = 0) then
+  Begin
+    Key := #0;  // discard it
+  end else if (Key = '-') and
           ((Sender as TEdit).SelStart <> 0) then
   Begin
     Key := #0;

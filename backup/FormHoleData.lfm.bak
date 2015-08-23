@@ -429,6 +429,7 @@ object HoleDataForm: THoleDataForm
     Top = 571
     Width = 75
     Caption = 'Quit'
+    OnClick = QuitButtonClick
     ParentShowHint = False
     ShowHint = True
     TabOrder = 17

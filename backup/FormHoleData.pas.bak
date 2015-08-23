@@ -73,6 +73,7 @@ type
     procedure OHSection2TDDataChange(Sender: TObject);
     procedure OHSection3IDDataChange(Sender: TObject);
     procedure OHSection3TDDataChange(Sender: TObject);
+    procedure QuitButtonClick(Sender: TObject);
     procedure SaveButtonClick(Sender: TObject);
     procedure FormActivate(Sender: TObject);
     procedure FormCreate(Sender: TObject);
@@ -110,17 +111,21 @@ procedure THoleDataForm.NumericOnlyKeyPress(Sender: TObject; var Key: Char);
 begin
   if not (Key in [#8, '0'..'9', '-', DefaultFormatSettings.DecimalSeparator]) then
   Begin
-    Key := #0;
+    Key := #0;  // discard it
   end
   else if ((Key = DefaultFormatSettings.DecimalSeparator) or (Key = '-')) and
           (Pos(Key, (Sender as TEdit).Text) > 0) then
   Begin
-    Key := #0;
+    Key := #0;  // discard it
   end
-  else if (Key = '-') and
+  else if (Key = '.') and
+          ((Sender as TEdit).SelStart = 0) then
+  Begin
+    Key := #0;  // discard it
+  end  else if (Key = '-') and
           ((Sender as TEdit).SelStart <> 0) then
   Begin
-    Key := #0;
+    Key := #0;  // discard it
   end;
 end;
 
@@ -430,7 +435,7 @@ begin
       LinerIDData.Enabled:=False;
       LinerIDData.Caption:=FloatToStr(0);           { inches }
     end;
-StringToMemo('Holes= ' + FloatToStr(Data.MaxHoles));
+
     case Data.MaxHoles of
       0: Begin
            NumOHSectionsComboBox.ItemIndex:=0;
@@ -453,57 +458,59 @@ StringToMemo('Holes= ' + FloatToStr(Data.MaxHoles));
       1: Begin
            NumOHSectionsComboBox.ItemIndex:=1;
            OHSection1TDData.Enabled:=True;
-           OHSection1IDData.Enabled:=True;
            OHSection1TDData.Text:=FloatToStr(Round2(Data.Hole[1,1]*UoMConverter[1],2));  { depth }
-           OHSection1TDData.Text:=FloatToStr(Round2(Data.Hole[1,2]*UoMConverter[8],2));  { inches }
+           OHSection1IDData.Enabled:=True;
+           OHSection1IDData.Text:=FloatToStr(Round2(Data.Hole[1,2]*UoMConverter[8],2));  { inches }
 
            OHSection2TDData.Enabled:=False;
-           OHSection2IDData.Enabled:=False;
            //OHSection2TDData.Text:=FloatToStr(0);  { depth }
-           //OHSection2TDData.Text:=FloatToStr(0);  { inches }
+           OHSection2IDData.Enabled:=False;
+           //OHSection2IDData.Text:=FloatToStr(0);  { inches }
 
            OHSection3TDData.Enabled:=False;
-           OHSection3IDData.Enabled:=False;
            //OHSection3TDData.Text:=FloatToStr(0);  { depth }
-           //OHSection3TDData.Text:=FloatToStr(0);  { inches }
+           OHSection3IDData.Enabled:=False;
+           //OHSection3IDData.Text:=FloatToStr(0);  { inches }
          end;
 
       2: Begin
            NumOHSectionsComboBox.ItemIndex:=2;
            OHSection1TDData.Enabled:=True;
-           OHSection1IDData.Enabled:=True;
            OHSection1TDData.Text:=FloatToStr(Round2(Data.Hole[1,1]*UoMConverter[1],2));  { depth }
-           OHSection1TDData.Text:=FloatToStr(Round2(Data.Hole[1,2]*UoMConverter[8],2));  { inches }
+           OHSection1IDData.Enabled:=True;
+           OHSection1IDData.Text:=FloatToStr(Round2(Data.Hole[1,2]*UoMConverter[8],2));  { inches }
 
            OHSection2TDData.Enabled:=True;
-           OHSection2IDData.Enabled:=True;
            OHSection2TDData.Text:=FloatToStr(Round2(Data.Hole[1,1]*UoMConverter[1],2));  { depth }
-           OHSection2TDData.Text:=FloatToStr(Round2(Data.Hole[1,2]*UoMConverter[8],2));  { inches }
+           OHSection2IDData.Enabled:=True;
+           OHSection2IDData.Text:=FloatToStr(Round2(Data.Hole[1,2]*UoMConverter[8],2));  { inches }
 
            OHSection3TDData.Enabled:=False;
-           OHSection3IDData.Enabled:=False;
            //OHSection3TDData.Text:=FloatToStr(0);  { depth }
-           //OHSection3TDData.Text:=FloatToStr(0);  { inches }
+           OHSection3IDData.Enabled:=False;
+           //OHSection3IDData.Text:=FloatToStr(0);  { inches }
          end;
 
       3: Begin
            NumOHSectionsComboBox.ItemIndex:=3;
            OHSection1TDData.Enabled:=True;
-           OHSection1IDData.Enabled:=True;
            OHSection1TDData.Text:=FloatToStr(Round2(Data.Hole[1,1]*UoMConverter[1],2));  { depth }
-           OHSection1TDData.Text:=FloatToStr(Round2(Data.Hole[1,2]*UoMConverter[8],2));  { inches }
+           OHSection1IDData.Enabled:=True;
+           OHSection1IDData.Text:=FloatToStr(Round2(Data.Hole[1,2]*UoMConverter[8],2));  { inches }
 
            OHSection2TDData.Enabled:=True;
+           OHSection2TDData.Text:=FloatToStr(Round2(Data.Hole[2,1]*UoMConverter[1],2));  { depth }
            OHSection2IDData.Enabled:=True;
-           OHSection2TDData.Text:=FloatToStr(Round2(Data.Hole[1,1]*UoMConverter[1],2));  { depth }
-           OHSection2TDData.Text:=FloatToStr(Round2(Data.Hole[1,2]*UoMConverter[8],2));  { inches }
+           OHSection2IDData.Text:=FloatToStr(Round2(Data.Hole[2,2]*UoMConverter[8],2));  { inches }
 
            OHSection3TDData.Enabled:=True;
+           OHSection3TDData.Text:=FloatToStr(Round2(Data.Hole[3,1]*UoMConverter[1],2));  { depth }
            OHSection3IDData.Enabled:=True;
-           OHSection3TDData.Text:=FloatToStr(Round2(Data.Hole[1,1]*UoMConverter[1],2));  { depth }
-           OHSection3TDData.Text:=FloatToStr(Round2(Data.Hole[1,2]*UoMConverter[8],2));  { inches }
+           OHSection3IDData.Text:=FloatToStr(Round2(Data.Hole[3,2]*UoMConverter[8],2));  { inches }
          end;
     end;
+
+    DeviationData.Text:=FloatToStr(Round2(Data.DeviationDegrees,2));
 
     // units of measure labels
 
@@ -523,6 +530,11 @@ begin
 
 end;
 
+procedure THoleDataForm.QuitButtonClick(Sender: TObject);
+begin
+  Close;
+end;
+
 procedure THoleDataForm.CancelClick(Sender: TObject);
 begin
   Close;
@@ -530,23 +542,23 @@ end;
 
 procedure THoleDataForm.SaveButtonClick(Sender: TObject);
 begin
-  Data.Casing:=_WellCasing;
-  Data.Liner:=_WellLiner;
-  Data.Casing:=_WellCasing;
-  Data.CasingTD:=_WellCasingTD;
-  Data.CasingID:=_WellCasingID;
+  Data.Casing          :=_WellCasing;
+  Data.Liner           :=_WellLiner;
+  Data.Casing          :=_WellCasing;
+  Data.CasingTD        :=_WellCasingTD;
+  Data.CasingID        :=_WellCasingID;
 
-  Data.Liner:=_WellLiner;
-  Data.LinerTopTD:=_WellLinerTopTD;
-  Data.LinerBottomTD:=_WellLinerBottomTD;
-  Data.LinerID:=_WellLinerID;
+  Data.Liner           :=_WellLiner;
+  Data.LinerTopTD      :=_WellLinerTopTD;
+  Data.LinerBottomTD   :=_WellLinerBottomTD;
+  Data.LinerID         :=_WellLinerID;
 
-  Data.MaxHoles:=_WellMaxHoles;
+  Data.MaxHoles        :=_WellMaxHoles;
 
   for i:=1 to Data.MaxHoles do
   Begin
-    Data.Hole[i,1]:=_WellHole[i,1];
-    Data.Hole[i,2]:=_WellHole[i,2];
+    Data.Hole[i,1]     :=_WellHole[i,1];
+    Data.Hole[i,2]     :=_WellHole[i,2];
   End;
 
   Data.DeviationDegrees:=_WellDeviation;

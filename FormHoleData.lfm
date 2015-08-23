@@ -163,7 +163,7 @@ object HoleDataForm: THoleDataForm
   object OHSection1IDData: TEdit
     Left = 272
     Height = 27
-    Hint = 'Internal diameter of hole section 1 in inches'
+    Hint = 'Internal diameter of hole section 1 (in inches)'
     Top = 408
     Width = 72
     Alignment = taRightJustify
@@ -198,7 +198,7 @@ object HoleDataForm: THoleDataForm
   object OHSection2IDData: TEdit
     Left = 272
     Height = 27
-    Hint = 'Internal diameter of hole section 2 in inches'
+    Hint = 'Internal diameter of hole section 2 (in inches)'
     Top = 436
     Width = 72
     Alignment = taRightJustify
@@ -233,7 +233,7 @@ object HoleDataForm: THoleDataForm
   object OHSection3IDData: TEdit
     Left = 272
     Height = 27
-    Hint = 'Internal diameter of hole section 3 in inches'
+    Hint = 'Internal diameter of hole section 3 (in inches)'
     Top = 464
     Width = 72
     Alignment = taRightJustify
@@ -260,6 +260,7 @@ object HoleDataForm: THoleDataForm
     Height = 27
     Top = 512
     Width = 80
+    HelpType = htKeyword
     Alignment = taRightJustify
     OnChange = DeviationDataChange
     OnKeyPress = NumericOnlyKeyPress
@@ -306,7 +307,7 @@ object HoleDataForm: THoleDataForm
   object CasingID: TLabel
     Left = 24
     Height = 17
-    Hint = 'Internal diameter of casing in inches'
+    Hint = 'Internal diameter of casing (in inches)'
     Top = 162
     Width = 73
     AutoSize = False
@@ -383,7 +384,7 @@ object HoleDataForm: THoleDataForm
   object LinerID: TLabel
     Left = 24
     Height = 17
-    Hint = 'Internal diameter of liner in inches'
+    Hint = 'Internal diameter of liner (in inches)'
     Top = 266
     Width = 73
     AutoSize = False
@@ -429,6 +430,7 @@ object HoleDataForm: THoleDataForm
     Top = 571
     Width = 75
     Caption = 'Quit'
+    OnClick = QuitButtonClick
     ParentShowHint = False
     ShowHint = True
     TabOrder = 17

@@ -1,7 +1,7 @@
 object GeneralDataForm: TGeneralDataForm
-  Left = 519
+  Left = 153
   Height = 555
-  Top = 326
+  Top = 294
   Width = 497
   Caption = 'General Well Data'
   ClientHeight = 555
@@ -12,25 +12,31 @@ object GeneralDataForm: TGeneralDataForm
   object WellOperator: TStaticText
     Left = 24
     Height = 24
+    Hint = 'The name of the company drilling the well'
     Top = 48
     Width = 112
     Caption = 'Well Operator'
+    ShowHint = True
     TabOrder = 0
   end
   object WellName: TStaticText
     Left = 24
     Height = 24
+    Hint = 'The name of the well'
     Top = 88
     Width = 112
     Caption = 'Well Name'
+    ShowHint = True
     TabOrder = 1
   end
   object ElevationRKB: TStaticText
     Left = 24
     Height = 24
+    Hint = 'Positive height from the Rotary Table to a reference datum - usually the surface for an onshore rig and MSL for an offshore rig'
     Top = 128
     Width = 112
     Caption = 'Elevation RKB'
+    ShowHint = True
     TabOrder = 2
   end
   object WellOperatorData: TEdit
@@ -70,24 +76,31 @@ object GeneralDataForm: TGeneralDataForm
   object Save: TButton
     Left = 312
     Height = 26
+    Hint = 'Save and exit'
     Top = 488
     Width = 86
     Caption = 'Save'
     OnClick = SaveClick
+    ParentShowHint = False
+    ShowHint = True
     TabOrder = 6
   end
   object Cancel: TButton
     Left = 216
     Height = 26
+    Hint = 'Exit without saving'
     Top = 488
     Width = 86
     Caption = 'Cancel'
     OnClick = CancelClick
+    ParentShowHint = False
+    ShowHint = True
     TabOrder = 7
   end
   object OffshoreYNRadioGroup: TRadioGroup
     Left = 24
     Height = 72
+    Hint = 'Select whether the well is being drilled onshore or offshore'
     Top = 168
     Width = 352
     AutoFill = True
@@ -107,11 +120,14 @@ object GeneralDataForm: TGeneralDataForm
       'Offshore'
     )
     OnClick = OffshoreYNRadioGroupClick
+    ParentShowHint = False
+    ShowHint = True
     TabOrder = 8
   end
   object SubSeaWellHeadYNRadioGroup: TRadioGroup
     Left = 24
     Height = 64
+    Hint = 'Select whether the well has a subsea or surface wellhead'
     Top = 240
     Width = 352
     AutoFill = True
@@ -131,38 +147,48 @@ object GeneralDataForm: TGeneralDataForm
       'Yes'
     )
     OnClick = SubSeaWellHeadYNRadioGroupClick
+    ParentShowHint = False
+    ShowHint = True
     TabOrder = 9
   end
   object RiserTD: TStaticText
     Left = 26
     Height = 24
+    Hint = 'The depth of the riser from a vertical datum (RKB)'
     Top = 328
     Width = 72
     Caption = 'Riser TD'
+    ShowHint = True
     TabOrder = 10
   end
   object RiserID: TStaticText
     Left = 26
     Height = 24
+    Hint = 'Internal diameter of the Riser in inches'
     Top = 356
     Width = 72
     Caption = 'Riser ID'
+    ShowHint = True
     TabOrder = 11
   end
   object ChokeLineID: TStaticText
     Left = 24
     Height = 24
+    Hint = 'Internal diameter of the choke line to the wellhead in inches'
     Top = 384
     Width = 112
     Caption = 'Choke Line ID'
+    ShowHint = True
     TabOrder = 12
   end
   object WaterDepth: TStaticText
     Left = 24
     Height = 24
+    Hint = 'Depth of the water - MSL to sea bed'
     Top = 440
     Width = 112
     Caption = 'Water Depth'
+    ShowHint = True
     TabOrder = 14
   end
   object RiserTDData: TEdit
@@ -170,8 +196,10 @@ object GeneralDataForm: TGeneralDataForm
     Height = 27
     Top = 328
     Width = 155
+    Alignment = taRightJustify
     OnChange = RiserTDDataChange
     OnKeyPress = NumericOnlyKeyPress
+    ParentShowHint = False
     TabOrder = 15
   end
   object RiserIDData: TEdit
@@ -179,6 +207,7 @@ object GeneralDataForm: TGeneralDataForm
     Height = 27
     Top = 356
     Width = 155
+    Alignment = taRightJustify
     OnChange = RiserIDDataChange
     OnKeyPress = NumericOnlyKeyPress
     TabOrder = 16
@@ -188,6 +217,7 @@ object GeneralDataForm: TGeneralDataForm
     Height = 27
     Top = 384
     Width = 155
+    Alignment = taRightJustify
     OnChange = ChokeLineIDDataChange
     OnKeyPress = NumericOnlyKeyPress
     TabOrder = 17
@@ -197,6 +227,7 @@ object GeneralDataForm: TGeneralDataForm
     Height = 27
     Top = 437
     Width = 155
+    Alignment = taRightJustify
     OnChange = WaterDepthDataChange
     OnKeyPress = NumericOnlyKeyPress
     TabOrder = 19
@@ -236,9 +267,11 @@ object GeneralDataForm: TGeneralDataForm
   object KillLineID: TStaticText
     Left = 24
     Height = 24
+    Hint = 'Internal diameter of the kill line to the wellhead in inches'
     Top = 412
     Width = 112
     Caption = 'Kill Line ID'
+    ShowHint = True
     TabOrder = 13
   end
   object KillLineIDData: TEdit
@@ -246,6 +279,7 @@ object GeneralDataForm: TGeneralDataForm
     Height = 27
     Top = 412
     Width = 155
+    Alignment = taRightJustify
     OnChange = KillLineIDDataChange
     OnKeyPress = NumericOnlyKeyPress
     TabOrder = 18
