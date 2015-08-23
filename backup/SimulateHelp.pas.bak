@@ -38,7 +38,6 @@ Begin
   Begin
     //Disp(12,12,NoHelp1);
     //Disp(12,14,NoHelp2);
-    LowBeep;
     //Disp(12,17,PressPrompt);
     gotoxy(28,17);
     Repeat Until KeyPressed;

@@ -18,7 +18,6 @@ Implementation
 { -------------------- Kelly Routines ------------------- }
 
 Procedure DrawKelly;    { draws appropriate kelly and bushing @ KelHt }
-var x : real;
 Begin
 //  TAttr:=AttrByte;
   //SetColorSet(WhiteOnBlue);
@@ -97,7 +96,7 @@ Begin
       ////Disp(37,13,Bushing[CurrentBushing]);
     End;
   End;
-  AttrByte:=TAttr;
+//  AttrByte:=TAttr;
 End;
 
 { -------------------- Screen  Updates ------------------- }

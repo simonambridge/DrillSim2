@@ -92,7 +92,7 @@ begin
   {$I+}
   try
     Rewrite(TextFile);
-    Writeln(_WellDefaultDataFile); { write location of default well file }
+    Writeln(TextFile, _WellDefaultDataFile); { write location of default well file }
     CloseFile(TextFile);
     StringToMemo('FormConfigDefaults.SaveClick: Default well data file ' + SystemPropertiesFile + ' updated');
     StringToMemo('Default file='+ _WellDefaultDataFile);

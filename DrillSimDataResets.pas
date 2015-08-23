@@ -48,15 +48,15 @@ Begin
     CasingID         :=Zero;
     RiserTD          :=Zero;
     RiserID          :=Zero;
-    LinerTop         :=Zero;
-    LinerTD          :=Zero;
+    LinerTopTD       :=Zero;
+    LinerBottomTD    :=Zero;
     LinerID          :=Zero;
     DeviationDegrees :=Zero;
     WaterDepth       :=Zero;
     ElevationRKB     :=Zero;
 
-    Maxholes:=1;
-    For i:=1 to 2 do
+    Maxholes:=0;
+    For i:=1 to 3 do
     Begin
       Hole[i,1]:=Zero;
       Hole[i,2]:=Zero;

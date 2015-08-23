@@ -8,7 +8,6 @@ Uses Crt,
      DrillSimMessageToMemo;
 
 Procedure UpdateWellTests;
-Procedure UpdateGen;
 Procedure UpdateHole;
 Procedure UpdatePipe;
 Procedure UpdateBit;
@@ -304,19 +303,19 @@ Begin
         Begin
           LineCnt:=LineCnt+1;
           gotoxy(10,LineCnt);
-          write('Liner Hanger TD '+Blank7+': ',LinerTop:9:3,'  ',UoMLabel[1],' ?');
+          write('Liner Hanger TD '+Blank7+': ',LinerTopTD:9:3,'  ',UoMLabel[1],' ?');
           ClrEol;
           GetReal(55,LineCnt,30000/UoMConverter[1]);
-          if Valid then LinerTop:=RealResult;
-          gotoxy(55,LineCnt); write(LinerTop:9:3);
+          if Valid then LinerTopTD:=RealResult;
+          gotoxy(55,LineCnt); write(LinerTopTD:9:3);
 
           LineCnt:=LineCnt+1;
           gotoxy(10,LineCnt);
-          write('Liner Shoe   TD '+Blank7+': ',LinerTD:9:3,'  ',UoMLabel[1],' ?');
+          write('Liner Shoe   TD '+Blank7+': ',LinerBottomTD:9:3,'  ',UoMLabel[1],' ?');
           ClrEol;
           GetReal(55,LineCnt,30000/UoMConverter[1]);
-          if Valid then LinerTD:=RealResult;
-          gotoxy(55,LineCnt); write(LinerTD:9:3);
+          if Valid then LinerBottomTD:=RealResult;
+          gotoxy(55,LineCnt); write(LinerBottomTD:9:3);
 
           LineCnt:=LineCnt+1;
           gotoxy(10,LineCnt);
@@ -326,8 +325,8 @@ Begin
           if Valid then LinerID:=RealResult;
           gotoxy(55,LineCnt); write(LinerID:9:3);
 
-          if (LinerTop >=CasingTD)                    { check liner dimensions }
-            or (LinerTD<=LinerTop)
+          if (LinerTopTD >=CasingTD)                    { check liner dimensions }
+            or (LinerBottomTD<=LinerTopTD)
             or (LinerID<=0) then InputError:=True
                             else InputError:=False;
           if InputError then

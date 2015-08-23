@@ -107,7 +107,7 @@ object DrillSim: TDrillSim
       Height = 24
       Top = 96
       Width = 107
-      Caption = 'Pump3 SPM'
+      Caption = 'Pump 3 SPM'
       TabOrder = 5
     end
     object Pump2Minus: TButton
@@ -384,17 +384,17 @@ object DrillSim: TDrillSim
     end
     object PipeMinus: TButton
       Left = 9
-      Height = 28
+      Height = 29
       Top = 156
-      Width = 83
+      Width = 95
       Caption = 'Remove Pipe'
       OnClick = PipeMinusClick
       TabOrder = 3
     end
     object PipePlus: TButton
       Left = 103
-      Height = 30
-      Top = 155
+      Height = 29
+      Top = 156
       Width = 89
       Caption = 'Add Pipe'
       OnClick = PipePlusClick
@@ -914,6 +914,7 @@ object DrillSim: TDrillSim
       Caption = 'Help'
       object MenuItem4About: TMenuItem
         Caption = 'About'
+        OnClick = MenuItem4AboutClick
       end
       object MenuItem4ShowHelp: TMenuItem
         Caption = 'Show Help'

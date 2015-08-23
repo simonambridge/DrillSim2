@@ -1,7 +1,7 @@
 object HoleDataForm: THoleDataForm
-  Left = 507
+  Left = 94
   Height = 635
-  Top = 156
+  Top = 267
   Width = 405
   Caption = 'Hole Profile Data'
   ClientHeight = 635
@@ -9,7 +9,7 @@ object HoleDataForm: THoleDataForm
   OnActivate = FormActivate
   OnCreate = FormCreate
   LCLVersion = '1.2.6.0'
-  object Casing: TRadioGroup
+  object CasingYNRadioGroup: TRadioGroup
     Left = 24
     Height = 56
     Top = 56
@@ -29,6 +29,7 @@ object HoleDataForm: THoleDataForm
       'No'
       'Yes'
     )
+    OnClick = CasingYNRadioGroupClick
     TabOrder = 1
   end
   object OffshoreYN: TCheckBox
@@ -55,7 +56,7 @@ object HoleDataForm: THoleDataForm
     Caption = 'Riser'
     TabOrder = 3
   end
-  object Liner: TRadioGroup
+  object LinerYNRadioGroup: TRadioGroup
     Left = 252
     Height = 55
     Top = 57
@@ -75,12 +76,13 @@ object HoleDataForm: THoleDataForm
       'No'
       'Yes'
     )
+    OnClick = LinerYNRadioGroupClick
     TabOrder = 4
   end
   object NumOHSections: TLabel
     Left = 24
     Height = 27
-    Hint = 'plop'
+    Hint = '# of open hole sections'
     Top = 336
     Width = 94
     AutoSize = False
@@ -88,13 +90,6 @@ object HoleDataForm: THoleDataForm
     ParentColor = False
     ParentShowHint = False
     ShowHint = True
-  end
-  object NumOHSectionsData: TEdit
-    Left = 129
-    Height = 27
-    Top = 336
-    Width = 80
-    TabOrder = 5
   end
   object OHSection1: TLabel
     Left = 40
@@ -113,7 +108,7 @@ object HoleDataForm: THoleDataForm
     Caption = 'TD'
     ParentColor = False
   end
-  object ID: TLabel
+  object IDColumnLabel: TLabel
     Left = 280
     Height = 17
     Top = 381
@@ -121,7 +116,7 @@ object HoleDataForm: THoleDataForm
     Caption = 'ID'
     ParentColor = False
   end
-  object TDLabelUoM: TLabel
+  object OHTDUoMLabel: TLabel
     Left = 205
     Height = 17
     Top = 381
@@ -129,13 +124,12 @@ object HoleDataForm: THoleDataForm
     AutoSize = False
     ParentColor = False
   end
-  object IDLabelUoM: TLabel
+  object OHIDUoMLabel: TLabel
     Left = 304
     Height = 17
     Top = 381
     Width = 42
     AutoSize = False
-    Caption = 'inches'
     ParentColor = False
   end
   object OHSection1TDData: TEdit
@@ -143,14 +137,18 @@ object HoleDataForm: THoleDataForm
     Height = 27
     Top = 408
     Width = 109
-    TabOrder = 6
+    Alignment = taRightJustify
+    OnKeyPress = NumericOnlyKeyPress
+    TabOrder = 5
   end
   object OHSection1IDData: TEdit
     Left = 272
     Height = 27
     Top = 408
     Width = 72
-    TabOrder = 7
+    Alignment = taRightJustify
+    OnKeyPress = NumericOnlyKeyPress
+    TabOrder = 6
   end
   object OHSection2: TLabel
     Left = 40
@@ -166,14 +164,18 @@ object HoleDataForm: THoleDataForm
     Height = 27
     Top = 436
     Width = 109
-    TabOrder = 8
+    Alignment = taRightJustify
+    OnKeyPress = NumericOnlyKeyPress
+    TabOrder = 7
   end
   object OHSection2IDData: TEdit
     Left = 272
     Height = 27
     Top = 436
     Width = 72
-    TabOrder = 9
+    Alignment = taRightJustify
+    OnKeyPress = NumericOnlyKeyPress
+    TabOrder = 8
   end
   object OHSection3: TLabel
     Left = 40
@@ -189,14 +191,18 @@ object HoleDataForm: THoleDataForm
     Height = 27
     Top = 464
     Width = 109
-    TabOrder = 10
+    Alignment = taRightJustify
+    OnKeyPress = NumericOnlyKeyPress
+    TabOrder = 9
   end
-  object OHSectionID3Data: TEdit
+  object OHSection3IDData: TEdit
     Left = 272
     Height = 27
     Top = 464
     Width = 72
-    TabOrder = 11
+    Alignment = taRightJustify
+    OnKeyPress = NumericOnlyKeyPress
+    TabOrder = 10
   end
   object Deviation: TLabel
     Left = 40
@@ -212,7 +218,9 @@ object HoleDataForm: THoleDataForm
     Height = 27
     Top = 512
     Width = 80
-    TabOrder = 12
+    Alignment = taRightJustify
+    OnKeyPress = NumericOnlyKeyPress
+    TabOrder = 11
   end
   object DeviationUoM: TLabel
     Left = 229
@@ -231,14 +239,16 @@ object HoleDataForm: THoleDataForm
     Caption = 'Cashing Shoe Depth'
     ParentColor = False
   end
-  object CasingShoeData: TEdit
+  object CasingShoeDepthData: TEdit
     Left = 168
     Height = 27
     Top = 128
     Width = 108
-    TabOrder = 13
+    Alignment = taRightJustify
+    OnKeyPress = NumericOnlyKeyPress
+    TabOrder = 12
   end
-  object CashingShoeDepthUoM: TLabel
+  object CasingShoeDepthUoMLabel: TLabel
     Left = 289
     Height = 17
     Top = 132
@@ -260,18 +270,19 @@ object HoleDataForm: THoleDataForm
     Height = 27
     Top = 158
     Width = 109
-    TabOrder = 14
+    Alignment = taRightJustify
+    OnKeyPress = NumericOnlyKeyPress
+    TabOrder = 13
   end
-  object CasingIDUoM: TLabel
+  object CasingIDUoMLabel: TLabel
     Left = 289
     Height = 17
     Top = 162
     Width = 42
     AutoSize = False
-    Caption = 'inches'
     ParentColor = False
   end
-  object LinerHangerDepth: TLabel
+  object LinerTopDepth: TLabel
     Left = 24
     Height = 17
     Top = 198
@@ -279,30 +290,33 @@ object HoleDataForm: THoleDataForm
     Caption = 'Liner Hanger Depth'
     ParentColor = False
   end
-  object LinerHangerDepthData: TEdit
+  object LinerTopDepthData: TEdit
     Left = 168
     Height = 27
     Top = 198
     Width = 108
-    TabOrder = 15
+    Alignment = taRightJustify
+    OnKeyPress = NumericOnlyKeyPress
+    TabOrder = 14
   end
-  object LinerSHoe: TEdit
+  object LinerIDData: TEdit
     Left = 168
     Height = 27
     Top = 262
     Width = 109
-    TabOrder = 16
+    Alignment = taRightJustify
+    OnKeyPress = NumericOnlyKeyPress
+    TabOrder = 15
   end
-  object LinerIDUoM: TLabel
+  object LinerIDUoMLabel: TLabel
     Left = 289
     Height = 17
     Top = 264
     Width = 42
     AutoSize = False
-    Caption = 'inches'
     ParentColor = False
   end
-  object LinerHangerDepthUoM: TLabel
+  object LinerTopDepthUoMLabel: TLabel
     Left = 289
     Height = 17
     Top = 198
@@ -319,7 +333,7 @@ object HoleDataForm: THoleDataForm
     Caption = 'Liner ID'
     ParentColor = False
   end
-  object LinerShoeDepth: TLabel
+  object LinerBottomDepth: TLabel
     Left = 24
     Height = 17
     Top = 230
@@ -327,14 +341,16 @@ object HoleDataForm: THoleDataForm
     Caption = 'Liner Shoe Depth'
     ParentColor = False
   end
-  object LinerHangerDepthData1: TEdit
+  object LinerBottomDepthData: TEdit
     Left = 168
     Height = 27
     Top = 230
     Width = 108
-    TabOrder = 17
+    Alignment = taRightJustify
+    OnKeyPress = NumericOnlyKeyPress
+    TabOrder = 16
   end
-  object LinerShoeDepthUoM: TLabel
+  object LinerBottomDepthUoMLabel: TLabel
     Left = 289
     Height = 17
     Top = 230
@@ -348,7 +364,7 @@ object HoleDataForm: THoleDataForm
     Top = 571
     Width = 75
     Caption = 'Quit'
-    TabOrder = 18
+    TabOrder = 17
   end
   object SaveButton: TButton
     Left = 304
@@ -356,6 +372,22 @@ object HoleDataForm: THoleDataForm
     Top = 571
     Width = 75
     Caption = 'Save'
+    OnClick = SaveButtonClick
+    TabOrder = 18
+  end
+  object NumOHSectionsComboBox: TComboBox
+    Left = 136
+    Height = 29
+    Top = 334
+    Width = 100
+    ItemHeight = 0
+    Items.Strings = (
+      '0'
+      '1'
+      '2'
+      '3'
+    )
     TabOrder = 19
+    Text = '<select>'
   end
 end

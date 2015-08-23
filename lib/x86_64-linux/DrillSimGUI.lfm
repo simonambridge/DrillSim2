@@ -914,6 +914,7 @@ object DrillSim: TDrillSim
       Caption = 'Help'
       object MenuItem4About: TMenuItem
         Caption = 'About'
+        OnClick = MenuItem4AboutClick
       end
       object MenuItem4ShowHelp: TMenuItem
         Caption = 'Show Help'

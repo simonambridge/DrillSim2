@@ -56,6 +56,7 @@ object GeneralDataForm: TGeneralDataForm
     Width = 145
     Alignment = taRightJustify
     OnChange = ElevationRKBDataChange
+    OnKeyPress = NumericOnlyKeyPress
     TabOrder = 5
   end
   object ElevationRKBUoMLabel: TLabel
@@ -169,7 +170,9 @@ object GeneralDataForm: TGeneralDataForm
     Height = 27
     Top = 328
     Width = 155
+    Alignment = taRightJustify
     OnChange = RiserTDDataChange
+    OnKeyPress = NumericOnlyKeyPress
     TabOrder = 15
   end
   object RiserIDData: TEdit
@@ -177,7 +180,9 @@ object GeneralDataForm: TGeneralDataForm
     Height = 27
     Top = 356
     Width = 155
+    Alignment = taRightJustify
     OnChange = RiserIDDataChange
+    OnKeyPress = NumericOnlyKeyPress
     TabOrder = 16
   end
   object ChokeLineIDData: TEdit
@@ -185,6 +190,7 @@ object GeneralDataForm: TGeneralDataForm
     Height = 27
     Top = 384
     Width = 155
+    Alignment = taRightJustify
     OnChange = ChokeLineIDDataChange
     OnKeyPress = NumericOnlyKeyPress
     TabOrder = 17
@@ -194,6 +200,7 @@ object GeneralDataForm: TGeneralDataForm
     Height = 27
     Top = 437
     Width = 155
+    Alignment = taRightJustify
     OnChange = WaterDepthDataChange
     OnKeyPress = NumericOnlyKeyPress
     TabOrder = 19
@@ -243,6 +250,7 @@ object GeneralDataForm: TGeneralDataForm
     Height = 27
     Top = 412
     Width = 155
+    Alignment = taRightJustify
     OnChange = KillLineIDDataChange
     OnKeyPress = NumericOnlyKeyPress
     TabOrder = 18

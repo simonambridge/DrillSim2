@@ -43,6 +43,7 @@ type
     WellOperator: TStaticText;
     WellName: TStaticText;
 
+    procedure ElevationRKBDataKeyPress(Sender: TObject);
     procedure WellOperatorDataChange(Sender: TObject);
     procedure WellNameDataChange(Sender: TObject);
     procedure ElevationRKBDataChange(Sender: TObject);
@@ -91,11 +92,11 @@ Uses DrillSimGUI;
 
 procedure TGeneralDataForm.NumericOnlyKeyPress(Sender: TObject; var Key: Char);
 begin
-  if not (Key in [#8, '0'..'9', '-', DecimalSeparator]) then
+  if not (Key in [#8, '0'..'9', '-', DefaultFormatSettings.DecimalSeparator]) then
   Begin
     Key := #0;
   end
-  else if ((Key = DecimalSeparator) or (Key = '-')) and
+  else if ((Key = DefaultFormatSettings.DecimalSeparator) or (Key = '-')) and
           (Pos(Key, (Sender as TEdit).Text) > 0) then
   Begin
     Key := #0;
@@ -105,6 +106,11 @@ begin
   Begin
     Key := #0;
   end;
+end;
+
+procedure TGeneralDataForm.ElevationRKBDataKeyPress(Sender: TObject);
+begin
+
 end;
 
 procedure TGeneralDataForm.WellOperatorDataChange(Sender: TObject);

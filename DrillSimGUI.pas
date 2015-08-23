@@ -201,6 +201,7 @@ type
     procedure MenuItem2SurfaceEquipmentClick(Sender: TObject);
     procedure MenuItem2WellTestDataClick(Sender: TObject);
     procedure MenuItem2UnitsClick(Sender: TObject);
+    procedure MenuItem4AboutClick(Sender: TObject);
     procedure PipeMinusClick(Sender: TObject);
     procedure PipePlusClick(Sender: TObject);
     procedure PowerLawRadioButtonChange(Sender: TObject);
@@ -546,7 +547,7 @@ end;
 procedure TDrillSim.FormCreate(Sender: TObject);
 begin
   Memo1.SelStart:=Length(Memo1.Text);
-  StringToMemo('DrillSimGUI.FormaCreate:Running DrillSimGUI FormCreate...');
+  StringToMemo('DrillSimGUI.FormCreate:Running DrillSimGUI FormCreate...');
 
   splash := TSplashAbout.Create(nil);
   SetDefaultValues; // splash - optional
@@ -824,6 +825,13 @@ begin
     UnitsOfMeasureForm.Free;
   end;
 
+end;
+
+{ ----------- Help, About Menu Options ---------------------------- }
+
+procedure TDrillSim.MenuItem4AboutClick(Sender: TObject);
+begin
+    splash.ShowAbout;
 end;
 
 { ----------- Simulate Menu Options ---------------------------- }

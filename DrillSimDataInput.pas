@@ -303,19 +303,19 @@ Begin
         Begin
           LineCnt:=LineCnt+1;
           gotoxy(10,LineCnt);
-          write('Liner Hanger TD '+Blank7+': ',LinerTop:9:3,'  ',UoMLabel[1],' ?');
+          write('Liner Hanger TD '+Blank7+': ',LinerTopTD:9:3,'  ',UoMLabel[1],' ?');
           ClrEol;
           GetReal(55,LineCnt,30000/UoMConverter[1]);
-          if Valid then LinerTop:=RealResult;
-          gotoxy(55,LineCnt); write(LinerTop:9:3);
+          if Valid then LinerTopTD:=RealResult;
+          gotoxy(55,LineCnt); write(LinerTopTD:9:3);
 
           LineCnt:=LineCnt+1;
           gotoxy(10,LineCnt);
-          write('Liner Shoe   TD '+Blank7+': ',LinerTD:9:3,'  ',UoMLabel[1],' ?');
+          write('Liner Shoe   TD '+Blank7+': ',LinerBottomTD:9:3,'  ',UoMLabel[1],' ?');
           ClrEol;
           GetReal(55,LineCnt,30000/UoMConverter[1]);
-          if Valid then LinerTD:=RealResult;
-          gotoxy(55,LineCnt); write(LinerTD:9:3);
+          if Valid then LinerBottomTD:=RealResult;
+          gotoxy(55,LineCnt); write(LinerBottomTD:9:3);
 
           LineCnt:=LineCnt+1;
           gotoxy(10,LineCnt);
@@ -325,8 +325,8 @@ Begin
           if Valid then LinerID:=RealResult;
           gotoxy(55,LineCnt); write(LinerID:9:3);
 
-          if (LinerTop >=CasingTD)                    { check liner dimensions }
-            or (LinerTD<=LinerTop)
+          if (LinerTopTD >=CasingTD)                    { check liner dimensions }
+            or (LinerBottomTD<=LinerTopTD)
             or (LinerID<=0) then InputError:=True
                             else InputError:=False;
           if InputError then
@@ -379,7 +379,7 @@ Begin
          ((Hole[i,1]<=CasingTD) and Casing) or      { higher than shoe ?       }
           (Hole[i,1] >Hole[MaxHoles,1]) or       { deeper than hole 2 ?     }
          ((Hole[i,1] =Hole[MaxHoles,1]) and (i<MaxHoles)) or
-         ((Hole[i,1]<=LinerTD) and Liner) or     { higher than liner shoe ? }
+         ((Hole[i,1]<=LinerBottomTD) and Liner) or     { higher than liner shoe ? }
           (Hole[i,2]<=0) then                    { or ID < 0 ?              }
                            InputError:=True;
       End;

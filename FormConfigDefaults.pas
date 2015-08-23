@@ -47,7 +47,6 @@ implementation
 procedure TSystemDefaultsForm.DefaultWellFileButtonClick(Sender: TObject);
 var
   saveDialog : TSaveDialog;    // Save dialog variable
-  Reply, BoxStyle: Integer;
 begin
   // Create the save dialog object - assign to our save dialog variable
   saveDialog := TSaveDialog.Create(self);

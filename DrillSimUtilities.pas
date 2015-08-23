@@ -4,9 +4,8 @@ Interface
 
 Uses Crt,
      Dos,
-     Math,
+     Math, Classes, SysUtils, ExtCtrls,
      DrillSimVariables,
-     HyCalcVariables,
      Dialogs;
 
 Procedure GetKey;

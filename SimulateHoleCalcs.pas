@@ -37,14 +37,14 @@ Begin
       TempCount:=TempCount+1;
       Temp[TempCount,1]:=CasingTD; Temp[TempCount,2]:=CasingID;
       if Riser then Temp[TempCount,1]:=Temp[TempCount,1]-RiserTD;
-      if Liner then Temp[TempCount,1]:=Temp[TempCount,1]-(CasingTD-LinerTop);
+      if Liner then Temp[TempCount,1]:=Temp[TempCount,1]-(CasingTD-LinerTopTD);
     End;
     ScreenService;
 
     if Liner then
     Begin
       TempCount:=TempCount+1;
-      Temp[TempCount,1]:=LinerTD-LinerTop;
+      Temp[TempCount,1]:=LinerBottomTD-LinerTopTD;
       Temp[TempCount,2]:=LinerID;
     End;
     ScreenService;
@@ -57,7 +57,7 @@ Begin
         Temp[TempCount,1]:=Hole[i,1]; Temp[TempCount,2]:=Hole[i,2];
         if Casing then
         Begin
-          if Liner then Temp[TempCount,1]:=Temp[TempCount,1]-LinerTD
+          if Liner then Temp[TempCount,1]:=Temp[TempCount,1]-LinerBottomTD
                    else Temp[TempCount,1]:=Temp[TempCount,1]-CasingTD;
         End;
         if i>1 then Temp[TempCount,1]:=Temp[TempCount,1]-Temp[TempCount-1,1];

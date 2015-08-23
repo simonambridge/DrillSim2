@@ -18,11 +18,13 @@ uses
   DrillSimGUI,
   FormGeneralData,
   FormDisplayWellData,
+  FormHoleData,
   FormUnitsOfMeasure, FormConfigDefaults;
 
 {$R *.res}
 
 begin
+  Application.Title:='DrillSim3';
 
   RequireDerivedFormResource := True;
 

@@ -2,10 +2,9 @@ Unit DrillSimStartup;
 
 Interface
 
-Uses Classes, SysUtils, FileUtil, Forms, Controls, Graphics, Dialogs, StdCtrls,
+Uses Classes, SysUtils, FileUtil, Forms, Controls, Graphics, Dialogs,
   ExtCtrls,
      DrillSimVariables,
-     HyCalcVariables,
      DrillSimUnitsOfMeasure,
      DrillSimUtilities,
      DrillSimFile,

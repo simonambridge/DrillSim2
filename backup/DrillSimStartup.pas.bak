@@ -5,7 +5,6 @@ Interface
 Uses Classes, SysUtils, FileUtil, Forms, Controls, Graphics, Dialogs, StdCtrls,
   ExtCtrls,
      DrillSimVariables,
-     HyCalcVariables,
      DrillSimUnitsOfMeasure,
      DrillSimUtilities,
      DrillSimFile,
@@ -75,13 +74,12 @@ Begin
   GetDir(0,OriginDirectory);               { get current directory spec}
   StringToMemo('DrillSimStartup.StartUp: Current directory is ' + OriginDirectory);
   SystemPropertiesFile:=OriginDirectory + '/' + 'DrillSim.cfg';
+  StringToMemo('DrillSimStartup.StartUp: Configuration file is ' + SystemPropertiesFile);
+  StringToMemo('Loading system onfiguration');
 
     { ------- get defaults file ------- }
 
   AssignFile(Textfile,SystemPropertiesFile);         { /path/drillsim.cfg }
-  StringToMemo('Loading system onfiguration');
-  StringToMemo('DrillSimStartup.StartUp: Configuration file is ' + SystemPropertiesFile);
-
   {$I-}
   Reset(TextFile);
   {$I+}
@@ -89,16 +87,21 @@ Begin
   Begin
     While not EOF(TextFile) do
     Begin
-      Readln(TextFile,DefaultWellDataFile); { read location of default well file into DefaultFile }
+      Readln(TextFile,DefaultWellDataFile); { read FQFN of default well file into DefaultWellDataFile }
     End;
     CloseFile(TextFile);
 
-    StringToMemo('DrillSimStartup.StartUp: Default well data file is ' + DefaultWellDataFile);
-
-    LoadDefaultWellDataFile(DefaultWellDataFile);     // Load the default data file !!!
+    if DefaultWellDataFile=''
+    then
+      StringToMemo('DrillSimStartup.StartUp: Default well not defined ')
+    else
+    Begin
+      StringToMemo('DrillSimStartup.StartUp: Default well data file is ' + DefaultWellDataFile);
+      LoadDefaultWellDataFile(DefaultWellDataFile);     // Load the default data file !!!
+    end;
   End else
-  Begin                  { defaults file not found }
-    ShowMessage('Error loading ' + DefaultWellDataFile);
+  Begin
+    ShowMessage('Error loading ' + DefaultWellDataFile); { defaults file not found }
   End;
 
   {* --------- Load Help File --------- *}

@@ -201,6 +201,7 @@ type
     procedure MenuItem2SurfaceEquipmentClick(Sender: TObject);
     procedure MenuItem2WellTestDataClick(Sender: TObject);
     procedure MenuItem2UnitsClick(Sender: TObject);
+    procedure MenuItem4AboutClick(Sender: TObject);
     procedure PipeMinusClick(Sender: TObject);
     procedure PipePlusClick(Sender: TObject);
     procedure PowerLawRadioButtonChange(Sender: TObject);
@@ -659,7 +660,7 @@ begin
   CreateNewFile:=True;
   InitData;                             { Set NeverSimulated }
   APIUnits;                             { Default to API units    }
-  UpdateGen;
+//  UpdateGen;
   CheckHoleData;         { get hole data and redo pipe/hole screens if error }
   CheckPipeData;         { get pipe data and redo hole/pipe screens if error }
   UpdateBit;
@@ -824,6 +825,13 @@ begin
     UnitsOfMeasureForm.Free;
   end;
 
+end;
+
+{ ----------- Help, About Menu Options ---------------------------- }
+
+procedure TDrillSim.MenuItem4AboutClick(Sender: TObject);
+begin
+    splash.ShowAbout;
 end;
 
 { ----------- Simulate Menu Options ---------------------------- }

@@ -3,8 +3,7 @@ Unit SimulateHelp;
 Interface
 
 Uses Crt,
-     DrillSimVariables,
-     SimulateVariables;
+     DrillSimVariables;
 
 Procedure ShowHelp;
 

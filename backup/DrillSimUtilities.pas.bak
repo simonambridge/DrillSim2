@@ -4,12 +4,10 @@ Interface
 
 Uses Crt,
      Dos,
-     Math,
+     Math, Classes, SysUtils, StdCtrls, ExtCtrls,
      DrillSimVariables,
-     HyCalcVariables,
      Dialogs;
 
-Procedure SystemError(x: integer);
 Procedure GetKey;
 Procedure GetString(x, y, z : integer);
 Procedure GetReal(x, y : integer; z : real);
@@ -40,19 +38,6 @@ Begin
   GetTime(t.Hours, t.Minutes, t.Seconds, t.Hundredths);
 End;
 
-
-
-Procedure SystemError(x: integer);
-Begin
-  Case x of
-    1 : ShowMessage('Error 1 : DrillSim.Cfg missing');
-    2 : ShowMessage('Error 2 : Default directory error');
-    3 : ShowMessage('Error 3 : DrillSim.Hlp missing');
-    4 : ShowMessage('Error 4 : ');
-    5 : ShowMessage('Error 5 : HyCalc.Exe missing');
-    6 : ShowMessage('Error 6 : Unable to load well data file');
-  End;
-End;
 
 
 Procedure GetKey;

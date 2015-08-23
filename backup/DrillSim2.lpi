@@ -5,7 +5,7 @@
     <General>
       <SessionStorage Value="InProjectDir"/>
       <MainUnit Value="0"/>
-      <Title Value="DrillSim2"/>
+      <Title Value="DrillSim3"/>
       <ResourceType Value="res"/>
       <UseXPManifest Value="True"/>
       <Icon Value="0"/>
@@ -15,9 +15,9 @@
     </i18n>
     <VersionInfo>
       <UseVersionInfo Value="True"/>
-      <MajorVersionNr Value="2"/>
+      <MajorVersionNr Value="3"/>
       <Language Value="0809"/>
-      <StringTable Comments="DrillSim (1988) re-written for the 21st Century" LegalCopyright="Ambersoft (Langworth UK)" ProductName="DrillSim" ProductVersion="2.0"/>
+      <StringTable Comments="DrillSim (1988) re-written for the 21st Century" LegalCopyright="Ambersoft (Langworth UK)" ProductName="DrillSim" ProductVersion="3.0"/>
     </VersionInfo>
     <BuildModes Count="1">
       <Item1 Name="Default" Default="True"/>
@@ -35,7 +35,7 @@
         <PackageName Value="LCL"/>
       </Item1>
     </RequiredPackages>
-    <Units Count="6">
+    <Units Count="7">
       <Unit0>
         <Filename Value="DrillSim2.lpr"/>
         <IsPartOfProject Value="True"/>
@@ -71,12 +71,19 @@
         <ResourceBaseClass Value="Form"/>
         <UnitName Value="FormUnitsOfMeasure"/>
       </Unit5>
+      <Unit6>
+        <Filename Value="formconfigdefaults.pas"/>
+        <IsPartOfProject Value="True"/>
+        <ComponentName Value="Form2"/>
+        <ResourceBaseClass Value="Form"/>
+        <UnitName Value="FormConfigDefaults"/>
+      </Unit6>
     </Units>
   </ProjectOptions>
   <CompilerOptions>
     <Version Value="11"/>
     <Target>
-      <Filename Value="DrillSim2"/>
+      <Filename Value="DrillSim3"/>
     </Target>
     <SearchPaths>
       <IncludeFiles Value="$(ProjOutDir)"/>

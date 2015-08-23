@@ -42,140 +42,160 @@ Type
     Test              = array[1..7] of real;
 
     WellData   = Record
-                   WellOperator        : String120;
-                   WellName            : String120;
-                   TD, BitTD           : real;
-                   API                 : boolean;
-                   Pumping             : boolean;
-                   Drilling            : boolean;
-                   AutoDrill           : boolean;
-                   ShutIn              : boolean;
-                   BlindRam            : boolean;
-                   PipeRam             : boolean;
-                   Hydril              : boolean;
-                   FlowLine            : boolean;
-                   Bingham             : boolean;
-                   UpdateFlow          : boolean;
-                   PmpOp               : array[1..3] of real;
-                   FillCE              : array[1..4] of real;
-                   FillOE              : array[1..4] of real;
-                   LagDT, LagDS        : real;
-                   LagUT,   LagUS      : real;
-                   WellVol, HoleVol    : real;
-                   AnnVol,  MudVol     : real;
-                   PipeCap, PipeDis    : real;
-                   TotHoleSections     : integer;
-                   HoleSection         : array[1..9,1..4] of real;
-                   Vel                 : array[1..9,1..3] of real;
+                   WellOperator                : String120;
+                   WellName                    : String120;
+                   TD, BitTD                   : real;
+                   API                         : boolean;
+                   Offshore                    : boolean;
+                   SubSeaWellHead              : boolean;
 
-                   StackPointer        : integer;
-                   CircStack           : array[1..200] of MudRec;
-                   MudOut              : MudRec;
-                   StrokeCounter       : real;
-                   TotStrks            : real;
-                   TotCircStrks        : real;
+                   Riser                       : boolean;
+                   RiserTD                     : real;
+                   RiserID                     : real;
 
-                   PipeMW              : real;
-                   AnnMW               : real;
-                   MwIn                : real;
-                   MwOut               : real;
-                   AnnPV               : real;
-                   AnnYP               : real;
-                   PipePV              : real;
-                   PipeYP              : real;
+                   Casing                      : boolean;
+                   CasingID                    : real;
+                   CasingTD                    : real;
 
-                   FlowIn, FlowOut     : real;
-                   ElapsedTime         : real;
-                   ElapsedFlow         : real;
-                   PlSurf, PlPipe      : real;
-                   PlBit, PlAnn        : real;
-                   PlCirc              : real;
-                   MACP                : real;
-                   AnnUnderbalance     : real;
-                   CasingPressure      : real;
-                   DeltaCsgPr          : real;
-                   PlChoke             : real;
-                   Choke               : integer;
+                   Liner                       : boolean;
+                   LinerTopTD                  : real;
+                   LinerTD                     : real;
+                   LinerID                     : real;
 
-                   JetVel, ImpForce    : real;
-                   BitHp, Eff, TotHP   : real;
-                   AverageHhd          : real;
-                   PipeHhd, AnnHhd     : real;
-                   BHPAnn              : real;
-                   Ecd                 : real;
-                   Ff, Rn              : real;
-                   Fn, Fk              : real;
-                   WaterFraction       : real;
-                   OilFraction         : real;
-                   SolidsFraction      : real;
+                   Surf                        : array[1..4,1..2] of real;
 
-                   PipeTD              : real;
-                   StringTD            : real;
-                   KelHt               : real;
-                   LastKD              : real;
-                   WOB                 : real;
-                   WOH                 : real;
-                   StrWt               : real;
-                   ROP                 : real;
-                   RPM                 : real;
-                   OverDrill           : real;
-                   t1,t2               : integer;
-                   ROPt1,ROPt2         : integer;
-                   RPMt1,RPMt2         : integer;
+                   MaxHoles                    : integer;
+                   Hole                        : array[1..3,1..3] of real;
 
-                   Influx              : real;
-                   InfluxRate          : real;
-                   BleedOffRate        : real;
-                   BleedOff            : real;
+                   MaxPipes                    : integer;
+                   Pipe                        : array[1..4,1..4] of real;
 
-                   MaxPumps : integer;
-                   MaxHoles : integer;
-                   MaxPipes : integer;
-                   MaxJets  : integer;
-                   Offshore : boolean;
-                   SubSeaWellHead : boolean;
-                   Riser    : boolean;
-                   Casing   : boolean;
-                   Liner    : boolean;
-                   Surf     : array[1..4,1..2] of real;
-                   Hole     : array[1..2,1..2] of real;
-                   Pipe     : array[1..4,1..4] of real;
-                   RiserTD, CasingTD, TVD              : real;
-                   RiserID, CasingID, DeviationDegrees : real;
-                   LinerTop, LinerTD, LinerID   : real;
-                   ElevationRKB                 : real;
-                   WaterDepth                   : real;
-                   LotTD                        : real;
-                   LotEMW                       : real;
-                   LotMW                        : real;
-                   LOTPressure                  : real;
-                   RockPointer                  : integer;
-                   Rock                         : array[1..10] of RockRec;
+                   ChokeLineID                 : real;
+                   KillLineID                  : real;
 
-                   Gas       : array[1..200] of GasRec;
+                   DeviationDegrees            : real;
+                   TVD                         : real;
 
-                   ChokeLineID : real;
-                   KillLineID  : real;
+                   ElevationRKB                : real;
+                   WaterDepth                  : real;
 
-                   DrillMult   : integer;
-                   NeverSimulated      : boolean;  { has this file ever been 'simulated'? }
+                   MaxJets                     : integer;
+                   Jet                         : array[1..4] of integer;
+                   Bit                         : integer;
+                   BitType                     : String20;
 
-                   FormationPressureGradient    : real;
-                   BurstPressure                : real;
-                   InfluxDensity                : real;
-                   PipeRAMRating                : real;
-                   HydrilRating                 : real;
-                   Jet      : array[1..4] of integer;
-                   Bit      : integer;
-                   BitType  : String20;
-                   Pump     : array[1..3,1..5] of real;
-                   MaxPress : real;
+                   MaxPumps                    : integer;
+                   Pump                        : array[1..3,1..5] of real;
+                   MaxPress                    : real;
+
                    ExcessMud: real;
-                   MudWt, MudPv        : real;
-                   MudYp               : real;
-                   MudGel              : real;
-                   RetPitVol           : real;
+                   MudWt, MudPv                : real;
+                   MudYp                       : real;
+                   MudGel                      : real;
+                   RetPitVol                   : real;
 
+                   LotTD                       : real;
+                   LotEMW                      : real;
+                   LotMW                       : real;
+                   LOTPressure                 : real;
+
+                   RockPointer                 : integer;
+                   Rock                        : array[1..10] of RockRec;
+
+                   Gas                         : array[1..200] of GasRec;
+
+                   DrillMult                   : integer;
+
+                   NeverSimulated              : boolean;  { has this file ever been 'simulated'? }
+
+                   FormationPressureGradient   : real;
+                   BurstPressure               : real;
+                   InfluxDensity               : real;
+
+                   PipeRAMRating               : real;
+                   HydrilRating                : real;
+
+                   Pumping                     : boolean;
+                   Drilling                    : boolean;
+                   AutoDrill                   : boolean;
+                   ShutIn                      : boolean;
+                   BlindRam                    : boolean;
+                   PipeRam                     : boolean;
+                   Hydril                      : boolean;
+                   FlowLine                    : boolean;
+                   Bingham                     : boolean;
+                   UpdateFlow                  : boolean;
+                   PmpOp                       : array[1..3] of real;
+                   FillCE                      : array[1..4] of real;
+                   FillOE                      : array[1..4] of real;
+                   LagDT, LagDS                : real;
+                   LagUT,   LagUS              : real;
+                   WellVol, HoleVol            : real;
+                   AnnVol,  MudVol             : real;
+                   PipeCap, PipeDis            : real;
+                   TotHoleSections             : integer;
+                   HoleSection                 : array[1..9,1..4] of real;
+                   Vel                         : array[1..9,1..3] of real;
+
+                   StackPointer                : integer;
+                   CircStack                   : array[1..200] of MudRec;
+                   MudOut                      : MudRec;
+                   StrokeCounter               : real;
+                   TotStrks                    : real;
+                   TotCircStrks                : real;
+
+                   PipeMW                      : real;
+                   AnnMW                       : real;
+                   MwIn                        : real;
+                   MwOut                       : real;
+                   AnnPV                       : real;
+                   AnnYP                       : real;
+                   PipePV                      : real;
+                   PipeYP                      : real;
+
+                   FlowIn, FlowOut             : real;
+                   ElapsedTime                 : real;
+                   ElapsedFlow                 : real;
+                   PlSurf, PlPipe              : real;
+                   PlBit, PlAnn                : real;
+                   PlCirc                      : real;
+                   MACP                        : real;
+                   AnnUnderbalance             : real;
+                   CasingPressure              : real;
+                   DeltaCsgPr                  : real;
+                   PlChoke                     : real;
+                   Choke                       : integer;
+
+                   JetVel, ImpForce            : real;
+                   BitHp, Eff, TotHP           : real;
+                   AverageHhd                  : real;
+                   PipeHhd, AnnHhd             : real;
+                   BHPAnn                      : real;
+                   Ecd                         : real;
+                   Ff, Rn                      : real;
+                   Fn, Fk                      : real;
+                   WaterFraction               : real;
+                   OilFraction                 : real;
+                   SolidsFraction              : real;
+
+                   PipeTD                      : real;
+                   StringTD                    : real;
+                   KelHt                       : real;
+                   LastKD                      : real;
+                   WOB                         : real;
+                   WOH                         : real;
+                   StrWt                       : real;
+                   ROP                         : real;
+                   RPM                         : real;
+                   OverDrill                   : real;
+                   t1,t2                       : integer;
+                   ROPt1,ROPt2                 : integer;
+                   RPMt1,RPMt2                 : integer;
+
+                   Influx                      : real;
+                   InfluxRate                  : real;
+                   BleedOffRate                : real;
+                   BleedOff                    : real;
 
                  End;
 
@@ -335,7 +355,6 @@ Var
 
 { Hydvar vars }
    Bhcp                             : real;
-   Mode                             : string[20];
    PosCounter                       : integer;
    LineCnt                          : integer;
    ColorCount                       : integer;

@@ -33,6 +33,7 @@ Begin
   With Data do
   Begin
     NoFileDefined    :=True;
+    DefaultWellDataFile:='';
     CurrentFQFileName:='';
     NeverSimulated   :=True;       { set NeverSimulated - this will be a new file }
     Bingham          :=False;
@@ -47,8 +48,8 @@ Begin
     CasingID         :=Zero;
     RiserTD          :=Zero;
     RiserID          :=Zero;
-    LinerTop         :=Zero;
-    LinerTD          :=Zero;
+    LinerTopTD       :=Zero;
+    LinerBottomTD    :=Zero;
     LinerID          :=Zero;
     DeviationDegrees :=Zero;
     WaterDepth       :=Zero;
