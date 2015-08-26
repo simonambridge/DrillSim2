@@ -16,11 +16,14 @@ type
   { TGeneralDataForm }
 
   TGeneralDataForm = class(TForm)
-    KillLineID: TStaticText;
-    ChokeLineIDData: TEdit;
-    KillLineIDData: TEdit;
-    ChokeLineIDUoMLabel: TLabel;
-    KillLineIDUoMLabel: TLabel;
+    WellNameData: TEdit;
+    WellOperatorData: TEdit;
+    ElevationRKB: TStaticText;
+    WellOperator: TStaticText;
+    WellName: TStaticText;
+    RiserTD: TStaticText;
+    RiserID: TStaticText;
+    SubSeaWellHeadYNRadioGroup: TRadioGroup;
     WaterDepthUoMLabel: TLabel;
     RiserTDUoMLabel: TLabel;
     RiserIDUoMLabel: TLabel;
@@ -31,17 +34,14 @@ type
     ElevationRKBData: TEdit;
     ElevationRKBUoMLabel: TLabel;
     OffshoreYNRadioGroup: TRadioGroup;
+    KillLineID: TStaticText;
+    ChokeLineIDData: TEdit;
+    KillLineIDData: TEdit;
+    ChokeLineIDUoMLabel: TLabel;
+    KillLineIDUoMLabel: TLabel;
     ChokeLineID: TStaticText;
-    RiserTD: TStaticText;
-    RiserID: TStaticText;
-    SubSeaWellHeadYNRadioGroup: TRadioGroup;
     Save: TButton;
     Cancel: TButton;
-    WellNameData: TEdit;
-    WellOperatorData: TEdit;
-    ElevationRKB: TStaticText;
-    WellOperator: TStaticText;
-    WellName: TStaticText;
 
     procedure WellOperatorDataChange(Sender: TObject);
     procedure WellNameDataChange(Sender: TObject);

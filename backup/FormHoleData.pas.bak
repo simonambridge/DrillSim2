@@ -16,50 +16,51 @@ type
   { THoleDataForm }
 
   THoleDataForm = class(TForm)
-    NumOHSectionsComboBox: TComboBox;
-    QuitButton: TButton;
-    SaveButton: TButton;
-    LinerTopDepth: TLabel;
-    LinerBottomDepth: TLabel;
-    LinerBottomDepthData: TEdit;
-    LinerTopDepthUoMLabel: TLabel;
+    Riser: TCheckBox;
+    SubSeaWellHead: TCheckBox;
+    OffshoreYN: TCheckBox;
     CasingYNRadioGroup: TRadioGroup;
-    LinerID: TLabel;
-    LinerTopDepthData: TEdit;
-    LinerIDUoMLabel: TLabel;
-    Deviation: TLabel;
-    DeviationData: TEdit;
-    DeviationUoM: TLabel;
     CashingShoeDepth: TLabel;
     CasingShoeDepthData: TEdit;
     CasingShoeDepthUoMLabel: TLabel;
     CasingID: TLabel;
     CasingIDData: TEdit;
     CasingIDUoMLabel: TLabel;
+    LinerYNRadioGroup: TRadioGroup;
+    LinerTopDepthUoMLabel: TLabel;
     LinerBottomDepthUoMLabel: TLabel;
+    LinerTopDepth: TLabel;
+    LinerTopDepthData: TEdit;
+    LinerBottomDepth: TLabel;
+    LinerBottomDepthData: TEdit;
+    LinerID: TLabel;
+    LinerIDUoMLabel: TLabel;
     LinerIDData: TEdit;
-    OHSection1IDData: TEdit;
-    OHSection2IDData: TEdit;
-    OHSection3IDData: TEdit;
-    OHSection1TDData: TEdit;
+    Deviation: TLabel;
+    DeviationData: TEdit;
+    DeviationUoM: TLabel;
+    NumOHSections: TLabel;
+    NumOHSectionsComboBox: TComboBox;
+    TDColumnLabel: TLabel;
     IDColumnLabel: TLabel;
     OHIDUoMLabel: TLabel;
-    OHSection2TDData: TEdit;
-    OHSection3TDData: TEdit;
-    OHSection2: TLabel;
-    OHSection3: TLabel;
     OHTDUoMLabel: TLabel;
-    TDColumnLabel: TLabel;
     OHSection1: TLabel;
-    NumOHSections: TLabel;
-    LinerYNRadioGroup: TRadioGroup;
-    Riser: TCheckBox;
-    SubSeaWellHead: TCheckBox;
-    OffshoreYN: TCheckBox;
+    OHSection1TDData: TEdit;
+    OHSection1IDData: TEdit;
+    OHSection2: TLabel;
+    OHSection2IDData: TEdit;
+    OHSection2TDData: TEdit;
+    OHSection3: TLabel;
+    OHSection3TDData: TEdit;
+    OHSection3IDData: TEdit;
+    QuitButton: TButton;
+    SaveButton: TButton;
     procedure CasingIDDataChange(Sender: TObject);
     procedure CasingShoeDepthDataChange(Sender: TObject);
     procedure CasingYNRadioGroupClick(Sender: TObject);
     procedure DeviationDataChange(Sender: TObject);
+    procedure FormDeactivate(Sender: TObject);
     procedure LinerBottomDepthDataChange(Sender: TObject);
     procedure LinerIDDataChange(Sender: TObject);
     procedure LinerTopDepthDataChange(Sender: TObject);
@@ -129,6 +130,11 @@ begin
   end;
 end;
 
+procedure THoleDataForm.CancelClick(Sender: TObject);
+begin
+
+end;
+
 procedure THoleDataForm.CasingYNRadioGroupClick(Sender: TObject);
 begin
   case CasingYNRadioGroup.ItemIndex of
@@ -161,10 +167,10 @@ begin
         LinerYNRadioGroup.Enabled:=True;
 
         CasingShoeDepthData.Enabled:=True;
-        //CasingShoeDepthData.Caption:=FloatToStr(Round2(Data.CasingTD*UoMConverter[1],2));  { depth }
+        CasingShoeDepthData.Caption:=FloatToStr(Round2(Data.CasingTD*UoMConverter[1],2));  { depth }
 
         CasingIDData.Enabled:=True;
-        //CasingIDData.Caption:=FloatToStr(Data.CasingID*UoMConverter[8]);   { inches }
+        CasingIDData.Caption:=FloatToStr(Data.CasingID*UoMConverter[8]);   { inches }
 
       end;
    End;
@@ -376,6 +382,9 @@ begin
     then Riser.Checked:=True
     else Riser.Checked:=False;
 
+    CasingYNRadioGroup.Enabled:=True;
+    LinerYNRadioGroup.Enabled:=True;
+
     if Data.Casing=True then                { there is casing }
     Begin
       CasingYNRadioGroup.ItemIndex:=1;
@@ -401,7 +410,6 @@ begin
       end else
       Begin                                     { there is no liner with this casing }
         LinerYNRadioGroup.ItemIndex:=0;
-        LinerYNRadioGroup.Enabled:=False;
 
         LinerTopDepthData.Enabled:=False;
         LinerTopDepthData.Caption:=FloatToStr(0);  { depth }
@@ -532,36 +540,138 @@ end;
 
 procedure THoleDataForm.QuitButtonClick(Sender: TObject);
 begin
+  StringToMemo('FormHoleData.Quit');
   Close;
 end;
 
-procedure THoleDataForm.CancelClick(Sender: TObject);
+procedure THoleDataForm.FormDeactivate(Sender: TObject);
 begin
+  StringToMemo('FormHoleData.Deactivate');
   Close;
 end;
 
 procedure THoleDataForm.SaveButtonClick(Sender: TObject);
-begin
+  Procedure CheckWellSection1;
+  Begin
+    if ((_WellHole[1,1] <= _WellCasingTD) and (Data.Casing=True))
+    then
+    Begin
+      ShowMessage('Hole section #1 depth must be deeper than casing shoe');
+      StringToMemo('FormHoleData.Save: Error: Hole section #1 depth must be deeper than casing shoe');
+      OHSection1TDData.SetFocus;
+      Exit;
+    end
+    else
+    Begin
+      Data.Hole[1,1]     :=_WellHole[1,1];
+      Data.Hole[1,2]     :=_WellHole[1,2];
+      StringToMemo('FormHoleData.Save: Data.Hole[1,1] = '+ OHSection1TDData.Text + ' ' + UoMLabel[1]); { depth }
+      StringToMemo('FormHoleData.Save: Data.Hole[1,2] = '+ OHSection1IDData.Text + ' ' + UoMLabel[8]); { inches }
+    End;
+  end;
+
+  Procedure CheckWellSection2;
+  Begin
+    if (_WellHole[2,1] <= _WellHole[1,1])
+    then
+    Begin
+      ShowMessage('Hole section #2 depth must be deeper than hole section #1 depth');
+      StringToMemo('FormHoleData.Save: Error: Hole section #2 depth must be deeper than hole section #1 depth');
+      OHSection2TDData.SetFocus;
+      Exit;
+    end
+    else
+    Begin
+      Data.Hole[2,1]     :=_WellHole[2,1];
+      Data.Hole[2,2]     :=_WellHole[2,2];
+      StringToMemo('FormHoleData.Save: Data.Hole[2,1] = '+ OHSection2TDData.Text + ' ' + UoMLabel[1]); { depth }
+      StringToMemo('FormHoleData.Save: Data.Hole[2,2] = '+ OHSection2IDData.Text + ' ' + UoMLabel[8]); { inches }
+    End;
+  end;
+
+  Procedure CheckWellSection3;
+  Begin
+    if (_WellHole[3,1] <= _WellHole[2,1])
+    then
+    Begin
+      ShowMessage('Hole section #3 depth must be deeper than hole section #2 depth');
+      StringToMemo('FormHoleData.Save: Error: Hole section #3 depth must be deeper than hole section #2 depth');
+      OHSection3TDData.SetFocus;
+      Exit;
+    end
+    else
+    Begin
+      Data.Hole[3,1]     :=_WellHole[3,1];
+      Data.Hole[3,2]     :=_WellHole[3,2];
+      StringToMemo('FormHoleData.Save: Data.Hole[3,1] = '+ OHSection3TDData.Text + ' ' + UoMLabel[1]); { depth }
+      StringToMemo('FormHoleData.Save: Data.Hole[3,2] = '+ OHSection3IDData.Text + ' ' + UoMLabel[8]); { inches }
+    End;
+  end;
+
+  begin
+  StringToMemo('FormHoleData.Save');
+
   Data.Casing          :=_WellCasing;
+  StringToMemo('FormHoleData.Save: Data.Casing = '+ IntToStr(CasingYNRadioGroup.ItemIndex));
   Data.Liner           :=_WellLiner;
-  Data.Casing          :=_WellCasing;
+  StringToMemo('FormHoleData.Save: Data.Liner = '+ IntToStr(LinerYNRadioGroup.ItemIndex));
   Data.CasingTD        :=_WellCasingTD;
+  StringToMemo('FormHoleData.Save: Data.CasingTD = '+ CasingShoeDepthData.Text + ' ' + UoMLabel[1]); { depth }
   Data.CasingID        :=_WellCasingID;
+  StringToMemo('FormHoleData.Save: Data.CasingID = '+ CasingIDData.Text + ' ' + UoMLabel[8]); { inches }
 
   Data.Liner           :=_WellLiner;
-  Data.LinerTopTD      :=_WellLinerTopTD;
-  Data.LinerBottomTD   :=_WellLinerBottomTD;
-  Data.LinerID         :=_WellLinerID;
+  if _WellLinerTopTD > _WellCasingTD
+  then
+    Begin
+      ShowMessage('Liner hanger must be higher than casing shoe');
+      StringToMemo('FormHoleData.Save: Error: Liner hanger must be higher than casing shoe');
+      LinerTopDepthData.SetFocus;
+      Exit;
+    end
+  else
+  Begin
+    Data.LinerTopTD:=_WellLinerTopTD;
+    StringToMemo('FormHoleData.Save: Data.LinerTopTD = '+ LinerTopDepthData.Text + ' ' + UoMLabel[1]); { depth }
+  end;
+
+  if _WellLinerBottomTD < _WellLinerTopTD
+  then
+    Begin
+      ShowMessage('Liner shoe must be lower than liner hanger');
+      StringToMemo('FormHoleData.Save: Error: Liner hanger must be higher than casing shoe');
+      LinerBottomDepthData.SetFocus;
+      Exit;
+    end
+  else
+  Begin
+    Data.LinerBottomTD:=_WellLinerBottomTD;
+    StringToMemo('FormHoleData.Save: Data.LinerShoeTD = '+ LinerBottomDepthData.Text + ' ' + UoMLabel[1]); { depth }
+  end;
+
+  Data.LinerID:=_WellLinerID;
+  StringToMemo('FormHoleData.Save: Data.LinerID = '+ LinerIDData.Text + ' ' + UoMLabel[8]); { inches }
 
   Data.MaxHoles        :=_WellMaxHoles;
+  StringToMemo('FormHoleData.Save: Data.MaxHoles = '+ IntToStr(NumOHSectionsComboBox.ItemIndex));
 
-  for i:=1 to Data.MaxHoles do
-  Begin
-    Data.Hole[i,1]     :=_WellHole[i,1];
-    Data.Hole[i,2]     :=_WellHole[i,2];
-  End;
+  Case Data.MaxHoles of    { very ugly...cant interate through objects but it works...}
+    1 : Begin
+          CheckWellSection1;
+        End;
+    2 : Begin
+          CheckWellSection1;
+          CheckWellSection2;
+        End;
+    3 : Begin
+          CheckWellSection1;
+          CheckWellSection2;
+          CheckWellSection2;
+        End;
+   End;
 
   Data.DeviationDegrees:=_WellDeviation;
+  StringToMemo('FormHoleData.Save: Data.DeviationDegrees = '+ DeviationData.Text + ' Degrees');
 
   Close;
 end;

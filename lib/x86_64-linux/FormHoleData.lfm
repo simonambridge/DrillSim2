@@ -1,13 +1,14 @@
 object HoleDataForm: THoleDataForm
-  Left = 94
+  Left = 100
   Height = 635
-  Top = 267
+  Top = 234
   Width = 405
   Caption = 'Hole Profile Data'
   ClientHeight = 635
   ClientWidth = 405
   OnActivate = FormActivate
   OnCreate = FormCreate
+  OnDeactivate = FormDeactivate
   LCLVersion = '1.2.6.0'
   object CasingYNRadioGroup: TRadioGroup
     Left = 24

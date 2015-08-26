@@ -1,7 +1,7 @@
 object GeneralDataForm: TGeneralDataForm
-  Left = 153
+  Left = 90
   Height = 555
-  Top = 294
+  Top = 166
   Width = 497
   Caption = 'General Well Data'
   ClientHeight = 555
@@ -164,7 +164,7 @@ object GeneralDataForm: TGeneralDataForm
   object RiserID: TStaticText
     Left = 26
     Height = 24
-    Hint = 'Internal diameter of the Riser in inches'
+    Hint = 'Internal diameter of the riser (in inches)'
     Top = 356
     Width = 72
     Caption = 'Riser ID'
@@ -174,7 +174,7 @@ object GeneralDataForm: TGeneralDataForm
   object ChokeLineID: TStaticText
     Left = 24
     Height = 24
-    Hint = 'Internal diameter of the choke line to the wellhead in inches'
+    Hint = 'Internal diameter of the choke line to the wellhead (in inches)'
     Top = 384
     Width = 112
     Caption = 'Choke Line ID'
@@ -267,7 +267,7 @@ object GeneralDataForm: TGeneralDataForm
   object KillLineID: TStaticText
     Left = 24
     Height = 24
-    Hint = 'Internal diameter of the kill line to the wellhead in inches'
+    Hint = 'Internal diameter of the kill line to the wellhead (in inches)'
     Top = 412
     Width = 112
     Caption = 'Kill Line ID'

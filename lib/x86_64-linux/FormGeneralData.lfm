@@ -1,7 +1,7 @@
 object GeneralDataForm: TGeneralDataForm
-  Left = 153
+  Left = 90
   Height = 555
-  Top = 294
+  Top = 166
   Width = 497
   Caption = 'General Well Data'
   ClientHeight = 555

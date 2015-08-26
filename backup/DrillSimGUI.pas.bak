@@ -547,7 +547,7 @@ end;
 procedure TDrillSim.FormCreate(Sender: TObject);
 begin
   Memo1.SelStart:=Length(Memo1.Text);
-  StringToMemo('DrillSimGUI.FormaCreate:Running DrillSimGUI FormCreate...');
+  StringToMemo('DrillSimGUI.FormCreate:Running DrillSimGUI FormCreate...');
 
   splash := TSplashAbout.Create(nil);
   SetDefaultValues; // splash - optional
