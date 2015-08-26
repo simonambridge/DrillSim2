@@ -50,8 +50,8 @@ Begin
     on E: EInOutError do
     Begin
       StringToMemo('DrillSimFile.LoadData: File handling error occurred. Details: ' + E.Message);
-      InitData;   // if load borks then clear all well data elements
-      Exit;
+      InitData;   // if load borks then clear all well data elements,
+      Exit;       // set NoFileDefine to True and clear CurrentFQFileName
     end;
   End;
   NoFileDefined:=False;

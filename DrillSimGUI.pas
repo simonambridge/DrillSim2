@@ -534,7 +534,7 @@ end;
 
 procedure TDrillSim.FormActivate(Sender: TObject);
 begin
-  StringToMemo('Running DrillSimGUI FormActivate...'); // please wait....
+  StringToMemo('Running DrillSimGUI FormActivate................................'); // please wait....
   // get paths etc
   //ChDir(LoggedDirectory); currentdirectory, default directory?
   Edited:=False;  { start clean }

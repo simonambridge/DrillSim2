@@ -23,17 +23,16 @@ Begin                                        { Extract path string }
   Begin
     CurrentFQFileName:=S;      { set file to user defined file }
     CreateNewFile:=False;      { its an existing file }
-    StringToMemo('DrillSimStartup.LoadDefaultWellDataFile: Loading well data file ' + CurrentFQFileName + '...');
 
     LoadData;  { sets NoFileDefined=True if error during read }
 
     if NoFileDefined=True then // on return, is a valid file loaded?
     Begin                      // then notify the error
-      StringToMemo('DrillSimStartup.LoadDefaultWellDataFile: Error loading well data file ' + CurrentFQFileName);
+      StringToMemo('DrillSimStartup.LoadDefaultWellDataFile: Error loading ' + CurrentFQFileName);
       ShowMessage('Error loading well data file ' + CurrentFQFileName);
     end else
     Begin                      // otherwise confirm well name loaded
-      StringToMemo('DrillSimStartup.LoadDefaultWellDataFile: Default well data file ' + CurrentFQFileName + ' loaded');
+      StringToMemo('DrillSimStartup.LoadDefaultWellDataFile: ' + CurrentFQFileName + ' loaded');
       StringToMemo('DrillSimStartup.LoadDefaultWellDataFile: Simulating Well ' + Data.WellName);
     End;
   End else

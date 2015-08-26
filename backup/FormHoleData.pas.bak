@@ -123,10 +123,6 @@ begin
           ((Sender as TEdit).SelStart = 0) then
   Begin
     Key := #0;  // discard it
-  end  else if (Key = '-') and
-          ((Sender as TEdit).SelStart <> 0) then
-  Begin
-    Key := #0;  // discard it
   end;
 end;
 
@@ -287,74 +283,98 @@ end;
 
 procedure THoleDataForm.CasingShoeDepthDataChange(Sender: TObject);
 begin
-  if TEdit(Sender).Text <> ''
+  if not ((TEdit(Sender).Text = '-')
+      or (TEdit(Sender).Text = DefaultFormatSettings.DecimalSeparator)
+      or (TEdit(Sender).Text = ''))
           then _WellCasingTD:=Round2(StrToFloat(CasingShoeDepthData.Text)/UoMConverter[1],2); { depth }
 end;
 
 procedure THoleDataForm.CasingIDDataChange(Sender: TObject);
 begin
-  if TEdit(Sender).Text <> ''
+  if not ((TEdit(Sender).Text = '-')
+      or (TEdit(Sender).Text = DefaultFormatSettings.DecimalSeparator)
+      or (TEdit(Sender).Text = ''))
           then _WellCasingID:=Round2(StrToFloat(CasingIDData.Text)/UoMConverter[8],2); { inches }
 end;
 
 procedure THoleDataForm.LinerTopDepthDataChange(Sender: TObject);
 begin
-  if TEdit(Sender).Text <> ''
+  if not ((TEdit(Sender).Text = '-')
+      or (TEdit(Sender).Text = DefaultFormatSettings.DecimalSeparator)
+      or (TEdit(Sender).Text = ''))
           then _WellLinerTopTD:=Round2(StrToFloat(LinerTopDepthData.Text)/UoMConverter[1],2); { depth }
 end;
 
 procedure THoleDataForm.LinerBottomDepthDataChange(Sender: TObject);
 begin
-  if TEdit(Sender).Text <> ''
+  if not ((TEdit(Sender).Text = '-')
+      or (TEdit(Sender).Text = DefaultFormatSettings.DecimalSeparator)
+      or (TEdit(Sender).Text = ''))
           then _WellLinerBottomTD:=Round2(StrToFloat(LinerBottomDepthData.Text)/UoMConverter[1],2); { depth }
 end;
 
 procedure THoleDataForm.LinerIDDataChange(Sender: TObject);
 begin
-  if TEdit(Sender).Text <> ''
+  if not ((TEdit(Sender).Text = '-')
+      or (TEdit(Sender).Text = DefaultFormatSettings.DecimalSeparator)
+      or (TEdit(Sender).Text = ''))
           then _WellLinerID:=Round2(StrToFloat(LinerIDData.Text)/UoMConverter[8],2); { inches }
 end;
 
 procedure THoleDataForm.OHSection1TDDataChange(Sender: TObject);
 begin
-  if TEdit(Sender).Text <> ''
+  if not ((TEdit(Sender).Text = '-')
+      or (TEdit(Sender).Text = DefaultFormatSettings.DecimalSeparator)
+      or (TEdit(Sender).Text = ''))
           then _WellHole[1,1]:=Round2(StrToFloat(OHSection1TDData.Text)/UoMConverter[1],2); { depth }
 end;
 
 procedure THoleDataForm.OHSection1IDDataChange(Sender: TObject);
 begin
-  if TEdit(Sender).Text <> ''
+  if not ((TEdit(Sender).Text = '-')
+      or (TEdit(Sender).Text = DefaultFormatSettings.DecimalSeparator)
+      or (TEdit(Sender).Text = ''))
           then _WellHole[1,2]:=Round2(StrToFloat(OHSection1IDData.Text)/UoMConverter[8],2); { inches }
 end;
 
 procedure THoleDataForm.OHSection2TDDataChange(Sender: TObject);
 begin
-  if TEdit(Sender).Text <> ''
+  if not ((TEdit(Sender).Text = '-')
+      or (TEdit(Sender).Text = DefaultFormatSettings.DecimalSeparator)
+      or (TEdit(Sender).Text = ''))
           then _WellHole[2,1]:=Round2(StrToFloat(OHSection2TDData.Text)/UoMConverter[1],2); { depth }
 end;
 
 procedure THoleDataForm.OHSection2IDDataChange(Sender: TObject);
 begin
-  if TEdit(Sender).Text <> ''
+  if not ((TEdit(Sender).Text = '-')
+      or (TEdit(Sender).Text = DefaultFormatSettings.DecimalSeparator)
+      or (TEdit(Sender).Text = ''))
           then _WellHole[2,2]:=Round2(StrToFloat(OHSection2IDData.Text)/UoMConverter[8],2); { inches }
 end;
 
 procedure THoleDataForm.OHSection3TDDataChange(Sender: TObject);
 begin
-  if TEdit(Sender).Text <> ''
+  if not ((TEdit(Sender).Text = '-')
+      or (TEdit(Sender).Text = DefaultFormatSettings.DecimalSeparator)
+      or (TEdit(Sender).Text = ''))
           then _WellHole[3,1]:=Round2(StrToFloat(OHSection3TDData.Text)/UoMConverter[1],2); { depth }
 end;
 
 procedure THoleDataForm.OHSection3IDDataChange(Sender: TObject);
 begin
-  if TEdit(Sender).Text <> ''
+  if not ((TEdit(Sender).Text = '-')
+      or (TEdit(Sender).Text = DefaultFormatSettings.DecimalSeparator)
+      or (TEdit(Sender).Text = ''))
           then _WellHole[3,2]:=Round2(StrToFloat(OHSection3IDData.Text)/UoMConverter[8],2); { inches }
 end;
 
 
 procedure THoleDataForm.DeviationDataChange(Sender: TObject);
 begin
-  if TEdit(Sender).Text <> ''
+  if not ((TEdit(Sender).Text = '-')
+      or (TEdit(Sender).Text = DefaultFormatSettings.DecimalSeparator)
+      or (TEdit(Sender).Text = ''))
           then _WellDeviation:=Round2(StrToFloat(DeviationData.Text),2); { degrees - no conversion }
 end;
 
@@ -364,7 +384,7 @@ end;
 
 procedure THoleDataForm.FormActivate(Sender: TObject);
 begin
-    StringToMemo('Form Well Hole Profile Data activated....');
+  StringToMemo('Form Well Hole Profile Data activated...........................');
 
 
     OffshoreYN.Enabled:=False;
@@ -540,37 +560,57 @@ end;
 
 procedure THoleDataForm.QuitButtonClick(Sender: TObject);
 begin
-  StringToMemo('FormHoleData.Quit');
+  StringToMemo('FormHoleData.Quit ..............................................');
   Close;
 end;
 
 procedure THoleDataForm.FormDeactivate(Sender: TObject);
 begin
-  StringToMemo('FormHoleData.Deactivate');
+  StringToMemo('FormHoleData.Deactivate ........................................');
   Close;
 end;
 
+
 procedure THoleDataForm.SaveButtonClick(Sender: TObject);
-  Procedure CheckWellSection1;
+
+  { Validate hole section input : 3 functions }
+  Function CheckWellSection1 : boolean;
   Begin
-    if ((_WellHole[1,1] <= _WellCasingTD) and (Data.Casing=True))
+    if ((_WellHole[1,1] <= _WellCasingTD) and (Data.Casing=True)) or    { total OH depth must be greater than any metal }
+       ((_WellHole[1,1] <= _WellLinerBottomTD) and (Data.Liner=True))
     then
     Begin
-      ShowMessage('Hole section #1 depth must be deeper than casing shoe');
-      StringToMemo('FormHoleData.Save: Error: Hole section #1 depth must be deeper than casing shoe');
+      ShowMessage('Hole section #1 depth must be deeper than casing shoe (and liner if present)');
+      StringToMemo('FormHoleData.Save: Error: Hole section #1 depth must be deeper than casing shoe ');
       OHSection1TDData.SetFocus;
-      Exit;
+      CheckWellSection1:=False;
     end
     else
     Begin
       Data.Hole[1,1]     :=_WellHole[1,1];
-      Data.Hole[1,2]     :=_WellHole[1,2];
       StringToMemo('FormHoleData.Save: Data.Hole[1,1] = '+ OHSection1TDData.Text + ' ' + UoMLabel[1]); { depth }
+      CheckWellSection1:=True;
+    End;
+
+
+    StringToMemo('FormHoleData.Save: Hole section #1 ID = '+OHSection1IDData.Text);
+    if ((_WellHole[1,2] = 0))
+    then
+    Begin
+      ShowMessage('Hole section #1 ID must be greater than zero and less casing ID (if present)');
+      StringToMemo('FormHoleData.Save: Hole section #1 ID must be greater than zero and less casing ID (if present)');
+      OHSection1IDData.SetFocus;
+      CheckWellSection1:=False;
+    end
+    else
+    Begin
+      Data.Hole[1,2]     :=_WellHole[1,2];
       StringToMemo('FormHoleData.Save: Data.Hole[1,2] = '+ OHSection1IDData.Text + ' ' + UoMLabel[8]); { inches }
+      CheckWellSection1:=True;
     End;
   end;
 
-  Procedure CheckWellSection2;
+  Function CheckWellSection2 : boolean;
   Begin
     if (_WellHole[2,1] <= _WellHole[1,1])
     then
@@ -578,7 +618,7 @@ procedure THoleDataForm.SaveButtonClick(Sender: TObject);
       ShowMessage('Hole section #2 depth must be deeper than hole section #1 depth');
       StringToMemo('FormHoleData.Save: Error: Hole section #2 depth must be deeper than hole section #1 depth');
       OHSection2TDData.SetFocus;
-      Exit;
+      CheckWellSection2:=False;
     end
     else
     Begin
@@ -586,10 +626,11 @@ procedure THoleDataForm.SaveButtonClick(Sender: TObject);
       Data.Hole[2,2]     :=_WellHole[2,2];
       StringToMemo('FormHoleData.Save: Data.Hole[2,1] = '+ OHSection2TDData.Text + ' ' + UoMLabel[1]); { depth }
       StringToMemo('FormHoleData.Save: Data.Hole[2,2] = '+ OHSection2IDData.Text + ' ' + UoMLabel[8]); { inches }
+      CheckWellSection2:=True;
     End;
   end;
 
-  Procedure CheckWellSection3;
+  Function CheckWellSection3 : boolean;
   Begin
     if (_WellHole[3,1] <= _WellHole[2,1])
     then
@@ -597,7 +638,7 @@ procedure THoleDataForm.SaveButtonClick(Sender: TObject);
       ShowMessage('Hole section #3 depth must be deeper than hole section #2 depth');
       StringToMemo('FormHoleData.Save: Error: Hole section #3 depth must be deeper than hole section #2 depth');
       OHSection3TDData.SetFocus;
-      Exit;
+      CheckWellSection3:=False;
     end
     else
     Begin
@@ -605,20 +646,33 @@ procedure THoleDataForm.SaveButtonClick(Sender: TObject);
       Data.Hole[3,2]     :=_WellHole[3,2];
       StringToMemo('FormHoleData.Save: Data.Hole[3,1] = '+ OHSection3TDData.Text + ' ' + UoMLabel[1]); { depth }
       StringToMemo('FormHoleData.Save: Data.Hole[3,2] = '+ OHSection3IDData.Text + ' ' + UoMLabel[8]); { inches }
+      CheckWellSection3:=True;
     End;
   end;
 
   begin
-  StringToMemo('FormHoleData.Save');
+  StringToMemo('FormHoleData.Save ..............................................');
 
   Data.Casing          :=_WellCasing;
   StringToMemo('FormHoleData.Save: Data.Casing = '+ IntToStr(CasingYNRadioGroup.ItemIndex));
   Data.Liner           :=_WellLiner;
   StringToMemo('FormHoleData.Save: Data.Liner = '+ IntToStr(LinerYNRadioGroup.ItemIndex));
-  Data.CasingTD        :=_WellCasingTD;
-  StringToMemo('FormHoleData.Save: Data.CasingTD = '+ CasingShoeDepthData.Text + ' ' + UoMLabel[1]); { depth }
-  Data.CasingID        :=_WellCasingID;
-  StringToMemo('FormHoleData.Save: Data.CasingID = '+ CasingIDData.Text + ' ' + UoMLabel[8]); { inches }
+
+    if _WellCasingTD <= Data.WaterDepth
+    then
+      Begin
+        ShowMessage('Casing shoe must be deeper than water depth');
+        StringToMemo('FormHoleData.Save: Error: Casing shoe must be deeper than water depth');
+        CasingShoeDepthData.SetFocus;
+        Exit;
+      end
+    else
+    Begin
+      Data.CasingTD:=_WellCasingTD;
+      StringToMemo('FormHoleData.Save: Data.CasingTD = '+ CasingShoeDepthData.Text + ' ' + UoMLabel[1]); { depth }
+      Data.CasingID        :=_WellCasingID;
+      StringToMemo('FormHoleData.Save: Data.CasingID = '+ CasingIDData.Text + ' ' + UoMLabel[8]); { inches }
+    end;
 
   Data.Liner           :=_WellLiner;
   if _WellLinerTopTD > _WellCasingTD
@@ -657,16 +711,13 @@ procedure THoleDataForm.SaveButtonClick(Sender: TObject);
 
   Case Data.MaxHoles of    { very ugly...cant interate through objects but it works...}
     1 : Begin
-          CheckWellSection1;
+          if not CheckWellSection1 then exit;
         End;
     2 : Begin
-          CheckWellSection1;
-          CheckWellSection2;
+          if (not CheckWellSection1) or (not CheckWellSection2) then exit;
         End;
     3 : Begin
-          CheckWellSection1;
-          CheckWellSection2;
-          CheckWellSection2;
+          if (not CheckWellSection1) or (not CheckWellSection2) or (not CheckWellSection3) then exit;
         End;
    End;
 

@@ -44,7 +44,7 @@ Begin
 
     StringToMemo('DrillSimFile.LoadData: Loaded '   + CurrentFQFileName);
     StringToMemo('DrillSimFile.LoadData: Operator ' + Data.WellOperator);
-    StringToMemo('DrillSimFile.LoadData: Operator ' + Data.WellName);
+    StringToMemo('DrillSimFile.LoadData: Well Name ' + Data.WellName);
 
   except
     on E: EInOutError do
