@@ -1,0 +1,8 @@
+object MudDataForm: TMudDataForm
+  Left = 684
+  Height = 240
+  Top = 97
+  Width = 320
+  Caption = 'Drilling Fluid Data'
+  LCLVersion = '1.2.6.0'
+end

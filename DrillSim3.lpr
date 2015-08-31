@@ -19,7 +19,8 @@ uses
   FormGeneralData,
   FormDisplayWellData,
   FormHoleData,
-  FormUnitsOfMeasure, FormConfigDefaults;
+  FormUnitsOfMeasure, FormConfigDefaults, FormPipeData, FormBitData,
+formmuddata, FormPumpData;
 
 {$R *.res}
 
@@ -44,12 +45,19 @@ begin
   StringToMemo('Initialise Form: System Defaults');
   Application.CreateForm(THoleDataForm, HoleDataForm);
   StringToMemo('Initialise Form: Well Hole Profile');
+  Application.CreateForm(TPipeDataForm, PipeDataForm);
+  StringToMemo('Initialise Form: Well Pipe Profile');
+  Application.CreateForm(TBitDataForm, BitDataForm);
+  StringToMemo('Initialise Form: Well Drill Bit Data');
+  Application.CreateForm(TMudDataForm, MudDataForm);
+  StringToMemo('Initialise Form: Well Drilling Fluid Data');
+  Application.CreateForm(TPumpDataForm, PumpDataForm);
+  Application.Run;
 
   StringToMemo('===============================');
   StringToMemo('Form Initialisation complete.');
   StringToMemo('DrillSim3.lpr : Application.Run');
   StringToMemo('===============================');
-  Application.Run;
 
 
   // if ExitCheck then SaveData;       <- where's this set?

@@ -139,23 +139,23 @@ begin
          CasingYNRadioGroup.ItemIndex:=0;
 
          CasingShoeDepthData.Enabled:=False;
-         //CasingShoeDepthData.Caption:=FloatToStr(0);  { depth }
+         //CasingShoeDepthData.Text:=FloatToStr(0);  { depth }
 
          CasingIDData.Enabled:=False;
-         //CasingIDData.Caption:=FloatToStr(0);   { inches }
+         //CasingIDData.Text:=FloatToStr(0);   { inches }
 
          _WellLiner:=False;                  { ...so there can be no liner either }
          LinerYNRadioGroup.ItemIndex:=0;
          LinerYNRadioGroup.Enabled:=False;
 
          LinerTopDepthData.Enabled:=False;
-         //LinerTopDepthData.Caption:=FloatToStr(0);  { depth }
+         //LinerTopDepthData.Text:=FloatToStr(0);  { depth }
 
          LinerBottomDepthData.Enabled:=False;
-         //LinerBottomDepthData.Caption:=FloatToStr(0);  { depth }
+         //LinerBottomDepthData.Text:=FloatToStr(0);  { depth }
 
          LinerIDData.Enabled:=False;
-         //LinerIDData.Caption:=FloatToStr(0);   { inches }
+         //LinerIDData.Text:=FloatToStr(0);   { inches }
        End;
     1: Begin
          _WellCasing:= True;               { there is casing... }
@@ -163,10 +163,10 @@ begin
         LinerYNRadioGroup.Enabled:=True;
 
         CasingShoeDepthData.Enabled:=True;
-        CasingShoeDepthData.Caption:=FloatToStr(Round2(Data.CasingTD*UoMConverter[1],2));  { depth }
+        CasingShoeDepthData.Text:=FloatToStr(Round2(Data.CasingTD*UoMConverter[1],2));  { depth }
 
         CasingIDData.Enabled:=True;
-        CasingIDData.Caption:=FloatToStr(Data.CasingID*UoMConverter[8]);   { inches }
+        CasingIDData.Text:=FloatToStr(Data.CasingID*UoMConverter[8]);   { inches }
 
       end;
    End;
@@ -180,25 +180,25 @@ begin
          LinerYNRadioGroup.ItemIndex:=0;
 
          LinerTopDepthData.Enabled:=False;
-         //LinerTopDepthData.Caption:=FloatToStr(0);  { depth }
+         //LinerTopDepthData.Text:=FloatToStr(0);  { depth }
 
          LinerBottomDepthData.Enabled:=False;
-         //LinerBottomDepthData.Caption:=FloatToStr(0);  { depth }
+         //LinerBottomDepthData.Text:=FloatToStr(0);  { depth }
 
          LinerIDData.Enabled:=False;
-         //LinerIDData.Caption:=FloatToStr(0);   { inches }
+         //LinerIDData.Text:=FloatToStr(0);   { inches }
        End;
     1: Begin
         _WellLiner:=True;                  { there is a Liner }
         LinerYNRadioGroup.ItemIndex:=1;
         LinerTopDepthData.Enabled:=True;
-        //LinerTopDepthData.Caption:=FloatToStr(Round2(Data.LinerTopTD*UoMConverter[1],2));  { depth }
+        //LinerTopDepthData.Text:=FloatToStr(Round2(Data.LinerTopTD*UoMConverter[1],2));  { depth }
 
         LinerBottomDepthData.Enabled:=True;
-        //LinerBottomDepthData.Caption:=FloatToStr(Round2(Data.LinerBottomTD*UoMConverter[1],2));  { depth }
+        //LinerBottomDepthData.Text:=FloatToStr(Round2(Data.LinerBottomTD*UoMConverter[1],2));  { depth }
 
         LinerIDData.Enabled:=True;
-        //LinerIDData.Caption:=FloatToStr(Data.LinerID*UoMConverter[8]);   { inches }
+        //LinerIDData.Text:=FloatToStr(Data.LinerID*UoMConverter[8]);   { inches }
       end;
    End;
 end;
@@ -207,86 +207,85 @@ procedure THoleDataForm.NumOHSectionsComboBoxChange(Sender: TObject);
 begin
   case NumOHSectionsComboBox.ItemIndex of
     0: Begin
-         _WellMaxHoles:=0;
+         _WellMaxHoles:=0;                      { nothing in the OH depth boxes }
          OHSection1TDData.Enabled:=False;
          OHSection1IDData.Enabled:=False;
-         //OHSection1TDData.Text:=FloatToStr(0);  { depth }
+         //OHSection1TDData.Text:=FloatToStr(0);  { user depth }
          //OHSection1TDData.Text:=FloatToStr(0);  { inches }
 
          OHSection2TDData.Enabled:=False;
          OHSection2IDData.Enabled:=False;
-         //OHSection2TDData.Text:=FloatToStr(0);  { depth }
+         //OHSection2TDData.Text:=FloatToStr(0);  { user depth }
          //OHSection2TDData.Text:=FloatToStr(0);  { inches }
 
          OHSection3TDData.Enabled:=False;
          OHSection3IDData.Enabled:=False;
-         //OHSection3TDData.Text:=FloatToStr(0);  { depth }
+         //OHSection3TDData.Text:=FloatToStr(0);  { user depth }
          //OHSection3TDData.Text:=FloatToStr(0);  { inches }
        end;
 
     1: Begin
          _WellMaxHoles:=1;
-         OHSection1TDData.Enabled:=True;
+         OHSection1TDData.Enabled:=True;        { just the first OH displayed }
          OHSection1IDData.Enabled:=True;
-         //OHSection1TDData.Text:=FloatToStr(Round2(Data.Hole[1,1]*UoMConverter[1],2));  { depth }
-         //OHSection1TDData.Text:=FloatToStr(Round2(Data.Hole[1,2]*UoMConverter[8],2));  { inches }
+         //OHSection1TDData.Text:=FloatToStr(Round2(Data.Hole[1,1]*UoMConverter[1],2));  { API->user depth }
+         //OHSection1TDData.Text:=FloatToStr(Round2(Data.Hole[1,2]*UoMConverter[8],4));  { inches }
 
          OHSection2TDData.Enabled:=False;
          OHSection2IDData.Enabled:=False;
-         //OHSection2TDData.Text:=FloatToStr(0);  { depth }
+         //OHSection2TDData.Text:=FloatToStr(0);  { user depth }
          //OHSection2TDData.Text:=FloatToStr(0);  { inches }
 
          OHSection3TDData.Enabled:=False;
          OHSection3IDData.Enabled:=False;
-         //OHSection3TDData.Text:=FloatToStr(0);  { depth }
+         //OHSection3TDData.Text:=FloatToStr(0);  { user depth }
          //OHSection3TDData.Text:=FloatToStr(0);  { inches }
        end;
 
   2: Begin
        _WellMaxHoles:=2;
-       OHSection1TDData.Enabled:=True;
+       OHSection1TDData.Enabled:=True;           { display the first and second OH }
        OHSection1IDData.Enabled:=True;
-       //OHSection1TDData.Text:=FloatToStr(Round2(Data.Hole[1,1]*UoMConverter[1],2));  { depth }
-       //OHSection1TDData.Text:=FloatToStr(Round2(Data.Hole[1,2]*UoMConverter[8],2));  { inches }
+       //OHSection1TDData.Text:=FloatToStr(Round2(Data.Hole[1,1]*UoMConverter[1],2));  { API->user depth }
+       //OHSection1TDData.Text:=FloatToStr(Round2(Data.Hole[1,2]*UoMConverter[8],4));  { inches }
 
        OHSection2TDData.Enabled:=True;
        OHSection2IDData.Enabled:=True;
-       //OHSection2TDData.Text:=FloatToStr(Round2(Data.Hole[1,1]*UoMConverter[1],2));  { depth }
-       //OHSection2TDData.Text:=FloatToStr(Round2(Data.Hole[1,2]*UoMConverter[8],2));  { inches }
+       //OHSection2TDData.Text:=FloatToStr(Round2(Data.Hole[1,1]*UoMConverter[1],2));  { API->user depth }
+       //OHSection2TDData.Text:=FloatToStr(Round2(Data.Hole[1,2]*UoMConverter[8],4));  { inches }
 
        OHSection3TDData.Enabled:=False;
        OHSection3IDData.Enabled:=False;
-       //OHSection3TDData.Text:=FloatToStr(0);  { depth }
+       //OHSection3TDData.Text:=FloatToStr(0);  { user depth }
        //OHSection3TDData.Text:=FloatToStr(0);  { inches }
      end;
 
    3: Begin
         _WellMaxHoles:=3;
-        OHSection1TDData.Enabled:=True;
+        OHSection1TDData.Enabled:=True;             { All OH data displayed }
         OHSection1IDData.Enabled:=True;
-        //OHSection1TDData.Text:=FloatToStr(Round2(Data.Hole[1,1]*UoMConverter[1],2));  { depth }
-        //OHSection1TDData.Text:=FloatToStr(Round2(Data.Hole[1,2]*UoMConverter[8],2));  { inches }
+        //OHSection1TDData.Text:=FloatToStr(Round2(Data.Hole[1,1]*UoMConverter[1],2));  { API->user depth }
+        //OHSection1TDData.Text:=FloatToStr(Round2(Data.Hole[1,2]*UoMConverter[8],4));  { inches }
 
         OHSection2TDData.Enabled:=True;
         OHSection2IDData.Enabled:=True;
-        //OHSection2TDData.Text:=FloatToStr(Round2(Data.Hole[1,1]*UoMConverter[1],2));  { depth }
-        //OHSection2TDData.Text:=FloatToStr(Round2(Data.Hole[1,2]*UoMConverter[8],2));  { inches }
+        //OHSection2TDData.Text:=FloatToStr(Round2(Data.Hole[1,1]*UoMConverter[1],2));  { API->user depth }
+        //OHSection2TDData.Text:=FloatToStr(Round2(Data.Hole[1,2]*UoMConverter[8],4));  { inches }
 
         OHSection3TDData.Enabled:=True;
         OHSection3IDData.Enabled:=True;
-        //OHSection3TDData.Text:=FloatToStr(Round2(Data.Hole[1,1]*UoMConverter[1],2));  { depth }
-        //OHSection3TDData.Text:=FloatToStr(Round2(Data.Hole[1,2]*UoMConverter[8],2));  { inches }
+        //OHSection3TDData.Text:=FloatToStr(Round2(Data.Hole[1,1]*UoMConverter[1],2));  { API->user depth }
+        //OHSection3TDData.Text:=FloatToStr(Round2(Data.Hole[1,2]*UoMConverter[8],4));  { inches }
       end;
     end;
-
 end;
 
-procedure THoleDataForm.CasingShoeDepthDataChange(Sender: TObject);
+procedure THoleDataForm.CasingShoeDepthDataChange(Sender: TObject);   { set _WellCasingTD with API value }
 begin
   if not ((TEdit(Sender).Text = '-')
       or (TEdit(Sender).Text = DefaultFormatSettings.DecimalSeparator)
       or (TEdit(Sender).Text = ''))
-          then _WellCasingTD:=Round2(StrToFloat(CasingShoeDepthData.Text)/UoMConverter[1],2); { depth }
+          then _WellCasingTD:=Round2(StrToFloat(CasingShoeDepthData.Text)/UoMConverter[1],2); { User->API depth }
 end;
 
 procedure THoleDataForm.CasingIDDataChange(Sender: TObject);
@@ -294,23 +293,23 @@ begin
   if not ((TEdit(Sender).Text = '-')
       or (TEdit(Sender).Text = DefaultFormatSettings.DecimalSeparator)
       or (TEdit(Sender).Text = ''))
-          then _WellCasingID:=Round2(StrToFloat(CasingIDData.Text)/UoMConverter[8],2); { inches }
+          then _WellCasingID:=Round2(StrToFloat(CasingIDData.Text)/UoMConverter[8],4); { inches }
 end;
 
-procedure THoleDataForm.LinerTopDepthDataChange(Sender: TObject);
+procedure THoleDataForm.LinerTopDepthDataChange(Sender: TObject);      { set _WellLinerTopTD with API value }
 begin
   if not ((TEdit(Sender).Text = '-')
       or (TEdit(Sender).Text = DefaultFormatSettings.DecimalSeparator)
       or (TEdit(Sender).Text = ''))
-          then _WellLinerTopTD:=Round2(StrToFloat(LinerTopDepthData.Text)/UoMConverter[1],2); { depth }
+          then _WellLinerTopTD:=Round2(StrToFloat(LinerTopDepthData.Text)/UoMConverter[1],2); { User->API depth }
 end;
 
-procedure THoleDataForm.LinerBottomDepthDataChange(Sender: TObject);
+procedure THoleDataForm.LinerBottomDepthDataChange(Sender: TObject);    { set _WellLinerBottomTDTD with API value }
 begin
   if not ((TEdit(Sender).Text = '-')
       or (TEdit(Sender).Text = DefaultFormatSettings.DecimalSeparator)
       or (TEdit(Sender).Text = ''))
-          then _WellLinerBottomTD:=Round2(StrToFloat(LinerBottomDepthData.Text)/UoMConverter[1],2); { depth }
+          then _WellLinerBottomTD:=Round2(StrToFloat(LinerBottomDepthData.Text)/UoMConverter[1],2); { User->API depth }
 end;
 
 procedure THoleDataForm.LinerIDDataChange(Sender: TObject);
@@ -318,15 +317,15 @@ begin
   if not ((TEdit(Sender).Text = '-')
       or (TEdit(Sender).Text = DefaultFormatSettings.DecimalSeparator)
       or (TEdit(Sender).Text = ''))
-          then _WellLinerID:=Round2(StrToFloat(LinerIDData.Text)/UoMConverter[8],2); { inches }
+          then _WellLinerID:=Round2(StrToFloat(LinerIDData.Text)/UoMConverter[8],4); { inches }
 end;
 
-procedure THoleDataForm.OHSection1TDDataChange(Sender: TObject);
+procedure THoleDataForm.OHSection1TDDataChange(Sender: TObject);        { set _WellHole[1,1] with API value }
 begin
   if not ((TEdit(Sender).Text = '-')
       or (TEdit(Sender).Text = DefaultFormatSettings.DecimalSeparator)
       or (TEdit(Sender).Text = ''))
-          then _WellHole[1,1]:=Round2(StrToFloat(OHSection1TDData.Text)/UoMConverter[1],2); { depth }
+          then _WellHole[1,1]:=Round2(StrToFloat(OHSection1TDData.Text)/UoMConverter[1],2); { User->API depth }
 end;
 
 procedure THoleDataForm.OHSection1IDDataChange(Sender: TObject);
@@ -334,15 +333,15 @@ begin
   if not ((TEdit(Sender).Text = '-')
       or (TEdit(Sender).Text = DefaultFormatSettings.DecimalSeparator)
       or (TEdit(Sender).Text = ''))
-          then _WellHole[1,2]:=Round2(StrToFloat(OHSection1IDData.Text)/UoMConverter[8],2); { inches }
+          then _WellHole[1,2]:=Round2(StrToFloat(OHSection1IDData.Text)/UoMConverter[8],4); { inches }
 end;
 
-procedure THoleDataForm.OHSection2TDDataChange(Sender: TObject);
+procedure THoleDataForm.OHSection2TDDataChange(Sender: TObject);        { set _WellHole[2,1] with API value }
 begin
   if not ((TEdit(Sender).Text = '-')
       or (TEdit(Sender).Text = DefaultFormatSettings.DecimalSeparator)
       or (TEdit(Sender).Text = ''))
-          then _WellHole[2,1]:=Round2(StrToFloat(OHSection2TDData.Text)/UoMConverter[1],2); { depth }
+          then _WellHole[2,1]:=Round2(StrToFloat(OHSection2TDData.Text)/UoMConverter[1],2); { User->API depth }
 end;
 
 procedure THoleDataForm.OHSection2IDDataChange(Sender: TObject);
@@ -350,15 +349,15 @@ begin
   if not ((TEdit(Sender).Text = '-')
       or (TEdit(Sender).Text = DefaultFormatSettings.DecimalSeparator)
       or (TEdit(Sender).Text = ''))
-          then _WellHole[2,2]:=Round2(StrToFloat(OHSection2IDData.Text)/UoMConverter[8],2); { inches }
+          then _WellHole[2,2]:=Round2(StrToFloat(OHSection2IDData.Text)/UoMConverter[8],4); { inches }
 end;
 
-procedure THoleDataForm.OHSection3TDDataChange(Sender: TObject);
+procedure THoleDataForm.OHSection3TDDataChange(Sender: TObject);        { set _WellHole[3,1] with API value }
 begin
   if not ((TEdit(Sender).Text = '-')
       or (TEdit(Sender).Text = DefaultFormatSettings.DecimalSeparator)
       or (TEdit(Sender).Text = ''))
-          then _WellHole[3,1]:=Round2(StrToFloat(OHSection3TDData.Text)/UoMConverter[1],2); { depth }
+          then _WellHole[3,1]:=Round2(StrToFloat(OHSection3TDData.Text)/UoMConverter[1],2); { User->API depth }
 end;
 
 procedure THoleDataForm.OHSection3IDDataChange(Sender: TObject);
@@ -366,7 +365,7 @@ begin
   if not ((TEdit(Sender).Text = '-')
       or (TEdit(Sender).Text = DefaultFormatSettings.DecimalSeparator)
       or (TEdit(Sender).Text = ''))
-          then _WellHole[3,2]:=Round2(StrToFloat(OHSection3IDData.Text)/UoMConverter[8],2); { inches }
+          then _WellHole[3,2]:=Round2(StrToFloat(OHSection3IDData.Text)/UoMConverter[8],4); { inches }
 end;
 
 
@@ -409,9 +408,9 @@ begin
     Begin
       CasingYNRadioGroup.ItemIndex:=1;
       CasingShoeDepthData.Enabled:=True;
-      CasingShoeDepthData.Caption:=FloatToStr(Round2(Data.CasingTD*UoMConverter[1],2));  { depth }
+      CasingShoeDepthData.Text:=FloatToStr(Round2(Data.CasingTD*UoMConverter[1],2));  { API->user depth }
       CasingIDData.Enabled:=True;
-      CasingIDData.Caption:=FloatToStr(Data.CasingID*UoMConverter[8]);   { inches }
+      CasingIDData.Text:=FloatToStr(Data.CasingID*UoMConverter[8]);   { inches }
 
       if Data.Liner=True                     { is there a liner with this casing? }
       then
@@ -420,25 +419,25 @@ begin
         LinerYNRadioGroup.Enabled:=True;
 
         LinerTopDepthData.Enabled:=True;
-        LinerTopDepthData.Caption:=FloatToStr(Round2(Data.LinerTopTD*UoMConverter[1],2));  { depth }
+        LinerTopDepthData.Text:=FloatToStr(Round2(Data.LinerTopTD*UoMConverter[1],2));  { API->user depth }
 
         LinerBottomDepthData.Enabled:=True;
-        LinerBottomDepthData.Caption:=FloatToStr(Round2(Data.LinerBottomTD*UoMConverter[1],2));  { depth }
+        LinerBottomDepthData.Text:=FloatToStr(Round2(Data.LinerBottomTD*UoMConverter[1],2));  { API->user depth }
 
         LinerIDData.Enabled:=True;
-        LinerIDData.Caption:=FloatToStr(Data.LinerID*UoMConverter[8]);   { inches }
+        LinerIDData.Text:=FloatToStr(Data.LinerID*UoMConverter[8]);   { inches }
       end else
       Begin                                     { there is no liner with this casing }
         LinerYNRadioGroup.ItemIndex:=0;
 
         LinerTopDepthData.Enabled:=False;
-        LinerTopDepthData.Caption:=FloatToStr(0);  { depth }
+        LinerTopDepthData.Text:=FloatToStr(0);  { user depth }
 
         LinerBottomDepthData.Enabled:=False;
-        LinerBottomDepthData.Caption:=FloatToStr(0);  { depth }
+        LinerBottomDepthData.Text:=FloatToStr(0);  { user depth }
 
         LinerIDData.Enabled:=False;
-        LinerIDData.Caption:=FloatToStr(0);   { inches }
+        LinerIDData.Text:=FloatToStr(0);   { inches }
       end;
     end
     else                         { there is no casing...so no liner either }
@@ -446,57 +445,60 @@ begin
       CasingYNRadioGroup.ItemIndex:=0;
 
       CasingShoeDepthData.Enabled:=False;
-      CasingShoeDepthData.Caption:=FloatToStr(0);   { depth }
+      CasingShoeDepthData.Text:=FloatToStr(0);   { user depth }
 
       CasingIDData.Enabled:=False;
-      CasingIDData.Caption:=FloatToStr(0);          { inches }
+      CasingIDData.Text:=FloatToStr(0);          { inches }
                                  { ...so there can be no liner }
       LinerYNRadioGroup.ItemIndex:=0;
       LinerYNRadioGroup.Enabled:=False;
 
       LinerTopDepthData.Enabled:=False;
-      LinerTopDepthData.Caption:=FloatToStr(0);     { depth }
+      LinerTopDepthData.Text:=FloatToStr(0);     { user depth }
 
       LinerBottomDepthData.Enabled:=False;
-      LinerBottomDepthData.Caption:=FloatToStr(0);  { depth }
+      LinerBottomDepthData.Text:=FloatToStr(0);  { user depth }
 
       LinerIDData.Enabled:=False;
-      LinerIDData.Caption:=FloatToStr(0);           { inches }
+      LinerIDData.Text:=FloatToStr(0);           { inches }
     end;
 
+    _WellMaxHoles:=Data.MaxHoles;
     case Data.MaxHoles of
       0: Begin
            NumOHSectionsComboBox.ItemIndex:=0;
            OHSection1TDData.Enabled:=False;
            OHSection1IDData.Enabled:=False;
-           //OHSection1TDData.Text:=FloatToStr(0);  { depth }
+           //OHSection1TDData.Text:=FloatToStr(0);  { user depth }
            //OHSection1TDData.Text:=FloatToStr(0);  { inches }
 
            OHSection2TDData.Enabled:=False;
            OHSection2IDData.Enabled:=False;
-           //OHSection2TDData.Text:=FloatToStr(0);  { depth }
+           //OHSection2TDData.Text:=FloatToStr(0);  { user depth }
            //OHSection2TDData.Text:=FloatToStr(0);  { inches }
 
            OHSection3TDData.Enabled:=False;
            OHSection3IDData.Enabled:=False;
-           //OHSection3TDData.Text:=FloatToStr(0);  { depth }
+           //OHSection3TDData.Text:=FloatToStr(0);  { user depth }
            //OHSection3TDData.Text:=FloatToStr(0);  { inches }
          end;
 
       1: Begin
            NumOHSectionsComboBox.ItemIndex:=1;
            OHSection1TDData.Enabled:=True;
-           OHSection1TDData.Text:=FloatToStr(Round2(Data.Hole[1,1]*UoMConverter[1],2));  { depth }
+           OHSection1TDData.Text:=FloatToStr(Round2(Data.Hole[1,1]*UoMConverter[1],2));  { API->user depth }
            OHSection1IDData.Enabled:=True;
-           OHSection1IDData.Text:=FloatToStr(Round2(Data.Hole[1,2]*UoMConverter[8],2));  { inches }
+           OHSection1IDData.Text:=FloatToStr(Round2(Data.Hole[1,2]*UoMConverter[8],4));  { inches }
+           _WellHole[1,1]:=Data.Hole[1,1];
+           _WellHole[1,2]:=Data.Hole[1,2];
 
            OHSection2TDData.Enabled:=False;
-           //OHSection2TDData.Text:=FloatToStr(0);  { depth }
+           //OHSection2TDData.Text:=FloatToStr(0);  { user depth }
            OHSection2IDData.Enabled:=False;
            //OHSection2IDData.Text:=FloatToStr(0);  { inches }
 
            OHSection3TDData.Enabled:=False;
-           //OHSection3TDData.Text:=FloatToStr(0);  { depth }
+           //OHSection3TDData.Text:=FloatToStr(0);  { user depth }
            OHSection3IDData.Enabled:=False;
            //OHSection3IDData.Text:=FloatToStr(0);  { inches }
          end;
@@ -504,17 +506,21 @@ begin
       2: Begin
            NumOHSectionsComboBox.ItemIndex:=2;
            OHSection1TDData.Enabled:=True;
-           OHSection1TDData.Text:=FloatToStr(Round2(Data.Hole[1,1]*UoMConverter[1],2));  { depth }
+           OHSection1TDData.Text:=FloatToStr(Round2(Data.Hole[1,1]*UoMConverter[1],2));  { API->user depth }
            OHSection1IDData.Enabled:=True;
-           OHSection1IDData.Text:=FloatToStr(Round2(Data.Hole[1,2]*UoMConverter[8],2));  { inches }
+           OHSection1IDData.Text:=FloatToStr(Round2(Data.Hole[1,2]*UoMConverter[8],4));  { inches }
+           _WellHole[1,1]:=Data.Hole[1,1];
+           _WellHole[1,2]:=Data.Hole[1,2];
 
            OHSection2TDData.Enabled:=True;
-           OHSection2TDData.Text:=FloatToStr(Round2(Data.Hole[1,1]*UoMConverter[1],2));  { depth }
+           OHSection2TDData.Text:=FloatToStr(Round2(Data.Hole[1,1]*UoMConverter[1],2));  { API->user depth }
            OHSection2IDData.Enabled:=True;
-           OHSection2IDData.Text:=FloatToStr(Round2(Data.Hole[1,2]*UoMConverter[8],2));  { inches }
+           OHSection2IDData.Text:=FloatToStr(Round2(Data.Hole[1,2]*UoMConverter[8],4));  { inches }
+           _WellHole[2,1]:=Data.Hole[2,1];
+           _WellHole[2,2]:=Data.Hole[2,2];
 
            OHSection3TDData.Enabled:=False;
-           //OHSection3TDData.Text:=FloatToStr(0);  { depth }
+           //OHSection3TDData.Text:=FloatToStr(0);  { user depth }
            OHSection3IDData.Enabled:=False;
            //OHSection3IDData.Text:=FloatToStr(0);  { inches }
          end;
@@ -522,19 +528,25 @@ begin
       3: Begin
            NumOHSectionsComboBox.ItemIndex:=3;
            OHSection1TDData.Enabled:=True;
-           OHSection1TDData.Text:=FloatToStr(Round2(Data.Hole[1,1]*UoMConverter[1],2));  { depth }
+           OHSection1TDData.Text:=FloatToStr(Round2(Data.Hole[1,1]*UoMConverter[1],2));  { API->user depth }
            OHSection1IDData.Enabled:=True;
-           OHSection1IDData.Text:=FloatToStr(Round2(Data.Hole[1,2]*UoMConverter[8],2));  { inches }
+           OHSection1IDData.Text:=FloatToStr(Round2(Data.Hole[1,2]*UoMConverter[8],4));  { inches }
+           _WellHole[1,1]:=Data.Hole[1,1];
+           _WellHole[1,2]:=Data.Hole[1,2];
 
            OHSection2TDData.Enabled:=True;
-           OHSection2TDData.Text:=FloatToStr(Round2(Data.Hole[2,1]*UoMConverter[1],2));  { depth }
+           OHSection2TDData.Text:=FloatToStr(Round2(Data.Hole[2,1]*UoMConverter[1],2));  { API->user depth }
            OHSection2IDData.Enabled:=True;
-           OHSection2IDData.Text:=FloatToStr(Round2(Data.Hole[2,2]*UoMConverter[8],2));  { inches }
+           OHSection2IDData.Text:=FloatToStr(Round2(Data.Hole[2,2]*UoMConverter[8],4));  { inches }
+           _WellHole[2,1]:=Data.Hole[2,1];
+           _WellHole[2,2]:=Data.Hole[2,2];
 
            OHSection3TDData.Enabled:=True;
-           OHSection3TDData.Text:=FloatToStr(Round2(Data.Hole[3,1]*UoMConverter[1],2));  { depth }
+           OHSection3TDData.Text:=FloatToStr(Round2(Data.Hole[3,1]*UoMConverter[1],2));  { API->user depth }
            OHSection3IDData.Enabled:=True;
-           OHSection3IDData.Text:=FloatToStr(Round2(Data.Hole[3,2]*UoMConverter[8],2));  { inches }
+           OHSection3IDData.Text:=FloatToStr(Round2(Data.Hole[3,2]*UoMConverter[8],4));  { inches }
+           _WellHole[3,1]:=Data.Hole[3,1];
+           _WellHole[3,2]:=Data.Hole[3,2];
          end;
     end;
 
@@ -542,14 +554,14 @@ begin
 
     // units of measure labels
 
-    CasingShoeDepthUoMLabel.Caption:=UoMLabel[1];      { depth }
+    CasingShoeDepthUoMLabel.Caption:=UoMLabel[1];      { uder depth }
     CasingIDUoMLabel.Caption:=UoMLabel[8];             { inches }
 
-    LinerTopDepthUoMLabel.Caption:=UoMLabel[1];        { depth }
-    LinerBottomDepthUoMLabel.Caption:=UoMLabel[1];     { depth }
+    LinerTopDepthUoMLabel.Caption:=UoMLabel[1];        { user depth }
+    LinerBottomDepthUoMLabel.Caption:=UoMLabel[1];     { user depth }
     LinerIDUoMLabel.Caption:=UoMLabel[8];              { inches }
 
-    OHTDUoMLabel.Caption:=UoMLabel[1];         { depth }
+    OHTDUoMLabel.Caption:=UoMLabel[1];         { user depth }
     OHIDUoMLabel.Caption:=UoMLabel[8];         { inches }
 end;
 
@@ -572,154 +584,340 @@ end;
 
 
 procedure THoleDataForm.SaveButtonClick(Sender: TObject);
+var Error : boolean;
 
   { Validate hole section input : 3 functions }
-  Function CheckWellSection1 : boolean;
+  { ------------- OH Section #1 Checks ----------------}
+  Function WellSection1isOK : boolean;
+  var
+    TDisOK : boolean;
+    IDisOK : boolean;
+
   Begin
-    if ((_WellHole[1,1] <= _WellCasingTD) and (Data.Casing=True)) or    { total OH depth must be greater than any metal }
-       ((_WellHole[1,1] <= _WellLinerBottomTD) and (Data.Liner=True))
+    StringToMemo('Validating Well Section 1...');
+    if ((_WellHole[1,1] <= _WellCasingTD) and (Data.Casing=True)) or     { total OH depth must be greater than casing if present }
+       ((_WellHole[1,1] <= _WellLinerBottomTD) and (Data.Liner=True)) or { total OH depth must be greater than liner if present }
+       ((_WellHole[1,1] >= _WellHole[2,1]) and (_WellMaxHoles>1))        { total OH depth must be less than OH 2 depth if 2 OHs }
     then
     Begin
-      ShowMessage('Hole section #1 depth must be deeper than casing shoe (and liner if present)');
-      StringToMemo('FormHoleData.Save: Error: Hole section #1 depth must be deeper than casing shoe ');
+      ShowMessage('Hole section 1 depth must be deeper than casing shoe and liner shoe (if present) and less than OD 2 TD (if present)');
+      StringToMemo('FormHoleData.Save: Error: Hole section 1 depth must be deeper than casing shoe and liner shoe (if present) and less than OD 2 TD (if present)');
       OHSection1TDData.SetFocus;
-      CheckWellSection1:=False;
+      TDisOK:=False;
     end
     else
     Begin
-      Data.Hole[1,1]     :=_WellHole[1,1];
-      StringToMemo('FormHoleData.Save: Data.Hole[1,1] = '+ OHSection1TDData.Text + ' ' + UoMLabel[1]); { depth }
-      CheckWellSection1:=True;
+      Data.Hole[1,1]:=_WellHole[1,1];
+      StringToMemo('FormHoleData.Save: Data.Hole[1,1] = '+ OHSection1TDData.Text + ' ' + UoMLabel[1]); { API depth }
+      TDisOK:=True;
     End;
 
-
-    StringToMemo('FormHoleData.Save: Hole section #1 ID = '+OHSection1IDData.Text);
-    if ((_WellHole[1,2] = 0))
+    if ((_WellHole[1,2] > _WellCasingID) and (Data.Casing=True)) or     { OH ID must be less than casing ID if present }
+       ((_WellHole[1,2] < _WellLinerID) and (Data.Liner=True))  or      { OH ID must be greater than liner ID if present }
+       (_WellHole[1,2] <= 0) or                                         { OH ID must be greater than zero }
+       ((_WellHole[1,2] <= _WellHole[2,2]) and (_WellMaxHoles>1))       { OD ID must be less than OH 2 ID if 2 OHs }
     then
     Begin
-      ShowMessage('Hole section #1 ID must be greater than zero and less casing ID (if present)');
-      StringToMemo('FormHoleData.Save: Hole section #1 ID must be greater than zero and less casing ID (if present)');
+      ShowMessage('Hole section 1 ID must be greater than zero, less than casing ID (if present), and greater than liner OD (if present)');
+      StringToMemo('FormHoleData.Save: Error: Hole section 1 ID must be greater than zero, less than casing ID (if present), and greater than liner OD (if present)');
       OHSection1IDData.SetFocus;
-      CheckWellSection1:=False;
+      IDisOK:=False;
     end
     else
     Begin
-      Data.Hole[1,2]     :=_WellHole[1,2];
+      Data.Hole[1,2]:=_WellHole[1,2];
       StringToMemo('FormHoleData.Save: Data.Hole[1,2] = '+ OHSection1IDData.Text + ' ' + UoMLabel[8]); { inches }
-      CheckWellSection1:=True;
+      IDisOK:=True;
+    End;
+
+    if (TDisOK and IDisOK) then
+    Begin
+      WellSection1isOK:=True;
+      StringToMemo('WellSection1isOK: Success');
+    End
+    else
+    Begin
+      WellSection1isOK:=False;
+      StringToMemo('WellSection1isOK: Fail');
     End;
   end;
+  { ------------- OH Section #2 Checks ----------------}
+  Function WellSection2isOK : boolean;
+  Var
+    TDisOK : boolean;
+    IDisOK : boolean;
 
-  Function CheckWellSection2 : boolean;
   Begin
-    if (_WellHole[2,1] <= _WellHole[1,1])
+    StringToMemo('Validating Well Section 2...');
+    if (_WellHole[2,1] <= _WellHole[1,1]) or                             { total OH depth must be greater than previous OH TD }
+       ((_WellHole[2,1] <= _WellLinerBottomTD) and (Data.Liner=True)) or { total OH depth must be greater than liner if present }
+       ((_WellHole[2,1] >= _WellHole[3,1]) and (_WellMaxHoles>2))        { total OH depth must be less than OH 3 depth if 3 OHs }
     then
     Begin
-      ShowMessage('Hole section #2 depth must be deeper than hole section #1 depth');
-      StringToMemo('FormHoleData.Save: Error: Hole section #2 depth must be deeper than hole section #1 depth');
+      ShowMessage('Hole section 2 depth must be deeper than OH section 1 TD and liner shoe (if present) and less than OD 3 TD (if present)');
+      StringToMemo('FormHoleData.Save: Error: Hole section 2 depth must be deeper than OH section 1 TD and liner shoe (if present) and less than OD 3 TD (if present)');
       OHSection2TDData.SetFocus;
-      CheckWellSection2:=False;
+      TDisOK:=False;
     end
     else
     Begin
-      Data.Hole[2,1]     :=_WellHole[2,1];
-      Data.Hole[2,2]     :=_WellHole[2,2];
-      StringToMemo('FormHoleData.Save: Data.Hole[2,1] = '+ OHSection2TDData.Text + ' ' + UoMLabel[1]); { depth }
+      Data.Hole[2,1]:=_WellHole[2,1];
+      StringToMemo('FormHoleData.Save: Data.Hole[2,1] = '+ OHSection2TDData.Text + ' ' + UoMLabel[1]); { API depth }
+      TDisOK:=True;
+    End;
+
+    if (_WellHole[2,2] >= _WellHole[1,2]) or                          { OD 2 ID must be less than OH 1 ID }
+       ((_WellHole[2,2] <= _WellLinerID) and (Data.Liner=True))  or   { OH 2 ID must be greater than liner ID if present }
+       (_WellHole[2,2] <= 0) or                                       { OH 2 ID must be greater than zero }
+       ((_WellHole[2,2] <= _WellHole[3,2]) and (_WellMaxHoles>2))     { OD 2 ID must be less than OH 3 ID if 3 OHs }
+    then
+    Begin
+      ShowMessage('Hole section 2 ID must be greater than zero, less than OH section 1 ID, greater than OH 3 ID (present) and greater than liner OD (if present)');
+      StringToMemo('FormHoleData.Save: Error: Hole section 2 ID must be greater than zero, less than OH section 1 ID, greater than OH 3 ID (present) and greater than liner OD (if present)');
+      OHSection2IDData.SetFocus;
+      IDisOK:=False;
+    end
+    else
+    Begin
+      Data.Hole[2,2]:=_WellHole[2,2];
       StringToMemo('FormHoleData.Save: Data.Hole[2,2] = '+ OHSection2IDData.Text + ' ' + UoMLabel[8]); { inches }
-      CheckWellSection2:=True;
+      IDisOK:=True;
+    End;
+    if TDisOK and IDisOK then
+    Begin
+      WellSection2isOK:=True;
+      StringToMemo('WellSection2isOK: Success');
+    End
+    else
+    Begin
+      WellSection2isOK:=False;
+      StringToMemo('WellSection2isOK: Fail');
     End;
   end;
+  { ------------- OH Section #3 Checks ----------------}
+  Function WellSection3isOK : boolean;
+  Var
+    TDisOK : boolean;
+    IDisOK : boolean;
 
-  Function CheckWellSection3 : boolean;
   Begin
-    if (_WellHole[3,1] <= _WellHole[2,1])
+    StringToMemo('Validating Well Section 3...');
+    if (_WellHole[3,1] <= _WellHole[2,1]) or                          { total OH depth must be greater than previous OH TD }
+       ((_WellHole[3,1] <= _WellLinerBottomTD) and (Data.Liner=True)) { total OH depth must be greater than liner if present }
     then
     Begin
-      ShowMessage('Hole section #3 depth must be deeper than hole section #2 depth');
-      StringToMemo('FormHoleData.Save: Error: Hole section #3 depth must be deeper than hole section #2 depth');
+      ShowMessage('Hole section 3 depth must be deeper than OH section 2 TD and liner shoe (if present)');
+      StringToMemo('FormHoleData.Save: Error: Hole section 3 depth must be deeper than OH section 2 TD and liner shoe (if present)');
       OHSection3TDData.SetFocus;
-      CheckWellSection3:=False;
+      TDisOK:=False;
     end
     else
     Begin
-      Data.Hole[3,1]     :=_WellHole[3,1];
-      Data.Hole[3,2]     :=_WellHole[3,2];
-      StringToMemo('FormHoleData.Save: Data.Hole[3,1] = '+ OHSection3TDData.Text + ' ' + UoMLabel[1]); { depth }
+      Data.Hole[3,1]:=_WellHole[3,1];
+      StringToMemo('FormHoleData.Save: Data.Hole[3,1] = '+ OHSection3TDData.Text + ' ' + UoMLabel[1]); { API depth }
+      TDisOK:=True;
+    End;
+
+    if (_WellHole[3,2] >= _WellHole[2,2]) or                          { OD 3 ID must be less than OH 2 ID }
+       ((_WellHole[3,2] <= _WellLinerID) and (Data.Liner=True))  or   { OH 3 ID must be greater than liner ID if present }
+       (_WellHole[3,2] <= 0)                                          { OH 3 ID must be greater than zero }
+    then
+    Begin
+      ShowMessage('Hole section 3 ID must be greater than zero, less than OH section 2 ID, and greater than liner OD (if present)');
+      StringToMemo('FormHoleData.Save: Error: Hole section 3 ID must be greater than zero, less than OH section 2 ID (if present), and greater than liner OD (if present)');
+      OHSection3IDData.SetFocus;
+      IDisOK:=False;
+    end
+    else
+    Begin
+      Data.Hole[3,2]:=_WellHole[3,2];
       StringToMemo('FormHoleData.Save: Data.Hole[3,2] = '+ OHSection3IDData.Text + ' ' + UoMLabel[8]); { inches }
-      CheckWellSection3:=True;
+      IDisOK:=True;
+    End;
+    if TDisOK and IDisOK then
+    Begin
+      WellSection3isOK:=True;
+      StringToMemo('WellSection3isOK: Success');
+    End
+    else
+    Begin
+      WellSection3isOK:=False;
+      StringToMemo('WellSection3isOK: Fail');
     End;
   end;
 
-  begin
-  StringToMemo('FormHoleData.Save ..............................................');
+  { ------------- Casing Checks ----------------}
+  Function CasingisOK : boolean;
+  Var
+    TDisOK : boolean;
+    IDisOK : boolean;
 
-  Data.Casing          :=_WellCasing;
-  StringToMemo('FormHoleData.Save: Data.Casing = '+ IntToStr(CasingYNRadioGroup.ItemIndex));
-  Data.Liner           :=_WellLiner;
-  StringToMemo('FormHoleData.Save: Data.Liner = '+ IntToStr(LinerYNRadioGroup.ItemIndex));
-
-    if _WellCasingTD <= Data.WaterDepth
+  Begin
+    StringToMemo('Validating Casing...');
+    if (_WellCasingTD <= Data.WaterDepth)     { Casing depth must be greater than Water Depth }
     then
-      Begin
-        ShowMessage('Casing shoe must be deeper than water depth');
-        StringToMemo('FormHoleData.Save: Error: Casing shoe must be deeper than water depth');
-        CasingShoeDepthData.SetFocus;
-        Exit;
-      end
+    Begin
+      ShowMessage('Casing shoe must be deeper than water depth');
+      StringToMemo('FormHoleData.Save: Error: Casing shoe must be deeper than water depth');
+      CasingShoeDepthData.SetFocus;
+      TDisOK:=False;
+    end
     else
     Begin
       Data.CasingTD:=_WellCasingTD;
-      StringToMemo('FormHoleData.Save: Data.CasingTD = '+ CasingShoeDepthData.Text + ' ' + UoMLabel[1]); { depth }
-      Data.CasingID        :=_WellCasingID;
+      StringToMemo('FormHoleData.Save: Data.CasingTD = '+ CasingShoeDepthData.Text + ' ' + UoMLabel[1]); { API depth }
+      TDisOK:=True;
+    End;
+
+    if (_WellCasingID > Data.RiserID) or                             { Casing ID must be less than or equal to Riser ID }
+       ((_WellCasingID <= _WellHole[1,2]) and (Data.MaxHoles>0))  { Casing ID must be greater than OH 1 ID if present }
+    then
+    Begin
+      ShowMessage('Casing ID must be greater than zero, less than Riser ID, and greater than OH 1 OD (if present)');
+      StringToMemo('FormHoleData.Save: Error: Casing ID must be greater than zero, less than Riser ID, and greater than OH 1 OD (if present)');
+      CasingIDData.SetFocus;
+      IDisOK:=False;
+    end
+    else
+    Begin
+      Data.CasingID :=_WellCasingID;
       StringToMemo('FormHoleData.Save: Data.CasingID = '+ CasingIDData.Text + ' ' + UoMLabel[8]); { inches }
-    end;
-
-  Data.Liner           :=_WellLiner;
-  if _WellLinerTopTD > _WellCasingTD
-  then
+      IDisOK:=True;
+    End;
+    if TDisOK and IDisOK then
     Begin
-      ShowMessage('Liner hanger must be higher than casing shoe');
-      StringToMemo('FormHoleData.Save: Error: Liner hanger must be higher than casing shoe');
+      CasingisOK:=True;
+      StringToMemo('CasingisOK: Success');
+    End
+    else
+    Begin
+      CasingisOK:=False;
+      StringToMemo('CasingisOK: Fail');
+      Exit;
+    End;
+  end;
+
+  { ------------- Liner Checks ----------------}
+  Function LinerisOK : boolean;
+  Var
+    TopTDisOK    : boolean;
+    BottomTDisOK : boolean;
+    IDisOK       : boolean;
+
+  Begin
+    StringToMemo('Validating Liner...');
+    if (_WellLinerTopTD >= Data.CasingTD)     { Liner top depth must be less than Casing Shoe depth }
+    then
+    Begin
+      ShowMessage('Liner hanger must be shallower than casing shoe');
+      StringToMemo('FormHoleData.Save: Error: Liner hanger must be shallower than casing shoe');
       LinerTopDepthData.SetFocus;
-      Exit;
+      TopTDisOK:=False;
     end
-  else
-  Begin
-    Data.LinerTopTD:=_WellLinerTopTD;
-    StringToMemo('FormHoleData.Save: Data.LinerTopTD = '+ LinerTopDepthData.Text + ' ' + UoMLabel[1]); { depth }
-  end;
-
-  if _WellLinerBottomTD < _WellLinerTopTD
-  then
+    else
     Begin
-      ShowMessage('Liner shoe must be lower than liner hanger');
-      StringToMemo('FormHoleData.Save: Error: Liner hanger must be higher than casing shoe');
+      Data.LinerTopTD:=_WellLinerTopTD;
+      StringToMemo('FormHoleData.Save: Data.LinerTopTD = '+ LinerTopDepthData.Text + ' ' + UoMLabel[1]); { API depth }
+      TopTDisOK:=True;
+    End;
+
+    if (_WellLinerBottomTD < Data.CasingTD)     { Liner bottom depth must be greater than Casing Shoe depth }
+    then
+    Begin
+      ShowMessage('Liner shoe must be deeper than Casing shoe');
+      StringToMemo('FormHoleData.Save: Error: Liner shoe must be deeper than Casing shoe');
       LinerBottomDepthData.SetFocus;
-      Exit;
+      BottomTDisOK:=False;
     end
-  else
-  Begin
-    Data.LinerBottomTD:=_WellLinerBottomTD;
-    StringToMemo('FormHoleData.Save: Data.LinerShoeTD = '+ LinerBottomDepthData.Text + ' ' + UoMLabel[1]); { depth }
+    else
+    Begin
+      Data.LinerBottomTD:=_WellLinerBottomTD;
+      StringToMemo('FormHoleData.Save: Data.LinerShoeTD = '+ LinerBottomDepthData.Text + ' ' + UoMLabel[1]); { API depth }
+      BottomTDisOK:=True;
+    End;
+
+    if (_WellLinerID > Data.CasingID)         { Liner ID must be less than Casing ID }
+    then
+    Begin
+      ShowMessage('Liner ID must be greater than zero and less than Casing ID');
+      StringToMemo('FormHoleData.Save: Error: Liner ID must be greater than zero and less than Casing ID');
+      LinerIDData.SetFocus;
+      IDisOK:=False;
+    end
+    else
+    Begin
+      Data.LinerID:=_WellLinerID;
+      StringToMemo('FormHoleData.Save: Data.LinerID = '+ LinerIDData.Text + ' ' + UoMLabel[8]); { inches }
+      IDisOK:=True;
+    End;
+
+    if TopTDisOK and BottomTDisOK and IDisOK then
+    Begin
+      LinerisOK:=True;
+      StringToMemo('LinerisOK: Success');
+    End
+    else
+    Begin
+      LinerisOK:=False;
+      StringToMemo('LinerisOK: Fail');
+    End;
   end;
 
-  Data.LinerID:=_WellLinerID;
-  StringToMemo('FormHoleData.Save: Data.LinerID = '+ LinerIDData.Text + ' ' + UoMLabel[8]); { inches }
+begin
+  StringToMemo('FormHoleData.Save ..............................................');
+  Error:=False;
 
-  Data.MaxHoles        :=_WellMaxHoles;
-  StringToMemo('FormHoleData.Save: Data.MaxHoles = '+ IntToStr(NumOHSectionsComboBox.ItemIndex));
+  Data.Casing:=_WellCasing;
+  StringToMemo('FormHoleData.Save: Data.Casing = '+ IntToStr(CasingYNRadioGroup.ItemIndex));
+
+  if Data.Casing then
+  Begin
+  StringToMemo('Checking Casing...');
+    if CasingisOK = True then StringToMemo('Casing profile validation: Success') else
+    Begin
+      StringToMemo('Casing profile validation: Fail');
+      Exit
+    end;
+  End;
+
+  Data.Liner:=_WellLiner;
+  StringToMemo('FormHoleData.Save: Data.Liner = '+ IntToStr(LinerYNRadioGroup.ItemIndex));
+
+  if Data.Liner then
+  Begin
+    StringToMemo('Checking Liner...');
+    if LinerisOK = True then StringToMemo('Liner profile validation: Success') else
+    Begin
+       StringToMemo('Liner profile validation: Fail');
+       Exit
+    end;
+  End;
+
+  Data.MaxHoles:=_WellMaxHoles;
+  StringToMemo('FormHoleData.Save: Data.MaxHoles = '+ IntToStr(Data.MaxHoles));
 
   Case Data.MaxHoles of    { very ugly...cant interate through objects but it works...}
     1 : Begin
-          if not CheckWellSection1 then exit;
+          StringToMemo('Checking 1 OH section...');
+          if WellSection1isOK = False then Error:=True;
         End;
     2 : Begin
-          if (not CheckWellSection1) or (not CheckWellSection2) then exit;
+          StringToMemo('Checking 2 OH sections...');
+          if (WellSection1isOK = False)
+          or (WellSection2isOK = False) then Error:=True;
         End;
     3 : Begin
-          if (not CheckWellSection1) or (not CheckWellSection2) or (not CheckWellSection3) then exit;
+          StringToMemo('Checking 3 OH sections...');
+          if (WellSection1isOK = False)
+          or (WellSection2isOK = False)
+          or (WellSection3isOK = False) then Error:=True;
         End;
-   End;
+  End;
+  if Error=False then StringToMemo('Hole profile validation: Success') else
+  Begin
+    StringToMemo('Hole profile validation: Fail');
+    Exit;
+  End;
 
   Data.DeviationDegrees:=_WellDeviation;
   StringToMemo('FormHoleData.Save: Data.DeviationDegrees = '+ DeviationData.Text + ' Degrees');

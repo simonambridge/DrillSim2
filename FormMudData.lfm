@@ -1,0 +1,26 @@
+object MudDataForm: TMudDataForm
+  Left = 366
+  Height = 240
+  Top = 381
+  Width = 320
+  Caption = 'Drilling Fluid Data'
+  ClientHeight = 240
+  ClientWidth = 320
+  LCLVersion = '1.2.6.0'
+  object QuitButton: TButton
+    Left = 144
+    Height = 25
+    Top = 192
+    Width = 75
+    Caption = 'Quit'
+    TabOrder = 0
+  end
+  object SaveButton: TButton
+    Left = 231
+    Height = 25
+    Top = 192
+    Width = 75
+    Caption = 'Save'
+    TabOrder = 1
+  end
+end

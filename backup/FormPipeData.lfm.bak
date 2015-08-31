@@ -1,0 +1,213 @@
+object PipeDataForm: TPipeDataForm
+  Left = 414
+  Height = 311
+  Top = 317
+  Width = 563
+  Caption = 'Drill String Data'
+  ClientHeight = 311
+  ClientWidth = 563
+  OnActivate = FormActivate
+  OnCreate = FormCreate
+  OnDeactivate = FormDeactivate
+  LCLVersion = '1.2.6.0'
+  object DrillCollarLabel: TLabel
+    Left = 40
+    Height = 24
+    Hint = 'Total depth of hole section 1'
+    Top = 112
+    Width = 85
+    AutoSize = False
+    Caption = 'Drill Collars'
+    ParentColor = False
+    ParentShowHint = False
+    ShowHint = True
+    OnClick = DrillCollarLabelClick
+  end
+  object LengthColumnLabel: TLabel
+    Left = 184
+    Height = 17
+    Top = 80
+    Width = 46
+    Caption = 'Length'
+    ParentColor = False
+  end
+  object IDColumnLabel: TLabel
+    Left = 312
+    Height = 17
+    Top = 80
+    Width = 14
+    Caption = 'ID'
+    ParentColor = False
+  end
+  object PipeLengthUoMLabel: TLabel
+    Left = 237
+    Height = 17
+    Top = 80
+    Width = 40
+    AutoSize = False
+    ParentColor = False
+  end
+  object PipeIDUoMLabel: TLabel
+    Left = 336
+    Height = 17
+    Top = 80
+    Width = 42
+    AutoSize = False
+    ParentColor = False
+  end
+  object DrillCollarLengthData: TEdit
+    Left = 168
+    Height = 27
+    Top = 107
+    Width = 109
+    Alignment = taRightJustify
+    TabOrder = 0
+  end
+  object DrillCollarIDData: TEdit
+    Left = 304
+    Height = 27
+    Hint = 'Internal diameter of hole section 1 (in inches)'
+    Top = 107
+    Width = 72
+    Alignment = taRightJustify
+    ParentShowHint = False
+    ShowHint = True
+    TabOrder = 1
+  end
+  object HWDrillPipeLabel: TLabel
+    Left = 40
+    Height = 24
+    Hint = 'Total depth of hole section 2'
+    Top = 147
+    Width = 104
+    AutoSize = False
+    Caption = 'HW Drill Pipe'
+    ParentColor = False
+    ParentShowHint = False
+    ShowHint = True
+  end
+  object HWDrillPipeLengthData: TEdit
+    Left = 168
+    Height = 27
+    Top = 144
+    Width = 109
+    Alignment = taRightJustify
+    TabOrder = 2
+  end
+  object HWDrillPipeIDData: TEdit
+    Left = 304
+    Height = 27
+    Hint = 'Internal diameter of hole section 2 (in inches)'
+    Top = 144
+    Width = 72
+    Alignment = taRightJustify
+    ParentShowHint = False
+    ShowHint = True
+    TabOrder = 3
+  end
+  object DrillPipeLabel: TLabel
+    Left = 40
+    Height = 24
+    Hint = 'Total depth of hole section 3'
+    Top = 187
+    Width = 85
+    AutoSize = False
+    Caption = 'Drill Pipe'
+    ParentColor = False
+    ParentShowHint = False
+    ShowHint = True
+  end
+  object DrillPipeLengthData: TEdit
+    Left = 168
+    Height = 27
+    Top = 184
+    Width = 109
+    Alignment = taRightJustify
+    TabOrder = 4
+  end
+  object DrillPipeIDData: TEdit
+    Left = 304
+    Height = 27
+    Hint = 'Internal diameter of hole section 3 (in inches)'
+    Top = 184
+    Width = 72
+    Alignment = taRightJustify
+    ParentShowHint = False
+    ShowHint = True
+    TabOrder = 5
+  end
+  object ODColumnLabel: TLabel
+    Left = 408
+    Height = 17
+    Top = 80
+    Width = 21
+    Caption = 'OD'
+    ParentColor = False
+  end
+  object PipeODUoMLabel: TLabel
+    Left = 432
+    Height = 17
+    Top = 80
+    Width = 42
+    AutoSize = False
+    ParentColor = False
+  end
+  object DrillCollarODData: TEdit
+    Left = 400
+    Height = 27
+    Hint = 'Internal diameter of hole section 1 (in inches)'
+    Top = 107
+    Width = 72
+    Alignment = taRightJustify
+    ParentShowHint = False
+    ShowHint = True
+    TabOrder = 6
+  end
+  object HWDrillPipeODData: TEdit
+    Left = 400
+    Height = 27
+    Hint = 'Internal diameter of hole section 2 (in inches)'
+    Top = 144
+    Width = 72
+    Alignment = taRightJustify
+    ParentShowHint = False
+    ShowHint = True
+    TabOrder = 7
+  end
+  object DrillPipeODData: TEdit
+    Left = 400
+    Height = 27
+    Hint = 'Internal diameter of hole section 3 (in inches)'
+    Top = 184
+    Width = 72
+    Alignment = taRightJustify
+    ParentShowHint = False
+    ShowHint = True
+    TabOrder = 8
+  end
+  object Label1: TLabel
+    Left = 32
+    Height = 17
+    Top = 32
+    Width = 456
+    AutoSize = False
+    Caption = 'Enter pipe sections from the bottom up e.g. start with drill collars'
+    ParentColor = False
+  end
+  object QuitButton: TButton
+    Left = 312
+    Height = 25
+    Top = 250
+    Width = 75
+    Caption = 'Quit'
+    TabOrder = 9
+  end
+  object SaveButton: TButton
+    Left = 413
+    Height = 25
+    Top = 250
+    Width = 75
+    Caption = 'Save'
+    TabOrder = 10
+  end
+end

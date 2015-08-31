@@ -33,7 +33,8 @@ uses
   FormHoleData,
   FormConfigDefaults,
   FormUnitsOfMeasure,
-    SimulateCommandProcessor,
+  FormPipeData,
+  SimulateCommandProcessor,
   SimulateUpdate,
   SimulateSurfaceControls,
   SimulateFile,
@@ -771,7 +772,12 @@ end;
 
 procedure TDrillSim.MenuItem2DrillStringClick(Sender: TObject);
 begin
-  CheckPipeData;
+  try
+    PipeDataForm:=TPipeDataForm.Create(Nil);  //Pipe Data Input is created
+    PipeDataForm.ShowModal;
+  finally
+    PipeDataForm.Free;
+  end;
 end;
 
 procedure TDrillSim.MenuItem2BitDataClick(Sender: TObject);

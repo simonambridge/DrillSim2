@@ -1,7 +1,7 @@
 object HoleDataForm: THoleDataForm
-  Left = 100
+  Left = 94
   Height = 635
-  Top = 234
+  Top = 200
   Width = 405
   Caption = 'Hole Profile Data'
   ClientHeight = 635

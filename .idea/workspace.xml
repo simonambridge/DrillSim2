@@ -2,11 +2,107 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="eef904f2-3063-4533-aff2-93f0acd30fc1" name="Default" comment="">
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Docs/DrillSim_Test_Plan.txt" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/DrillSim2" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/DrillSim2.ico" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/DrillSim2.lpi" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/DrillSim2.lpr" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/DrillSim2.lps" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/DrillSim2.res" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/DrillSimClear.pas" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/DrillSimConversions.pas" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/DrillSimDataInput.o" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/DrillSimDataInput.ppu" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/DrillSimDataResets.o" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/DrillSimDataResets.ppu" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/DrillSimDataUoMConversions.pas" afterPath="" />
       <change type="DELETED" beforePath="$PROJECT_DIR$/DrillSimDateTime.pas" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/DrillSimHoleCalc.o" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/DrillSimHoleCalc.ppu" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/DrillSimMenu.pas" afterPath="" />
       <change type="DELETED" beforePath="$PROJECT_DIR$/DrillSimSimulate.pas" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/DrillSimUnitsOfMeasure.o" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/DrillSimUnitsOfMeasure.ppu" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/DrillSimUoMMenu.pas" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/DrillSimUtilities.o" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/DrillSimUtilities.ppu" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/DrillSimVariables.o" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/DrillSimVariables.ppu" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Drillsim.safe" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/FormLoadFile.pas" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/HyCalcVariables.o" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/HyCalcVariables.pas" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/HyCalcVariables.ppu" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/OFFSHORE.wdf" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/SimulateClear.pas" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/SimulateHoleCalcs.o" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/SimulateHoleCalcs.ppu" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/SimulateInit.pas" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/SimulateMessageToMemo.pas" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/SimulateRAMs.o" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/SimulateRAMs.ppu" afterPath="" />
       <change type="DELETED" beforePath="$PROJECT_DIR$/SimulateScreen.pas" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/SimulateSurfaceControls.o" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/SimulateSurfaceControls.ppu" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/SimulateUpdate.o" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/SimulateUpdate.ppu" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/SimulateVariables.o" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/SimulateVariables.pas" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/SimulateVariables.ppu" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/SimulateVolumes.o" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/SimulateVolumes.ppu" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/dribble.wdf" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/gusher.wdf" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/lib/x86_64-linux/DrillSim2.compiled" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/lib/x86_64-linux/DrillSim2.o" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/lib/x86_64-linux/DrillSim2.or" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/lib/x86_64-linux/DrillSim2.res" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/lib/x86_64-linux/DrillSimClear.o" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/lib/x86_64-linux/DrillSimClear.ppu" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/lib/x86_64-linux/DrillSimConversions.o" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/lib/x86_64-linux/DrillSimConversions.ppu" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/lib/x86_64-linux/DrillSimDataUoMConversions.o" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/lib/x86_64-linux/DrillSimDataUoMConversions.ppu" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/lib/x86_64-linux/DrillSimDateTime.o" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/lib/x86_64-linux/DrillSimDateTime.ppu" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/lib/x86_64-linux/DrillSimMenu.o" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/lib/x86_64-linux/DrillSimMenu.ppu" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/lib/x86_64-linux/DrillSimSimulate.o" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/lib/x86_64-linux/DrillSimSimulate.ppu" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/lib/x86_64-linux/DrillSimUoMMenu.o" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/lib/x86_64-linux/DrillSimUoMMenu.ppu" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/lib/x86_64-linux/HyCalcVariables.o" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/lib/x86_64-linux/HyCalcVariables.ppu" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/lib/x86_64-linux/SimulateClear.o" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/lib/x86_64-linux/SimulateClear.ppu" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/lib/x86_64-linux/SimulateInit.o" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/lib/x86_64-linux/SimulateInit.ppu" afterPath="" />
       <change type="DELETED" beforePath="$PROJECT_DIR$/lib/x86_64-linux/SimulateMain.o" afterPath="" />
       <change type="DELETED" beforePath="$PROJECT_DIR$/lib/x86_64-linux/SimulateMain.ppu" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/lib/x86_64-linux/SimulateMessageToMemo.o" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/lib/x86_64-linux/SimulateMessageToMemo.ppu" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/lib/x86_64-linux/SimulateScreen.o" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/lib/x86_64-linux/SimulateScreen.ppu" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/lib/x86_64-linux/SimulateVariables.o" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/lib/x86_64-linux/SimulateVariables.ppu" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/loadfileform.lfm" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/test.wdf" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/usplashabout.o" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/usplashabout.ppu" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/uversion.o" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/uversion.ppu" afterPath="" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/DrillSim3" afterPath="$PROJECT_DIR$/DrillSim3" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/lib/x86_64-linux/DrillSimGUI.o" afterPath="$PROJECT_DIR$/lib/x86_64-linux/DrillSimGUI.o" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/lib/x86_64-linux/FormHoleData.o" afterPath="$PROJECT_DIR$/lib/x86_64-linux/FormHoleData.o" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/lib/x86_64-linux/FormHoleData.ppu" afterPath="$PROJECT_DIR$/lib/x86_64-linux/FormHoleData.ppu" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/gusher1.wdf" afterPath="$PROJECT_DIR$/gusher1.wdf" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/lib/x86_64-linux/usplashabout.o" afterPath="$PROJECT_DIR$/lib/x86_64-linux/usplashabout.o" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/lib/x86_64-linux/uversion.o" afterPath="$PROJECT_DIR$/lib/x86_64-linux/uversion.o" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/backup/DrillSim3.lps.bak" afterPath="$PROJECT_DIR$/backup/DrillSim3.lps.bak" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/DrillSim3.lps" afterPath="$PROJECT_DIR$/DrillSim3.lps" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/backup/FormHoleData.pas.bak" afterPath="$PROJECT_DIR$/backup/FormHoleData.pas.bak" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/FormHoleData.pas" afterPath="$PROJECT_DIR$/FormHoleData.pas" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="FPC_G.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -28,20 +124,10 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="DrillSim2.lpr" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/DrillSim2.lpr">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0">
-              <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
       <file leaf-file-name="DrillSimGUI.pas" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/DrillSimGUI.pas">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.53136533">
+            <state vertical-scroll-proportion="0.0">
               <caret line="16" column="8" selection-start-line="16" selection-start-column="8" selection-end-line="16" selection-end-column="8" />
               <folding />
             </state>
@@ -58,12 +144,19 @@
       <projects_view />
     </option>
   </component>
+  <component name="IdeDocumentHistory">
+    <option name="CHANGED_PATHS">
+      <list>
+        <option value="$PROJECT_DIR$/DrillSimGUI.pas" />
+      </list>
+    </option>
+  </component>
   <component name="NamedScopeManager">
     <order />
   </component>
   <component name="ProjectFrameBounds">
-    <option name="x" value="67" />
-    <option name="y" value="56" />
+    <option name="x" value="69" />
+    <option name="y" value="112" />
     <option name="width" value="1601" />
     <option name="height" value="668" />
   </component>
@@ -90,13 +183,9 @@
       <sortByType />
     </navigator>
     <panes>
-      <pane id="Scope">
-        <subPane subId="Problems" />
-      </pane>
       <pane id="PackagesPane">
         <subPane />
       </pane>
-      <pane id="Scratches" />
       <pane id="ProjectPane">
         <subPane>
           <PATH>
@@ -116,6 +205,10 @@
             </PATH_ELEMENT>
           </PATH>
         </subPane>
+      </pane>
+      <pane id="Scratches" />
+      <pane id="Scope">
+        <subPane subId="Problems" />
       </pane>
     </panes>
   </component>
@@ -372,33 +465,33 @@
     <servers />
   </component>
   <component name="ToolWindowManager">
-    <frame x="67" y="56" width="1601" height="668" extended-state="0" />
+    <frame x="69" y="112" width="1601" height="668" extended-state="0" />
     <editor active="false" />
     <layout>
-      <window_info id="Palette&#9;" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
-      <window_info id="UI Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
-      <window_info id="Designer" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
-      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
-      <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
-      <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="-1" side_tool="true" content_ui="tabs" />
-      <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="-1" side_tool="true" content_ui="tabs" />
-      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
-      <window_info id="IvyIDEA" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
-      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
+      <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
-      <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
-      <window_info id="Application Servers" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
+      <window_info id="Palette&#9;" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
+      <window_info id="Application Servers" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="IvyIDEA" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Designer" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.24951768" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="UI Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
+      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
-      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="SLIDING" type="SLIDING" visible="false" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
-      <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
     </layout>
   </component>
   <component name="Vcs.Log.UiProperties">
@@ -421,7 +514,15 @@
     <option name="FILTER_TARGETS" value="false" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/DrillSim2.lpr">
+    <entry file="file://$PROJECT_DIR$/DrillSimGUI.pas">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="16" column="8" selection-start-line="16" selection-start-column="8" selection-end-line="16" selection-end-column="8" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/DrillSimGUI.pas">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
@@ -431,7 +532,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/DrillSimGUI.pas">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.53136533">
+        <state vertical-scroll-proportion="0.0">
           <caret line="16" column="8" selection-start-line="16" selection-start-column="8" selection-end-line="16" selection-end-column="8" />
           <folding />
         </state>

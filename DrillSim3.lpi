@@ -35,7 +35,7 @@
         <PackageName Value="LCL"/>
       </Item1>
     </RequiredPackages>
-    <Units Count="7">
+    <Units Count="11">
       <Unit0>
         <Filename Value="DrillSim3.lpr"/>
         <IsPartOfProject Value="True"/>
@@ -78,6 +78,34 @@
         <ResourceBaseClass Value="Form"/>
         <UnitName Value="FormConfigDefaults"/>
       </Unit6>
+      <Unit7>
+        <Filename Value="formpipedata.pas"/>
+        <IsPartOfProject Value="True"/>
+        <ComponentName Value="Form3"/>
+        <ResourceBaseClass Value="Form"/>
+        <UnitName Value="FormPipeData"/>
+      </Unit7>
+      <Unit8>
+        <Filename Value="formbitdata.pas"/>
+        <IsPartOfProject Value="True"/>
+        <ComponentName Value="BitDataForm"/>
+        <ResourceBaseClass Value="Form"/>
+        <UnitName Value="FormBitData"/>
+      </Unit8>
+      <Unit9>
+        <Filename Value="formmuddata.pas"/>
+        <IsPartOfProject Value="True"/>
+        <ComponentName Value="MudDataForm"/>
+        <ResourceBaseClass Value="Form"/>
+        <UnitName Value="formmuddata"/>
+      </Unit9>
+      <Unit10>
+        <Filename Value="formpumpdata.pas"/>
+        <IsPartOfProject Value="True"/>
+        <ComponentName Value="PumpDataForm"/>
+        <ResourceBaseClass Value="Form"/>
+        <UnitName Value="FormPumpData"/>
+      </Unit10>
     </Units>
   </ProjectOptions>
   <CompilerOptions>

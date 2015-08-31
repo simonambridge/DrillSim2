@@ -93,21 +93,17 @@ procedure TGeneralDataForm.NumericOnlyKeyPress(Sender: TObject; var Key: Char);
 begin
   if not (Key in [#8, '0'..'9', '-', DefaultFormatSettings.DecimalSeparator]) then
   Begin
-    Key := #0;
+    Key := #0;  // discard it
   end
   else if ((Key = DefaultFormatSettings.DecimalSeparator) or (Key = '-')) and
           (Pos(Key, (Sender as TEdit).Text) > 0) then
   Begin
-    Key := #0;
+    Key := #0;  // discard it
   end
   else if (Key = '.') and
           ((Sender as TEdit).SelStart = 0) then
   Begin
     Key := #0;  // discard it
-  end else if (Key = '-') and
-          ((Sender as TEdit).SelStart <> 0) then
-  Begin
-    Key := #0;
   end;
 end;
 
@@ -125,7 +121,9 @@ end;
 
 procedure TGeneralDataForm.ElevationRKBDataChange(Sender: TObject);
 begin
-  if TEdit(Sender).Text <> ''
+  if not ((TEdit(Sender).Text = '-')
+      or (TEdit(Sender).Text = DefaultFormatSettings.DecimalSeparator)
+      or (TEdit(Sender).Text = ''))
           then _WellElevation:=Round2(StrToFloat(ElevationRKBData.Text)/UoMConverter[1],2); { depth }
 end;
 
@@ -201,31 +199,41 @@ end;
 
 procedure TGeneralDataForm.RiserTDDataChange(Sender: TObject);
 begin
-  if TEdit(Sender).Text <> ''
+  if not ((TEdit(Sender).Text = '-')
+      or (TEdit(Sender).Text = DefaultFormatSettings.DecimalSeparator)
+      or (TEdit(Sender).Text = ''))
           then _WellRiserTD:=Round2(StrToFloat(RiserTDData.Text)/UoMConverter[1],2); { depth }
 end;
 
 procedure TGeneralDataForm.RiserIDDataChange(Sender: TObject);
 begin
-  if TEdit(Sender).Text <> ''
+  if not ((TEdit(Sender).Text = '-')
+      or (TEdit(Sender).Text = DefaultFormatSettings.DecimalSeparator)
+      or (TEdit(Sender).Text = ''))
           then _WellRiserID:=StrToFloat(RiserIDData.Text)/UoMConverter[8]; { inches }
 end;
 
 procedure TGeneralDataForm.ChokeLineIDDataChange(Sender: TObject);
 begin
-  if TEdit(Sender).Text <> ''
+  if not ((TEdit(Sender).Text = '-')
+      or (TEdit(Sender).Text = DefaultFormatSettings.DecimalSeparator)
+      or (TEdit(Sender).Text = ''))
           then _WellChokeLineID:=StrToFloat(ChokeLineIDData.Text)/UoMConverter[8]; { inches }
 end;
 
 procedure TGeneralDataForm.KillLineIDDataChange(Sender: TObject);
 begin
-  if TEdit(Sender).Text <> ''
+  if not ((TEdit(Sender).Text = '-')
+      or (TEdit(Sender).Text = DefaultFormatSettings.DecimalSeparator)
+      or (TEdit(Sender).Text = ''))
           then _WellKillLineID:=StrToFloat(KillLineIDData.Text)/UoMConverter[8]; { inches }
 end;
 
 procedure TGeneralDataForm.WaterDepthDataChange(Sender: TObject);
 begin
-  if TEdit(Sender).Text <> ''
+  if not ((TEdit(Sender).Text = '-')
+      or (TEdit(Sender).Text = DefaultFormatSettings.DecimalSeparator)
+      or (TEdit(Sender).Text = ''))
           then _WellWaterDepth:=Round2(StrToFloat(WaterDepthData.Text)/UoMConverter[1],2); { depth }
 end;
 
@@ -293,25 +301,96 @@ begin
 end;
 
 procedure TGeneralDataForm.SaveClick(Sender: TObject);
+
+  { ------------- Riser Checks ----------------}
+  Function RiserisOK : boolean;
+  Var
+    TDisOK : boolean;
+    IDisOK : boolean;
+  Begin
+    StringToMemo('Validating Riser...');
+    if (_WellRiserTD <= _WellWaterDepth)     { Casing depth must be greater than Water Depth }
+    then
+    Begin
+      ShowMessage('Riser depth must be at least as deep as the water depth');
+      StringToMemo('FormHoleData.Save: Error: Riser depth must be at least as deep as the water depth');
+      RiserTDData.SetFocus;
+      TDisOK:=False;
+    end
+    else
+    Begin
+      Data.RiserTD:=_WellRiserTD;
+      StringToMemo('FormHoleData.Save: Data.RiserTD = '+ RiserTDData.Text + ' ' + UoMLabel[1]); { API depth }
+      TDisOK:=True;
+    End;
+
+    if (_WellRiserID > 50) or (_WellRiserID <= 0)                { Riser ID must be less than something sensible }
+    then
+    Begin
+      ShowMessage('Riser ID must be greater than zero and less than 50 inches');
+      StringToMemo('FormHoleData.Save: Error: Riser ID must be greater than zero and less than 50 inches');
+      RiserIDData.SetFocus;
+      IDisOK:=False;
+    end
+    else
+    Begin
+      Data.RiserID :=_WellRiserID;
+      StringToMemo('FormHoleData.Save: Data.RiserID = '+ RiserIDData.Text + ' ' + UoMLabel[8]); { inches }
+      IDisOK:=True;
+    End;
+    if TDisOK and IDisOK then
+    Begin
+      RiserisOK:=True;
+      StringToMemo('RiserisOK: Success');
+    End
+    else
+    Begin
+      RiserisOK:=False;
+      StringToMemo('RiserisOK: Fail');
+      Exit;
+    End;
+
+  end;
+
 begin
-  if _WellOperator=''
-          then
-          Begin
-            ShowMessage('Operator name cannot be blank');
-            WellNameData.SetFocus;
-          end
-          else Data.WellOperator   :=_WellOperator;
+  StringToMemo('FormGeneralData.Save ..............................................');
+
+  Data.WellOperator   :=_WellOperator;
   Data.WellName       :=_WellName;
+
   Data.ElevationRKB   :=_WellElevation;
   Data.Offshore       :=_WellOffshore;
   Data.SubSeaWellHead :=_WellSubSeaWellHead;
   Data.Riser          :=_WellRiser;
-  Data.RiserTD        :=_WellRiserTD;
-  Data.RiserID        :=_WellRiserID;
-  Data.ChokeLineID    :=_WellChokeLineID;
-  Data.KillLineID     :=_WellKillLineID;
-  Data.WaterDepth     :=_WellWaterDepth;
-  Edited              :=True;
+
+  if Data.Offshore then
+  Begin
+    if Data.SubSeaWellHead
+    then
+      StringToMemo('Checking Riser...');
+      if RiserisOK = True then StringToMemo('Riser profile validation: Success') else
+      Begin
+        StringToMemo('Riser profile validation: Fail');
+        Exit
+      End;
+      Data.ChokeLineID :=_WellChokeLineID;
+      Data.KillLineID  :=_WellKillLineID;
+    End;
+    if _WellWaterDepth > _WellRiserTD then
+    Begin
+      ShowMessage('Water depth cannot be deeper than the riser TD');
+      StringToMemo('FormHoleData.Save: Error: Water depth cannot be deeper than the riser TD');
+      RiserTDData.SetFocus;
+      Exit;
+    end
+    else
+    Begin
+      Data.WaterDepth:=_WellWaterDepth;
+      StringToMemo('FormHoleData.Save: Data.WaterDepth = '+ WaterDepthData.Text + ' ' + UoMLabel[1]); { API depth }
+     End;
+  end;
+
+  Edited:=True;
   Close;
 end;
 

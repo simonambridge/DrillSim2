@@ -33,7 +33,7 @@ End;
 Procedure CheckHoleData; // called when a file is loaded
 Begin
   Repeat
-    UpdateHole;                  { call hole data entry form }
+    //UpdateHole;                  { call hole data entry form }
     Begin
       DSHoleCalc;                { Check hole for errors and initialise volumes  }
                                  { mud volume reset when hole profile changed }
@@ -55,7 +55,7 @@ Begin
     if HoleError then
     Begin
       ErrorScreen;
-      UpdateHole;
+      //UpdateHole;
     End;
   Until not HoleError;
 End;
