@@ -1,0 +1,32 @@
+object GeologyDataForm: TGeologyDataForm
+  Left = 640
+  Height = 240
+  Top = 402
+  Width = 320
+  Caption = 'Geology Data'
+  ClientHeight = 240
+  ClientWidth = 320
+  LCLVersion = '1.2.6.0'
+  object QuitButton: TButton
+    Left = 152
+    Height = 25
+    Hint = 'Click to exit without saving'
+    Top = 200
+    Width = 75
+    Caption = 'Quit'
+    ParentShowHint = False
+    ShowHint = True
+    TabOrder = 0
+  end
+  object SaveButton: TButton
+    Left = 232
+    Height = 25
+    Hint = 'Click to save and exit'
+    Top = 200
+    Width = 75
+    Caption = 'Save'
+    ParentShowHint = False
+    ShowHint = True
+    TabOrder = 1
+  end
+end

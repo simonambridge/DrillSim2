@@ -1,0 +1,8 @@
+object PumpDataForm: TPumpDataForm
+  Left = 229
+  Height = 240
+  Top = 434
+  Width = 320
+  Caption = 'Rig Pump Data'
+  LCLVersion = '1.2.6.0'
+end

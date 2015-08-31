@@ -922,6 +922,7 @@ begin
   Data.DeviationDegrees:=_WellDeviation;
   StringToMemo('FormHoleData.Save: Data.DeviationDegrees = '+ DeviationData.Text + ' Degrees');
 
+  Edited:=True;
   Close;
 end;
 

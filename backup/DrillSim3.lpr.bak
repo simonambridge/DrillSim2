@@ -17,10 +17,10 @@ uses
   DrillSimMessageToMemo,
   DrillSimGUI,
   FormGeneralData,
-  FormDisplayWellData,
   FormHoleData,
   FormUnitsOfMeasure, FormConfigDefaults, FormPipeData, FormBitData,
-formmuddata;
+FormPumpData, FormSurfaceEquipmentData, FormWellTestData,
+FormGeologyData, FormMudData, FormDisplayWellData;
 
 {$R *.res}
 
@@ -48,7 +48,16 @@ begin
   Application.CreateForm(TPipeDataForm, PipeDataForm);
   StringToMemo('Initialise Form: Well Pipe Profile');
   Application.CreateForm(TBitDataForm, BitDataForm);
-  Application.CreateForm(TMudDataForm, MudDataForm);
+  StringToMemo('Initialise Form: Well Drill Bit Data');
+  StringToMemo('Initialise Form: Well Drilling Fluid Data');
+  Application.CreateForm(TPumpDataForm, PumpDataForm);
+  StringToMemo('Initialise Form: Rig Pump Data');
+  Application.CreateForm(TSurfaceEquipmentDataForm, SurfaceEquipmentDataForm);
+  StringToMemo('Initialise Form: Rig SUrface Equipment Data');
+  Application.CreateForm(TWellTestDataForm, WellTestDataForm);
+  StringToMemo('Initialise Form: Well Test Data');
+  Application.CreateForm(TGeologyDataForm, GeologyDataForm);
+  StringToMemo('Initialise Form: Well Geology Data');
   Application.Run;
 
   StringToMemo('===============================');

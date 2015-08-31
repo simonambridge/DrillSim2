@@ -1,0 +1,8 @@
+object WellTestDataForm: TWellTestDataForm
+  Left = 777
+  Height = 240
+  Top = 372
+  Width = 320
+  Caption = 'Well Test Data'
+  LCLVersion = '1.2.6.0'
+end

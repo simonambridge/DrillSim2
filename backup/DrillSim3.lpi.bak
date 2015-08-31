@@ -35,7 +35,7 @@
         <PackageName Value="LCL"/>
       </Item1>
     </RequiredPackages>
-    <Units Count="10">
+    <Units Count="14">
       <Unit0>
         <Filename Value="DrillSim3.lpr"/>
         <IsPartOfProject Value="True"/>
@@ -58,47 +58,75 @@
         <IsPartOfProject Value="True"/>
       </Unit3>
       <Unit4>
-        <Filename Value="formdisplaywelldata.pas"/>
-        <IsPartOfProject Value="True"/>
-        <ComponentName Value="Form1"/>
-        <ResourceBaseClass Value="Form"/>
-        <UnitName Value="FormDisplayWellData"/>
-      </Unit4>
-      <Unit5>
         <Filename Value="formunitsofmeasure.pas"/>
         <IsPartOfProject Value="True"/>
         <ComponentName Value="UnitsOfMeasureForm"/>
         <ResourceBaseClass Value="Form"/>
         <UnitName Value="FormUnitsOfMeasure"/>
-      </Unit5>
-      <Unit6>
+      </Unit4>
+      <Unit5>
         <Filename Value="formconfigdefaults.pas"/>
         <IsPartOfProject Value="True"/>
         <ComponentName Value="Form2"/>
         <ResourceBaseClass Value="Form"/>
         <UnitName Value="FormConfigDefaults"/>
-      </Unit6>
-      <Unit7>
+      </Unit5>
+      <Unit6>
         <Filename Value="formpipedata.pas"/>
         <IsPartOfProject Value="True"/>
         <ComponentName Value="Form3"/>
         <ResourceBaseClass Value="Form"/>
         <UnitName Value="FormPipeData"/>
-      </Unit7>
-      <Unit8>
+      </Unit6>
+      <Unit7>
         <Filename Value="formbitdata.pas"/>
         <IsPartOfProject Value="True"/>
         <ComponentName Value="BitDataForm"/>
         <ResourceBaseClass Value="Form"/>
         <UnitName Value="FormBitData"/>
-      </Unit8>
-      <Unit9>
-        <Filename Value="formmuddata.pas"/>
+      </Unit7>
+      <Unit8>
+        <Filename Value="FormMudData.pas"/>
         <IsPartOfProject Value="True"/>
         <ComponentName Value="MudDataForm"/>
+        <HasResources Value="True"/>
         <ResourceBaseClass Value="Form"/>
-        <UnitName Value="formmuddata"/>
+        <UnitName Value="FormMudData"/>
+      </Unit8>
+      <Unit9>
+        <Filename Value="formpumpdata.pas"/>
+        <IsPartOfProject Value="True"/>
+        <ComponentName Value="PumpDataForm"/>
+        <ResourceBaseClass Value="Form"/>
+        <UnitName Value="FormPumpData"/>
       </Unit9>
+      <Unit10>
+        <Filename Value="formsurfaceequipmentdata.pas"/>
+        <IsPartOfProject Value="True"/>
+        <ComponentName Value="SurfaceEquipmentDataForm"/>
+        <ResourceBaseClass Value="Form"/>
+        <UnitName Value="FormSurfaceEquipmentData"/>
+      </Unit10>
+      <Unit11>
+        <Filename Value="formwelltestdata.pas"/>
+        <IsPartOfProject Value="True"/>
+        <ComponentName Value="WellTestDataForm"/>
+        <ResourceBaseClass Value="Form"/>
+        <UnitName Value="FormWellTestData"/>
+      </Unit11>
+      <Unit12>
+        <Filename Value="formgeologydata.pas"/>
+        <IsPartOfProject Value="True"/>
+        <ComponentName Value="GeologyDataForm"/>
+        <ResourceBaseClass Value="Form"/>
+        <UnitName Value="FormGeologyData"/>
+      </Unit12>
+      <Unit13>
+        <Filename Value="FormDisplayWellData.pas"/>
+        <IsPartOfProject Value="True"/>
+        <HasResources Value="True"/>
+        <UnitName Value="FormDisplayWellData"/>
+      </Unit13>
     </Units>
   </ProjectOptions>
   <CompilerOptions>

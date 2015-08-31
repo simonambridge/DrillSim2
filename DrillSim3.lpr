@@ -17,10 +17,10 @@ uses
   DrillSimMessageToMemo,
   DrillSimGUI,
   FormGeneralData,
-  FormDisplayWellData,
   FormHoleData,
-  FormUnitsOfMeasure, FormConfigDefaults, FormPipeData, FormBitData,
-formmuddata, FormPumpData;
+  FormConfigDefaults, FormPipeData, FormBitData,
+FormPumpData, FormSurfaceEquipmentData, FormWellTestData,
+FormGeologyData, FormMudData, FormDisplayWellData, FormUnitsOfMeasure;
 
 {$R *.res}
 
@@ -34,24 +34,30 @@ begin
   // Build GUI, run DrillSim StartUp
   writeln('DrillSim3.lpr : Application.CreateForm');
   Application.CreateForm(TDrillSim, DrillSim);
-  StringToMemo('Initialise Form: DrillSim');
   Application.CreateForm(TGeneralDataForm, GeneralDataForm);
-  StringToMemo('Initialise Form: General Well Data');
   Application.CreateForm(TDisplayWellDataForm, DisplayWellDataForm);
-  StringToMemo('Initialise Form: Summary Well Data');
-  Application.CreateForm(TUnitsOfMeasureForm, UnitsOfMeasureForm);
-  StringToMemo('Initialise Form: Units Of Measure');
   Application.CreateForm(TSystemDefaultsForm, SystemDefaultsForm);
-  StringToMemo('Initialise Form: System Defaults');
   Application.CreateForm(THoleDataForm, HoleDataForm);
-  StringToMemo('Initialise Form: Well Hole Profile');
   Application.CreateForm(TPipeDataForm, PipeDataForm);
-  StringToMemo('Initialise Form: Well Pipe Profile');
   Application.CreateForm(TBitDataForm, BitDataForm);
-  StringToMemo('Initialise Form: Well Drill Bit Data');
-  Application.CreateForm(TMudDataForm, MudDataForm);
-  StringToMemo('Initialise Form: Well Drilling Fluid Data');
   Application.CreateForm(TPumpDataForm, PumpDataForm);
+  Application.CreateForm(TSurfaceEquipmentDataForm, SurfaceEquipmentDataForm);
+  Application.CreateForm(TWellTestDataForm, WellTestDataForm);
+  Application.CreateForm(TGeologyDataForm, GeologyDataForm);
+  Application.CreateForm(TMudDataForm, MudDataForm);
+  StringToMemo('Initialise Form: DrillSim');
+  StringToMemo('Initialise Form: General Well Data');
+  StringToMemo('Initialise Form: Summary Well Data');
+  StringToMemo('Initialise Form: Units Of Measure');
+  StringToMemo('Initialise Form: System Defaults');
+  StringToMemo('Initialise Form: Well Hole Profile');
+  StringToMemo('Initialise Form: Well Pipe Profile');
+  StringToMemo('Initialise Form: Well Drill Bit Data');
+  StringToMemo('Initialise Form: Well Drilling Fluid Data');
+  StringToMemo('Initialise Form: Rig Pump Data');
+  StringToMemo('Initialise Form: Rig SUrface Equipment Data');
+  StringToMemo('Initialise Form: Well Test Data');
+  StringToMemo('Initialise Form: Well Geology Data');
   Application.Run;
 
   StringToMemo('===============================');

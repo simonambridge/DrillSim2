@@ -28,12 +28,18 @@ uses
   DrillSimHoleCalc,
   DrillSimMessageToMemo,
   DrillSimUnitsOfMeasure,
+  FormConfigDefaults,
+  FormUnitsOfMeasure,
   FormDisplayWellData,
   FormGeneralData,
   FormHoleData,
-  FormConfigDefaults,
-  FormUnitsOfMeasure,
   FormPipeData,
+  FormBitData,
+  FormMudData,
+  FormPumpData,
+  FormSurfaceEquipmentData,
+  FormTestData,
+  FormGeologyData,
   SimulateCommandProcessor,
   SimulateUpdate,
   SimulateSurfaceControls,
@@ -772,37 +778,72 @@ end;
 
 procedure TDrillSim.MenuItem2DrillStringClick(Sender: TObject);
 begin
-  CheckPipeData;
+  try
+    PipeDataForm:=TPipeDataForm.Create(Nil);  //Pipe Data Input is created
+    PipeDataForm.ShowModal;
+  finally
+    PipeDataForm.Free;
+  end;
 end;
 
 procedure TDrillSim.MenuItem2BitDataClick(Sender: TObject);
 begin
-  UpdateBit;
+  try
+    BitDataForm:=TBitDataForm.Create(Nil);  //Bit Data Input is created
+    BitDataForm.ShowModal;
+  finally
+    BitDataForm.Free;
+  end;
 end;
 
 procedure TDrillSim.MenuItem2MudDataClick(Sender: TObject);
 begin
-  UpdateMud;
+  try
+    MudDataForm:=TMudDataForm.Create(Nil);  //Mud Data Input is created
+    MudDataForm.ShowModal;
+  finally
+    MudDataForm.Free;
+  end;
 end;
 
 procedure TDrillSim.MenuItem2PumpDataClick(Sender: TObject);
 begin
-  UpdatePump;
+  try
+    PumpDataForm:=TPumpDataForm.Create(Nil);  //Pump Data Input is created
+    PumpDataForm.ShowModal;
+  finally
+    PumpDataForm.Free;
+  end;
 end;
 
 procedure TDrillSim.MenuItem2SurfaceEquipmentClick(Sender: TObject);
 begin
-  UpdateSurf;
+  try
+    SurfaceEquipmentDataForm:=TSurfaceEquipmentDataForm.Create(Nil);  //Pump Data Input is created
+    SurfaceEquipmentDataForm.ShowModal;
+  finally
+    SurfaceEquipmentDataForm.Free;
+  end;
 end;
 
 procedure TDrillSim.MenuItem2WellTestDataClick(Sender: TObject);
 begin
-  UpdateWellTests;
+  try
+    WellTestDataForm:=TWellTestDataForm.Create(Nil);  //Pump Data Input is created
+    WellTestDataForm.ShowModal;
+  finally
+    WellTestDataForm.Free;
+  end;
 end;
 
 procedure TDrillSim.MenuItem2GeologyClick(Sender: TObject);
 begin
-
+  try
+    GeologyDataForm:=TGeologyDataForm.Create(Nil);  //Pump Data Input is created
+    GeologyDataForm.ShowModal;
+  finally
+    GeologyDataForm.Free;
+  end;
 end;
 
 { ---------- Preferences Menu Options -------------------------- }

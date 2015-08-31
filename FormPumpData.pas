@@ -12,6 +12,8 @@ type
   { TPumpDataForm }
 
   TPumpDataForm = class(TForm)
+    QuitButton: TButton;
+    SaveButton: TButton;
   private
     { private declarations }
   public
