@@ -58,35 +58,35 @@ Begin
     MaxHoles:=0;
     For i:=1 to 3 do
     Begin
-      Hole[i,1]:=Zero;
-      Hole[i,2]:=Zero;
+      Hole[i,1]:=Zero;          { depth }
+      Hole[i,2]:=Zero;          { ID }
     End;
 
-    Maxpipes:=1;
-    For i:=1 to 4 do
+    Maxpipes:=1;                { must be at least one section of drill pipe }
+    For i:=1 to 3 do            { data file caters for up to 4 but we only use 3 }
     Begin
-      Pipe[i,1]:=Zero;
-      Pipe[i,2]:=Zero;
-      Pipe[i,3]:=Zero;
-      Pipe[i,4]:=Zero;          { pipe wt. unassigned in HyCalc }
+      Pipe[i,1]:=Zero;          { pipe length }
+      Pipe[i,2]:=Zero;          { pipe ID }
+      Pipe[i,3]:=Zero;          { pipe OD }
+      Pipe[i,4]:=Zero;          { pipe wt. }
     End;
 
-    For i:=1 to 4 do
+    For i:=1 to 4 do            { kelly, swivel, hose and standpipe }
     Begin
-      Surf[i,1]:=Zero;
-      Surf[i,2]:=Zero;
+      Surf[i,1]:=Zero;          { length }
+      Surf[i,2]:=Zero;          { ID }
     End;
 
     MaxPumps:=1;
     For i:=1 to 3 do
     Begin
-      Pump[i,1]:=Zero;
-      Pump[i,2]:=Zero;
-      Pump[i,3]:=Zero;
-      Pump[i,4]:=Zero;
-      Pump[i,5]:=Zero;
+      Pump[i,1]:=Zero;          { output }
+      Pump[i,2]:=Zero;          { efficiency }
+      Pump[i,3]:=Zero;          { @ strokes per minute }
+      Pump[i,4]:=Zero;          { not used }
+      Pump[i,5]:=Zero;          { not used }
     End;
-    MaxPress  :=Zero;
+    MaxPumpPressure  :=Zero;
 
     MaxJets :=4;
     For i:=1 to MaxJets do Jet[i]:=Zero;

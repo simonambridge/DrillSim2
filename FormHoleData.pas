@@ -66,7 +66,6 @@ type
     procedure LinerTopDepthDataChange(Sender: TObject);
     procedure LinerYNRadioGroupClick(Sender: TObject);
     procedure NumericOnlyKeyPress(Sender: TObject; var Key: Char);
-    procedure CancelClick(Sender: TObject);
     procedure NumOHSectionsComboBoxChange(Sender: TObject);
     procedure OHSection1IDDataChange(Sender: TObject);
     procedure OHSection1TDDataChange(Sender: TObject);
@@ -124,11 +123,6 @@ begin
   Begin
     Key := #0;  // discard it
   end;
-end;
-
-procedure THoleDataForm.CancelClick(Sender: TObject);
-begin
-
 end;
 
 procedure THoleDataForm.CasingYNRadioGroupClick(Sender: TObject);
@@ -385,7 +379,19 @@ procedure THoleDataForm.FormActivate(Sender: TObject);
 begin
   StringToMemo('Form Well Hole Profile Data activated...........................');
 
+  // units of measure labels
 
+  CasingShoeDepthUoMLabel.Caption:=UoMLabel[1];      { user depth }
+  CasingIDUoMLabel.Caption:=UoMLabel[8];             { inches }
+
+  LinerTopDepthUoMLabel.Caption:=UoMLabel[1];        { user depth }
+  LinerBottomDepthUoMLabel.Caption:=UoMLabel[1];     { user depth }
+  LinerIDUoMLabel.Caption:=UoMLabel[8];              { inches }
+
+  OHTDUoMLabel.Caption:=UoMLabel[1];         { user depth }
+  OHIDUoMLabel.Caption:=UoMLabel[8];         { inches }
+
+  // data
     OffshoreYN.Enabled:=False;
     if Data.Offshore
     then OffshoreYN.Checked:=True
@@ -552,17 +558,6 @@ begin
 
     DeviationData.Text:=FloatToStr(Round2(Data.DeviationDegrees,2));
 
-    // units of measure labels
-
-    CasingShoeDepthUoMLabel.Caption:=UoMLabel[1];      { uder depth }
-    CasingIDUoMLabel.Caption:=UoMLabel[8];             { inches }
-
-    LinerTopDepthUoMLabel.Caption:=UoMLabel[1];        { user depth }
-    LinerBottomDepthUoMLabel.Caption:=UoMLabel[1];     { user depth }
-    LinerIDUoMLabel.Caption:=UoMLabel[8];              { inches }
-
-    OHTDUoMLabel.Caption:=UoMLabel[1];         { user depth }
-    OHIDUoMLabel.Caption:=UoMLabel[8];         { inches }
 end;
 
 procedure THoleDataForm.FormCreate(Sender: TObject);
@@ -577,9 +572,8 @@ begin
 end;
 
 procedure THoleDataForm.FormDeactivate(Sender: TObject);
-begin
+begin    { Also called on QuitButton }
   StringToMemo('FormHoleData.Deactivate ........................................');
-  Close;
 end;
 
 

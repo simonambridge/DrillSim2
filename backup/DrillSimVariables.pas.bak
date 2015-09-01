@@ -59,7 +59,7 @@ Type
 
                    Liner                       : boolean;
                    LinerTopTD                  : real;
-                   LinerTD                     : real;
+                   LinerBottomTD               : real;
                    LinerID                     : real;
 
                    Surf                        : array[1..4,1..2] of real;
@@ -67,7 +67,7 @@ Type
                    MaxHoles                    : integer;
                    Hole                        : array[1..3,1..3] of real;
 
-                   MaxPipes                    : integer;
+                   MaxPipes                    : integer;  { we only use three sections }
                    Pipe                        : array[1..4,1..4] of real;
 
                    ChokeLineID                 : real;
@@ -86,7 +86,7 @@ Type
 
                    MaxPumps                    : integer;
                    Pump                        : array[1..3,1..5] of real;
-                   MaxPress                    : real;
+                   MaxPumpPressure             : real;
 
                    ExcessMud: real;
                    MudWt, MudPv                : real;

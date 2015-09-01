@@ -65,10 +65,10 @@ Type
                    Surf                        : array[1..4,1..2] of real;
 
                    MaxHoles                    : integer;
-                   Hole                        : array[1..3,1..3] of real;
+                   Hole                        : array[1..3,1..3] of real; { TD, ID, OD }
 
-                   MaxPipes                    : integer;
-                   Pipe                        : array[1..4,1..4] of real;
+                   MaxPipes                    : integer;                  { we only use three sections of }
+                   Pipe                        : array[1..4,1..4] of real; { pipe length, ID, OD, lbs/ft }
 
                    ChokeLineID                 : real;
                    KillLineID                  : real;
@@ -86,7 +86,7 @@ Type
 
                    MaxPumps                    : integer;
                    Pump                        : array[1..3,1..5] of real;
-                   MaxPress                    : real;
+                   MaxPumpPressure             : real;
 
                    ExcessMud: real;
                    MudWt, MudPv                : real;

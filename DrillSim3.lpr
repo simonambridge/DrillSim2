@@ -55,7 +55,7 @@ begin
   StringToMemo('Initialise Form: Well Drill Bit Data');
   StringToMemo('Initialise Form: Well Drilling Fluid Data');
   StringToMemo('Initialise Form: Rig Pump Data');
-  StringToMemo('Initialise Form: Rig SUrface Equipment Data');
+  StringToMemo('Initialise Form: Rig Surface Equipment Data');
   StringToMemo('Initialise Form: Well Test Data');
   StringToMemo('Initialise Form: Well Geology Data');
   Application.Run;
