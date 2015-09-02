@@ -572,9 +572,8 @@ begin
 end;
 
 procedure THoleDataForm.FormDeactivate(Sender: TObject);
-begin
+begin    { Also called on QuitButton }
   StringToMemo('FormHoleData.Deactivate ........................................');
-  Close;
 end;
 
 

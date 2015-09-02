@@ -609,7 +609,7 @@ var Error : boolean;
     if ((_WellHole[1,2] > _WellCasingID) and (Data.Casing=True)) or     { OH ID must be less than casing ID if present }
        ((_WellHole[1,2] < _WellLinerID) and (Data.Liner=True))  or      { OH ID must be greater than liner ID if present }
        (_WellHole[1,2] <= 0) or                                         { OH ID must be greater than zero }
-       ((_WellHole[1,2] <= _WellHole[2,2]) and (_WellMaxHoles>1))       { OD ID must be less than OH 2 ID if 2 OHs }
+       ((_WellHole[1,2] <= _WellHole[2,2]) and (_WellMaxHoles>1))       { OH ID must be less than OH 2 ID if 2 OHs }
     then
     Begin
       ShowMessage('Hole section 1 ID must be greater than zero, less than casing ID (if present), and greater than liner OD (if present)');
@@ -663,7 +663,7 @@ var Error : boolean;
     if (_WellHole[2,2] >= _WellHole[1,2]) or                          { OD 2 ID must be less than OH 1 ID }
        ((_WellHole[2,2] <= _WellLinerID) and (Data.Liner=True))  or   { OH 2 ID must be greater than liner ID if present }
        (_WellHole[2,2] <= 0) or                                       { OH 2 ID must be greater than zero }
-       ((_WellHole[2,2] <= _WellHole[3,2]) and (_WellMaxHoles>2))     { OD 2 ID must be less than OH 3 ID if 3 OHs }
+       ((_WellHole[2,2] <= _WellHole[3,2]) and (_WellMaxHoles>2))     { OH 2 ID must be less than OH 3 ID if 3 OHs }
     then
     Begin
       ShowMessage('Hole section 2 ID must be greater than zero, less than OH section 1 ID, greater than OH 3 ID (present) and greater than liner OD (if present)');

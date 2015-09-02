@@ -373,11 +373,11 @@ Begin
                          MessageToMemo(90); // Invalid number of pumps (1 to 3)
     Until MaxPumps in [1..3];
 
-    Str(MaxPress:9:3,Str1);
+    Str(MaxPumpPressure:9:3,Str1);
     //Disp(10,7,'Max. Pump Pressure  : '+Str1+' '+UoMLabel[3]+' ?');
     GetReal(55,7,5000/UoMConverter[3]);
-    if Valid then MaxPress:=RealResult;
-    gotoxy(55,7); write(MaxPress:9:1);
+    if Valid then MaxPumpPressure:=RealResult;
+    gotoxy(55,7); write(MaxPumpPressure:9:1);
 
     Repeat
       For i:=1 to MaxPumps do            { first display current data }

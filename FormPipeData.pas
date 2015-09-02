@@ -442,8 +442,123 @@ begin     { Also called on QuitButton }
 end;
 
 procedure TPipeDataForm.SaveButtonClick(Sender: TObject);
+var Error : boolean;
+
+  { Validate pipe section input : 3 functions }
+  { ------------- Drill Collar Checks ----------------}
+  Function DrillCollarsisOK : boolean;
+  var
+    LengthisOK : boolean;
+    IDisOK : boolean;
+    ODisOK : boolean;
+    WeightisOK : boolean;
+  Begin
+    StringToMemo('Validating Drill Collars...');
+
+    if (_WellPipe[1,1] <= 0) or                                               { length cannot be zero }
+       ((_WellPipe[1,1] >= Data.CasingTD) and (Data.MaxHoles=0)) or           { total pipe length must not exceed Casing Shoe TD if no open hole section }
+       ((_WellPipe[1,1] >= Data.Hole[Data.MaxHoles,1]) and (Data.MaxHoles>0)) { total pipe length must not exceed TD of lowest hole section if present }
+    then
+    Begin
+      ShowMessage('Drill Collars length must be greater than zero, must not exceed Casing Shoe TD if no open hole section or TD of lowest hole section if present');
+      StringToMemo('FormHoleData.Save: Error: Drill Collars length must be greater than zero, must not exceed Casing Shoe TD if no open hole section or TD of lowest hole section if present');
+      DrillCollarLengthData.SetFocus;
+      LengthisOK:=False;
+    end
+    else
+    Begin
+      Data.Pipe[1,1]:=_WellPipe[1,1];
+      StringToMemo('FormPipeData.Save: Data.Pipe[1,1] = '+ DrillCOllarLengthData.Text + ' ' + UoMLabel[1]); { API depth }
+      LengthisOK:=True;
+    End;
+
+    if (_WellPipe[1,2] >= _WellPipe[1,3]) or       { Drill Collar ID must be less than Drill Collar OD }
+       (_WellPipe[1,2] <= 0)                        { ID cannot be zero }
+    then
+    Begin
+      ShowMessage('Drill Collar ID must be less than Drill Collar OD and greater than zero');
+      StringToMemo('FormPipeData.Save: Error: Drill Collar ID must be less than Drill Collar OD and greater than zero');
+      DrillCollarIDData.SetFocus;
+      IDisOK:=False;
+    end
+    else
+    Begin
+      Data.Pipe[1,2]:=_WellPipe[1,2];
+      StringToMemo('FormPipeData.Save: Data.Pipe[1,2] = '+ DrillCollarIDData.Text + ' ' + UoMLabel[8]); { inches }
+      IDisOK:=True;
+    End;
+
+    if ((_WellPipe[1,3] < _WellPipe[2,3]) and (_WellMaxPipes>1)) or      { Drill Collar ID must be more than next higher pipe OD }
+       (_WellPipe[1,3] <= 0)                                             { OD cannot be zero }
+    then
+    Begin
+      ShowMessage('Drill Collar OD must be more than the OD of the next highest pipe section and greater than zero');
+      StringToMemo('FormPipeData.Save: Error: Drill Collar OD must be more than the OD of the next highest pipe section and greater than zero');
+      DrillCOllarODData.SetFocus;
+      ODisOK:=False;
+    end
+    else
+    Begin
+      Data.Pipe[1,3]:=_WellPipe[1,3];
+      StringToMemo('FormPipeData.Save: Data.Pipe[1,3] = '+ DrillCollarODData.Text + ' ' + UoMLabel[8]); { inches }
+      ODisOK:=True;
+    End;
+
+
+    if (_WellPipe[1,4] <= 0)                                             { weight per foot cannot be zero }
+    then
+    Begin
+      ShowMessage('Drill Collar weight per foot must be greater than zero');
+      StringToMemo('FormPipeData.Save: Error: Drill Collar weight per foot must be greater than zero');
+      DrillCOllarWeightData.SetFocus;
+      WeightisOK:=False;
+    end
+    else
+    Begin
+      Data.Pipe[1,4]:=_WellPipe[1,4];
+      StringToMemo('FormPipeData.Save: Data.Pipe[1,4] = '+ DrillCollarWeightData.Text + ' lbs per foot'); { lbs per foot }
+      WeightisOK:=True;
+    End;
+
+    if (LengthisOK and IDisOK and ODisOK and WeightisOK) then
+    Begin
+      DrillCollarsisOK:=True;
+      StringToMemo('DrillCollarsisOK: Success');
+    End
+    else
+    Begin
+      DrillCollarsisOK:=False;
+      StringToMemo('DrillCollarsisOK: Fail');
+    End;
+  end;
+
 begin
 
+  Data.MaxPipes:=_WellMaxPipes;
+  StringToMemo('FormPipeData.Save: Data.MaxPipes = '+ IntToStr(Data.MaxPipes));
+
+  Case Data.MaxPipes of    { very ugly...cant interate through objects but it works...}
+    1 : Begin
+          StringToMemo('Checking Drill Collars...');
+          if DrillCollarsisOK = False then Error:=True;
+        End;
+    2 : Begin
+          StringToMemo('Checking HW Drill Pipe...');
+          if (DrillCollarsisOK = False)
+          or (HWDrillPipeisOK = False) then Error:=True;
+        End;
+    3 : Begin
+          StringToMemo('Checking Drill Pipe...');
+          if (DrillCollarsisOK = False)
+          or (HWDrillPipeisOK = False)
+          or (DrillPipeisOK = False) then Error:=True;
+        End;
+  End;
+  if Error=False then StringToMemo('Drill String validation: Success') else
+  Begin
+    StringToMemo('Drill String validation: Fail');
+    Exit;
+  End;
 end;
 
 
