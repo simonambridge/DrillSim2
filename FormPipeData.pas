@@ -222,7 +222,7 @@ begin
   if not ((TEdit(Sender).Text = '-')
       or (TEdit(Sender).Text = DefaultFormatSettings.DecimalSeparator)
       or (TEdit(Sender).Text = ''))
-          then _WellPipe[1,3]:=Round2(StrToFloat(DrillCollarWeightData.Text),4); { lbs/ft }
+          then _WellPipe[1,4]:=Round2(StrToFloat(DrillCollarWeightData.Text),4); { lbs/ft }
 end;
 
 procedure TPipeDataForm.HWDrillPipeLengthDataChange(Sender: TObject);
@@ -254,7 +254,7 @@ begin
   if not ((TEdit(Sender).Text = '-')
       or (TEdit(Sender).Text = DefaultFormatSettings.DecimalSeparator)
       or (TEdit(Sender).Text = ''))
-          then _WellPipe[2,3]:=Round2(StrToFloat(HWDrillPipeWeightData.Text),4); { lbs/ft }
+          then _WellPipe[2,4]:=Round2(StrToFloat(HWDrillPipeWeightData.Text),4); { lbs/ft }
 end;
 
 procedure TPipeDataForm.DrillPipeLengthDataChange(Sender: TObject);
@@ -286,7 +286,7 @@ begin
   if not ((TEdit(Sender).Text = '-')
       or (TEdit(Sender).Text = DefaultFormatSettings.DecimalSeparator)
       or (TEdit(Sender).Text = ''))
-          then _WellPipe[3,3]:=Round2(StrToFloat(DrillPipeWeightData.Text),4); { lbs/ft }
+          then _WellPipe[3,4]:=Round2(StrToFloat(DrillPipeWeightData.Text),4); { lbs/ft }
 end;
 
 { ------------------ Form procedures ---------------------- }
@@ -468,12 +468,12 @@ var Error : boolean;
     else
     Begin
       Data.Pipe[1,1]:=_WellPipe[1,1];
-      StringToMemo('FormPipeData.Save: Data.Pipe[1,1] = '+ DrillCOllarLengthData.Text + ' ' + UoMLabel[1]); { API depth }
+      StringToMemo('FormPipeData.Save: Data.Pipe[1,1] = '+ DrillCollarLengthData.Text + ' ' + UoMLabel[1]); { API depth }
       LengthisOK:=True;
     End;
 
     if (_WellPipe[1,2] >= _WellPipe[1,3]) or       { Drill Collar ID must be less than Drill Collar OD }
-       (_WellPipe[1,2] <= 0)                        { ID cannot be zero }
+       (_WellPipe[1,2] <= 0)                       { ID cannot be zero }
     then
     Begin
       ShowMessage('Drill Collar ID must be less than Drill Collar OD and greater than zero');
@@ -488,12 +488,12 @@ var Error : boolean;
       IDisOK:=True;
     End;
 
-    if ((_WellPipe[1,3] < _WellPipe[2,3]) and (_WellMaxPipes>1)) or      { Drill Collar ID must be more than next higher pipe OD }
-       (_WellPipe[1,3] <= 0)                                             { OD cannot be zero }
+    if ((_WellPipe[1,3] > Data.Hole[Data.MaxHoles,2]) and (Data.MaxHoles>0)) or { Drill Collar OD must be less than smallest hole ID }
+       (_WellPipe[1,3] <= 0)                                                    { OD cannot be zero }
     then
     Begin
-      ShowMessage('Drill Collar OD must be more than the OD of the next highest pipe section and greater than zero');
-      StringToMemo('FormPipeData.Save: Error: Drill Collar OD must be more than the OD of the next highest pipe section and greater than zero');
+      ShowMessage('Drill Collar OD must be less than the smallest open hole ID and greater than zero');
+      StringToMemo('FormPipeData.Save: Error: Drill Collar OD must be less than the smallest open hole ID and greater than zero');
       DrillCOllarODData.SetFocus;
       ODisOK:=False;
     end
@@ -504,13 +504,12 @@ var Error : boolean;
       ODisOK:=True;
     End;
 
-
     if (_WellPipe[1,4] <= 0)                                             { weight per foot cannot be zero }
     then
     Begin
       ShowMessage('Drill Collar weight per foot must be greater than zero');
       StringToMemo('FormPipeData.Save: Error: Drill Collar weight per foot must be greater than zero');
-      DrillCOllarWeightData.SetFocus;
+      DrillCollarWeightData.SetFocus;
       WeightisOK:=False;
     end
     else
@@ -532,8 +531,180 @@ var Error : boolean;
     End;
   end;
 
-begin
+  { ------------- HW Drill Pipe Checks ----------------}
+  Function HWDrillPipeisOK : boolean;
+  var
+    LengthisOK : boolean;
+    IDisOK : boolean;
+    ODisOK : boolean;
+    WeightisOK : boolean;
+  Begin
+    StringToMemo('Validating HW Drill Pipes...');
 
+    if (_WellPipe[2,1] <= 0) or                                                    { length cannot be zero }
+       ((_WellPipe[1,1]+_WellPipe[2,1] >= Data.CasingTD) and (Data.MaxHoles=0)) or { total pipe length must not exceed Casing Shoe TD if no open hole section }
+       ((_WellPipe[1,1]+_WellPipe[2,1] >= Data.Hole[Data.MaxHoles,1]) and (Data.MaxHoles>0))      { total pipe length must not exceed TD of lowest hole section if present }
+    then
+    Begin
+      ShowMessage('HW Drill Pipe length must be greater than zero, and combined length with Drill Collars must not exceed Casing Shoe TD if no open hole section or TD of lowest hole section if present');
+      StringToMemo('FormHoleData.Save: Error: HW Drill Pipe length must be greater than zero, and combined length with Drill Collars must not exceed Casing Shoe TD if no open hole section or TD of lowest hole section if present');
+      HWDrillPipeLengthData.SetFocus;
+      LengthisOK:=False;
+    end
+    else
+    Begin
+      Data.Pipe[2,1]:=_WellPipe[2,1];
+      StringToMemo('FormPipeData.Save: Data.Pipe[2,1] = '+ HWDrillPipeLengthData.Text + ' ' + UoMLabel[1]); { API depth }
+      LengthisOK:=True;
+    End;
+
+    if (_WellPipe[2,2] >= _WellPipe[2,3]) or       { HW Drill Pipe ID must be less than OD }
+       (_WellPipe[2,2] <= 0)                       { ID cannot be zero }
+    then
+    Begin
+      ShowMessage('HW Drill Pipe ID must be less than HW Drill Pipe OD and greater than zero');
+      StringToMemo('FormPipeData.Save: Error: HW Drill Pipe ID must be less than HW Drill Pipe OD and greater than zero');
+      HWDrillPipeIDData.SetFocus;
+      IDisOK:=False;
+    end
+    else
+    Begin
+      Data.Pipe[2,2]:=_WellPipe[2,2];
+      StringToMemo('FormPipeData.Save: Data.Pipe[2,2] = '+ HWDrillPipeIDData.Text + ' ' + UoMLabel[8]); { inches }
+      IDisOK:=True;
+    End;
+
+    if (_WellPipe[2,3] > _WellPipe[1,3]) or      { HW Drill Pipe OD must be less than or equeal to DC OD }
+       (_WellPipe[1,3] <= 0)                     { OD cannot be zero }
+    then
+    Begin
+      ShowMessage('HW Drill Pipe OD must be less than or equal to DC OD and greater than zero');
+      StringToMemo('FormPipeData.Save: Error: HW Drill Pipe OD must be less than or equal to DC OD and greater than zero');
+      HWDrillPipeODData.SetFocus;
+      ODisOK:=False;
+    end
+    else
+    Begin
+      Data.Pipe[2,3]:=_WellPipe[2,3];
+      StringToMemo('FormPipeData.Save: Data.Pipe[2,3] = '+ HWDrillPipeIDData.Text + ' ' + UoMLabel[8]); { inches }
+      ODisOK:=True;
+    End;
+
+    if (_WellPipe[2,4] <= 0)                                             { weight per foot cannot be zero }
+    then
+    Begin
+      ShowMessage('HW Drill Pipe weight per foot must be greater than zero');
+      StringToMemo('FormPipeData.Save: Error: HW Drill Pipe weight per foot must be greater than zero');
+      HWDrillPipeWeightData.SetFocus;
+      WeightisOK:=False;
+    end
+    else
+    Begin
+      Data.Pipe[2,4]:=_WellPipe[2,4];
+      StringToMemo('FormPipeData.Save: Data.Pipe[2,4] = '+ HWDrillPipeIDData.Text + ' lbs per foot'); { lbs per foot }
+      WeightisOK:=True;
+    End;
+
+    if (LengthisOK and IDisOK and ODisOK and WeightisOK) then
+    Begin
+      HWDrillPipeisOK:=True;
+      StringToMemo('HWDrillPipeisOK: Success');
+    End
+    else
+    Begin
+      HWDrillPipeisOK:=False;
+      StringToMemo('HWDrillPipeisOK: Fail');
+    End;
+  end;
+
+    { ------------- Drill Pipe Checks ----------------}
+  Function DrillPipeisOK : boolean;
+  var
+    LengthisOK : boolean;
+    IDisOK : boolean;
+    ODisOK : boolean;
+    WeightisOK : boolean;
+  Begin
+    StringToMemo('Validating Drill Pipe...');
+
+    if (_WellPipe[3,1] <= 0) or                                                    { length cannot be zero }
+       ((_WellPipe[1,1]+_WellPipe[2,1]+_WellPipe[3,1] >= Data.CasingTD) and (Data.MaxHoles=0)) or { total pipe length must not exceed Casing Shoe TD if no open hole section }
+       ((_WellPipe[1,1]+_WellPipe[2,1]+_WellPipe[3,1] >= Data.Hole[Data.MaxHoles,1]) and (Data.MaxHoles>0))      { total pipe length must not exceed TD of lowest hole section if present }
+    then
+    Begin
+      ShowMessage('Drill Pipe length must be greater than zero, and combined length with Drill Collars and HW Drill Pipe must not exceed Casing Shoe TD if no open hole section or TD of lowest hole section if present');
+      StringToMemo('FormHoleData.Save: Error: Drill Pipe length must be greater than zero, and combined length with Drill Collars and HW Drill Pipe must not exceed Casing Shoe TD if no open hole section or TD of lowest hole section if present');
+      DrillPipeLengthData.SetFocus;
+      LengthisOK:=False;
+    end
+    else
+    Begin
+      Data.Pipe[3,1]:=_WellPipe[3,1];
+      StringToMemo('FormPipeData.Save: Data.Pipe[3,1] = '+ DrillPipeLengthData.Text + ' ' + UoMLabel[1]); { API depth }
+      LengthisOK:=True;
+    End;
+
+    if (_WellPipe[3,2] >= _WellPipe[3,3]) or       { Drill Pipe ID must be less than OD }
+       (_WellPipe[3,2] <= 0)                       { ID cannot be zero }
+    then
+    Begin
+      ShowMessage('Drill Pipe ID must be less than Drill Pipe OD and greater than zero');
+      StringToMemo('FormPipeData.Save: Error: Drill Pipe ID must be less than Drill Pipe OD and greater than zero');
+      DrillPipeIDData.SetFocus;
+      IDisOK:=False;
+    end
+    else
+    Begin
+      Data.Pipe[3,2]:=_WellPipe[3,2];
+      StringToMemo('FormPipeData.Save: Data.Pipe[3,2] = '+ DrillPipeIDData.Text + ' ' + UoMLabel[8]); { inches }
+      IDisOK:=True;
+    End;
+
+    if (_WellPipe[3,3] > _WellPipe[2,3]) or      { Drill Pipe OD must be lessthan next lowest pipe OD }
+       (_WellPipe[1,3] <= 0)                     { OD cannot be zero }
+    then
+    Begin
+      ShowMessage('Drill Pipe OD must be more than the OD of the next lowest pipe section and greater than zero');
+      StringToMemo('FormPipeData.Save: Error: Drill Pipe OD must be more than the OD of the next lowest pipe section and greater than zero');
+      DrillPipeODData.SetFocus;
+      ODisOK:=False;
+    end
+    else
+    Begin
+      Data.Pipe[3,3]:=_WellPipe[3,3];
+      StringToMemo('FormPipeData.Save: Data.Pipe[3,3] = '+ DrillPipeIDData.Text + ' ' + UoMLabel[8]); { inches }
+      ODisOK:=True;
+    End;
+
+    if (_WellPipe[3,4] <= 0)                                             { weight per foot cannot be zero }
+    then
+    Begin
+      ShowMessage('Drill Pipe weight per foot must be greater than zero');
+      StringToMemo('FormPipeData.Save: Error: Drill Pipe weight per foot must be greater than zero');
+      DrillPipeWeightData.SetFocus;
+      WeightisOK:=False;
+    end
+    else
+    Begin
+      Data.Pipe[3,4]:=_WellPipe[3,4];
+      StringToMemo('FormPipeData.Save: Data.Pipe[3,4] = '+ DrillPipeIDData.Text + ' lbs per foot'); { lbs per foot }
+      WeightisOK:=True;
+    End;
+
+    if (LengthisOK and IDisOK and ODisOK and WeightisOK) then
+    Begin
+      DrillPipeisOK:=True;
+      StringToMemo('DrillPipeisOK: Success');
+    End
+    else
+    Begin
+      DrillPipeisOK:=False;
+      StringToMemo('DrillPipeisOK: Fail');
+    End;
+  end;
+
+
+  begin
   Data.MaxPipes:=_WellMaxPipes;
   StringToMemo('FormPipeData.Save: Data.MaxPipes = '+ IntToStr(Data.MaxPipes));
 
@@ -559,6 +730,8 @@ begin
     StringToMemo('Drill String validation: Fail');
     Exit;
   End;
+  Edited:=True;
+  Close;
 end;
 
 
