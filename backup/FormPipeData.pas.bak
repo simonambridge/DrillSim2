@@ -580,7 +580,7 @@ var Error : boolean;
     Begin
       ShowMessage('HW Drill Pipe OD must be less than or equal to DC OD and greater than zero');
       StringToMemo('FormPipeData.Save: Error: HW Drill Pipe OD must be less than or equal to DC OD and greater than zero');
-      HWDrillPipeIDData.SetFocus;
+      HWDrillPipeODData.SetFocus;
       ODisOK:=False;
     end
     else
@@ -666,7 +666,7 @@ var Error : boolean;
     Begin
       ShowMessage('Drill Pipe OD must be more than the OD of the next lowest pipe section and greater than zero');
       StringToMemo('FormPipeData.Save: Error: Drill Pipe OD must be more than the OD of the next lowest pipe section and greater than zero');
-      DrillPipeIDData.SetFocus;
+      DrillPipeODData.SetFocus;
       ODisOK:=False;
     end
     else

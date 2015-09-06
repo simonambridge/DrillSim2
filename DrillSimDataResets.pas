@@ -90,7 +90,7 @@ Begin
 
     MaxJets :=4;
     For i:=1 to MaxJets do Jet[i]:=Zero;
-    Bit    :=Zero;
+    BitNumber    :=Zero;
     BitType :='';
 
     MudYp  :=Zero;

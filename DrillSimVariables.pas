@@ -81,7 +81,7 @@ Type
 
                    MaxJets                     : integer;
                    Jet                         : array[1..4] of integer;
-                   Bit                         : integer;
+                   BitNumber                   : integer;
                    BitType                     : String20;
 
                    MaxPumps                    : integer;

@@ -1,11 +1,11 @@
 object PipeDataForm: TPipeDataForm
-  Left = 95
+  Left = 65
   Height = 403
-  Top = 505
-  Width = 823
+  Top = 400
+  Width = 271
   Caption = 'Drill String Data'
   ClientHeight = 403
-  ClientWidth = 823
+  ClientWidth = 271
   OnActivate = FormActivate
   OnCreate = FormCreate
   OnDeactivate = FormDeactivate

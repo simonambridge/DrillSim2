@@ -260,10 +260,10 @@ Begin
   Begin
     Repeat
       gotoxy(10,10);
-      write('Current Bit #   : ',Bit:10,'  ?');
+      write('Current Bit #   : ',BitNumber:10,'  ?');
       GetInt(55,10,200);
-      if Valid then Bit:=IntResult;
-      gotoxy(55,10); write(Bit:9);
+      if Valid then BitNumber:=IntResult;
+      gotoxy(55,10); write(BitNumber:9);
 
       //Disp(10,11,'Bit Type        :');
       //Disp(41-length(BitType+'  ?'),11,BitType+'  ?');

@@ -86,7 +86,7 @@ Begin
       Pump[i,4]:=Zero;          { not used }
       Pump[i,5]:=Zero;          { not used }
     End;
-    MaxPumpPress  :=Zero;
+    MaxPumpPressure  :=Zero;
 
     MaxJets :=4;
     For i:=1 to MaxJets do Jet[i]:=Zero;
