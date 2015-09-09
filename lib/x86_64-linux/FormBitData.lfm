@@ -1,26 +1,35 @@
 object BitDataForm: TBitDataForm
-  Left = 72
-  Height = 349
-  Top = 47
-  Width = 831
+  Left = 65
+  Height = 271
+  Top = 24
+  Width = 755
+  HorzScrollBar.Page = 724
+  HorzScrollBar.Range = 724
+  VertScrollBar.Page = 241
+  VertScrollBar.Range = 241
   Caption = 'Drill Bit Data'
-  ClientHeight = 349
-  ClientWidth = 831
+  ClientHeight = 271
+  ClientWidth = 755
+  OnActivate = FormActivate
+  OnCreate = FormCreate
+  OnDeactivate = FormDeActivate
   LCLVersion = '1.2.6.0'
   object QuitButton: TButton
-    Left = 256
+    Left = 560
     Height = 25
-    Top = 288
+    Top = 216
     Width = 75
     Caption = 'Quit'
+    OnClick = QuitButtonClick
     TabOrder = 0
   end
   object SaveButton: TButton
-    Left = 344
+    Left = 648
     Height = 25
-    Top = 288
+    Top = 216
     Width = 75
     Caption = 'Save'
+    OnClick = SaveButtonClick
     TabOrder = 1
   end
   object BitNumberLabel: TLabel
@@ -37,21 +46,23 @@ object BitDataForm: TBitDataForm
     Height = 27
     Top = 24
     Width = 79
+    OnChange = BitNumberDataChange
+    OnKeyPress = NumericOnlyKeyPress
     TabOrder = 2
   end
   object Jet1Label: TLabel
-    Left = 30
+    Left = 32
     Height = 17
-    Top = 88
+    Top = 144
     Width = 50
     AutoSize = False
     Caption = 'Jet 1'
     ParentColor = False
   end
   object Jet2Label: TLabel
-    Left = 216
+    Left = 208
     Height = 17
-    Top = 88
+    Top = 144
     Width = 50
     AutoSize = False
     Caption = 'Jet 2'
@@ -60,16 +71,16 @@ object BitDataForm: TBitDataForm
   object Jet3Label: TLabel
     Left = 392
     Height = 17
-    Top = 88
+    Top = 144
     Width = 50
     AutoSize = False
     Caption = 'Jet 3'
     ParentColor = False
   end
   object Jet4Label: TLabel
-    Left = 576
+    Left = 568
     Height = 17
-    Top = 88
+    Top = 144
     Width = 50
     AutoSize = False
     Caption = 'Jet 4'
@@ -78,7 +89,7 @@ object BitDataForm: TBitDataForm
   object Jet1ComboBox: TComboBox
     Left = 88
     Height = 29
-    Top = 88
+    Top = 136
     Width = 100
     ItemHeight = 0
     Items.Strings = (
@@ -116,13 +127,15 @@ object BitDataForm: TBitDataForm
       '31'
       '32'
     )
+    OnChange = Jet1ComboBoxChange
+    OnKeyPress = NumericOnlyKeyPress
     TabOrder = 3
     Text = '<1/32"s>'
   end
   object Jet2ComboBox: TComboBox
     Left = 264
     Height = 29
-    Top = 88
+    Top = 136
     Width = 100
     ItemHeight = 0
     Items.Strings = (
@@ -160,13 +173,15 @@ object BitDataForm: TBitDataForm
       '31'
       '32'
     )
+    OnChange = Jet2ComboBoxChange
+    OnKeyPress = NumericOnlyKeyPress
     TabOrder = 4
     Text = '<1/32"s>'
   end
   object Jet3ComboBox: TComboBox
     Left = 448
     Height = 29
-    Top = 88
+    Top = 136
     Width = 100
     ItemHeight = 0
     Items.Strings = (
@@ -204,13 +219,15 @@ object BitDataForm: TBitDataForm
       '31'
       '32'
     )
+    OnChange = Jet3ComboBoxChange
+    OnKeyPress = NumericOnlyKeyPress
     TabOrder = 5
     Text = '<1/32"s>'
   end
-  object Jet3ComboBox1: TComboBox
+  object Jet4ComboBox: TComboBox
     Left = 624
     Height = 29
-    Top = 88
+    Top = 136
     Width = 100
     ItemHeight = 0
     Items.Strings = (
@@ -248,7 +265,43 @@ object BitDataForm: TBitDataForm
       '31'
       '32'
     )
+    OnChange = Jet4ComboBoxChange
+    OnKeyPress = NumericOnlyKeyPress
     TabOrder = 6
     Text = '<1/32"s>'
+  end
+  object BitTypeLabel: TLabel
+    Left = 32
+    Height = 17
+    Top = 71
+    Width = 80
+    AutoSize = False
+    Caption = 'Bit Type:'
+    ParentColor = False
+  end
+  object BitTypeData: TEdit
+    Left = 152
+    Height = 27
+    Top = 71
+    Width = 423
+    OnChange = BitTypeDataChange
+    TabOrder = 7
+  end
+  object MaxJetsLabel: TLabel
+    Left = 88
+    Height = 23
+    Top = 211
+    Width = 53
+    AutoSize = False
+    Caption = 'Jets'
+    ParentColor = False
+  end
+  object MaxJetsData: TLabel
+    Left = 30
+    Height = 17
+    Top = 211
+    Width = 52
+    AutoSize = False
+    ParentColor = False
   end
 end

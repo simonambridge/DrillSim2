@@ -1,11 +1,18 @@
 object BitDataForm: TBitDataForm
-  Left = 78
+  Left = 65
   Height = 271
-  Top = 102
+  Top = 24
   Width = 755
+  HorzScrollBar.Page = 724
+  HorzScrollBar.Range = 724
+  VertScrollBar.Page = 241
+  VertScrollBar.Range = 241
   Caption = 'Drill Bit Data'
   ClientHeight = 271
   ClientWidth = 755
+  OnActivate = FormActivate
+  OnCreate = FormCreate
+  OnDeactivate = FormDeActivate
   LCLVersion = '1.2.6.0'
   object QuitButton: TButton
     Left = 560
@@ -13,6 +20,7 @@ object BitDataForm: TBitDataForm
     Top = 216
     Width = 75
     Caption = 'Quit'
+    OnClick = QuitButtonClick
     TabOrder = 0
   end
   object SaveButton: TButton
@@ -21,6 +29,7 @@ object BitDataForm: TBitDataForm
     Top = 216
     Width = 75
     Caption = 'Save'
+    OnClick = SaveButtonClick
     TabOrder = 1
   end
   object BitNumberLabel: TLabel
@@ -37,6 +46,8 @@ object BitDataForm: TBitDataForm
     Height = 27
     Top = 24
     Width = 79
+    OnChange = BitNumberDataChange
+    OnKeyPress = NumericOnlyKeyPress
     TabOrder = 2
   end
   object Jet1Label: TLabel
@@ -116,6 +127,8 @@ object BitDataForm: TBitDataForm
       '31'
       '32'
     )
+    OnChange = Jet1ComboBoxChange
+    OnKeyPress = NumericOnlyKeyPress
     TabOrder = 3
     Text = '<1/32"s>'
   end
@@ -160,6 +173,8 @@ object BitDataForm: TBitDataForm
       '31'
       '32'
     )
+    OnChange = Jet2ComboBoxChange
+    OnKeyPress = NumericOnlyKeyPress
     TabOrder = 4
     Text = '<1/32"s>'
   end
@@ -204,10 +219,12 @@ object BitDataForm: TBitDataForm
       '31'
       '32'
     )
+    OnChange = Jet3ComboBoxChange
+    OnKeyPress = NumericOnlyKeyPress
     TabOrder = 5
     Text = '<1/32"s>'
   end
-  object Jet3ComboBox1: TComboBox
+  object Jet4ComboBox: TComboBox
     Left = 624
     Height = 29
     Top = 136
@@ -248,6 +265,8 @@ object BitDataForm: TBitDataForm
       '31'
       '32'
     )
+    OnChange = Jet4ComboBoxChange
+    OnKeyPress = NumericOnlyKeyPress
     TabOrder = 6
     Text = '<1/32"s>'
   end
@@ -261,10 +280,28 @@ object BitDataForm: TBitDataForm
     ParentColor = False
   end
   object BitTypeData: TEdit
-    Left = 153
+    Left = 152
     Height = 27
     Top = 71
     Width = 423
+    OnChange = BitTypeDataChange
     TabOrder = 7
+  end
+  object MaxJetsLabel: TLabel
+    Left = 88
+    Height = 23
+    Top = 211
+    Width = 53
+    AutoSize = False
+    Caption = 'Jets'
+    ParentColor = False
+  end
+  object MaxJetsData: TLabel
+    Left = 30
+    Height = 17
+    Top = 211
+    Width = 52
+    AutoSize = False
+    ParentColor = False
   end
 end
