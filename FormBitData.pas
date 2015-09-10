@@ -198,9 +198,12 @@ begin
   // data
 
   _WellBitNumber:=Data.BitNumber;
-  _WellBitType:=Data.BitType;
-  _WellMaxJets:=0;
+  BitNumberData.Text:=IntToStr(_WellBitNumber);
 
+  _WellBitType:=Data.BitType;
+  BitTypeData.Text:=_WellBitType;
+
+  _WellMaxJets:=0;
   for i:=1 to 4 do
   Begin
     Case i of
@@ -283,8 +286,41 @@ begin
 end;
 
 procedure TBitDataForm.SaveButtonClick(Sender: TObject);
-begin
+var
+  Error : boolean;
+  i : integer;
+Begin
 { --- stuff here ---- }
+  StringToMemo('FormBitData.Save ..............................................');
+  Error:=False;
+
+  Data.BitNumber:=_WellBitNumber;
+  Data.BitType:=_WellBitType;
+  Data.MaxJets:=_WellMaxJets;
+
+  Error:=True;
+  For i:=1 to 4 do
+  Begin
+    Data.Jet[i]:=_WellJet[i];
+    if Data.Jet[i]>0 then Error:=False
+                     else Data.Jet[i]:=0; { force it to 0 if -1 }
+  end;
+  if Error=True then
+  Begin
+    ShowMessage('At least one of the bit jets must be open (more than 0/32")');
+    StringToMemo('FormBitData.Save: Error: At least one of the bit jets must be open (more than 0/32")');
+    Jet1ComboBox.SetFocus;
+    Exit;
+  end;
+
+  StringToMemo('FormBitData.Save: Data.BitNumber = '+ IntToStr(Data.BitNumber));
+  StringToMemo('FormBitData.Save: Data.BitType = '+ Data.BitType);
+  StringToMemo('FormBitData.Save: Data.MaxJets = '+ IntToStr(Data.MaxJets));
+  For i:=1 to 4 do
+  Begin
+    StringToMemo('FormBitData.Save: Data.Jet[' + IntToStr(i) + '] = ' +  IntToStr(Data.Jet[i]));
+  end;
+
   Edited:=True;
   Close;
 end;

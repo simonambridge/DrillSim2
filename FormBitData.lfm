@@ -44,10 +44,13 @@ object BitDataForm: TBitDataForm
   object BitNumberData: TEdit
     Left = 152
     Height = 27
+    Hint = 'The sequence number of this drill bit'
     Top = 24
     Width = 79
     OnChange = BitNumberDataChange
     OnKeyPress = NumericOnlyKeyPress
+    ParentShowHint = False
+    ShowHint = True
     TabOrder = 2
   end
   object Jet1Label: TLabel
@@ -89,6 +92,7 @@ object BitDataForm: TBitDataForm
   object Jet1ComboBox: TComboBox
     Left = 88
     Height = 29
+    Hint = 'Jet 1 diameter in 1/32" (min 0 max 32)'
     Top = 136
     Width = 100
     ItemHeight = 0
@@ -129,12 +133,15 @@ object BitDataForm: TBitDataForm
     )
     OnChange = Jet1ComboBoxChange
     OnKeyPress = NumericOnlyKeyPress
+    ParentShowHint = False
+    ShowHint = True
     TabOrder = 3
-    Text = '<1/32"s>'
+    Text = '<0/32"s>'
   end
   object Jet2ComboBox: TComboBox
     Left = 264
     Height = 29
+    Hint = 'Jet 2 diameter in 1/32" (min 0 max 32)'
     Top = 136
     Width = 100
     ItemHeight = 0
@@ -175,12 +182,15 @@ object BitDataForm: TBitDataForm
     )
     OnChange = Jet2ComboBoxChange
     OnKeyPress = NumericOnlyKeyPress
+    ParentShowHint = False
+    ShowHint = True
     TabOrder = 4
-    Text = '<1/32"s>'
+    Text = '<0/32"s>'
   end
   object Jet3ComboBox: TComboBox
     Left = 448
     Height = 29
+    Hint = 'Jet 3 diameter in 1/32" (min 0 max 32)'
     Top = 136
     Width = 100
     ItemHeight = 0
@@ -221,12 +231,15 @@ object BitDataForm: TBitDataForm
     )
     OnChange = Jet3ComboBoxChange
     OnKeyPress = NumericOnlyKeyPress
+    ParentShowHint = False
+    ShowHint = True
     TabOrder = 5
-    Text = '<1/32"s>'
+    Text = '<0/32"s>'
   end
   object Jet4ComboBox: TComboBox
     Left = 624
     Height = 29
+    Hint = 'Jet 4 diameter in 1/32" (min 0 max 32)'
     Top = 136
     Width = 100
     ItemHeight = 0
@@ -267,8 +280,10 @@ object BitDataForm: TBitDataForm
     )
     OnChange = Jet4ComboBoxChange
     OnKeyPress = NumericOnlyKeyPress
+    ParentShowHint = False
+    ShowHint = True
     TabOrder = 6
-    Text = '<1/32"s>'
+    Text = '<0/32"s>'
   end
   object BitTypeLabel: TLabel
     Left = 32
@@ -282,9 +297,12 @@ object BitDataForm: TBitDataForm
   object BitTypeData: TEdit
     Left = 152
     Height = 27
+    Hint = 'A description of this drill bit'
     Top = 71
     Width = 423
     OnChange = BitTypeDataChange
+    ParentShowHint = False
+    ShowHint = True
     TabOrder = 7
   end
   object MaxJetsLabel: TLabel
@@ -301,6 +319,7 @@ object BitDataForm: TBitDataForm
     Height = 17
     Top = 211
     Width = 52
+    Alignment = taRightJustify
     AutoSize = False
     ParentColor = False
   end
