@@ -31,17 +31,17 @@ type
     MaxJetsLabel: TLabel;
     QuitButton: TButton;
     SaveButton: TButton;
-    procedure BitNumberDataChange(Sender: TObject);
-    procedure BitTypeDataChange(Sender: TObject);
     procedure NumericOnlyKeyPress(Sender: TObject; var Key: Char);
     Procedure JetCount;
-    procedure FormActivate(Sender: TObject);
-    procedure FormCreate(Sender: TObject);
-    procedure FormDeActivate(Sender: TObject);
+    procedure BitNumberDataChange(Sender: TObject);
+    procedure BitTypeDataChange(Sender: TObject);
     procedure Jet1ComboBoxChange(Sender: TObject);
     procedure Jet2ComboBoxChange(Sender: TObject);
     procedure Jet3ComboBoxChange(Sender: TObject);
     procedure Jet4ComboBoxChange(Sender: TObject);
+    procedure FormActivate(Sender: TObject);
+    procedure FormCreate(Sender: TObject);
+    procedure FormDeActivate(Sender: TObject);
     procedure QuitButtonClick(Sender: TObject);
     procedure SaveButtonClick(Sender: TObject);
   private
@@ -197,22 +197,21 @@ begin
 
   // data
 
-  _WellBitNumber:=Data.BitNumber;
-  BitNumberData.Text:=IntToStr(_WellBitNumber);
+  BitNumberData.Text:=IntToStr(Data.BitNumber);
 
-  _WellBitType:=Data.BitType;
-  BitTypeData.Text:=_WellBitType;
+  BitTypeData.Text:=Data.BitType;
 
   _WellMaxJets:=0;
   for i:=1 to 4 do
   Begin
+    _WellJet[i]:=Data.Jet[i];
+
     Case i of
       1: Begin
            if Data.Jet[1]>0 then
            Begin
              Jet1ComboBox.Color:=clDefault;
              Jet1ComboBox.Font.Color:=clBlack;
-             _WellJet[i]:=Data.Jet[i];
              _WellMaxJets:=_WellMaxJets+1;
              Jet1ComboBox.ItemIndex:=Data.Jet[1];
            end else
@@ -226,7 +225,6 @@ begin
            Begin
              Jet2ComboBox.Color:=clDefault;
              Jet2ComboBox.Font.Color:=clBlack;
-             _WellJet[i]:=Data.Jet[i];
              _WellMaxJets:=_WellMaxJets+1;
              Jet2ComboBox.ItemIndex:=Data.Jet[2];
            end else
@@ -240,7 +238,6 @@ begin
            Begin
              Jet3ComboBox.Color:=clDefault;
              Jet3ComboBox.Font.Color:=clBlack;
-             _WellJet[i]:=Data.Jet[i];
              _WellMaxJets:=_WellMaxJets+1;
              Jet3ComboBox.ItemIndex:=Data.Jet[3];
            end else
@@ -254,7 +251,6 @@ begin
            Begin
              Jet4ComboBox.Color:=clDefault;
              Jet4ComboBox.Font.Color:=clBlack;
-             _WellJet[i]:=Data.Jet[i];
              _WellMaxJets:=_WellMaxJets+1;
              Jet4ComboBox.ItemIndex:=Data.Jet[4];
            end else
@@ -265,7 +261,7 @@ begin
          End;
     end;
   end;
-  JetCount;
+  MaxJetsData.Caption:=IntToStr(_WellMaxJets);
 end;
 
 procedure TBitDataForm.FormCreate(Sender: TObject);
@@ -290,12 +286,29 @@ var
   Error : boolean;
   i : integer;
 Begin
-{ --- stuff here ---- }
+
   StringToMemo('FormBitData.Save ..............................................');
   Error:=False;
 
-  Data.BitNumber:=_WellBitNumber;
-  Data.BitType:=_WellBitType;
+  if _WellBitNumber<>0
+          then Data.BitNumber:=_WellBitNumber
+          else
+            Begin
+              ShowMessage('Bit number cannot be 0');
+              StringToMemo('FormBitData.Save: Error: Bit number cannot be blank');
+              BitNumberData.SetFocus;
+              Exit;
+            end;
+  if _WellBitType<> ''
+          then Data.BitType:=_WellBitType
+          else
+            Begin
+              ShowMessage('Bit type cannot be blank');
+              StringToMemo('FormBitData.Save: Error: Bit type cannot be blank');
+              BitTypeData.SetFocus;
+              Exit;
+            end;
+
   Data.MaxJets:=_WellMaxJets;
 
   Error:=True;

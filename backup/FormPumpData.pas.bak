@@ -5,13 +5,19 @@ unit FormPumpData;
 interface
 
 uses
-  Classes, SysUtils, FileUtil, Forms, Controls, Graphics, Dialogs, StdCtrls;
+  Classes, SysUtils, FileUtil, Forms, Controls, Graphics, Dialogs, StdCtrls,
+  DrillSimVariables,
+  DrillSimUtilities,
+  DrillSimMessageToMemo;
+
 
 type
 
   { TPumpDataForm }
 
   TPumpDataForm = class(TForm)
+    QuitButton: TButton;
+    SaveButton: TButton;
   private
     { private declarations }
   public

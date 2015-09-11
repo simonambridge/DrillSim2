@@ -297,9 +297,12 @@ object BitDataForm: TBitDataForm
   object BitTypeData: TEdit
     Left = 152
     Height = 27
+    Hint = 'A description of this drill bit'
     Top = 71
     Width = 423
     OnChange = BitTypeDataChange
+    ParentShowHint = False
+    ShowHint = True
     TabOrder = 7
   end
   object MaxJetsLabel: TLabel

@@ -69,7 +69,7 @@ var
 
   _WellOperator             : String120;
   _WellName           : String120;
-  _WellElevation      : real;
+  _WellElevationRKB   : real;
   _WellOffshore       : boolean;
   _WellSubSeaWellHead : boolean;
   _WellRiser          : boolean;
@@ -124,7 +124,7 @@ begin
   if not ((TEdit(Sender).Text = '-')
       or (TEdit(Sender).Text = DefaultFormatSettings.DecimalSeparator)
       or (TEdit(Sender).Text = ''))
-          then _WellElevation:=Round2(StrToFloat(ElevationRKBData.Text)/UoMConverter[1],2); { depth }
+          then _WellElevationRKB:=Round2(StrToFloat(ElevationRKBData.Text)/UoMConverter[1],2); { depth }
 end;
 
 procedure TGeneralDataForm.OffshoreYNRadioGroupClick(Sender: TObject);
@@ -245,9 +245,23 @@ begin
   StringToMemo('Form General Well Data activated....');
 //  StringToMemo('Well name is ' + Data.WellName);
 
+  // units of measure labels
+  ElevationRKBUoMLabel.Caption:=UoMLabel[1];         { depth }
+  RiserTDUoMLabel.Caption:=UoMLabel[1];              { depth }
+  RiserIDUoMLabel.Caption:=UoMLabel[8];              { inches }
+  ChokeLineIDUoMLabel.Caption:=UoMLabel[8];          { inches }
+  KillLineIDUoMLabel.Caption:=UoMLabel[8];          { inches }
+  WaterDepthUoMLabel.Caption:=UoMLabel[1];           { depth }
+
+  // data
   WellOperatorData.Caption:=Data.WellOperator;
+  _WellOperator:=Data.WellOperator;
+
   WellNameData.Caption:=Data.WellName;
+  _WellName:=Data.WellName;
+
   ElevationRKBData.Caption:=FloatToStr(Round2(Data.ElevationRKB*UoMConverter[1],2)); { depth }
+  _WellElevationRKB:=Data.ElevationRKB;
 
   if Data.Offshore=True then
   Begin
@@ -258,18 +272,29 @@ begin
       SubSeaWellHeadYNRadioGroup.ItemIndex:=1;
       RiserTDData.Enabled:=True;
       RiserTDData.Caption:=FloatToStr(Round2(Data.RiserTD*UoMConverter[1],2));  { depth }
+      _WellRiserTD:=Data.RiserTD;
+
       RiserIDData.Enabled:=True;
       RiserIDData.Caption:=FloatToStr(Data.RiserID*UoMConverter[8]);   { inches }
+      _WellRiserID:=Data.RiserID;
+
       ChokeLineIDData.Enabled:=True;
       ChokeLineIDData.Caption:=FloatToStr(Data.ChokeLineID*UoMConverter[8]); { inches }
+      _WellChokeLineID:=Data.ChokeLineID;
+
       KillLineIDData.Enabled:=True;
       KillLineIDData.Caption:=FloatToStr(Data.KillLineID*UoMConverter[8]); { inches }
+      _WellKillLineID:=Data.KillLineID;
+
     end else
     Begin
       SubSeaWellHeadYNRadioGroup.ItemIndex:=0;
     end;
+
     WaterDepthData.Enabled:=True;
     WaterDepthData.Caption:=FloatToStr(Round2(Data.WaterDepth*UoMConverter[1],2)); { depth }
+    _WellWaterDepth:=Data.WaterDepth;
+
   end
   else
   Begin
@@ -282,12 +307,6 @@ begin
     KillLineIDData.Enabled:=False;
     WaterDepthData.Enabled:=False;
   end;
-  ElevationRKBUoMLabel.Caption:=UoMLabel[1];         { depth }
-  RiserTDUoMLabel.Caption:=UoMLabel[1];              { depth }
-  RiserIDUoMLabel.Caption:=UoMLabel[8];              { inches }
-  ChokeLineIDUoMLabel.Caption:=UoMLabel[8];          { inches }
-  KillLineIDUoMLabel.Caption:=UoMLabel[8];          { inches }
-  WaterDepthUoMLabel.Caption:=UoMLabel[1];           { depth }
 end;
 
 procedure TGeneralDataForm.FormCreate(Sender: TObject);
@@ -358,7 +377,7 @@ begin
   Data.WellOperator   :=_WellOperator;
   Data.WellName       :=_WellName;
 
-  Data.ElevationRKB   :=_WellElevation;
+  Data.ElevationRKB   :=_WellElevationRKB;
   Data.Offshore       :=_WellOffshore;
   Data.SubSeaWellHead :=_WellSubSeaWellHead;
   Data.Riser          :=_WellRiser;

@@ -83,7 +83,7 @@ Begin
       Pump[i,1]:=Zero;          { output }
       Pump[i,2]:=Zero;          { efficiency }
       Pump[i,3]:=Zero;          { @ strokes per minute }
-      Pump[i,4]:=Zero;          { not used }
+      Pump[i,4]:=Zero;          { SPM }
       Pump[i,5]:=Zero;          { not used }
     End;
     MaxPumpPressure  :=Zero;
