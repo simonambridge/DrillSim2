@@ -98,22 +98,30 @@ implementation
 
       {$R *.lfm}
 { ------------- Edit Procedures ------------ }
-procedure THoleDataForm.NumericOnlyKeyPress(Sender: TObject; var Key: char);
-begin
-  if not (Key in [#8, '0'..'9', '-', DefaultFormatSettings.DecimalSeparator]) then
-  begin
-    Key := #0; // discard it
-  end
-  else if ((Key = DefaultFormatSettings.DecimalSeparator) or (Key = '-')) and
-    (Pos(Key, (Sender as TEdit).Text) > 0) then
-  begin
-    Key := #0; // discard it
-  end
-  else if (Key = '.') and ((Sender as TEdit).SelStart = 0) then
-  begin
-    Key := #0; // discard it
-  end;
-end;
+
+      procedure THoleDataForm.NumericOnlyKeyPress(Sender: TObject; var Key: Char);
+      begin
+        if not (Key in [#8, '0'..'9', '-', DefaultFormatSettings.DecimalSeparator]) then   { discard if not in approved list of chars }
+        Begin
+          Key := #0;  // discard it
+        end
+        else if ((Key = '-')) and  ((Sender as TEdit).SelStart <> 0) then             { discard if "-" and not first char in string }
+        Begin
+          Key := #0;  // discard it
+        end
+        else if ((Key = DefaultFormatSettings.DecimalSeparator) or (Key = '-')) and        { discard if "." or "-" already in string }
+                (Pos(Key, (Sender as TEdit).Text) > 0) then
+        Begin
+          Key := #0;  // discard it
+        end
+        else if (Key = DefaultFormatSettings.DecimalSeparator) and                         { discard if "." is first charachter }
+                ((Sender as TEdit).SelStart = 0) then
+        Begin
+          Key := #0;  // discard it
+        end;
+      end;
+
+
 
 procedure THoleDataForm.CasingYNRadioGroupClick(Sender: TObject);
 begin
@@ -258,9 +266,10 @@ end;
 procedure THoleDataForm.CasingShoeDepthDataChange(Sender: TObject);
 { set _WellCasingTD with API value }
 begin
-  if not ((TEdit(Sender).Text = '-') or (TEdit(Sender).Text =
-    DefaultFormatSettings.DecimalSeparator) or (TEdit(Sender).Text = '')) then
-    _WellCasingTD := Round2(StrToFloat(CasingShoeDepthData.Text) / UoMConverter[1], 2);
+  if not ((TEdit(Sender).Text = '-')
+     or (TEdit(Sender).Text = DefaultFormatSettings.DecimalSeparator)
+     or (TEdit(Sender).Text = ''))
+  then _WellCasingTD := Round2(StrToFloat(CasingShoeDepthData.Text) / UoMConverter[1], 2);
   { User->API depth }
 end;
 
@@ -291,9 +300,10 @@ end;
 
 procedure THoleDataForm.LinerIDDataChange(Sender: TObject);
 begin
-  if not ((TEdit(Sender).Text = '-') or (TEdit(Sender).Text =
-    DefaultFormatSettings.DecimalSeparator) or (TEdit(Sender).Text = '')) then
-    _WellLinerID := Round2(StrToFloat(LinerIDData.Text) / UoMConverter[8], 4); { inches }
+  if not ((TEdit(Sender).Text = '-')
+     or (TEdit(Sender).Text = DefaultFormatSettings.DecimalSeparator)
+     or (TEdit(Sender).Text = ''))
+  then _WellLinerID := Round2(StrToFloat(LinerIDData.Text) / UoMConverter[8], 4); { inches }
 end;
 
 procedure THoleDataForm.OHSection1TDDataChange(Sender: TObject);

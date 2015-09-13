@@ -377,7 +377,7 @@ begin
   Data.WellOperator   :=_WellOperator;
   Data.WellName       :=_WellName;
 
-  Data.ElevationRKB   :=_WellElevation;
+  Data.ElevationRKB   :=_WellElevationRKB;
   Data.Offshore       :=_WellOffshore;
   Data.SubSeaWellHead :=_WellSubSeaWellHead;
   Data.Riser          :=_WellRiser;

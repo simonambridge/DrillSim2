@@ -91,7 +91,7 @@ begin
   if not ((TEdit(Sender).Text = '-')
       or (TEdit(Sender).Text = DefaultFormatSettings.DecimalSeparator)
       or (TEdit(Sender).Text = ''))
-          then _WellMudYP:=StrToInt(MudYPData.Text);
+          then _WellMudYP:=Round2(StrToFloat(MudYPData.Text), 2);
 end;
 
 procedure TMudDataForm.MudPVDataChange(Sender: TObject);
@@ -99,7 +99,7 @@ begin
   if not ((TEdit(Sender).Text = '-')
       or (TEdit(Sender).Text = DefaultFormatSettings.DecimalSeparator)
       or (TEdit(Sender).Text = ''))
-          then _WellMudPV:=StrToInt(MudPVData.Text);
+          then _WellMudPV:=Round2(StrToFloat(MudPVData.Text), 2);
 end;
 
 procedure TMudDataForm.MudGelDataChange(Sender: TObject);
@@ -107,7 +107,7 @@ begin
   if not ((TEdit(Sender).Text = '-')
       or (TEdit(Sender).Text = DefaultFormatSettings.DecimalSeparator)
       or (TEdit(Sender).Text = ''))
-          then _WellMudGel:=StrToInt(MudGelData.Text);
+          then _WellMudGel:=Round2(StrToFloat(MudGelData.Text), 2);
 end;
 
 

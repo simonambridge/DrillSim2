@@ -310,12 +310,20 @@ begin
            NumPipeSectionsComboBox.ItemIndex:=0;
            DrillCollarLengthData.Enabled:=True;
            DrillCollarLengthData.Text:=FloatToStr(Round2(Data.Pipe[1,1]*UoMConverter[1],2));  { API->user depth }
+           _WellPipe[1,1]:=Data.Pipe[1,1]; { API internal }
+
            DrillCollarIDData.Enabled:=True;
            DrillCollarIDData.Text:=FloatToStr(Round2(Data.Pipe[1,2]*UoMConverter[8],4));  { inches }
+           _WellPipe[1,2]:=Data.Pipe[1,2]; {API internal }
+
            DrillCollarODData.Enabled:=True;
            DrillCollarODData.Text:=FloatToStr(Round2(Data.Pipe[1,3]*UoMConverter[8],4));  { inches }
+           _WellPipe[1,3]:=Data.Pipe[1,3]; {API internal }
+
            DrillCollarWeightData.Enabled:=True;
            DrillCollarWeightData.Text:=FloatToStr(Round2(Data.Pipe[1,4],2));  { lbs per foot }
+           _WellPipe[1,4]:=Data.Pipe[1,4]; {API internal }
+
 
            HWDrillPipeLengthData.Enabled:=False;
            //HWDrillPipeLengthData.Text:=FloatToStr(0);  { user depth }
@@ -340,21 +348,37 @@ begin
            NumPipeSectionsComboBox.ItemIndex:=1;
            DrillCollarLengthData.Enabled:=True;
            DrillCollarLengthData.Text:=FloatToStr(Round2(Data.Pipe[1,1]*UoMConverter[1],2));  { API->user depth }
+           _WellPipe[1,1]:=Data.Pipe[1,1]; { API internal }
+
            DrillCollarIDData.Enabled:=True;
            DrillCollarIDData.Text:=FloatToStr(Round2(Data.Pipe[1,2]*UoMConverter[8],4));  { inches }
+           _WellPipe[1,2]:=Data.Pipe[1,2]; {API internal }
+
            DrillCollarODData.Enabled:=True;
            DrillCollarODData.Text:=FloatToStr(Round2(Data.Pipe[1,3]*UoMConverter[8],4));  { inches }
+           _WellPipe[1,3]:=Data.Pipe[1,3]; {API internal }
+
            DrillCollarWeightData.Enabled:=True;
            DrillCollarWeightData.Text:=FloatToStr(Round2(Data.Pipe[1,4],2));  { lbs per foot }
+           _WellPipe[1,4]:=Data.Pipe[1,4]; {API internal }
+
 
            HWDrillPipeLengthData.Enabled:=True;
            HWDrillPipeLengthData.Text:=FloatToStr(Round2(Data.Pipe[2,1]*UoMConverter[1],2));  { API->user depth }
+           _WellPipe[2,1]:=Data.Pipe[2,1]; {API internal }
+
            HWDrillPipeIDData.Enabled:=True;
            HWDrillPipeIDData.Text:=FloatToStr(Round2(Data.Pipe[2,2]*UoMConverter[8],4));  { inches }
+           _WellPipe[2,2]:=Data.Pipe[2,2]; {API internal }
+
            HWDrillPipeODData.Enabled:=True;
            HWDrillPipeODData.Text:=FloatToStr(Round2(Data.Pipe[2,3]*UoMConverter[8],4));  { inches }
+           _WellPipe[2,3]:=Data.Pipe[2,3]; {API internal }
+
            HWDrillPipeWeightData.Enabled:=True;
            HWDrillPipeWeightData.Text:=FloatToStr(Round2(Data.Pipe[2,4],2));  { lbs per foot }
+           _WellPipe[2,4]:=Data.Pipe[2,4]; {API internal }
+
 
            DrillPipeLengthData.Enabled:=False;
            //DrillPipeLengthData.Text:=FloatToStr(0);  { user depth }
@@ -370,30 +394,54 @@ begin
            NumPipeSectionsComboBox.ItemIndex:=2;
            DrillCollarLengthData.Enabled:=True;
            DrillCollarLengthData.Text:=FloatToStr(Round2(Data.Pipe[1,1]*UoMConverter[1],2));  { API->user depth }
+           _WellPipe[1,1]:=Data.Pipe[1,1]; { API internal }
+
            DrillCollarIDData.Enabled:=True;
            DrillCollarIDData.Text:=FloatToStr(Round2(Data.Pipe[1,2]*UoMConverter[8],4));  { inches }
+           _WellPipe[1,2]:=Data.Pipe[1,2]; {API internal }
+
            DrillCollarODData.Enabled:=True;
            DrillCollarODData.Text:=FloatToStr(Round2(Data.Pipe[1,3]*UoMConverter[8],4));  { inches }
+           _WellPipe[1,3]:=Data.Pipe[1,3]; {API internal }
+
            DrillCollarWeightData.Enabled:=True;
            DrillCollarWeightData.Text:=FloatToStr(Round2(Data.Pipe[1,4],2));  { lbs per foot }
+           _WellPipe[1,4]:=Data.Pipe[1,4]; {API internal }
+
 
            HWDrillPipeLengthData.Enabled:=True;
            HWDrillPipeLengthData.Text:=FloatToStr(Round2(Data.Pipe[2,1]*UoMConverter[1],2));  { API->user depth }
+           _WellPipe[2,1]:=Data.Pipe[2,1]; {API internal }
+
            HWDrillPipeIDData.Enabled:=True;
            HWDrillPipeIDData.Text:=FloatToStr(Round2(Data.Pipe[2,2]*UoMConverter[8],4));  { inches }
+           _WellPipe[2,2]:=Data.Pipe[2,2]; {API internal }
+
            HWDrillPipeODData.Enabled:=True;
            HWDrillPipeODData.Text:=FloatToStr(Round2(Data.Pipe[2,3]*UoMConverter[8],4));  { inches }
+           _WellPipe[2,3]:=Data.Pipe[2,3]; {API internal }
+
            HWDrillPipeWeightData.Enabled:=True;
            HWDrillPipeWeightData.Text:=FloatToStr(Round2(Data.Pipe[2,4],2));  { lbs per foot }
+           _WellPipe[2,4]:=Data.Pipe[2,4]; {API internal }
+
 
            DrillPipeLengthData.Enabled:=True;
            DrillPipeLengthData.Text:=FloatToStr(Round2(Data.Pipe[3,1]*UoMConverter[1],2));  { API->user depth }
+           _WellPipe[3,1]:=Data.Pipe[3,1]; {API internal }
+
            DrillPipeIDData.Enabled:=True;
            DrillPipeIDData.Text:=FloatToStr(Round2(Data.Pipe[3,2]*UoMConverter[8],4));  { inches }
+           _WellPipe[3,2]:=Data.Pipe[3,2]; {API internal }
+
            DrillPipeODData.Enabled:=True;
            DrillPipeODData.Text:=FloatToStr(Round2(Data.Pipe[3,3]*UoMConverter[8],4));  { inches }
+           _WellPipe[3,3]:=Data.Pipe[3,3]; {API internal }
+
            DrillPipeWeightData.Enabled:=True;
            DrillPipeWeightData.Text:=FloatToStr(Round2(Data.Pipe[3,4],2));  { lbs per foot }
+           _WellPipe[3,4]:=Data.Pipe[3,4]; {API internal }
+
          end;
     end;
 

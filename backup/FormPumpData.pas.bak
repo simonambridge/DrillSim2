@@ -87,7 +87,7 @@ begin
   Begin
     Key := #0;  // discard it
   end
-  else if (Key = '.') and
+  else if (Key = DefaultFormatSettings.DecimalSeparator) and
           ((Sender as TEdit).SelStart = 0) then
   Begin
     Key := #0;  // discard it
@@ -238,9 +238,144 @@ begin
 
   // units of measure labels
 
+  OutputUoMLabel.Caption:='('+ UoMLabel[5] + ')';
+  MaxPumpPressureUoMLabel.Caption:=UoMLabel[3];
 
   // data
 
+  _WellMaxPumps:=Data.MaxPumps;
+  case Data.MaxPipes of
+    1: Begin
+         NumPumpsComboBox.ItemIndex:=0;
+
+         Pump1OutputData.Enabled:=True;
+         Pump1OutputData.Text:=FloatToStr(Round2(Data.Pump[1,1]*UoMConverter[5],2));  { API->user volume }
+         _WellPump[1,1]:=Data.Pump[1,1]; { API internal }
+
+         Pump1EfficiencyData.Enabled:=True;
+         Pump1EfficiencyData.Text:=FloatToStr(Round2(Data.Pump[1,2],3));  { % }
+         _WellPump[1,2]:=Data.Pump[1,2]; {API internal }
+
+         Pump1EfficiencySPMData.Enabled:=True;
+         Pump1EfficiencySPMData.Text:=FloatToStr(Data.Pump[1,3]);  { SPM }
+         _WellPump[1,3]:=Data.Pump[1,3]; {API internal }
+
+
+         Pump2OutputData.Enabled:=False;
+         Pump2OutputData.Text:=FloatToStr(Round2(Data.Pump[2,1]*UoMConverter[5],2));  { API->user volume }
+         _WellPump[2,1]:=Data.Pump[2,1]; { API internal }
+
+         Pump2EfficiencyData.Enabled:=False;
+         Pump2EfficiencyData.Text:=FloatToStr(Round2(Data.Pump[2,2],3));  { % }
+         _WellPump[2,2]:=Data.Pump[2,2]; {API internal }
+
+         Pump2EfficiencySPMData.Enabled:=False;
+         Pump2EfficiencySPMData.Text:=FloatToStr(Data.Pump[2,3]);  { SPM }
+         _WellPump[2,3]:=Data.Pump[2,3]; {API internal }
+
+
+         Pump3OutputData.Enabled:=False;
+         Pump3OutputData.Text:=FloatToStr(Round2(Data.Pump[3,1]*UoMConverter[5],2));  { API->user volume }
+         _WellPump[3,1]:=Data.Pump[3,1]; { API internal }
+
+         Pump3EfficiencyData.Enabled:=False;
+         Pump3EfficiencyData.Text:=FloatToStr(Round2(Data.Pump[3,2],3));  { % }
+         _WellPump[3,2]:=Data.Pump[3,2]; {API internal }
+
+         Pump3EfficiencySPMData.Enabled:=False;
+         Pump3EfficiencySPMData.Text:=FloatToStr(Data.Pump[3,3]);  { SPM }
+         _WellPump[3,3]:=Data.Pump[3,3]; {API internal }
+
+        end;
+
+    2: Begin
+         NumPumpsComboBox.ItemIndex:=1;
+
+         Pump1OutputData.Enabled:=True;
+         Pump1OutputData.Text:=FloatToStr(Round2(Data.Pump[1,1]*UoMConverter[5],2));  { API->user volume }
+         _WellPump[1,1]:=Data.Pump[1,1]; { API internal }
+
+         Pump1EfficiencyData.Enabled:=True;
+         Pump1EfficiencyData.Text:=FloatToStr(Round2(Data.Pump[1,2],3));  { % }
+         _WellPump[1,2]:=Data.Pump[1,2]; {API internal }
+
+         Pump1EfficiencySPMData.Enabled:=True;
+         Pump1EfficiencySPMData.Text:=FloatToStr(Data.Pump[1,3]);  { SPM }
+         _WellPump[1,3]:=Data.Pump[1,3]; {API internal }
+
+
+         Pump2OutputData.Enabled:=True;
+         Pump2OutputData.Text:=FloatToStr(Round2(Data.Pump[2,1]*UoMConverter[5],2));  { API->user volume }
+         _WellPump[2,1]:=Data.Pump[2,1]; { API internal }
+
+         Pump2EfficiencyData.Enabled:=True;
+         Pump2EfficiencyData.Text:=FloatToStr(Round2(Data.Pump[2,2],3));  { % }
+         _WellPump[2,2]:=Data.Pump[2,2]; {API internal }
+
+         Pump2EfficiencySPMData.Enabled:=True;
+         Pump2EfficiencySPMData.Text:=FloatToStr(Data.Pump[2,3]);  { SPM }
+         _WellPump[2,3]:=Data.Pump[2,3]; {API internal }
+
+
+         Pump3OutputData.Enabled:=False;
+         Pump3OutputData.Text:=FloatToStr(Round2(Data.Pump[3,1]*UoMConverter[5],2));  { API->user volume }
+         _WellPump[3,1]:=Data.Pump[3,1]; { API internal }
+
+         Pump3EfficiencyData.Enabled:=False;
+         Pump3EfficiencyData.Text:=FloatToStr(Round2(Data.Pump[3,2],3));  { % }
+         _WellPump[3,2]:=Data.Pump[3,2]; {API internal }
+
+         Pump3EfficiencySPMData.Enabled:=False;
+         Pump3EfficiencySPMData.Text:=FloatToStr(Data.Pump[3,3]);  { SPM }
+         _WellPump[3,3]:=Data.Pump[3,3]; {API internal }
+
+       end;
+
+    3: Begin
+         NumPumpsComboBox.ItemIndex:=0;
+
+         Pump1OutputData.Enabled:=True;
+         Pump1OutputData.Text:=FloatToStr(Round2(Data.Pump[1,1]*UoMConverter[5],2));  { API->user volume }
+         _WellPump[1,1]:=Data.Pump[1,1]; { API internal }
+
+         Pump1EfficiencyData.Enabled:=True;
+         Pump1EfficiencyData.Text:=FloatToStr(Round2(Data.Pump[1,2],3));  { % }
+         _WellPump[1,2]:=Data.Pump[1,2]; {API internal }
+
+         Pump1EfficiencySPMData.Enabled:=True;
+         Pump1EfficiencySPMData.Text:=FloatToStr(Data.Pump[1,3]);  { SPM }
+         _WellPump[1,3]:=Data.Pump[1,3]; {API internal }
+
+
+         Pump2OutputData.Enabled:=True;
+         Pump2OutputData.Text:=FloatToStr(Round2(Data.Pump[2,1]*UoMConverter[5],2));  { API->user volume }
+         _WellPump[2,1]:=Data.Pump[2,1]; { API internal }
+
+         Pump2EfficiencyData.Enabled:=True;
+         Pump2EfficiencyData.Text:=FloatToStr(Round2(Data.Pump[2,2],3));  { % }
+         _WellPump[2,2]:=Data.Pump[2,2]; {API internal }
+
+         Pump2EfficiencySPMData.Enabled:=True;
+         Pump2EfficiencySPMData.Text:=FloatToStr(Data.Pump[2,3]);  { SPM }
+         _WellPump[2,3]:=Data.Pump[2,3]; {API internal }
+
+
+         Pump3OutputData.Enabled:=True;
+         Pump3OutputData.Text:=FloatToStr(Round2(Data.Pump[3,1]*UoMConverter[5],2));  { API->user volume }
+         _WellPump[3,1]:=Data.Pump[3,1]; { API internal }
+
+         Pump3EfficiencyData.Enabled:=True;
+         Pump3EfficiencyData.Text:=FloatToStr(Round2(Data.Pump[3,2],3));  { % }
+         _WellPump[3,2]:=Data.Pump[3,2]; {API internal }
+
+         Pump3EfficiencySPMData.Enabled:=True;
+         Pump3EfficiencySPMData.Text:=FloatToStr(Data.Pump[3,3]);  { SPM }
+         _WellPump[3,3]:=Data.Pump[3,3]; {API internal }
+
+       end;
+  end;
+  MaxPumpPressureData.Text:=FloatToStr(Round2(Data.MaxPumpPressure*UoMConverter[3],2));  { API->user pressure }
+  _WellMaxPumpPressure:=Data.MaxPumpPressure; {API internal }
 
 end;
 

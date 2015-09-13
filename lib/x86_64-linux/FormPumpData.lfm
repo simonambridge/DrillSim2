@@ -46,7 +46,7 @@ object PumpDataForm: TPumpDataForm
     ShowHint = True
   end
   object OutputColumnLabel: TLabel
-    Left = 168
+    Left = 174
     Height = 17
     Top = 120
     Width = 48
@@ -62,7 +62,7 @@ object PumpDataForm: TPumpDataForm
     ParentColor = False
   end
   object OutputUoMLabel: TLabel
-    Left = 237
+    Left = 228
     Height = 17
     Top = 120
     Width = 40
