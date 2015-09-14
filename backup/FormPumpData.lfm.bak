@@ -260,6 +260,7 @@ object PumpDataForm: TPumpDataForm
     Hint = 'Maximum pump working pressure'
     Top = 282
     Width = 88
+    Alignment = taRightJustify
     OnChange = MaxPumpPressureDataChange
     OnKeyPress = NumericOnlyKeyPress
     ParentShowHint = False

@@ -27,7 +27,7 @@ object GeneralDataForm: TGeneralDataForm
     Width = 112
     Caption = 'Well Name'
     ShowHint = True
-    TabOrder = 1
+    TabOrder = 2
   end
   object ElevationRKB: TStaticText
     Left = 24
@@ -37,7 +37,7 @@ object GeneralDataForm: TGeneralDataForm
     Width = 112
     Caption = 'Elevation RKB'
     ShowHint = True
-    TabOrder = 2
+    TabOrder = 4
   end
   object WellOperatorData: TEdit
     Left = 152
@@ -45,7 +45,7 @@ object GeneralDataForm: TGeneralDataForm
     Top = 45
     Width = 328
     OnChange = WellOperatorDataChange
-    TabOrder = 3
+    TabOrder = 1
   end
   object WellNameData: TEdit
     Left = 152
@@ -53,7 +53,7 @@ object GeneralDataForm: TGeneralDataForm
     Top = 80
     Width = 325
     OnChange = WellNameDataChange
-    TabOrder = 4
+    TabOrder = 3
   end
   object ElevationRKBData: TEdit
     Left = 153
@@ -83,19 +83,19 @@ object GeneralDataForm: TGeneralDataForm
     OnClick = SaveClick
     ParentShowHint = False
     ShowHint = True
-    TabOrder = 6
+    TabOrder = 19
   end
-  object Cancel: TButton
+  object Quit: TButton
     Left = 216
     Height = 26
     Hint = 'Exit without saving'
     Top = 488
     Width = 86
-    Caption = 'Cancel'
-    OnClick = CancelClick
+    Caption = 'Quit'
+    OnClick = QuitClick
     ParentShowHint = False
     ShowHint = True
-    TabOrder = 7
+    TabOrder = 18
   end
   object OffshoreYNRadioGroup: TRadioGroup
     Left = 24
@@ -122,7 +122,7 @@ object GeneralDataForm: TGeneralDataForm
     OnClick = OffshoreYNRadioGroupClick
     ParentShowHint = False
     ShowHint = True
-    TabOrder = 8
+    TabOrder = 6
   end
   object SubSeaWellHeadYNRadioGroup: TRadioGroup
     Left = 24
@@ -149,7 +149,7 @@ object GeneralDataForm: TGeneralDataForm
     OnClick = SubSeaWellHeadYNRadioGroupClick
     ParentShowHint = False
     ShowHint = True
-    TabOrder = 9
+    TabOrder = 7
   end
   object RiserTD: TStaticText
     Left = 26
@@ -159,7 +159,7 @@ object GeneralDataForm: TGeneralDataForm
     Width = 72
     Caption = 'Riser TD'
     ShowHint = True
-    TabOrder = 10
+    TabOrder = 8
   end
   object RiserID: TStaticText
     Left = 26
@@ -169,7 +169,7 @@ object GeneralDataForm: TGeneralDataForm
     Width = 72
     Caption = 'Riser ID'
     ShowHint = True
-    TabOrder = 11
+    TabOrder = 10
   end
   object ChokeLineID: TStaticText
     Left = 24
@@ -189,7 +189,7 @@ object GeneralDataForm: TGeneralDataForm
     Width = 112
     Caption = 'Water Depth'
     ShowHint = True
-    TabOrder = 14
+    TabOrder = 16
   end
   object RiserTDData: TEdit
     Left = 138
@@ -200,7 +200,7 @@ object GeneralDataForm: TGeneralDataForm
     OnChange = RiserTDDataChange
     OnKeyPress = NumericOnlyKeyPress
     ParentShowHint = False
-    TabOrder = 15
+    TabOrder = 9
   end
   object RiserIDData: TEdit
     Left = 138
@@ -210,7 +210,7 @@ object GeneralDataForm: TGeneralDataForm
     Alignment = taRightJustify
     OnChange = RiserIDDataChange
     OnKeyPress = NumericOnlyKeyPress
-    TabOrder = 16
+    TabOrder = 11
   end
   object ChokeLineIDData: TEdit
     Left = 138
@@ -220,7 +220,7 @@ object GeneralDataForm: TGeneralDataForm
     Alignment = taRightJustify
     OnChange = ChokeLineIDDataChange
     OnKeyPress = NumericOnlyKeyPress
-    TabOrder = 17
+    TabOrder = 13
   end
   object WaterDepthData: TEdit
     Left = 138
@@ -230,7 +230,7 @@ object GeneralDataForm: TGeneralDataForm
     Alignment = taRightJustify
     OnChange = WaterDepthDataChange
     OnKeyPress = NumericOnlyKeyPress
-    TabOrder = 19
+    TabOrder = 17
   end
   object RiserTDUoMLabel: TLabel
     Left = 310
@@ -272,7 +272,7 @@ object GeneralDataForm: TGeneralDataForm
     Width = 112
     Caption = 'Kill Line ID'
     ShowHint = True
-    TabOrder = 13
+    TabOrder = 14
   end
   object KillLineIDData: TEdit
     Left = 138
@@ -282,7 +282,7 @@ object GeneralDataForm: TGeneralDataForm
     Alignment = taRightJustify
     OnChange = KillLineIDDataChange
     OnKeyPress = NumericOnlyKeyPress
-    TabOrder = 18
+    TabOrder = 15
   end
   object KillLineIDUoMLabel: TLabel
     Left = 310

@@ -887,9 +887,8 @@ begin
       Exit;
     end;
   end;
-  Data.MaxHoles := _WellMaxHoles;
   StringToMemo('FormHoleData.Save: Data.MaxHoles = ' + IntToStr(Data.MaxHoles));
-  case Data.MaxHoles of { very ugly...cant interate through objects but it works...}
+  case _WellMaxHoles of { very ugly...cant interate through objects but it works...}
     1:
     begin
       StringToMemo('Checking 1 OH section...');
@@ -911,7 +910,10 @@ begin
     end;
   end;
   if Error = False then
-    StringToMemo('Hole profile validation: Success')
+  Begin
+    StringToMemo('Hole profile validation: Success');
+    Data.MaxHoles := _WellMaxHoles;
+  end
   else
   begin
     StringToMemo('Hole profile validation: Fail');

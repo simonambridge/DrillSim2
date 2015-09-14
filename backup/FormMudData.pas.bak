@@ -62,21 +62,26 @@ implementation
 
 procedure TMudDataForm.NumericOnlyKeyPress(Sender: TObject; var Key: Char);
 begin
-  if not (Key in [#8, '0'..'9', '-', DefaultFormatSettings.DecimalSeparator]) then
+  if not (Key in [#8, '0'..'9', '-', DefaultFormatSettings.DecimalSeparator]) then   { discard if not in approved list of chars }
   Begin
     Key := #0;  // discard it
   end
-  else if ((Key = DefaultFormatSettings.DecimalSeparator) or (Key = '-')) and
+  else if ((Key = '-')) and  ((Sender as TEdit).SelStart <> 0) then             { discard if "-" and not first char in string }
+  Begin
+    Key := #0;  // discard it
+  end
+  else if ((Key = DefaultFormatSettings.DecimalSeparator) or (Key = '-')) and        { discard if "." or "-" already in string }
           (Pos(Key, (Sender as TEdit).Text) > 0) then
   Begin
     Key := #0;  // discard it
   end
-  else if (Key = '.') and
+  else if (Key = DefaultFormatSettings.DecimalSeparator) and                         { discard if "." is first charachter }
           ((Sender as TEdit).SelStart = 0) then
   Begin
     Key := #0;  // discard it
   end;
 end;
+
 
 procedure TMudDataForm.MudWeightDataChange(Sender: TObject);
 begin

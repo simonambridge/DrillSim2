@@ -732,11 +732,11 @@ var Error : boolean;
   end;
 
 
-  begin
-  Data.MaxPipes:=_WellMaxPipes;
+begin
+
   StringToMemo('FormPipeData.Save: Data.MaxPipes = '+ IntToStr(Data.MaxPipes));
 
-  Case Data.MaxPipes of    { very ugly...cant interate through objects but it works...}
+  Case _WellMaxPipes of    { very ugly...cant interate through objects but it works...}
     1 : Begin
           StringToMemo('Checking Drill Collars...');
           if DrillCollarsisOK = False then Error:=True;
@@ -758,6 +758,7 @@ var Error : boolean;
     StringToMemo('Drill String validation: Fail');
     Exit;
   End;
+  Data.MaxPipes:=_WellMaxPipes;
   Edited:=True;
   Close;
 end;

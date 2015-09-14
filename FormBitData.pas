@@ -309,15 +309,15 @@ Begin
               Exit;
             end;
 
-  Data.MaxJets:=_WellMaxJets;
-
   Error:=True;
   For i:=1 to 4 do
   Begin
+    if _WellJet[i]>0
+      then Error:=False     { OK if at least one jet is valid }
+      else _WellJet[i]:=0;  { and force it to 0 if -1 }
     Data.Jet[i]:=_WellJet[i];
-    if Data.Jet[i]>0 then Error:=False
-                     else Data.Jet[i]:=0; { force it to 0 if -1 }
   end;
+
   if Error=True then
   Begin
     ShowMessage('At least one of the bit jets must be open (more than 0/32")');
@@ -325,6 +325,8 @@ Begin
     Jet1ComboBox.SetFocus;
     Exit;
   end;
+
+  Data.MaxJets:=_WellMaxJets;
 
   StringToMemo('FormBitData.Save: Data.BitNumber = '+ IntToStr(Data.BitNumber));
   StringToMemo('FormBitData.Save: Data.BitType = '+ Data.BitType);

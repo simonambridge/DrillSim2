@@ -64,7 +64,7 @@ object PipeDataForm: TPipeDataForm
     OnKeyPress = NumericOnlyKeyPress
     ParentShowHint = False
     ShowHint = True
-    TabOrder = 0
+    TabOrder = 1
   end
   object DrillCollarIDData: TEdit
     Left = 304
@@ -77,7 +77,7 @@ object PipeDataForm: TPipeDataForm
     OnKeyPress = NumericOnlyKeyPress
     ParentShowHint = False
     ShowHint = True
-    TabOrder = 1
+    TabOrder = 2
   end
   object HWDrillPipeLabel: TLabel
     Left = 40
@@ -101,7 +101,7 @@ object PipeDataForm: TPipeDataForm
     OnKeyPress = NumericOnlyKeyPress
     ParentShowHint = False
     ShowHint = True
-    TabOrder = 2
+    TabOrder = 5
   end
   object HWDrillPipeIDData: TEdit
     Left = 304
@@ -114,7 +114,7 @@ object PipeDataForm: TPipeDataForm
     OnKeyPress = NumericOnlyKeyPress
     ParentShowHint = False
     ShowHint = True
-    TabOrder = 3
+    TabOrder = 6
   end
   object DrillPipeLabel: TLabel
     Left = 40
@@ -138,7 +138,7 @@ object PipeDataForm: TPipeDataForm
     OnKeyPress = NumericOnlyKeyPress
     ParentShowHint = False
     ShowHint = True
-    TabOrder = 4
+    TabOrder = 9
   end
   object DrillPipeIDData: TEdit
     Left = 304
@@ -151,7 +151,7 @@ object PipeDataForm: TPipeDataForm
     OnKeyPress = NumericOnlyKeyPress
     ParentShowHint = False
     ShowHint = True
-    TabOrder = 5
+    TabOrder = 10
   end
   object ODColumnLabel: TLabel
     Left = 408
@@ -180,7 +180,7 @@ object PipeDataForm: TPipeDataForm
     OnKeyPress = NumericOnlyKeyPress
     ParentShowHint = False
     ShowHint = True
-    TabOrder = 6
+    TabOrder = 3
   end
   object HWDrillPipeODData: TEdit
     Left = 400
@@ -206,7 +206,7 @@ object PipeDataForm: TPipeDataForm
     OnKeyPress = NumericOnlyKeyPress
     ParentShowHint = False
     ShowHint = True
-    TabOrder = 8
+    TabOrder = 11
   end
   object Label1: TLabel
     Left = 32
@@ -224,7 +224,7 @@ object PipeDataForm: TPipeDataForm
     Width = 75
     Caption = 'Quit'
     OnClick = QuitButtonClick
-    TabOrder = 9
+    TabOrder = 13
   end
   object SaveButton: TButton
     Left = 413
@@ -233,7 +233,7 @@ object PipeDataForm: TPipeDataForm
     Width = 75
     Caption = 'Save'
     OnClick = SaveButtonClick
-    TabOrder = 10
+    TabOrder = 14
   end
   object NumPipeSections: TLabel
     Left = 32
@@ -261,7 +261,7 @@ object PipeDataForm: TPipeDataForm
     OnChange = NumPipeSectionsComboBoxChange
     ParentShowHint = False
     ShowHint = True
-    TabOrder = 11
+    TabOrder = 0
     Text = '<select>'
   end
   object WeightColumnLabel: TLabel
@@ -283,7 +283,7 @@ object PipeDataForm: TPipeDataForm
     OnKeyPress = NumericOnlyKeyPress
     ParentShowHint = False
     ShowHint = True
-    TabOrder = 12
+    TabOrder = 4
   end
   object HWDrillPipeWeightData: TEdit
     Left = 496
@@ -296,7 +296,7 @@ object PipeDataForm: TPipeDataForm
     OnKeyPress = NumericOnlyKeyPress
     ParentShowHint = False
     ShowHint = True
-    TabOrder = 13
+    TabOrder = 8
   end
   object DrillPipeWeightData: TEdit
     Left = 496
@@ -309,6 +309,6 @@ object PipeDataForm: TPipeDataForm
     OnKeyPress = NumericOnlyKeyPress
     ParentShowHint = False
     ShowHint = True
-    TabOrder = 14
+    TabOrder = 12
   end
 end

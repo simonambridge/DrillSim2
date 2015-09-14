@@ -1,7 +1,7 @@
 object PipeDataForm: TPipeDataForm
   Left = 65
   Height = 403
-  Top = 116
+  Top = 167
   Width = 634
   Caption = 'Drill String Data'
   ClientHeight = 403

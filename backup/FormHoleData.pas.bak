@@ -99,27 +99,27 @@ implementation
       {$R *.lfm}
 { ------------- Edit Procedures ------------ }
 
-      procedure THoleDataForm.NumericOnlyKeyPress(Sender: TObject; var Key: Char);
-      begin
-        if not (Key in [#8, '0'..'9', '-', DefaultFormatSettings.DecimalSeparator]) then   { discard if not in approved list of chars }
-        Begin
-          Key := #0;  // discard it
-        end
-        else if ((Key = '-')) and  ((Sender as TEdit).SelStart <> 0) then             { discard if "-" and not first char in string }
-        Begin
-          Key := #0;  // discard it
-        end
-        else if ((Key = DefaultFormatSettings.DecimalSeparator) or (Key = '-')) and        { discard if "." or "-" already in string }
+procedure THoleDataForm.NumericOnlyKeyPress(Sender: TObject; var Key: Char);
+begin
+  if not (Key in [#8, '0'..'9', '-', DefaultFormatSettings.DecimalSeparator]) then   { discard if not in approved list of chars }
+  Begin
+    Key := #0;  // discard it
+  end
+  else if ((Key = '-')) and  ((Sender as TEdit).SelStart <> 0) then             { discard if "-" and not first char in string }
+  Begin
+    Key := #0;  // discard it
+  end
+  else if ((Key = DefaultFormatSettings.DecimalSeparator) or (Key = '-')) and        { discard if "." or "-" already in string }
                 (Pos(Key, (Sender as TEdit).Text) > 0) then
-        Begin
-          Key := #0;  // discard it
-        end
-        else if (Key = DefaultFormatSettings.DecimalSeparator) and                         { discard if "." is first charachter }
+  Begin
+    Key := #0;  // discard it
+  end
+  else if (Key = DefaultFormatSettings.DecimalSeparator) and                         { discard if "." is first charachter }
                 ((Sender as TEdit).SelStart = 0) then
-        Begin
-          Key := #0;  // discard it
-        end;
-      end;
+  Begin
+    Key := #0;  // discard it
+  end;
+end;
 
 
 
@@ -887,9 +887,8 @@ begin
       Exit;
     end;
   end;
-  Data.MaxHoles := _WellMaxHoles;
   StringToMemo('FormHoleData.Save: Data.MaxHoles = ' + IntToStr(Data.MaxHoles));
-  case Data.MaxHoles of { very ugly...cant interate through objects but it works...}
+  case _WellMaxHoles of { very ugly...cant interate through objects but it works...}
     1:
     begin
       StringToMemo('Checking 1 OH section...');
@@ -911,7 +910,10 @@ begin
     end;
   end;
   if Error = False then
-    StringToMemo('Hole profile validation: Success')
+  Begin
+    StringToMemo('Hole profile validation: Success');
+    Data.MaxHoles := _WellMaxHoles;
+  end
   else
   begin
     StringToMemo('Hole profile validation: Fail');

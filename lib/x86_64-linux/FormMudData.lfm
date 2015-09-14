@@ -17,7 +17,7 @@ object MudDataForm: TMudDataForm
     Width = 75
     Caption = 'Quit'
     OnClick = QuitButtonClick
-    TabOrder = 0
+    TabOrder = 4
   end
   object SaveButton: TButton
     Left = 359
@@ -26,7 +26,7 @@ object MudDataForm: TMudDataForm
     Width = 75
     Caption = 'Save'
     OnClick = SaveButtonClick
-    TabOrder = 1
+    TabOrder = 5
   end
   object MudWeightLabel: TLabel
     Left = 48
@@ -47,7 +47,7 @@ object MudDataForm: TMudDataForm
     OnKeyPress = NumericOnlyKeyPress
     ParentShowHint = False
     ShowHint = True
-    TabOrder = 2
+    TabOrder = 0
   end
   object MudWeightUoMLabel: TLabel
     Left = 293
@@ -76,7 +76,7 @@ object MudDataForm: TMudDataForm
     OnKeyPress = NumericOnlyKeyPress
     ParentShowHint = False
     ShowHint = True
-    TabOrder = 3
+    TabOrder = 1
   end
   object MudPVUoMLabel: TLabel
     Left = 293
@@ -106,7 +106,7 @@ object MudDataForm: TMudDataForm
     OnKeyPress = NumericOnlyKeyPress
     ParentShowHint = False
     ShowHint = True
-    TabOrder = 4
+    TabOrder = 2
   end
   object MudYPUoMLabel: TLabel
     Left = 293
@@ -137,7 +137,7 @@ object MudDataForm: TMudDataForm
     OnKeyPress = NumericOnlyKeyPress
     ParentShowHint = False
     ShowHint = True
-    TabOrder = 5
+    TabOrder = 3
   end
   object MudGelUoMLabel: TLabel
     Left = 293

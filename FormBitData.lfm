@@ -21,7 +21,7 @@ object BitDataForm: TBitDataForm
     Width = 75
     Caption = 'Quit'
     OnClick = QuitButtonClick
-    TabOrder = 0
+    TabOrder = 6
   end
   object SaveButton: TButton
     Left = 648
@@ -30,7 +30,7 @@ object BitDataForm: TBitDataForm
     Width = 75
     Caption = 'Save'
     OnClick = SaveButtonClick
-    TabOrder = 1
+    TabOrder = 7
   end
   object BitNumberLabel: TLabel
     Left = 32
@@ -51,7 +51,7 @@ object BitDataForm: TBitDataForm
     OnKeyPress = NumericOnlyKeyPress
     ParentShowHint = False
     ShowHint = True
-    TabOrder = 2
+    TabOrder = 0
   end
   object Jet1Label: TLabel
     Left = 32
@@ -135,7 +135,7 @@ object BitDataForm: TBitDataForm
     OnKeyPress = NumericOnlyKeyPress
     ParentShowHint = False
     ShowHint = True
-    TabOrder = 3
+    TabOrder = 2
     Text = '<0/32"s>'
   end
   object Jet2ComboBox: TComboBox
@@ -184,7 +184,7 @@ object BitDataForm: TBitDataForm
     OnKeyPress = NumericOnlyKeyPress
     ParentShowHint = False
     ShowHint = True
-    TabOrder = 4
+    TabOrder = 3
     Text = '<0/32"s>'
   end
   object Jet3ComboBox: TComboBox
@@ -233,7 +233,7 @@ object BitDataForm: TBitDataForm
     OnKeyPress = NumericOnlyKeyPress
     ParentShowHint = False
     ShowHint = True
-    TabOrder = 5
+    TabOrder = 4
     Text = '<0/32"s>'
   end
   object Jet4ComboBox: TComboBox
@@ -282,7 +282,7 @@ object BitDataForm: TBitDataForm
     OnKeyPress = NumericOnlyKeyPress
     ParentShowHint = False
     ShowHint = True
-    TabOrder = 6
+    TabOrder = 5
     Text = '<0/32"s>'
   end
   object BitTypeLabel: TLabel
@@ -303,7 +303,7 @@ object BitDataForm: TBitDataForm
     OnChange = BitTypeDataChange
     ParentShowHint = False
     ShowHint = True
-    TabOrder = 7
+    TabOrder = 1
   end
   object MaxJetsLabel: TLabel
     Left = 88
