@@ -12,16 +12,12 @@ type
   { TSurfaceEquipmentDataForm }
 
   TSurfaceEquipmentDataForm = class(TForm)
-    StandPipeIDUoMLabel: TLabel;
-    KellyIDUoMLabel: TLabel;
-    SwivelIDUoMLabel: TLabel;
     StandPipeIDData: TEdit;
     KellyIDData: TEdit;
     SwivelIDData: TEdit;
     StandPipeLengthData: TEdit;
     KellyLengthData: TEdit;
     HoseIDData: TEdit;
-    HoseIDUoMLabel: TLabel;
     SwivelLengthData: TEdit;
     KellyLengthLabel: TLabel;
     KellyIDLabel: TLabel;

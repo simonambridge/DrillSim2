@@ -248,7 +248,7 @@ begin
   // data
 
   _WellMaxPumps:=Data.MaxPumps;
-  case Data.MaxPipes of
+  case Data.MaxPumps of
     1: Begin
          NumPumpsComboBox.ItemIndex:=0;
 
@@ -469,8 +469,6 @@ begin
   end;
 
   StringToMemo('FormPumpata.Save: Data.MaxPumpPressure = '+ MaxPumpPressureData.Text + ' ' + UoMLabel[3]); { displayed pressure }
-
-
 
   Edited:=True;
   Close;
