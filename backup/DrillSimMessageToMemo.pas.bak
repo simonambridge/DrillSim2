@@ -5,8 +5,8 @@ Interface
 Uses DrillSimVariables,
      Dialogs;
 
-Procedure MessageToMemo(x : integer);
 Procedure StringToMemo(S : String);
+Procedure MessageToMemo(x : integer);
 
 
 Implementation

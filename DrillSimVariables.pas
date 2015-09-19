@@ -238,7 +238,7 @@ Const
     Rheocon13 = 0.2;                Rheocon14 = 1.86;
     Rheocon15 = 0.00015;            Rheocon16 = 38780.0;
     Rheocon17 = 0.000001;           Rheocon18 = 2.8;
-    VersionNumber = '2.0.0';
+    VersionNumber = '3.0.0';
     VersionDate   = '(6/2015)';
     Title         = 'DrillSim';
 

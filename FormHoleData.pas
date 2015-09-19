@@ -588,7 +588,7 @@ var
     begin
       Data.Hole[1, 1] := _WellHole[1, 1];
       StringToMemo('FormHoleData.Save: Data.Hole[1,1] = ' + OHSection1TDData.Text +
-        ' ' + UoMLabel[1]); { API depth }
+        ' ' + UoMLabel[1]); { displayed depth }
       TDisOK := True;
     end;
     if ((_WellHole[1, 2] > _WellCasingID) and (Data.Casing = True)) or
@@ -650,7 +650,7 @@ var
     begin
       Data.Hole[2, 1] := _WellHole[2, 1];
       StringToMemo('FormHoleData.Save: Data.Hole[2,1] = ' + OHSection2TDData.Text +
-        ' ' + UoMLabel[1]); { API depth }
+        ' ' + UoMLabel[1]); { displayed depth }
       TDisOK := True;
     end;
     if (_WellHole[2, 2] >= _WellHole[1, 2]) or { OD 2 ID must be less than OH 1 ID }
@@ -707,7 +707,7 @@ var
     begin
       Data.Hole[3, 1] := _WellHole[3, 1];
       StringToMemo('FormHoleData.Save: Data.Hole[3,1] = ' + OHSection3TDData.Text +
-        ' ' + UoMLabel[1]); { API depth }
+        ' ' + UoMLabel[1]); { displayed depth }
       TDisOK := True;
     end;
     if (_WellHole[3, 2] >= _WellHole[2, 2]) or { OD 3 ID must be less than OH 2 ID }
@@ -759,7 +759,7 @@ var
     begin
       Data.CasingTD := _WellCasingTD;
       StringToMemo('FormHoleData.Save: Data.CasingTD = ' + CasingShoeDepthData.Text +
-        ' ' + UoMLabel[1]); { API depth }
+        ' ' + UoMLabel[1]); { displayed depth }
       TDisOK := True;
     end;
     if (_WellCasingID > Data.RiserID) or { Casing ID must be less than or equal to Riser ID }
@@ -813,7 +813,7 @@ var
     begin
       Data.LinerTopTD := _WellLinerTopTD;
       StringToMemo('FormHoleData.Save: Data.LinerTopTD = ' + LinerTopDepthData.Text +
-        ' ' + UoMLabel[1]); { API depth }
+        ' ' + UoMLabel[1]); { displayed depth }
       TopTDisOK := True;
     end;
     if (_WellLinerBottomTD < Data.CasingTD)
@@ -828,7 +828,7 @@ var
     begin
       Data.LinerBottomTD := _WellLinerBottomTD;
       StringToMemo('FormHoleData.Save: Data.LinerShoeTD = ' + LinerBottomDepthData.Text +
-        ' ' + UoMLabel[1]); { API depth }
+        ' ' + UoMLabel[1]); { displayed depth }
       BottomTDisOK := True;
     end;
     if (_WellLinerID > Data.CasingID) { Liner ID must be less than Casing ID } then

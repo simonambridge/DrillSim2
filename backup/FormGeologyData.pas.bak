@@ -59,6 +59,9 @@ type
       ReservoirPressureColumnLabel: TLabel;
     QuitButton: TButton;
     SaveButton: TButton;
+    procedure FormActivate(Sender: TObject);
+    procedure FormCreate(Sender: TObject);
+    procedure FormDeactivate(Sender: TObject);
     procedure Horizon1ReservoirPressureDataChange(Sender: TObject);
     procedure Horizon1DepthDataChange(Sender: TObject);
     procedure Horizon1HardnessDataChange(Sender: TObject);
@@ -89,7 +92,10 @@ type
     procedure Horizon10DepthDataChange(Sender: TObject);
     procedure Horizon10HardnessDataChange(Sender: TObject);
     procedure Horizon10ReservoirPressureDataChange(Sender: TObject);
-    procedure NumericOnlyKeyPress(Sender: TObject; var Key: Char);  private
+    procedure NumericOnlyKeyPress(Sender: TObject; var Key: Char);
+    procedure QuitButtonClick(Sender: TObject);
+    procedure SaveButtonClick(Sender: TObject);
+  private
     { private declarations }
   public
     { public declarations }
@@ -287,6 +293,35 @@ procedure TGeologyDataForm.Horizon10ReservoirPressureDataChange(Sender: TObject
 begin
 
 end;
+
+{ ------------------ Form procedures ---------------------- }
+
+procedure TGeologyDataForm.FormActivate(Sender: TObject);
+begin
+
+end;
+
+procedure TGeologyDataForm.FormCreate(Sender: TObject);
+begin
+
+end;
+
+procedure TGeologyDataForm.FormDeactivate(Sender: TObject);
+begin
+
+end;
+
+procedure TGeologyDataForm.QuitButtonClick(Sender: TObject);
+begin
+
+end;
+
+procedure TGeologyDataForm.SaveButtonClick(Sender: TObject);
+begin
+
+end;
+
+
 
 end.
 

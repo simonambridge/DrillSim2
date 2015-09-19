@@ -2,44 +2,44 @@ object SurfaceEquipmentDataForm: TSurfaceEquipmentDataForm
   Left = 111
   Height = 316
   Top = 104
-  Width = 429
+  Width = 549
   Caption = 'Surface Equipment Data'
   ClientHeight = 316
-  ClientWidth = 429
+  ClientWidth = 549
   OnActivate = FormActivate
   OnCreate = FormCreate
   OnDeactivate = FormDeactivate
   LCLVersion = '1.2.6.0'
   object QuitButton: TButton
-    Left = 240
+    Left = 253
     Height = 25
     Top = 256
     Width = 75
     Caption = 'Quit'
     OnClick = QuitButtonClick
-    TabOrder = 0
+    TabOrder = 8
   end
   object SaveButton: TButton
-    Left = 320
+    Left = 333
     Height = 25
     Top = 256
     Width = 75
     Caption = 'Save'
     OnClick = SaveButtonClick
-    TabOrder = 1
+    TabOrder = 9
   end
   object KellyLengthLabel: TLabel
     Left = 22
     Height = 17
-    Top = 32
+    Top = 42
     Width = 81
     Caption = 'Kelly Length'
     ParentColor = False
   end
   object KellyIDLabel: TLabel
-    Left = 272
+    Left = 336
     Height = 17
-    Top = 32
+    Top = 42
     Width = 14
     Caption = 'ID'
     ParentColor = False
@@ -47,15 +47,15 @@ object SurfaceEquipmentDataForm: TSurfaceEquipmentDataForm
   object SwivelLengthLabel: TLabel
     Left = 21
     Height = 17
-    Top = 73
+    Top = 83
     Width = 91
     Caption = 'Swivel Length'
     ParentColor = False
   end
   object SwivelIDLabel: TLabel
-    Left = 272
+    Left = 336
     Height = 17
-    Top = 73
+    Top = 83
     Width = 14
     Caption = 'ID'
     ParentColor = False
@@ -63,15 +63,15 @@ object SurfaceEquipmentDataForm: TSurfaceEquipmentDataForm
   object HoseLengthLabel: TLabel
     Left = 21
     Height = 17
-    Top = 120
+    Top = 122
     Width = 83
     Caption = 'Hose Length'
     ParentColor = False
   end
   object HoseIDLabel: TLabel
-    Left = 272
+    Left = 336
     Height = 17
-    Top = 120
+    Top = 122
     Width = 14
     Caption = 'ID'
     ParentColor = False
@@ -79,15 +79,15 @@ object SurfaceEquipmentDataForm: TSurfaceEquipmentDataForm
   object StandPipeLengthLabel: TLabel
     Left = 21
     Height = 17
-    Top = 168
+    Top = 162
     Width = 121
     Caption = 'Stand Pipe Length'
     ParentColor = False
   end
   object StandPipeIDLabel: TLabel
-    Left = 272
+    Left = 336
     Height = 17
-    Top = 168
+    Top = 170
     Width = 14
     Caption = 'ID'
     ParentColor = False
@@ -96,27 +96,27 @@ object SurfaceEquipmentDataForm: TSurfaceEquipmentDataForm
     Left = 152
     Height = 27
     Hint = 'Length of the Kelly'
-    Top = 32
+    Top = 40
     Width = 104
     Alignment = taRightJustify
     OnChange = KellyLengthDataChange
     OnKeyPress = NumericOnlyKeyPress
     ParentShowHint = False
     ShowHint = True
-    TabOrder = 2
+    TabOrder = 0
   end
   object SwivelLengthData: TEdit
     Left = 152
     Height = 27
     Hint = 'Length of the Swivel'
-    Top = 73
+    Top = 81
     Width = 104
     Alignment = taRightJustify
     OnChange = SwivelLengthDataChange
     OnKeyPress = NumericOnlyKeyPress
     ParentShowHint = False
     ShowHint = True
-    TabOrder = 3
+    TabOrder = 2
   end
   object HoseLengthData: TEdit
     Left = 152
@@ -142,36 +142,36 @@ object SurfaceEquipmentDataForm: TSurfaceEquipmentDataForm
     OnKeyPress = NumericOnlyKeyPress
     ParentShowHint = False
     ShowHint = True
-    TabOrder = 5
+    TabOrder = 6
   end
   object KellyIDData: TEdit
-    Left = 304
+    Left = 368
     Height = 27
     Hint = 'KellyStand Pipe'
-    Top = 32
+    Top = 40
     Width = 56
     Alignment = taRightJustify
     OnChange = KellyIDDataChange
     OnKeyPress = NumericOnlyKeyPress
     ParentShowHint = False
     ShowHint = True
-    TabOrder = 6
+    TabOrder = 1
   end
   object SwivelIDData: TEdit
-    Left = 304
+    Left = 368
     Height = 27
     Hint = 'Internal diameter of the Swivel'
-    Top = 73
+    Top = 81
     Width = 56
     Alignment = taRightJustify
     OnChange = SwivelIDDataChange
     OnKeyPress = NumericOnlyKeyPress
     ParentShowHint = False
     ShowHint = True
-    TabOrder = 7
+    TabOrder = 3
   end
   object HoseIDData: TEdit
-    Left = 304
+    Left = 368
     Height = 27
     Hint = 'Internal diameter of the Hose'
     Top = 120
@@ -181,10 +181,10 @@ object SurfaceEquipmentDataForm: TSurfaceEquipmentDataForm
     OnKeyPress = NumericOnlyKeyPress
     ParentShowHint = False
     ShowHint = True
-    TabOrder = 8
+    TabOrder = 5
   end
   object StandPipeIDData: TEdit
-    Left = 304
+    Left = 368
     Height = 27
     Hint = 'Internal diameter of the Stand Pipe'
     Top = 160
@@ -194,6 +194,70 @@ object SurfaceEquipmentDataForm: TSurfaceEquipmentDataForm
     OnKeyPress = NumericOnlyKeyPress
     ParentShowHint = False
     ShowHint = True
-    TabOrder = 9
+    TabOrder = 7
+  end
+  object KellyIDUoMLabel: TLabel
+    Left = 432
+    Height = 24
+    Top = 40
+    Width = 40
+    AutoSize = False
+    ParentColor = False
+  end
+  object SwivelIDUoMLabel: TLabel
+    Left = 432
+    Height = 24
+    Top = 81
+    Width = 40
+    AutoSize = False
+    ParentColor = False
+  end
+  object HoseIDUoMLabel: TLabel
+    Left = 432
+    Height = 24
+    Top = 120
+    Width = 40
+    AutoSize = False
+    ParentColor = False
+  end
+  object StandPipeIDUoMLabel: TLabel
+    Left = 432
+    Height = 24
+    Top = 160
+    Width = 40
+    AutoSize = False
+    ParentColor = False
+  end
+  object KellyLengthUoMLabel: TLabel
+    Left = 264
+    Height = 24
+    Top = 43
+    Width = 40
+    AutoSize = False
+    ParentColor = False
+  end
+  object SwivelLenfgthUoMLabel: TLabel
+    Left = 264
+    Height = 24
+    Top = 84
+    Width = 40
+    AutoSize = False
+    ParentColor = False
+  end
+  object HoseLengthUoMLabel: TLabel
+    Left = 264
+    Height = 24
+    Top = 123
+    Width = 40
+    AutoSize = False
+    ParentColor = False
+  end
+  object StandPipeLengthUoMLabel: TLabel
+    Left = 264
+    Height = 24
+    Top = 163
+    Width = 40
+    AutoSize = False
+    ParentColor = False
   end
 end

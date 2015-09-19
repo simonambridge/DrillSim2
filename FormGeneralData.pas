@@ -343,7 +343,7 @@ procedure TGeneralDataForm.SaveClick(Sender: TObject);
     else
     Begin
       Data.RiserTD:=_WellRiserTD;
-      StringToMemo('FormHoleData.Save: Data.RiserTD = '+ RiserTDData.Text + ' ' + UoMLabel[1]); { API depth }
+      StringToMemo('FormHoleData.Save: Data.RiserTD = '+ RiserTDData.Text + ' ' + UoMLabel[1]); { displayed depth }
       TDisOK:=True;
     End;
 
@@ -410,7 +410,7 @@ begin
     else
     Begin
       Data.WaterDepth:=_WellWaterDepth;
-      StringToMemo('FormHoleData.Save: Data.WaterDepth = '+ WaterDepthData.Text + ' ' + UoMLabel[1]); { API depth }
+      StringToMemo('FormHoleData.Save: Data.WaterDepth = '+ WaterDepthData.Text + ' ' + UoMLabel[1]); { displayed depth }
      End;
   end;
 

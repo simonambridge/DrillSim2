@@ -41,7 +41,7 @@ type
     KillLineIDUoMLabel: TLabel;
     ChokeLineID: TStaticText;
     Save: TButton;
-    Cancel: TButton;
+    Quit: TButton;
 
     procedure WellOperatorDataChange(Sender: TObject);
     procedure WellNameDataChange(Sender: TObject);
@@ -55,7 +55,7 @@ type
     procedure WaterDepthDataChange(Sender: TObject);
     procedure NumericOnlyKeyPress(Sender: TObject; var Key: Char);
 
-    procedure CancelClick(Sender: TObject);
+    procedure QuitClick(Sender: TObject);
     procedure SaveClick(Sender: TObject);
     procedure FormActivate(Sender: TObject);
     procedure FormCreate(Sender: TObject);
@@ -318,7 +318,7 @@ begin
 
 end;
 
-procedure TGeneralDataForm.CancelClick(Sender: TObject);
+procedure TGeneralDataForm.QuitClick(Sender: TObject);
 begin
   Close;
 end;

@@ -1,11 +1,14 @@
 object GeologyDataForm: TGeologyDataForm
-  Left = 80
+  Left = 65
   Height = 485
-  Top = 338
-  Width = 690
+  Top = 239
+  Width = 653
   Caption = 'Geology Data'
   ClientHeight = 485
-  ClientWidth = 690
+  ClientWidth = 653
+  OnActivate = FormActivate
+  OnCreate = FormCreate
+  OnDeactivate = FormDeactivate
   LCLVersion = '1.2.6.0'
   object QuitButton: TButton
     Left = 488
@@ -14,6 +17,7 @@ object GeologyDataForm: TGeologyDataForm
     Top = 416
     Width = 75
     Caption = 'Quit'
+    OnClick = QuitButtonClick
     ParentShowHint = False
     ShowHint = True
     TabOrder = 0
@@ -25,6 +29,7 @@ object GeologyDataForm: TGeologyDataForm
     Top = 416
     Width = 75
     Caption = 'Save'
+    OnClick = SaveButtonClick
     ParentShowHint = False
     ShowHint = True
     TabOrder = 1

@@ -62,7 +62,7 @@ Type
                    LinerBottomTD               : real;
                    LinerID                     : real;
 
-                   Surf                        : array[1..4,1..2] of real;
+                   Surf                        : array[1..4,1..2] of real;  { length, ID }
 
                    MaxHoles                    : integer;
                    Hole                        : array[1..3,1..3] of real; { TD, ID, OD }

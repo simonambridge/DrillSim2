@@ -1,7 +1,7 @@
 object WellTestDataForm: TWellTestDataForm
-  Left = 83
+  Left = 104
   Height = 351
-  Top = 404
+  Top = 352
   Width = 428
   Caption = 'Well Test Data'
   ClientHeight = 351
@@ -61,7 +61,7 @@ object WellTestDataForm: TWellTestDataForm
   object LastLeakOffPressureLabel: TLabel
     Left = 21
     Height = 17
-    Top = 168
+    Top = 160
     Width = 151
     Caption = 'Last Leak Off Pressure'
     ParentColor = False
@@ -153,7 +153,7 @@ object WellTestDataForm: TWellTestDataForm
   object CasingBurstPressureLabel: TLabel
     Left = 21
     Height = 17
-    Top = 208
+    Top = 200
     Width = 145
     Caption = 'Casing Burst Pressure'
     ParentColor = False

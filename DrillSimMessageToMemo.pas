@@ -320,6 +320,9 @@ Begin
      103 : Begin
             ThisString:='Loading application help file';
           End;
+     104 : Begin
+            ThisString:='<Empty>';
+          End;
 
     End;
     if length(ThisString) > Zero then   // display it

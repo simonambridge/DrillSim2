@@ -288,7 +288,6 @@ var
 Begin
 
   StringToMemo('FormBitData.Save ..............................................');
-  Error:=False;
 
   if _WellBitNumber<>0
           then Data.BitNumber:=_WellBitNumber
