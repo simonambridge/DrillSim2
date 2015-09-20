@@ -38,7 +38,7 @@ uses
   FormMudData,
   FormPumpData,
   FormSurfaceEquipmentData,
-  FormTestData,
+  FormWellTestData,
   FormGeologyData,
   SimulateCommandProcessor,
   SimulateUpdate,

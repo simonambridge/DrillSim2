@@ -126,7 +126,7 @@ begin
 
   MudWeightUoMLabel.Caption:=UoMLabel[2]; { mud weight }
 
-// data
+  // data
 
   MudWeightData.Text:=FloatToStr(Round2(Data.MudWt*UoMConverter[2],3));  { API->user depth }
   MudYPData.Text:=FloatToStr(Round2(Data.MudYP,3));    { no conversion req'd }

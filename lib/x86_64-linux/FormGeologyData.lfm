@@ -1,7 +1,7 @@
 object GeologyDataForm: TGeologyDataForm
   Left = 65
   Height = 485
-  Top = 397
+  Top = 420
   Width = 653
   Caption = 'Geology Data'
   ClientHeight = 485
@@ -56,7 +56,7 @@ object GeologyDataForm: TGeologyDataForm
     TabOrder = 2
   end
   object HorizonColumnLabel: TLabel
-    Left = 114
+    Left = 104
     Height = 17
     Top = 32
     Width = 69
@@ -64,15 +64,15 @@ object GeologyDataForm: TGeologyDataForm
     ParentColor = False
   end
   object HorizonTopDepthUoMLabel: TLabel
-    Left = 194
+    Left = 182
     Height = 17
     Top = 33
-    Width = 28
+    Width = 58
     AutoSize = False
     ParentColor = False
   end
   object HardnessColumnLabel: TLabel
-    Left = 245
+    Left = 256
     Height = 17
     Top = 35
     Width = 137
@@ -80,7 +80,7 @@ object GeologyDataForm: TGeologyDataForm
     ParentColor = False
   end
   object ReservoirPressureColumnLabel: TLabel
-    Left = 408
+    Left = 419
     Height = 17
     Top = 34
     Width = 136
@@ -89,7 +89,7 @@ object GeologyDataForm: TGeologyDataForm
     ParentColor = False
   end
   object ReservoirPressureUoMLabel1: TLabel
-    Left = 544
+    Left = 555
     Height = 17
     Top = 35
     Width = 28
@@ -97,7 +97,7 @@ object GeologyDataForm: TGeologyDataForm
     ParentColor = False
   end
   object Horizon1HardnessData: TEdit
-    Left = 256
+    Left = 267
     Height = 27
     Hint = 'Horizon 1 top depth'
     Top = 56
@@ -110,7 +110,7 @@ object GeologyDataForm: TGeologyDataForm
     TabOrder = 3
   end
   object Horizon1ReservoirPressureData: TEdit
-    Left = 424
+    Left = 435
     Height = 27
     Hint = 'Horizon 1 top depth'
     Top = 56
@@ -144,7 +144,7 @@ object GeologyDataForm: TGeologyDataForm
     TabOrder = 5
   end
   object Horizon2HardnessData: TEdit
-    Left = 256
+    Left = 267
     Height = 27
     Hint = 'Horizon 1 top depth'
     Top = 88
@@ -157,7 +157,7 @@ object GeologyDataForm: TGeologyDataForm
     TabOrder = 6
   end
   object Horizon2ReservoirPressureData: TEdit
-    Left = 424
+    Left = 435
     Height = 27
     Hint = 'Horizon 1 top depth'
     Top = 88
@@ -191,7 +191,7 @@ object GeologyDataForm: TGeologyDataForm
     TabOrder = 8
   end
   object Horizon3HardnessData: TEdit
-    Left = 256
+    Left = 267
     Height = 27
     Hint = 'Horizon 1 top depth'
     Top = 120
@@ -204,7 +204,7 @@ object GeologyDataForm: TGeologyDataForm
     TabOrder = 9
   end
   object Horizon3ReservoirPressureData: TEdit
-    Left = 424
+    Left = 435
     Height = 27
     Hint = 'Horizon 1 top depth'
     Top = 120
@@ -238,7 +238,7 @@ object GeologyDataForm: TGeologyDataForm
     TabOrder = 11
   end
   object Horizon4HardnessData: TEdit
-    Left = 256
+    Left = 267
     Height = 27
     Hint = 'Horizon 1 top depth'
     Top = 152
@@ -251,7 +251,7 @@ object GeologyDataForm: TGeologyDataForm
     TabOrder = 12
   end
   object Horizon4ReservoirPressureData: TEdit
-    Left = 424
+    Left = 435
     Height = 27
     Hint = 'Horizon 1 top depth'
     Top = 152
@@ -285,7 +285,7 @@ object GeologyDataForm: TGeologyDataForm
     TabOrder = 14
   end
   object Horizon5HardnessData: TEdit
-    Left = 256
+    Left = 267
     Height = 27
     Hint = 'Horizon 1 top depth'
     Top = 184
@@ -298,7 +298,7 @@ object GeologyDataForm: TGeologyDataForm
     TabOrder = 15
   end
   object Horizon5ReservoirPressureData: TEdit
-    Left = 424
+    Left = 435
     Height = 27
     Hint = 'Horizon 1 top depth'
     Top = 184
@@ -332,7 +332,7 @@ object GeologyDataForm: TGeologyDataForm
     TabOrder = 17
   end
   object Horizon6HardnessData: TEdit
-    Left = 256
+    Left = 267
     Height = 27
     Hint = 'Horizon 1 top depth'
     Top = 216
@@ -345,7 +345,7 @@ object GeologyDataForm: TGeologyDataForm
     TabOrder = 18
   end
   object Horizon6ReservoirPressureData: TEdit
-    Left = 424
+    Left = 435
     Height = 27
     Hint = 'Horizon 1 top depth'
     Top = 216
@@ -379,7 +379,7 @@ object GeologyDataForm: TGeologyDataForm
     TabOrder = 20
   end
   object Horizon7HardnessData: TEdit
-    Left = 256
+    Left = 267
     Height = 27
     Hint = 'Horizon 1 top depth'
     Top = 248
@@ -392,7 +392,7 @@ object GeologyDataForm: TGeologyDataForm
     TabOrder = 21
   end
   object Horizon7ReservoirPressureData: TEdit
-    Left = 424
+    Left = 435
     Height = 27
     Hint = 'Horizon 1 top depth'
     Top = 248
@@ -426,7 +426,7 @@ object GeologyDataForm: TGeologyDataForm
     TabOrder = 23
   end
   object Horizon8HardnessData: TEdit
-    Left = 256
+    Left = 267
     Height = 27
     Hint = 'Horizon 1 top depth'
     Top = 280
@@ -439,7 +439,7 @@ object GeologyDataForm: TGeologyDataForm
     TabOrder = 24
   end
   object Horizon8ReservoirPressureData: TEdit
-    Left = 424
+    Left = 435
     Height = 27
     Hint = 'Horizon 1 top depth'
     Top = 280
@@ -473,7 +473,7 @@ object GeologyDataForm: TGeologyDataForm
     TabOrder = 26
   end
   object Horizon9HardnessData: TEdit
-    Left = 256
+    Left = 267
     Height = 27
     Hint = 'Horizon 1 top depth'
     Top = 312
@@ -486,7 +486,7 @@ object GeologyDataForm: TGeologyDataForm
     TabOrder = 27
   end
   object Horizon9ReservoirPressureData: TEdit
-    Left = 424
+    Left = 435
     Height = 27
     Hint = 'Horizon 1 top depth'
     Top = 312
@@ -520,7 +520,7 @@ object GeologyDataForm: TGeologyDataForm
     TabOrder = 29
   end
   object Horizon10HardnessData: TEdit
-    Left = 256
+    Left = 267
     Height = 27
     Hint = 'Horizon 1 top depth'
     Top = 344
@@ -533,7 +533,7 @@ object GeologyDataForm: TGeologyDataForm
     TabOrder = 30
   end
   object Horizon10ReservoirPressureData: TEdit
-    Left = 424
+    Left = 435
     Height = 27
     Hint = 'Horizon 1 top depth'
     Top = 344

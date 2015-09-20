@@ -101,11 +101,12 @@ Begin
     ChokeLineID:=Zero;
     KillLineID:=Zero;
 
-    LotTD :=Zero;             { these simulator variables are here because }
-    LotMW :=Zero;             { they are edited in Proc. UpdateKick and    }
-    LotEMW:=Zero;             { must be set to 0 for a new file            }
+    LotTD :=Zero;
+    LotMW :=Zero;
+    LotEMW:=Zero;
     LotPressure:=Zero;
-    BurstPressure:=Zero;
+    CasingBurstPressure:=Zero;
+
     RetPitVol:=100;
 
     Rock[1].Depth:=Hole[MaxHoles,1];   { define default formation }

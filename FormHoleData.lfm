@@ -1,7 +1,7 @@
 object HoleDataForm: THoleDataForm
-  Left = 94
+  Left = 169
   Height = 635
-  Top = 200
+  Top = 204
   Width = 405
   Caption = 'Hole Profile Data'
   ClientHeight = 635
@@ -120,7 +120,7 @@ object HoleDataForm: THoleDataForm
     ShowHint = True
   end
   object TDColumnLabel: TLabel
-    Left = 168
+    Left = 136
     Height = 17
     Top = 381
     Width = 18
@@ -128,7 +128,7 @@ object HoleDataForm: THoleDataForm
     ParentColor = False
   end
   object IDColumnLabel: TLabel
-    Left = 280
+    Left = 276
     Height = 17
     Top = 381
     Width = 14
@@ -136,18 +136,18 @@ object HoleDataForm: THoleDataForm
     ParentColor = False
   end
   object OHTDUoMLabel: TLabel
-    Left = 205
+    Left = 173
     Height = 17
     Top = 381
-    Width = 40
+    Width = 59
     AutoSize = False
     ParentColor = False
   end
   object OHIDUoMLabel: TLabel
-    Left = 304
+    Left = 300
     Height = 17
     Top = 381
-    Width = 42
+    Width = 60
     AutoSize = False
     ParentColor = False
   end
@@ -280,7 +280,7 @@ object HoleDataForm: THoleDataForm
     Left = 24
     Height = 17
     Hint = 'Total depth of casing'
-    Top = 128
+    Top = 144
     Width = 132
     Caption = 'Cashing Shoe Depth'
     ParentColor = False
@@ -290,7 +290,7 @@ object HoleDataForm: THoleDataForm
   object CasingShoeDepthData: TEdit
     Left = 168
     Height = 27
-    Top = 128
+    Top = 136
     Width = 108
     Alignment = taRightJustify
     OnChange = CasingShoeDepthDataChange
@@ -298,10 +298,10 @@ object HoleDataForm: THoleDataForm
     TabOrder = 5
   end
   object CasingShoeDepthUoMLabel: TLabel
-    Left = 289
-    Height = 17
-    Top = 132
-    Width = 52
+    Left = 290
+    Height = 25
+    Top = 136
+    Width = 70
     AutoSize = False
     ParentColor = False
   end
@@ -309,7 +309,7 @@ object HoleDataForm: THoleDataForm
     Left = 24
     Height = 17
     Hint = 'Internal diameter of casing (in inches)'
-    Top = 162
+    Top = 172
     Width = 73
     AutoSize = False
     Caption = 'Casing ID'
@@ -320,7 +320,7 @@ object HoleDataForm: THoleDataForm
   object CasingIDData: TEdit
     Left = 168
     Height = 27
-    Top = 158
+    Top = 168
     Width = 109
     Alignment = taRightJustify
     OnChange = CasingIDDataChange
@@ -329,9 +329,9 @@ object HoleDataForm: THoleDataForm
   end
   object CasingIDUoMLabel: TLabel
     Left = 289
-    Height = 17
-    Top = 162
-    Width = 42
+    Height = 22
+    Top = 170
+    Width = 73
     AutoSize = False
     ParentColor = False
   end
@@ -368,17 +368,17 @@ object HoleDataForm: THoleDataForm
   end
   object LinerIDUoMLabel: TLabel
     Left = 289
-    Height = 17
+    Height = 24
     Top = 264
-    Width = 42
+    Width = 71
     AutoSize = False
     ParentColor = False
   end
   object LinerTopDepthUoMLabel: TLabel
     Left = 289
-    Height = 17
+    Height = 26
     Top = 198
-    Width = 52
+    Width = 71
     AutoSize = False
     ParentColor = False
   end
@@ -418,9 +418,9 @@ object HoleDataForm: THoleDataForm
   end
   object LinerBottomDepthUoMLabel: TLabel
     Left = 289
-    Height = 17
+    Height = 25
     Top = 230
-    Width = 52
+    Width = 71
     AutoSize = False
     ParentColor = False
   end

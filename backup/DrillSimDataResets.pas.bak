@@ -83,7 +83,7 @@ Begin
       Pump[i,1]:=Zero;          { output }
       Pump[i,2]:=Zero;          { efficiency }
       Pump[i,3]:=Zero;          { @ strokes per minute }
-      Pump[i,4]:=Zero;          { not used }
+      Pump[i,4]:=Zero;          { SPM }
       Pump[i,5]:=Zero;          { not used }
     End;
     MaxPumpPressure  :=Zero;
@@ -101,11 +101,11 @@ Begin
     ChokeLineID:=Zero;
     KillLineID:=Zero;
 
-    LotTD :=Zero;             { these simulator variables are here because }
-    LotMW :=Zero;             { they are edited in Proc. UpdateKick and    }
-    LotEMW:=Zero;             { must be set to 0 for a new file            }
+    LotTD :=Zero;
+    LotMW :=Zero;
+    LotEMW:=Zero;
     LotPressure:=Zero;
-    BurstPressure:=Zero;
+    CasingBurstPressure:=Zero;
     RetPitVol:=100;
 
     Rock[1].Depth:=Hole[MaxHoles,1];   { define default formation }

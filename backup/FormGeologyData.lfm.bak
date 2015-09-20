@@ -1,7 +1,7 @@
 object GeologyDataForm: TGeologyDataForm
   Left = 65
   Height = 485
-  Top = 239
+  Top = 420
   Width = 653
   Caption = 'Geology Data'
   ClientHeight = 485

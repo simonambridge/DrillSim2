@@ -100,7 +100,7 @@ Type
                    LotTD                       : real;
                    LotEMW                      : real;
                    LotMW                       : real;
-                   LOTPressure                 : real;
+                   LotPressure                 : real;
 
                    RockPointer                 : integer;
                    Rock                        : array[1..10] of RockRec;
@@ -112,7 +112,7 @@ Type
                    NeverSimulated              : boolean;  { has this file ever been 'simulated'? }
 
                    FormationPressureGradient   : real;
-                   BurstPressure               : real;
+                   CasingBurstPressure         : real;
                    InfluxDensity               : real;
 
                    PipeRAMRating               : real;

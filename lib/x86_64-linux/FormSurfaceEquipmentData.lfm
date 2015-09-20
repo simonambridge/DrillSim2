@@ -2,10 +2,10 @@ object SurfaceEquipmentDataForm: TSurfaceEquipmentDataForm
   Left = 111
   Height = 316
   Top = 104
-  Width = 549
+  Width = 518
   Caption = 'Surface Equipment Data'
   ClientHeight = 316
-  ClientWidth = 549
+  ClientWidth = 518
   OnActivate = FormActivate
   OnCreate = FormCreate
   OnDeactivate = FormDeactivate
@@ -200,7 +200,7 @@ object SurfaceEquipmentDataForm: TSurfaceEquipmentDataForm
     Left = 432
     Height = 24
     Top = 40
-    Width = 40
+    Width = 56
     AutoSize = False
     ParentColor = False
   end
@@ -208,7 +208,7 @@ object SurfaceEquipmentDataForm: TSurfaceEquipmentDataForm
     Left = 432
     Height = 24
     Top = 81
-    Width = 40
+    Width = 56
     AutoSize = False
     ParentColor = False
   end
@@ -216,7 +216,7 @@ object SurfaceEquipmentDataForm: TSurfaceEquipmentDataForm
     Left = 432
     Height = 24
     Top = 120
-    Width = 40
+    Width = 56
     AutoSize = False
     ParentColor = False
   end
@@ -224,7 +224,7 @@ object SurfaceEquipmentDataForm: TSurfaceEquipmentDataForm
     Left = 432
     Height = 24
     Top = 160
-    Width = 40
+    Width = 56
     AutoSize = False
     ParentColor = False
   end
@@ -232,15 +232,15 @@ object SurfaceEquipmentDataForm: TSurfaceEquipmentDataForm
     Left = 264
     Height = 24
     Top = 43
-    Width = 40
+    Width = 56
     AutoSize = False
     ParentColor = False
   end
   object SwivelLenfgthUoMLabel: TLabel
     Left = 264
     Height = 24
-    Top = 84
-    Width = 40
+    Top = 83
+    Width = 56
     AutoSize = False
     ParentColor = False
   end
@@ -248,7 +248,7 @@ object SurfaceEquipmentDataForm: TSurfaceEquipmentDataForm
     Left = 264
     Height = 24
     Top = 123
-    Width = 40
+    Width = 56
     AutoSize = False
     ParentColor = False
   end
@@ -256,7 +256,7 @@ object SurfaceEquipmentDataForm: TSurfaceEquipmentDataForm
     Left = 264
     Height = 24
     Top = 163
-    Width = 40
+    Width = 56
     AutoSize = False
     ParentColor = False
   end

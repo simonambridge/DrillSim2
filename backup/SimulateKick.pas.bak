@@ -223,7 +223,7 @@ Begin
       if (Data.RetPitVol <= Zero) then MessageToMemo(72) else MessageToMemo(70);
       MessageToMemo(71);                 { "Press any key...." }
       Repeat Until KeyPressed;
-      Util:=ReadKey;                           { clear buffer }
+ //     Util:=ReadKey;                           { clear buffer }
       if (Data.RetPitVol <= Zero) then Clear   { reset and restart simulation }
         else Quit:=True                        { else quit to DrillSim        }
     End;

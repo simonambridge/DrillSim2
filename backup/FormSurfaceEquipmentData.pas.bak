@@ -241,6 +241,15 @@ begin
     Data.Surf[i,2]:=_WellSurf[i,2];
   end;
 
+  StringToMemo('FormSurfaceEquipmentData.Save: Data.Surf[1,1] = '+ KellyLengthData.Text + ' ' + UoMLabel[1]);     { displayed depth }
+  StringToMemo('FormSurfaceEquipmentData.Save: Data.Surf[1,2] = '+ KellyIDData.Text + ' ' + UoMLabel[8]);         { inches }
+  StringToMemo('FormSurfaceEquipmentData.Save: Data.Surf[2,1] = '+ SwivelLengthData.Text + ' ' + UoMLabel[1]);    { displayed depth }
+  StringToMemo('FormSurfaceEquipmentData.Save: Data.Surf[2,2] = '+ SwivelIDData.Text + ' ' + UoMLabel[8]);        { inches }
+  StringToMemo('FormSurfaceEquipmentData.Save: Data.Surf[3,1] = '+ HoseLengthData.Text + ' ' + UoMLabel[1]);      { displayed depth }
+  StringToMemo('FormSurfaceEquipmentData.Save: Data.Surf[3,2] = '+ HoseIDData.Text + ' ' + UoMLabel[8]);          { inches }
+  StringToMemo('FormSurfaceEquipmentData.Save: Data.Surf[4,1] = '+ StandPipeLengthData.Text + ' ' + UoMLabel[1]); { displayed depth }
+  StringToMemo('FormSurfaceEquipmentData.Save: Data.Surf[4,2] = '+ StandPipeIDData.Text + ' ' + UoMLabel[8]);     { inches }
+
   Edited:=True;
   Close;
 end;

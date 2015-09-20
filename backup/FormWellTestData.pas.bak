@@ -5,7 +5,10 @@ unit FormWellTestData;
 interface
 
 uses
-  Classes, SysUtils, FileUtil, Forms, Controls, Graphics, Dialogs, StdCtrls;
+  Classes, SysUtils, FileUtil, Forms, Controls, Graphics, Dialogs, StdCtrls,
+  DrillSimVariables,
+  DrillSimUtilities,
+  DrillSimMessageToMemo;
 
 type
 
@@ -29,15 +32,14 @@ type
     LastLeakOffMWUoMLabel: TLabel;
     LastLeakOffMWData: TEdit;
     LastLeakOffMWLabel: TLabel;
-    procedure CasingBurstPressureDataChange(Sender: TObject);
     procedure FormActivate(Sender: TObject);
     procedure FormCreate(Sender: TObject);
     procedure FormDeactivate(Sender: TObject);
     procedure LastLeakOffDepthDataChange(Sender: TObject);
-    procedure LastLeakOffEMWDataChange(Sender: TObject);
     procedure LastLeakOffMWDataChange(Sender: TObject);
+    procedure LastLeakOffEMWDataChange(Sender: TObject);
     procedure LastLeakOffPressureDataChange(Sender: TObject);
-    procedure LastLeakOffPressureDataKeyPress(Sender: TObject; var Key: char);
+    procedure CasingBurstPressureDataChange(Sender: TObject);
     procedure NumericOnlyKeyPress(Sender: TObject; var Key: Char);
     procedure QuitButtonClick(Sender: TObject);
     procedure SaveButtonClick(Sender: TObject);
@@ -49,6 +51,11 @@ type
 
 var
   WellTestDataForm: TWellTestDataForm;
+  _WellLotTD                       : real;
+  _WellLotEMW                      : real;
+  _WellLotMW                       : real;
+  _WellLotPressure                 : real;
+  _WellCasingBurstPressure         : real;
 
 implementation
 
@@ -82,33 +89,42 @@ end;
 
 procedure TWellTestDataForm.LastLeakOffDepthDataChange(Sender: TObject);
 begin
-
-end;
-
-procedure TWellTestDataForm.CasingBurstPressureDataChange(Sender: TObject);
-begin
-
-end;
-
-procedure TWellTestDataForm.LastLeakOffEMWDataChange(Sender: TObject);
-begin
-
+  if not ((TEdit(Sender).Text = '-')
+      or (TEdit(Sender).Text = DefaultFormatSettings.DecimalSeparator)
+      or (TEdit(Sender).Text = ''))
+          then _WellLotTD:=Round2(StrToFloat(LastLeakOffDepthData.Text)/UoMConverter[1],2); { to API depth }
 end;
 
 procedure TWellTestDataForm.LastLeakOffMWDataChange(Sender: TObject);
 begin
+  if not ((TEdit(Sender).Text = '-')
+      or (TEdit(Sender).Text = DefaultFormatSettings.DecimalSeparator)
+      or (TEdit(Sender).Text = ''))
+          then _WellLotMW:=Round2(StrToFloat(LastLeakOffMWData.Text)/UoMConverter[2],2); { to API specific gravity }
+end;
 
+procedure TWellTestDataForm.LastLeakOffEMWDataChange(Sender: TObject);
+begin
+  if not ((TEdit(Sender).Text = '-')
+      or (TEdit(Sender).Text = DefaultFormatSettings.DecimalSeparator)
+      or (TEdit(Sender).Text = ''))
+          then _WellLotEMW:=Round2(StrToFloat(LastLeakOffEMWData.Text)/UoMConverter[2],2); { to API specific gravity }
 end;
 
 procedure TWellTestDataForm.LastLeakOffPressureDataChange(Sender: TObject);
 begin
-
+  if not ((TEdit(Sender).Text = '-')
+      or (TEdit(Sender).Text = DefaultFormatSettings.DecimalSeparator)
+      or (TEdit(Sender).Text = ''))
+          then _WellLotPressure:=Round2(StrToFloat(LastLeakOffPressureData.Text)/UoMConverter[3],2); { to API pressure }
 end;
 
-procedure TWellTestDataForm.LastLeakOffPressureDataKeyPress(Sender: TObject;
-  var Key: char);
+procedure TWellTestDataForm.CasingBurstPressureDataChange(Sender: TObject);
 begin
-
+  if not ((TEdit(Sender).Text = '-')
+      or (TEdit(Sender).Text = DefaultFormatSettings.DecimalSeparator)
+      or (TEdit(Sender).Text = ''))
+          then _WellCasingBurstPressure:=Round2(StrToFloat(CasingBurstPressureData.Text)/UoMConverter[3],2); { to API pressure }
 end;
 
 
@@ -116,27 +132,132 @@ end;
 
 procedure TWellTestDataForm.FormActivate(Sender: TObject);
 begin
+  StringToMemo('Form Well Test Data activated...........................');
+
+  // units of measure labels
+
+  LastLeakOffDepthUoMLabel.Caption:=UoMLabel[1];        { depth }
+  LastLeakOffMWUoMLabel.Caption:=UoMLabel[2];           { specific gravity }
+  LastLeakOffEMWUoMLabel.Caption:=UoMLabel[2];          { specific gravity }
+  LastLeakOffPressureUoMLabel.Caption:=UoMLabel[3];     { pressure }
+  CasingBurstPressureUoMLabel.Caption:=UoMLabel[3];     { pressure }
+
+  // data
+  _WellLotTD              :=Data.LotTD;
+  _WellLotMW              :=Data.LotMW;
+  _WellLotEMW             :=Data.LotEMW;
+  _WellLOTPressure        :=Data.LOTPressure;
+  _WellCasingBurstPressure:=Data.CasingBurstPressure;
+
+  StringToMemo('setup done');
+
+  LastLeakOffDepthData.Text:=FloatToStr(Round2(Data.LotTD*UoMConverter[1],2));                       { depth }
+
+StringToMemo('FormWellTestData: Data.LotTD = '+ FloatToStr(Data.LotTD) + ' ' + UoMLabel[1]);     { displayed depth }
+StringToMemo('FormWellTestData: Data.LotMW = '+ FloatToStr(Data.LotMW) + ' ' + UoMLabel[2]);         { displayed specific gravity }
+StringToMemo('FormWellTestData: Data.LotEMW = '+ FloatToStr(Data.LotEMW) + ' ' + UoMLabel[2]);         { displayed specific gravity }
+StringToMemo('FormWellTestData: Data.LotPressure = '+ FloatToStr(Data.LotPressure) + ' ' + UoMLabel[3]);         { displayed pressure }
+StringToMemo('FormWellTestData: Data.CasingBurstPressure = '+ FloatToStr(Data.CasingBurstPressure) + ' ' + UoMLabel[3]);         { displayed pressure }
+
+  LastLeakOffMWData.Text:=FloatToStr(Round2(Data.LotMW*UoMConverter[2],2));                          { specific gravity }
+  LastLeakOffEMWData.Text:=FloatToStr(Round2(Data.LotEMW*UoMConverter[2],2));                        { specific gravity }
+  LastLeakOffPressureData.Text:=FloatToStr(Round2(Data.LotPressure*UoMConverter[3],2));              { pressure }
+  CasingBurstPressureData.Text:=FloatToStr(Round2(Data.CasingBurstPressure*UoMConverter[3],2));      { pressure }
 
 end;
 
 procedure TWellTestDataForm.FormCreate(Sender: TObject);
 begin
+     StringToMemo('create');
 
 end;
 
 procedure TWellTestDataForm.FormDeactivate(Sender: TObject);
-begin
-
+begin{ Also called on QuitButton }
+    StringToMemo('FormWellTestData.Deactivate ........................................');
 end;
 
 procedure TWellTestDataForm.QuitButtonClick(Sender: TObject);
 begin
-
+  StringToMemo('FormWellTestData.Quit ..............................................');
+  Close;
 end;
 
 procedure TWellTestDataForm.SaveButtonClick(Sender: TObject);
+var
+ i : integer;
 begin
+  StringToMemo('FormWellTestData.Save ..............................................');
 
+  if (_WellLotTD <= 0) then                                                      { length cannot be zero }
+  Begin
+    ShowMessage('Leak off test depth must be greater than zero');
+    StringToMemo('FormHoleData.Save: Error: Leak off test depth must be greater than zero');
+    LastLeakOffDepthData.SetFocus;
+    Exit;
+  end else
+  Begin
+    Data.LotTD:=_WellLotTD;   { API depth }
+    StringToMemo('FormWellTestData.Save: Data.LotTD = '+ LastLeakOffDepthData.Text + ' ' + UoMLabel[1]); { displayed depth }
+  end;
+
+  if (_WellLotMW <= 0) then                                                    { mw cannot be zero }
+  Begin
+    ShowMessage('Leak off test mud weight must be greater than zero');
+    StringToMemo('FormHoleData.Save: Error: Leak off test mud weight must be greater than zero');
+    LastLeakOffMWData.SetFocus;
+    Exit;
+  end else
+  Begin
+    Data.LotMW:=_WellLotMW;   { API specific gravity}
+    StringToMemo('FormWellTestData.Save: Data.LotMW = '+ LastLeakOffMWData.Text + ' ' + UoMLabel[2]); { displayed specific gravity }
+  end;
+
+  if (_WellLotEMW <= 0) then                                                    { emw cannot be zero }
+  Begin
+    ShowMessage('Leak off test equivalent mud weight must be greater than zero');
+    StringToMemo('FormHoleData.Save: Error: Leak off test equivalent mud weight must be greater than zero');
+    LastLeakOffEMWData.SetFocus;
+    Exit;
+  end else
+  Begin
+    Data.LotMW:=_WellLotEMW;   { API specific gravity}
+    StringToMemo('FormWellTestData.Save: Data.LotEMW = '+ LastLeakOffEMWData.Text + ' ' + UoMLabel[2]); { displayed specific gravity }
+  end;
+
+  if (_WellLotPressure <= 0) then                                                    { lot pressure cannot be zero }
+  Begin
+    ShowMessage('Leak off test pressure must be greater than zero');
+    StringToMemo('FormHoleData.Save: Error: Leak off test pressure must be greater than zero');
+    LastLeakOffPressureData.SetFocus;
+    Exit;
+  end else
+  Begin
+    Data.LotPressure:=_WellLotPressure;   { API pressure}
+    StringToMemo('FormWellTestData.Save: Data.LotPressure = '+ LastLeakOffPressureData.Text + ' ' + UoMLabel[2]); { displayed pressure }
+  end;
+
+
+  if (_WellCasingBurstPressure <= 0) then                                                    { lot pressure cannot be zero }
+  Begin
+    ShowMessage('Casing burst pressure must be greater than zero');
+    StringToMemo('FormHoleData.Save: Error: Csing burst pressure must be greater than zero');
+    CasingBurstPressureData.SetFocus;
+    Exit;
+  end else
+  Begin
+    Data.CasingBurstPressure:=_WellCasingBurstPressure;   { API pressure}
+    StringToMemo('FormWellTestData.Save: Data.CasingBurstPressure = '+ CasingBurstPressureData.Text + ' ' + UoMLabel[2]); { displayed pressure }
+  end;
+
+  StringToMemo('FormWellTestData.Save: Data.LotTD = '+ LastLeakOffDepthData.Text + ' ' + UoMLabel[1]);     { displayed depth }
+  StringToMemo('FormWellTestData.Save: Data.LotMW = '+ LastLeakOffMWData.Text + ' ' + UoMLabel[2]);         { displayed specific gravity }
+  StringToMemo('FormWellTestData.Save: Data.LotEMW = '+ LastLeakOffEMWData.Text + ' ' + UoMLabel[2]);         { displayed specific gravity }
+  StringToMemo('FormWellTestData.Save: Data.LotPressure = '+ LastLeakOffPressureData.Text + ' ' + UoMLabel[3]);         { displayed pressure }
+  StringToMemo('FormWellTestData.Save: Data.CasingBurstPressure = '+ CasingBurstPressureData.Text + ' ' + UoMLabel[3]);         { displayed pressure }
+
+  Edited:=True;
+  Close;
 end;
 
 

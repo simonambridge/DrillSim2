@@ -1,5 +1,5 @@
 object PipeDataForm: TPipeDataForm
-  Left = 65
+  Left = 729
   Height = 403
   Top = 167
   Width = 634
@@ -22,7 +22,7 @@ object PipeDataForm: TPipeDataForm
     ShowHint = True
   end
   object LengthColumnLabel: TLabel
-    Left = 184
+    Left = 168
     Height = 17
     Top = 120
     Width = 46
@@ -30,7 +30,7 @@ object PipeDataForm: TPipeDataForm
     ParentColor = False
   end
   object IDColumnLabel: TLabel
-    Left = 312
+    Left = 304
     Height = 17
     Top = 120
     Width = 14
@@ -38,18 +38,18 @@ object PipeDataForm: TPipeDataForm
     ParentColor = False
   end
   object PipeLengthUoMLabel: TLabel
-    Left = 237
+    Left = 224
     Height = 17
     Top = 120
-    Width = 40
+    Width = 51
     AutoSize = False
     ParentColor = False
   end
   object PipeIDUoMLabel: TLabel
-    Left = 336
+    Left = 330
     Height = 17
     Top = 120
-    Width = 42
+    Width = 58
     AutoSize = False
     ParentColor = False
   end
@@ -154,7 +154,7 @@ object PipeDataForm: TPipeDataForm
     TabOrder = 10
   end
   object ODColumnLabel: TLabel
-    Left = 408
+    Left = 400
     Height = 17
     Top = 120
     Width = 21
@@ -162,10 +162,10 @@ object PipeDataForm: TPipeDataForm
     ParentColor = False
   end
   object PipeODUoMLabel: TLabel
-    Left = 432
+    Left = 424
     Height = 17
     Top = 120
-    Width = 42
+    Width = 58
     AutoSize = False
     ParentColor = False
   end

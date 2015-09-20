@@ -40,7 +40,7 @@ Begin
       if HoleError then
       Begin
         ErrorScreen;
-        UpdatePipe;
+        //UpdatePipe;
       End;
     End;
   Until not HoleError;
@@ -49,7 +49,7 @@ End;
 Procedure CheckPipeData;  // called when a file is loaded
 Begin
   Repeat
-    UpdatePipe;                { call pipe data entry form }
+    //UpdatePipe;                { call pipe data entry form }
     DSHoleCalc;                { Check hole for errors and initialise volumes }
                                { mud volume reset when pipe profile changed }
     if HoleError then

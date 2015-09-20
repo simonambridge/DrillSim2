@@ -116,9 +116,7 @@ begin
 end;
 
 
-
 { ------------------ Form procedures ---------------------- }
-
 
 procedure TMudDataForm.FormActivate(Sender: TObject);
 begin
