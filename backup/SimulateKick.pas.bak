@@ -217,7 +217,7 @@ Begin
 
 { =================== Check for end-simulation conditions =================== }
 
-    if (Data.BurstPressure < Abs(AnnUnderBalance)) or
+    if (Data.CasingBurstPressure < Abs(AnnUnderBalance)) or
        (Data.RetPitVol <= Zero) then
     Begin                             { empty pits (72), or burst casing (70) }
       if (Data.RetPitVol <= Zero) then MessageToMemo(72) else MessageToMemo(70);

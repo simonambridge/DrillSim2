@@ -82,7 +82,7 @@ Begin
           if OverDrill > 2 then OverDrill:=2;  { Assume full load taken at 2' }
           WOB:=StrWt * (OverDrill / 2);        { with linear increase in WOB  }
                                                { WOB in Klbs }
-          x:=ln(Rock[RockPointer].Hardness / (RPM * 60)) / ln(10);
+          x:=ln(Formation[FormationPointer].Hardness / (RPM * 60)) / ln(10);
 
           y:=(WOB * 12000) / (Hole[MaxHoles,2] * Power(10,6));
           y:=ln(y) / ln(10);

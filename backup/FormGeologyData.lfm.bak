@@ -1,9 +1,9 @@
 object GeologyDataForm: TGeologyDataForm
   Left = 65
   Height = 485
-  Top = 420
+  Top = 138
   Width = 653
-  Caption = 'Geology Data'
+  Caption = 'Well Geology Data'
   ClientHeight = 485
   ClientWidth = 653
   OnActivate = FormActivate
@@ -56,7 +56,7 @@ object GeologyDataForm: TGeologyDataForm
     TabOrder = 2
   end
   object HorizonColumnLabel: TLabel
-    Left = 114
+    Left = 104
     Height = 17
     Top = 32
     Width = 69
@@ -64,15 +64,15 @@ object GeologyDataForm: TGeologyDataForm
     ParentColor = False
   end
   object HorizonTopDepthUoMLabel: TLabel
-    Left = 194
+    Left = 182
     Height = 17
     Top = 33
-    Width = 28
+    Width = 58
     AutoSize = False
     ParentColor = False
   end
   object HardnessColumnLabel: TLabel
-    Left = 245
+    Left = 256
     Height = 17
     Top = 35
     Width = 137
@@ -80,7 +80,7 @@ object GeologyDataForm: TGeologyDataForm
     ParentColor = False
   end
   object ReservoirPressureColumnLabel: TLabel
-    Left = 408
+    Left = 419
     Height = 17
     Top = 34
     Width = 136
@@ -88,8 +88,8 @@ object GeologyDataForm: TGeologyDataForm
     Caption = 'Reservoir Pressure'
     ParentColor = False
   end
-  object ReservoirPressureUoMLabel1: TLabel
-    Left = 544
+  object ReservoirPressureUoMLabel: TLabel
+    Left = 555
     Height = 17
     Top = 35
     Width = 28
@@ -97,9 +97,9 @@ object GeologyDataForm: TGeologyDataForm
     ParentColor = False
   end
   object Horizon1HardnessData: TEdit
-    Left = 256
+    Left = 267
     Height = 27
-    Hint = 'Horizon 1 top depth'
+    Hint = 'Horizon 1 hardness'
     Top = 56
     Width = 110
     Alignment = taRightJustify
@@ -109,14 +109,14 @@ object GeologyDataForm: TGeologyDataForm
     ShowHint = True
     TabOrder = 3
   end
-  object Horizon1ReservoirPressureData: TEdit
-    Left = 424
+  object Horizon1FormationPressureData: TEdit
+    Left = 435
     Height = 27
-    Hint = 'Horizon 1 top depth'
+    Hint = 'Horizon 1 formation pressure'
     Top = 56
     Width = 110
     Alignment = taRightJustify
-    OnChange = Horizon1ReservoirPressureDataChange
+    OnChange = Horizon1FormationPressureDataChange
     OnKeyPress = NumericOnlyKeyPress
     ParentShowHint = False
     ShowHint = True
@@ -144,9 +144,9 @@ object GeologyDataForm: TGeologyDataForm
     TabOrder = 5
   end
   object Horizon2HardnessData: TEdit
-    Left = 256
+    Left = 267
     Height = 27
-    Hint = 'Horizon 1 top depth'
+    Hint = 'Horizon 2 hardness'
     Top = 88
     Width = 110
     Alignment = taRightJustify
@@ -156,14 +156,14 @@ object GeologyDataForm: TGeologyDataForm
     ShowHint = True
     TabOrder = 6
   end
-  object Horizon2ReservoirPressureData: TEdit
-    Left = 424
+  object Horizon2FormationPressureData: TEdit
+    Left = 435
     Height = 27
-    Hint = 'Horizon 1 top depth'
+    Hint = 'Horizon 2 formation pressure'
     Top = 88
     Width = 110
     Alignment = taRightJustify
-    OnChange = Horizon2ReservoirPressureDataChange
+    OnChange = Horizon2FormationPressureDataChange
     OnKeyPress = NumericOnlyKeyPress
     ParentShowHint = False
     ShowHint = True
@@ -180,7 +180,7 @@ object GeologyDataForm: TGeologyDataForm
   object Horizon3DepthData: TEdit
     Left = 114
     Height = 27
-    Hint = 'Horizon 1 top depth'
+    Hint = 'Horizon 3 top depth'
     Top = 120
     Width = 110
     Alignment = taRightJustify
@@ -191,9 +191,9 @@ object GeologyDataForm: TGeologyDataForm
     TabOrder = 8
   end
   object Horizon3HardnessData: TEdit
-    Left = 256
+    Left = 267
     Height = 27
-    Hint = 'Horizon 1 top depth'
+    Hint = 'Horizon 3 hardness'
     Top = 120
     Width = 110
     Alignment = taRightJustify
@@ -203,14 +203,14 @@ object GeologyDataForm: TGeologyDataForm
     ShowHint = True
     TabOrder = 9
   end
-  object Horizon3ReservoirPressureData: TEdit
-    Left = 424
+  object Horizon3FormationPressureData: TEdit
+    Left = 435
     Height = 27
-    Hint = 'Horizon 1 top depth'
+    Hint = 'Horizon 3 formation pressure'
     Top = 120
     Width = 110
     Alignment = taRightJustify
-    OnChange = Horizon3ReservoirPressureDataChange
+    OnChange = Horizon3FormationPressureDataChange
     OnKeyPress = NumericOnlyKeyPress
     ParentShowHint = False
     ShowHint = True
@@ -227,7 +227,7 @@ object GeologyDataForm: TGeologyDataForm
   object Horizon4DepthData: TEdit
     Left = 114
     Height = 27
-    Hint = 'Horizon 1 top depth'
+    Hint = 'Horizon 4 top depth'
     Top = 152
     Width = 110
     Alignment = taRightJustify
@@ -238,9 +238,9 @@ object GeologyDataForm: TGeologyDataForm
     TabOrder = 11
   end
   object Horizon4HardnessData: TEdit
-    Left = 256
+    Left = 267
     Height = 27
-    Hint = 'Horizon 1 top depth'
+    Hint = 'Horizon 4 hardness'
     Top = 152
     Width = 110
     Alignment = taRightJustify
@@ -250,14 +250,14 @@ object GeologyDataForm: TGeologyDataForm
     ShowHint = True
     TabOrder = 12
   end
-  object Horizon4ReservoirPressureData: TEdit
-    Left = 424
+  object Horizon4FormationPressureData: TEdit
+    Left = 435
     Height = 27
-    Hint = 'Horizon 1 top depth'
+    Hint = 'Horizon 4 formation pressure'
     Top = 152
     Width = 110
     Alignment = taRightJustify
-    OnChange = Horizon4ReservoirPressureDataChange
+    OnChange = Horizon4FormationPressureDataChange
     OnKeyPress = NumericOnlyKeyPress
     ParentShowHint = False
     ShowHint = True
@@ -274,7 +274,7 @@ object GeologyDataForm: TGeologyDataForm
   object Horizon5DepthData: TEdit
     Left = 114
     Height = 27
-    Hint = 'Horizon 1 top depth'
+    Hint = 'Horizon 5 top depth'
     Top = 184
     Width = 110
     Alignment = taRightJustify
@@ -285,9 +285,9 @@ object GeologyDataForm: TGeologyDataForm
     TabOrder = 14
   end
   object Horizon5HardnessData: TEdit
-    Left = 256
+    Left = 267
     Height = 27
-    Hint = 'Horizon 1 top depth'
+    Hint = 'Horizon 5 hardness'
     Top = 184
     Width = 110
     Alignment = taRightJustify
@@ -297,14 +297,14 @@ object GeologyDataForm: TGeologyDataForm
     ShowHint = True
     TabOrder = 15
   end
-  object Horizon5ReservoirPressureData: TEdit
-    Left = 424
+  object Horizon5FormationPressureData: TEdit
+    Left = 435
     Height = 27
-    Hint = 'Horizon 1 top depth'
+    Hint = 'Horizon 5 formation pressure'
     Top = 184
     Width = 110
     Alignment = taRightJustify
-    OnChange = Horizon5ReservoirPressureDataChange
+    OnChange = Horizon5FormationPressureDataChange
     OnKeyPress = NumericOnlyKeyPress
     ParentShowHint = False
     ShowHint = True
@@ -321,7 +321,7 @@ object GeologyDataForm: TGeologyDataForm
   object Horizon6DepthData: TEdit
     Left = 114
     Height = 27
-    Hint = 'Horizon 1 top depth'
+    Hint = 'Horizon 6 top depth'
     Top = 216
     Width = 110
     Alignment = taRightJustify
@@ -332,9 +332,9 @@ object GeologyDataForm: TGeologyDataForm
     TabOrder = 17
   end
   object Horizon6HardnessData: TEdit
-    Left = 256
+    Left = 267
     Height = 27
-    Hint = 'Horizon 1 top depth'
+    Hint = 'Horizon 6 hardness'
     Top = 216
     Width = 110
     Alignment = taRightJustify
@@ -344,14 +344,14 @@ object GeologyDataForm: TGeologyDataForm
     ShowHint = True
     TabOrder = 18
   end
-  object Horizon6ReservoirPressureData: TEdit
-    Left = 424
+  object Horizon6FormationPressureData: TEdit
+    Left = 435
     Height = 27
-    Hint = 'Horizon 1 top depth'
+    Hint = 'Horizon 6 formation pressure'
     Top = 216
     Width = 110
     Alignment = taRightJustify
-    OnChange = Horizon6ReservoirPressureDataChange
+    OnChange = Horizon6FormationPressureDataChange
     OnKeyPress = NumericOnlyKeyPress
     ParentShowHint = False
     ShowHint = True
@@ -368,7 +368,7 @@ object GeologyDataForm: TGeologyDataForm
   object Horizon7DepthData: TEdit
     Left = 114
     Height = 27
-    Hint = 'Horizon 1 top depth'
+    Hint = 'Horizon 7 top depth'
     Top = 248
     Width = 110
     Alignment = taRightJustify
@@ -379,9 +379,9 @@ object GeologyDataForm: TGeologyDataForm
     TabOrder = 20
   end
   object Horizon7HardnessData: TEdit
-    Left = 256
+    Left = 267
     Height = 27
-    Hint = 'Horizon 1 top depth'
+    Hint = 'Horizon 7 hardness'
     Top = 248
     Width = 110
     Alignment = taRightJustify
@@ -391,14 +391,14 @@ object GeologyDataForm: TGeologyDataForm
     ShowHint = True
     TabOrder = 21
   end
-  object Horizon7ReservoirPressureData: TEdit
-    Left = 424
+  object Horizon7FormationPressureData: TEdit
+    Left = 435
     Height = 27
-    Hint = 'Horizon 1 top depth'
+    Hint = 'Horizon 7 formation pressure'
     Top = 248
     Width = 110
     Alignment = taRightJustify
-    OnChange = Horizon7ReservoirPressureDataChange
+    OnChange = Horizon7FormationPressureDataChange
     OnKeyPress = NumericOnlyKeyPress
     ParentShowHint = False
     ShowHint = True
@@ -415,7 +415,7 @@ object GeologyDataForm: TGeologyDataForm
   object Horizon8DepthData: TEdit
     Left = 114
     Height = 27
-    Hint = 'Horizon 1 top depth'
+    Hint = 'Horizon 8 top depth'
     Top = 280
     Width = 110
     Alignment = taRightJustify
@@ -426,9 +426,9 @@ object GeologyDataForm: TGeologyDataForm
     TabOrder = 23
   end
   object Horizon8HardnessData: TEdit
-    Left = 256
+    Left = 267
     Height = 27
-    Hint = 'Horizon 1 top depth'
+    Hint = 'Horizon 8 hardness'
     Top = 280
     Width = 110
     Alignment = taRightJustify
@@ -438,14 +438,14 @@ object GeologyDataForm: TGeologyDataForm
     ShowHint = True
     TabOrder = 24
   end
-  object Horizon8ReservoirPressureData: TEdit
-    Left = 424
+  object Horizon8FormationPressureData: TEdit
+    Left = 435
     Height = 27
-    Hint = 'Horizon 1 top depth'
+    Hint = 'Horizon 8 formation pressure'
     Top = 280
     Width = 110
     Alignment = taRightJustify
-    OnChange = Horizon8ReservoirPressureDataChange
+    OnChange = Horizon8FormationPressureDataChange
     OnKeyPress = NumericOnlyKeyPress
     ParentShowHint = False
     ShowHint = True
@@ -462,7 +462,7 @@ object GeologyDataForm: TGeologyDataForm
   object Horizon9DepthData: TEdit
     Left = 114
     Height = 27
-    Hint = 'Horizon 1 top depth'
+    Hint = 'Horizon 9 top depth'
     Top = 312
     Width = 110
     Alignment = taRightJustify
@@ -473,9 +473,9 @@ object GeologyDataForm: TGeologyDataForm
     TabOrder = 26
   end
   object Horizon9HardnessData: TEdit
-    Left = 256
+    Left = 267
     Height = 27
-    Hint = 'Horizon 1 top depth'
+    Hint = 'Horizon 9 hardness'
     Top = 312
     Width = 110
     Alignment = taRightJustify
@@ -485,14 +485,14 @@ object GeologyDataForm: TGeologyDataForm
     ShowHint = True
     TabOrder = 27
   end
-  object Horizon9ReservoirPressureData: TEdit
-    Left = 424
+  object Horizon9FormationPressureData: TEdit
+    Left = 435
     Height = 27
-    Hint = 'Horizon 1 top depth'
+    Hint = 'Horizon 9 formation pressure'
     Top = 312
     Width = 110
     Alignment = taRightJustify
-    OnChange = Horizon9ReservoirPressureDataChange
+    OnChange = Horizon9FormationPressureDataChange
     OnKeyPress = NumericOnlyKeyPress
     ParentShowHint = False
     ShowHint = True
@@ -509,7 +509,7 @@ object GeologyDataForm: TGeologyDataForm
   object Horizon10DepthData: TEdit
     Left = 114
     Height = 27
-    Hint = 'Horizon 1 top depth'
+    Hint = 'Horizon 10 top depth'
     Top = 344
     Width = 110
     Alignment = taRightJustify
@@ -520,9 +520,9 @@ object GeologyDataForm: TGeologyDataForm
     TabOrder = 29
   end
   object Horizon10HardnessData: TEdit
-    Left = 256
+    Left = 267
     Height = 27
-    Hint = 'Horizon 1 top depth'
+    Hint = 'Horizon 10 hardness'
     Top = 344
     Width = 110
     Alignment = taRightJustify
@@ -532,14 +532,14 @@ object GeologyDataForm: TGeologyDataForm
     ShowHint = True
     TabOrder = 30
   end
-  object Horizon10ReservoirPressureData: TEdit
-    Left = 424
+  object Horizon10FormationPressureData: TEdit
+    Left = 435
     Height = 27
-    Hint = 'Horizon 1 top depth'
+    Hint = 'Horizon 10 formation pressure'
     Top = 344
     Width = 110
     Alignment = taRightJustify
-    OnChange = Horizon10ReservoirPressureDataChange
+    OnChange = Horizon10FormationPressureDataChange
     OnKeyPress = NumericOnlyKeyPress
     ParentShowHint = False
     ShowHint = True

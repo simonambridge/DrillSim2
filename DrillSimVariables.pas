@@ -29,12 +29,12 @@ Type
                     Spare4 : real;
                   End;
 
-    RockRec    = Record
-                   Depth             : real;
-                   Hardness          : real;
-                   FP                : real;
-                   Porosity          : real;
-                 End;
+    FormationRecord = Record
+                        Depth             : real;
+                        Hardness          : real;
+                        FP                : real;
+                        Porosity          : real;
+                      End;
 
     HelpSet    = Record
                    HelpText : array[1..200] of String60;
@@ -102,8 +102,8 @@ Type
                    LotMW                       : real;
                    LotPressure                 : real;
 
-                   RockPointer                 : integer;
-                   Rock                        : array[1..10] of RockRec;
+                   FormationPointer            : integer;
+                   Formation                   : array[1..10] of FormationRecord;
 
                    Gas                         : array[1..200] of GasRec;
 

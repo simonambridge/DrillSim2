@@ -171,7 +171,7 @@ Begin
 //        TAttr:=AttrByte;
         //SetColorSet(WhiteOnBlue);
         //Disp(37,13,DnBushing);
-        AttrByte:=TAttr;
+//        AttrByte:=TAttr;
       End;
     End;
     ScreenService;

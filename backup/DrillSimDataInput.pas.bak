@@ -8,11 +8,6 @@ Uses Crt,
      DrillSimMessageToMemo;
 
 Procedure UpdateWellTests;
-Procedure UpdatePipe;
-Procedure UpdateBit;
-Procedure UpdateMud;
-Procedure UpdatePump;
-Procedure UpdateSurf;
 
 Implementation
 

@@ -25,9 +25,9 @@ Var i,j : integer;
 
 Function CheckForZero : boolean;
 Begin
-  if (Data.Rock[i].Depth = Zero)
-    or (Data.Rock[i].Hardness = Zero)
-    or (Data.Rock[i].FP = Zero) then CheckForZero:=True
+  if (Data.Formation[i].Depth = Zero)
+    or (Data.Formation[i].Hardness = Zero)
+    or (Data.Formation[i].FP = Zero) then CheckForZero:=True
                                 else CheckForZero:=False;
 End;
 
@@ -102,13 +102,13 @@ Begin
       Str(i:2,TempString);                     { display horizon number }
       //Disp(8,j,TempString);
 
-      Str(Rock[i].Depth:9:3,TempString);       { display horizon top }
+      Str(Formation[i].Depth:9:3,TempString);       { display horizon top }
       //Disp(11,j,TempString);
 
-      Str(Rock[i].Hardness:5:2,TempString);    { display horizon hardness }
+      Str(Formation[i].Hardness:5:2,TempString);    { display horizon hardness }
       //Disp(33,j,TempString);
 
-      Str(Rock[i].FP:9:3,TempString);          { display horizon form. pr. }
+      Str(Formation[i].FP:9:3,TempString);          { display horizon form. pr. }
       //Disp(50,j,TempString);
     End;
 
@@ -121,21 +121,21 @@ Begin
 
       GetReal(22,j,25000/UoMConverter[1]);                   { get depth }
       if Esc then EscPressed:=True;                 { ESC ?     }
-      if Valid then Rock[i].Depth:=RealResult;         { valid ? if yes, use it  }
-      gotoxy(22,j); write(Rock[i].Depth:9:3);       { display current value   }
+      if Valid then Formation[i].Depth:=RealResult;         { valid ? if yes, use it  }
+      gotoxy(22,j); write(Formation[i].Depth:9:3);       { display current value   }
       if not EscPressed then                        { not if exit requested }
       Begin
         GetReal(42,j,1);                            { get hardness }
         if Esc then EscPressed:=True;
-        if Valid then Rock[i].Hardness:=RealResult;
-        gotoxy(42,j); write(Rock[i].Hardness:5:2);
+        if Valid then Formation[i].Hardness:=RealResult;
+        gotoxy(42,j); write(Formation[i].Hardness:5:2);
 
         if not EscPressed then                      { not if exit requested }
         Begin
           GetReal(60,j,20000/UoMConverter[1]);               { get formation pressure }
           if Esc then EscPressed:=True;
-          if Valid then Rock[i].FP:=RealResult;
-          gotoxy(60,j); write(Rock[i].FP:9:3);
+          if Valid then Formation[i].FP:=RealResult;
+          gotoxy(60,j); write(Formation[i].FP:9:3);
         End;
       End;
 
@@ -160,10 +160,10 @@ Begin
       End;
     Until (i=10) or ZeroFound;
 
-    RockPointer:=1;          { set up for drilling - gets set up in Simulate }
+    FormationPointer:=1;          { set up for drilling - gets set up in Simulate }
                              { anyway but needs initialisation               }
     FormationPressureGradient:=
-             ((Rock[1].FP * UoMConverter[3]) / (Rock[1].Depth * UoMConverter[1])) / Presscon;
+             ((Formation[1].FP * UoMConverter[3]) / (Formation[1].Depth * UoMConverter[1])) / Presscon;
   End;
  End;
 

@@ -185,7 +185,7 @@ Begin
           End;
      52 : ThisString:='Bushing not in table';
      53 : Begin
-            Str((Rock[RockPointer].FP + MACP) / UoMConverter[3]:5:2,ThisString);
+            Str((Formation[FormationPointer].FP + MACP) / UoMConverter[3]:5:2,ThisString);
             ThisString:='MACP : ' + ThisString  + Space + UoMLabel[3];
           End;
      54 : ThisString:='Losing to formation';
@@ -233,7 +233,7 @@ Begin
      68 : ThisString:='Turn off pumps';
 
      69 : Begin
-            Str(Data.Rock[RockPointer].FP / UoMConverter[3]:5:2,ThisString);
+            Str(Data.Formation[FormationPointer].FP / UoMConverter[3]:5:2,ThisString);
             ThisString:='Form Pr.: ' + ThisString + Space + UoMLabel[3];
           End;
 

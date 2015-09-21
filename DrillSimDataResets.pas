@@ -109,15 +109,16 @@ Begin
 
     RetPitVol:=100;
 
-    Rock[1].Depth:=Hole[MaxHoles,1];   { define default formation }
-    Rock[1].Hardness:=1;
-    if Offshore then x:=0.442 else x:=0.4332; { x = norm. gradient * 0.052 }
-    Rock[1].FP:=((Hole[MaxHoles,1] * UoMConverter[1]) * x) / UoMConverter[3];
-    For i:=2 to 10 do                  { and zero the rest        }
+//    Formation[1].Depth:=Hole[MaxHoles,1];   { define default formation }
+//    Formation[1].Hardness:=1;
+//    if Offshore then x:=0.442 else x:=0.4332; { x = norm. gradient * 0.052 }
+//    Formation[1].FP:=((Hole[MaxHoles,1] * UoMConverter[1]) * x) / UoMConverter[3];
+
+    For i:=1 to 10 do                  { and zero the rest        }
     Begin
-      Rock[i].Depth:=Zero;
-      Rock[i].Hardness:=Zero;
-      Rock[i].FP:=Zero;
+      Formation[i].Depth:=Zero;
+      Formation[i].Hardness:=Zero;
+      Formation[i].FP:=Zero;
     End;
 
 {*     For i:=1 to 5 do        user defined units not supported
@@ -349,15 +350,15 @@ Procedure InitGeology;        { called on each entry into Simulator, and    }
 Begin                         { whenever Loaded or Cleared                  }
   With Data do
   Begin
-    RockPointer:=1;                    { must be at least the first horizon }
+    FormationPointer:=1;                    { must be at least the first horizon }
 
-    While (RockPointer<=9) and (Hole[MaxHoles,1] > Rock[RockPointer+1].Depth)
-          and (Rock[RockPointer+1].FP > Zero)
-          and (Rock[RockPointer+1].Hardness > Zero)
-          and (Rock[RockPointer+1].Depth > Rock[RockPointer].Depth)
-            do RockPointer:=RockPointer + 1;
+    While (FormationPointer<=9) and (Hole[MaxHoles,1] > Formation[FormationPointer+1].Depth)
+          and (Formation[FormationPointer+1].FP > Zero)
+          and (Formation[FormationPointer+1].Hardness > Zero)
+          and (Formation[FormationPointer+1].Depth > Formation[FormationPointer].Depth)
+            do FormationPointer:=FormationPointer + 1;
     FormationPressureGradient:=               { calculate here for ROPCalc }
-                (Rock[RockPointer].FP / Rock[RockPointer].Depth) / Presscon;
+                (Formation[FormationPointer].FP / Formation[FormationPointer].Depth) / Presscon;
   End;
 End;
 

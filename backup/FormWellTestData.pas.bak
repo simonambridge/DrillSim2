@@ -153,12 +153,6 @@ begin
 
   LastLeakOffDepthData.Text:=FloatToStr(Round2(Data.LotTD*UoMConverter[1],2));                       { depth }
 
-StringToMemo('FormWellTestData: Data.LotTD = '+ FloatToStr(Data.LotTD) + ' ' + UoMLabel[1]);     { displayed depth }
-StringToMemo('FormWellTestData: Data.LotMW = '+ FloatToStr(Data.LotMW) + ' ' + UoMLabel[2]);         { displayed specific gravity }
-StringToMemo('FormWellTestData: Data.LotEMW = '+ FloatToStr(Data.LotEMW) + ' ' + UoMLabel[2]);         { displayed specific gravity }
-StringToMemo('FormWellTestData: Data.LotPressure = '+ FloatToStr(Data.LotPressure) + ' ' + UoMLabel[3]);         { displayed pressure }
-StringToMemo('FormWellTestData: Data.CasingBurstPressure = '+ FloatToStr(Data.CasingBurstPressure) + ' ' + UoMLabel[3]);         { displayed pressure }
-
   LastLeakOffMWData.Text:=FloatToStr(Round2(Data.LotMW*UoMConverter[2],2));                          { specific gravity }
   LastLeakOffEMWData.Text:=FloatToStr(Round2(Data.LotEMW*UoMConverter[2],2));                        { specific gravity }
   LastLeakOffPressureData.Text:=FloatToStr(Round2(Data.LotPressure*UoMConverter[3],2));              { pressure }
@@ -221,7 +215,7 @@ begin
     Exit;
   end else
   Begin
-    Data.LotMW:=_WellLotEMW;   { API specific gravity}
+    Data.LotEMW:=_WellLotEMW;   { API specific gravity}
     StringToMemo('FormWellTestData.Save: Data.LotEMW = '+ LastLeakOffEMWData.Text + ' ' + UoMLabel[2]); { displayed specific gravity }
   end;
 
