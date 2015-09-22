@@ -56,7 +56,7 @@ type
 
     BitData: TGroupBox;
     BitDepthValue: TLabel;
-    BitDepthUoM: TStaticText;
+    BitDepthUoMLabel: TStaticText;
     AutoDrillCheckBox: TCheckBox;
     HydrilValue: TLabel;
     BlindRAMsValue: TLabel;
@@ -123,8 +123,8 @@ type
     MenuItem1File: TMenuItem;
     MudWeightOutValue: TLabel;
     MudWeightInValue: TLabel;
-    MudWeifghtInUoM: TStaticText;
-    MudWeightOutUoM: TStaticText;
+    MudWeightInUoMLabel: TStaticText;
+    MudWeightOutUoMLabel: TStaticText;
     MudWeightInText: TStaticText;
     MudWeightOutText: TStaticText;
     ECDText: TStaticText;
@@ -140,17 +140,17 @@ type
     ReturnPitText: TStaticText;
     DiffFlowText: TStaticText;
     StandPipePressureText: TStaticText;
-    ROPUoM: TStaticText;
+    ROPUoMLabel: TStaticText;
     ChokeUoM: TStaticText;
     FlowInUoM: TStaticText;
     TimeValue: TLabel;
     ROPValue: TLabel;
     ROPText: TLabel;
     PumpStrokesTotalText: TStaticText;
-    KellyHeightUoM: TStaticText;
+    KellyHeightUoMLabel: TStaticText;
     TimeText: TLabel;
-    WOBUoM: TStaticText;
-    TotalDepthUoM: TStaticText;
+    WOBUoMLabel: TStaticText;
+    TotalDepthUoMLabel: TStaticText;
     WOBValue: TLabel;
     TotalDepthValue: TLabel;
     Pump3Plus: TButton;
@@ -487,6 +487,11 @@ end;
 
 procedure TDrillSim.BinghamRadioButtonChange(Sender: TObject);
 begin
+  With Data do
+  Begin
+  Bingham:=not Bingham;
+  if Bingham then MessageToMemo(31) else MessageToMemo(32);
+  End;
 
 end;
 
@@ -548,6 +553,15 @@ begin
 
   StringToMemo('DrillSimGUI.FormaActivate: Running DrillSim start up sequence');
   StartUp;     { call DrillSim StartUp }
+  // units of measure labels
+
+  BitDepthUoMLabel.Caption:=UoMLabel[1];        { depth }
+  TotalDepthUoMLabel.Caption:=UoMLabel[1];        { depth }
+  WOBUoMLabel.Caption:=UoMLabel[7];        { weight }
+  KellyHeightUoMLabel.Caption:=UoMLabel[1];        { depth }
+  ROPUoMLabel.Caption:=ROPLabel;
+  MudWeightInUoMLabel.Caption:=UoMLabel[2];        { specific gravity }
+  MudWeightOutUoMLabel.Caption:=UoMLabel[2];        { specific gravity }
 end;
 
 
@@ -559,6 +573,7 @@ begin
   splash := TSplashAbout.Create(nil);
   SetDefaultValues; // splash - optional
   splash.ShowSplash;
+
 end;
 
 Procedure TDrillSim.OnClose(Sender: TObject);

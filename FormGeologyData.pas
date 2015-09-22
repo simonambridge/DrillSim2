@@ -449,6 +449,7 @@ end;
 
 procedure TGeologyDataForm.FormCreate(Sender: TObject);
 begin
+  StringToMemo('TGeologyDataForm.FormCreate');
 
 end;
 
@@ -540,7 +541,7 @@ begin
       if (_WellFormation[i].FP<=0)
       then
       Begin
-        ShowMessage('Formation pressure cannot be zeroor less than zero');
+        ShowMessage('Formation pressure cannot be zero or less than zero');
         StringToMemo('FormGeologyData.Save: Error: Formation pressure cannot be zero or less than zero');
         Case i of
           2: Horizon2FormationPressureData.SetFocus;

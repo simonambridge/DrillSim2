@@ -311,7 +311,7 @@ Begin
   Error:=True;
   For i:=1 to 4 do
   Begin
-    if _WellSurf[i]>0
+    if _WellJet[i]>0
       then Error:=False     { OK if at least one jet is valid }
       else _WellJet[i]:=0;  { and force it to 0 if -1 }
     Data.Jet[i]:=_WellJet[i];

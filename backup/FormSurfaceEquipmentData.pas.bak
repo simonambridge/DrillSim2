@@ -177,7 +177,7 @@ begin
   StandPipeLengthUoMLabel.Caption:=UoMLabel[1];    { depth }
 
   KellyIDUoMLabel.Caption:=UoMLabel[8];        { inches }
-  SwivelIDUoMLabel.Caption:=UoMLabel[8];      { inches }
+  SwivelIDUoMLabel.Caption:=UoMLabel[8];       { inches }
   HoseIDUoMLabel.Caption:=UoMLabel[8];         { inches }
   StandPipeIDUoMLabel.Caption:=UoMLabel[8];    { inches }
 
@@ -189,14 +189,14 @@ begin
     _WellSurf[i,2]:=Data.Surf[i,2];
   End;
 
-  KellyLengthData.Caption:=FloatToStr(Round2(Data.Surf[1,1]*UoMConverter[1],2));      { depth }
-  KellyIDData.Caption:=FloatToStr(Data.Surf[1,2]*UoMConverter[8]);                    { inches }
-  SwivelLengthData.Caption:=FloatToStr(Round2(Data.Surf[2,1]*UoMConverter[1],2));     { depth }
-  SwivelIDData.Caption:=FloatToStr(Data.Surf[2,2]*UoMConverter[8]);                   { inches }
-  HoseLengthData.Caption:=FloatToStr(Round2(Data.Surf[3,1]*UoMConverter[1],2));       { depth }
-  HoseIDData.Caption:=FloatToStr(Data.Surf[3,2]*UoMConverter[8]);                     { inches }
-  StandPipeLengthData.Caption:=FloatToStr(Round2(Data.Surf[4,1]*UoMConverter[1],2));  { depth }
-  StandPipeIDData.Caption:=FloatToStr(Data.Surf[4,2]*UoMConverter[8]);                { inches }
+  KellyLengthData.Text:=FloatToStr(Round2(Data.Surf[1,1]*UoMConverter[1],2));      { depth }
+  KellyIDData.Text:=FloatToStr(Data.Surf[1,2]*UoMConverter[8]);                    { inches }
+  SwivelLengthData.Text:=FloatToStr(Round2(Data.Surf[2,1]*UoMConverter[1],2));     { depth }
+  SwivelIDData.Text:=FloatToStr(Data.Surf[2,2]*UoMConverter[8]);                   { inches }
+  HoseLengthData.Text:=FloatToStr(Round2(Data.Surf[3,1]*UoMConverter[1],2));       { depth }
+  HoseIDData.Text:=FloatToStr(Data.Surf[3,2]*UoMConverter[8]);                     { inches }
+  StandPipeLengthData.Text:=FloatToStr(Round2(Data.Surf[4,1]*UoMConverter[1],2));  { depth }
+  StandPipeIDData.Text:=FloatToStr(Data.Surf[4,2]*UoMConverter[8]);                { inches }
 
 end;
 

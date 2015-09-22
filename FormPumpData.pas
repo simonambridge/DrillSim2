@@ -385,6 +385,7 @@ end;
 
 procedure TPumpDataForm.FormCreate(Sender: TObject);
 begin
+  StringToMemo('TPumpDataForm.FormCreate');
 
 end;
 

@@ -315,6 +315,7 @@ end;
 
 procedure TGeneralDataForm.FormCreate(Sender: TObject);
 begin
+  StringToMemo('TGeneralDataForm.FormCreate');
 
 end;
 

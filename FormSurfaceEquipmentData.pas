@@ -202,6 +202,7 @@ end;
 
 procedure TSurfaceEquipmentDataForm.FormCreate(Sender: TObject);
 begin
+  StringToMemo('TSurface EquipmentDataForm.FormCreate');
 
 end;
 

@@ -178,8 +178,6 @@ begin
 end;
 
 procedure TWellTestDataForm.SaveButtonClick(Sender: TObject);
-var
- i : integer;
 begin
   StringToMemo('FormWellTestData.Save ..............................................');
 

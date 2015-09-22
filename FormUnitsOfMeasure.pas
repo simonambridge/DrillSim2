@@ -118,10 +118,12 @@ end;
 
 Procedure TUnitsOfMeasureForm.FormCreateActions;
 Begin
+  { nothing to see here }
 end;
 
 procedure TUnitsOfMeasureForm.FormCreate(Sender: TObject);
 begin
+  StringToMemo('TUnitsOfMeasureDataForm.FormCreate');
   FormCreateActions;
 end;
 

@@ -519,7 +519,7 @@ begin
     if _WellFormation[i].Depth>0       { if depth is non-zero and in sequence, check hardness and FP }
     then
     Begin
-      if (_WellFormation[i].Hardness=0)
+      if (_WellFormation[i].Hardness<=0)
       or (_WellFormation[i].Hardness>1)then
       Begin
         ShowMessage('Formation hardness must be greater than 0 and less than 1');
@@ -537,10 +537,11 @@ begin
         End;
         Exit;
       End;
-      if _WellFormation[i].FP=0 then
+      if (_WellFormation[i].FP<=0)
+      then
       Begin
-        ShowMessage('Formation pressure cannot be zero');
-        StringToMemo('FormGeologyData.Save: Error: Formation pressure cannot be zero');
+        ShowMessage('Formation pressure cannot be zero or less than zero');
+        StringToMemo('FormGeologyData.Save: Error: Formation pressure cannot be zero or less than zero');
         Case i of
           2: Horizon2FormationPressureData.SetFocus;
           3: Horizon3FormationPressureData.SetFocus;

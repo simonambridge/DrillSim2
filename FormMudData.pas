@@ -137,6 +137,7 @@ end;
 
 procedure TMudDataForm.FormCreate(Sender: TObject);
 begin
+  StringToMemo('TMudDataForm.FormCreate');
 
 end;
 

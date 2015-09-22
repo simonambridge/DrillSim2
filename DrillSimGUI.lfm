@@ -1,7 +1,7 @@
 object DrillSim: TDrillSim
-  Left = 417
+  Left = 162
   Height = 668
-  Top = 48
+  Top = 101
   Width = 999
   Caption = 'DrillSim 3.0'
   ClientHeight = 645
@@ -244,28 +244,25 @@ object DrillSim: TDrillSim
       Caption = '0'
       ParentColor = False
     end
-    object BitDepthUoM: TStaticText
+    object BitDepthUoMLabel: TStaticText
       Left = 195
       Height = 18
       Top = 17
       Width = 56
-      Caption = 'Feet'
       TabOrder = 6
     end
-    object TotalDepthUoM: TStaticText
+    object TotalDepthUoMLabel: TStaticText
       Left = 195
       Height = 19
       Top = 49
       Width = 61
-      Caption = 'Feet'
       TabOrder = 7
     end
-    object WOBUoM: TStaticText
+    object WOBUoMLabel: TStaticText
       Left = 194
       Height = 19
       Top = 88
       Width = 60
-      Caption = 'Klbs'
       TabOrder = 8
     end
     object BitDepthValue: TLabel
@@ -330,12 +327,11 @@ object DrillSim: TDrillSim
       Caption = '999'
       ParentColor = False
     end
-    object KellyHeightUoM: TStaticText
+    object KellyHeightUoMLabel: TStaticText
       Left = 200
       Height = 18
       Top = 25
       Width = 45
-      Caption = 'Feet'
       TabOrder = 0
     end
     object DrillingStatusValue: TLabel
@@ -413,12 +409,11 @@ object DrillSim: TDrillSim
       ParentBidiMode = False
       TabOrder = 5
     end
-    object ROPUoM: TStaticText
+    object ROPUoMLabel: TStaticText
       Left = 200
       Height = 22
       Top = 89
       Width = 89
-      Caption = 'Feet/Minute'
       TabOrder = 6
     end
   end
@@ -473,20 +468,18 @@ object DrillSim: TDrillSim
       Caption = '99.99'
       ParentColor = False
     end
-    object MudWeifghtInUoM: TStaticText
+    object MudWeightInUoMLabel: TStaticText
       Left = 227
       Height = 20
       Top = 8
       Width = 65
-      Caption = 'ppg'
       TabOrder = 0
     end
-    object MudWeightOutUoM: TStaticText
+    object MudWeightOutUoMLabel: TStaticText
       Left = 227
       Height = 20
       Top = 39
       Width = 65
-      Caption = 'ppg'
       TabOrder = 1
     end
     object MudWeightInText: TStaticText

@@ -162,7 +162,7 @@ end;
 
 procedure TWellTestDataForm.FormCreate(Sender: TObject);
 begin
-     StringToMemo('create');
+     StringToMemo('TWellTestDataForm.FormCreate');
 
 end;
 

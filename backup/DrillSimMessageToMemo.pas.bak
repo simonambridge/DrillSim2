@@ -233,7 +233,7 @@ Begin
      68 : ThisString:='Turn off pumps';
 
      69 : Begin
-            Str(Data.Rock[RockPointer].FP / UoMConverter[3]:5:2,ThisString);
+            Str(Data.Formation[FormationPointer].FP / UoMConverter[3]:5:2,ThisString);
             ThisString:='Form Pr.: ' + ThisString + Space + UoMLabel[3];
           End;
 
