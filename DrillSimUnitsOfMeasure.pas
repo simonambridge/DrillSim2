@@ -11,6 +11,28 @@ Procedure APIUnits;
 
 Implementation
 
+Uses DrillSimGUI;
+
+Procedure DisplayLabels;
+Begin
+  With DrillSim do
+  Begin
+    BitDepthUoMLabel.Caption:=UoMLabel[1];           { depth feet or metres }
+    TotalDepthUoMLabel.Caption:=UoMLabel[1];         { depth feet or metres }
+    WOBUoMLabel.Caption:=UoMLabel[7];                { weight Klbs or metric tons }
+    KellyHeightUoMLabel.Caption:=UoMLabel[1];        { depth feet or metres }
+    ROPUoMLabel.Caption:=ROPLabel;
+    MudWeightInUoMLabel.Caption:=UoMLabel[2];        { specific gravity ppg or sg }
+    MudWeightOutUoMLabel.Caption:=UoMLabel[2];       { specific gravity ppg or sg }
+    ECDUoMLabel.Caption:=UoMLabel[2];                { specific gravity ppg or sg }
+    FlowInUoMLabel.Caption:=UoMLabel[6];             { flow litres or gals/minute }
+    FlowOutUoMLabel.Caption:=UoMLabel[6];            { flow litres or gals/minute }
+    ReturnPitUoMLabel.Caption:=UoMLabel[4];          { volume bbl or m3}
+    DiffFlowUoMLabel.Caption:=UoMLabel[6];           { flow litres or gals/minute }
+    StandPipePressureUoMLabel.Caption:=UoMLabel[3];  { pressure psi or KPa }
+  End;
+end;
+
 Procedure MetricUnits;
 Begin
   Data.API:=False;
@@ -33,6 +55,7 @@ Begin
   UoMLabel[7]:='ton';
   UoMLabel[8]:='ins';     { hidden - not used - ID's are always inches }
 
+  DisplayLabels;
   StringToMemo('Metric Units selected. Depth units are '+UoMLabel[1]);
 End;
 
@@ -58,6 +81,8 @@ Begin
   UoMLabel[6]:='gpm';
   UoMLabel[7]:='Klb';
   UoMLabel[8]:='ins';      { hidden - not used - ID's are always inches }
+
+  DisplayLabels;
   StringToMemo('API Units selected. Depth units are '+UoMLabel[1]);
 End;
 

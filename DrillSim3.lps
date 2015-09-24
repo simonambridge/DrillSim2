@@ -20,11 +20,10 @@
         <HasResources Value="True"/>
         <ResourceBaseClass Value="Form"/>
         <UnitName Value="DrillSimGUI"/>
-        <IsVisibleTab Value="True"/>
         <EditorIndex Value="0"/>
         <WindowIndex Value="0"/>
-        <TopLine Value="539"/>
-        <CursorPos X="71" Y="564"/>
+        <TopLine Value="532"/>
+        <CursorPos X="153" Y="538"/>
         <UsageCount Value="217"/>
         <Loaded Value="True"/>
         <LoadedDesigner Value="True"/>
@@ -134,44 +133,49 @@
         <IsPartOfProject Value="True"/>
         <HasResources Value="True"/>
         <UnitName Value="FormDisplayWellData"/>
-        <EditorIndex Value="16"/>
+        <EditorIndex Value="13"/>
         <WindowIndex Value="0"/>
-        <TopLine Value="74"/>
-        <CursorPos X="146" Y="89"/>
+        <TopLine Value="81"/>
+        <CursorPos X="3" Y="89"/>
         <UsageCount Value="201"/>
         <Loaded Value="True"/>
       </Unit12>
       <Unit13>
         <Filename Value="FormUnitsOfMeasure.pas"/>
         <IsPartOfProject Value="True"/>
+        <ComponentName Value="UnitsOfMeasureForm"/>
         <HasResources Value="True"/>
+        <ResourceBaseClass Value="Form"/>
         <UnitName Value="FormUnitsOfMeasure"/>
+        <EditorIndex Value="15"/>
         <WindowIndex Value="0"/>
-        <TopLine Value="103"/>
-        <CursorPos X="32" Y="126"/>
+        <TopLine Value="134"/>
+        <CursorPos X="1" Y="75"/>
         <UsageCount Value="201"/>
+        <Loaded Value="True"/>
+        <LoadedDesigner Value="True"/>
       </Unit13>
       <Unit14>
         <Filename Value="formdisplaywelldata.pas"/>
         <ComponentName Value="Form1"/>
         <ResourceBaseClass Value="Form"/>
         <UnitName Value="FormDisplayWellData"/>
-        <UsageCount Value="133"/>
+        <UsageCount Value="123"/>
       </Unit14>
       <Unit15>
         <Filename Value="formunitsofmeasure.pas"/>
         <ComponentName Value="UnitsOfMeasureForm"/>
         <ResourceBaseClass Value="Form"/>
         <UnitName Value="FormUnitsOfMeasure"/>
-        <UsageCount Value="133"/>
+        <UsageCount Value="123"/>
       </Unit15>
       <Unit16>
         <Filename Value="DrillSimStartup.pas"/>
         <UnitName Value="DrillSimStartup"/>
         <EditorIndex Value="2"/>
         <WindowIndex Value="0"/>
-        <TopLine Value="16"/>
-        <CursorPos X="55" Y="28"/>
+        <TopLine Value="47"/>
+        <CursorPos X="6" Y="66"/>
         <UsageCount Value="109"/>
         <Loaded Value="True"/>
       </Unit16>
@@ -191,7 +195,7 @@
         <WindowIndex Value="0"/>
         <TopLine Value="1"/>
         <CursorPos X="130" Y="19"/>
-        <UsageCount Value="52"/>
+        <UsageCount Value="42"/>
       </Unit18>
       <Unit19>
         <Filename Value="FormGeneralData.pas"/>
@@ -202,7 +206,7 @@
         <WindowIndex Value="0"/>
         <TopLine Value="292"/>
         <CursorPos X="25" Y="318"/>
-        <UsageCount Value="86"/>
+        <UsageCount Value="76"/>
       </Unit19>
       <Unit20>
         <Filename Value="FormHoleData.pas"/>
@@ -213,14 +217,14 @@
         <WindowIndex Value="0"/>
         <TopLine Value="541"/>
         <CursorPos X="22" Y="549"/>
-        <UsageCount Value="63"/>
+        <UsageCount Value="53"/>
       </Unit20>
       <Unit21>
         <Filename Value="DrillSimVariables.pas"/>
         <UnitName Value="DrillSimVariables"/>
         <EditorIndex Value="5"/>
         <WindowIndex Value="0"/>
-        <TopLine Value="103"/>
+        <TopLine Value="286"/>
         <CursorPos X="48" Y="105"/>
         <UsageCount Value="109"/>
         <Loaded Value="True"/>
@@ -228,7 +232,7 @@
       <Unit22>
         <Filename Value="DrillSimDataResets.pas"/>
         <UnitName Value="DrillSimDataResets"/>
-        <EditorIndex Value="11"/>
+        <EditorIndex Value="8"/>
         <WindowIndex Value="0"/>
         <TopLine Value="103"/>
         <CursorPos X="13" Y="117"/>
@@ -238,7 +242,7 @@
       <Unit23>
         <Filename Value="DrillSimDataInput.pas"/>
         <UnitName Value="DrillSimDataInput"/>
-        <EditorIndex Value="14"/>
+        <EditorIndex Value="11"/>
         <WindowIndex Value="0"/>
         <TopLine Value="140"/>
         <CursorPos X="63" Y="166"/>
@@ -248,9 +252,9 @@
       <Unit24>
         <Filename Value="DrillSimHoleCalc.pas"/>
         <UnitName Value="DrillSimHoleCalc"/>
-        <EditorIndex Value="15"/>
+        <EditorIndex Value="12"/>
         <WindowIndex Value="0"/>
-        <TopLine Value="36"/>
+        <TopLine Value="1"/>
         <CursorPos X="24" Y="49"/>
         <UsageCount Value="100"/>
         <Loaded Value="True"/>
@@ -261,15 +265,16 @@
         <WindowIndex Value="0"/>
         <TopLine Value="84"/>
         <CursorPos X="32" Y="114"/>
-        <UsageCount Value="20"/>
+        <UsageCount Value="10"/>
       </Unit25>
       <Unit26>
         <Filename Value="DrillSimFile.pas"/>
         <UnitName Value="DrillSimFile"/>
+        <IsVisibleTab Value="True"/>
         <EditorIndex Value="3"/>
         <WindowIndex Value="0"/>
-        <TopLine Value="29"/>
-        <CursorPos X="41" Y="61"/>
+        <TopLine Value="36"/>
+        <CursorPos X="5" Y="49"/>
         <UsageCount Value="100"/>
         <Loaded Value="True"/>
       </Unit26>
@@ -282,7 +287,7 @@
         <WindowIndex Value="0"/>
         <TopLine Value="451"/>
         <CursorPos X="22" Y="457"/>
-        <UsageCount Value="65"/>
+        <UsageCount Value="55"/>
       </Unit27>
       <Unit28>
         <Filename Value="FormBitData.pas"/>
@@ -293,7 +298,7 @@
         <WindowIndex Value="0"/>
         <TopLine Value="257"/>
         <CursorPos X="21" Y="269"/>
-        <UsageCount Value="64"/>
+        <UsageCount Value="54"/>
       </Unit28>
       <Unit29>
         <Filename Value="FormPumpData.pas"/>
@@ -304,7 +309,7 @@
         <WindowIndex Value="0"/>
         <TopLine Value="361"/>
         <CursorPos X="22" Y="388"/>
-        <UsageCount Value="157"/>
+        <UsageCount Value="147"/>
       </Unit29>
       <Unit30>
         <Filename Value="FormSurfaceEquipmentData.pas"/>
@@ -344,32 +349,31 @@
         <CursorPos X="25" Y="452"/>
         <UsageCount Value="123"/>
         <Loaded Value="True"/>
-        <LoadedDesigner Value="True"/>
       </Unit32>
       <Unit33>
         <Filename Value="DrillSimUnitsOfMeasure.pas"/>
         <UnitName Value="DrillSimUnitsOfMeasure"/>
-        <EditorIndex Value="17"/>
+        <EditorIndex Value="14"/>
         <WindowIndex Value="0"/>
-        <TopLine Value="18"/>
-        <CursorPos X="20" Y="53"/>
+        <TopLine Value="1"/>
+        <CursorPos X="20" Y="29"/>
         <UsageCount Value="100"/>
         <Loaded Value="True"/>
       </Unit33>
       <Unit34>
         <Filename Value="DrillSimMessageToMemo.pas"/>
         <UnitName Value="DrillSimMessageToMemo"/>
-        <EditorIndex Value="12"/>
+        <EditorIndex Value="9"/>
         <WindowIndex Value="0"/>
-        <TopLine Value="94"/>
-        <CursorPos X="33" Y="111"/>
+        <TopLine Value="4"/>
+        <CursorPos X="1" Y="14"/>
         <UsageCount Value="165"/>
         <Loaded Value="True"/>
       </Unit34>
       <Unit35>
         <Filename Value="SimulateCommandProcessor.pas"/>
         <UnitName Value="SimulateCommandProcessor"/>
-        <EditorIndex Value="13"/>
+        <EditorIndex Value="10"/>
         <WindowIndex Value="0"/>
         <TopLine Value="367"/>
         <CursorPos X="150" Y="371"/>
@@ -379,158 +383,144 @@
       <Unit36>
         <Filename Value="SimulateKick.pas"/>
         <UnitName Value="SimulateKick"/>
-        <EditorIndex Value="10"/>
         <WindowIndex Value="0"/>
         <TopLine Value="89"/>
         <CursorPos X="31" Y="104"/>
-        <UsageCount Value="50"/>
-        <Loaded Value="True"/>
+        <UsageCount Value="97"/>
       </Unit36>
       <Unit37>
         <Filename Value="SimulateDrillingCalcs.pas"/>
         <UnitName Value="SimulateDrillingCalcs"/>
-        <EditorIndex Value="8"/>
         <WindowIndex Value="0"/>
         <TopLine Value="68"/>
         <CursorPos X="36" Y="85"/>
-        <UsageCount Value="31"/>
-        <Loaded Value="True"/>
+        <UsageCount Value="78"/>
       </Unit37>
       <Unit38>
         <Filename Value="SimulateControlChecks.pas"/>
         <UnitName Value="SimulateControlChecks"/>
-        <EditorIndex Value="9"/>
         <WindowIndex Value="0"/>
         <TopLine Value="22"/>
         <CursorPos X="75" Y="22"/>
-        <UsageCount Value="31"/>
-        <Loaded Value="True"/>
+        <UsageCount Value="78"/>
       </Unit38>
     </Units>
     <General>
       <ActiveWindowIndexAtStart Value="0"/>
     </General>
-    <JumpHistory Count="30" HistoryIndex="29">
+    <JumpHistory Count="28" HistoryIndex="27">
       <Position1>
-        <Filename Value="DrillSimUnitsOfMeasure.pas"/>
-        <Caret Line="53" Column="20" TopLine="26"/>
+        <Filename Value="FormGeologyData.pas"/>
+        <Caret Line="113" Column="57" TopLine="103"/>
       </Position1>
       <Position2>
         <Filename Value="FormGeologyData.pas"/>
-        <Caret Line="114" Column="3" TopLine="94"/>
+        <Caret Line="12" Column="1" TopLine="1"/>
       </Position2>
       <Position3>
-        <Filename Value="DrillSimDataResets.pas"/>
-        <Caret Line="109" Column="5" TopLine="80"/>
+        <Filename Value="FormGeologyData.pas"/>
+        <Caret Line="325" Column="1" TopLine="308"/>
       </Position3>
       <Position4>
-        <Filename Value="DrillSimDataResets.pas"/>
-        <Caret Line="120" Column="16" TopLine="96"/>
+        <Filename Value="FormGeologyData.pas"/>
+        <Caret Line="109" Column="37" TopLine="82"/>
       </Position4>
       <Position5>
-        <Filename Value="DrillSimDataResets.pas"/>
-        <Caret Line="354" Column="16" TopLine="334"/>
+        <Filename Value="FormGeologyData.pas"/>
+        <Caret Line="324" Column="1" TopLine="305"/>
       </Position5>
       <Position6>
-        <Filename Value="DrillSimDataInput.pas"/>
-        <Caret Line="12" Column="1" TopLine="4"/>
+        <Filename Value="DrillSimMessageToMemo.pas"/>
+        <Caret Line="324" Column="27" TopLine="181"/>
       </Position6>
       <Position7>
-        <Filename Value="DrillSimDataInput.pas"/>
-        <Caret Line="28" Column="12" TopLine="12"/>
+        <Filename Value="DrillSimMessageToMemo.pas"/>
+        <Caret Line="188" Column="37" TopLine="172"/>
       </Position7>
       <Position8>
         <Filename Value="FormGeologyData.pas"/>
-        <Caret Line="17" Column="75" TopLine="1"/>
+        <Caret Line="317" Column="63" TopLine="288"/>
       </Position8>
       <Position9>
         <Filename Value="FormGeologyData.pas"/>
-        <Caret Line="13" Column="8" TopLine="1"/>
+        <Caret Line="472" Column="89" TopLine="460"/>
       </Position9>
       <Position10>
         <Filename Value="FormGeologyData.pas"/>
-        <Caret Line="113" Column="57" TopLine="103"/>
+        <Caret Line="479" Column="22" TopLine="463"/>
       </Position10>
       <Position11>
         <Filename Value="FormGeologyData.pas"/>
-        <Caret Line="12" Column="1" TopLine="1"/>
+        <Caret Line="599" Column="1" TopLine="575"/>
       </Position11>
       <Position12>
         <Filename Value="FormGeologyData.pas"/>
-        <Caret Line="325" Column="1" TopLine="308"/>
+        <Caret Line="478" Column="35" TopLine="465"/>
       </Position12>
       <Position13>
-        <Filename Value="FormGeologyData.pas"/>
-        <Caret Line="109" Column="37" TopLine="82"/>
-      </Position13>
-      <Position14>
-        <Filename Value="FormGeologyData.pas"/>
-        <Caret Line="324" Column="1" TopLine="305"/>
-      </Position14>
-      <Position15>
-        <Filename Value="SimulateDrillingCalcs.pas"/>
-        <Caret Line="1" Column="1" TopLine="1"/>
-      </Position15>
-      <Position16>
-        <Filename Value="SimulateControlChecks.pas"/>
-        <Caret Line="1" Column="1" TopLine="1"/>
-      </Position16>
-      <Position17>
-        <Filename Value="SimulateControlChecks.pas"/>
-        <Caret Line="23" Column="14" TopLine="10"/>
-      </Position17>
-      <Position18>
-        <Filename Value="SimulateControlChecks.pas"/>
-        <Caret Line="27" Column="13" TopLine="10"/>
-      </Position18>
-      <Position19>
-        <Filename Value="SimulateControlChecks.pas"/>
-        <Caret Line="19" Column="20" TopLine="10"/>
-      </Position19>
-      <Position20>
-        <Filename Value="SimulateKick.pas"/>
-        <Caret Line="220" Column="20" TopLine="203"/>
-      </Position20>
-      <Position21>
-        <Filename Value="SimulateKick.pas"/>
-        <Caret Line="104" Column="26" TopLine="89"/>
-      </Position21>
-      <Position22>
-        <Filename Value="DrillSimMessageToMemo.pas"/>
-        <Caret Line="324" Column="27" TopLine="181"/>
-      </Position22>
-      <Position23>
-        <Filename Value="DrillSimMessageToMemo.pas"/>
-        <Caret Line="188" Column="37" TopLine="172"/>
-      </Position23>
-      <Position24>
-        <Filename Value="FormGeologyData.pas"/>
-        <Caret Line="317" Column="63" TopLine="288"/>
-      </Position24>
-      <Position25>
-        <Filename Value="FormGeologyData.pas"/>
-        <Caret Line="472" Column="89" TopLine="460"/>
-      </Position25>
-      <Position26>
-        <Filename Value="FormGeologyData.pas"/>
-        <Caret Line="479" Column="22" TopLine="463"/>
-      </Position26>
-      <Position27>
-        <Filename Value="FormGeologyData.pas"/>
-        <Caret Line="599" Column="1" TopLine="575"/>
-      </Position27>
-      <Position28>
-        <Filename Value="FormGeologyData.pas"/>
-        <Caret Line="478" Column="35" TopLine="465"/>
-      </Position28>
-      <Position29>
         <Filename Value="DrillSimGUI.pas"/>
         <Caret Line="556" Column="61" TopLine="538"/>
-      </Position29>
-      <Position30>
+      </Position13>
+      <Position14>
         <Filename Value="DrillSimGUI.pas"/>
         <Caret Line="493" Column="57" TopLine="476"/>
-      </Position30>
+      </Position14>
+      <Position15>
+        <Filename Value="FormUnitsOfMeasure.pas"/>
+        <Caret Line="125" Column="1" TopLine="103"/>
+      </Position15>
+      <Position16>
+        <Filename Value="FormUnitsOfMeasure.pas"/>
+        <Caret Line="13" Column="14" TopLine="1"/>
+      </Position16>
+      <Position17>
+        <Filename Value="FormUnitsOfMeasure.pas"/>
+        <Caret Line="66" Column="3" TopLine="40"/>
+      </Position17>
+      <Position18>
+        <Filename Value="FormUnitsOfMeasure.pas"/>
+        <Caret Line="65" Column="18" TopLine="56"/>
+      </Position18>
+      <Position19>
+        <Filename Value="FormUnitsOfMeasure.pas"/>
+        <Caret Line="120" Column="14" TopLine="100"/>
+      </Position19>
+      <Position20>
+        <Filename Value="FormUnitsOfMeasure.pas"/>
+        <Caret Line="61" Column="1" TopLine="50"/>
+      </Position20>
+      <Position21>
+        <Filename Value="DrillSimMessageToMemo.pas"/>
+        <Caret Line="14" Column="3" TopLine="1"/>
+      </Position21>
+      <Position22>
+        <Filename Value="FormUnitsOfMeasure.pas"/>
+        <Caret Line="119" Column="9" TopLine="58"/>
+      </Position22>
+      <Position23>
+        <Filename Value="DrillSimStartup.pas"/>
+        <Caret Line="28" Column="55" TopLine="46"/>
+      </Position23>
+      <Position24>
+        <Filename Value="DrillSimUnitsOfMeasure.pas"/>
+        <Caret Line="8" Column="3" TopLine="1"/>
+      </Position24>
+      <Position25>
+        <Filename Value="DrillSimUnitsOfMeasure.pas"/>
+        <Caret Line="20" Column="53" TopLine="4"/>
+      </Position25>
+      <Position26>
+        <Filename Value="FormUnitsOfMeasure.pas"/>
+        <Caret Line="151" Column="32" TopLine="133"/>
+      </Position26>
+      <Position27>
+        <Filename Value="DrillSimFile.pas"/>
+        <Caret Line="61" Column="41" TopLine="29"/>
+      </Position27>
+      <Position28>
+        <Filename Value="DrillSimStartup.pas"/>
+        <Caret Line="131" Column="1" TopLine="102"/>
+      </Position28>
     </JumpHistory>
   </ProjectSession>
   <EditorMacros Count="0"/>

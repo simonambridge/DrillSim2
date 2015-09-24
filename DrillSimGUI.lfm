@@ -1,7 +1,7 @@
 object DrillSim: TDrillSim
-  Left = 162
+  Left = 90
   Height = 668
-  Top = 101
+  Top = 105
   Width = 999
   Caption = 'DrillSim 3.0'
   ClientHeight = 645
@@ -506,12 +506,11 @@ object DrillSim: TDrillSim
       Caption = 'Eq. Circ. Density'
       TabOrder = 4
     end
-    object ECDUoM: TStaticText
+    object ECDUoMLabel: TStaticText
       Left = 227
       Height = 22
       Top = 67
       Width = 67
-      Caption = 'ppg'
       TabOrder = 5
     end
     object ECDValue: TLabel
@@ -614,44 +613,39 @@ object DrillSim: TDrillSim
       Caption = 'Stand Pipe Pr.'
       TabOrder = 4
     end
-    object FlowInUoM: TStaticText
+    object FlowInUoMLabel: TStaticText
       Left = 224
       Height = 22
       Top = 9
       Width = 55
-      Caption = 'Gpm'
       TabOrder = 5
     end
-    object FlowOutUoM: TStaticText
+    object FlowOutUoMLabel: TStaticText
       Left = 224
       Height = 22
       Top = 40
       Width = 55
-      Caption = 'Gpm'
       TabOrder = 6
     end
-    object ReturnPitUoM: TStaticText
+    object ReturnPitUoMLabel: TStaticText
       Left = 224
       Height = 22
       Top = 71
       Width = 55
-      Caption = 'Bbl'
       TabOrder = 7
     end
-    object DiffFlowUoM: TStaticText
+    object DiffFlowUoMLabel: TStaticText
       Left = 224
       Height = 22
       Top = 105
       Width = 55
-      Caption = 'Gpm'
       TabOrder = 8
     end
-    object StandPipePressureUoM: TStaticText
+    object StandPipePressureUoMLabel: TStaticText
       Left = 224
       Height = 22
       Top = 140
       Width = 55
-      Caption = 'Psi'
       TabOrder = 9
     end
     object FlowInValue: TLabel

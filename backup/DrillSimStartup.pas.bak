@@ -23,7 +23,6 @@ Begin                                        { Extract path string }
   Begin
     CurrentFQFileName:=S;      { set file to user defined file }
     CreateNewFile:=False;      { its an existing file }
-    StringToMemo('DrillSimStartup.LoadDefaultWellDataFile: Loading ' + CurrentFQFileName + '...');
 
     LoadData;  { sets NoFileDefined=True if error during read }
 
@@ -125,6 +124,8 @@ Begin
   StringToMemo('DrillSimStartup.StartUp: DrillSim Startup complete');
   ThisString:=Data.WellName;
     writeln(ThisString);
+
+
 
   StringToMemo('DrillSimStartup.StartUp: Using Well ' + ThisString + '');
   StringToMemo('DrillSimStartup.StartUp: Units selected: '+ UoMDescriptor);

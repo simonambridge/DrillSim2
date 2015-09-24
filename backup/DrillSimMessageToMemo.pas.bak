@@ -11,7 +11,7 @@ Procedure MessageToMemo(x : integer);
 
 Implementation
 
-Uses DrillSimGUI;
+//Uses DrillSimGUI;
 
 Procedure StringToMemo(S : String);
 Begin
@@ -108,8 +108,8 @@ Begin
             Str(AverageHhd / UoMConverter[3]:5:2,ThisString);
             ThisString:='Ave Hhd : ' + ThisString  + Space + UoMLabel[3];
           End;
-     31 : ThisString:='Mode = Bingham';
-     32 : ThisString:='Mode = Power Law';
+     31 : ThisString:='Rheology Mode = Bingham';
+     32 : ThisString:='Rheology Mode = Power Law';
      33 : ThisString:='Pump # ? ';
      34 : Begin
             Str(Pump[1,4]:5:Zero,ThisString);

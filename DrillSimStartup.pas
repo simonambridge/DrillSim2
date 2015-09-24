@@ -125,8 +125,9 @@ Begin
   ThisString:=Data.WellName;
     writeln(ThisString);
 
+
+
   StringToMemo('DrillSimStartup.StartUp: Using Well ' + ThisString + '');
-  StringToMemo('DrillSimStartup.StartUp: Units selected: '+ UoMDescriptor);
 
 End;
 

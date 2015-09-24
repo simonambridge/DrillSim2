@@ -11,6 +11,23 @@ Procedure APIUnits;
 
 Implementation
 
+Uses DrillSimGUI;
+
+Procedure DisplayLabels;
+Begin
+  With DrillSim do
+  Begin
+  BitDepthUoMLabel.Caption:=UoMLabel[1];        { depth }
+  DrillSim.TotalDepthUoMLabel.Caption:=UoMLabel[1];        { depth }
+  DrillSim.WOBUoMLabel.Caption:=UoMLabel[7];        { weight }
+  DrillSim.KellyHeightUoMLabel.Caption:=UoMLabel[1];        { depth }
+  DrillSim.ROPUoMLabel.Caption:=ROPLabel;
+  DrillSim.MudWeightInUoMLabel.Caption:=UoMLabel[2];        { specific gravity }
+  DrillSim.MudWeightOutUoMLabel.Caption:=UoMLabel[2];        { specific gravity }
+  DrillSim.ECDUoMLabel.Caption:=UoMLabel[2];        { specific gravity }
+  End;
+end;
+
 Procedure MetricUnits;
 Begin
   Data.API:=False;
@@ -33,6 +50,7 @@ Begin
   UoMLabel[7]:='ton';
   UoMLabel[8]:='ins';     { hidden - not used - ID's are always inches }
 
+  DisplayLabels;
   StringToMemo('Metric Units selected. Depth units are '+UoMLabel[1]);
 End;
 
@@ -50,7 +68,7 @@ Begin
   UoMConverter[6]:=1;
   UoMConverter[7]:=1;
   UoMConverter[8]:=1;      { hidden - not used - ID's are always inches }
-  UoMLabel[1]:='feet';
+  UoMLabel[1]:='ft.';
   UoMLabel[2]:='ppg';
   UoMLabel[3]:='psi';
   UoMLabel[4]:='bbl';
@@ -58,6 +76,8 @@ Begin
   UoMLabel[6]:='gpm';
   UoMLabel[7]:='Klb';
   UoMLabel[8]:='ins';      { hidden - not used - ID's are always inches }
+
+  DisplayLabels;
   StringToMemo('API Units selected. Depth units are '+UoMLabel[1]);
 End;
 

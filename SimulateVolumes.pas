@@ -25,7 +25,7 @@ Subject : maintaining integrity of MudVol - actual circulating volume
         
   MudVol not modified here because VolCalc (this procedure) is called
   in HoleCalc, (which is called when the TD increases by 0.001 ft or more),
-  and mudvol is maintained by the flow manager in Proc. KickCalc. MudVol
+  and mudvol is maintained by the flow manager in procedure KickCalc. MudVol
   should only be reset to HoleVol when initialising. MudVol is therefore
   only set to HoleVol in InitKick if NeverSimulated, ie at start-up, or when
   "CLEAR"ing, or when loading a file.

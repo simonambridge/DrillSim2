@@ -73,8 +73,7 @@ Begin
     APIUnits
   else MetricUnits;
 
- With Data do  {* set conversions for current UoM set *}
-  Begin
+{* set conversions for current UoM set *}
     LengthLabelData.Text:=UoMLabel[1];     {*  "ft." or "met" *}
     LengthMultiplierData.Text:=FloatToStr(UoMConverter[1]);
 
@@ -95,7 +94,6 @@ Begin
 
     WeightLabelData.Text:=UoMLabel[7];    {* "psi" or "KPa" *}
     WeightMultiplierData.Text:=FloatToStr(UoMConverter[7]);
-  end;
 end;
 
 { ------------- Edit Procedures ------------ }
@@ -112,6 +110,8 @@ case SelectUoMRadioGroup.ItemIndex of
      End;
   end;
   FormDisplayUnits;
+  // units of measure labels
+
 end;
 
 { ------------- Form Procedures ------------ }
@@ -146,9 +146,12 @@ End;
 
 procedure TUnitsOfMeasureForm.SaveButtonClick(Sender: TObject);
 begin
-  Data.API:=_WellAPI;
+  if Data.API <> _WellAPI then
+  Begin
+    Edited:=True;
+    Data.API:=_WellAPI;
+  end;
   Close;
-  Edited:=True;
 end;
 
 procedure TUnitsOfMeasureForm.CancelButtonClick(Sender: TObject);

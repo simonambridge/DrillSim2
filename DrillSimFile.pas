@@ -46,6 +46,10 @@ Begin
     StringToMemo('DrillSimFile.LoadData: Operator ' + Data.WellOperator);
     StringToMemo('DrillSimFile.LoadData: Well Name ' + Data.WellName);
 
+    if Data.API = True then APIUnits  { set array contents to api or metric }
+    else MetricUnits;
+    StringToMemo('DrillSimStartup.StartUp: Units selected: '+ UoMDescriptor);
+
   except
     on E: EInOutError do
     Begin

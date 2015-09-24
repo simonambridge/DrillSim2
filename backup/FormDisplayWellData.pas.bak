@@ -96,11 +96,13 @@ Uses DrillSimGUI;
 
 Procedure TDisplayWellDataForm.FormCreateActions;
 Begin
+ { nothing to see here }
 end;
 
 procedure TDisplayWellDataForm.FormCreate(Sender: TObject);
 begin
   FormCreateActions;
+  StringToMemo('TDisplayWellDataForm.FormCreate');
 end;
 
 procedure TDisplayWellDataForm.CloseDisplayWellDataClick(Sender: TObject);

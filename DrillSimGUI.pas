@@ -90,12 +90,12 @@ type
     ReturnPitValue: TLabel;
     PipeRamsValue: TLabel;
     ChokeValue: TLabel;
-    StandPipePressureUoM: TStaticText;
+    StandPipePressureUoMLabel: TStaticText;
     CommandLine: TEdit;
     Commands: TGroupBox;
-    FlowOutUoM: TStaticText;
-    DiffFlowUoM: TStaticText;
-    ReturnPitUoM: TStaticText;
+    FlowOutUoMLabel: TStaticText;
+    DiffFlowUoMLabel: TStaticText;
+    ReturnPitUoMLabel: TStaticText;
     PipeMinus: TButton;
     PipePlus: TButton;
     ChokeMinus: TButton;
@@ -128,7 +128,7 @@ type
     MudWeightInText: TStaticText;
     MudWeightOutText: TStaticText;
     ECDText: TStaticText;
-    ECDUoM: TStaticText;
+    ECDUoMLabel: TStaticText;
     PowerLawRadioButton: TRadioButton;
     BinghamRadioButton: TRadioButton;
     HydrilText: TStaticText;
@@ -142,7 +142,7 @@ type
     StandPipePressureText: TStaticText;
     ROPUoMLabel: TStaticText;
     ChokeUoM: TStaticText;
-    FlowInUoM: TStaticText;
+    FlowInUoMLabel: TStaticText;
     TimeValue: TLabel;
     ROPValue: TLabel;
     ROPText: TLabel;
@@ -553,15 +553,7 @@ begin
 
   StringToMemo('DrillSimGUI.FormaActivate: Running DrillSim start up sequence');
   StartUp;     { call DrillSim StartUp }
-  // units of measure labels
 
-  BitDepthUoMLabel.Caption:=UoMLabel[1];        { depth }
-  TotalDepthUoMLabel.Caption:=UoMLabel[1];        { depth }
-  WOBUoMLabel.Caption:=UoMLabel[7];        { weight }
-  KellyHeightUoMLabel.Caption:=UoMLabel[1];        { depth }
-  ROPUoMLabel.Caption:=ROPLabel;
-  MudWeightInUoMLabel.Caption:=UoMLabel[2];        { specific gravity }
-  MudWeightOutUoMLabel.Caption:=UoMLabel[2];        { specific gravity }
 end;
 
 

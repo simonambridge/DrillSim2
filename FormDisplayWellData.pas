@@ -86,7 +86,7 @@ var
 
 implementation
 
-Uses DrillSimGUI;
+//Uses DrillSimGUI;
 
 { TDisplayWellDataForm }
 
