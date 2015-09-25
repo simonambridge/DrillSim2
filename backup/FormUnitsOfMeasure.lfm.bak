@@ -1,7 +1,7 @@
 object UnitsOfMeasureForm: TUnitsOfMeasureForm
-  Left = 78
+  Left = 153
   Height = 467
-  Top = 259
+  Top = 219
   Width = 464
   Caption = 'Units Of Measure'
   ClientHeight = 467
@@ -70,6 +70,7 @@ object UnitsOfMeasureForm: TUnitsOfMeasureForm
     Height = 27
     Top = 184
     Width = 76
+    Enabled = False
     TabOrder = 7
   end
   object DensityLabelData: TEdit
@@ -77,6 +78,7 @@ object UnitsOfMeasureForm: TUnitsOfMeasureForm
     Height = 27
     Top = 216
     Width = 76
+    Enabled = False
     TabOrder = 8
   end
   object PressureLabelData: TEdit
@@ -84,6 +86,7 @@ object UnitsOfMeasureForm: TUnitsOfMeasureForm
     Height = 27
     Top = 248
     Width = 76
+    Enabled = False
     TabOrder = 9
   end
   object VolumeLabelData: TEdit
@@ -91,6 +94,7 @@ object UnitsOfMeasureForm: TUnitsOfMeasureForm
     Height = 27
     Top = 280
     Width = 76
+    Enabled = False
     TabOrder = 10
   end
   object FlowVolumeLabelData: TEdit
@@ -98,6 +102,7 @@ object UnitsOfMeasureForm: TUnitsOfMeasureForm
     Height = 27
     Top = 312
     Width = 76
+    Enabled = False
     TabOrder = 11
   end
   object FlowRateLabelData: TEdit
@@ -105,6 +110,7 @@ object UnitsOfMeasureForm: TUnitsOfMeasureForm
     Height = 27
     Top = 344
     Width = 76
+    Enabled = False
     TabOrder = 12
   end
   object WeightLabelData: TEdit
@@ -112,6 +118,7 @@ object UnitsOfMeasureForm: TUnitsOfMeasureForm
     Height = 27
     Top = 376
     Width = 76
+    Enabled = False
     TabOrder = 13
   end
   object LengthMultiplierData: TEdit
@@ -119,6 +126,7 @@ object UnitsOfMeasureForm: TUnitsOfMeasureForm
     Height = 27
     Top = 184
     Width = 76
+    Enabled = False
     TabOrder = 14
   end
   object DensityMultiplierData: TEdit
@@ -126,6 +134,7 @@ object UnitsOfMeasureForm: TUnitsOfMeasureForm
     Height = 27
     Top = 216
     Width = 76
+    Enabled = False
     TabOrder = 15
   end
   object PressureMultiplierData: TEdit
@@ -133,6 +142,7 @@ object UnitsOfMeasureForm: TUnitsOfMeasureForm
     Height = 27
     Top = 248
     Width = 76
+    Enabled = False
     TabOrder = 16
   end
   object VolumeMultiplierData: TEdit
@@ -140,6 +150,7 @@ object UnitsOfMeasureForm: TUnitsOfMeasureForm
     Height = 27
     Top = 280
     Width = 76
+    Enabled = False
     TabOrder = 17
   end
   object FlowRateMultiplierData: TEdit
@@ -147,6 +158,7 @@ object UnitsOfMeasureForm: TUnitsOfMeasureForm
     Height = 27
     Top = 344
     Width = 76
+    Enabled = False
     TabOrder = 18
   end
   object WeightMultiplierData: TEdit
@@ -154,6 +166,7 @@ object UnitsOfMeasureForm: TUnitsOfMeasureForm
     Height = 27
     Top = 376
     Width = 76
+    Enabled = False
     TabOrder = 19
   end
   object FlowVolumeMultiplierData: TEdit
@@ -161,6 +174,7 @@ object UnitsOfMeasureForm: TUnitsOfMeasureForm
     Height = 27
     Top = 312
     Width = 76
+    Enabled = False
     TabOrder = 20
   end
   object UoMUnitLabel: TStaticText
@@ -179,23 +193,14 @@ object UnitsOfMeasureForm: TUnitsOfMeasureForm
     Caption = 'Multiplier'
     TabOrder = 22
   end
-  object CancelButton: TButton
-    Left = 280
-    Height = 25
-    Top = 432
-    Width = 75
-    Caption = 'Cancel'
-    OnClick = CancelButtonClick
-    TabOrder = 23
-  end
-  object SaveButton: TButton
+  object CloseButton: TButton
     Left = 360
     Height = 25
-    Top = 432
+    Top = 424
     Width = 75
-    Caption = 'Save'
-    OnClick = SaveButtonClick
-    TabOrder = 24
+    Caption = 'Close'
+    OnClick = CloseButtonClick
+    TabOrder = 23
   end
   object SelectUoMRadioGroup: TRadioGroup
     Left = 21
@@ -219,6 +224,6 @@ object UnitsOfMeasureForm: TUnitsOfMeasureForm
       'Metric'
     )
     OnClick = SelectUoMRadioGroupClick
-    TabOrder = 25
+    TabOrder = 24
   end
 end

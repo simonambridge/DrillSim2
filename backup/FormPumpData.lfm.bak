@@ -20,7 +20,7 @@ object PumpDataForm: TPumpDataForm
     OnClick = QuitButtonClick
     ParentShowHint = False
     ShowHint = True
-    TabOrder = 0
+    TabOrder = 11
   end
   object SaveButton: TButton
     Left = 544
@@ -32,7 +32,7 @@ object PumpDataForm: TPumpDataForm
     OnClick = SaveButtonClick
     ParentShowHint = False
     ShowHint = True
-    TabOrder = 1
+    TabOrder = 12
   end
   object Pump1Label: TLabel
     Left = 40
@@ -80,7 +80,7 @@ object PumpDataForm: TPumpDataForm
     OnKeyPress = NumericOnlyKeyPress
     ParentShowHint = False
     ShowHint = True
-    TabOrder = 2
+    TabOrder = 1
   end
   object Pump1EfficiencyData: TEdit
     Left = 304
@@ -93,7 +93,7 @@ object PumpDataForm: TPumpDataForm
     OnKeyPress = NumericOnlyKeyPress
     ParentShowHint = False
     ShowHint = True
-    TabOrder = 3
+    TabOrder = 2
   end
   object Pump2Label: TLabel
     Left = 40
@@ -154,7 +154,7 @@ object PumpDataForm: TPumpDataForm
     OnKeyPress = NumericOnlyKeyPress
     ParentShowHint = False
     ShowHint = True
-    TabOrder = 6
+    TabOrder = 7
   end
   object Pump3EfficiencyData: TEdit
     Left = 304
@@ -167,7 +167,7 @@ object PumpDataForm: TPumpDataForm
     OnKeyPress = NumericOnlyKeyPress
     ParentShowHint = False
     ShowHint = True
-    TabOrder = 7
+    TabOrder = 8
   end
   object SPMColumnLabel: TLabel
     Left = 408
@@ -188,7 +188,7 @@ object PumpDataForm: TPumpDataForm
     OnKeyPress = NumericOnlyKeyPress
     ParentShowHint = False
     ShowHint = True
-    TabOrder = 8
+    TabOrder = 3
   end
   object Pump2EfficiencySPMData: TEdit
     Left = 400
@@ -201,7 +201,7 @@ object PumpDataForm: TPumpDataForm
     OnKeyPress = NumericOnlyKeyPress
     ParentShowHint = False
     ShowHint = True
-    TabOrder = 9
+    TabOrder = 6
   end
   object Pump3EfficiencySPMData: TEdit
     Left = 400
@@ -214,7 +214,7 @@ object PumpDataForm: TPumpDataForm
     OnKeyPress = NumericOnlyKeyPress
     ParentShowHint = False
     ShowHint = True
-    TabOrder = 10
+    TabOrder = 9
   end
   object NumPumps: TLabel
     Left = 32
@@ -242,7 +242,7 @@ object PumpDataForm: TPumpDataForm
     OnChange = NumPumpsComboBoxChange
     ParentShowHint = False
     ShowHint = True
-    TabOrder = 11
+    TabOrder = 0
     Text = '<select>'
   end
   object MaxPumpPressureLabel: TLabel
@@ -265,7 +265,7 @@ object PumpDataForm: TPumpDataForm
     OnKeyPress = NumericOnlyKeyPress
     ParentShowHint = False
     ShowHint = True
-    TabOrder = 12
+    TabOrder = 10
   end
   object MaxPumpPressureUoMLabel: TLabel
     Left = 337

@@ -2,16 +2,16 @@ object PumpDataForm: TPumpDataForm
   Left = 65
   Height = 419
   Top = 30
-  Width = 679
+  Width = 492
   Caption = 'Rig Pump Data'
   ClientHeight = 419
-  ClientWidth = 679
+  ClientWidth = 492
   OnActivate = FormActivate
   OnCreate = FormCreate
   OnDeactivate = FormDeactivate
   LCLVersion = '1.2.6.0'
   object QuitButton: TButton
-    Left = 464
+    Left = 272
     Height = 25
     Hint = 'Click to exit without saving'
     Top = 344
@@ -20,10 +20,10 @@ object PumpDataForm: TPumpDataForm
     OnClick = QuitButtonClick
     ParentShowHint = False
     ShowHint = True
-    TabOrder = 11
+    TabOrder = 8
   end
   object SaveButton: TButton
-    Left = 544
+    Left = 352
     Height = 25
     Hint = 'Click to save and exit'
     Top = 344
@@ -32,7 +32,7 @@ object PumpDataForm: TPumpDataForm
     OnClick = SaveButtonClick
     ParentShowHint = False
     ShowHint = True
-    TabOrder = 12
+    TabOrder = 9
   end
   object Pump1Label: TLabel
     Left = 40
@@ -117,7 +117,7 @@ object PumpDataForm: TPumpDataForm
     OnKeyPress = NumericOnlyKeyPress
     ParentShowHint = False
     ShowHint = True
-    TabOrder = 4
+    TabOrder = 3
   end
   object Pump2EfficiencyData: TEdit
     Left = 304
@@ -130,7 +130,7 @@ object PumpDataForm: TPumpDataForm
     OnKeyPress = NumericOnlyKeyPress
     ParentShowHint = False
     ShowHint = True
-    TabOrder = 5
+    TabOrder = 4
   end
   object Pump3Label: TLabel
     Left = 40
@@ -154,7 +154,7 @@ object PumpDataForm: TPumpDataForm
     OnKeyPress = NumericOnlyKeyPress
     ParentShowHint = False
     ShowHint = True
-    TabOrder = 7
+    TabOrder = 5
   end
   object Pump3EfficiencyData: TEdit
     Left = 304
@@ -167,54 +167,7 @@ object PumpDataForm: TPumpDataForm
     OnKeyPress = NumericOnlyKeyPress
     ParentShowHint = False
     ShowHint = True
-    TabOrder = 8
-  end
-  object SPMColumnLabel: TLabel
-    Left = 408
-    Height = 17
-    Top = 120
-    Width = 47
-    Caption = '@ SPM'
-    ParentColor = False
-  end
-  object Pump1EfficiencySPMData: TEdit
-    Left = 400
-    Height = 27
-    Hint = 'SPM for Pump 1 efficiency rating'
-    Top = 147
-    Width = 72
-    Alignment = taRightJustify
-    OnChange = Pump1EfficiencySPMDataChange
-    OnKeyPress = NumericOnlyKeyPress
-    ParentShowHint = False
-    ShowHint = True
-    TabOrder = 3
-  end
-  object Pump2EfficiencySPMData: TEdit
-    Left = 400
-    Height = 27
-    Hint = 'SPM for Pump 1 efficiency rating'
-    Top = 184
-    Width = 72
-    Alignment = taRightJustify
-    OnChange = Pump2EfficiencySPMDataChange
-    OnKeyPress = NumericOnlyKeyPress
-    ParentShowHint = False
-    ShowHint = True
     TabOrder = 6
-  end
-  object Pump3EfficiencySPMData: TEdit
-    Left = 400
-    Height = 27
-    Hint = 'SPM for Pump 1 efficiency rating'
-    Top = 224
-    Width = 72
-    Alignment = taRightJustify
-    OnChange = Pump3EfficiencySPMDataChange
-    OnKeyPress = NumericOnlyKeyPress
-    ParentShowHint = False
-    ShowHint = True
-    TabOrder = 9
   end
   object NumPumps: TLabel
     Left = 32
@@ -265,7 +218,7 @@ object PumpDataForm: TPumpDataForm
     OnKeyPress = NumericOnlyKeyPress
     ParentShowHint = False
     ShowHint = True
-    TabOrder = 10
+    TabOrder = 7
   end
   object MaxPumpPressureUoMLabel: TLabel
     Left = 337

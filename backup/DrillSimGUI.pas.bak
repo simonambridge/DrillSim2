@@ -63,6 +63,8 @@ type
     FlowInValue: TLabel;
     FlowOutValue: TLabel;
     DiffFlowValue: TLabel;
+    KellyScale: TImage;
+    KellyImage: TImage;
     MenuItem2Geology: TMenuItem;
     MenuItem2Defaults: TMenuItem;
     MenuItem2Units: TMenuItem;
@@ -93,8 +95,8 @@ type
     StandPipePressureUoMLabel: TStaticText;
     CommandLine: TEdit;
     Commands: TGroupBox;
-    FlowOutUoM: TStaticText;
-    DiffFlowUoM: TStaticText;
+    FlowOutUoMLabel: TStaticText;
+    DiffFlowUoMLabel: TStaticText;
     ReturnPitUoMLabel: TStaticText;
     PipeMinus: TButton;
     PipePlus: TButton;
@@ -278,8 +280,10 @@ begin
   splash.SupportContact := 'simon@ntier-db.com';
 end;
 
-Procedure CheckPumps;  { check to see if pumping when adding or }
-Begin                  { subtracting pipe }
+{* ========================================================================== *}
+
+Procedure CheckPumps;  { called by PipeMinus and PipePlus}
+Begin                  {check to see if pumping when adding or subtracting pipe }
   if Data.Pumping then
   Begin
     MessageToMemo(68);
@@ -289,8 +293,8 @@ Begin                  { subtracting pipe }
   End else PumpsOff:=True;
 End;
 
-Procedure StringWtCalc;  { recalculate string weight when }
-Var i : integer;         { adding or subtracting pipe }
+Procedure StringWtCalc;  { called by PipeMinus and PipePlus}
+Var i : integer;         { recalculate string weight when adding or subtracting pipe }
 Begin                    { then recalculate pipe displacement }
   With Data do
   Begin
@@ -300,7 +304,6 @@ Begin                    { then recalculate pipe displacement }
 End;
 
 
-{* ========================================================================== *}
 procedure TDrillSim.RPMminusClick(Sender: TObject);
 begin
   With Data do
@@ -553,7 +556,8 @@ begin
 
   StringToMemo('DrillSimGUI.FormaActivate: Running DrillSim start up sequence');
   StartUp;     { call DrillSim StartUp }
-
+  KellyScale.Picture.LoadFromFile('kellyscale.png');
+  KellyImage.Picture.LoadFromFile('kellyfull.png');
 end;
 
 

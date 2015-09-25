@@ -22,20 +22,16 @@ type
     MaxPumpPressureLabel: TLabel;
     Pump1Label: TLabel;
     Pump1OutputData: TEdit;
-    Pump1EfficiencySPMData: TEdit;
     Pump3EfficiencyData: TEdit;
     Pump3Label: TLabel;
     Pump3OutputData: TEdit;
-    Pump3EfficiencySPMData: TEdit;
     Pump2EfficiencyData: TEdit;
     Pump2Label: TLabel;
     Pump2OutputData: TEdit;
-    Pump2EfficiencySPMData: TEdit;
     EfficiencyColumnLabel: TLabel;
     OutputColumnLabel: TLabel;
     NumPumps: TLabel;
     NumPumpsComboBox: TComboBox;
-    SPMColumnLabel: TLabel;
     OutputUoMLabel: TLabel;
     QuitButton: TButton;
     SaveButton: TButton;
@@ -46,13 +42,10 @@ type
     procedure FormDeactivate(Sender: TObject);
     procedure NumPumpsComboBoxChange(Sender: TObject);
     procedure Pump1EfficiencyDataChange(Sender: TObject);
-    procedure Pump1EfficiencySPMDataChange(Sender: TObject);
     procedure Pump1OutputDataChange(Sender: TObject);
     procedure Pump2EfficiencyDataChange(Sender: TObject);
-    procedure Pump2EfficiencySPMDataChange(Sender: TObject);
     procedure Pump2OutputDataChange(Sender: TObject);
     procedure Pump3EfficiencyDataChange(Sender: TObject);
-    procedure Pump3EfficiencySPMDataChange(Sender: TObject);
     procedure Pump3OutputDataChange(Sender: TObject);
     procedure QuitButtonClick(Sender: TObject);
     procedure SaveButtonClick(Sender: TObject);
@@ -65,7 +58,7 @@ type
 var
   PumpDataForm: TPumpDataForm;
   _WellMaxPumps : Integer;
-  _WellPump : array [1..3,1..3] of real;
+  _WellPump : array [1..3,1..2] of real;  { not using 3rd element - SPM - here so only 1..2 }
   _WellMaxPumpPressure : real;
 
 implementation
@@ -106,45 +99,36 @@ begin
          _WellMaxPumps:=1;
          Pump1OutPutData.Enabled:=True;
          Pump1EfficiencyData.Enabled:=True;
-         Pump1EfficiencySPMData.Enabled:=True;
 
          Pump2OutPutData.Enabled:=False;
          Pump2EfficiencyData.Enabled:=False;
-         Pump2EfficiencySPMData.Enabled:=False;
 
          Pump3OutPutData.Enabled:=False;
          Pump3EfficiencyData.Enabled:=False;
-         Pump3EfficiencySPMData.Enabled:=False;
        end;
 
     1: Begin
          _WellMaxPumps:=2;
          Pump1OutPutData.Enabled:=True;
          Pump1EfficiencyData.Enabled:=True;
-         Pump1EfficiencySPMData.Enabled:=True;
 
          Pump2OutPutData.Enabled:=True;
          Pump2EfficiencyData.Enabled:=True;
-         Pump2EfficiencySPMData.Enabled:=True;
 
          Pump3OutPutData.Enabled:=False;
          Pump3EfficiencyData.Enabled:=False;
-         Pump3EfficiencySPMData.Enabled:=False;
        end;
 
     2: Begin
          _WellMaxPumps:=3;
          Pump1OutPutData.Enabled:=True;
          Pump1EfficiencyData.Enabled:=True;
-         Pump1EfficiencySPMData.Enabled:=True;
 
          Pump2OutPutData.Enabled:=True;
          Pump2EfficiencyData.Enabled:=True;
-         Pump2EfficiencySPMData.Enabled:=True;
 
          Pump3OutPutData.Enabled:=True;
          Pump3EfficiencyData.Enabled:=True;
-         Pump3EfficiencySPMData.Enabled:=True;
        end;
   end;
 end;
@@ -165,14 +149,6 @@ begin
           then _WellPump[1,2]:=Round2(StrToFloat(Pump1EfficiencyData.Text),2); { % }
 end;
 
-procedure TPumpDataForm.Pump1EfficiencySPMDataChange(Sender: TObject);
-begin
-  if not ((TEdit(Sender).Text = '-')
-      or (TEdit(Sender).Text = DefaultFormatSettings.DecimalSeparator)
-      or (TEdit(Sender).Text = ''))
-          then _WellPump[1,3]:=StrToInt(Pump1EfficiencySPMData.Text); { SPM }
-end;
-
 procedure TPumpDataForm.Pump2OutputDataChange(Sender: TObject);
 begin
   if not ((TEdit(Sender).Text = '-')
@@ -187,14 +163,6 @@ begin
       or (TEdit(Sender).Text = DefaultFormatSettings.DecimalSeparator)
       or (TEdit(Sender).Text = ''))
           then _WellPump[2,2]:=Round2(StrToFloat(Pump2EfficiencyData.Text),2); { % }
-end;
-
-procedure TPumpDataForm.Pump2EfficiencySPMDataChange(Sender: TObject);
-begin
-  if not ((TEdit(Sender).Text = '-')
-      or (TEdit(Sender).Text = DefaultFormatSettings.DecimalSeparator)
-      or (TEdit(Sender).Text = ''))
-          then _WellPump[2,3]:=StrToInt(Pump2EfficiencySPMData.Text); { SPM }
 end;
 
 procedure TPumpDataForm.Pump3OutputDataChange(Sender: TObject);
@@ -212,15 +180,6 @@ begin
       or (TEdit(Sender).Text = ''))
           then _WellPump[3,2]:=Round2(StrToFloat(Pump3EfficiencyData.Text),2); { % }
 end;
-
-procedure TPumpDataForm.Pump3EfficiencySPMDataChange(Sender: TObject);
-begin
-  if not ((TEdit(Sender).Text = '-')
-      or (TEdit(Sender).Text = DefaultFormatSettings.DecimalSeparator)
-      or (TEdit(Sender).Text = ''))
-          then _WellPump[3,3]:=StrToInt(Pump3EfficiencySPMData.Text); { SPM }
-end;
-
 
 procedure TPumpDataForm.MaxPumpPressureDataChange(Sender: TObject);
 begin
@@ -260,11 +219,6 @@ begin
          Pump1EfficiencyData.Text:=FloatToStr(Round2(Data.Pump[1,2],3));  { % }
          _WellPump[1,2]:=Data.Pump[1,2]; {API internal }
 
-         Pump1EfficiencySPMData.Enabled:=True;
-         Pump1EfficiencySPMData.Text:=FloatToStr(Data.Pump[1,3]);  { SPM }
-         _WellPump[1,3]:=Data.Pump[1,3]; {API internal }
-
-
          Pump2OutputData.Enabled:=False;
          Pump2OutputData.Text:=FloatToStr(Round2(Data.Pump[2,1]*UoMConverter[5],2));  { API->user volume }
          _WellPump[2,1]:=Data.Pump[2,1]; { API internal }
@@ -273,11 +227,6 @@ begin
          Pump2EfficiencyData.Text:=FloatToStr(Round2(Data.Pump[2,2],3));  { % }
          _WellPump[2,2]:=Data.Pump[2,2]; {API internal }
 
-         Pump2EfficiencySPMData.Enabled:=False;
-         Pump2EfficiencySPMData.Text:=FloatToStr(Data.Pump[2,3]);  { SPM }
-         _WellPump[2,3]:=Data.Pump[2,3]; {API internal }
-
-
          Pump3OutputData.Enabled:=False;
          Pump3OutputData.Text:=FloatToStr(Round2(Data.Pump[3,1]*UoMConverter[5],2));  { API->user volume }
          _WellPump[3,1]:=Data.Pump[3,1]; { API internal }
@@ -285,10 +234,6 @@ begin
          Pump3EfficiencyData.Enabled:=False;
          Pump3EfficiencyData.Text:=FloatToStr(Round2(Data.Pump[3,2],3));  { % }
          _WellPump[3,2]:=Data.Pump[3,2]; {API internal }
-
-         Pump3EfficiencySPMData.Enabled:=False;
-         Pump3EfficiencySPMData.Text:=FloatToStr(Data.Pump[3,3]);  { SPM }
-         _WellPump[3,3]:=Data.Pump[3,3]; {API internal }
 
         end;
 
@@ -303,11 +248,6 @@ begin
          Pump1EfficiencyData.Text:=FloatToStr(Round2(Data.Pump[1,2],3));  { % }
          _WellPump[1,2]:=Data.Pump[1,2]; {API internal }
 
-         Pump1EfficiencySPMData.Enabled:=True;
-         Pump1EfficiencySPMData.Text:=FloatToStr(Data.Pump[1,3]);  { SPM }
-         _WellPump[1,3]:=Data.Pump[1,3]; {API internal }
-
-
          Pump2OutputData.Enabled:=True;
          Pump2OutputData.Text:=FloatToStr(Round2(Data.Pump[2,1]*UoMConverter[5],2));  { API->user volume }
          _WellPump[2,1]:=Data.Pump[2,1]; { API internal }
@@ -316,11 +256,6 @@ begin
          Pump2EfficiencyData.Text:=FloatToStr(Round2(Data.Pump[2,2],3));  { % }
          _WellPump[2,2]:=Data.Pump[2,2]; {API internal }
 
-         Pump2EfficiencySPMData.Enabled:=True;
-         Pump2EfficiencySPMData.Text:=FloatToStr(Data.Pump[2,3]);  { SPM }
-         _WellPump[2,3]:=Data.Pump[2,3]; {API internal }
-
-
          Pump3OutputData.Enabled:=False;
          Pump3OutputData.Text:=FloatToStr(Round2(Data.Pump[3,1]*UoMConverter[5],2));  { API->user volume }
          _WellPump[3,1]:=Data.Pump[3,1]; { API internal }
@@ -328,10 +263,6 @@ begin
          Pump3EfficiencyData.Enabled:=False;
          Pump3EfficiencyData.Text:=FloatToStr(Round2(Data.Pump[3,2],3));  { % }
          _WellPump[3,2]:=Data.Pump[3,2]; {API internal }
-
-         Pump3EfficiencySPMData.Enabled:=False;
-         Pump3EfficiencySPMData.Text:=FloatToStr(Data.Pump[3,3]);  { SPM }
-         _WellPump[3,3]:=Data.Pump[3,3]; {API internal }
 
        end;
 
@@ -346,10 +277,6 @@ begin
          Pump1EfficiencyData.Text:=FloatToStr(Round2(Data.Pump[1,2],3));  { % }
          _WellPump[1,2]:=Data.Pump[1,2]; {API internal }
 
-         Pump1EfficiencySPMData.Enabled:=True;
-         Pump1EfficiencySPMData.Text:=FloatToStr(Data.Pump[1,3]);  { SPM }
-         _WellPump[1,3]:=Data.Pump[1,3]; {API internal }
-
 
          Pump2OutputData.Enabled:=True;
          Pump2OutputData.Text:=FloatToStr(Round2(Data.Pump[2,1]*UoMConverter[5],2));  { API->user volume }
@@ -359,10 +286,6 @@ begin
          Pump2EfficiencyData.Text:=FloatToStr(Round2(Data.Pump[2,2],3));  { % }
          _WellPump[2,2]:=Data.Pump[2,2]; {API internal }
 
-         Pump2EfficiencySPMData.Enabled:=True;
-         Pump2EfficiencySPMData.Text:=FloatToStr(Data.Pump[2,3]);  { SPM }
-         _WellPump[2,3]:=Data.Pump[2,3]; {API internal }
-
 
          Pump3OutputData.Enabled:=True;
          Pump3OutputData.Text:=FloatToStr(Round2(Data.Pump[3,1]*UoMConverter[5],2));  { API->user volume }
@@ -371,10 +294,6 @@ begin
          Pump3EfficiencyData.Enabled:=True;
          Pump3EfficiencyData.Text:=FloatToStr(Round2(Data.Pump[3,2],3));  { % }
          _WellPump[3,2]:=Data.Pump[3,2]; {API internal }
-
-         Pump3EfficiencySPMData.Enabled:=True;
-         Pump3EfficiencySPMData.Text:=FloatToStr(Data.Pump[3,3]);  { SPM }
-         _WellPump[3,3]:=Data.Pump[3,3]; {API internal }
 
        end;
   end;
@@ -425,12 +344,11 @@ begin
         else if i=3 then Pump3OutputData.SetFocus;
         Exit;
     end;
-    if (_WellPump[i,2] = 0) { and efficiency ratings must be valid }
-        or (_WellPump[i,3] = 0)
+    if (_WellPump[i,2] = 0) { and efficiency rating must be valid }
     then
     Begin
-        ShowMessage('Pump efficiency and SPM must be defined correctly');
-        StringToMemo('FormPumpData.Save: Error: Pump efficiency and SPM must be defined correctly');
+        ShowMessage('Pump efficiency must be defined correctly');
+        StringToMemo('FormPumpData.Save: Error: Pump efficiency must be defined correctly');
 
         if i=1 then Pump1EfficiencyData.SetFocus
         else if i=2 then Pump2EfficiencyData.SetFocus
@@ -439,7 +357,6 @@ begin
     end;
     Data.Pump[i,1]:=_WellPump[i,1];
     Data.Pump[i,2]:=_WellPump[i,2];
-    Data.Pump[i,3]:=_WellPump[i,3];
   end;
 
   if Error=True then
@@ -466,7 +383,6 @@ begin
   Begin
     StringToMemo('FormPumpData.Save: Data.Pump[' + IntToStr(i) + '] output = ' +  FloatToStr(Data.Pump[i,1]) + ' ' + UoMLabel[5]); { displayed pump volume }
     StringToMemo('FormPumpData.Save: Data.Pump[' + IntToStr(i) + '] efficiency = ' +  FloatToStr(Data.Pump[i,2]) + ' %'); { eff % }
-    StringToMemo('FormPumpData.Save: Data.Pump[' + IntToStr(i) + '] @SPM = ' +  FloatToStr(Data.Pump[i,3])); { @SPM }
   end;
 
   StringToMemo('FormPumpata.Save: Data.MaxPumpPressure = '+ MaxPumpPressureData.Text + ' ' + UoMLabel[3]); { displayed pressure }

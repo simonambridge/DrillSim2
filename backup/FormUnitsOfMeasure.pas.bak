@@ -16,9 +16,8 @@ type
   { TUnitsOfMeasureForm }
 
   TUnitsOfMeasureForm = class(TForm)
-    CancelButton: TButton;
     SelectUoMRadioGroup: TRadioGroup;
-    SaveButton: TButton;
+    CloseButton: TButton;
     DensityMultiplierData: TEdit;
     FlowRateLabelData: TEdit;
     FlowRateMultiplierData: TEdit;
@@ -42,9 +41,8 @@ type
     FlowRateText: TStaticText;
     WeightMultiplierData: TEdit;
     WeightText: TStaticText;
-    procedure CancelButtonClick(Sender: TObject);
     procedure OnClose(Sender: TObject);
-    procedure SaveButtonClick(Sender: TObject);
+    procedure CloseButtonClick(Sender: TObject);
     procedure FormActivate(Sender: TObject);
     procedure FormCreate(Sender: TObject);
     procedure FormCreateActions;
@@ -144,16 +142,14 @@ begin
    FormDisplayUnits;                     { display units }
 End;
 
-procedure TUnitsOfMeasureForm.SaveButtonClick(Sender: TObject);
+procedure TUnitsOfMeasureForm.CloseButtonClick(Sender: TObject);
 begin
-  Data.API:=_WellAPI;
+  if Data.API <> _WellAPI then
+  Begin
+    Edited:=True;
+    Data.API:=_WellAPI;
+  end;
   Close;
-  if Data.API <> _WellAPI then Edited:=True;
-end;
-
-procedure TUnitsOfMeasureForm.CancelButtonClick(Sender: TObject);
-begin
-  Close
 end;
 
 Procedure TUnitsOfMeasureForm.OnClose(Sender: TObject);

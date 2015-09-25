@@ -1,7 +1,7 @@
 object DrillSim: TDrillSim
-  Left = 90
+  Left = 26
   Height = 668
-  Top = 105
+  Top = 150
   Width = 999
   Caption = 'DrillSim 3.0'
   ClientHeight = 645
@@ -17,8 +17,11 @@ object DrillSim: TDrillSim
     Top = 200
     Width = 270
     Caption = 'Pump Controls'
-    ClientHeight = 173
+    ClientHeight = 171
     ClientWidth = 266
+    Font.Height = -16
+    Font.Name = 'Sans'
+    ParentFont = False
     TabOrder = 3
     object Pump1Minus: TButton
       Left = 208
@@ -26,7 +29,10 @@ object DrillSim: TDrillSim
       Top = 9
       Width = 23
       Caption = '-'
+      Font.Height = -16
+      Font.Name = 'Sans'
       OnClick = Pump1MinusClick
+      ParentFont = False
       TabOrder = 0
     end
     object Pump1Plus: TButton
@@ -35,7 +41,10 @@ object DrillSim: TDrillSim
       Top = 9
       Width = 25
       Caption = '+'
+      Font.Height = -16
+      Font.Name = 'Sans'
       OnClick = Pump1PlusClick
+      ParentFont = False
       TabOrder = 1
     end
     object PumpStrokesText: TStaticText
@@ -44,6 +53,9 @@ object DrillSim: TDrillSim
       Top = 136
       Width = 106
       Caption = 'Pump Strokes'
+      Font.Height = -13
+      Font.Name = 'Sans'
+      ParentFont = False
       TabOrder = 2
     end
     object Pump1Value: TLabel
@@ -54,7 +66,11 @@ object DrillSim: TDrillSim
       Alignment = taRightJustify
       AutoSize = False
       Caption = '0'
+      Font.Height = -13
+      Font.Name = 'Sans'
+      Font.Style = [fsBold]
       ParentColor = False
+      ParentFont = False
     end
     object Pump2Value: TLabel
       Left = 139
@@ -64,7 +80,11 @@ object DrillSim: TDrillSim
       Alignment = taRightJustify
       AutoSize = False
       Caption = '0'
+      Font.Height = -13
+      Font.Name = 'Sans'
+      Font.Style = [fsBold]
       ParentColor = False
+      ParentFont = False
     end
     object Pump3Value: TLabel
       Left = 139
@@ -74,7 +94,11 @@ object DrillSim: TDrillSim
       Alignment = taRightJustify
       AutoSize = False
       Caption = '0'
+      Font.Height = -13
+      Font.Name = 'Sans'
+      Font.Style = [fsBold]
       ParentColor = False
+      ParentFont = False
     end
     object PumpStrokesValue: TLabel
       Left = 139
@@ -84,7 +108,11 @@ object DrillSim: TDrillSim
       Alignment = taRightJustify
       AutoSize = False
       Caption = '0'
+      Font.Height = -13
+      Font.Name = 'Sans'
+      Font.Style = [fsBold]
       ParentColor = False
+      ParentFont = False
     end
     object Pump1Text: TStaticText
       Left = 9
@@ -92,6 +120,9 @@ object DrillSim: TDrillSim
       Top = 13
       Width = 105
       Caption = 'Pump 1 SPM'
+      Font.Height = -13
+      Font.Name = 'Sans'
+      ParentFont = False
       TabOrder = 3
     end
     object Pump2Text: TStaticText
@@ -100,6 +131,9 @@ object DrillSim: TDrillSim
       Top = 56
       Width = 104
       Caption = 'Pump 2 SPM'
+      Font.Height = -13
+      Font.Name = 'Sans'
+      ParentFont = False
       TabOrder = 4
     end
     object Pump3Text: TStaticText
@@ -108,6 +142,9 @@ object DrillSim: TDrillSim
       Top = 96
       Width = 107
       Caption = 'Pump 3 SPM'
+      Font.Height = -13
+      Font.Name = 'Sans'
+      ParentFont = False
       TabOrder = 5
     end
     object Pump2Minus: TButton
@@ -116,7 +153,10 @@ object DrillSim: TDrillSim
       Top = 56
       Width = 22
       Caption = '-'
+      Font.Height = -16
+      Font.Name = 'Sans'
       OnClick = Pump2MinusClick
+      ParentFont = False
       TabOrder = 6
     end
     object Pump2Plus: TButton
@@ -152,6 +192,9 @@ object DrillSim: TDrillSim
       Top = 136
       Width = 54
       Caption = 'Total'
+      Font.Height = -13
+      Font.Name = 'Sans'
+      ParentFont = False
       TabOrder = 10
     end
   end
@@ -161,8 +204,13 @@ object DrillSim: TDrillSim
     Top = 8
     Width = 271
     Caption = 'Bit Data'
-    ClientHeight = 165
+    ClientHeight = 163
     ClientWidth = 267
+    Font.Height = -16
+    Font.Name = 'Sans'
+    Font.Style = [fsBold]
+    ParentColor = False
+    ParentFont = False
     TabOrder = 0
     object BitDepthText: TStaticText
       Left = 9
@@ -170,6 +218,9 @@ object DrillSim: TDrillSim
       Top = 17
       Width = 108
       Caption = 'Bit Depth'
+      Font.Height = -13
+      Font.Name = 'Sans'
+      ParentFont = False
       TabOrder = 0
     end
     object TotalDepthText: TStaticText
@@ -178,6 +229,9 @@ object DrillSim: TDrillSim
       Top = 49
       Width = 107
       Caption = 'Total Depth'
+      Font.Height = -13
+      Font.Name = 'Sans'
+      ParentFont = False
       TabOrder = 1
     end
     object RPMminus: TButton
@@ -186,7 +240,10 @@ object DrillSim: TDrillSim
       Top = 120
       Width = 24
       Caption = '-'
+      Font.Height = -16
+      Font.Name = 'Sans'
       OnClick = RPMminusClick
+      ParentFont = False
       TabOrder = 2
     end
     object RPMplus: TButton
@@ -195,7 +252,10 @@ object DrillSim: TDrillSim
       Top = 120
       Width = 24
       Caption = '+'
+      Font.Height = -16
+      Font.Name = 'Sans'
       OnClick = RPMplusClick
+      ParentFont = False
       TabOrder = 3
     end
     object RotaryRPMText: TStaticText
@@ -204,6 +264,9 @@ object DrillSim: TDrillSim
       Top = 128
       Width = 107
       Caption = 'Rotary RPM'
+      Font.Height = -13
+      Font.Name = 'Sans'
+      ParentFont = False
       TabOrder = 4
     end
     object RPMvalue: TLabel
@@ -214,7 +277,11 @@ object DrillSim: TDrillSim
       Alignment = taRightJustify
       AutoSize = False
       Caption = '0'
+      Font.Height = -13
+      Font.Name = 'Sans'
+      Font.Style = [fsBold]
       ParentColor = False
+      ParentFont = False
     end
     object WeightOnBitText: TStaticText
       Left = 9
@@ -222,6 +289,9 @@ object DrillSim: TDrillSim
       Top = 88
       Width = 109
       Caption = 'Weight On Bit'
+      Font.Height = -13
+      Font.Name = 'Sans'
+      ParentFont = False
       TabOrder = 5
     end
     object TotalDepthValue: TLabel
@@ -232,7 +302,11 @@ object DrillSim: TDrillSim
       Alignment = taRightJustify
       AutoSize = False
       Caption = '0'
+      Font.Height = -13
+      Font.Name = 'Sans'
+      Font.Style = [fsBold]
       ParentColor = False
+      ParentFont = False
     end
     object WOBValue: TLabel
       Left = 130
@@ -242,13 +316,20 @@ object DrillSim: TDrillSim
       Alignment = taRightJustify
       AutoSize = False
       Caption = '0'
+      Font.Height = -13
+      Font.Name = 'Sans'
+      Font.Style = [fsBold]
       ParentColor = False
+      ParentFont = False
     end
     object BitDepthUoMLabel: TStaticText
       Left = 195
       Height = 18
       Top = 17
       Width = 56
+      Font.Height = -13
+      Font.Name = 'Sans'
+      ParentFont = False
       TabOrder = 6
     end
     object TotalDepthUoMLabel: TStaticText
@@ -256,6 +337,9 @@ object DrillSim: TDrillSim
       Height = 19
       Top = 49
       Width = 61
+      Font.Height = -13
+      Font.Name = 'Sans'
+      ParentFont = False
       TabOrder = 7
     end
     object WOBUoMLabel: TStaticText
@@ -263,6 +347,9 @@ object DrillSim: TDrillSim
       Height = 19
       Top = 88
       Width = 60
+      Font.Height = -13
+      Font.Name = 'Sans'
+      ParentFont = False
       TabOrder = 8
     end
     object BitDepthValue: TLabel
@@ -273,7 +360,11 @@ object DrillSim: TDrillSim
       Alignment = taRightJustify
       AutoSize = False
       Caption = '0'
+      Font.Height = -13
+      Font.Name = 'Sans'
+      Font.Style = [fsBold]
       ParentColor = False
+      ParentFont = False
     end
   end
   object DrillFloor: TGroupBox
@@ -282,139 +373,204 @@ object DrillSim: TDrillSim
     Top = 8
     Width = 329
     Caption = 'Drill Floor'
-    ClientHeight = 197
+    ClientHeight = 195
     ClientWidth = 325
+    Font.Height = -16
+    Font.Name = 'Sans'
+    Font.Style = [fsBold]
+    ParentFont = False
     TabOrder = 1
     object KellyHeightText: TLabel
       Left = 7
       Height = 17
-      Top = 26
-      Width = 79
-      Caption = 'Kelly Height'
+      Top = 8
+      Width = 32
+      Caption = 'Kelly'
+      Font.Height = -13
+      Font.Name = 'Sans'
       ParentColor = False
+      ParentFont = False
     end
     object DrillingStatusText: TLabel
-      Left = 6
+      Left = 8
       Height = 17
-      Top = 58
-      Width = 94
-      Caption = 'Drilling Status'
+      Top = 40
+      Width = 41
+      Caption = 'Status'
+      Font.Height = -13
+      Font.Name = 'Sans'
       ParentColor = False
+      ParentFont = False
     end
     object ROPText: TLabel
       Left = 8
       Height = 17
-      Top = 89
-      Width = 29
+      Top = 71
+      Width = 27
       Caption = 'ROP'
+      Font.Height = -13
+      Font.Name = 'Sans'
       ParentColor = False
+      ParentFont = False
     end
     object TimeText: TLabel
-      Left = 7
+      Left = 6
       Height = 17
-      Top = 121
+      Top = 96
       Width = 33
       Caption = 'Time'
+      Font.Height = -13
+      Font.Name = 'Sans'
       ParentColor = False
+      ParentFont = False
     end
     object KellyHeightValue: TLabel
-      Left = 133
+      Left = 56
       Height = 17
-      Top = 25
+      Top = 10
       Width = 56
       Alignment = taRightJustify
       AutoSize = False
       Caption = '999'
+      Font.Height = -13
+      Font.Name = 'Sans'
+      Font.Style = [fsBold]
       ParentColor = False
+      ParentFont = False
     end
     object KellyHeightUoMLabel: TStaticText
-      Left = 200
+      Left = 128
       Height = 18
-      Top = 25
+      Top = 10
       Width = 45
       TabOrder = 0
     end
     object DrillingStatusValue: TLabel
-      Left = 135
+      Left = 75
       Height = 17
-      Top = 56
-      Width = 54
+      Top = 42
+      Width = 58
       Caption = 'On-slips'
+      Font.Height = -13
+      Font.Name = 'Sans'
+      Font.Style = [fsBold]
       ParentColor = False
+      ParentFont = False
     end
     object ROPValue: TLabel
-      Left = 133
+      Left = 56
       Height = 17
-      Top = 88
+      Top = 72
       Width = 56
       Alignment = taRightJustify
       AutoSize = False
       Caption = '999.99'
+      Font.Height = -13
+      Font.Name = 'Sans'
+      Font.Style = [fsBold]
       ParentColor = False
+      ParentFont = False
     end
     object TimeValue: TLabel
-      Left = 133
+      Left = 64
       Height = 17
-      Top = 120
-      Width = 56
+      Top = 96
+      Width = 64
       Caption = '10:21:01'
+      Font.Height = -13
+      Font.Name = 'Sans'
+      Font.Style = [fsBold]
       ParentColor = False
+      ParentFont = False
     end
     object KellyUp: TButton
-      Left = 248
-      Height = 19
-      Top = 5
-      Width = 45
-      Caption = 'Up'
+      Left = 114
+      Height = 29
+      Top = 123
+      Width = 78
+      Caption = 'Kelly Up'
+      Font.Height = -13
+      Font.Name = 'Sans'
       OnClick = KellyUpClick
+      ParentFont = False
       TabOrder = 1
     end
     object KellyDown: TButton
-      Left = 247
-      Height = 23
-      Top = 25
-      Width = 46
-      Caption = 'Down'
+      Left = 113
+      Height = 29
+      Top = 160
+      Width = 79
+      Caption = 'Kelly Down'
+      Font.Height = -13
+      Font.Name = 'Sans'
       OnClick = KellyDownClick
+      ParentFont = False
       TabOrder = 2
     end
     object PipeMinus: TButton
       Left = 9
       Height = 29
-      Top = 156
+      Top = 123
       Width = 95
       Caption = 'Remove Pipe'
+      Font.Height = -13
+      Font.Name = 'Sans'
       OnClick = PipeMinusClick
+      ParentFont = False
       TabOrder = 3
     end
     object PipePlus: TButton
-      Left = 103
+      Left = 9
       Height = 29
-      Top = 156
-      Width = 89
+      Top = 160
+      Width = 94
       Caption = 'Add Pipe'
+      Font.Height = -13
+      Font.Name = 'Sans'
       OnClick = PipePlusClick
+      ParentFont = False
       TabOrder = 4
     end
     object AutoDrillCheckBox: TCheckBox
       Left = 208
       Height = 24
-      Top = 156
-      Width = 87
+      Top = 160
+      Width = 83
       BidiMode = bdRightToLeft
       Caption = 'AutoDrill'
       Color = clDefault
+      Font.Height = -13
+      Font.Name = 'Sans'
       OnChange = AutoDrillCheckBoxChange
       ParentColor = False
+      ParentFont = False
       ParentBidiMode = False
       TabOrder = 5
     end
     object ROPUoMLabel: TStaticText
-      Left = 200
+      Left = 120
       Height = 22
-      Top = 89
-      Width = 89
+      Top = 72
+      Width = 72
+      Caption = 'min/met'
+      Font.Height = -13
+      Font.Name = 'Sans'
+      ParentFont = False
       TabOrder = 6
+    end
+    object KellyImage: TImage
+      Left = 248
+      Height = 156
+      Top = 0
+      Width = 74
+      Center = True
+    end
+    object KellyScale: TImage
+      Left = 200
+      Height = 156
+      Top = 0
+      Width = 49
+      Center = True
     end
   end
   object Messages: TGroupBox
@@ -423,9 +579,13 @@ object DrillSim: TDrillSim
     Top = 400
     Width = 985
     Caption = 'Messages'
-    ClientHeight = 157
+    ClientHeight = 155
     ClientWidth = 981
     DragCursor = crDefault
+    Font.Height = -16
+    Font.Name = 'Sans'
+    Font.Style = [fsBold]
+    ParentFont = False
     TabOrder = 2
     object Memo1: TMemo
       Cursor = crIBeam
@@ -433,6 +593,9 @@ object DrillSim: TDrillSim
       Height = 150
       Top = 2
       Width = 963
+      Font.Height = -13
+      Font.Name = 'Sans'
+      ParentFont = False
       ParentShowHint = False
       ReadOnly = True
       ScrollBars = ssVertical
@@ -445,8 +608,12 @@ object DrillSim: TDrillSim
     Top = 232
     Width = 326
     Caption = 'Drilling Fluids'
-    ClientHeight = 141
+    ClientHeight = 139
     ClientWidth = 322
+    Font.Height = -16
+    Font.Name = 'Sans'
+    Font.Style = [fsBold]
+    ParentFont = False
     TabOrder = 4
     object MudWeightInValue: TLabel
       Left = 160
@@ -456,7 +623,10 @@ object DrillSim: TDrillSim
       Alignment = taRightJustify
       AutoSize = False
       Caption = '99.99'
+      Font.Height = -13
+      Font.Name = 'Sans'
       ParentColor = False
+      ParentFont = False
     end
     object MudWeightOutValue: TLabel
       Left = 160
@@ -466,13 +636,19 @@ object DrillSim: TDrillSim
       Alignment = taRightJustify
       AutoSize = False
       Caption = '99.99'
+      Font.Height = -13
+      Font.Name = 'Sans'
       ParentColor = False
+      ParentFont = False
     end
     object MudWeightInUoMLabel: TStaticText
       Left = 227
       Height = 20
       Top = 8
       Width = 65
+      Font.Height = -16
+      Font.Name = 'Sans'
+      ParentFont = False
       TabOrder = 0
     end
     object MudWeightOutUoMLabel: TStaticText
@@ -480,6 +656,9 @@ object DrillSim: TDrillSim
       Height = 20
       Top = 39
       Width = 65
+      Font.Height = -16
+      Font.Name = 'Sans'
+      ParentFont = False
       TabOrder = 1
     end
     object MudWeightInText: TStaticText
@@ -488,6 +667,9 @@ object DrillSim: TDrillSim
       Top = 8
       Width = 114
       Caption = 'Mud Weight In'
+      Font.Height = -13
+      Font.Name = 'Sans'
+      ParentFont = False
       TabOrder = 2
     end
     object MudWeightOutText: TStaticText
@@ -496,6 +678,9 @@ object DrillSim: TDrillSim
       Top = 39
       Width = 114
       Caption = 'Mud Weight Out'
+      Font.Height = -13
+      Font.Name = 'Sans'
+      ParentFont = False
       TabOrder = 3
     end
     object ECDText: TStaticText
@@ -504,6 +689,9 @@ object DrillSim: TDrillSim
       Top = 67
       Width = 120
       Caption = 'Eq. Circ. Density'
+      Font.Height = -13
+      Font.Name = 'Sans'
+      ParentFont = False
       TabOrder = 4
     end
     object ECDUoMLabel: TStaticText
@@ -511,6 +699,9 @@ object DrillSim: TDrillSim
       Height = 22
       Top = 67
       Width = 67
+      Font.Height = -13
+      Font.Name = 'Sans'
+      ParentFont = False
       TabOrder = 5
     end
     object ECDValue: TLabel
@@ -521,16 +712,22 @@ object DrillSim: TDrillSim
       Alignment = taRightJustify
       AutoSize = False
       Caption = '99.99'
+      Font.Height = -13
+      Font.Name = 'Sans'
       ParentColor = False
+      ParentFont = False
     end
     object PowerLawRadioButton: TRadioButton
       Left = 112
       Height = 24
       Top = 96
-      Width = 99
+      Width = 96
       Caption = 'Power Law'
       Checked = True
+      Font.Height = -13
+      Font.Name = 'Sans'
       OnChange = PowerLawRadioButtonChange
+      ParentFont = False
       TabOrder = 6
       TabStop = True
     end
@@ -540,7 +737,10 @@ object DrillSim: TDrillSim
       Top = 97
       Width = 84
       Caption = 'Bingham'
+      Font.Height = -13
+      Font.Name = 'Sans'
       OnChange = BinghamRadioButtonChange
+      ParentFont = False
       TabOrder = 7
     end
   end
@@ -570,8 +770,12 @@ object DrillSim: TDrillSim
     Top = 168
     Width = 345
     Caption = 'Flow'
-    ClientHeight = 205
+    ClientHeight = 203
     ClientWidth = 341
+    Font.Height = -16
+    Font.Name = 'Sans'
+    Font.Style = [fsBold]
+    ParentFont = False
     TabOrder = 6
     object FlowInText: TStaticText
       Left = 7
@@ -579,6 +783,9 @@ object DrillSim: TDrillSim
       Top = 9
       Width = 91
       Caption = 'Flow In'
+      Font.Height = -13
+      Font.Name = 'Sans'
+      ParentFont = False
       TabOrder = 0
     end
     object FlowOutText: TStaticText
@@ -587,6 +794,9 @@ object DrillSim: TDrillSim
       Top = 40
       Width = 91
       Caption = 'Flow Out'
+      Font.Height = -13
+      Font.Name = 'Sans'
+      ParentFont = False
       TabOrder = 1
     end
     object ReturnPitText: TStaticText
@@ -595,6 +805,9 @@ object DrillSim: TDrillSim
       Top = 66
       Width = 96
       Caption = 'Return Pit'
+      Font.Height = -13
+      Font.Name = 'Sans'
+      ParentFont = False
       TabOrder = 2
     end
     object DiffFlowText: TStaticText
@@ -603,6 +816,9 @@ object DrillSim: TDrillSim
       Top = 104
       Width = 98
       Caption = 'Diff. Flow'
+      Font.Height = -13
+      Font.Name = 'Sans'
+      ParentFont = False
       TabOrder = 3
     end
     object StandPipePressureText: TStaticText
@@ -611,6 +827,9 @@ object DrillSim: TDrillSim
       Top = 140
       Width = 98
       Caption = 'Stand Pipe Pr.'
+      Font.Height = -13
+      Font.Name = 'Sans'
+      ParentFont = False
       TabOrder = 4
     end
     object FlowInUoMLabel: TStaticText
@@ -618,6 +837,9 @@ object DrillSim: TDrillSim
       Height = 22
       Top = 9
       Width = 55
+      Font.Height = -16
+      Font.Name = 'Sans'
+      ParentFont = False
       TabOrder = 5
     end
     object FlowOutUoMLabel: TStaticText
@@ -625,6 +847,9 @@ object DrillSim: TDrillSim
       Height = 22
       Top = 40
       Width = 55
+      Font.Height = -16
+      Font.Name = 'Sans'
+      ParentFont = False
       TabOrder = 6
     end
     object ReturnPitUoMLabel: TStaticText
@@ -632,6 +857,9 @@ object DrillSim: TDrillSim
       Height = 22
       Top = 71
       Width = 55
+      Font.Height = -16
+      Font.Name = 'Sans'
+      ParentFont = False
       TabOrder = 7
     end
     object DiffFlowUoMLabel: TStaticText
@@ -639,6 +867,9 @@ object DrillSim: TDrillSim
       Height = 22
       Top = 105
       Width = 55
+      Font.Height = -16
+      Font.Name = 'Sans'
+      ParentFont = False
       TabOrder = 8
     end
     object StandPipePressureUoMLabel: TStaticText
@@ -646,6 +877,9 @@ object DrillSim: TDrillSim
       Height = 22
       Top = 140
       Width = 55
+      Font.Height = -16
+      Font.Name = 'Sans'
+      ParentFont = False
       TabOrder = 9
     end
     object FlowInValue: TLabel
@@ -666,7 +900,11 @@ object DrillSim: TDrillSim
       Alignment = taRightJustify
       AutoSize = False
       Caption = '0'
+      Font.Height = -13
+      Font.Name = 'Sans'
+      Font.Style = [fsBold]
       ParentColor = False
+      ParentFont = False
     end
     object ReturnPitValue: TLabel
       Left = 112
@@ -676,7 +914,11 @@ object DrillSim: TDrillSim
       Alignment = taRightJustify
       AutoSize = False
       Caption = '0'
+      Font.Height = -13
+      Font.Name = 'Sans'
+      Font.Style = [fsBold]
       ParentColor = False
+      ParentFont = False
     end
     object DiffFlowValue: TLabel
       Left = 112
@@ -686,7 +928,11 @@ object DrillSim: TDrillSim
       Alignment = taRightJustify
       AutoSize = False
       Caption = '0'
+      Font.Height = -13
+      Font.Name = 'Sans'
+      Font.Style = [fsBold]
       ParentColor = False
+      ParentFont = False
     end
     object StandPipePressureValue: TLabel
       Left = 113
@@ -696,7 +942,11 @@ object DrillSim: TDrillSim
       Alignment = taRightJustify
       AutoSize = False
       Caption = '0'
+      Font.Height = -13
+      Font.Name = 'Sans'
+      Font.Style = [fsBold]
       ParentColor = False
+      ParentFont = False
     end
   end
   object BOPBox1: TGroupBox
@@ -705,8 +955,12 @@ object DrillSim: TDrillSim
     Top = 8
     Width = 345
     Caption = 'Blow Out Preventers'
-    ClientHeight = 140
+    ClientHeight = 138
     ClientWidth = 341
+    Font.Height = -16
+    Font.Name = 'Sans'
+    Font.Style = [fsBold]
+    ParentFont = False
     TabOrder = 7
     object HydrilText: TStaticText
       Left = 7
@@ -714,6 +968,9 @@ object DrillSim: TDrillSim
       Top = 9
       Width = 92
       Caption = 'Hydril'
+      Font.Height = -13
+      Font.Name = 'Sans'
+      ParentFont = False
       TabOrder = 0
     end
     object BlindRAMsText: TStaticText
@@ -722,6 +979,9 @@ object DrillSim: TDrillSim
       Top = 40
       Width = 92
       Caption = 'Blind RAMs'
+      Font.Height = -13
+      Font.Name = 'Sans'
+      ParentFont = False
       TabOrder = 1
     end
     object PipeRAMsText: TStaticText
@@ -730,6 +990,9 @@ object DrillSim: TDrillSim
       Top = 71
       Width = 97
       Caption = 'Pipe RAMs'
+      Font.Height = -13
+      Font.Name = 'Sans'
+      ParentFont = False
       TabOrder = 2
     end
     object ChokeLineText: TStaticText
@@ -738,6 +1001,9 @@ object DrillSim: TDrillSim
       Top = 103
       Width = 96
       Caption = 'Choke Line'
+      Font.Height = -13
+      Font.Name = 'Sans'
+      ParentFont = False
       TabOrder = 3
     end
     object ChokeMinus: TButton
@@ -746,7 +1012,10 @@ object DrillSim: TDrillSim
       Top = 103
       Width = 26
       Caption = '-'
+      Font.Height = -13
+      Font.Name = 'Sans'
       OnClick = ChokeMinusClick
+      ParentFont = False
       TabOrder = 4
     end
     object ChokePlus: TButton
@@ -755,7 +1024,10 @@ object DrillSim: TDrillSim
       Top = 103
       Width = 24
       Caption = '+'
+      Font.Height = -13
+      Font.Name = 'Sans'
       OnClick = ChokePlusClick
+      ParentFont = False
       TabOrder = 5
     end
     object ChokeUoM: TStaticText
@@ -764,31 +1036,46 @@ object DrillSim: TDrillSim
       Top = 104
       Width = 31
       Caption = '%'
+      Font.Height = -16
+      Font.Name = 'Sans'
+      ParentFont = False
       TabOrder = 6
     end
     object HydrilValue: TLabel
       Left = 112
       Height = 17
       Top = 10
-      Width = 36
+      Width = 38
       Caption = 'Open'
+      Font.Height = -13
+      Font.Name = 'Sans'
+      Font.Style = [fsBold]
       ParentColor = False
+      ParentFont = False
     end
     object BlindRAMsValue: TLabel
       Left = 113
       Height = 17
       Top = 42
-      Width = 36
+      Width = 38
       Caption = 'Open'
+      Font.Height = -13
+      Font.Name = 'Sans'
+      Font.Style = [fsBold]
       ParentColor = False
+      ParentFont = False
     end
     object PipeRamsValue: TLabel
       Left = 112
       Height = 17
       Top = 74
-      Width = 36
+      Width = 38
       Caption = 'Open'
+      Font.Height = -13
+      Font.Name = 'Sans'
+      Font.Style = [fsBold]
       ParentColor = False
+      ParentFont = False
     end
     object ChokeValue: TLabel
       Left = 112
@@ -798,11 +1085,16 @@ object DrillSim: TDrillSim
       Alignment = taRightJustify
       AutoSize = False
       Caption = '0'
+      Font.Height = -13
+      Font.Name = 'Sans'
+      Font.Style = [fsBold]
       ParentColor = False
+      ParentFont = False
     end
   end
   object MainMenu1: TMainMenu
-    left = 16
+    left = 56
+    top = 400
     object MenuItem1File: TMenuItem
       Caption = 'File'
       object MenuItem1OpenFile: TMenuItem
