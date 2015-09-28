@@ -109,11 +109,12 @@ Begin
 
     RetPitVol:=100;
 
-    Formation[1].Depth:=Hole[MaxHoles,1];   { define default formation }
-    Formation[1].Hardness:=1;
-    if Offshore then x:=0.442 else x:=0.4332; { x = norm. gradient * 0.052 }
-    Formation[1].FP:=((Hole[MaxHoles,1] * UoMConverter[1]) * x) / UoMConverter[3];
-    For i:=2 to 10 do                  { and zero the rest        }
+//    Formation[1].Depth:=Hole[MaxHoles,1];   { define default formation }
+//    Formation[1].Hardness:=1;
+//    if Offshore then x:=0.442 else x:=0.4332; { x = norm. gradient * 0.052 }
+//    Formation[1].FP:=((Hole[MaxHoles,1] * UoMConverter[1]) * x) / UoMConverter[3];
+
+    For i:=1 to 10 do                  { and zero the rest        }
     Begin
       Formation[i].Depth:=Zero;
       Formation[i].Hardness:=Zero;
@@ -150,7 +151,9 @@ Begin
 
     SimHoleCalc;                     { do HoleCalc and initialise volumes  }
     MudVol:=HoleVol;
-    KelHt:=33;                       { initialise kelly height             }
+    KellyHeight:=33;                       { initialise kelly height             }
+    LastKellyHeight:=33;             { initialise kelly height             }
+    KellyImageIndex:=0;              { initialise kelly image index        }
     //InitialiseKelly;                 { clear box, draw scale and set up    }
     SetKelly;                        { use SetKelly to set it up for future}
                                      { use                                 }
@@ -273,7 +276,7 @@ Begin
       StrokeCounter:=Zero;          { set stroke counter to zero             }
       Status       :=Zero;          { force a status display in StatusUpdate }
 
-      LastKelht        :=33;        { initialise kelly down depth            }
+      LastKellyHeight        :=33;        { initialise kelly down depth            }
       LastKD       :=PipeTD;        { initialize for next KD (=LastKD+27)    }
 
       KelHt        :=33;

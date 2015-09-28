@@ -63,6 +63,7 @@ type
     FlowInValue: TLabel;
     FlowOutValue: TLabel;
     DiffFlowValue: TLabel;
+    BushingImage: TImage;
     KellyScale: TImage;
     KellyImage: TImage;
     MenuItem2Geology: TMenuItem;
@@ -319,7 +320,7 @@ begin
   With Data do
   Begin
     //ShowMessage(FloatToStr(KelHt));
-    if (KelHt < 33) then
+    if (KellyHeight < 33) then
     Begin
       RPM:=RPM+1;
       if RPM>160 then RPM:=160;
@@ -394,21 +395,6 @@ begin
     end;
 end;
 
-procedure TDrillSim.KellyUpClick(Sender: TObject);
-begin
-  With Data do
-  Begin
-    if not ShutIn then  { cannot move kelly if shut in }
-    Begin
-      if abs(Hole[MaxHoles,1]-BitTD) >= 1
-        then KelHt:=KelHt - 0.1
-        else KelHt:=KelHt-0.01;
-      if KelHt<3 then KelHt:=3;
-      DrawKelly;
-    End;
-  end;
-end;
-
 procedure TDrillSim.KellyDownClick(Sender: TObject);
 begin
   With Data do
@@ -416,10 +402,29 @@ begin
     if not ShutIn then  { cannot move kelly if shut in }
     Begin
       if abs(Hole[MaxHoles,1]-BitTD) >= 1
-        then KelHt:=KelHt + 0.1
-        else KelHt:=KelHt+0.01;
-      if KelHt>33 then KelHt:=33;
-      DrawKelly;
+        then KellyHeight:=KellyHeight - 0.1
+        else KellyHeight:=KellyHeight - 0.01;    { max decrement when less than 1 foot off bottom }
+
+      if KellyHeight<3 then KellyHeight:=3;      { kelly cannot go below 3 ft }
+
+      DrawKelly;                     { display it in SimulateUpdate }
+    End;
+  end;
+end;
+
+procedure TDrillSim.KellyUpClick(Sender: TObject);
+begin
+  With Data do
+  Begin
+    if not ShutIn then  { cannot move kelly if shut in }
+    Begin
+      if abs(Hole[MaxHoles,1]-BitTD) >= 1
+        then KellyHeight:=KellyHeight + 0.1
+        else KellyHeight:=KellyHeight + 0.01;    { max increment when less than 1 foot off bottom }
+
+      if KellyHeight>33 then KellyHeight:=33;    { kelly cannot go above 33 ft }
+
+      DrawKelly;                     { display it in SimulateUpdate }
     End;
   End;
 
@@ -453,9 +458,9 @@ End;
 
 procedure TDrillSim.PipeMinusClick(Sender: TObject);
 begin
-  With Data do
+  With Data do              {only allowed when on slips }
   Begin
-  if (KelHt=33) and (Pipe[MaxPipes,1] >27) then
+  if (KellyHeight=33) and (Pipe[MaxPipes,1] >27) then
   Begin
     CheckPumps;
     if PumpsOff then Pipe[MaxPipes,1]:=Pipe[MaxPipes,1] - 27;
@@ -467,9 +472,9 @@ end;
 
 procedure TDrillSim.PipePlusClick(Sender: TObject);
 begin
-  With Data do
+  With Data do             { only allowed when on slips }
   Begin
-  if (KelHt=33) and (Hole[MaxHoles,1] - BitTD >=27) then
+  if (KellyHeight=33) and (Hole[MaxHoles,1] - BitTD >=27) then
   Begin
     CheckPumps;
     if PumpsOff then
@@ -556,8 +561,11 @@ begin
 
   StringToMemo('DrillSimGUI.FormaActivate: Running DrillSim start up sequence');
   StartUp;     { call DrillSim StartUp }
-  KellyScale.Picture.LoadFromFile('kellyscale.png');
-  KellyImage.Picture.LoadFromFile('kellyfull.png');
+
+  KellyScale.Picture.LoadFromFile('kellyscale.png');  { draw kelly starting position }
+  KellyImage.Picture.LoadFromFile('kellyup-0.png');
+  BushingImage.Picture.LoadFromFile('kellybushingup-0.png');
+
 end;
 
 

@@ -425,8 +425,6 @@ End;
 
 {* ==================== Command Processor =================== *}
 Procedure CommandProcessor;
-Var
-  i : integer;
 Begin
   Quit:=False;
   StringToMemo('Command: ' + InputString);

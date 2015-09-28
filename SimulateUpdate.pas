@@ -2,7 +2,8 @@ Unit SimulateUpdate;
 
 Interface
 
-Uses DrillSimVariables,
+Uses sysutils,
+     DrillSimVariables,
      DrillSimUtilities;
 
 Procedure ScreenService;
@@ -15,24 +16,42 @@ Procedure FlowUpdate;
 
 Implementation
 
+Uses DrillSimGUI;
+
 { -------------------- Kelly Routines ------------------- }
 
 Procedure DrawKelly;    { draws appropriate kelly and bushing @ KelHt }
-var x : real;
+var
+  x : real;
+  imageFileName       : String120;
 Begin
-//  TAttr:=AttrByte;
-  //SetColorSet(WhiteOnBlue);
-  if Data.KelHt = 33 then            { Set at top, move bushing off RT }
+  if Data.KellyHeight = 33 then            { Set at top, move bushing off RT }
   Begin
     if Data.RPM > Zero then Data.RPM:=Zero;
-    ////Disp(38,2,SolidUpper);
-    ////Disp(38,3,KellyPipe);
-    ////Disp(37,13,UpBushing);
+    KellyImageIndex:=0;
+
+    imageFileName:='kellyup-0.png';
+    DrillSim.KellyImage.Picture.LoadFromFile(imageFileName);
+
+    imageFileName:='kellybushingup-0.png';
+    DrillSim.BushingImage.Picture.LoadFromFile(imageFileName);
   End else
   Begin
-    if LastKelHt = 33 then ////Disp(37,13,DnBushing);   { move bushing to table }
-    x:=trunc((42 - Data.KelHt) / 3)-1;
-    if (frac((42 - Data.KelHt) / 3) >= 0.5) then
+    if Data.KellyHeight < LastKellyHeight then
+    Begin
+      KellyImageIndex:=KellyImageIndex + 1;
+      imageFileName:='kellyup-' + IntToStr(KellyImageIndex) + '.png';
+      DrillSim.KellyImage.Picture.LoadFromFile(imageFileName);
+      if KellyImageIndex=1 then imageFileName:='kellybushingup-0.png';
+      DrillSim.BushingImage.Picture.LoadFromFile(imageFileName);
+    End;
+
+
+
+
+    if LastKellyHeight = 33 then    { move bushing to table }
+    x:=trunc((42 - Data.KellyHeight) / 3)-1;
+    if (frac((42 - Data.KellyHeight) / 3) >= 0.5) then
     Begin
       ////Disp(38,x,'   ');
       ////Disp(38,x+1,SolidUpper);
@@ -43,34 +62,33 @@ Begin
       ////Disp(38,x+1,SplitLower);
     End;
                                           { correct erasure of bushing if KD }
-    if Data.KelHt < 4.5 then ////Disp(37,13,Bushing[CurrentBushing]);
+    if Data.KellyHeight < 4.5 then ////Disp(37,13,Bushing[CurrentBushing]);
   End;
-  Str(Data.KelHt / UoMConverter[1]:5:2,TempString);
-  LastKelHt:=Data.KelHt;
-//  AttrByte:=TAttr;
-  ////Disp(46,3,TempString);     { must be done after resetting color attr to }
-End; { procedure DrawKelly } { the grey on black default color }
+
+  Str(Data.KellyHeight / UoMConverter[1]:5:2,TempString);
+  LastKellyHeight:=Data.KellyHeight;                 { set last kelly height for next refresh }
+
+End; { procedure DrawKelly }
 
 
-Procedure SetKelly; { move kelly to drilling position ie. when loading a file }
-Var q, r : real;
+Procedure SetKelly; { move kelly to drilling position ie. after loading a file }
+Var q, r : real;    { this procedure simply ramps the kelly height down until its = Data.KellyHeight }
 Begin
   With Data do
   Begin
-    if KelHt<33 then              { if off-slips move it to last position  }
+    if KellyHeight<33 then              { if off-slips move it to last position  }
     Begin
-      q:=KelHt;
-      KelHt:=33;
-      While KelHt > q do          { ...move kelly down to correct position }
+      q:=KellyHeight;
+      KellyHeight:=33;
+      While KellyHeight > q do          { ...move kelly down to correct position }
       Begin
-        if (KelHt-q) > 0.05 then r:=0.05 else r:=0.0005; { 1/50000' }
-        KelHt:=KelHt-r;
+        if (KellyHeight-q) > 0.05 then r:=0.05 else r:=0.0005; { 1/50000' }
+        KellyHeight:=KellyHeight-r;
         DrawKelly;                { go away and draw it }
       End;
     End else DrawKelly;           { draw it in case KelHt=33               }
-    LastKelHt:=KelHt;
-    Str(Data.KelHt / UoMConverter[1]:5:2,TempString);
-    ////Disp(46,3,TempString);
+    LastKellyHeight:=KellyHeight;
+    Str(Data.KellyHeight / UoMConverter[1]:5:2,TempString);
   End;
 End;
 
@@ -271,7 +289,7 @@ Label Loop;
 Begin
   With Data do
   Begin
-    if KelHt = 33 then                { calculate based on kelly height   }
+    if KellyHeight = 33 then                { calculate based on kelly height   }
     Begin                             { if at top then on slips           }
       if ShutIn then i:=6 else i:=1;  { and if shut in too then...shut in }
     End else

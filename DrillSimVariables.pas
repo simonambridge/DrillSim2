@@ -183,7 +183,7 @@ Type
 
                    PipeTD                      : real;
                    StringTD                    : real;
-                   KelHt                       : real;
+                   KellyHeight                 : real;
                    LastKD                      : real;
                    WOB                         : real;
                    WOH                         : real;
@@ -388,7 +388,8 @@ Var
    LastFf, LastRn      : real;
    LastFn, LastFk      : real;
 
-   LastKelHt           : real;
+   LastKellyHeight     : real;
+   KellyImageIndex     : integer;
    LastWOB             : real;
    LastWOH             : real;
    LastStrWt           : real;

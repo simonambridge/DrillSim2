@@ -151,7 +151,9 @@ Begin
 
     SimHoleCalc;                     { do HoleCalc and initialise volumes  }
     MudVol:=HoleVol;
-    KelHt:=33;                       { initialise kelly height             }
+    KellyHeight:=33;                       { initialise kelly height             }
+    LastKellyHeight:=33;             { initialise kelly height             }
+    KellyImageIndex:=0;              { initialise kelly image index        }
     //InitialiseKelly;                 { clear box, draw scale and set up    }
     SetKelly;                        { use SetKelly to set it up for future}
                                      { use                                 }
@@ -274,10 +276,10 @@ Begin
       StrokeCounter:=Zero;          { set stroke counter to zero             }
       Status       :=Zero;          { force a status display in StatusUpdate }
 
-      LastKelht        :=33;        { initialise kelly down depth            }
+      LastKellyHeight        :=33;        { initialise kelly down depth            }
       LastKD       :=PipeTD;        { initialize for next KD (=LastKD+27)    }
 
-      KelHt        :=33;
+      KellyHeight        :=33;
 
       DrillMult:=10;          { default value of 10 for drilling accelerator }
       ExcessMud:=Zero;                             { no excess to start with }

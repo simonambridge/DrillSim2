@@ -32,7 +32,7 @@ Var
 Procedure DrillingError;
 Begin
   Delay(1000);
-  Data.KelHt:=Data.KelHt + 0.5;
+  Data.KellyHeight:=Data.KellyHeight + 0.5;
   DrawKelly;
   ScreenService;
 End;
@@ -57,10 +57,10 @@ Begin
           TD:=TD + (x * DrillMult);      { speed up real-time by DrillMult }
           if AutoDrill then
           Begin
-            KelHt:=KelHt - (x * DrillMult); { speed-up drop kelly by DrillMult }
-            if KelHt < 3 then
+            KellyHeight:=KellyHeight - (x * DrillMult); { speed-up drop kelly by DrillMult }
+            if KellyHeight < 3 then
             Begin
-              KelHt:=3;                        { check for kelly down }
+              KellyHeight:=3;                        { check for kelly down }
               DrawKelly;
               AutoDrill:=False;
               MessageToMemo(2);
@@ -139,7 +139,7 @@ Begin
     PipeTD:=Zero;
     For i:=1 to MaxPipes do PipeTD:=PipeTD+Pipe[i,1];  { calc. string length }
 
-    StringTD:=PipeTD + (30 - KelHt);                   { set pipe depth }
+    StringTD:=PipeTD + (30 - KellyHeight);                   { set pipe depth }
 
     if StringTD > TD then                  { D R I L L I N G  }
     Begin                                  { ---------------- }
@@ -166,7 +166,7 @@ Begin
     ScreenService;
     if RPM = Zero then
     Begin
-      if KelHt < 33 then
+      if KellyHeight < 33 then
       Begin
 //        TAttr:=AttrByte;
         //SetColorSet(WhiteOnBlue);

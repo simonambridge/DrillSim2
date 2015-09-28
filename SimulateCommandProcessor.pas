@@ -32,7 +32,7 @@ Begin
     Begin
       Edited:=True;
       Input:=copy(InputString,2,1);
-      if KelHt = 33 then
+      if KellyHeight = 33 then
       Begin
         Case Input[1] of
         'H' : Begin

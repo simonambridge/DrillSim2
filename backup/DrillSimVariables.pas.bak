@@ -102,7 +102,7 @@ Type
                    LotMW                       : real;
                    LotPressure                 : real;
 
-                   RockPointer                 : integer;
+                   FormationPointer            : integer;
                    Formation                   : array[1..10] of FormationRecord;
 
                    Gas                         : array[1..200] of GasRec;
@@ -388,7 +388,8 @@ Var
    LastFf, LastRn      : real;
    LastFn, LastFk      : real;
 
-   LastKelHt           : real;
+   LastKellyHeight     : real;
+   KellyImageIndex     : integer;
    LastWOB             : real;
    LastWOH             : real;
    LastStrWt           : real;
