@@ -146,8 +146,8 @@ Begin
       Begin                                  { otherwise subtract from Drill }
         Pipe[MaxPipes,1]:=Pipe[MaxPipes,1]-x;{ Pipe to put bit on bottom     }
         PipeTD:=PipeTD-x;                    { and subtract from PipeTD      }
-        KellyHeight:=33;                           { and then reset kelly on slips }
-        LastKelHt:=33;
+        KellyHeight:=33;                     { and then reset kelly on slips }
+        LastKellyHeight:=33;
         LastKD:=PipeTD;                      { and set up for new kelly down }
       End;
     End;

@@ -23,7 +23,6 @@ uses
   DrillSimStartup,
   DrillSimFile,
   DrillSimDataResets,
-  DrillSimDataInput,
   DrillSimUtilities,
   DrillSimHoleCalc,
   DrillSimMessageToMemo,
@@ -43,7 +42,6 @@ uses
   SimulateCommandProcessor,
   SimulateUpdate,
   SimulateSurfaceControls,
-  SimulateFile,
   SimulateHoleCalcs,
   SimulateControl;
 
@@ -281,7 +279,9 @@ begin
   splash.SupportContact := 'simon@ntier-db.com';
 end;
 
-{* ========================================================================== *}
+{* =========================== Input Controls ================================ *}
+
+{ ------------------------------ checks -----------------------------------------}
 
 Procedure CheckPumps;  { called by PipeMinus and PipePlus}
 Begin                  {check to see if pumping when adding or subtracting pipe }
@@ -304,6 +304,7 @@ Begin                    { then recalculate pipe displacement }
   End;
 End;
 
+{ ------------------------------ RPM -----------------------------------------}
 
 procedure TDrillSim.RPMminusClick(Sender: TObject);
 begin
@@ -331,6 +332,8 @@ begin
     End;
   end;
 end;
+
+{ ------------------------------ pumps -----------------------------------------}
 
 Procedure TDrillSim.Pump1MinusClick(Sender: TObject);
 begin
@@ -395,6 +398,8 @@ begin
     end;
 end;
 
+{ ------------------------------ kelly -----------------------------------------}
+
 procedure TDrillSim.KellyDownClick(Sender: TObject);
 begin
   With Data do
@@ -403,7 +408,7 @@ begin
     Begin
       if abs(Hole[MaxHoles,1]-BitTD) >= 1
         then KellyHeight:=KellyHeight - 0.1
-        else KellyHeight:=KellyHeight - 0.01;    { max decrement when less than 1 foot off bottom }
+        else KellyHeight:=KellyHeight - 0.05;    { max decrement when less than 1 foot off bottom }
 
       if KellyHeight<3 then KellyHeight:=3;      { kelly cannot go below 3 ft }
 
@@ -420,15 +425,48 @@ begin
     Begin
       if abs(Hole[MaxHoles,1]-BitTD) >= 1
         then KellyHeight:=KellyHeight + 0.1
-        else KellyHeight:=KellyHeight + 0.01;    { max increment when less than 1 foot off bottom }
+        else KellyHeight:=KellyHeight + 0.05;    { max increment when less than 1 foot off bottom }
 
       if KellyHeight>33 then KellyHeight:=33;    { kelly cannot go above 33 ft }
 
       DrawKelly;                     { display it in SimulateUpdate }
     End;
   End;
-
 end;
+
+{ ------------------------------ pipe ------------------------------------------}
+
+procedure TDrillSim.PipeMinusClick(Sender: TObject);
+begin
+  With Data do              {only allowed when on slips }
+  Begin
+    if (KellyHeight=33) and (Pipe[MaxPipes,1] >27) then
+    Begin
+      CheckPumps;
+      if PumpsOff then Pipe[MaxPipes,1]:=Pipe[MaxPipes,1] - 27;
+      StringWtCalc;
+    End;
+  End;
+end;
+
+procedure TDrillSim.PipePlusClick(Sender: TObject);
+begin
+  With Data do             { only allowed when on slips }
+  Begin
+    if (KellyHeight=33) and (Hole[MaxHoles,1] - BitTD >=27) then
+    Begin
+      CheckPumps;
+      if PumpsOff then
+      Begin
+        Pipe[MaxPipes,1]:=Pipe[MaxPipes,1] + 27;
+        LastKD:=Hole[MaxHoles,1];
+        StringWtCalc;
+      End;
+    End;
+  End;
+end;
+
+{ ------------------------------ choke -----------------------------------------}
 
 procedure TDrillSim.ChokeMinusClick(Sender: TObject);
 begin
@@ -456,37 +494,7 @@ begin
   End;
 End;
 
-procedure TDrillSim.PipeMinusClick(Sender: TObject);
-begin
-  With Data do              {only allowed when on slips }
-  Begin
-  if (KellyHeight=33) and (Pipe[MaxPipes,1] >27) then
-  Begin
-    CheckPumps;
-    if PumpsOff then Pipe[MaxPipes,1]:=Pipe[MaxPipes,1] - 27;
-    StringWtCalc;
-  End;
-End;
-
-end;
-
-procedure TDrillSim.PipePlusClick(Sender: TObject);
-begin
-  With Data do             { only allowed when on slips }
-  Begin
-  if (KellyHeight=33) and (Hole[MaxHoles,1] - BitTD >=27) then
-  Begin
-    CheckPumps;
-    if PumpsOff then
-    Begin
-      Pipe[MaxPipes,1]:=Pipe[MaxPipes,1] + 27;
-      LastKD:=Hole[MaxHoles,1];
-      StringWtCalc;
-    End;
-  End;
-End;
-
-end;
+{ ------------------------------ Mud Mode---------------------------------------}
 
 procedure TDrillSim.PowerLawRadioButtonChange(Sender: TObject);
 begin
@@ -502,6 +510,8 @@ begin
   End;
 
 end;
+
+{ ------------------------------ Autodrill -------------------------------------}
 
 procedure TDrillSim.AutoDrillCheckBoxChange(Sender: TObject);
 begin
@@ -559,12 +569,16 @@ begin
   //ChDir(LoggedDirectory); currentdirectory, default directory?
   Edited:=False;  { start clean }
 
+  { DrillSim start up sequence }
+
   StringToMemo('DrillSimGUI.FormaActivate: Running DrillSim start up sequence');
   StartUp;     { call DrillSim StartUp }
 
   KellyScale.Picture.LoadFromFile('kellyscale.png');  { draw kelly starting position }
   KellyImage.Picture.LoadFromFile('kellyup-0.png');
-  BushingImage.Picture.LoadFromFile('kellybushingup-0.png');
+  BushingImage.Picture.LoadFromFile('kellybushingup.png');
+
+  StringToMemo('Initial kelly height = ' + FloatToStr(Data.KellyHeight));
 
 end;
 
@@ -905,7 +919,7 @@ begin
     if NoFileDefined then           { check for no file in use               }
     Begin
       CurrentFQFileName:='no file';          { set file name for load window          }
-      MenuItem1OpenFileClick(nil);                     { and go prompt for one                  }
+      MenuItem1OpenFileClick(nil);           { and go prompt for one                  }
     End;
 
     if not NoFileDefined then       { if file defined, continue into Simulator }
@@ -919,14 +933,13 @@ begin
       InitKick;                     { Set up and initialise if NeverSimulated }
 
       InitGeology;                  { find current position within geological}
-                                   { table. Also done on Load and Clear     }
+                                    { table. Also done on Load and Clear     }
       GetCurrentTime (t);
       Data.t2:=t.Seconds;             { initialize time                    }
 
       SimHoleCalc;                    { calculate volumes                  }
 
       FlowUpdate;                     { set up flow in                     }
-      //InitialiseKelly;                { draw it at the top                 }
       SetKelly;                       { move kelly to drilling position    }
       SetSurfControls;                { set RAMs and choke line            }
 
@@ -937,13 +950,6 @@ begin
 
     End;                              { still no file, then return to DrillSim }
   End;
-
-                                   { Edited set to FALSE when a file is     }
-                                   { loaded. Therefore the start up file    }
-                                   { and any subsequently loaded will be    }
-                                   { able to detect if the data is altered  }
-                                   { even when going in and out of DrillSim }
-   // StartUp;                { convert back to DrillSim units and load help     }
 End;
 
 

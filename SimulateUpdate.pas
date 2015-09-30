@@ -4,7 +4,8 @@ Interface
 
 Uses sysutils,
      DrillSimVariables,
-     DrillSimUtilities;
+     DrillSimUtilities,
+     DrillSimMessageToMemo;
 
 Procedure ScreenService;
 Procedure DrawKelly;    { draws appropriate kelly and bushing @ KelHt }
@@ -25,7 +26,17 @@ var
   x : real;
   imageFileName       : String120;
 Begin
-  if Data.KellyHeight = 33 then            { Set at top, move bushing off RT }
+  StringToMemo('Kelly height = ' + FloatToStr(Data.KellyHeight));
+
+  if Data.KellyHeight < LastKellyHeight then   { if lower than last position... }
+  Begin
+    KellyImageIndex:=KellyImageIndex + 1;
+  End else if Data.KellyHeight > LastKellyHeight then   { if higher than last position... }
+  Begin
+    KellyImageIndex:=KellyImageIndex - 1;
+  End else Exit;                                        { if it hasnt moved then exit DrawKelly }
+
+  if Data.KellyHeight = 33 then            { Set at top }
   Begin
     if Data.RPM > Zero then Data.RPM:=Zero;
     KellyImageIndex:=0;
@@ -33,41 +44,29 @@ Begin
     imageFileName:='kellyup-0.png';
     DrillSim.KellyImage.Picture.LoadFromFile(imageFileName);
 
-    imageFileName:='kellybushingup-0.png';
+    imageFileName:='kellybushingup.png';
     DrillSim.BushingImage.Picture.LoadFromFile(imageFileName);
   End else
+  if Data.KellyHeight = 4.5 then            { Set at bottom / kelly down }
   Begin
-    if Data.KellyHeight < LastKellyHeight then
+
+  end else
+  Begin                                          { if not at top or bottom... }
+    if KellyImageIndex=1 then                    { check if its just come off slips... }
     Begin
-      KellyImageIndex:=KellyImageIndex + 1;
-      imageFileName:='kellyup-' + IntToStr(KellyImageIndex) + '.png';
-      DrillSim.KellyImage.Picture.LoadFromFile(imageFileName);
-      if KellyImageIndex=1 then imageFileName:='kellybushingup-0.png';
+      imageFileName:='kellybushingdown-1.png';
       DrillSim.BushingImage.Picture.LoadFromFile(imageFileName);
-    End;
+    end;
+    imageFileName:='kellyup-' + IntToStr(KellyImageIndex) + '.png';
+    DrillSim.KellyImage.Picture.LoadFromFile(imageFileName);
 
+    imageFileName:='kellybushingdown-1.png';
+//    DrillSim.BushingImage.Picture.LoadFromFile(imageFileName);
 
-
-
-    if LastKellyHeight = 33 then    { move bushing to table }
-    x:=trunc((42 - Data.KellyHeight) / 3)-1;
-    if (frac((42 - Data.KellyHeight) / 3) >= 0.5) then
-    Begin
-      ////Disp(38,x,'   ');
-      ////Disp(38,x+1,SolidUpper);
-      ////Disp(38,x+2,KellyPipe);
-    End else
-    Begin
-      ////Disp(38,x,SplitUpper);
-      ////Disp(38,x+1,SplitLower);
-    End;
-                                          { correct erasure of bushing if KD }
-    if Data.KellyHeight < 4.5 then ////Disp(37,13,Bushing[CurrentBushing]);
+    StringToMemo('Image: ' + ImageFileName);
   End;
 
-  Str(Data.KellyHeight / UoMConverter[1]:5:2,TempString);
   LastKellyHeight:=Data.KellyHeight;                 { set last kelly height for next refresh }
-
 End; { procedure DrawKelly }
 
 

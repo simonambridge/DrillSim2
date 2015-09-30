@@ -8,7 +8,6 @@ Uses Crt,
      DrillSimDataResets,
      DrillSimMessageToMemo,
      SimulateVolumes,
-     SimulateFile,
      SimulateUpdate,
      SimulateHoleCalcs,
      SimulateHydrostaticCalcs,
@@ -32,7 +31,7 @@ Begin
     Begin
       Edited:=True;
       Input:=copy(InputString,2,1);
-      if KelHt = 33 then
+      if KellyHeight = 33 then
       Begin
         Case Input[1] of
         'H' : Begin
@@ -91,7 +90,7 @@ Begin
       Input:=copy(InputString,2,1);
       Case Input[1] of
       'S' : Begin
-              SaveFile;            { includes MessageToMemo(78) }
+              SaveData;            { includes MessageToMemo(78) }
               gotoxy(39,12);
             End;
       'L' : Begin

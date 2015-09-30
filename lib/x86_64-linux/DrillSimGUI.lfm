@@ -1,7 +1,7 @@
 object DrillSim: TDrillSim
-  Left = 91
+  Left = 193
   Height = 668
-  Top = 0
+  Top = 83
   Width = 999
   Caption = 'DrillSim 3.0'
   ClientHeight = 645
@@ -621,7 +621,7 @@ object DrillSim: TDrillSim
       Left = 248
       Height = 137
       Top = 0
-      Width = 71
+      Width = 74
       Center = True
     end
     object KellyScale: TImage
@@ -635,7 +635,7 @@ object DrillSim: TDrillSim
       Left = 248
       Height = 19
       Top = 137
-      Width = 71
+      Width = 74
       Center = True
     end
   end

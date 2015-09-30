@@ -339,8 +339,6 @@ Var
    OriginDirectory     : String120;
    OriginalExitProc    : Pointer;
 
-   RealResult          : real;          { used by Proc. GetReal, GetInt }
-   IntResult           : integer;
    IntParam            : integer;
    RealParam           : real;
 

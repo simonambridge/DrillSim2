@@ -8,7 +8,6 @@ Uses Crt,
      DrillSimDataResets,
      DrillSimMessageToMemo,
      SimulateVolumes,
-     SimulateFile,
      SimulateUpdate,
      SimulateHoleCalcs,
      SimulateHydrostaticCalcs,
@@ -91,19 +90,13 @@ Begin
       Input:=copy(InputString,2,1);
       Case Input[1] of
       'S' : Begin
-              SaveFile;            { includes MessageToMemo(78) }
+              SaveData;            { includes MessageToMemo(78) }
               gotoxy(39,12);
             End;
       'L' : Begin
-              SimulateLoadFile;
+              LoadData;
               SimHoleCalc;         { do HoleCalc and initialise volumes }
-//              PitBox;              { Display correct parameters }
-//              SPPBox;
-//              FlowBox;
-//              DepthBox;
-//              MWBox;
-//              InitialiseKelly;   { clear box, draw scale and set up }
-//              SetKelly;          { move it to drilling position    }
+              SetKelly;          { move it to drilling position    }
               SetSurfControls;
               StackCalc;
             End;

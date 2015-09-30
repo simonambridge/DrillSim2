@@ -183,7 +183,7 @@ Type
 
                    PipeTD                      : real;
                    StringTD                    : real;
-                   KelHt                       : real;
+                   KellyHeight                 : real;
                    LastKD                      : real;
                    WOB                         : real;
                    WOH                         : real;

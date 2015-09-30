@@ -9,7 +9,6 @@ Uses Crt,
      DrillSimUtilities,
      DrillSimMessageToMemo,
      DrillSimDataResets,
-     DrillSimDataInput,
      DrillSimHoleCalc;
 
 Procedure LoadData;            { Entry : FullName = filename.WDF    }
@@ -58,8 +57,14 @@ Begin
       Exit;       // set NoFileDefine to True and clear CurrentFQFileName
     end;
   End;
+
+  InitMud;            { set OriginalMuds (to current mud W,Pv,Yp)           }
+  InitDepth;          { save the original depth for this session            }
+  InitGeology;        { locate correct current position within geology table}
+  InitKick;           { initialise system variables, and set up if NeverSimulated }
+
   NoFileDefined:=False;
-  Edited:=False;              { set this for entry into Simulate }
+  Edited:=False;
 End;
 
 

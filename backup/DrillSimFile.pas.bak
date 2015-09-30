@@ -46,6 +46,10 @@ Begin
     StringToMemo('DrillSimFile.LoadData: Operator ' + Data.WellOperator);
     StringToMemo('DrillSimFile.LoadData: Well Name ' + Data.WellName);
 
+    if Data.API = True then APIUnits  { set array contents to api or metric }
+    else MetricUnits;
+    StringToMemo('DrillSimStartup.StartUp: Units selected: '+ UoMDescriptor);
+
   except
     on E: EInOutError do
     Begin
@@ -54,8 +58,14 @@ Begin
       Exit;       // set NoFileDefine to True and clear CurrentFQFileName
     end;
   End;
+
+  InitMud;            { set OriginalMuds (to current mud W,Pv,Yp)           }
+  InitDepth;          { save the original depth for this session            }
+  InitGeology;        { locate correct current position within geology table}
+  InitKick;           { initialise system variables, and set up if NeverSimulated }
+
   NoFileDefined:=False;
-  Edited:=False;              { set this for entry into Simulate }
+  Edited:=False;
 End;
 
 

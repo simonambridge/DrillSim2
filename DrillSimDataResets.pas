@@ -154,7 +154,6 @@ Begin
     KellyHeight:=33;                       { initialise kelly height             }
     LastKellyHeight:=33;             { initialise kelly height             }
     KellyImageIndex:=0;              { initialise kelly image index        }
-    //InitialiseKelly;                 { clear box, draw scale and set up    }
     SetKelly;                        { use SetKelly to set it up for future}
                                      { use                                 }
     MessageToMemo(5);
@@ -162,7 +161,7 @@ Begin
 End;
 
 Procedure ResetToLoadedValues;               { call this from CLEAR to reset to }
-Begin                                    { start-up values                  }
+Begin                                        { start-up values                  }
   With Data do
   Begin
     Hole[MaxHoles,1]:=OriginalHoleDepth;
@@ -197,14 +196,11 @@ Begin
 End;
 
 
-Procedure InitKick;  { only used by Simulate.Chn at startup, Load and CLEAR }
+Procedure InitKick;  { only used at startup, Load and CLEAR }
 Var i : integer;     { CLEAR sets NeverSimulated to force complete initialisation }
 Begin
   With Data do
   Begin
-    if NeverSimulated <>True then   { if never initialised for Simulate then set up   }
-    Begin
-      NeverSimulated:=False;           { set to false so don't do again when called }
       t1           :=Zero;                  { no problem if file not saved }
       t2           :=Zero;                     { after this initialisation }
                                                { because it will be reset  }
@@ -276,10 +272,10 @@ Begin
       StrokeCounter:=Zero;          { set stroke counter to zero             }
       Status       :=Zero;          { force a status display in StatusUpdate }
 
-      LastKellyHeight        :=33;        { initialise kelly down depth            }
+      LastKellyHeight:=33;          { initialise last kelly height           }
+      KellyHeight  :=33;
       LastKD       :=PipeTD;        { initialize for next KD (=LastKD+27)    }
 
-      KellyHeight        :=33;
 
       DrillMult:=10;          { default value of 10 for drilling accelerator }
       ExcessMud:=Zero;                             { no excess to start with }
@@ -315,9 +311,6 @@ Begin
         Vel[i,2]:=Zero;
         Vel[i,3]:=Zero;
       End;
-
-
-    End;
                                     { PipeTD initialised in HyCalc/DrillSim  }
                                     { and also in Proc. DrillCalc. PipeTD is }
                                     { initialised in DrillSim, for use here  }
