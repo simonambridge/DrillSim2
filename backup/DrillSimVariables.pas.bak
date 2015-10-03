@@ -339,8 +339,6 @@ Var
    OriginDirectory     : String120;
    OriginalExitProc    : Pointer;
 
-   RealResult          : real;          { used by Proc. GetReal, GetInt }
-   IntResult           : integer;
    IntParam            : integer;
    RealParam           : real;
 
@@ -390,9 +388,11 @@ Var
 
    LastKellyHeight     : real;
    KellyImageIndex     : integer;
+
    LastWOB             : real;
    LastWOH             : real;
    LastStrWt           : real;
+
    LastROP             : real;
    LastRPM             : real;
    Status              : integer;
@@ -434,13 +434,6 @@ Var
    ROPCalcCounter      : integer;
    CalculatedSoFar     : integer;
    StatusCounter       : integer;
-   SolidUpper          : String[3];
-   SplitUpper          : String[3];
-   SplitLower          : String[3];
-   KellyPipe           : String[3];
-   UpBushing           : String[5];
-   DnBushing           : String[5];
-   Bushing             : array[1..3] of String[5];
    CurrentBushing      : integer;
    CurrentTurn         : real;
 Implementation

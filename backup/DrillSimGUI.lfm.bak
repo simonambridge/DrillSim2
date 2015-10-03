@@ -1,7 +1,7 @@
 object DrillSim: TDrillSim
   Left = 193
   Height = 668
-  Top = 83
+  Top = 148
   Width = 999
   Caption = 'DrillSim 3.0'
   ClientHeight = 645
@@ -476,7 +476,6 @@ object DrillSim: TDrillSim
       Width = 56
       Alignment = taRightJustify
       AutoSize = False
-      Caption = '999'
       Font.Color = clBlack
       Font.Height = -13
       Font.Name = 'Sans'
@@ -497,10 +496,9 @@ object DrillSim: TDrillSim
     end
     object DrillingStatusValue: TLabel
       Left = 75
-      Height = 17
+      Height = 1
       Top = 42
-      Width = 58
-      Caption = 'On-slips'
+      Width = 1
       Font.Color = clBlack
       Font.Height = -13
       Font.Name = 'Sans'
@@ -634,7 +632,7 @@ object DrillSim: TDrillSim
     object BushingImage: TImage
       Left = 248
       Height = 19
-      Top = 165
+      Top = 137
       Width = 74
       Center = True
     end
@@ -1201,7 +1199,6 @@ object DrillSim: TDrillSim
       Width = 56
       Alignment = taRightJustify
       AutoSize = False
-      Caption = '0'
       Font.Color = clBlack
       Font.Height = -13
       Font.Name = 'Sans'

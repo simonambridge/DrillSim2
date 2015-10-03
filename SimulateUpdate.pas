@@ -24,47 +24,48 @@ Uses DrillSimGUI;
 Procedure DrawKelly;    { draws appropriate kelly and bushing @ KelHt }
 var
   x : real;
-  imageFileName       : String120;
 Begin
-  StringToMemo('Kelly height = ' + FloatToStr(Data.KellyHeight));
 
-  if Data.KellyHeight < LastKellyHeight then   { if lower than last position... }
-  Begin
-    KellyImageIndex:=KellyImageIndex + 1;
-  End else if Data.KellyHeight > LastKellyHeight then   { if higher than last position... }
-  Begin
-    KellyImageIndex:=KellyImageIndex - 1;
-  End else Exit;                                        { if it hasnt moved then exit DrawKelly }
+  KellyImageIndex:=trunc((33-Data.KellyHeight) * 2.667);  { 80 px /30 feet = 2.667 px/foot }
+  //KellyImageIndex:=KellyImageIndex div 10;
+
+  StringToMemo('Kelly height = ' + FloatToStr(Data.KellyHeight));
+  StringToMemo('KellyImageIndex = ' + IntToStr(KellyImageIndex));
+
+  { quick and dirty code }
+  if (KellyImageIndex = 0) then  KellyImageFileName:='kellyup-0.png'
+  else if (KellyImageIndex > 0) and (KellyImageIndex <= 2) then  KellyImageFileName:='kellyup-2.png'
+  else if (KellyImageIndex > 2) and (KellyImageIndex <= 4) then  KellyImageFileName:='kellyup-4.png'
+  else if (KellyImageIndex > 4) and (KellyImageIndex <= 6) then  KellyImageFileName:='kellyup-6.png'
+  else if (KellyImageIndex > 6) and (KellyImageIndex <= 8) then  KellyImageFileName:='kellyup-8.png'
+  else if (KellyImageIndex > 8) and (KellyImageIndex <= 10) then  KellyImageFileName:='kellyup-8.png'
+  else if (KellyImageIndex > 10) and (KellyImageIndex <= 20) then  KellyImageFileName:='kellyup-18.png'
+  else if (KellyImageIndex > 20) and (KellyImageIndex <= 30) then  KellyImageFileName:='kellyup-30.png'
+  else if (KellyImageIndex > 30) and (KellyImageIndex <= 40) then  KellyImageFileName:='kellyup-30.png'
+  else if (KellyImageIndex > 40) and (KellyImageIndex <= 50) then  KellyImageFileName:='kellyup-42.png'
+  else if (KellyImageIndex > 50) and (KellyImageIndex <= 60) then  KellyImageFileName:='kellyup-54.png'
+  else if (KellyImageIndex > 60) and (KellyImageIndex <= 70) then  KellyImageFileName:='kellyup-66.png'
+  else if (KellyImageIndex > 70) and (KellyImageIndex <= 80) then  KellyImageFileName:='kellyup-80.png';
+
+  DrillSim.KellyImage.Picture.LoadFromFile(KellyImageFileName);
 
   if Data.KellyHeight = 33 then            { Set at top }
   Begin
     if Data.RPM > Zero then Data.RPM:=Zero;
-    KellyImageIndex:=0;
 
-    imageFileName:='kellyup-0.png';
-    DrillSim.KellyImage.Picture.LoadFromFile(imageFileName);
+    BushingImageFileName:='kellybushingup.png';
+    DrillSim.BushingImage.Picture.LoadFromFile(BushingImageFileName);
 
-    imageFileName:='kellybushingup.png';
-    DrillSim.BushingImage.Picture.LoadFromFile(imageFileName);
   End else
-  if Data.KellyHeight = 4.5 then            { Set at bottom / kelly down }
+  if (LastKellyHeight = 33) and (LastKellyHeight <> Data.KellyHeight)
+  or (Data.RPM = 0) then { check if its just come off slips... }
   Begin
+    BushingImageFileName:='kellybushingdown-1.png';
+    DrillSim.BushingImage.Picture.LoadFromFile(BushingImageFileName);
+  end;
 
-  end else
-  Begin                                          { if not at top or bottom... }
-    if KellyImageIndex=1 then                    { check if its just come off slips... }
-    Begin
-      imageFileName:='kellybushingdown-1.png';
-      DrillSim.BushingImage.Picture.LoadFromFile(imageFileName);
-    end;
-    imageFileName:='kellyup-' + IntToStr(KellyImageIndex) + '.png';
-    DrillSim.KellyImage.Picture.LoadFromFile(imageFileName);
-
-    imageFileName:='kellybushingdown-1.png';
-//    DrillSim.BushingImage.Picture.LoadFromFile(imageFileName);
-
-    StringToMemo('Image: ' + ImageFileName);
-  End;
+  //StringToMemo('Image: ' + KellyImageFileName);
+  //StringToMemo('Image: ' + BushingImageFileName);
 
   LastKellyHeight:=Data.KellyHeight;                 { set last kelly height for next refresh }
 End; { procedure DrawKelly }
@@ -96,8 +97,6 @@ End;
 Procedure TurnBushing;
 Var x : real;
 Begin
-//  TAttr:=AttrByte;
-  //SetColorSet(WhiteOnBlue);
   With Data do
   Begin
     GetCurrentTime (t);
@@ -110,8 +109,9 @@ Begin
     Begin
       CurrentTurn:=Zero;
       CurrentBushing:=CurrentBushing + 1;
-      if CurrentBushing > 3 then CurrentBushing:=1;
-      ////Disp(37,13,Bushing[CurrentBushing]);
+      if CurrentBushing > 9 then CurrentBushing:=1;
+      BushingImageFileName:='kellybushingdown-'+ IntToStr(CurrentBushing) + '.png';
+      DrillSim.BushingImage.Picture.LoadFromFile(BushingImageFileName);
     End;
   End;
 //  AttrByte:=TAttr;
@@ -308,7 +308,7 @@ Loop : if i<>Status then                   { i=current status, so update    }
            5 : TempString:='On Bottom ';
            6 : TempString:=' Shut-In  ';
          End;
-         ////Disp(45,6,TempString);            { display status on screen       }
+         DrillSim.DrillingStatusValue.Caption:=TempString;           { display status on screen       }
          Status:=i;
        End;
   End;

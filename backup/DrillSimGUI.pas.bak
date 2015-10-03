@@ -304,35 +304,6 @@ Begin                    { then recalculate pipe displacement }
   End;
 End;
 
-{ ------------------------------ RPM -----------------------------------------}
-
-procedure TDrillSim.RPMminusClick(Sender: TObject);
-begin
-  With Data do
-  Begin
-    RPM:=RPM-1;
-    if RPM<Zero then RPM:=Zero;
-    RPMValue.Caption:=FloatToStr(RPM);
-  end;
-end;
-
-procedure TDrillSim.RPMplusClick(Sender: TObject);
-begin
-  With Data do
-  Begin
-    //ShowMessage(FloatToStr(KelHt));
-    if (KellyHeight < 33) then
-    Begin
-      RPM:=RPM+1;
-      if RPM>160 then RPM:=160;
-      RPMValue.Caption:=FloatToStr(RPM);
-    End else
-    Begin
-      MessageToMemo(52);
-    End;
-  end;
-end;
-
 { ------------------------------ pumps -----------------------------------------}
 
 Procedure TDrillSim.Pump1MinusClick(Sender: TObject);
@@ -398,6 +369,39 @@ begin
     end;
 end;
 
+{ ------------------------------ RPM -----------------------------------------}
+
+procedure TDrillSim.RPMminusClick(Sender: TObject);
+begin
+  With Data do
+  Begin
+    RPM:=RPM-1;
+    if RPM<Zero then RPM:=Zero;
+    RPMValue.Caption:=FloatToStr(RPM);
+    Memo1.Lines.Add('RPM Value ' + FloatToStr(RPM));
+    Memo1.SelStart:=Length(Memo1.Text);
+  end;
+end;
+
+procedure TDrillSim.RPMplusClick(Sender: TObject);
+begin
+  With Data do
+  Begin
+    //ShowMessage(FloatToStr(KelHt));
+    if (KellyHeight < 33) then
+    Begin
+      RPM:=RPM+1;
+      if RPM>160 then RPM:=160;
+      RPMValue.Caption:=FloatToStr(RPM);
+      Memo1.Lines.Add('RPM Value ' + FloatToStr(RPM));
+      Memo1.SelStart:=Length(Memo1.Text);
+    End else
+    Begin
+      MessageToMemo(52);
+    End;
+  end;
+end;
+
 { ------------------------------ kelly -----------------------------------------}
 
 procedure TDrillSim.KellyDownClick(Sender: TObject);
@@ -407,13 +411,14 @@ begin
     if not ShutIn then  { cannot move kelly if shut in }
     Begin
       if abs(Hole[MaxHoles,1]-BitTD) >= 1
-        then KellyHeight:=KellyHeight - 0.1
+        then KellyHeight:=KellyHeight - 0.5
         else KellyHeight:=KellyHeight - 0.05;    { max decrement when less than 1 foot off bottom }
 
       if KellyHeight<3 then KellyHeight:=3;      { kelly cannot go below 3 ft }
 
       DrawKelly;                     { display it in SimulateUpdate }
     End;
+    KellyHeightValue.Caption:=FloatToStr(Round2(KellyHeight/UoMConverter[1],2));
   end;
 end;
 
@@ -424,13 +429,14 @@ begin
     if not ShutIn then  { cannot move kelly if shut in }
     Begin
       if abs(Hole[MaxHoles,1]-BitTD) >= 1
-        then KellyHeight:=KellyHeight + 0.1
+        then KellyHeight:=KellyHeight + 0.5
         else KellyHeight:=KellyHeight + 0.05;    { max increment when less than 1 foot off bottom }
 
       if KellyHeight>33 then KellyHeight:=33;    { kelly cannot go above 33 ft }
 
       DrawKelly;                     { display it in SimulateUpdate }
     End;
+    KellyHeightValue.Caption:=FloatToStr(Round2(KellyHeight/UoMConverter[1],2));
   End;
 end;
 
@@ -473,24 +479,35 @@ begin
   With Data do
   Begin
     Choke:=Choke - 1;
-    if Choke=4 then CloseChoke;
-    if Choke < 5 then Choke:=Zero;
-    if Choke = Zero then
+    if Choke < 5 then
     Begin
+      if Choke=4 then CloseChoke;
+      MessageToMemo(65);
+      Choke:=Zero;
       DeltaCsgPr:=DeltaCsgPr + PlChoke;
       PlChoke:=Zero;
     End;
-  End;
-end;
+    ChokeValue.Caption:=FloatToStr(Choke);
+    Memo1.Lines.Add('Choke Value ' + FloatToStr(Choke));
+    Memo1.SelStart:=Length(Memo1.Text);
+  end;
+End;
 
 procedure TDrillSim.ChokePlusClick(Sender: TObject);
 begin
   With Data do
   Begin
     Choke:=Choke + 1;
-    if Choke < 5 then Choke:=5;
-    if Choke = 5 then OpenChoke;
+    if Choke < 5 then
+    Begin
+      MessageToMemo(64);
+      Choke:=5;
+      OpenChoke;
+    end;
     if Choke>100 then Choke:=100;
+    ChokeValue.Caption:=FloatToStr(Choke);
+    Memo1.Lines.Add('Choke Value ' + FloatToStr(Choke));
+    Memo1.SelStart:=Length(Memo1.Text);
   End;
 End;
 
@@ -565,20 +582,23 @@ end;
 procedure TDrillSim.FormActivate(Sender: TObject);
 begin
   StringToMemo('Running DrillSimGUI FormActivate................................'); // please wait....
-  // get paths etc
-  //ChDir(LoggedDirectory); currentdirectory, default directory?
   Edited:=False;  { start clean }
 
   { DrillSim start up sequence }
-
   StringToMemo('DrillSimGUI.FormaActivate: Running DrillSim start up sequence');
+  { ***************************************** }
   StartUp;     { call DrillSim StartUp }
+  { ***************************************** }
 
   KellyScale.Picture.LoadFromFile('kellyscale.png');  { draw kelly starting position }
   KellyImage.Picture.LoadFromFile('kellyup-0.png');
   BushingImage.Picture.LoadFromFile('kellybushingup.png');
 
+  KellyHeightValue.Caption:=FloatToStr(Round2(Data.KellyHeight/UoMConverter[1],2));
   StringToMemo('Initial kelly height = ' + FloatToStr(Data.KellyHeight));
+
+  ChokeValue.Caption:=FloatToStr(Data.Choke);
+  DrillingStatusValue.Caption:='Checking...';
 
 end;
 

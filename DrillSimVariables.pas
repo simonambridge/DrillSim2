@@ -312,6 +312,10 @@ Var
    TurbFlag            : boolean;
    FlowMode            : String20;
    Model               : String20;
+
+   KellyImageFileName       : String120;
+   BushingImageFileName       : String120;
+
    InString            : String120;          { Utility input string }
    InputString         : String120;
    LastString          : String120;
@@ -388,9 +392,11 @@ Var
 
    LastKellyHeight     : real;
    KellyImageIndex     : integer;
+
    LastWOB             : real;
    LastWOH             : real;
    LastStrWt           : real;
+
    LastROP             : real;
    LastRPM             : real;
    Status              : integer;
@@ -432,13 +438,6 @@ Var
    ROPCalcCounter      : integer;
    CalculatedSoFar     : integer;
    StatusCounter       : integer;
-   SolidUpper          : String[3];
-   SplitUpper          : String[3];
-   SplitLower          : String[3];
-   KellyPipe           : String[3];
-   UpBushing           : String[5];
-   DnBushing           : String[5];
-   Bushing             : array[1..3] of String[5];
    CurrentBushing      : integer;
    CurrentTurn         : real;
 Implementation
