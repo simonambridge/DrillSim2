@@ -348,6 +348,8 @@ Var
 
    HoleError           : boolean;
    Edited              : boolean;
+   Simulating          : boolean;
+   Paused              : boolean;
    Valid               : boolean;
    Esc                 : boolean;
 

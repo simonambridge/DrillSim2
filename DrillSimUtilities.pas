@@ -36,7 +36,6 @@ End;
 Procedure HelpWindow(Index : integer);
 Var i,j : integer;
 Begin
-//  TAttr:=AttrByte;
   j:=(Index-1)*10+1;  { ie 1=1-10, 2=11-20, etc }
   {MakeWindow (4,10,15,60,Blue+LightGrayBG,Blue+LightGrayBG,HdoubleBrdr,
                Window1); }
@@ -57,7 +56,6 @@ Begin
   CharInput:=ReadKey;
   {ModCursor(CursorOff); }
   {RemoveWindow; }
-//  AttrByte:=TAttr;
 End;
 
 Begin

@@ -30,9 +30,11 @@ Procedure InitData;     { Used to set everything to empty at start-up}
 Var i : integer;
     x : real;
 Begin
-  StringToMemo('Initialise - InitData called');
+  StringToMemo('Initialise - DrillSimDataResets:InitData called');
   With Data do
   Begin
+    Simulating:=False;
+    Paused:=False;
     NoFileDefined    :=True;
     DefaultWellDataFile:='';
     CurrentFQFileName:='';
@@ -136,7 +138,7 @@ End;
 Procedure Clear;  { used to reset a running simulation }
 Var i : integer;
 Begin
-  StringToMemo('Simulation reset - Clear called');
+  StringToMemo('DrillSimDataResets:Simulation reset - Clear called');
   With Data do
   Begin
     ResetToLoadedValues;   { restore original MudWt's, depths, RetPitVol   }
@@ -164,7 +166,7 @@ End;
 
 Procedure ResetToLoadedValues;               { call this from CLEAR to reset to }
 Begin                                        { start-up values                  }
-  StringToMemo('ResetToLoadedValues called');
+  StringToMemo('DrillSimDataResets:ResetToLoadedValues called');
   With Data do
   Begin
     Hole[MaxHoles,1]:=OriginalHoleDepth;
@@ -178,7 +180,7 @@ End;
 
 Procedure InitMud; { called from LoadData }
 Begin              { called at start of simulation when starting a }
-  StringToMemo('InitMud called');
+  StringToMemo('DrillSimDataResets:InitMud called');
   With Data do     { session with a file, and called in LoadData in Simulate }
   Begin
     OriginalMudWt:=MudWt;                { not file variables and must      }
@@ -190,7 +192,7 @@ End;
 
 Procedure InitDepth;
 Begin
-  StringToMemo('InitDepth called');
+  StringToMemo('DrillSimDataResets:InitDepth called');
   With Data do
   Begin
     OriginalHoleDepth:=Hole[MaxHoles,1]; { this proc. called, like InitMud,   }
@@ -204,7 +206,7 @@ End;
 Procedure InitKick;  { only used at startup, Load and CLEAR }
 Var i : integer;     { CLEAR sets NeverSimulated to force complete initialisation }
 Begin
-  StringToMemo('InitKick called');
+  StringToMemo('DrillSimDataResets:InitKick called');
   With Data do
   Begin
       t1           :=Zero;                  { no problem if file not saved }
@@ -251,7 +253,7 @@ Begin
       PipeRAMRating    :=Zero;
       HydrilRating     :=Zero;
 
-      For i:=1 to MaxPumps do Pump[i,3]:=Zero; { reset pumps             }
+      For i:=1 to MaxPumps do Pump[i,3]:=Zero; { reset pump strokes      }
 
       StackPointer              :=Zero;        { circulation stack empty }
       CircStack[1].MW           :=Zero;        { therefore no new mud on }

@@ -10,17 +10,15 @@ Procedure RamCheck;  { called from BOPCommands and SetSurfControls }
 
 Implementation
 
-Procedure CloseWell(x,z : integer);   { ypos, message # }
+Procedure CloseWell(z : integer);   { ypos, message # }
 Begin
-  //Disp(70,x,'Shut');
-  x:=0; // keep compiler qiuet
+  StringToMemo('Well is now shut in');
   MessageToMemo(z);
 End;
 
-Procedure OpenWell(x,z : integer);    { ypos, message # }
+Procedure OpenWell(z : integer);    { ypos, message # }
 Begin
-  //Disp(70,x,'Open');
-  x:=0; // keep compiler qiuet
+  StringToMemo('Well is now open');
   MessageToMemo(z);
 End;
 
@@ -29,10 +27,10 @@ Procedure RamCheck;  { called from BOPCommands and SetSurfControls }
 Begin
   With Data do
   Begin
-    if Hydril then CloseWell(3,11)
-              else OpenWell(3,12);
-    if PipeRam then CloseWell(7,8)  { ypos, message# }
-               else OpenWell(7,9);  { ypos, message# }
+    if Hydril then CloseWell(11)  { message# }
+              else OpenWell(12);  { message# }
+    if PipeRam then CloseWell(8)  { message# }
+               else OpenWell(9);  { message# }
 
     if not (Hydril or BlindRam or PipeRam) then
     Begin

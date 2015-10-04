@@ -91,7 +91,6 @@ Begin
       Case Input[1] of
       'S' : Begin
               SaveData;            { includes MessageToMemo(78) }
-              gotoxy(39,12);
             End;
       'L' : Begin
               LoadData;
@@ -300,7 +299,6 @@ Begin
   With Data do
   Begin
     MessageToMemo(x);
-    gotoxy(47,24);
     InputString:='';
     Read(InputString);
     if length(InputString)>Zero then

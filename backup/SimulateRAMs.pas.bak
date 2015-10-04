@@ -36,7 +36,7 @@ Begin
 
     if not (Hydril or BlindRam or PipeRam) then
     Begin
-      //DrillingWindow;       { display drilling parameters               }
+      StringToMemo('BOPs Open');
       if ShutIn then        { change status to open if not already open }
       Begin
         ShutIn:=False;      { change to shut-in                   }
@@ -53,7 +53,7 @@ Begin
       End;
     End else
     Begin
-      //ShutInWindow;
+      StringToMemo('SHUT IN');
       if not ShutIn then   { change status to shut in if not already shut in }
       Begin                { ie only do this if rams have just been closed   }
         ShutIn:=True;

@@ -312,6 +312,10 @@ Var
    TurbFlag            : boolean;
    FlowMode            : String20;
    Model               : String20;
+
+   KellyImageFileName       : String120;
+   BushingImageFileName       : String120;
+
    InString            : String120;          { Utility input string }
    InputString         : String120;
    LastString          : String120;

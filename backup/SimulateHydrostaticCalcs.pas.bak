@@ -106,11 +106,6 @@ Begin
     AnnHhd :=x * Presscon * AnnMW  * Tvd;
     AverageHhd    :=Presscon * MudWt  * Tvd;
 
-    writeln('AnnMW: ' + FloatToStr(AnnMw));
-    writeln('PlAnn: ' + FloatToStr(PlAnn));
-    writeln('PressCon: ' + FloatToStr(PressCon));
-    writeln('TvD: ' + FloatToStr(TvD));
-
     Ecd    :=AnnMW + PlAnn / (Presscon * Tvd);
     MACP   :=(LotEMW - AnnMW) * LotTD * PressCon;
     OilFraction   :=Zero;                  { need to correct for kicking wells }

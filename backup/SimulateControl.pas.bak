@@ -4,6 +4,7 @@ Interface
 
 Uses Dialogs,
      DrillSimVariables,
+     DrillSimMessageToMemo,
      SimulateHydraulicCalcs,
      SimulateDrillingCalcs,
      SimulateControlChecks,
@@ -18,25 +19,22 @@ Procedure Control;
 Begin
   While not Quit do
   Begin
-    HyCalc;
-    TimeUpdate;
+    //StringToMemo('SimulateControl:Control called');
 
-     if Quit then Exit;
+    //HyCalc;
+    //TimeUpdate;
 
     { check for hole deeper then next horizon          }
     { if yes, check if next horizon data is valid (>0) }
     { if yes, advance RockPointer and calculate new    }
     { formation pressure gradient                      }
-    //ShowMessage('Got here');
+
+
     //ControlChecks;
 
     //DrillCalc;
 
-    // InputScan;   now done in the GUI
-    if Quit then Exit;
-
     //KickCalc;
-    if Quit then Exit;
 
   End;
 End;

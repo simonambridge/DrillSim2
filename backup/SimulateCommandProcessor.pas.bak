@@ -94,15 +94,9 @@ Begin
               gotoxy(39,12);
             End;
       'L' : Begin
-              SimulateLoadFile;
+              LoadData;
               SimHoleCalc;         { do HoleCalc and initialise volumes }
-//              PitBox;              { Display correct parameters }
-//              SPPBox;
-//              FlowBox;
-//              DepthBox;
-//              MWBox;
-//              InitialiseKelly;   { clear box, draw scale and set up }
-//              SetKelly;          { move it to drilling position    }
+              SetKelly;          { move it to drilling position    }
               SetSurfControls;
               StackCalc;
             End;

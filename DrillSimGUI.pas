@@ -27,6 +27,7 @@ uses
   DrillSimHoleCalc,
   DrillSimMessageToMemo,
   DrillSimUnitsOfMeasure,
+
   FormConfigDefaults,
   FormUnitsOfMeasure,
   FormDisplayWellData,
@@ -39,11 +40,15 @@ uses
   FormSurfaceEquipmentData,
   FormWellTestData,
   FormGeologyData,
+
   SimulateCommandProcessor,
   SimulateUpdate,
   SimulateSurfaceControls,
   SimulateHoleCalcs,
-  SimulateControl;
+  SimulateHydraulicCalcs,
+  SimulateDrillingCalcs,
+  SimulateControlChecks,
+  SimulateKick;
 
 
 type
@@ -207,6 +212,7 @@ type
     procedure KellyUpClick(Sender: TObject);
 
     procedure BinghamRadioButtonChange(Sender: TObject);
+    procedure MenuItem3PauseClick(Sender: TObject);
     procedure MenuItem3StartClick(Sender: TObject);
     procedure MenuItem2DrillStringClick(Sender: TObject);
     procedure MenuItem2BitDataClick(Sender: TObject);
@@ -215,6 +221,7 @@ type
     procedure MenuItem2SurfaceEquipmentClick(Sender: TObject);
     procedure MenuItem2WellTestDataClick(Sender: TObject);
     procedure MenuItem2UnitsClick(Sender: TObject);
+    procedure MenuItem3StopClick(Sender: TObject);
     procedure MenuItem4AboutClick(Sender: TObject);
     procedure PipeMinusClick(Sender: TObject);
     procedure PipePlusClick(Sender: TObject);
@@ -294,8 +301,8 @@ Begin                  {check to see if pumping when adding or subtracting pipe 
   if Data.Pumping then
   Begin
     MessageToMemo(68);
-    {* LowBeep;
-    PumpsOff:=False;       <<<<<<<<<< ERROR MESSAGE REQUIRED *}
+
+    PumpsOff:=False;      { !!! ERROR MESSAGE REQUIRED ? }
     ShowMessage('Oooops');
   End else PumpsOff:=True;
 End;
@@ -319,6 +326,7 @@ begin
     Pump[1,3]:=Pump[1,3]-1;
     if Pump[1,3]<Zero then Pump[1,3]:=Zero;
     Pump1Value.Caption:=FloatToStr(Pump[1,3]);
+    StringToMemo('Pump [1,3] : ' + FloatToStr(Pump[1,3]));
   end;
 end;
 
@@ -328,8 +336,7 @@ begin
   Begin
     Pump[1,3]:=Pump[1,3]+1;
     Pump1Value.Caption:=FloatToStr(Pump[1,3]);
-    Memo1.Lines.Add('Pump [1,3]Value ' + FloatToStr(Pump[1,3]));
-    Memo1.SelStart:=Length(Memo1.Text);
+    StringToMemo('Pump [1,3] : ' + FloatToStr(Pump[1,3]));
   end;
  end;
 
@@ -340,6 +347,7 @@ begin
       Pump[2,3]:=Pump[2,3]-1;
       if Pump[2,3]<Zero then Pump[2,3]:=Zero;
       Pump2Value.Caption:=FloatToStr(Pump[2,3]);
+      StringToMemo('Pump [2,3] : ' + FloatToStr(Pump[2,3]));
     end;
 end;
 
@@ -349,8 +357,7 @@ begin
     Begin
       Pump[2,3]:=Pump[2,3]+1;
       Pump2Value.Caption:=FloatToStr(Pump[2,3]);
-      Memo1.Lines.Add('Pump [2,3]Value ' + FloatToStr(Pump[2,3]));
-      Memo1.SelStart:=Length(Memo1.Text);
+      StringToMemo('Pump [2,3] : ' + FloatToStr(Pump[2,3]));
     end;
 end;
 
@@ -361,6 +368,7 @@ begin
       Pump[3,3]:=Pump[3,3]-1;
       if Pump[3,3]<Zero then Pump[3,3]:=Zero;
       Pump3Value.Caption:=FloatToStr(Pump[3,3]);
+      StringToMemo('Pump [3,3] : ' + FloatToStr(Pump[3,3]));
     end;
 end;
 
@@ -370,8 +378,7 @@ begin
     Begin
       Pump[3,3]:=Pump[3,3]+1;
       Pump3Value.Caption:=FloatToStr(Pump[3,3]);
-      Memo1.Lines.Add('Pump [3,3]Value ' + FloatToStr(Pump[3,3]));
-      Memo1.SelStart:=Length(Memo1.Text);
+      StringToMemo('Pump [3,3] : ' + FloatToStr(Pump[3,3]));
     end;
 end;
 
@@ -384,8 +391,7 @@ begin
     RPM:=RPM-1;
     if RPM<Zero then RPM:=Zero;
     RPMValue.Caption:=FloatToStr(RPM);
-    Memo1.Lines.Add('RPM Value ' + FloatToStr(RPM));
-    Memo1.SelStart:=Length(Memo1.Text);
+    StringToMemo('RPM : ' + FloatToStr(RPM));
   end;
 end;
 
@@ -393,14 +399,12 @@ procedure TDrillSim.RPMplusClick(Sender: TObject);
 begin
   With Data do
   Begin
-    //ShowMessage(FloatToStr(KelHt));
     if (KellyHeight < 33) then
     Begin
       RPM:=RPM+1;
       if RPM>160 then RPM:=160;
       RPMValue.Caption:=FloatToStr(RPM);
-      Memo1.Lines.Add('RPM Value ' + FloatToStr(RPM));
-      Memo1.SelStart:=Length(Memo1.Text);
+      StringToMemo('RPM : ' + FloatToStr(RPM));
     End else
     Begin
       MessageToMemo(52);
@@ -494,8 +498,7 @@ begin
       PlChoke:=Zero;
     End;
     ChokeValue.Caption:=FloatToStr(Choke);
-    Memo1.Lines.Add('Choke Value ' + FloatToStr(Choke));
-    Memo1.SelStart:=Length(Memo1.Text);
+    StringToMemo('Choke : ' + FloatToStr(Choke));
   end;
 End;
 
@@ -512,8 +515,7 @@ begin
     end;
     if Choke>100 then Choke:=100;
     ChokeValue.Caption:=FloatToStr(Choke);
-    Memo1.Lines.Add('Choke Value ' + FloatToStr(Choke));
-    Memo1.SelStart:=Length(Memo1.Text);
+    StringToMemo('Choke : ' + FloatToStr(Choke));
   End;
 End;
 
@@ -589,6 +591,8 @@ procedure TDrillSim.FormActivate(Sender: TObject);
 begin
   StringToMemo('Running DrillSimGUI FormActivate................................'); // please wait....
   Edited:=False;  { start clean }
+  Simulating:=False;
+  Paused:=False;
 
   { DrillSim start up sequence }
   StringToMemo('DrillSimGUI.FormaActivate: Running DrillSim start up sequence');
@@ -945,6 +949,7 @@ begin
 
 end;
 
+
 { ----------- Help, About Menu Options ---------------------------- }
 
 procedure TDrillSim.MenuItem4AboutClick(Sender: TObject);
@@ -954,40 +959,63 @@ end;
 
 { ----------- Simulate Menu Options ---------------------------- }
 
+procedure TDrillSim.MenuItem3StopClick(Sender: TObject);
+begin
+  Simulating:=False;
+  StringToMemo('Menu3:Stopping Simulation');
+end;
+
+procedure TDrillSim.MenuItem3PauseClick(Sender: TObject);
+begin
+  Paused:=not Paused;
+  if Paused=True then
+  Begin
+    StringToMemo('Menu3:Simulation Paused');
+    Simulating:=False;
+  end
+  else
+  Begin
+    StringToMemo('Menu3:Simulation Un-paused');
+    Simulating:=True;
+  end;
+end;
+
 procedure TDrillSim.MenuItem3StartClick(Sender: TObject);
 begin
+  StringToMemo('Menu3:Starting Simulation');
   MessageToMemo(100);               { Please wait...  }
-  if NoFileDefined=True then
+  if not Simulating then
   Begin
-    CurrentFQFileName:='no file';          { set file name for load window          }
-    MenuItem1OpenFileClick(nil);           { and go prompt for one                  }
-  End else
-  Begin
+    if NoFileDefined=True then
+    Begin
+      CurrentFQFileName:='no file';          { set file name for load window          }
+      MenuItem1OpenFileClick(nil);           { and go prompt for one                  }
+    End else
+    Begin
+      InitMud;                      { set the system OriginalMudWt etc.      }
 
-    InitMud;                      { set the system OriginalMudWt etc.      }
-
-    InitDepth;                    { depths used for reset are the current  }
+      InitDepth;                    { depths used for reset are the current  }
                                    { depths at the start of this session    }
                                    { which may not be the original depths   }
+      InitKick;                     { Set up and initialise if NeverSimulated }
 
-    InitKick;                     { Set up and initialise if NeverSimulated }
-
-    InitGeology;                  { find current position within geological}
+      InitGeology;                  { find current position within geological}
                                     { table. Also done on Load and Clear     }
-    GetCurrentTime (t);
-    Data.t2:=t.Seconds;             { initialize time                    }
+      GetCurrentTime (t);
+      Data.t2:=t.Seconds;             { initialize time                    }
 
-    SimHoleCalc;                    { calculate volumes                  }
+      SimHoleCalc;                    { calculate volumes                  }
 
-    FlowUpdate;                     { set up flow in                     }
-    SetKelly;                       { move kelly to drilling position    }
-    SetSurfControls;                { set RAMs and choke line            }
+      FlowUpdate;                     { set up flow in                     }
 
-    // THIS GOES IN THE THREAD !!!
-    Control;                        { Call simulater controller, fall    }
-                                     { through to SelectMenu when Quit=T  }
+      SetKelly;                       { move kelly to drilling position    }
 
-  End;
+      SetSurfControls;                { set RAMs and choke line            }
+
+      Simulating:=True;               { ACTIVATE THE THREAD !!!            }
+      Paused:=False;
+    End;
+  end;
 End;
 
 
@@ -1004,7 +1032,7 @@ end;
 procedure TMyThread.ShowStatus;
 // this method is executed by the mainthread and can therefore access all GUI elements.
 begin
-  StringToMemo('Thread Interrupted'+ ThreadStatus);
+  StringToMemo('Simulation Thread Status Change - '+ ThreadStatus);
 
 end;
 
@@ -1013,19 +1041,35 @@ var
   NewStatus : string;
 begin
   ThreadStatus := 'TMyThread Starting...';
-  {StringToMemo('TMyThread Starting...'); }
   Synchronize(@Showstatus);
   ThreadStatus := 'TMyThread Running...';
   {StringToMemo('TMyThread running...');  }
   Synchronize(@Showstatus);
   while (not Terminated) do
     begin
+       if Simulating then
+       Begin
+         NewStatus:=('Simulating');
 
-      {*...
-      here goes the code of the main thread loop - loop through calcs as required
-      ... *}
+         HyCalc;
+         TimeUpdate;
 
-      NewStatus:=FloatToStr(Data.Pump[3,3]);
+         { check for hole deeper then next horizon          }
+         { if yes, check if next horizon data is valid (>0) }
+         { if yes, advance RockPointer and calculate new    }
+         { formation pressure gradient                      }
+
+
+         //ControlChecks;
+
+         //DrillCalc;
+
+         //KickCalc;
+
+       end else
+       Begin
+         NewStatus:=('Not Simulating');
+       end;
 
       if NewStatus <> ThreadStatus then
         begin

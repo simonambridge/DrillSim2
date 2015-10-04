@@ -11,7 +11,7 @@ Procedure MessageToMemo(x : integer);
 
 Implementation
 
-//Uses DrillSimGUI;
+Uses DrillSimGUI;
 
 Procedure StringToMemo(S : String);
 Begin

@@ -204,14 +204,12 @@ Begin
   Begin
     if BHPAnn <> LastBHPAnn then
     Begin
-      Str(BHPAnn / UoMConverter[3]:8:2,TempString);
-      ////Disp(15,9,TempString);
+      DrillSim.AnnularPressureValue.Caption:=FloatToStr(Round2(BHPAnn/UoMConverter[3],2)); { API -> displayed }
       LastBHPAnn:=BHPAnn;
     End;
     if CasingPressure <> LastCasingPressure then
     Begin
-      Str(CasingPressure / UoMConverter[3]:8:2,TempString);
-      ////Disp(15,12,TempString);
+      DrillSim.CasingPressureValue.Caption:=FloatToStr(Round2(CasingPressure/UoMConverter[3],2)); { API -> displayed }
       LastCasingPressure:=CasingPressure;
     End;
   End;

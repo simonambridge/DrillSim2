@@ -1359,9 +1359,11 @@ object DrillSim: TDrillSim
       end
       object MenuItem3Stop: TMenuItem
         Caption = 'Stop'
+        OnClick = MenuItem3StopClick
       end
       object MenuItem3Pause: TMenuItem
         Caption = 'Pause'
+        OnClick = MenuItem3PauseClick
       end
     end
     object MenuItem4Help: TMenuItem

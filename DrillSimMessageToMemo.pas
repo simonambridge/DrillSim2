@@ -23,7 +23,7 @@ Begin
   End;
 End;
 
-Procedure MessageToMemo(x : integer);
+Procedure MessageToMemo(x : integer);  {pre-defined status messages }
 Begin
   With Data do
   Begin
