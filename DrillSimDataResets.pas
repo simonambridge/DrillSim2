@@ -30,6 +30,7 @@ Procedure InitData;     { Used to set everything to empty at start-up}
 Var i : integer;
     x : real;
 Begin
+  StringToMemo('Initialise - InitData called');
   With Data do
   Begin
     NoFileDefined    :=True;
@@ -135,6 +136,7 @@ End;
 Procedure Clear;  { used to reset a running simulation }
 Var i : integer;
 Begin
+  StringToMemo('Simulation reset - Clear called');
   With Data do
   Begin
     ResetToLoadedValues;   { restore original MudWt's, depths, RetPitVol   }
@@ -162,6 +164,7 @@ End;
 
 Procedure ResetToLoadedValues;               { call this from CLEAR to reset to }
 Begin                                        { start-up values                  }
+  StringToMemo('ResetToLoadedValues called');
   With Data do
   Begin
     Hole[MaxHoles,1]:=OriginalHoleDepth;
@@ -175,6 +178,7 @@ End;
 
 Procedure InitMud; { called from LoadData }
 Begin              { called at start of simulation when starting a }
+  StringToMemo('InitMud called');
   With Data do     { session with a file, and called in LoadData in Simulate }
   Begin
     OriginalMudWt:=MudWt;                { not file variables and must      }
@@ -186,6 +190,7 @@ End;
 
 Procedure InitDepth;
 Begin
+  StringToMemo('InitDepth called');
   With Data do
   Begin
     OriginalHoleDepth:=Hole[MaxHoles,1]; { this proc. called, like InitMud,   }
@@ -199,6 +204,7 @@ End;
 Procedure InitKick;  { only used at startup, Load and CLEAR }
 Var i : integer;     { CLEAR sets NeverSimulated to force complete initialisation }
 Begin
+  StringToMemo('InitKick called');
   With Data do
   Begin
       t1           :=Zero;                  { no problem if file not saved }

@@ -51,6 +51,7 @@ type
   { TDrillSim }
 
   TDrillSim = class(TForm)
+    CasingPressureValue: TLabel;
 
     BitData: TGroupBox;
     BitDepthValue: TLabel;
@@ -64,6 +65,7 @@ type
     BushingImage: TImage;
     KellyScale: TImage;
     KellyImage: TImage;
+    AnnularPressureValue: TLabel;
     MenuItem2Geology: TMenuItem;
     MenuItem2Defaults: TMenuItem;
     MenuItem2Units: TMenuItem;
@@ -87,6 +89,10 @@ type
     FileSaveDialog1: TSaveDialog;
 
     SelectDirectoryDialog1: TSelectDirectoryDialog;
+    AnnularPressureText: TStaticText;
+    StandPipePressureText2: TStaticText;
+    AnnularPressureUoMLabel: TStaticText;
+    CasingPressureUoMLabel: TStaticText;
     StandPipePressureValue: TLabel;
     ReturnPitValue: TLabel;
     PipeRamsValue: TLabel;
@@ -418,7 +424,7 @@ begin
 
       DrawKelly;                     { display it in SimulateUpdate }
     End;
-    KellyHeightValue.Caption:=FloatToStr(Round2(KellyHeight/UoMConverter[1],2));
+    KellyHeightValue.Caption:=FloatToStr(Round2(KellyHeight/UoMConverter[1],2));   { API -> displayed }
   end;
 end;
 
@@ -436,7 +442,7 @@ begin
 
       DrawKelly;                     { display it in SimulateUpdate }
     End;
-    KellyHeightValue.Caption:=FloatToStr(Round2(KellyHeight/UoMConverter[1],2));
+    KellyHeightValue.Caption:=FloatToStr(Round2(KellyHeight/UoMConverter[1],2));  { API -> displayed }
   End;
 end;
 
@@ -590,15 +596,31 @@ begin
   StartUp;     { call DrillSim StartUp }
   { ***************************************** }
 
+  DrillingStatusValue.Caption:='Checking...';
+
   KellyScale.Picture.LoadFromFile('kellyscale.png');  { draw kelly starting position }
   KellyImage.Picture.LoadFromFile('kellyup-0.png');
   BushingImage.Picture.LoadFromFile('kellybushingup.png');
 
-  KellyHeightValue.Caption:=FloatToStr(Round2(Data.KellyHeight/UoMConverter[1],2));
+  KellyHeightValue.Caption:=FloatToStr(Round2(Data.KellyHeight/UoMConverter[1],2)); { API -> displayed }
   StringToMemo('Initial kelly height = ' + FloatToStr(Data.KellyHeight));
 
+  BitDepthValue.Caption:=FloatToStr(Round2(Data.BitTD/UoMConverter[1],2)); { API -> displayed }
+  TotalDepthValue.Caption:=FloatToStr(Round2(Data.TD/UoMConverter[1],2)); { API -> displayed }
+  MudWeightInValue.Caption:=FloatToStr(Round2(Data.MwIn/UoMConverter[2],2)); { API -> displayed }
+  MudWeightOutValue.Caption:=FloatToStr(Round2(Data.MwOut/UoMConverter[2],2)); { API -> displayed }
+  PumpStrokesValue.Caption:=FloatToStr(Round2(Data.StrokeCounter/UoMConverter[2],2)); { API -> displayed }
+  FlowInValue.Caption:=FloatToStr(Round2(Data.FlowIn/UoMConverter[5],2)); { API -> displayed }
+  FlowOutValue.Caption:=FloatToStr(Round2(Data.FlowOut/UoMConverter[5],2)); { API -> displayed }
+  StandPipePressureValue.Caption:=FloatToStr(Round2(Data.PlCirc/UoMConverter[3],2)); { API -> displayed }
+  ReturnPitValue.Caption:=FloatToStr(Round2(Data.RetPitVol/UoMConverter[4],2)); { API -> displayed }
+  DiffFlowValue.Caption:=FloatToStr(Round2(PitGain/UoMConverter[4],2)); { API -> displayed }
   ChokeValue.Caption:=FloatToStr(Data.Choke);
-  DrillingStatusValue.Caption:='Checking...';
+  WOBValue.Caption:=FloatToStr(Round2(Data.WOB/UoMConverter[7],2)); { API -> displayed }
+  RPMValue.Caption:=FloatToStr(Data.RPM); { API -> displayed }
+  ROPValue.Caption:=FloatToStr(Round2(Data.ROP/UoMConverter[1],2)); { API -> displayed }
+  AnnularPressureValue.Caption:=FloatToStr(Round2(Data.BHPAnn/UoMConverter[3],2)); { API -> displayed }
+  CasingPressureValue.Caption:=FloatToStr(Round2(Data.CasingPressure/UoMConverter[3],2)); { API -> displayed }
 
 end;
 
@@ -613,6 +635,7 @@ begin
   splash.ShowSplash;
 
 end;
+
 
 Procedure TDrillSim.OnClose(Sender: TObject);
 var Reply, BoxStyle: Integer;
@@ -933,42 +956,37 @@ end;
 
 procedure TDrillSim.MenuItem3StartClick(Sender: TObject);
 begin
-  MessageToMemo(100);               { courtesy message         }
-  if NoFileDefined=false then
+  MessageToMemo(100);               { Please wait...  }
+  if NoFileDefined=True then
   Begin
-    if NoFileDefined then           { check for no file in use               }
-    Begin
-      CurrentFQFileName:='no file';          { set file name for load window          }
-      MenuItem1OpenFileClick(nil);           { and go prompt for one                  }
-    End;
+    CurrentFQFileName:='no file';          { set file name for load window          }
+    MenuItem1OpenFileClick(nil);           { and go prompt for one                  }
+  End else
+  Begin
 
-    if not NoFileDefined then       { if file defined, continue into Simulator }
-    Begin
-      InitMud;                      { set the system OriginalMudWt etc.      }
+    InitMud;                      { set the system OriginalMudWt etc.      }
 
-      InitDepth;                    { depths used for reset are the current  }
+    InitDepth;                    { depths used for reset are the current  }
                                    { depths at the start of this session    }
                                    { which may not be the original depths   }
 
-      InitKick;                     { Set up and initialise if NeverSimulated }
+    InitKick;                     { Set up and initialise if NeverSimulated }
 
-      InitGeology;                  { find current position within geological}
+    InitGeology;                  { find current position within geological}
                                     { table. Also done on Load and Clear     }
-      GetCurrentTime (t);
-      Data.t2:=t.Seconds;             { initialize time                    }
+    GetCurrentTime (t);
+    Data.t2:=t.Seconds;             { initialize time                    }
 
-      SimHoleCalc;                    { calculate volumes                  }
+    SimHoleCalc;                    { calculate volumes                  }
 
-      FlowUpdate;                     { set up flow in                     }
-      SetKelly;                       { move kelly to drilling position    }
-      SetSurfControls;                { set RAMs and choke line            }
+    FlowUpdate;                     { set up flow in                     }
+    SetKelly;                       { move kelly to drilling position    }
+    SetSurfControls;                { set RAMs and choke line            }
 
-
-      // THIS GOES IN THE THREAD !!!
-      //Control;                        { Call simulater controller, fall    }
+    // THIS GOES IN THE THREAD !!!
+    Control;                        { Call simulater controller, fall    }
                                      { through to SelectMenu when Quit=T  }
 
-    End;                              { still no file, then return to DrillSim }
   End;
 End;
 
@@ -980,14 +998,13 @@ constructor TMyThread.Create(CreateSuspended : boolean);
 begin
   FreeOnTerminate := True;
   inherited Create(CreateSuspended);
-  writeln('Thread created');
+  {StringToMemo('Thread created');}
 end;
 
 procedure TMyThread.ShowStatus;
 // this method is executed by the mainthread and can therefore access all GUI elements.
 begin
-  DrillSim.Memo1.Lines.Add('Thread Interrupted because '+ ThreadStatus);
-  writeln ('Thread Interrupted'+ ThreadStatus);
+  StringToMemo('Thread Interrupted'+ ThreadStatus);}
 
 end;
 
@@ -996,10 +1013,10 @@ var
   NewStatus : string;
 begin
   ThreadStatus := 'TMyThread Starting...';
-  //writeln ('TMyThread Starting...');
+  {StringToMemo('TMyThread Starting...'); }
   Synchronize(@Showstatus);
   ThreadStatus := 'TMyThread Running...';
-  //writeln ('TMyThread running...');
+  {StringToMemo('TMyThread running...');  }
   Synchronize(@Showstatus);
   while (not Terminated) do
     begin
@@ -1026,7 +1043,7 @@ Initialization
 
  {* Here initialise anything required before the threads starts executing *}
 
- //MyThread.Start;
+ MyThread.Start;
 
 end.
 

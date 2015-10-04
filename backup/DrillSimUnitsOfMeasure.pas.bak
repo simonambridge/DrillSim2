@@ -17,14 +17,19 @@ Procedure DisplayLabels;
 Begin
   With DrillSim do
   Begin
-  BitDepthUoMLabel.Caption:=UoMLabel[1];        { depth }
-  DrillSim.TotalDepthUoMLabel.Caption:=UoMLabel[1];        { depth }
-  DrillSim.WOBUoMLabel.Caption:=UoMLabel[7];        { weight }
-  DrillSim.KellyHeightUoMLabel.Caption:=UoMLabel[1];        { depth }
-  DrillSim.ROPUoMLabel.Caption:=ROPLabel;
-  DrillSim.MudWeightInUoMLabel.Caption:=UoMLabel[2];        { specific gravity }
-  DrillSim.MudWeightOutUoMLabel.Caption:=UoMLabel[2];        { specific gravity }
-  DrillSim.ECDUoMLabel.Caption:=UoMLabel[2];        { specific gravity }
+    BitDepthUoMLabel.Caption:=UoMLabel[1];           { depth feet or metres }
+    TotalDepthUoMLabel.Caption:=UoMLabel[1];         { depth feet or metres }
+    WOBUoMLabel.Caption:=UoMLabel[7];                { weight Klbs or metric tons }
+    KellyHeightUoMLabel.Caption:=UoMLabel[1];        { depth feet or metres }
+    ROPUoMLabel.Caption:=ROPLabel;
+    MudWeightInUoMLabel.Caption:=UoMLabel[2];        { specific gravity ppg or sg }
+    MudWeightOutUoMLabel.Caption:=UoMLabel[2];       { specific gravity ppg or sg }
+    ECDUoMLabel.Caption:=UoMLabel[2];                { specific gravity ppg or sg }
+    FlowInUoMLabel.Caption:=UoMLabel[6];             { flow litres or gals/minute }
+    FlowOutUoMLabel.Caption:=UoMLabel[6];            { flow litres or gals/minute }
+    ReturnPitUoMLabel.Caption:=UoMLabel[4];          { volume bbl or m3}
+    DiffFlowUoMLabel.Caption:=UoMLabel[6];           { flow litres or gals/minute }
+    StandPipePressureUoMLabel.Caption:=UoMLabel[3];  { pressure psi or KPa }
   End;
 end;
 

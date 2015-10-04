@@ -166,7 +166,7 @@ Begin
     ScreenService;
     if RPM = Zero then
     Begin
-      if KelHt < 33 then
+      if KellyHeight < 33 then
       Begin
 //        TAttr:=AttrByte;
         //SetColorSet(WhiteOnBlue);

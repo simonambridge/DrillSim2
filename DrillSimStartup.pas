@@ -63,7 +63,7 @@ Begin
   DefaultWellDataFile:='';
   DefaultDirectory:='';
 
-  APIUnits;     { Initial default unit type   }
+  // APIUnits;     { Initial default unit type   }
                 {* set UoMLabel, UoMCOnverter and UoMDescriptor *}
 
   InitData;     { zero all main file variables }
@@ -124,8 +124,6 @@ Begin
   StringToMemo('DrillSimStartup.StartUp: DrillSim Startup complete');
   ThisString:=Data.WellName;
     writeln(ThisString);
-
-
 
   StringToMemo('DrillSimStartup.StartUp: Using Well ' + ThisString + '');
 

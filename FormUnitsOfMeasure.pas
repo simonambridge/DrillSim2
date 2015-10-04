@@ -108,7 +108,6 @@ case SelectUoMRadioGroup.ItemIndex of
      End;
   end;
   FormDisplayUnits;
-  // units of measure labels
 
 end;
 

@@ -21,18 +21,18 @@ Begin
   Begin
     { check for hole deeper then next horizon          }
     { if yes, check if next horizon data is valid (>0) }
-    { if yes, advance RockPointer and calculate new    }
+    { if yes, advance FormationPointer and calculate new    }
     { formation pressure gradient                      }
 
-    if (RockPointer<=9) and (Hole[MaxHoles,1] > Rock[RockPointer+1].Depth) then
+    if (FormationPointer<=9) and (Hole[MaxHoles,1] > Formation[FormationPointer+1].Depth) then
     Begin
-      if (Rock[RockPointer+1].FP > Zero) and       { check for valid data }
-         (Rock[RockPointer+1].Hardness > Zero) and
-         (Rock[RockPointer+1].Depth > Rock[RockPointer].Depth) then
+      if (Formation[FormationPointer+1].FP > Zero) and       { check for valid data }
+         (Formation[FormationPointer+1].Hardness > Zero) and
+         (Formation[FormationPointer+1].Depth > Formation[FormationPointer].Depth) then
       Begin
-        RockPointer:=RockPointer + 1;
+        FormationPointer:=FormationPointer + 1;
         FormationPressureGradient:=         { calculate here for ROPCalc }
-                (Rock[RockPointer].FP / Rock[RockPointer].Depth) / Presscon;
+                (Formation[FormationPointer].FP / Formation[FormationPointer].Depth) / Presscon;
       End;
     End;
 

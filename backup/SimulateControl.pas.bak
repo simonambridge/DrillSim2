@@ -2,7 +2,8 @@ Unit SimulateControl;
 
 Interface
 
-Uses DrillSimVariables,
+Uses Dialogs,
+     DrillSimVariables,
      SimulateHydraulicCalcs,
      SimulateDrillingCalcs,
      SimulateControlChecks,
@@ -14,39 +15,30 @@ Procedure Control;
 Implementation
 
 Procedure Control;
-Label Loop;                { This looping is deliberate, not bad programming }
-Label Done;
 Begin
-Loop :
-  HyCalc;
-  TimeUpdate;
+  While not Quit do
+  Begin
+    HyCalc;
+    TimeUpdate;
 
-  // InputScan;   now done in the GUI
-  if Quit then Goto Done;
+     if Quit then Exit;
 
-  { check for hole deeper then next horizon          }
-  { if yes, check if next horizon data is valid (>0) }
-  { if yes, advance RockPointer and calculate new    }
-  { formation pressure gradient                      }
+    { check for hole deeper then next horizon          }
+    { if yes, check if next horizon data is valid (>0) }
+    { if yes, advance RockPointer and calculate new    }
+    { formation pressure gradient                      }
+    //ShowMessage('Got here');
+    //ControlChecks;
 
-  ControlChecks;
+    //DrillCalc;
 
-  DrillCalc;
+    // InputScan;   now done in the GUI
+    if Quit then Exit;
 
-  // InputScan;   now done in the GUI
-  if Quit then Goto Done;
+    //KickCalc;
+    if Quit then Exit;
 
-  KickCalc;
-  if Quit then Goto Done;
-
-  // InputScan;   now done in the GUI
-  if Quit then Goto Done;
-
-  Goto Loop;
-Done :
-  ChDir(OriginDirectory);{ to ensure correct startup in DS if HyCalc used  }
-  ReturnFlag:=5;         { set this for return to Simulate to prevent      }
-  ExecuteFlag:=$FF;      { system initialisation on entry to DrillSim.     }
+  End;
 End;
 
 Begin

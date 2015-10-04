@@ -272,7 +272,7 @@ Begin
       StrokeCounter:=Zero;          { set stroke counter to zero             }
       Status       :=Zero;          { force a status display in StatusUpdate }
 
-      LastKellyHeight:=33;        { initialise kelly down depth            }
+      LastKellyHeight:=33;          { initialise last kelly height           }
       KellyHeight  :=33;
       LastKD       :=PipeTD;        { initialize for next KD (=LastKD+27)    }
 
@@ -311,8 +311,6 @@ Begin
         Vel[i,2]:=Zero;
         Vel[i,3]:=Zero;
       End;
-
-
                                     { PipeTD initialised in HyCalc/DrillSim  }
                                     { and also in Proc. DrillCalc. PipeTD is }
                                     { initialised in DrillSim, for use here  }

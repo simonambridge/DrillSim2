@@ -17,14 +17,12 @@ Implementation
 
 Procedure CloseChoke;
 Begin
-  MessageToMemo(65);
   Data.Flowline:=False;
   //FlowlineWindow;
 End;
 
 Procedure OpenChoke;
 Begin
-  MessageToMemo(64);
   if (Data.Pumping) and (Data.ShutIn) then MessageToMemo(14);
   Data.Flowline:=True;
   //FlowlineWindow;

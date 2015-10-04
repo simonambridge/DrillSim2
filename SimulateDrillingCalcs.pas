@@ -164,17 +164,6 @@ Begin
       BitTD:=StringTD;
     End;
     ScreenService;
-    if RPM = Zero then
-    Begin
-      if KellyHeight < 33 then
-      Begin
-//        TAttr:=AttrByte;
-        //SetColorSet(WhiteOnBlue);
-        //Disp(37,13,DnBushing);
-//        AttrByte:=TAttr;
-      End;
-    End;
-    ScreenService;
   End;
 End;
 

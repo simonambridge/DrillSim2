@@ -38,7 +38,7 @@ Begin
 
              { -------- Cheque for twist-off --------- }
 
-    if (StatusCounter=5) and (Status=3) then   { check every 10 loops }
+    if (StatusCounter=5) and (Status=3) then   { check every 5 loops }
     Begin                                          { if drilling          }
       x:=Zero;
       for i:=1 to MaxPipes do        { calculate drill collar weight }
@@ -64,7 +64,7 @@ Begin
     End;
 
     StatusCounter:=StatusCounter + 1;
-    if StatusCounter>10 then
+    if StatusCounter>10 then               { check every 10 loops }
     Begin
       StatusUpdate;
       StatusCounter:=Zero;
