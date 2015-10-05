@@ -24,7 +24,7 @@ uses
   DrillSimFile,
   DrillSimDataResets,
   DrillSimUtilities,
-  DrillSimHoleCalc,
+  DrillSimHoleChecks,
   DrillSimMessageToMemo,
   DrillSimUnitsOfMeasure,
 
@@ -967,6 +967,12 @@ end;
 
 procedure TDrillSim.MenuItem3PauseClick(Sender: TObject);
 begin
+  if (not Simulating) and (not Paused) then
+  Begin
+    ShowMessage('Cannot pause a non-running simulation');
+    Exit;
+  end;
+
   Paused:=not Paused;
   if Paused=True then
   Begin
@@ -1052,7 +1058,7 @@ begin
          NewStatus:=('Simulating');
 
          HyCalc;
-         //TimeUpdate;
+         TimeUpdate;
 
          { check for hole deeper then next horizon          }
          { if yes, check if next horizon data is valid (>0) }

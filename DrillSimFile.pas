@@ -9,7 +9,7 @@ Uses Crt,
      DrillSimUtilities,
      DrillSimMessageToMemo,
      DrillSimDataResets,
-     DrillSimHoleCalc;
+     DrillSimHoleChecks;
 
 Procedure LoadData;            { Entry : FullName = filename.WDF    }
 Procedure SaveData;
@@ -47,8 +47,7 @@ Begin
 
     if Data.API = True then APIUnits  { set array contents to api or metric }
     else MetricUnits;
-    StringToMemo('DrillSimStartup.StartUp: Units selected: '+ UoMDescriptor);
-
+    StringToMemo('DrillSimFile.LoadData: Units selected: '+ UoMDescriptor);
   except
     on E: EInOutError do
     Begin
@@ -62,6 +61,10 @@ Begin
   InitDepth;          { save the original depth for this session            }
   InitGeology;        { locate correct current position within geology table}
   InitKick;           { initialise system variables, and set up if NeverSimulated }
+
+  CheckHoleData;
+  CheckPipeData;
+  if HoleError then StringToMemo('DrillSimFile.LoadData: Hole Error !!!! ');
 
   NoFileDefined:=False;
   Edited:=False;

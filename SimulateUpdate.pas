@@ -29,8 +29,7 @@ Begin
   KellyImageIndex:=trunc((33-Data.KellyHeight) * 2.667);  { 80 px /30 feet = 2.667 px/foot }
   //KellyImageIndex:=KellyImageIndex div 10;
 
-  StringToMemo('Kelly height = ' + FloatToStr(Data.KellyHeight));
-  StringToMemo('KellyImageIndex = ' + IntToStr(KellyImageIndex));
+  StringToMemo('Kelly height = ' + FloatToStr(Data.KellyHeight) + '    KellyImageIndex = ' + IntToStr(KellyImageIndex));
 
   { quick and dirty code }
   if (KellyImageIndex = 0) then  KellyImageFileName:='kellyup-0.png'
@@ -121,6 +120,7 @@ End;
 Procedure FlowUpdate;
 Var i          : integer;
 Begin
+  StringToMemo('SimulateUpdate:FlowUpdate called');
   With Data do
   Begin
     if MwIn <> LastMwIn then
@@ -182,6 +182,7 @@ End;
 
 Procedure DepthUpdate;
 Begin
+  StringToMemo('SimulateUpdate:DepthUpdate called');
   With Data do
   Begin
     if BitTD <> LastBitTD then
@@ -200,6 +201,7 @@ End;
 
 Procedure ShutInUpdate;
 Begin
+  StringToMemo('SimulateUpdate:ShutInUpdate called');
   With Data do
   Begin
     if BHPAnn <> LastBHPAnn then
@@ -218,6 +220,7 @@ End;
 
 Procedure DrillUpdate;
 Begin
+  StringToMemo('SimulateUpdate:DrillUpdate called');
   With Data do
   Begin
     DepthUpdate;
@@ -242,6 +245,7 @@ End;
 
 Procedure TimeUpdate;
 Begin
+  StringToMemo('SimulateUpdate:TimeUpdate called');
   GetCurrentTime (t);
   if t.Seconds <> LastSeconds then
   Begin
@@ -259,6 +263,7 @@ Procedure StatusUpdate;
 Var i          : integer;
 Label Loop;
 Begin
+  StringToMemo('SimulateUpdate:StatusUpdate called');
   With Data do
   Begin
     if KellyHeight = 33 then                { calculate based on kelly height   }

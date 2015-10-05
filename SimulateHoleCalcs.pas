@@ -3,6 +3,7 @@ Unit SimulateHoleCalcs;
 Interface
 
 Uses DrillSimVariables,
+     DrillSimMessageToMemo,
      SimulateUpdate,
      SimulateVolumes;
 
@@ -12,7 +13,7 @@ Implementation
 
 
 Procedure SimHoleCalc;    { Procedure To Determine Hole Profile }
-Var                    {  Call every time 0.001 ft drilled   }
+Var                       {  Call every time 0.001 ft drilled   }
   X,Y     : real;
   i,J,K   : integer;
   Temp    : array[1..5,1..2] of real;
@@ -20,6 +21,7 @@ Var                    {  Call every time 0.001 ft drilled   }
   TempCount : integer;
 
 Begin
+  StringToMemo('SimulateHoleCalcs:SimHoleCalc called');
   ScreenService;
   With Data do
   Begin

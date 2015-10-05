@@ -262,8 +262,8 @@ Begin
   With Data do
   Begin
     if KellyHeight = 33 then                { calculate based on kelly height   }
-    Begin                             { if at top then on slips           }
-      if ShutIn then i:=6 else i:=1;  { and if shut in too then...shut in }
+    Begin                                   { if at top then on slips           }
+      if ShutIn then i:=6 else i:=1;        { and if shut in too then...shut in }
     End else
     if (TD >= LastKD + 27) then i:=2         { else if at KD depth...     }
     else                                     { ...then kelly down         }

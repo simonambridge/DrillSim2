@@ -24,7 +24,7 @@ uses
   DrillSimFile,
   DrillSimDataResets,
   DrillSimUtilities,
-  DrillSimHoleCalc,
+  DrillSimHoleChecks,
   DrillSimMessageToMemo,
   DrillSimUnitsOfMeasure,
 
@@ -967,6 +967,12 @@ end;
 
 procedure TDrillSim.MenuItem3PauseClick(Sender: TObject);
 begin
+  if (not Simulating) and (not Paused) then
+  Begin
+    ShowMessage('Cannot pause a non-running simulation');
+    Exit;
+  end;
+
   Paused:=not Paused;
   if Paused=True then
   Begin
@@ -991,7 +997,7 @@ begin
       CurrentFQFileName:='no file';          { set file name for load window          }
       MenuItem1OpenFileClick(nil);           { and go prompt for one                  }
     End else
-    Begin
+    Begin                           { call inits in DrillSimDataResets }
       InitMud;                      { set the system OriginalMudWt etc.      }
 
       InitDepth;                    { depths used for reset are the current  }
@@ -1004,11 +1010,11 @@ begin
       GetCurrentTime (t);
       Data.t2:=t.Seconds;             { initialize time                    }
 
-      SimHoleCalc;                    { calculate volumes                  }
+      SimHoleCalc;                    { SimulateHoleCalcs - calculate volumes }
 
-      FlowUpdate;                     { set up flow in                     }
+      FlowUpdate;                     { SimulateUpdate - set up flow, display it }
 
-      SetKelly;                       { move kelly to drilling position    }
+      SetKelly;                       { SImulateUpdate - move kelly to drilling position    }
 
       SetSurfControls;                { set RAMs and choke line            }
 

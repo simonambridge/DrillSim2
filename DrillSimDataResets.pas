@@ -351,6 +351,7 @@ End;
 
 Procedure InitGeology;        { called on each entry into Simulator, and    }
 Begin                         { whenever Loaded or Cleared                  }
+  StringToMemo('DrillSimDataResets:InitGeology called');
   With Data do
   Begin
     FormationPointer:=1;                    { must be at least the first horizon }
