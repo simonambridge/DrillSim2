@@ -62,8 +62,8 @@ Begin
   InitGeology;        { locate correct current position within geology table}
   InitKick;           { initialise system variables, and set up if NeverSimulated }
 
+  { call DrillSimHoleChecks:CheckHoleData - calls DSHoleCalc - check hole and pipe data }
   CheckHoleData;
-  CheckPipeData;
   if HoleError then StringToMemo('DrillSimFile.LoadData: Hole Error !!!! ');
 
   NoFileDefined:=False;

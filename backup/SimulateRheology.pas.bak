@@ -4,7 +4,6 @@ Interface
 
 Uses DrillSimVariables,
      SimulateUpdate,
-     SimulateInputScanner,
      DrillSimMath;
 
 Procedure AnnCalc;

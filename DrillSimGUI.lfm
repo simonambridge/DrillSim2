@@ -1,14 +1,16 @@
 object DrillSim: TDrillSim
-  Left = 118
+  Left = 109
   Height = 668
-  Top = 146
+  Top = 231
   Width = 999
   Caption = 'DrillSim 3.0'
   ClientHeight = 645
   ClientWidth = 999
   Menu = MainMenu1
   OnActivate = FormActivate
+  OnClose = FormClose
   OnCreate = FormCreate
+  OnDeactivate = FormDeactivate
   Position = poScreenCenter
   LCLVersion = '1.2.6.0'
   object PumpData: TGroupBox

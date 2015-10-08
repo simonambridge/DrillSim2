@@ -3,8 +3,7 @@ Unit SimulateHydrostaticCalcs;
 Interface
 
 Uses sysutils,
-     DrillSimVariables,
-     SimulateUpdate;
+     DrillSimVariables;
 
 Procedure StackCalc;
 
@@ -20,7 +19,7 @@ Var
 Begin
   With Data do
   Begin
-    ScreenService;
+    //ScreenService;
     if (StackPointer = Zero) or (StrokeCounter = Zero) then
     Begin
       Q:=TotCircStrks;
@@ -43,7 +42,7 @@ Begin
       TempPipeYP:=Zero; TempHoleYP:=Zero;
       for i:=StackPointer downto 1 do
       Begin                     { y = elapsed strokes, z = already calc. strks }
-        ScreenService;
+        //ScreenService;
         y:=x-CircStack[i].StartStrokes;
         P:=P    + (y * CircStack[i].MW);                 { P = density*strokes }
         TempHolePV:=TempHolePV  + (y * CircStack[i].PV); {   = PV * strokes }
@@ -56,7 +55,7 @@ Begin
           TempPipeYP:=TempHoleYP;
           if i=1 then                     { if in Pipe and on last mud }
           Begin
-            ScreenService;
+            //ScreenService;
             R:=R   + ((LagDS - z) * MudOut.MW);
             TempPipePV:=TempPipePV + ((LagDS - z) * MudOut.PV);
             TempPipeYP:=TempPipeYP + ((LagDS - z) * MudOut.YP);
@@ -65,7 +64,7 @@ Begin
         Begin
           if S=Zero then
           Begin
-            ScreenService;
+            //ScreenService;
             R:=P;
             TempPipePV:=TempHolePV;
             TempPipeYP:=TempHoleYP;
@@ -77,7 +76,7 @@ Begin
         End;
         x:=x-y;
       End;
-      ScreenService;
+      //ScreenService;
       Q:=TotCircStrks - (StrokeCounter - CircStack[1].StartStrokes);
       P:=P + (Q * MudOut.MW);
       TempHolePV:=TempHolePV + (Q * MudOut.PV);
@@ -89,7 +88,7 @@ Begin
       AnnPV:=(TempHolePV - TempPipePV) / LagUS;
       PipeYP:=TempPipeYP / LagDS;
       AnnYP:=(TempHoleYP - TempPipeYP) / LagUS;
-      ScreenService;
+      //ScreenService;
       if (StrokeCounter-CircStack[1].StartStrokes) >= TotCircStrks then
       Begin
         MudOut:=CircStack[1];
@@ -98,7 +97,7 @@ Begin
         if StackPointer>Zero then StackPointer:=StackPointer-1;
       End;
     End;
-    ScreenService;
+    //ScreenService;
 
     x:=MudVol/HoleVol;    { need to compensate for volume of mud in the hole }
 
@@ -106,10 +105,10 @@ Begin
     AnnHhd :=x * Presscon * AnnMW  * Tvd;
     AverageHhd    :=Presscon * MudWt  * Tvd;
 
-    writeln('AnnMW: ' + FloatToStr(AnnMw));
-    writeln('PlAnn: ' + FloatToStr(PlAnn));
-    writeln('PressCon: ' + FloatToStr(PressCon));
-    writeln('TvD: ' + FloatToStr(TvD));
+    //writeln('AnnMW: ' + FloatToStr(AnnMw));
+    //writeln('PlAnn: ' + FloatToStr(PlAnn));
+    //writeln('PressCon: ' + FloatToStr(PressCon));
+    //writeln('TvD: ' + FloatToStr(TvD));
 
     Ecd    :=AnnMW + PlAnn / (Presscon * Tvd);
     MACP   :=(LotEMW - AnnMW) * LotTD * PressCon;
@@ -117,7 +116,7 @@ Begin
     SolidsFraction:=(AnnMW - 8.33) * 3.75 * 0.01;
     WaterFraction :=1.0 - OilFraction - SolidsFraction;
 
-    ScreenService;
+    //ScreenService;
   End;
 End;
 

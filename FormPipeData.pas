@@ -575,8 +575,8 @@ var Error : boolean;
        ((_WellPipe[1,1]+_WellPipe[2,1] >= Data.Hole[Data.MaxHoles,1]) and (Data.MaxHoles>0))      { total pipe length must not exceed TD of lowest hole section if present }
     then
     Begin
-      ShowMessage('HW Drill Pipe length must be greater than zero, and combined length with Drill Collars must not exceed Casing Shoe TD if no open hole section or TD of lowest hole section if present');
-      StringToMemo('FormHoleData.Save: Error: HW Drill Pipe length must be greater than zero, and combined length with Drill Collars must not exceed Casing Shoe TD if no open hole section or TD of lowest hole section if present');
+      ShowMessage('HW Drill Pipe length must be greater than zero, and combined length with Drill Collars must not exceed Casing Shoe TD (if no open hole section) or TD of lowest hole section (if present)');
+      StringToMemo('FormHoleData.Save: Error: HW Drill Pipe length must be greater than zero, and combined length with Drill Collars must not exceed Casing Shoe TD (if no open hole section) or TD of lowest hole section (if present)');
       HWDrillPipeLengthData.SetFocus;
       LengthisOK:=False;
     end
@@ -657,12 +657,12 @@ var Error : boolean;
     StringToMemo('Validating Drill Pipe...');
 
     if (_WellPipe[3,1] <= 0) or                                                    { length cannot be zero }
-       ((_WellPipe[1,1]+_WellPipe[2,1]+_WellPipe[3,1] >= Data.CasingTD) and (Data.MaxHoles=0)) or { total pipe length must not exceed Casing Shoe TD if no open hole section }
-       ((_WellPipe[1,1]+_WellPipe[2,1]+_WellPipe[3,1] >= Data.Hole[Data.MaxHoles,1]) and (Data.MaxHoles>0))      { total pipe length must not exceed TD of lowest hole section if present }
+       ((_WellPipe[1,1]+_WellPipe[2,1]+_WellPipe[3,1] > Data.CasingTD) and (Data.MaxHoles=0)) or { total pipe length must not exceed Casing Shoe TD if no open hole section }
+       ((_WellPipe[1,1]+_WellPipe[2,1]+_WellPipe[3,1] > Data.Hole[Data.MaxHoles,1]) and (Data.MaxHoles>0))      { total pipe length must not exceed TD of lowest hole section if present }
     then
     Begin
-      ShowMessage('Drill Pipe length must be greater than zero, and combined length with Drill Collars and HW Drill Pipe must not exceed Casing Shoe TD if no open hole section or TD of lowest hole section if present');
-      StringToMemo('FormHoleData.Save: Error: Drill Pipe length must be greater than zero, and combined length with Drill Collars and HW Drill Pipe must not exceed Casing Shoe TD if no open hole section or TD of lowest hole section if present');
+      ShowMessage('Drill Pipe length must be greater than zero, and combined length with Drill Collars and HW Drill Pipe must not exceed Casing Shoe TD (if no open hole section) or TD of lowest hole section (if present)');
+      StringToMemo('FormHoleData.Save: Error: Drill Pipe length must be greater than zero, and combined length with Drill Collars and HW Drill Pipe must not exceed Casing Shoe TD (if no open hole section) or TD of lowest hole section (if present)');
       DrillPipeLengthData.SetFocus;
       LengthisOK:=False;
     end
@@ -736,8 +736,9 @@ var Error : boolean;
 begin
 
   StringToMemo('FormPipeData.Save: Data.MaxPipes = '+ IntToStr(Data.MaxPipes));
-
-  Case _WellMaxPipes of    { very ugly...cant interate through objects but it works...}
+  Error:=False;
+                           { call boolean functions to check drill string }
+  Case _WellMaxPipes of    { very ugly...cant interate through objects, but it works...}
     1 : Begin
           StringToMemo('Checking Drill Collars...');
           if DrillCollarsisOK = False then Error:=True;

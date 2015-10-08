@@ -1,7 +1,7 @@
 object BitDataForm: TBitDataForm
   Left = 65
   Height = 271
-  Top = 24
+  Top = 145
   Width = 755
   HorzScrollBar.Page = 724
   HorzScrollBar.Range = 724

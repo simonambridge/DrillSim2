@@ -1,2 +1,2 @@
-fpc -vut -B @extrafpc.cfg DrillSim2.lpr
+fpc -vut -B @extrafpc.cfg DrillSim3.lpr
 

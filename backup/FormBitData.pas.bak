@@ -266,6 +266,7 @@ end;
 
 procedure TBitDataForm.FormCreate(Sender: TObject);
 begin
+  StringToMemo('TBitDataForm.FormCreate');
 
 end;
 

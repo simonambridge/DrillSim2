@@ -4,15 +4,80 @@ Interface
 
 Uses Crt,
      DrillSimVariables,
-     SimulateUpdate,
+     DrillSimDataResets,
      DrillSimMessageToMemo,
      DrillSimUtilities,
      SimulateHoleCalcs,
      DrillSimMath;
 
+Procedure FormationPressureCalc;
+Procedure TwistOffCalc;
 Procedure DrillCalc;
 
 Implementation
+
+Procedure FormationPressureCalc;
+Var
+   x : real;
+   i : integer;
+Begin
+  With Data do
+  Begin
+    { check for hole deeper then next horizon          }
+    { if yes, check if next horizon data is valid (>0) }
+    { if yes, advance FormationPointer and calculate new    }
+    { formation pressure gradient                      }
+
+    if (FormationPointer<=9) and (Hole[MaxHoles,1] > Formation[FormationPointer+1].Depth) then
+    Begin
+      if (Formation[FormationPointer+1].FP > Zero) and       { check for valid data }
+         (Formation[FormationPointer+1].Hardness > Zero) and
+         (Formation[FormationPointer+1].Depth > Formation[FormationPointer].Depth) then
+      Begin
+        FormationPointer:=FormationPointer + 1;
+        FormationPressureGradient:=         { calculate here for ROPCalc }
+                (Formation[FormationPointer].FP / Formation[FormationPointer].Depth) / Presscon;
+      End;
+    End;
+  End;
+End;
+
+Procedure TwistOffCalc;
+Var
+   x : real;
+   i : integer;
+Begin
+  With Data do
+  Begin
+             { -------- Cheque for twist-off --------- }
+
+    if (StatusCounter=5) and (Status=3) then   { check every 5 loops }
+    Begin                                          { if drilling          }
+      x:=Zero;
+      for i:=1 to MaxPipes do        { calculate drill collar weight }
+      Begin                          { pipe must be > 5" OD          }
+        if Pipe[i,3] > 5 then x:=x + Pipe[i,1] * Pipe[i,4];
+      End;
+      if x = Zero then
+      Begin
+        for i:=1 to MaxPipes do
+        Begin
+          x:=x + Pipe[i,1] * Pipe[i,4];   { ...otherwise total DP wt   }
+        End;
+      End;
+      TwistOff:=x /1000 * 0.7;            { t.off @ 70% of string wt   }
+      if WOB > TwistOff then              { if twisted off...          }
+      Begin
+        MessageToMemo(71);
+        MessageToMemo(74);
+        Repeat Until KeyPressed;
+        Input:=ReadKey;
+        Clear;                    { reset screen and restart simulation }
+      End;
+    End;
+
+  End;
+End;
 
 { ------------------ Drilling Calculations ----------------- }
 
@@ -34,7 +99,7 @@ Begin
   Delay(1000);
   Data.KellyHeight:=Data.KellyHeight + 0.5;
   DrawKelly;
-  ScreenService;
+  //ScreenService;
 End;
 
 Begin
@@ -44,7 +109,7 @@ Begin
     GetCurrentTime (t);
     ROPt1:=ROPt2;
     ROPt2:=t.Seconds;
-    ScreenService;
+    //ScreenService;
 
     if RPM > Zero then                  { No drilling if not rotating }
     Begin
@@ -61,15 +126,15 @@ Begin
             if KellyHeight < 3 then
             Begin
               KellyHeight:=3;                        { check for kelly down }
-              DrawKelly;
+              //DrawKelly;
               AutoDrill:=False;
               MessageToMemo(2);
-            End else DrawKelly;
-            ScreenService;
+            End;// else DrawKelly;
+            //ScreenService;
           End;
           if TD > StringTD then TD:=StringTD;  { can't be longer than string }
           Tvd:=TD * Cos(DeviationDegrees * Pi / 180);
-          ScreenService;
+          //ScreenService;
         End;
         OverDrill:=StringTD - TD;                 { calculate overdrill }
         if OverDrill < 0.001 then                 { accurate to 1/1000' }
@@ -93,7 +158,7 @@ Begin
         End;
         BitTD:=TD;
         WOH:=StrWt - WOB;
-        ScreenService;
+        //ScreenService;
       End else
       Begin
         MessageToMemo(3);
@@ -135,7 +200,7 @@ Var  i     : integer;
 Begin
   With Data do
   Begin
-    ScreenService;
+    //ScreenService;
     PipeTD:=Zero;
     For i:=1 to MaxPipes do PipeTD:=PipeTD+Pipe[i,1];  { calc. string length }
 
@@ -163,18 +228,7 @@ Begin
       WOH:=StrWt;
       BitTD:=StringTD;
     End;
-    ScreenService;
-    if RPM = Zero then
-    Begin
-      if KellyHeight < 33 then
-      Begin
-//        TAttr:=AttrByte;
-        //SetColorSet(WhiteOnBlue);
-        //Disp(37,13,DnBushing);
-//        AttrByte:=TAttr;
-      End;
-    End;
-    ScreenService;
+    //ScreenService;
   End;
 End;
 

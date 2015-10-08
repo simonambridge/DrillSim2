@@ -101,7 +101,7 @@ Begin
     annular, choke and compressive pressure. The result is negative
     if annular pressure is higher, positive if formation pressure is higher.}
 
-    AnnUnderbalance:=Rock[RockPointer].FP - BHPAnn;
+    AnnUnderbalance:=Formation[FormationPointer].FP - BHPAnn;
 
 {================ Calculate formation gains/lost circulation =================}
 

@@ -10,7 +10,7 @@ Uses Crt,
      SimulateUpdate;
 
 {* Called from:
-DrillSimStatrtup
+DrillSimStartup
 ...
 *}
 
@@ -18,8 +18,8 @@ Procedure Clear;
 Procedure InitData;
 
 Procedure ResetToLoadedValues;               { call this from CLEAR to reset to }
-Procedure InitKick;  { only used by Simulate.Chn at startup, Load and CLEAR }
-Procedure InitMud; { called from LoadData }
+Procedure InitKick;                      { only used at startup, Load and CLEAR }
+Procedure InitMud;                                       { called from LoadData }
 Procedure InitDepth;
 Procedure InitGeology;        { called on each entry into Simulator, and    }
                               { whenever Loaded or Cleared                  }

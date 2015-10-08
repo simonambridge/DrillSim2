@@ -5,7 +5,6 @@ Interface
 Uses Classes, SysUtils, FileUtil, Forms, Controls, Graphics, Dialogs,
   ExtCtrls,
      DrillSimVariables,
-     DrillSimUnitsOfMeasure,
      DrillSimUtilities,
      DrillSimFile,
      DrillSimMessageToMemo,
@@ -122,10 +121,7 @@ Begin
     ShowMessage('Error loading DrillSim help file');
   End;
   StringToMemo('DrillSimStartup.StartUp: DrillSim Startup complete');
-  ThisString:=Data.WellName;
-    writeln(ThisString);
-
-  StringToMemo('DrillSimStartup.StartUp: Using Well ' + ThisString + '');
+  StringToMemo('DrillSimStartup.StartUp: Using Well ' + Data.WellName);
 
 End;
 

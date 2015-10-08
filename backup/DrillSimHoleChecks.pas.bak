@@ -37,11 +37,11 @@ Begin
                                  { mud volume reset when hole profile changed }
   if HoleError then
   Begin
-    ShowMessage('Error in hole dimensions');;
+    ShowMessage('Error in hole/pipe dimensions');;
   End;
 End;
 
-Procedure CheckPipeData;  // called when a file is loaded
+Procedure CheckPipeData;
 Begin
   DSHoleCalc;                { Check hole for errors and initialise volumes }
                                { mud volume reset when pipe profile changed }
@@ -66,16 +66,16 @@ End;
 
 Procedure DSHoleCalc;                  { Procedure To Determine Hole Profile }
 Var
-    OverPipe     : real;
-    Y            : real;
-    SectionDepth : real;
-    J            : integer;
-    i         : integer;
-    PipeIndex  : integer;
-    Counter    : integer;
-    TempHoleSection : array[1..5,1..2] of real;  { Also calculates PipeTD for    }
-    TempHoleSectionIndex  : integer;                   { Simulate and Optimise         }
-    ExtraHole  : array[1..2] of real;
+    OverPipe          : real;
+    PipeSectionDepth  : real;
+    PipeIndex         : integer;
+    SectionDepth      : real;
+    i                 : integer;
+    Counter           : integer;
+    TempSection       : array[1..5,1..2] of real;  { Also calculates PipeTD for    }
+    TS_TD_Index       : integer;                   { Simulate and Optimise         }
+    TS_ID_Index       : integer;
+    ExtraHole         : array[1..2] of real;
 
 Function BblPerFoot(x : real) : real;
 Begin
@@ -85,66 +85,95 @@ End;
 Begin
   With Data do
   Begin
-    TempHoleSectionIndex:=Zero;              { Create and Edit set NeverSimulated }
+    StringToMemo('Running DSHoleCalc to validate well geometry...');
 
-    if Riser then                            { Assign Hole Sections To TempHoleSection[*] }
+    TS_TD_Index:=Zero;              { Create and Edit set NeverSimulated }
+
+    if Riser then                   { -- Assign Hole Sections To TempSection[*] -- }
     Begin
-     TempHoleSectionIndex:=TempHoleSectionIndex+1;
-     TempHoleSection[TempHoleSectionIndex,1]:=RiserTD;
-     TempHoleSection[TempHoleSectionIndex,2]:=RiserID;
+     TS_TD_Index:=TS_TD_Index+1;
+     TempSection[TS_TD_Index,1]:=RiserTD;
+     TempSection[TS_TD_Index,2]:=RiserID;
     End;
 
     if Casing then
     Begin
-      TempHoleSectionIndex:=TempHoleSectionIndex+1;
-      TempHoleSection[TempHoleSectionIndex,1]:=CasingTD;
-      TempHoleSection[TempHoleSectionIndex,2]:=CasingID;
+      TS_TD_Index:=TS_TD_Index+1;
+      TempSection[TS_TD_Index,1]:=CasingTD;
+      TempSection[TS_TD_Index,2]:=CasingID;
       if Riser then
-        TempHoleSection[TempHoleSectionIndex,1]:=TempHoleSection[TempHoleSectionIndex,1]-RiserTD;
+        TempSection[TS_TD_Index,1]:=TempSection[TS_TD_Index,1]-RiserTD;
       if Liner then
-        TempHoleSection[TempHoleSectionIndex,1]:=TempHoleSection[TempHoleSectionIndex,1]-(CasingTD-LinerTopTD);
+        TempSection[TS_TD_Index,1]:=TempSection[TS_TD_Index,1]-(CasingTD-LinerTopTD);
     End;
 
     if Liner then
     Begin
-      TempHoleSectionIndex:=TempHoleSectionIndex+1;
-      TempHoleSection[TempHoleSectionIndex,1]:=LinerBottomTD-LinerTopTD;
-      TempHoleSection[TempHoleSectionIndex,2]:=LinerID;
+      TS_TD_Index:=TS_TD_Index+1;
+      TempSection[TS_TD_Index,1]:=LinerBottomTD-LinerTopTD;
+      TempSection[TS_TD_Index,2]:=LinerID;
     End;
 
-    writeln('MaxHoles = ' + IntToStr(MaxHoles));
+    StringToMemo('DSHoleCalc: MaxHoles = ' + IntToStr(MaxHoles));
+    StringToMemo('DSHoleCalc: TS_TD_Index = ' + IntToStr(TS_TD_Index));
+
     Counter:=0;
     if MaxHoles>Zero then
     Begin
       For Counter:=1 to MaxHoles do
       Begin
-        TempHoleSectionIndex:=TempHoleSectionIndex+1;
-        writeln('Counter = ' + IntToStr(Counter));
+        TS_TD_Index:=TS_TD_Index+1;
+        StringToMemo('DSHoleCalc: Counter = ' + IntToStr(Counter) + ' Hole TD='+FloatToStr(Hole[Counter,1]));
 
-        TempHoleSection[TempHoleSectionIndex,1]:=Hole[Counter,1];
-        TempHoleSection[TempHoleSectionIndex,2]:=Hole[Counter,2];
+        if (Counter=1) then
+        Begin
+          if (Casing=True)
+          then             { deduct TD of casing if present }
+            TempSection[TS_TD_Index,1]:=Hole[Counter,1]-CasingTD
+          else             { otherwise take depth of first open hole }
+            TempSection[TS_TD_Index,1]:=Hole[Counter,1];
+        End else           { deduct TD of previous OH section }
+          TempSection[TS_TD_Index,1]:=Hole[Counter,1]- Hole[Counter-1,1];
 
-        if Casing and Liner
-          then TempHoleSection[TempHoleSectionIndex,1]:=TempHoleSection[TempHoleSectionIndex,1]-LinerBottomTD
-          else TempHoleSection[TempHoleSectionIndex,1]:=TempHoleSection[TempHoleSectionIndex,1]-CasingTD;
+        TempSection[TS_TD_Index,2]:=Hole[Counter,2];
 
-        if Counter>1 then TempHoleSection[TempHoleSectionIndex,1]:=TempHoleSection[TempHoleSectionIndex,1]-TempHoleSection[TempHoleSectionIndex-1,1];
-      End;                                     { Deduct OH#1 }
+        if (counter=1) and (Liner=True) then
+          TempSection[TS_TD_Index,1]:=TempSection[TS_TD_Index,1]-LinerBottomTD;
+      End;
     End;
 
-    TD:=Zero;                              { Calculate TD, TVD using TempHoleSection[i,1] }
-    For i:=1 to TempHoleSectionIndex do TD:=TD+TempHoleSection[i,1];
+    StringToMemo('DSHoleCalc: TS_TD_Index = ' + IntToStr(TS_TD_Index));
+    For i:=1 to TS_TD_Index do
+    Begin
+      writeln ('TempSection Depth='+FloatToStr(TempSection[i,1])+' feet, ID='+FloatToStr(TempSection[i,2]));
+    end;
 
-    PipeTD:=Zero;                          { Calculate PipeTD using Pipe[i,1] }
+
+    { -- Calculate TD, TVD using TempSection[i,1] -- }
+
+    StringToMemo('- Check hole and pipe TDs...');
+    TD:=Zero;
+    For i:=1 to TS_TD_Index do TD:=TD+TempSection[i,1];
+    StringToMemo('DSHoleCalc: Hole TD='+FloatToStr(TD));
+
+    Tvd:=TD * Cos(DeviationDegrees * Pi / 180);
+    StringToMemo('DSHoleCalc: TvD='+FloatToStr(TvD));
+
+
+    { -- Calculate PipeTD using Pipe[i,1] -- }
+
+    PipeTD:=Zero;
     For i:=1 to MaxPipes do PipeTD:=PipeTD + Pipe[i,1];
+    StringToMemo('DSHoleCalc: Pipe TD='+FloatToStr(PipeTD));
 
-    writeln('Check hole and pipe TDs...');
-                                             { Check hole and pipe TD's }
+
+    { -- Calculate hole and pipe TD's -- }
     if TD < PipeTD then                      { check for excess pipe length  }
     Begin
       OverPipe:=PipeTD - TD;
       if OverPipe >= Pipe[MaxPipes,1] then          { if it can't be accomodated in   }
       Begin                                         { Drill Pipe, then error and Exit }
+        StringToMemo('DSHoleCalc Error: Overpipe >= Pipe[MaxPipes,1]');
         HoleError:=True;
         Exit;
       End else
@@ -156,87 +185,84 @@ Begin
         LastKD:=PipeTD;                              { and set up for new kelly down }
       End;
     End;
-    Tvd:=TD * Cos(DeviationDegrees * Pi / 180);
 
-    writeln('Calculate Hole Profile...');
+    StringToMemo('- Calculate Hole Profile...');
 
-    J:=1; PipeIndex:=MaxPipes;                   { Calculate Hole Profile }
+    TS_ID_Index:=1; PipeIndex:=MaxPipes;                   { Calculate Hole Profile }
     i:=1;
-    SectionDepth:=TempHoleSection[J,1];
-    Y:=Pipe[PipeIndex,1];                        { From bottom to surface }
+    SectionDepth:=TempSection[TS_ID_Index,1];
+    PipeSectionDepth:=Pipe[PipeIndex,1];                        { From bottom to surface }
     ExtraVolume:=Zero;                           { initialise off-bottom volume }
     While PipeIndex>Zero do
     Begin
-      if SectionDepth > Y then                      { Hole > Pipe }
+      if SectionDepth > PipeSectionDepth then                      { Hole > Pipe }
       Begin
-        HoleSection[i,1]:=Y;                         { section length }
-        HoleSection[i,2]:=TempHoleSection[J,2];      { section hole ID }
+        HoleSection[i,1]:=PipeSectionDepth;                         { section length }
+        HoleSection[i,2]:=TempSection[TS_ID_Index,2];      { section hole ID }
         HoleSection[i,3]:=Pipe[PipeIndex,3];         { section Pipe OD }
         HoleSection[i,4]:=Pipe[PipeIndex,2];         { section Pipe ID }
         ErrorCheck(i);
         if HoleError then Exit;
-        SectionDepth:=SectionDepth-Y;
+        SectionDepth:=SectionDepth-PipeSectionDepth;
         PipeIndex:=PipeIndex-1;
         if PipeIndex > Zero then
         Begin
           i:=i+1;
-          Y:=Pipe[PipeIndex,1];
+          PipeSectionDepth:=Pipe[PipeIndex,1];
         End;
       End else
-      if SectionDepth < Y then
+      if SectionDepth < PipeSectionDepth then
       Begin
         HoleSection[i,1]:=SectionDepth;                  { Pipe < Hole }
-        HoleSection[i,2]:=TempHoleSection[J,2];
+        HoleSection[i,2]:=TempSection[TS_ID_Index,2];
         HoleSection[i,3]:=Pipe[PipeIndex,3];
         HoleSection[i,4]:=Pipe[PipeIndex,2];
         ErrorCheck(i);
         if HoleError then Exit;
-        Y:=Y-SectionDepth;
-        J:=J+1;
-        if J <= TempHoleSectionIndex then
+        PipeSectionDepth:=PipeSectionDepth-SectionDepth;
+        TS_ID_Index:=TS_ID_Index+1;
+        if TS_ID_Index <= TS_TD_Index then
         Begin
           i:=i+1;
-          SectionDepth:=TempHoleSection[J,1];
+          SectionDepth:=TempSection[TS_ID_Index,1];
         End;
       End else
-      if SectionDepth = Y then
+      if SectionDepth = PipeSectionDepth then
       Begin
         HoleSection[i,1]:=SectionDepth;                  { Pipe = Hole }
-        HoleSection[i,2]:=TempHoleSection[J,2];          { section length = hole length }
+        HoleSection[i,2]:=TempSection[TS_ID_Index,2];          { section length = hole length }
         HoleSection[i,3]:=Pipe[PipeIndex,3];
         HoleSection[i,4]:=Pipe[PipeIndex,2];
         ErrorCheck(i);
         if HoleError then Exit;
         PipeIndex:=PipeIndex-1;
-        J:=J+1;
-        if (PipeIndex > Zero) and (J <= TempHoleSectionIndex) then
+        TS_ID_Index:=TS_ID_Index+1;
+        if (PipeIndex > Zero) and (TS_ID_Index <= TS_TD_Index) then
         Begin
           i:=i+1;
-          SectionDepth:=TempHoleSection[J,1];
-          Y:=Pipe[PipeIndex,1];
+          SectionDepth:=TempSection[TS_ID_Index,1];
+          PipeSectionDepth:=Pipe[PipeIndex,1];
         End;
       End;
 {  not to be confused with previous block if Pipe=Hole and on
    last hole section, because it does this first before looping
    back. K is here set to zero which exits the algorithm }
 
-   writeln('Calculate extre hole...');
-
 { first check to see if pipe is off bottom (no more pipe after this).
   If yes, last hole section is equal to remaining pipe length and
   extra (non circulating) volume must be calculated in ExtraVol }
 
-      if (PipeIndex = 1) and (J=TempHoleSectionIndex) then    { if on last section of pipe + hole }
+      if (PipeIndex = 1) and (TS_ID_Index=TS_TD_Index) then    { if on last section of pipe + hole }
       Begin
-        HoleSection[i,1]:=Y;       { section for analysis must be pipe length }
-        if SectionDepth>Y then                { if off bottom...}
+        HoleSection[i,1]:=PipeSectionDepth;       { section for analysis must be pipe length }
+        if SectionDepth>PipeSectionDepth then                { if off bottom...}
         Begin
-          ExtraHole[1]:=SectionDepth-Y;       { off-bottom distance }
-          ExtraHole[2]:=TempHoleSection[J,2]; { hole ID }
+          ExtraHole[1]:=SectionDepth-PipeSectionDepth;       { off-bottom distance }
+          ExtraHole[2]:=TempSection[TS_ID_Index,2]; { hole ID }
           ExtraVolume:=ExtraHole[1] * BblPerFoot(ExtraHole[2]); { extra volume }
         End;
 
-        HoleSection[i,2]:=TempHoleSection[J,2];
+        HoleSection[i,2]:=TempSection[TS_ID_Index,2];
         HoleSection[i,3]:=Pipe[PipeIndex,3];
         HoleSection[i,4]:=Pipe[PipeIndex,2];
         ErrorCheck(i);
@@ -245,11 +271,11 @@ Begin
       End;
     End;
 
-    writeln('Set up well volume...');
+    StringToMemo('- Set up well volume...');
 
     TotHoleSections:=i;
 
-    { Set up well volume below before calculating from HoleSection[i].
+  { Set up well volume below before calculating from HoleSection[i].
    Initially set to zero, ExtraVolume is only non-zero if off-bottom
    Well Volume is still correct because it includes the ExtraVolume.
    Annular volume is compensated for non-circulating volume. }
@@ -271,6 +297,18 @@ Begin
     AnnVol:=(WellVol - ExtraVolume) - PipeDis; { don't include extra hole vol }
     HoleVol:=AnnVol + PipeCap + ExtraVolume;
     MudVol:=HoleVol;             { set to correct hole volume }
+
+    StringToMemo('Well Vol='+FloatToStr(WellVol));
+    StringToMemo('Ann Vol='+FloatToStr(AnnVol));
+    StringToMemo('Hole Vol='+FloatToStr(HoleVol));
+    StringToMemo('Pipe Cap Vol='+FloatToStr(PipeCap));
+
+
+    For i:=1 to TotHoleSections do
+    Begin
+      StringToMemo('Hole Depth='+FloatToStr(HoleSection[i,1])+' ft,Hole ID='+FloatToStr(HoleSection[i,2])
+        + ' ins, Pipe ID='+FloatToStr(HoleSection[i,3])+' ins, Pipe OD='+FloatToStr(HoleSection[i,4])+' ins');
+    end;
   End;
 End;
 

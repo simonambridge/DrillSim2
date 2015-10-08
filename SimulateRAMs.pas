@@ -10,31 +10,18 @@ Procedure RamCheck;  { called from BOPCommands and SetSurfControls }
 
 Implementation
 
-Procedure CloseWell(z : integer);   { ypos, message # }
-Begin
-  StringToMemo('Well is now shut in');
-  MessageToMemo(z);
-End;
-
-Procedure OpenWell(z : integer);    { ypos, message # }
-Begin
-  StringToMemo('Well is now open');
-  MessageToMemo(z);
-End;
-
-
 Procedure RamCheck;  { called from BOPCommands and SetSurfControls }
 Begin
   With Data do
   Begin
-    if Hydril then CloseWell(11)  { message# }
-              else OpenWell(12);  { message# }
-    if PipeRam then CloseWell(8)  { message# }
-               else OpenWell(9);  { message# }
+    if Hydril then MessageToMemo(11)  { message# }
+              else MessageToMemo(12);  { message# }
+    if PipeRam then MessageToMemo(8)  { message# }
+               else MessageToMemo(9);  { message# }
 
     if not (Hydril or BlindRam or PipeRam) then
     Begin
-      StringToMemo('BOPs Open');
+      StringToMemo('Blow Out Preventers are OPEN');
       if ShutIn then        { change status to open if not already open }
       Begin
         ShutIn:=False;      { change to shut-in                   }
@@ -51,7 +38,7 @@ Begin
       End;
     End else
     Begin
-      StringToMemo('SHUT IN');
+      StringToMemo('Blow Out Preventers are CLOSED');
       if not ShutIn then   { change status to shut in if not already shut in }
       Begin                { ie only do this if rams have just been closed   }
         ShutIn:=True;

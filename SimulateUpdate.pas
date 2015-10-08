@@ -12,6 +12,7 @@ Procedure DrawKelly;    { draws appropriate kelly and bushing @ KelHt }
 Procedure SetKelly; { move kelly to drilling position ie. when loading a file }
 Procedure StatusUpdate;
 Procedure TimeUpdate;
+Procedure MudUpdate;
 Procedure FlowUpdate;
 
 
@@ -29,7 +30,7 @@ Begin
   KellyImageIndex:=trunc((33-Data.KellyHeight) * 2.667);  { 80 px /30 feet = 2.667 px/foot }
   //KellyImageIndex:=KellyImageIndex div 10;
 
-  StringToMemo('Kelly height = ' + FloatToStr(Data.KellyHeight) + '    KellyImageIndex = ' + IntToStr(KellyImageIndex));
+  //StringToMemo('Kelly height = ' + FloatToStr(Data.KellyHeight) + '    KellyImageIndex = ' + IntToStr(KellyImageIndex));
 
   { quick and dirty code }
   if (KellyImageIndex = 0) then  KellyImageFileName:='kellyup-0.png'
@@ -104,7 +105,7 @@ Begin
     if RPMt2 < RPMt1 then RPMt1:=RPMt1-100;
     x:=((RPMt2 - RPMt1) / 100);
     CurrentTurn:=CurrentTurn + x;
-    if CurrentTurn > (10 / RPM) then
+    if CurrentTurn > (1 / RPM) then
     Begin
       CurrentTurn:=Zero;
       CurrentBushing:=CurrentBushing + 1;
@@ -117,10 +118,9 @@ End;
 
 { -------------------- Screen  Updates ------------------- }
 
-Procedure FlowUpdate;
-Var i          : integer;
+Procedure MudUpdate;
 Begin
-  StringToMemo('SimulateUpdate:FlowUpdate called');
+  //StringToMemo('SimulateUpdate:FlowUpdate called');
   With Data do
   Begin
     if MwIn <> LastMwIn then
@@ -140,6 +140,15 @@ Begin
       DrillSim.PumpStrokesValue.Caption:=FloatToStr(Round2(StrokeCounter/UoMConverter[2],2)); { API -> displayed }
       LastStrokeCounter:=StrokeCounter;
     End;
+
+  end;
+End;
+
+Procedure FlowUpdate;
+Begin
+  //StringToMemo('SimulateUpdate:FlowUpdate called');
+  With Data do
+  Begin
 
     if FlowIn <> LastFlowIn then
     Begin
@@ -182,7 +191,7 @@ End;
 
 Procedure DepthUpdate;
 Begin
-  StringToMemo('SimulateUpdate:DepthUpdate called');
+  //StringToMemo('SimulateUpdate:DepthUpdate called');
   With Data do
   Begin
     if BitTD <> LastBitTD then
@@ -201,7 +210,7 @@ End;
 
 Procedure ShutInUpdate;
 Begin
-  StringToMemo('SimulateUpdate:ShutInUpdate called');
+  //StringToMemo('SimulateUpdate:ShutInUpdate called');
   With Data do
   Begin
     if BHPAnn <> LastBHPAnn then
@@ -220,7 +229,7 @@ End;
 
 Procedure DrillUpdate;
 Begin
-  StringToMemo('SimulateUpdate:DrillUpdate called');
+  //StringToMemo('SimulateUpdate:DrillUpdate called');
   With Data do
   Begin
     DepthUpdate;
@@ -245,7 +254,6 @@ End;
 
 Procedure TimeUpdate;
 Begin
-  StringToMemo('SimulateUpdate:TimeUpdate called');
   GetCurrentTime (t);
   if t.Seconds <> LastSeconds then
   Begin
@@ -263,7 +271,6 @@ Procedure StatusUpdate;
 Var i          : integer;
 Label Loop;
 Begin
-  StringToMemo('SimulateUpdate:StatusUpdate called');
   With Data do
   Begin
     if KellyHeight = 33 then                { calculate based on kelly height   }
@@ -295,8 +302,16 @@ End;
 
 Procedure ScreenService;
 Begin
+  StatusCounter:=StatusCounter + 1;
+  if StatusCounter>10 then               { check every 10 loops }
+  Begin
+    StatusUpdate;
+    StatusCounter:=Zero;
+  End;
   if Data.RPM > Zero then TurnBushing;
+
   TimeUpdate;
+  MudUpdate;
   FlowUpdate;
   if Data.ShutIn then ShutInUpdate else DrillUpdate;
 End;

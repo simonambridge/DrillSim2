@@ -8,11 +8,12 @@ Uses Crt,
      SimulateUpdate,
      DrillSimDataResets;
 
-Procedure ControlChecks;
+Procedure FormationPressureCalc;
+Procedure TwistOffCalc;
 
 Implementation
 
-Procedure ControlChecks;
+Procedure FormationPressureCalc;
 Var
    x : real;
    i : integer;
@@ -35,10 +36,19 @@ Begin
                 (Formation[FormationPointer].FP / Formation[FormationPointer].Depth) / Presscon;
       End;
     End;
+  End;
+End;
 
+Procedure TwistOffCalc;
+Var
+   x : real;
+   i : integer;
+Begin
+  With Data do
+  Begin
              { -------- Cheque for twist-off --------- }
 
-    if (StatusCounter=5) and (Status=3) then   { check every 10 loops }
+    if (StatusCounter=5) and (Status=3) then   { check every 5 loops }
     Begin                                          { if drilling          }
       x:=Zero;
       for i:=1 to MaxPipes do        { calculate drill collar weight }
@@ -63,12 +73,6 @@ Begin
       End;
     End;
 
-    StatusCounter:=StatusCounter + 1;
-    if StatusCounter>10 then
-    Begin
-      StatusUpdate;
-      StatusCounter:=Zero;
-    End;
   End;
 End;
 

@@ -40,14 +40,12 @@ uses
   FormSurfaceEquipmentData,
   FormWellTestData,
   FormGeologyData,
-
   SimulateCommandProcessor,
   SimulateUpdate,
   SimulateSurfaceControls,
   SimulateHoleCalcs,
   SimulateHydraulicCalcs,
   SimulateDrillingCalcs,
-  SimulateControlChecks,
   SimulateKick;
 
 
@@ -197,6 +195,8 @@ type
     procedure CommandLineClick(Sender: TObject);
     procedure CommandLineKeyPress(Sender: TObject; var Key: char);
     procedure FormActivate(Sender: TObject);
+    procedure FormClose(Sender: TObject; var CloseAction: TCloseAction);
+    procedure FormDeactivate(Sender: TObject);
     procedure MenuItem1OpenFileClick(Sender: TObject);
     procedure MenuItem1SaveAsClick(Sender: TObject);
     procedure MenuItem1SaveFileClick(Sender: TObject);
@@ -237,7 +237,6 @@ type
     procedure RPMminusClick(Sender: TObject);
     procedure RPMplusClick(Sender: TObject);
 
-    Procedure OnClose(Sender: TObject);
     procedure FormCreate(Sender: TObject);
   private
     { private declarations }
@@ -252,6 +251,7 @@ type
     private
       ThreadStatus : string;
       procedure ShowStatus;
+      procedure UpdateGUI;
     protected
       procedure Execute; override;
     public
@@ -326,7 +326,7 @@ begin
     Pump[1,3]:=Pump[1,3]-1;
     if Pump[1,3]<Zero then Pump[1,3]:=Zero;
     Pump1Value.Caption:=FloatToStr(Pump[1,3]);
-    StringToMemo('Pump [1,3] : ' + FloatToStr(Pump[1,3]));
+    //StringToMemo('Pump [1,3] : ' + FloatToStr(Pump[1,3]));
   end;
 end;
 
@@ -336,50 +336,50 @@ begin
   Begin
     Pump[1,3]:=Pump[1,3]+1;
     Pump1Value.Caption:=FloatToStr(Pump[1,3]);
-    StringToMemo('Pump [1,3] : ' + FloatToStr(Pump[1,3]));
+    //StringToMemo('Pump [1,3] : ' + FloatToStr(Pump[1,3]));
   end;
  end;
 
-procedure TDrillSim.Pump2MinusClick(Sender: TObject);
-begin
-    With Data do
-    Begin
-      Pump[2,3]:=Pump[2,3]-1;
-      if Pump[2,3]<Zero then Pump[2,3]:=Zero;
-      Pump2Value.Caption:=FloatToStr(Pump[2,3]);
-      StringToMemo('Pump [2,3] : ' + FloatToStr(Pump[2,3]));
-    end;
+Procedure TDrillSim.Pump2MinusClick(Sender: TObject);
+Begin
+  With Data do
+  Begin
+    Pump[2,3]:=Pump[2,3]-1;
+    if Pump[2,3]<Zero then Pump[2,3]:=Zero;
+    Pump2Value.Caption:=FloatToStr(Pump[2,3]);
+    //StringToMemo('Pump [2,3] : ' + FloatToStr(Pump[2,3]));
+  end;
 end;
 
 procedure TDrillSim.Pump2PlusClick(Sender: TObject);
 begin
-    With Data do
-    Begin
-      Pump[2,3]:=Pump[2,3]+1;
-      Pump2Value.Caption:=FloatToStr(Pump[2,3]);
-      StringToMemo('Pump [2,3] : ' + FloatToStr(Pump[2,3]));
-    end;
+  With Data do
+  Begin
+    Pump[2,3]:=Pump[2,3]+1;
+    Pump2Value.Caption:=FloatToStr(Pump[2,3]);
+    //StringToMemo('Pump [2,3] : ' + FloatToStr(Pump[2,3]));
+  end;
 end;
 
 procedure TDrillSim.Pump3MinusClick(Sender: TObject);
 begin
-    With Data do
-    Begin
-      Pump[3,3]:=Pump[3,3]-1;
-      if Pump[3,3]<Zero then Pump[3,3]:=Zero;
-      Pump3Value.Caption:=FloatToStr(Pump[3,3]);
-      StringToMemo('Pump [3,3] : ' + FloatToStr(Pump[3,3]));
-    end;
+  With Data do
+  Begin
+    Pump[3,3]:=Pump[3,3]-1;
+    if Pump[3,3]<Zero then Pump[3,3]:=Zero;
+    Pump3Value.Caption:=FloatToStr(Pump[3,3]);
+    //StringToMemo('Pump [3,3] : ' + FloatToStr(Pump[3,3]));
+  end;
 end;
 
 procedure TDrillSim.Pump3PlusClick(Sender: TObject);
 begin
-    With Data do
-    Begin
-      Pump[3,3]:=Pump[3,3]+1;
-      Pump3Value.Caption:=FloatToStr(Pump[3,3]);
-      StringToMemo('Pump [3,3] : ' + FloatToStr(Pump[3,3]));
-    end;
+  With Data do
+  Begin
+    Pump[3,3]:=Pump[3,3]+1;
+    Pump3Value.Caption:=FloatToStr(Pump[3,3]);
+    //StringToMemo('Pump [3,3] : ' + FloatToStr(Pump[3,3]));
+  end;
 end;
 
 { ------------------------------ RPM -----------------------------------------}
@@ -391,7 +391,7 @@ begin
     RPM:=RPM-1;
     if RPM<Zero then RPM:=Zero;
     RPMValue.Caption:=FloatToStr(RPM);
-    StringToMemo('RPM : ' + FloatToStr(RPM));
+    //StringToMemo('RPM : ' + FloatToStr(RPM));
   end;
 end;
 
@@ -404,7 +404,7 @@ begin
       RPM:=RPM+1;
       if RPM>160 then RPM:=160;
       RPMValue.Caption:=FloatToStr(RPM);
-      StringToMemo('RPM : ' + FloatToStr(RPM));
+      //StringToMemo('RPM : ' + FloatToStr(RPM));
     End else
     Begin
       MessageToMemo(52);
@@ -628,7 +628,6 @@ begin
 
 end;
 
-
 procedure TDrillSim.FormCreate(Sender: TObject);
 begin
   Memo1.SelStart:=Length(Memo1.Text);
@@ -640,10 +639,9 @@ begin
 
 end;
 
-
-Procedure TDrillSim.OnClose(Sender: TObject);
+Procedure CheckExit;
 var Reply, BoxStyle: Integer;
-begin
+Begin
   if Edited then StringToMemo('Edited') else StringToMemo('Not Edited');
   BoxStyle := MB_ICONQUESTION + MB_YESNO;
   Reply := Application.MessageBox('Are you sure?', 'Exit Check', BoxStyle);
@@ -661,29 +659,27 @@ begin
     end;
     Application.Terminate;
   end;
+End;
+
+Procedure TDrillSim.FormDeActivate(Sender: TObject);
+Begin { Also called on Quit Button }
+  StringToMemo('DrillSimGUI.Deactivate ........................................');
+  CheckExit;
+End;
+
+procedure TDrillSim.FormClose(Sender: TObject; var CloseAction: TCloseAction);
+begin { Kill the app using window controls }
+  StringToMemo('DrillSimGUI.Close .............................................');
+  CheckExit;
 end;
 
-procedure TDrillSim.MenuItem1QuitClick(Sender: TObject);
+
+Procedure TDrillSim.MenuItem1QuitClick(Sender: TObject);
 var Reply, BoxStyle: Integer;
-begin
-  if Edited then StringToMemo('Edited') else StringToMemo('Not Edited');
-  BoxStyle := MB_ICONQUESTION + MB_YESNO;
-  Reply := Application.MessageBox('Are you sure?', 'Exit Check', BoxStyle);
-  if Reply = IDYES then
-  Begin
-    if Edited then
-    Begin
-      BoxStyle := MB_ICONQUESTION + MB_YESNO;
-      Reply := Application.MessageBox('File has been edited. Do you want to save?', 'Save Check', BoxStyle);
-      if Reply = IDYES then
-      Begin
-        SaveData;
-        StringToMemo('DrillSimGUI.OnClose: File ' + CurrentFQFileName + ' saved');
-      end;
-    end;
-    Application.Terminate;
-  end;
-end;
+Begin { Kill the app from the menu }
+  StringToMemo('DrillSimGUI:Menu 1: Quit ......................................');
+  CheckExit;
+End;
 
 
 {* ======================== Menus =========================== *}
@@ -853,6 +849,9 @@ begin
   finally
     HoleDataForm.Free;
   end;
+  { call DrillSimHoleChecks:CheckHoleData - calls DSHoleCalc - check hole and pipe data }
+  CheckHoleData;
+  if HoleError then StringToMemo('DrillSimFile.LoadData: Hole Error !!!! ');
 
 end;
 
@@ -864,6 +863,10 @@ begin
   finally
     PipeDataForm.Free;
   end;
+    { call DrillSimHoleChecks:CheckHoleData - calls DSHoleCalc - check hole and pipe data }
+    CheckHoleData;
+    if HoleError then StringToMemo('DrillSimFile.LoadData: Hole Error !!!! ');
+
 end;
 
 procedure TDrillSim.MenuItem2BitDataClick(Sender: TObject);
@@ -962,7 +965,7 @@ end;
 procedure TDrillSim.MenuItem3StopClick(Sender: TObject);
 begin
   Simulating:=False;
-  StringToMemo('Menu3:Stopping Simulation');
+  StringToMemo('Menu3: Stopping Simulation');
 end;
 
 procedure TDrillSim.MenuItem3PauseClick(Sender: TObject);
@@ -976,19 +979,19 @@ begin
   Paused:=not Paused;
   if Paused=True then
   Begin
-    StringToMemo('Menu3:Simulation Paused');
+    StringToMemo('Menu3: Simulation Paused');
     Simulating:=False;
   end
   else
   Begin
-    StringToMemo('Menu3:Simulation Un-paused');
+    StringToMemo('Menu3: Simulation Un-paused');
     Simulating:=True;
   end;
 end;
 
 procedure TDrillSim.MenuItem3StartClick(Sender: TObject);
 begin
-  StringToMemo('Menu3:Starting Simulation');
+  StringToMemo('Menu3: Starting Simulation');
   MessageToMemo(100);               { Please wait...  }
   if not Simulating then
   Begin
@@ -1010,16 +1013,22 @@ begin
       GetCurrentTime (t);
       Data.t2:=t.Seconds;             { initialize time                    }
 
+
+
       SimHoleCalc;                    { SimulateHoleCalcs - calculate volumes }
+
+      MudUpdate;                      { SimulateUpdate - set up mud, display it  }
 
       FlowUpdate;                     { SimulateUpdate - set up flow, display it }
 
-      SetKelly;                       { SImulateUpdate - move kelly to drilling position    }
+      SetKelly;                       { SimulateUpdate - move kelly to drilling position    }
 
       SetSurfControls;                { set RAMs and choke line            }
 
       Simulating:=True;               { ACTIVATE THE THREAD !!!            }
       Paused:=False;
+
+      TimeUpdate; { SimulateHydraulicCalcs:HyCalc }
     End;
   end;
 End;
@@ -1032,14 +1041,18 @@ constructor TMyThread.Create(CreateSuspended : boolean);
 begin
   FreeOnTerminate := True;
   inherited Create(CreateSuspended);
-  {StringToMemo('Thread created');}
 end;
 
 procedure TMyThread.ShowStatus;
 // this method is executed by the mainthread and can therefore access all GUI elements.
 begin
   StringToMemo('Simulation Thread Status Change - '+ ThreadStatus);
+end;
 
+procedure TMyThread.UpdateGUI;
+// this method is executed by the mainthread and can therefore access all GUI elements.
+begin
+  ScreenService;
 end;
 
 procedure TMyThread.Execute;
@@ -1049,28 +1062,35 @@ begin
   ThreadStatus := 'TMyThread Starting...';
   Synchronize(@Showstatus);
   ThreadStatus := 'TMyThread Running...';
-  {StringToMemo('TMyThread running...');  }
-  Synchronize(@Showstatus);
+
+  Synchronize(@UpdateGUI);
+
   while (not Terminated) do
     begin
        if Simulating then
        Begin
          NewStatus:=('Simulating');
 
-         HyCalc;
-         TimeUpdate;
+         FlowRateCalc;      { SimulateHydraulicCalcs:FlowRateCalc }
+
+         HydraulicCalc;     { SimulateHydraulicCalcs:HyCalc }
 
          { check for hole deeper then next horizon          }
          { if yes, check if next horizon data is valid (>0) }
          { if yes, advance RockPointer and calculate new    }
          { formation pressure gradient                      }
 
+         FormationPressureCalc;
 
-         //ControlChecks;
+         TwistOffCalc;
 
-         //DrillCalc;
+         DrillCalc;
 
-         //KickCalc;
+         //DrawKelly;
+
+         KickCalc;
+
+         Synchronize(@UpdateGUI);
 
        end else
        Begin
