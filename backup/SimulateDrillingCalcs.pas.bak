@@ -17,9 +17,6 @@ Procedure DrillCalc;
 Implementation
 
 Procedure FormationPressureCalc;
-Var
-   x : real;
-   i : integer;
 Begin
   With Data do
   Begin
@@ -45,7 +42,6 @@ End;
 Procedure TwistOffCalc;
 Var
    x : real;
-   i : integer;
 Begin
   With Data do
   Begin
@@ -98,7 +94,7 @@ Procedure DrillingError;
 Begin
   Delay(1000);
   Data.KellyHeight:=Data.KellyHeight + 0.5;
-  DrawKelly;
+  //DrawKelly;
   //ScreenService;
 End;
 

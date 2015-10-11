@@ -6,7 +6,8 @@ Uses Crt,
      DrillSimVariables,
      SimulateSurfaceControls,
      SimulateHoleCalcs,
-     DrillSimMessageToMemo;
+     DrillSimMessageToMemo,
+     SimulateUpdate;
 
 {* Called from:
 DrillSimStartup
@@ -27,7 +28,6 @@ Implementation
 
 Procedure InitData;     { Used to set everything to empty at start-up}
 Var i : integer;
-    x : real;
 Begin
   StringToMemo('Initialise - DrillSimDataResets:InitData called');
   With Data do

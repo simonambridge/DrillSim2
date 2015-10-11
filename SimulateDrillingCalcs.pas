@@ -17,9 +17,6 @@ Procedure DrillCalc;
 Implementation
 
 Procedure FormationPressureCalc;
-Var
-   x : real;
-   i : integer;
 Begin
   With Data do
   Begin

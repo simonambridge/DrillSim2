@@ -4,7 +4,7 @@ Interface
 
 Uses Crt,
      DrillSimVariables,
-     SimulateSurfaceControls,
+     SimulateRAMs,
      SimulateHoleCalcs,
      DrillSimMessageToMemo,
      SimulateUpdate;
@@ -28,7 +28,6 @@ Implementation
 
 Procedure InitData;     { Used to set everything to empty at start-up}
 Var i : integer;
-    x : real;
 Begin
   StringToMemo('Initialise - DrillSimDataResets:InitData called');
   With Data do

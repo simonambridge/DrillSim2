@@ -42,12 +42,11 @@ uses
   FormGeologyData,
   SimulateCommandProcessor,
   SimulateUpdate,
-  SimulateSurfaceControls,
+  SimulateRAMs,
   SimulateHoleCalcs,
   SimulateHydraulicCalcs,
   SimulateDrillingCalcs,
   SimulateKick;
-
 
 type
 
@@ -93,12 +92,12 @@ type
 
     SelectDirectoryDialog1: TSelectDirectoryDialog;
     AnnularPressureText: TStaticText;
-    StandPipePressureText2: TStaticText;
+    CasingPressureText: TStaticText;
     AnnularPressureUoMLabel: TStaticText;
     CasingPressureUoMLabel: TStaticText;
     StandPipePressureValue: TLabel;
     ReturnPitValue: TLabel;
-    PipeRamsValue: TLabel;
+    PipeRAMsValue: TLabel;
     ChokeValue: TLabel;
     StandPipePressureUoMLabel: TStaticText;
     CommandLine: TEdit;
@@ -195,7 +194,7 @@ type
     procedure CommandLineClick(Sender: TObject);
     procedure CommandLineKeyPress(Sender: TObject; var Key: char);
     procedure FormActivate(Sender: TObject);
-    procedure FormClose(Sender: TObject; var CloseAction: TCloseAction);
+    procedure FormClose(Sender: TObject);
     procedure FormDeactivate(Sender: TObject);
     procedure MenuItem1OpenFileClick(Sender: TObject);
     procedure MenuItem1SaveAsClick(Sender: TObject);
@@ -321,64 +320,64 @@ End;
 
 Procedure TDrillSim.Pump1MinusClick(Sender: TObject);
 begin
-  With Data do
+  With Data do              { - strokes per minute }
   Begin
     Pump[1,3]:=Pump[1,3]-1;
     if Pump[1,3]<Zero then Pump[1,3]:=Zero;
     Pump1Value.Caption:=FloatToStr(Pump[1,3]);
-    //StringToMemo('Pump [1,3] : ' + FloatToStr(Pump[1,3]));
+    StringToMemo('Pump 1 : ' + FloatToStr(Pump[1,3]));
   end;
 end;
 
 procedure TDrillSim.Pump1PlusClick(Sender: TObject);
 begin
-  With Data do
+  if Simulating then With Data do              { + strokes per minute }
   Begin
     Pump[1,3]:=Pump[1,3]+1;
     Pump1Value.Caption:=FloatToStr(Pump[1,3]);
-    //StringToMemo('Pump [1,3] : ' + FloatToStr(Pump[1,3]));
+    StringToMemo('Pump 1 : ' + FloatToStr(Pump[1,3]));
   end;
  end;
 
 Procedure TDrillSim.Pump2MinusClick(Sender: TObject);
 Begin
-  With Data do
+  With Data do              { - strokes per minute }
   Begin
     Pump[2,3]:=Pump[2,3]-1;
     if Pump[2,3]<Zero then Pump[2,3]:=Zero;
     Pump2Value.Caption:=FloatToStr(Pump[2,3]);
-    //StringToMemo('Pump [2,3] : ' + FloatToStr(Pump[2,3]));
+    StringToMemo('Pump 2 : ' + FloatToStr(Pump[2,3]));
   end;
 end;
 
 procedure TDrillSim.Pump2PlusClick(Sender: TObject);
 begin
-  With Data do
+  With Data do               { + strokes per minute }
   Begin
     Pump[2,3]:=Pump[2,3]+1;
     Pump2Value.Caption:=FloatToStr(Pump[2,3]);
-    //StringToMemo('Pump [2,3] : ' + FloatToStr(Pump[2,3]));
+    StringToMemo('Pump 2 : ' + FloatToStr(Pump[2,3]));
   end;
 end;
 
 procedure TDrillSim.Pump3MinusClick(Sender: TObject);
 begin
-  With Data do
+  With Data do               { - strokes per minute }
   Begin
     Pump[3,3]:=Pump[3,3]-1;
     if Pump[3,3]<Zero then Pump[3,3]:=Zero;
     Pump3Value.Caption:=FloatToStr(Pump[3,3]);
-    //StringToMemo('Pump [3,3] : ' + FloatToStr(Pump[3,3]));
+    StringToMemo('Pump 3 : ' + FloatToStr(Pump[3,3]));
   end;
 end;
 
 procedure TDrillSim.Pump3PlusClick(Sender: TObject);
 begin
-  With Data do
+  With Data do               { + strokes per minute }
   Begin
     Pump[3,3]:=Pump[3,3]+1;
     Pump3Value.Caption:=FloatToStr(Pump[3,3]);
-    //StringToMemo('Pump [3,3] : ' + FloatToStr(Pump[3,3]));
+    StringToMemo('Pump 3 : ' + FloatToStr(Pump[3,3]));
   end;
 end;
 
@@ -391,7 +390,7 @@ begin
     RPM:=RPM-1;
     if RPM<Zero then RPM:=Zero;
     RPMValue.Caption:=FloatToStr(RPM);
-    //StringToMemo('RPM : ' + FloatToStr(RPM));
+    StringToMemo('RPM : ' + FloatToStr(RPM));
   end;
 end;
 
@@ -404,7 +403,7 @@ begin
       RPM:=RPM+1;
       if RPM>160 then RPM:=160;
       RPMValue.Caption:=FloatToStr(RPM);
-      //StringToMemo('RPM : ' + FloatToStr(RPM));
+      StringToMemo('RPM : ' + FloatToStr(RPM));
     End else
     Begin
       MessageToMemo(52);
@@ -613,7 +612,10 @@ begin
   TotalDepthValue.Caption:=FloatToStr(Round2(Data.TD/UoMConverter[1],2)); { API -> displayed }
   MudWeightInValue.Caption:=FloatToStr(Round2(Data.MwIn/UoMConverter[2],2)); { API -> displayed }
   MudWeightOutValue.Caption:=FloatToStr(Round2(Data.MwOut/UoMConverter[2],2)); { API -> displayed }
-  PumpStrokesValue.Caption:=FloatToStr(Round2(Data.StrokeCounter/UoMConverter[2],2)); { API -> displayed }
+  Pump1Value.Caption:=FloatToStr(Round2(Data.Pump[1,3],0));
+  Pump2Value.Caption:=FloatToStr(Round2(Data.Pump[2,3],0));
+  Pump3Value.Caption:=FloatToStr(Round2(Data.Pump[3,3],0));
+  PumpStrokesValue.Caption:=FloatToStr(Round2(Data.StrokeCounter,0));
   FlowInValue.Caption:=FloatToStr(Round2(Data.FlowIn/UoMConverter[5],2)); { API -> displayed }
   FlowOutValue.Caption:=FloatToStr(Round2(Data.FlowOut/UoMConverter[5],2)); { API -> displayed }
   StandPipePressureValue.Caption:=FloatToStr(Round2(Data.PlCirc/UoMConverter[3],2)); { API -> displayed }
@@ -625,7 +627,17 @@ begin
   ROPValue.Caption:=FloatToStr(Round2(Data.ROP/UoMConverter[1],2)); { API -> displayed }
   AnnularPressureValue.Caption:=FloatToStr(Round2(Data.BHPAnn/UoMConverter[3],2)); { API -> displayed }
   CasingPressureValue.Caption:=FloatToStr(Round2(Data.CasingPressure/UoMConverter[3],2)); { API -> displayed }
-
+  if Data.ShutIn then
+  Begin
+    HydrilValue.Caption:='Closed';
+    PipeRAMsValue.Caption:='Closed';
+    BlindRAMsValue.Caption:='Closed';
+  End else
+  Begin
+    HydrilValue.Caption:='Open';
+    PipeRAMsValue.Caption:='Open';
+    BlindRAMsValue.Caption:='Open';
+  End;
 end;
 
 procedure TDrillSim.FormCreate(Sender: TObject);
@@ -658,7 +670,9 @@ Begin
       end;
     end;
     Application.Terminate;
-  end;
+  end
+  else
+    Exit;
 End;
 
 Procedure TDrillSim.FormDeActivate(Sender: TObject);
@@ -667,15 +681,13 @@ Begin { Also called on Quit Button }
   CheckExit;
 End;
 
-procedure TDrillSim.FormClose(Sender: TObject; var CloseAction: TCloseAction);
+procedure TDrillSim.FormClose(Sender: TObject);
 begin { Kill the app using window controls }
   StringToMemo('DrillSimGUI.Close .............................................');
   CheckExit;
 end;
 
-
 Procedure TDrillSim.MenuItem1QuitClick(Sender: TObject);
-var Reply, BoxStyle: Integer;
 Begin { Kill the app from the menu }
   StringToMemo('DrillSimGUI:Menu 1: Quit ......................................');
   CheckExit;
@@ -1071,8 +1083,10 @@ begin
        Begin
          NewStatus:=('Simulating');
 
+         writeln('FlowCalc');
          FlowRateCalc;      { SimulateHydraulicCalcs:FlowRateCalc }
 
+         writeln('HydraulicCalc');
          HydraulicCalc;     { SimulateHydraulicCalcs:HyCalc }
 
          { check for hole deeper then next horizon          }
@@ -1080,14 +1094,16 @@ begin
          { if yes, advance RockPointer and calculate new    }
          { formation pressure gradient                      }
 
+         writeln('FormationPressureCalc');
          FormationPressureCalc;
 
+         writeln('TwistOffCalc');
          TwistOffCalc;
 
+         writeln('DrillCalc');
          DrillCalc;
 
-         DrawKelly;
-
+         writeln('KickCalc');
          KickCalc;
 
          Synchronize(@UpdateGUI);

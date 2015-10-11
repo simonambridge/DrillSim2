@@ -18,14 +18,12 @@ Implementation
 Procedure CloseChoke;
 Begin
   Data.Flowline:=False;
-  //FlowlineWindow;
 End;
 
 Procedure OpenChoke;
 Begin
   if (Data.Pumping) and (Data.ShutIn) then MessageToMemo(14);
   Data.Flowline:=True;
-  //FlowlineWindow;
 End;
 
 Procedure SetSurfControls;

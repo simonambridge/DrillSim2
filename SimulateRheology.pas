@@ -3,7 +3,6 @@ Unit SimulateRheology;
 Interface
 
 Uses DrillSimVariables,
-     SimulateUpdate,
      DrillSimMath;
 
 Procedure AnnCalc;

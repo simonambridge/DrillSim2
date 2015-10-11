@@ -77,7 +77,7 @@ Begin
   With Data do
   Begin
     GetCurrentTime(t);
-    ScreenService;
+    //ScreenService;
     ElapsedTime:=t.Hundredths + ((LastHundredths - t.hundredths) / 2);
     if ElapsedTime <= Zero then ElapsedTime:=ElapsedTime + 100;
     LastHundredths:=t.Hundredths;
@@ -227,7 +227,7 @@ Begin
       if (Data.RetPitVol <= Zero) then Clear   { reset and restart simulation }
         else Quit:=True                        { else quit to DrillSim        }
     End;
-    ScreenService;
+    //ScreenService;
   End;
 End;
 

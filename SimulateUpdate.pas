@@ -23,8 +23,6 @@ Uses DrillSimGUI;
 { -------------------- Kelly Routines ------------------- }
 
 Procedure DrawKelly;    { draws appropriate kelly and bushing @ KelHt }
-var
-  x : real;
 Begin
 
   KellyImageIndex:=trunc((33-Data.KellyHeight) * 2.667);  { 80 px /30 feet = 2.667 px/foot }
@@ -137,7 +135,7 @@ Begin
 
     if int(StrokeCounter) <> int(LastStrokeCounter) then
     Begin
-      DrillSim.PumpStrokesValue.Caption:=FloatToStr(Round2(StrokeCounter/UoMConverter[2],2)); { API -> displayed }
+      DrillSim.PumpStrokesValue.Caption:=FloatToStr(Round2(StrokeCounter/UoMConverter[2],0)); { API -> displayed }
       LastStrokeCounter:=StrokeCounter;
     End;
 
@@ -162,12 +160,6 @@ Begin
       LastFlowOut:=FlowOut;
     End;
 
-    if PlCirc <> LastPlCirc then
-    Begin
-      DrillSim.StandPipePressureValue.Caption:=FloatToStr(Round2(PlCirc/UoMConverter[3],2)); { API -> displayed }
-      LastPlCirc:=PlCirc;
-    End;
-
     if RetPitVol <> LastRetPitVol then
     Begin
       DrillSim.ReturnPitValue.Caption:=FloatToStr(Round2(RetPitVol/UoMConverter[4],2)); { API -> displayed }
@@ -179,6 +171,12 @@ Begin
     Begin
       DrillSim.DiffFlowValue.Caption:=FloatToStr(Round2(PitGain/UoMConverter[4],2)); { API -> displayed }
       LastPitGain:=PitGain;
+    End;
+
+    if PlCirc <> LastPlCirc then
+    Begin
+      DrillSim.StandPipePressureValue.Caption:=FloatToStr(Round2(PlCirc/UoMConverter[3],2)); { API -> displayed }
+      LastPlCirc:=PlCirc;
     End;
 
     if Choke <> LastChoke then
@@ -208,31 +206,11 @@ Begin
 End;
 
 
-Procedure ShutInUpdate;
-Begin
-  //StringToMemo('SimulateUpdate:ShutInUpdate called');
-  With Data do
-  Begin
-    if BHPAnn <> LastBHPAnn then
-    Begin
-      DrillSim.AnnularPressureValue.Caption:=FloatToStr(Round2(BHPAnn/UoMConverter[3],2)); { API -> displayed }
-      LastBHPAnn:=BHPAnn;
-    End;
-    if CasingPressure <> LastCasingPressure then
-    Begin
-      DrillSim.CasingPressureValue.Caption:=FloatToStr(Round2(CasingPressure/UoMConverter[3],2)); { API -> displayed }
-      LastCasingPressure:=CasingPressure;
-    End;
-  End;
-End;
-
-
 Procedure DrillUpdate;
 Begin
   //StringToMemo('SimulateUpdate:DrillUpdate called');
   With Data do
   Begin
-    DepthUpdate;
     if WOB <> LastWOB then
     Begin
       DrillSim.WOBValue.Caption:=FloatToStr(Round2(WOB/UoMConverter[7],2)); { API -> displayed }
@@ -247,6 +225,24 @@ Begin
     Begin
       DrillSim.ROPValue.Caption:=FloatToStr(Round2(ROP/UoMConverter[1],2)); { API -> displayed }
       LastROP:=ROP;
+    End;
+  End;
+End;
+
+Procedure ShutInUpdate;
+Begin
+  //StringToMemo('SimulateUpdate:ShutInUpdate called');
+  With Data do
+  Begin
+    if BHPAnn <> LastBHPAnn then
+    Begin
+      DrillSim.AnnularPressureValue.Caption:=FloatToStr(Round2(BHPAnn/UoMConverter[3],2)); { API -> displayed }
+      LastBHPAnn:=BHPAnn;
+    End;
+    if CasingPressure <> LastCasingPressure then
+    Begin
+      DrillSim.CasingPressureValue.Caption:=FloatToStr(Round2(CasingPressure/UoMConverter[3],2)); { API -> displayed }
+      LastCasingPressure:=CasingPressure;
     End;
   End;
 End;
@@ -279,9 +275,11 @@ Begin
     End else
     if (TD >= LastKD + 27) then i:=2         { else if at KD depth...     }
     else                                     { ...then kelly down         }
-    if Drilling then i:=3 else i:=4;         { else if we're DRILLING...  }
-                                             { ...then we're drilling     }
-                                             { else we're off bottom      }
+    if Drilling                              { else if we're DRILLING...  }
+      then i:=3                              { ...then we're drilling     }
+      else i:=4;                             { else we're off bottom      }
+
+
 
 Loop : if i<>Status then                   { i=current status, so update    }
        Begin                               { Status if different            }
@@ -302,18 +300,27 @@ End;
 
 Procedure ScreenService;
 Begin
+  writeln('ScreenService');
   StatusCounter:=StatusCounter + 1;
   if StatusCounter>10 then               { check every 10 loops }
   Begin
     StatusUpdate;
     StatusCounter:=Zero;
+    writeln('StatusCounter='+IntToStr(StatusCounter));
   End;
+
   if Data.RPM > Zero then TurnBushing;
 
   TimeUpdate;
   MudUpdate;
   FlowUpdate;
-  if Data.ShutIn then ShutInUpdate else DrillUpdate;
+
+  if not Data.ShutIn then
+  Begin
+    DepthUpdate;
+    DrillUpdate;
+  End else
+    ShutInUpdate;
 End;
 
 Begin

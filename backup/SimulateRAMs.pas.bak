@@ -21,7 +21,7 @@ Begin
 
     if not (Hydril or BlindRam or PipeRam) then
     Begin
-      StringToMemo('Blow Out Preventers are OPEN);
+      StringToMemo('Blow Out Preventers are OPEN');
       if ShutIn then        { change status to open if not already open }
       Begin
         ShutIn:=False;      { change to shut-in                   }
