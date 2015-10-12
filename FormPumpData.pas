@@ -267,7 +267,7 @@ begin
        end;
 
     3: Begin
-         NumPumpsComboBox.ItemIndex:=0;
+         NumPumpsComboBox.ItemIndex:=2;
 
          Pump1OutputData.Enabled:=True;
          Pump1OutputData.Text:=FloatToStr(Round2(Data.Pump[1,1]*UoMConverter[5],2));  { API->user volume }

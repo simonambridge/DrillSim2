@@ -110,7 +110,8 @@ Begin
     //writeln('PressCon: ' + FloatToStr(PressCon));
     //writeln('TvD: ' + FloatToStr(TvD));
 
-    Ecd    :=AnnMW + PlAnn / (Presscon * Tvd);
+    ECD    :=AnnMW + PlAnn / (Presscon * Tvd);
+    LastECD:=ECD;
     MACP   :=(LotEMW - AnnMW) * LotTD * PressCon;
     OilFraction   :=Zero;                  { need to correct for kicking wells }
     SolidsFraction:=(AnnMW - 8.33) * 3.75 * 0.01;

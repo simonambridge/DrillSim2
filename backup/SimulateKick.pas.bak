@@ -5,8 +5,6 @@ Interface
 Uses Crt,
      DrillSimVariables,
      DrillSimUtilities,
-     SimulateUpdate,
-     DrillSimMessageToMemo,
      DrillSimDataResets,
      DrillSimMath;
 
@@ -135,10 +133,7 @@ Begin
     Instring:='Lo';
     if BleedOffRate < -0.001 then
     Begin
-      if (copy(ThisString,2,2) <> Instring) then MessageToMemo(54); { 'Lo'sing }
-    End else
-    Begin                                             { Clear old message }
-      if (copy(ThisString,2,2) = Instring) then MessageToMemo(5);
+      if (copy(ThisString,2,2) <> Instring) then SimulateMessageCode:=54; { 'Losing }
     End;
 
 {====== Calculate pumped volume, net formation gains/lost circulation =====}
@@ -220,14 +215,8 @@ Begin
     if (Data.CasingBurstPressure < Abs(AnnUnderBalance)) or
        (Data.RetPitVol <= Zero) then
     Begin                             { empty pits (72), or burst casing (70) }
-      if (Data.RetPitVol <= Zero) then MessageToMemo(72) else MessageToMemo(70);
-      MessageToMemo(71);                 { "Press any key...." }
-      Repeat Until KeyPressed;
- //     Util:=ReadKey;                           { clear buffer }
-      if (Data.RetPitVol <= Zero) then Clear   { reset and restart simulation }
-        else Quit:=True                        { else quit to DrillSim        }
+      if (Data.RetPitVol <= Zero) then SimulateStatusCode:=72 else SimulateStatusCode:=70;
     End;
-    //ScreenService;
   End;
 End;
 

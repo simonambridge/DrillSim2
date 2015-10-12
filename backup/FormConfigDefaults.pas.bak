@@ -106,10 +106,12 @@ end;
 
 Procedure TSystemDefaultsForm.FormCreateActions;
 Begin
+  { nothing to see here }
 end;
 
 procedure TSystemDefaultsForm.FormCreate(Sender: TObject);
 begin
+  StringToMemo('TSystemDefaultsForm.FormCreate');
   FormCreateActions;
 end;
 

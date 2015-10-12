@@ -2,8 +2,8 @@ Unit DrillSimMessageToMemo;
 
 Interface
 
-Uses DrillSimVariables,
-     Dialogs;
+Uses Dialogs,
+     DrillSimVariables;
 
 Procedure StringToMemo(S : String);
 Procedure MessageToMemo(x : integer);
@@ -11,7 +11,8 @@ Procedure MessageToMemo(x : integer);
 
 Implementation
 
-Uses DrillSimGUI;
+Uses DrillSimGUI,
+     DrillSimDataResets;
 
 Procedure StringToMemo(S : String);
 Begin
@@ -23,7 +24,7 @@ Begin
   End;
 End;
 
-Procedure MessageToMemo(x : integer);
+Procedure MessageToMemo(x : integer);  {pre-defined status messages }
 Begin
   With Data do
   Begin
@@ -43,7 +44,7 @@ Begin
      11 : ThisString:='Hydril is CLOSED';
      12 : ThisString:='Hydril is OPEN';
      13 : ThisString:='Unable to close RAMs';
-     14 : ThisString:='Circ. through Choke';
+     14 : ThisString:='Circulating through Choke';
      15 : Begin
             Str(LagDS:6:Zero,ThisString);
             ThisString:='Lag Down :' + ThisString + ' str';
@@ -228,7 +229,7 @@ Begin
 
      66 : ThisString:='Stroke counter zeroed';
 
-     67 : ThisString:='';   { unused }
+     67 : ThisString:='Blow Out Preventers are OPEN';
 
      68 : ThisString:='Turn off pumps';
 
@@ -237,18 +238,30 @@ Begin
             ThisString:='Form Pr.: ' + ThisString + Space + UoMLabel[3];
           End;
 
-     70 : ThisString:='Casing Failure!!!!!!!';
+     70 : Begin
+            ThisString:='Casing Failure!!!!!!!';
+            ShowMessage('Burst Casing! Game over :( ');
+            Clear;
+          End;
 
      71 : ThisString:='PRESS ANY KEY...';
 
-     72 : ThisString:='Pits empty - no mud';
+     72 : Begin
+            ThisString:='Pits empty - no mud';
+            ShowMessage('Pits Empty! Game over :( ');
+            Clear;
+          End;
 
      73 : Begin
             Str(DrillMult,ThisString);
             ThisString:='Accelerator : ' + ThisString;
           End;
 
-     74 : ThisString:='Twisted off!!!!!!!';
+     74 : Begin
+            ThisString:='Twisted off!!!!!!!';
+            ShowMessage('Twisted Off! Game over :( ');
+            Clear;
+          end;
 
      75 : Begin
             Str(TwistOff / UoMConverter[7]:5:2,ThisString);

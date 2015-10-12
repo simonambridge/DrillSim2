@@ -226,7 +226,7 @@ Type
 
 
 Const
-    VolCon    = 1029;               HHPcon    = 1714;
+    volcon    = 1029;               HHPcon    = 1714;
     StandLen  = 90;                 Bbl2Gal   = 42;
     Presscon  = 0.052;              Zero      = 0;
     Rheocon1  = 24.51;              Rheocon2  = 64.57;
@@ -349,6 +349,7 @@ Var
    HoleError           : boolean;
    Edited              : boolean;
    Simulating          : boolean;
+   SimulateMessageCode : integer;
    Paused              : boolean;
    Valid               : boolean;
    Esc                 : boolean;
@@ -408,7 +409,7 @@ Var
 
    LastInflux          : real;
    LastInfluxRate      : real;
-   LastEcd             : real;
+   LastECD             : real;
    LastChoke           : integer;
 
    OriginalMudWt       : real;

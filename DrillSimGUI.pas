@@ -40,6 +40,7 @@ uses
   FormSurfaceEquipmentData,
   FormWellTestData,
   FormGeologyData,
+
   SimulateCommandProcessor,
   SimulateUpdate,
   SimulateRAMs,
@@ -306,16 +307,6 @@ Begin                  {check to see if pumping when adding or subtracting pipe 
   End else PumpsOff:=True;
 End;
 
-Procedure StringWtCalc;  { called by PipeMinus and PipePlus}
-Var i : integer;         { recalculate string weight when adding or subtracting pipe }
-Begin                    { then recalculate pipe displacement }
-  With Data do
-  Begin
-    StrWt:=Zero;
-    for i:=1 to MaxPipes do StrWt:=StrWt + (Pipe[i,1] * Pipe[i,4] / 1000);
-  End;
-End;
-
 { ------------------------------ pumps -----------------------------------------}
 
 Procedure TDrillSim.Pump1MinusClick(Sender: TObject);
@@ -547,6 +538,7 @@ begin
 end;
 
 
+
 {* ======================= Memo Input ======================================= *}
 
 procedure TDrillSim.CommandLineKeyPress(Sender: TObject; var Key: char);
@@ -555,8 +547,8 @@ begin
   Begin
     if length(InputString) > Zero then   // display it
     Begin
-      Memo1.Lines.Add('>' + InputString);
-      Memo1.SelStart:=Length(Memo1.Text);
+      //Memo1.Lines.Add('>' + InputString);
+      //Memo1.SelStart:=Length(Memo1.Text);
       CommandProcessor;        { Command - process it          }
       InputString:='';
     End;
@@ -571,7 +563,6 @@ begin
 
   CommandLine.Text := InputString;    // update text entry
   CommandLine.SelStart:=Length(CommandLine.Text);
-  writeln(InputString);
   Key:=#0;
 end;
 
@@ -591,6 +582,7 @@ begin
   StringToMemo('Running DrillSimGUI FormActivate................................'); // please wait....
   Edited:=False;  { start clean }
   Simulating:=False;
+  SimulateMessageCode:=0;
   Paused:=False;
 
   { DrillSim start up sequence }
@@ -610,21 +602,27 @@ begin
 
   BitDepthValue.Caption:=FloatToStr(Round2(Data.BitTD/UoMConverter[1],2)); { API -> displayed }
   TotalDepthValue.Caption:=FloatToStr(Round2(Data.TD/UoMConverter[1],2)); { API -> displayed }
+  WOBValue.Caption:=FloatToStr(Round2(Data.WOB/UoMConverter[7],2)); { API -> displayed }
+  RPMValue.Caption:=FloatToStr(Round2(Data.RPM,2));
+  ROPValue.Caption:=FloatToStr(Round2(Data.ROP/UoMConverter[1],2)); { API -> displayed }
+
   MudWeightInValue.Caption:=FloatToStr(Round2(Data.MwIn/UoMConverter[2],2)); { API -> displayed }
   MudWeightOutValue.Caption:=FloatToStr(Round2(Data.MwOut/UoMConverter[2],2)); { API -> displayed }
+
   Pump1Value.Caption:=FloatToStr(Round2(Data.Pump[1,3],0));
   Pump2Value.Caption:=FloatToStr(Round2(Data.Pump[2,3],0));
   Pump3Value.Caption:=FloatToStr(Round2(Data.Pump[3,3],0));
   PumpStrokesValue.Caption:=FloatToStr(Round2(Data.StrokeCounter,0));
+
   FlowInValue.Caption:=FloatToStr(Round2(Data.FlowIn/UoMConverter[5],2)); { API -> displayed }
   FlowOutValue.Caption:=FloatToStr(Round2(Data.FlowOut/UoMConverter[5],2)); { API -> displayed }
   StandPipePressureValue.Caption:=FloatToStr(Round2(Data.PlCirc/UoMConverter[3],2)); { API -> displayed }
   ReturnPitValue.Caption:=FloatToStr(Round2(Data.RetPitVol/UoMConverter[4],2)); { API -> displayed }
   DiffFlowValue.Caption:=FloatToStr(Round2(PitGain/UoMConverter[4],2)); { API -> displayed }
+
   ChokeValue.Caption:=FloatToStr(Data.Choke);
-  WOBValue.Caption:=FloatToStr(Round2(Data.WOB/UoMConverter[7],2)); { API -> displayed }
-  RPMValue.Caption:=FloatToStr(Data.RPM); { API -> displayed }
-  ROPValue.Caption:=FloatToStr(Round2(Data.ROP/UoMConverter[1],2)); { API -> displayed }
+
+
   AnnularPressureValue.Caption:=FloatToStr(Round2(Data.BHPAnn/UoMConverter[3],2)); { API -> displayed }
   CasingPressureValue.Caption:=FloatToStr(Round2(Data.CasingPressure/UoMConverter[3],2)); { API -> displayed }
   if Data.ShutIn then
@@ -977,7 +975,6 @@ end;
 procedure TDrillSim.MenuItem3StopClick(Sender: TObject);
 begin
   Simulating:=False;
-  StringToMemo('Menu3: Stopping Simulation');
 end;
 
 procedure TDrillSim.MenuItem3PauseClick(Sender: TObject);
@@ -1037,10 +1034,11 @@ begin
 
       SetSurfControls;                { set RAMs and choke line            }
 
-      Simulating:=True;               { ACTIVATE THE THREAD !!!            }
+      SimulateMessageCode:=0;
       Paused:=False;
+      Simulating:=True;               { ACTIVATE THE THREAD !!!            }
 
-      TimeUpdate; { SimulateHydraulicCalcs:HyCalc }
+      TimeUpdate;                     { SimulateHydraulicCalcs:HyCalc }
     End;
   end;
 End;
@@ -1064,6 +1062,8 @@ end;
 procedure TMyThread.UpdateGUI;
 // this method is executed by the mainthread and can therefore access all GUI elements.
 begin
+  if SimulateMessageCode<>0 then MessageToMemo(SimulateMessageCode);
+
   ScreenService;
 end;
 
@@ -1081,12 +1081,12 @@ begin
     begin
        if Simulating then
        Begin
-         NewStatus:=('Simulating');
+         NewStatus:=('Simulating');  { can be either 'Simulating' or 'Not Simulating' }
 
-         writeln('FlowCalc');
+         //writeln('FlowCalc');
          FlowRateCalc;      { SimulateHydraulicCalcs:FlowRateCalc }
 
-         writeln('HydraulicCalc');
+         //writeln('HydraulicCalc');
          HydraulicCalc;     { SimulateHydraulicCalcs:HyCalc }
 
          { check for hole deeper then next horizon          }
@@ -1094,16 +1094,16 @@ begin
          { if yes, advance RockPointer and calculate new    }
          { formation pressure gradient                      }
 
-         writeln('FormationPressureCalc');
+         //writeln('FormationPressureCalc');
          FormationPressureCalc;
 
-         writeln('TwistOffCalc');
+         //writeln('TwistOffCalc');
          TwistOffCalc;
 
-         writeln('DrillCalc');
+         //writeln('DrillCalc');
          DrillCalc;
 
-         writeln('KickCalc');
+         //writeln('KickCalc');
          KickCalc;
 
          Synchronize(@UpdateGUI);

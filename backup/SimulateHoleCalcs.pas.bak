@@ -4,8 +4,6 @@ Interface
 
 Uses SysUtils,
      DrillSimVariables,
-     DrillSimMessageToMemo,
-     SimulateUpdate,
      SimulateVolumes;
 
 Procedure SimHoleCalc;
@@ -15,19 +13,19 @@ Implementation
 
 Procedure SimHoleCalc;    { Procedure To Determine Hole Profile }
 Var                       {  Call every time 0.001 ft drilled   }
-  SectionDepth,PipeSectionDepth     : real;
-  Counter,TS_ID_Index,PipeIndex   : integer;
+  PipeSectionDepth     : real;
+  PipeIndex      : integer;
+  SectionDepth   : real;
+  i              : integer;
+  Counter        : integer;
   TempSection    : array[1..5,1..2] of real;
-  i : integer;
-  ExtraHole : array[1..2] of real;
-  TS_TD_Index : integer;
+  TS_ID_Index    : integer;
+  TS_TD_Index    : integer;
+  ExtraHole      : array[1..2] of real;
 
 Begin
-  StringToMemo('SimulateHoleCalcs:SimHoleCalc called');
-  //ScreenService;
   With Data do
   Begin
-    StringToMemo('Running SimHoleCalc to validate well geometry...');
 
     TS_TD_Index:=Zero;
 
@@ -37,7 +35,6 @@ Begin
       TempSection[TS_TD_Index,1]:=RiserTD;
       TempSection[TS_TD_Index,2]:=RiserID;
     End;
-    //ScreenService;
 
     if Casing then
     Begin
@@ -49,7 +46,6 @@ Begin
       if Liner then
         TempSection[TS_TD_Index,1]:=TempSection[TS_TD_Index,1]-(CasingTD-LinerTopTD);
     End;
-    //ScreenService;
 
     if Liner then
     Begin
@@ -57,10 +53,12 @@ Begin
       TempSection[TS_TD_Index,1]:=LinerBottomTD-LinerTopTD;
       TempSection[TS_TD_Index,2]:=LinerID;
     End;
-    //ScreenService;
 
-    StringToMemo('SimHoleCalc: MaxHoles = ' + IntToStr(MaxHoles));
-    StringToMemo('SimHoleCalc: TS_TD_Index = ' + IntToStr(TS_TD_Index));
+    if not Simulating then
+    Begin
+      StringToMemo('SimHoleCalc: MaxHoles = ' + IntToStr(MaxHoles));
+      StringToMemo('SimHoleCalc: TS_TD_Index = ' + IntToStr(TS_TD_Index));
+    End;
 
     Counter:=0;
     if MaxHoles>Zero then
@@ -68,7 +66,9 @@ Begin
       For Counter:=1 to MaxHoles do
       Begin
         TS_TD_Index:=TS_TD_Index+1;
-        StringToMemo('SimHoleCalc: Counter = ' + IntToStr(Counter) + ' Hole TD='+FloatToStr(Hole[Counter,1]));
+
+        if not Simulating then
+          StringToMemo('SimHoleCalc: Counter = ' +                                      IntToStr(Counter) + ' Hole TD='+FloatToStr(Hole[Counter,1]));
 
                 if (Counter=1) then
         Begin
@@ -88,14 +88,15 @@ Begin
       End;
     End;
 
-    //ScreenService;
 
-    StringToMemo('SimHoleCalc: TS_TD_Index = ' + IntToStr(TS_TD_Index));
-    For i:=1 to TS_TD_Index do
+    if not Simulating then
     Begin
-      writeln ('TempSection Depth='+FloatToStr(TempSection[i,1])+' feet, ID='+FloatToStr(TempSection[i,2]));
-    end;
-
+      StringToMemo('SimHoleCalc: TS_TD_Index = ' + IntToStr(TS_TD_Index));
+      For i:=1 to TS_TD_Index do
+      Begin
+        StringToMemo('TempSection Depth='+FloatToStr(TempSection[i,1])+' feet, ID='+FloatToStr(TempSection[i,2]));
+      end;
+    End;
 
     TS_ID_Index:=1; PipeIndex:=MaxPipes;                   { Calculate Hole Profile }
     i:=1;
@@ -169,7 +170,6 @@ Begin
 
     VolCalc;      { calculate WellVol, PipeDis, PipeCap, AnnVol, HoleVol,
                     modify WellVol if shut in and riser }
-    //ScreenService;
 
   End;
 End;

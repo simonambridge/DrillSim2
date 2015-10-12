@@ -21,6 +21,7 @@ type
     DefaultWellFileButton: TButton;
     DefaultWellFileData: TEdit;
     DefaultWellFile: TLabel;
+    procedure DefaultWellFileDataChange(Sender: TObject);
     procedure FormClose(Sender: TObject);
     procedure DefaultWellFileButtonClick(Sender: TObject);
     procedure CancelClick(Sender: TObject);
@@ -35,7 +36,7 @@ type
   end;
 
 var
-  SystemDefaultsForm         : TSystemDefaultsForm;
+  SystemDefaultsForm     : TSystemDefaultsForm;
   _WellDefaultDataFile   : String120;
 
 implementation
@@ -43,6 +44,12 @@ implementation
 {$R *.lfm}
 
 { TSystemDefaultsForm }
+
+procedure TSystemDefaultsForm.DefaultWellFileDataChange(Sender: TObject);
+begin
+  if TEdit(Sender).Text <> ''
+    then _WellDefaultDataFile:=DefaultWellFileData.Text;
+End;
 
 procedure TSystemDefaultsForm.DefaultWellFileButtonClick(Sender: TObject);
 var
@@ -91,6 +98,7 @@ begin
   {$I+}
   try
     Rewrite(TextFile);
+
     Writeln(TextFile, _WellDefaultDataFile); { write location of default well file }
     CloseFile(TextFile);
     StringToMemo('FormConfigDefaults.SaveClick: Default well data file ' + SystemPropertiesFile + ' updated');

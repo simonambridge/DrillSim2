@@ -3,8 +3,7 @@ Unit SimulateHydrostaticCalcs;
 Interface
 
 Uses sysutils,
-     DrillSimVariables,
-     SimulateUpdate;
+     DrillSimVariables;
 
 Procedure StackCalc;
 

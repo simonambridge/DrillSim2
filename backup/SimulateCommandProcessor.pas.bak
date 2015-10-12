@@ -12,7 +12,6 @@ Uses Crt,
      SimulateHoleCalcs,
      SimulateHydrostaticCalcs,
      SimulateHelp,
-     SimulateSurfaceControls,
      SimulateRAMs;
 
 Procedure CommandProcessor;

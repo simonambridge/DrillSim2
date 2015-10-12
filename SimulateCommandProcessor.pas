@@ -351,7 +351,7 @@ Begin
     Input:=copy(InputString,2,1);
     Case Input[1] of
       'O' : MessageToMemo(75);  { twist-off point }
-      'R' : Begin            { trace on - write parameters to printer }
+      'R' : Begin               { trace on - write parameters to printer }
               Trace:=not Trace; { toggle it }
               Edited:=True;
             End;

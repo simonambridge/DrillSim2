@@ -3,7 +3,6 @@ Unit SimulateRAMs;
 Interface
 
 Uses DrillSimVariables,
-     DrillSimMessageToMemo,
      SimulateVolumes;
 
 Procedure RamCheck;  { called from BOPCommands and SetSurfControls }
@@ -21,8 +20,8 @@ Begin
 End;
 
 Procedure OpenChoke;
-Begin
-  if (Data.Pumping) and (Data.ShutIn) then MessageToMemo(14);
+Begin                                             { "Circulating through choke" }
+  if (Data.Pumping) and (Data.ShutIn) then SimulateMessageCode:=14;
   Data.Flowline:=True;
 End;
 
@@ -30,14 +29,14 @@ Procedure RamCheck;  { called from BOPCommands and here }
 Begin
   With Data do
   Begin
-    if Hydril then MessageToMemo(11)  { message# }
-              else MessageToMemo(12);  { message# }
-    if PipeRam then MessageToMemo(8)  { message# }
-               else MessageToMemo(9);  { message# }
+    if Hydril then SimulateMessageCode:=11  { message# }
+              else SimulateMessageCode:=12;  { message# }
+    if PipeRam then SimulateMessageCode:=8  { message# }
+               else SimulateMessageCode:=9;  { message# }
 
     if not (Hydril or BlindRam or PipeRam) then
     Begin
-      StringToMemo('Blow Out Preventers are OPEN');
+      SimulateMessageCode:=67;      { "BOPs are OPEN" }
       if ShutIn then        { change status to open if not already open }
       Begin
         ShutIn:=False;      { change to shut-in                   }
@@ -54,7 +53,7 @@ Begin
       End;
     End else
     Begin
-      StringToMemo('Blow Out Preventers are CLOSED');
+      SimulateMessageCode:=101;  { "BOPS are closed" }
       if not ShutIn then   { change status to shut in if not already shut in }
       Begin                { ie only do this if rams have just been closed   }
         ShutIn:=True;

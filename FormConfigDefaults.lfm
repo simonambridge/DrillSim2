@@ -1,7 +1,7 @@
 object SystemDefaultsForm: TSystemDefaultsForm
-  Left = 704
+  Left = 138
   Height = 154
-  Top = 197
+  Top = 259
   Width = 853
   Caption = 'System Defaults'
   ClientHeight = 154
@@ -22,6 +22,7 @@ object SystemDefaultsForm: TSystemDefaultsForm
     Height = 27
     Top = 32
     Width = 499
+    OnChange = DefaultWellFileDataChange
     TabOrder = 0
   end
   object DefaultWellFileButton: TButton

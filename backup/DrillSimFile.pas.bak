@@ -9,7 +9,8 @@ Uses Crt,
      DrillSimUtilities,
      DrillSimMessageToMemo,
      DrillSimDataResets,
-     DrillSimHoleChecks;
+     DrillSimHoleChecks,
+     SimulateDrillingCalcs;
 
 Procedure LoadData;            { Entry : FullName = filename.WDF    }
 Procedure SaveData;
@@ -32,6 +33,7 @@ Procedure LoadData;{ Entry : "CurrentFQFileName" contains FQFN of file to load }
                    {          e.g. /a/b/c/Offshore.wdf  }
                    {          NoFileDefined set to True  }
                    { Exit  : if load fails then NoFileDefined set to False }
+var i : integer;
 Begin
   NoFileDefined:=True;
   StringToMemo('DrillSimFile.LoadData: Loading ' + CurrentFQFileName + '....');
@@ -63,9 +65,29 @@ Begin
   InitKick;           { initialise system variables, and set up if NeverSimulated }
 
   { call DrillSimHoleChecks:CheckHoleData - calls DSHoleCalc - check hole and pipe data }
-  CheckHoleData;
+  StringToMemo('Validating well geometry...');
 
-  if HoleError then StringToMemo('DrillSimFile.LoadData: Hole Error !!!! ');
+  CheckHoleData;
+  StringWtCalc;
+
+  if HoleError then StringToMemo('***** DrillSimFile.LoadData: FATAL - Hole Profile Error ****** ');
+
+  Data.MudVol:=Data.HoleVol;             { set to correct hole volume }
+
+  StringToMemo('Well Vol='+FloatToStr(Data.WellVol) + 'bbls');
+  StringToMemo('Ann Vol='+FloatToStr(Data.AnnVol) + 'bbls');
+  StringToMemo('Hole Vol='+FloatToStr(Data.HoleVol) + 'bbls');
+  StringToMemo('Pipe Cap Vol='+FloatToStr(Data.PipeCap) + 'bbls');
+  StringToMemo('Mud Vol='+FloatToStr(Data.MudVol) + 'bbls');
+
+  For i:=1 to Data.TotHoleSections do
+  Begin
+    StringToMemo('Hole Depth='+FloatToStr(Data.HoleSection[i,1])
+               + ' ft,Hole ID='+FloatToStr(Data.HoleSection[i,2])
+               + ' ins, Pipe ID='+FloatToStr(Data.HoleSection[i,3])
+               + ' ins, Pipe OD='+FloatToStr(Data.HoleSection[i,4])+' ins');
+  end;
+  StringToMemo('String Weight ='+FloatToStr(Data.StrWt) + 'Klbs');
 
   NoFileDefined:=False;
   Edited:=False;

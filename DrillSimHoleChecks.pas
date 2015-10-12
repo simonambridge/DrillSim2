@@ -3,9 +3,10 @@ Unit DrillSimHoleChecks;
 Interface
 
 Uses SysUtils,
+     Dialogs,
      DrillSimVariables,
      DrillSimMessageToMemo,
-     Dialogs;
+     SimulateVolumes;
 
 Procedure DSHoleCalc;                  { Procedure To Determine Hole Profile }
 Procedure CheckHoleData;
@@ -77,10 +78,6 @@ Var
     TS_ID_Index       : integer;
     ExtraHole         : array[1..2] of real;
 
-Function BblPerFoot(x : real) : real;
-Begin
-  BBlPerFoot:=sqr(x) / VolCon;
-End;
 
 Begin
   With Data do
@@ -145,9 +142,10 @@ Begin
     StringToMemo('DSHoleCalc: TS_TD_Index = ' + IntToStr(TS_TD_Index));
     For i:=1 to TS_TD_Index do
     Begin
-      writeln ('TempSection Depth='+FloatToStr(TempSection[i,1])+' feet, ID='+FloatToStr(TempSection[i,2]));
+      StringToMemo('TempSection Depth='+FloatToStr(TempSection[i,1])+' feet, ID='+FloatToStr(TempSection[i,2]));
     end;
 
+{ vvvvvv this section is what makes DSHoleCalc different from SimHoleCalc vvvvvv }
 
     { -- Calculate TD, TVD using TempSection[i,1] -- }
 
@@ -164,8 +162,7 @@ Begin
 
     PipeTD:=Zero;
     For i:=1 to MaxPipes do PipeTD:=PipeTD + Pipe[i,1];
-    StringToMemo('DSHoleCalc: Pipe TD='+FloatToStr(PipeTD));
-
+    BitTD:=PipeTD;
 
     { -- Calculate hole and pipe TD's -- }
     if TD < PipeTD then                      { check for excess pipe length  }
@@ -174,17 +171,24 @@ Begin
       if OverPipe >= Pipe[MaxPipes,1] then          { if it can't be accomodated in   }
       Begin                                         { Drill Pipe, then error and Exit }
         StringToMemo('DSHoleCalc Error: Overpipe >= Pipe[MaxPipes,1]');
+
         HoleError:=True;
         Exit;
       End else
       Begin                                          { otherwise subtract from Drill }
         Pipe[MaxPipes,1]:=Pipe[MaxPipes,1]-OverPipe; { Pipe to put bit on bottom     }
         PipeTD:=PipeTD-OverPipe;                     { and subtract from PipeTD      }
+        BitTD:=PipeTD;
         KellyHeight:=33;                             { and then reset kelly on slips }
         LastKellyHeight:=33;
         LastKD:=PipeTD;                              { and set up for new kelly down }
       End;
     End;
+
+    StringToMemo('DSHoleCalc: Pipe TD='+FloatToStr(PipeTD));
+    StringToMemo('DSHoleCalc: Bit TD='+FloatToStr(BitTD));
+
+{ ^^^^^^^ end of extra section ^^^^^^^ }
 
     StringToMemo('- Calculate Hole Profile...');
 
@@ -201,8 +205,10 @@ Begin
         HoleSection[i,2]:=TempSection[TS_ID_Index,2];      { section hole ID }
         HoleSection[i,3]:=Pipe[PipeIndex,3];         { section Pipe OD }
         HoleSection[i,4]:=Pipe[PipeIndex,2];         { section Pipe ID }
+
         ErrorCheck(i);
         if HoleError then Exit;
+
         SectionDepth:=SectionDepth-PipeSectionDepth;
         PipeIndex:=PipeIndex-1;
         if PipeIndex > Zero then
@@ -217,8 +223,10 @@ Begin
         HoleSection[i,2]:=TempSection[TS_ID_Index,2];
         HoleSection[i,3]:=Pipe[PipeIndex,3];
         HoleSection[i,4]:=Pipe[PipeIndex,2];
+
         ErrorCheck(i);
         if HoleError then Exit;
+
         PipeSectionDepth:=PipeSectionDepth-SectionDepth;
         TS_ID_Index:=TS_ID_Index+1;
         if TS_ID_Index <= TS_TD_Index then
@@ -265,8 +273,10 @@ Begin
         HoleSection[i,2]:=TempSection[TS_ID_Index,2];
         HoleSection[i,3]:=Pipe[PipeIndex,3];
         HoleSection[i,4]:=Pipe[PipeIndex,2];
+
         ErrorCheck(i);
         if HoleError then Exit;
+
         PipeIndex:=Zero;                      { ...To Exit }
       End;
     End;
@@ -275,40 +285,7 @@ Begin
 
     TotHoleSections:=i;
 
-  { Set up well volume below before calculating from HoleSection[i].
-   Initially set to zero, ExtraVolume is only non-zero if off-bottom
-   Well Volume is still correct because it includes the ExtraVolume.
-   Annular volume is compensated for non-circulating volume. }
-
-    WellVol:=ExtraVolume;
-    PipeCap:=Zero;
-    PipeDis:=Zero;
-    For i:=1 to TotHoleSections do
-          WellVol:=WellVol + HoleSection[i,1] * BblPerFoot(HoleSection[i,2]);
-
-    For i:=1 to MaxPipes do
-    Begin
-      PipeCap:=PipeCap + Pipe[i,1] * BblPerFoot(Pipe[i,2]);
-      PipeDis:=PipeDis + Pipe[i,1] * BblPerFoot(Pipe[i,3]);
-      FillCE[i]:=BblPerFoot(Pipe[i,3]) * StandLen;
-      FillOE[i]:=(sqr(Pipe[i,3])-Sqr(Pipe[i,2])) / VolCon * StandLen;
-    End;
-
-    AnnVol:=(WellVol - ExtraVolume) - PipeDis; { don't include extra hole vol }
-    HoleVol:=AnnVol + PipeCap + ExtraVolume;
-    MudVol:=HoleVol;             { set to correct hole volume }
-
-    StringToMemo('Well Vol='+FloatToStr(WellVol) + 'bbls');
-    StringToMemo('Ann Vol='+FloatToStr(AnnVol) + 'bbls');
-    StringToMemo('Hole Vol='+FloatToStr(HoleVol) + 'bbls');
-    StringToMemo('Pipe Cap Vol='+FloatToStr(PipeCap) + 'bbls');
-
-
-    For i:=1 to TotHoleSections do
-    Begin
-      StringToMemo('Hole Depth='+FloatToStr(HoleSection[i,1])+' ft,Hole ID='+FloatToStr(HoleSection[i,2])
-        + ' ins, Pipe ID='+FloatToStr(HoleSection[i,3])+' ins, Pipe OD='+FloatToStr(HoleSection[i,4])+' ins');
-    end;
+    VolCalc;
   End;
 End;
 

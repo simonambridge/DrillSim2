@@ -1,7 +1,7 @@
 object DrillSim: TDrillSim
-  Left = 71
+  Left = 75
   Height = 668
-  Top = 185
+  Top = 180
   Width = 999
   Caption = 'DrillSim 3.0'
   ClientHeight = 645
@@ -242,7 +242,7 @@ object DrillSim: TDrillSim
       Left = 10
       Height = 20
       Top = 15
-      Width = 108
+      Width = 95
       Caption = 'Bit Depth'
       Font.Color = clBlack
       Font.Height = -13
@@ -254,7 +254,7 @@ object DrillSim: TDrillSim
       Left = 10
       Height = 20
       Top = 50
-      Width = 107
+      Width = 95
       Caption = 'Total Depth'
       Font.Color = clBlack
       Font.Height = -13
@@ -292,7 +292,7 @@ object DrillSim: TDrillSim
       Left = 10
       Height = 20
       Top = 120
-      Width = 107
+      Width = 95
       Caption = 'Rotary RPM'
       Font.Color = clBlack
       Font.Height = -13
@@ -301,12 +301,13 @@ object DrillSim: TDrillSim
       TabOrder = 4
     end
     object RPMvalue: TLabel
-      Left = 130
+      Left = 110
       Height = 15
       Top = 120
-      Width = 56
+      Width = 75
       Alignment = taRightJustify
       AutoSize = False
+      Font.Color = clBlack
       Font.Height = -13
       Font.Name = 'Sans'
       Font.Style = [fsBold]
@@ -317,7 +318,7 @@ object DrillSim: TDrillSim
       Left = 10
       Height = 20
       Top = 85
-      Width = 109
+      Width = 95
       Caption = 'Weight On Bit'
       Font.Color = clBlack
       Font.Height = -13
@@ -326,12 +327,13 @@ object DrillSim: TDrillSim
       TabOrder = 5
     end
     object TotalDepthValue: TLabel
-      Left = 130
+      Left = 110
       Height = 15
       Top = 50
-      Width = 56
+      Width = 75
       Alignment = taRightJustify
       AutoSize = False
+      Font.Color = clBlack
       Font.Height = -13
       Font.Name = 'Sans'
       Font.Style = [fsBold]
@@ -339,12 +341,13 @@ object DrillSim: TDrillSim
       ParentFont = False
     end
     object WOBValue: TLabel
-      Left = 130
+      Left = 110
       Height = 15
       Top = 85
-      Width = 56
+      Width = 75
       Alignment = taRightJustify
       AutoSize = False
+      Font.Color = clBlack
       Font.Height = -13
       Font.Name = 'Sans'
       Font.Style = [fsBold]
@@ -385,10 +388,10 @@ object DrillSim: TDrillSim
       TabOrder = 8
     end
     object BitDepthValue: TLabel
-      Left = 130
+      Left = 110
       Height = 15
       Top = 15
-      Width = 56
+      Width = 75
       Alignment = taRightJustify
       AutoSize = False
       Font.Color = clBlack
@@ -504,7 +507,7 @@ object DrillSim: TDrillSim
     end
     object ROPValue: TLabel
       Left = 56
-      Height = 17
+      Height = 15
       Top = 72
       Width = 56
       Alignment = taRightJustify

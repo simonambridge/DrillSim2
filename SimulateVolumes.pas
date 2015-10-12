@@ -49,7 +49,12 @@ Subject : maintaining integrity of MudVol - actual circulating volume
 Begin
   With Data do
   Begin
-    WellVol:=ExtraVolume;
+    { Set up well volume below before calculating from HoleSection[i].
+     Initially set to zero, ExtraVolume is only non-zero if off-bottom
+     Well Volume is still correct because it includes the ExtraVolume.
+     Annular volume is compensated for non-circulating volume. }
+
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                        WellVol:=ExtraVolume;
     PipeCap:=Zero;
     PipeDis:=Zero;
 
@@ -60,8 +65,8 @@ Begin
     Begin
       PipeCap:=PipeCap + Pipe[i,1] * BblPerFoot(Pipe[i,2]);
       PipeDis:=PipeDis + Pipe[i,1] * BblPerFoot(Pipe[i,3]);
-      FillCE[i]:=sqr(Pipe[i,3]) / VolCon * StandLen;
-      FillOE[i]:=(sqr(Pipe[i,3])-Sqr(Pipe[i,2])) / VolCon * StandLen;
+      FillCE[i]:=BblPerFoot(Pipe[i,3]) * StandLen;
+      FillOE[i]:=(BblPerFoot(Pipe[i,3])-BblPerFoot(Pipe[i,2])) * StandLen;
     End;
 
     AnnVol:=(WellVol - ExtraVolume) - PipeDis;  { don't include extra volume }
