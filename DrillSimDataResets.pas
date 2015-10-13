@@ -307,6 +307,7 @@ Begin
       AnnHhd           :=Zero;
       BHPAnn           :=Zero;
       Ecd              :=Zero;
+      LastEcd          :=Zero;
       Ff               :=Zero;
       Rn               :=Zero;
       Fn               :=Zero;

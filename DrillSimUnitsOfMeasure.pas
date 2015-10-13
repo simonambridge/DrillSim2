@@ -27,8 +27,8 @@ Begin
     ECDUoMLabel.Caption:=UoMLabel[2];                { specific gravity ppg or sg }
     FlowInUoMLabel.Caption:=UoMLabel[6];             { flow litres or gals/minute }
     FlowOutUoMLabel.Caption:=UoMLabel[6];            { flow litres or gals/minute }
-    ReturnPitUoMLabel.Caption:=UoMLabel[4];          { volume bbl or m3}
     DiffFlowUoMLabel.Caption:=UoMLabel[6];           { flow litres or gals/minute }
+    ReturnPitUoMLabel.Caption:=UoMLabel[4];          { volume bbl or m3}
     StandPipePressureUoMLabel.Caption:=UoMLabel[3];  { pressure psi or KPa }
     AnnularPressureUoMLabel.Caption:=UoMLabel[3];    { pressure psi or KPa }
     CasingPressureUoMLabel.Caption:=UoMLabel[3];     { pressure psi or KPa }

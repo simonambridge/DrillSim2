@@ -58,23 +58,14 @@ begin
   StringToMemo('Initialise Form: Rig Surface Equipment Data');
   StringToMemo('Initialise Form: Well Test Data');
   StringToMemo('Initialise Form: Well Geology Data');
+
   Application.Run;
 
   StringToMemo('===============================');
-  StringToMemo('Form Initialisation complete.');
-  StringToMemo('DrillSim3.lpr : Application.Run');
+  StringToMemo('* DrillSim3 shutdown complete *');
   StringToMemo('===============================');
 
-
-  // if ExitCheck then SaveData;       <- where's this set?
-  if Edited then
-  Begin
-    writeln('Edited');
-    // do some exit file save check
-  End;
-
   writeln('Exiting');
-  ChDir(OriginDirectory);
 
 end.
 

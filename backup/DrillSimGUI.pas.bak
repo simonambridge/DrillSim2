@@ -275,7 +275,7 @@ implementation
 procedure TDrillSim.SetDefaultValues;
 begin
   // The splashunit optional properties are normally set in the FormCreate method
-  splash.DelaySeconds := 1;
+  splash.DelaySeconds := 3;
   splash.Title := 'DrillSim3';
   splash.IconFilePath := 'ambersoft-icon.ico';
   splash.BackGroundImageFilePath := 'rig.jpg';
@@ -600,14 +600,15 @@ begin
   KellyHeightValue.Caption:=FloatToStr(Round2(Data.KellyHeight/UoMConverter[1],2)); { API -> displayed }
   StringToMemo('Initial kelly height = ' + FloatToStr(Data.KellyHeight));
 
-  BitDepthValue.Caption:=FloatToStr(Round2(Data.BitTD/UoMConverter[1],2)); { API -> displayed }
-  TotalDepthValue.Caption:=FloatToStr(Round2(Data.TD/UoMConverter[1],2)); { API -> displayed }
-  WOBValue.Caption:=FloatToStr(Round2(Data.WOB/UoMConverter[7],2)); { API -> displayed }
+  BitDepthValue.Caption:=FloatToStrF(Round2(Data.BitTD/UoMConverter[1],2), ffNumber, 4, 2); { API -> displayed }
+  TotalDepthValue.Caption:=FloatToStrF(Round2(Data.TD/UoMConverter[1],2), ffNumber, 4, 2); { API -> displayed }
+  WOBValue.Caption:=FloatToStrF(Round2(Data.WOB/UoMConverter[7],2), ffNumber, 4, 2); { API -> displayed }
   RPMValue.Caption:=FloatToStr(Round2(Data.RPM,2));
   ROPValue.Caption:=FloatToStr(Round2(Data.ROP/UoMConverter[1],2)); { API -> displayed }
 
-  MudWeightInValue.Caption:=FloatToStr(Round2(Data.MwIn/UoMConverter[2],2)); { API -> displayed }
-  MudWeightOutValue.Caption:=FloatToStr(Round2(Data.MwOut/UoMConverter[2],2)); { API -> displayed }
+  MudWeightInValue.Caption:=FloatToStrF(Round2(Data.MwIn/UoMConverter[2],2), ffNumber, 4, 2); { ppg API -> displayed }
+  MudWeightOutValue.Caption:=FloatToStrF(Round2(Data.MwOut/UoMConverter[2],2), ffNumber, 4, 2); { ppg API -> displayed }
+  ECDValue.Caption:=FloatToStrF(Round2(Data.ECD/UoMConverter[2],2), ffNumber, 4, 2); { ppg API -> displayed }
 
   Pump1Value.Caption:=FloatToStr(Round2(Data.Pump[1,3],0));
   Pump2Value.Caption:=FloatToStr(Round2(Data.Pump[2,3],0));
@@ -667,6 +668,8 @@ Begin
         StringToMemo('DrillSimGUI.OnClose: File ' + CurrentFQFileName + ' saved');
       end;
     end;
+    MyThread.Terminate;
+    MyThread.WaitFor;
     Application.Terminate;
   end
   else
@@ -975,7 +978,6 @@ end;
 procedure TDrillSim.MenuItem3StopClick(Sender: TObject);
 begin
   Simulating:=False;
-  StringToMemo('Menu3: Stopping Simulation');
 end;
 
 procedure TDrillSim.MenuItem3PauseClick(Sender: TObject);
@@ -1064,7 +1066,7 @@ procedure TMyThread.UpdateGUI;
 // this method is executed by the mainthread and can therefore access all GUI elements.
 begin
   if SimulateMessageCode<>0 then MessageToMemo(SimulateMessageCode);
-
+  SimulateMessageCode:=0;
   ScreenService;
 end;
 
@@ -1089,6 +1091,8 @@ begin
 
          //writeln('HydraulicCalc');
          HydraulicCalc;     { SimulateHydraulicCalcs:HyCalc }
+
+         Synchronize(@UpdateGUI);
 
          { check for hole deeper then next horizon          }
          { if yes, check if next horizon data is valid (>0) }

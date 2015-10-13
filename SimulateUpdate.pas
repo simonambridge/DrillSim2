@@ -123,13 +123,13 @@ Begin
   Begin
     if MwIn <> LastMwIn then
     Begin
-      DrillSim.MudWeightInValue.Caption:=FloatToStr(Round2(MwIn/UoMConverter[2],2)); { API -> displayed }
+      DrillSim.MudWeightInValue.Caption:=FloatToStrF(Round2(MwIn/UoMConverter[2],2), ffNumber, 8, 3); { API -> displayed }
       LastMwIn:=MwIn;
     End;
 
     if MwOut <> LastMwOut then
     Begin
-      DrillSim.MudWeightOutValue.Caption:=FloatToStr(Round2(MwOut/UoMConverter[2],2)); { API -> displayed }
+      DrillSim.MudWeightOutValue.Caption:=FloatToStrF(Round2(MwOut/UoMConverter[2],2), ffNumber, 8, 3); { API -> displayed }
       LastMwOut:=MwOut;
     End;
 
@@ -141,7 +141,7 @@ Begin
 
     if ECD <> LastECD then
     Begin
-      DrillSim.ECDValue.Caption:=FloatToStr(Round2(ECD/UoMConverter[2],2)); { API -> displayed }
+      DrillSim.ECDValue.Caption:=FloatToStrF(Round2(ECD/UoMConverter[2],2), ffNumber, 8, 3); { API -> displayed }
       LastStrokeCounter:=StrokeCounter;
     End;
   end;
@@ -155,32 +155,32 @@ Begin
 
     if FlowIn <> LastFlowIn then
     Begin
-      DrillSim.FlowInValue.Caption:=FloatToStr(Round2(FlowIn/UoMConverter[5],2)); { API -> displayed }
+      DrillSim.FlowInValue.Caption:=FloatToStrF(Round2(FlowIn/UoMConverter[6],2), ffNumber, 8, 2); { API gpm -> displayed }
       LastFlowIn:=FlowIn;
     End;
 
     if FlowOut <> LastFlowOut then
     Begin
-      DrillSim.FlowOutValue .Caption:=FloatToStr(Round2(FlowIn/UoMConverter[5],2)); { API -> displayed }
+      DrillSim.FlowOutValue .Caption:=FloatToStrF(Round2(FlowIn/UoMConverter[6],2), ffNumber, 8, 2); { API gpm -> displayed }
       LastFlowOut:=FlowOut;
     End;
 
     if RetPitVol <> LastRetPitVol then
     Begin
-      DrillSim.ReturnPitValue.Caption:=FloatToStr(Round2(RetPitVol/UoMConverter[4],2)); { API -> displayed }
+      DrillSim.ReturnPitValue.Caption:=FloatToStrF(Round2(RetPitVol/UoMConverter[4],2), ffNumber, 8, 2); { API bbl -> displayed }
       LastRetPitVol:=RetPitVol;
     End;
 
     PitGain:=FlowOut - FlowIn;              { Check Differential Flow }
     if PitGain <> LastPitGain then
     Begin
-      DrillSim.DiffFlowValue.Caption:=FloatToStr(Round2(PitGain/UoMConverter[4],2)); { API -> displayed }
+      DrillSim.DiffFlowValue.Caption:=FloatToStrF(Round2(PitGain/UoMConverter[4],2), ffNumber, 8, 2); { API gpm -> displayed }
       LastPitGain:=PitGain;
     End;
 
     if PlCirc <> LastPlCirc then
     Begin
-      DrillSim.StandPipePressureValue.Caption:=FloatToStr(Round2(PlCirc/UoMConverter[3],2)); { API -> displayed }
+      DrillSim.StandPipePressureValue.Caption:=FloatToStrF(Round2(PlCirc/UoMConverter[3],2), ffNumber, 8, 2); { API -> displayed }
       LastPlCirc:=PlCirc;
     End;
 
@@ -199,12 +199,12 @@ Begin
   Begin
     if BitTD <> LastBitTD then
     Begin
-      DrillSim.BitDepthValue.Caption:=FloatToStr(Round2(BitTD/UoMConverter[1],2)); { API -> displayed }
+      DrillSim.BitDepthValue.Caption:=FloatToStrF(Round2(Data.BitTD/UoMConverter[1],2), ffNumber, 8, 2); { API -> displayed }
       LastBitTD:=BitTD;
     End;
     if TD <> LastTD then
     Begin
-      DrillSim.TotalDepthValue.Caption:=FloatToStr(Round2(TD/UoMConverter[1],2)); { API -> displayed }
+      DrillSim.TotalDepthValue.Caption:=FloatToStrF(Round2(TD/UoMConverter[1],2), ffNumber, 8, 2); { API -> displayed }
       LastTD:=TD;
     End;
   End;
@@ -218,17 +218,17 @@ Begin
   Begin
     if WOB <> LastWOB then
     Begin
-      DrillSim.WOBValue.Caption:=FloatToStr(Round2(WOB/UoMConverter[7],2)); { API -> displayed }
+      DrillSim.WOBValue.Caption:=FloatToStrF(Round2(WOB/UoMConverter[7],2), ffNumber, 8, 2); { API -> displayed }
       LastWOB:=WOB;
     End;
     if RPM <> LastRPM then
     Begin
-      DrillSim.RPMValue.Caption:=FloatToStr(RPM); { API -> displayed }
+      DrillSim.RPMValue.Caption:=FloatToStr(RPM);
       LastRPM:=RPM;
     End;
     if ROP <> LastROP then
     Begin
-      DrillSim.ROPValue.Caption:=FloatToStr(Round2(ROP/UoMConverter[1],2)); { API -> displayed }
+      DrillSim.ROPValue.Caption:=FloatToStrF(Round2(ROP/UoMConverter[1],2), ffNumber, 8, 2); { API -> displayed }
       LastROP:=ROP;
     End;
   End;
@@ -241,12 +241,12 @@ Begin
   Begin
     if BHPAnn <> LastBHPAnn then
     Begin
-      DrillSim.AnnularPressureValue.Caption:=FloatToStr(Round2(BHPAnn/UoMConverter[3],2)); { API -> displayed }
+      DrillSim.AnnularPressureValue.Caption:=FloatToStrF(Round2(BHPAnn/UoMConverter[3],2), ffNumber, 8, 2); { API -> displayed }
       LastBHPAnn:=BHPAnn;
     End;
     if CasingPressure <> LastCasingPressure then
     Begin
-      DrillSim.CasingPressureValue.Caption:=FloatToStr(Round2(CasingPressure/UoMConverter[3],2)); { API -> displayed }
+      DrillSim.CasingPressureValue.Caption:=FloatToStrF(Round2(CasingPressure/UoMConverter[3],2), ffNumber, 8, 2); { API -> displayed }
       LastCasingPressure:=CasingPressure;
     End;
   End;
@@ -327,10 +327,10 @@ Begin
   End else
     ShutInUpdate;
 
-  With Data do writeln(FloatToStr(Round2(BitTD,2)) + ', ' + FloatToStr(Round2(WOB,2)) + ', ' +
+  With Data do writeln(FloatToStrF(Round2(BitTD,2), ffNumber, 8, 2) + ', ' + FloatToStrF(Round2(WOB,2), ffNumber, 8, 2) + ', ' +
                        FloatToStr(Round2(RPM,2)) + ', ' + FloatToStr(Round2(Pump[1,3]+Pump[2,3]+Pump[3,3],2)) + ', ' +
-                       FloatToStr(Round2(ROP,2))  + ', ' + FloatToStr(Round2(MWIn,2))
-                        + ', ' + FloatToStr(Round2(MWOut,2)) );
+                       FloatToStrF(Round2(ROP,2), ffNumber, 8, 2)  + ', ' + FloatToStrF(Round2(MWIn,2), ffNumber, 8, 2)
+                        + ', ' + FloatToStrF(Round2(MWOut,2), ffNumber, 8, 2) );
 End;
 
 Begin

@@ -419,7 +419,7 @@ object DrillSim: TDrillSim
     ParentFont = False
     TabOrder = 1
     object KellyHeightText: TLabel
-      Left = 7
+      Left = 8
       Height = 17
       Top = 8
       Width = 32
@@ -433,7 +433,7 @@ object DrillSim: TDrillSim
     object DrillingStatusText: TLabel
       Left = 8
       Height = 17
-      Top = 40
+      Top = 45
       Width = 41
       Caption = 'Status'
       Font.Color = clBlack
@@ -445,7 +445,7 @@ object DrillSim: TDrillSim
     object ROPText: TLabel
       Left = 8
       Height = 17
-      Top = 71
+      Top = 80
       Width = 27
       Caption = 'ROP'
       Font.Color = clBlack
@@ -455,9 +455,9 @@ object DrillSim: TDrillSim
       ParentFont = False
     end
     object TimeText: TLabel
-      Left = 6
+      Left = 8
       Height = 17
-      Top = 96
+      Top = 110
       Width = 33
       AutoSize = False
       Caption = 'Time'
@@ -495,7 +495,7 @@ object DrillSim: TDrillSim
     object DrillingStatusValue: TLabel
       Left = 56
       Height = 17
-      Top = 40
+      Top = 45
       Width = 123
       AutoSize = False
       Font.Color = clBlack
@@ -508,7 +508,7 @@ object DrillSim: TDrillSim
     object ROPValue: TLabel
       Left = 56
       Height = 15
-      Top = 72
+      Top = 80
       Width = 56
       Alignment = taRightJustify
       AutoSize = False
@@ -522,7 +522,7 @@ object DrillSim: TDrillSim
     object TimeValue: TLabel
       Left = 56
       Height = 17
-      Top = 96
+      Top = 110
       Width = 64
       AutoSize = False
       Font.Color = clBlack
@@ -533,9 +533,9 @@ object DrillSim: TDrillSim
       ParentFont = False
     end
     object KellyUp: TButton
-      Left = 114
-      Height = 29
-      Top = 123
+      Left = 112
+      Height = 20
+      Top = 137
       Width = 78
       Caption = 'Kelly Up'
       Font.Color = clBlack
@@ -546,9 +546,9 @@ object DrillSim: TDrillSim
       TabOrder = 1
     end
     object KellyDown: TButton
-      Left = 113
-      Height = 29
-      Top = 160
+      Left = 112
+      Height = 20
+      Top = 165
       Width = 79
       Caption = 'Kelly Down'
       Font.Color = clBlack
@@ -559,9 +559,9 @@ object DrillSim: TDrillSim
       TabOrder = 2
     end
     object PipeMinus: TButton
-      Left = 9
-      Height = 29
-      Top = 123
+      Left = 8
+      Height = 20
+      Top = 137
       Width = 95
       Caption = 'Remove Pipe'
       Font.Color = clBlack
@@ -572,11 +572,12 @@ object DrillSim: TDrillSim
       TabOrder = 3
     end
     object PipePlus: TButton
-      Left = 9
-      Height = 29
-      Top = 160
+      Left = 8
+      Height = 20
+      Top = 165
       Width = 94
       Caption = 'Add Pipe'
+      Default = True
       Font.Color = clBlack
       Font.Height = -13
       Font.Name = 'Sans'
@@ -587,7 +588,7 @@ object DrillSim: TDrillSim
     object AutoDrillCheckBox: TCheckBox
       Left = 208
       Height = 24
-      Top = 160
+      Top = 165
       Width = 87
       BidiMode = bdRightToLeft
       Caption = 'AutoDrill'
@@ -604,7 +605,7 @@ object DrillSim: TDrillSim
     object ROPUoMLabel: TStaticText
       Left = 128
       Height = 17
-      Top = 72
+      Top = 80
       Width = 72
       Font.Color = clBlack
       Font.Height = -13
@@ -1047,6 +1048,7 @@ object DrillSim: TDrillSim
       Width = 90
       Alignment = taRightJustify
       AutoSize = False
+      Font.Color = clBlack
       Font.Height = -13
       Font.Name = 'Sans'
       Font.Style = [fsBold]
@@ -1060,6 +1062,7 @@ object DrillSim: TDrillSim
       Width = 90
       Alignment = taRightJustify
       AutoSize = False
+      Font.Color = clBlack
       Font.Height = -13
       Font.Name = 'Sans'
       Font.Style = [fsBold]
