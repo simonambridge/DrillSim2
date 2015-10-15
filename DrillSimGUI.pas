@@ -579,7 +579,7 @@ end;
 
 procedure TDrillSim.FormActivate(Sender: TObject);
 begin
-  StringToMemo('Running DrillSimGUI FormActivate................................'); // please wait....
+  StringToMemo('Running DrillSimGUI FormActivate...............................');
   Edited:=False;  { start clean }
   Simulating:=False;
   SimulateMessageCode:=0;
@@ -998,19 +998,19 @@ begin
   Paused:=not Paused;
   if Paused=True then
   Begin
-    StringToMemo('Menu3: Simulation Paused');
+    StringToMemo('Simulation Paused');
     Simulating:=False;
   end
   else
   Begin
-    StringToMemo('Menu3: Simulation Un-paused');
+    StringToMemo('Simulation Un-paused');
     Simulating:=True;
   end;
 end;
 
 procedure TDrillSim.MenuItem3StartClick(Sender: TObject);
 begin
-  StringToMemo('Menu3: Starting Simulation');
+  StringToMemo('Starting Simulation');
   MessageToMemo(100);               { Please wait...  }
   if not Simulating then
   Begin
