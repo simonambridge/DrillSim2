@@ -3,7 +3,7 @@ Unit DrillSimVariables;
 Interface
 
 uses
-Forms, Controls, Graphics, Dialogs, Menus, ExtCtrls;
+Forms, Controls, Graphics, Dialogs, Menus, ExtCtrls, blcksock;
 
 Type
 
@@ -443,6 +443,9 @@ Var
    StatusCounter       : integer;
    CurrentBushing      : integer;
    CurrentTurn         : real;
+
+   sock: TTCPBlockSocket;
+
 Implementation
 
 Begin

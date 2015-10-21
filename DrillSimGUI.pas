@@ -17,7 +17,7 @@ uses
   Menus,
   ExtCtrls,
   LCLType,
-  Classes,
+  Classes,blcksock,
   usplashabout,
   DrillSimVariables,
   DrillSimStartup,
@@ -252,6 +252,7 @@ type
       ThreadStatus : string;
       procedure ShowStatus;
       procedure UpdateGUI;
+      procedure WriteToSocket;
     protected
       procedure Execute; override;
     public
@@ -418,7 +419,8 @@ begin
 
       DrawKelly;                     { display it in SimulateUpdate }
     End;
-    KellyHeightValue.Caption:=FloatToStr(Round2(KellyHeight/UoMConverter[1],2));   { API -> displayed }
+    //KellyHeightValue.Caption:=FloatToStr(Round2(KellyHeight/UoMConverter[1],2));   { API -> displayed }
+    KellyHeightValue.Caption:=FloatToStrF(Round2(Data.KellyHeight/UoMConverter[1],2), ffNumber, 4, 2); { API -> displayed }
   end;
 end;
 
@@ -436,7 +438,8 @@ begin
 
       DrawKelly;                     { display it in SimulateUpdate }
     End;
-    KellyHeightValue.Caption:=FloatToStr(Round2(KellyHeight/UoMConverter[1],2));  { API -> displayed }
+    //KellyHeightValue.Caption:=FloatToStr(Round2(KellyHeight/UoMConverter[1],2));  { API -> displayed }
+    KellyHeightValue.Caption:=FloatToStrF(Round2(Data.KellyHeight/UoMConverter[1],2), ffNumber, 4, 2); { API -> displayed }
   End;
 end;
 
@@ -597,7 +600,7 @@ begin
   KellyImage.Picture.LoadFromFile('kellyup-0.png');
   BushingImage.Picture.LoadFromFile('kellybushingup.png');
 
-  KellyHeightValue.Caption:=FloatToStr(Round2(Data.KellyHeight/UoMConverter[1],2)); { API -> displayed }
+  KellyHeightValue.Caption:=FloatToStrF(Round2(Data.KellyHeight/UoMConverter[1],2), ffNumber, 4, 2); { API -> displayed }
   StringToMemo('Initial kelly height = ' + FloatToStr(Data.KellyHeight));
 
   BitDepthValue.Caption:=FloatToStrF(Round2(Data.BitTD/UoMConverter[1],2), ffNumber, 4, 2); { API -> displayed }
@@ -1069,12 +1072,30 @@ begin
   StringToMemo('Simulation Thread Status Change - '+ ThreadStatus);
 end;
 
+Procedure TMyThread.WriteToSocket;
+Begin
+  //writeln(t.seconds);  { about 1000 updates/sec }
+  With Data do
+  Begin
+      sock.SendString(FloatToStrF(Round2(BitTD,2), ffNumber, 8, 2));
+      sock.SendString(FloatToStrF(Round2(WOB,2), ffNumber, 8, 2));
+      sock.SendString(FloatToStr(Round2(RPM,2)));
+      sock.SendString(FloatToStr(Round2(Pump[1,3]+Pump[2,3]+Pump[3,3],2)));
+      sock.SendString(FloatToStrF(Round2(ROP,2), ffNumber, 8, 2));
+      sock.SendString(FloatToStrF(Round2(MWIn,2), ffNumber, 8, 2));
+      sock.SendString(FloatToStrF(Round2(MWOut,2), ffNumber, 8, 2));
+  End;
+  if sock.lasterror<>0 then writeln(sock.LastErrorDesc);
+
+end;
+
 procedure TMyThread.UpdateGUI;
 // this method is executed by the mainthread and can therefore access all GUI elements.
-begin
+begin { use SimulateMessageCode to pass messages from the thread }
   if SimulateMessageCode<>0 then MessageToMemo(SimulateMessageCode);
-  SimulateMessageCode:=0;
-  ScreenService;
+  SimulateMessageCode:=0;           { reset it }
+
+  ScreenService;                    { update screen }
 end;
 
 procedure TMyThread.Execute;
@@ -1093,11 +1114,9 @@ begin
        Begin
          NewStatus:=('Simulating');  { can be either 'Simulating' or 'Not Simulating' }
 
-         //writeln('FlowCalc');
-         FlowRateCalc;      { SimulateHydraulicCalcs:FlowRateCalc }
+         FlowRateCalc;               { SimulateHydraulicCalcs:FlowRateCalc }
 
-         //writeln('HydraulicCalc');
-         HydraulicCalc;     { SimulateHydraulicCalcs:HyCalc }
+         HydraulicCalc;              { SimulateHydraulicCalcs:HyCalc }
 
          Synchronize(@UpdateGUI);
 
@@ -1106,16 +1125,16 @@ begin
          { if yes, advance RockPointer and calculate new    }
          { formation pressure gradient                      }
 
-         //writeln('FormationPressureCalc');
          FormationPressureCalc;
 
-         //writeln('TwistOffCalc');
          TwistOffCalc;
 
-         //writeln('DrillCalc');
          DrillCalc;
 
-         //writeln('KickCalc');
+         //sock.SendString('DrillSim calling....'#13#10#13#10);
+         //if sock.lasterror<>0 then StringToMemo(sock.LastErrorDesc);
+         Synchronize(@WriteToSocket);
+
          KickCalc;
 
          Synchronize(@UpdateGUI);

@@ -1,4 +1,0 @@
-missing config file
-bad config file
-bad data file
-

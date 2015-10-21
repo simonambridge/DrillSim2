@@ -349,7 +349,7 @@ Var
    HoleError           : boolean;
    Edited              : boolean;
    Simulating          : boolean;
-   SimulateExitCode    : integer;
+   SimulateMessageCode : integer;
    Paused              : boolean;
    Valid               : boolean;
    Esc                 : boolean;

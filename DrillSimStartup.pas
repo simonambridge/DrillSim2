@@ -3,7 +3,7 @@ Unit DrillSimStartup;
 Interface
 
 Uses Classes, SysUtils, FileUtil, Forms, Controls, Graphics, Dialogs,
-  ExtCtrls,
+  ExtCtrls, blcksock,
      DrillSimVariables,
      DrillSimUtilities,
      DrillSimFile,
@@ -123,6 +123,21 @@ Begin
   StringToMemo('DrillSimStartup.StartUp: DrillSim Startup complete');
   StringToMemo('DrillSimStartup.StartUp: Using Well ' + Data.WellName);
 
+
+  { -- create local network socket on port 9999 -- }
+
+  sock := TTCPBlockSocket.Create;
+  sock.Connect('localhost', '9999');
+  // Was there an error?
+  if sock.LastError <> 0 then
+  begin
+    StringToMemo('Socket initialisation error: Could not connect to server.');
+    StringToMemo(sock.LastErrorDesc);
+  end else
+  Begin
+    StringToMemo('Socket initialisation successful on localhost:9999');
+    sock.SendString('DrillSim calling....'#13#10#13#10);
+  End;
 End;
 
 Begin

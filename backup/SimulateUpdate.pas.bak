@@ -218,17 +218,17 @@ Begin
   Begin
     if WOB <> LastWOB then
     Begin
-      DrillSim.WOBValue.Caption:=FloatToStr(Round2(WOB/UoMConverter[7],2)); { API -> displayed }
+      DrillSim.WOBValue.Caption:=FloatToStrF(Round2(WOB/UoMConverter[7],2), ffNumber, 8, 2); { API -> displayed }
       LastWOB:=WOB;
     End;
     if RPM <> LastRPM then
     Begin
-      DrillSim.RPMValue.Caption:=FloatToStr(RPM); { API -> displayed }
+      DrillSim.RPMValue.Caption:=FloatToStr(RPM);
       LastRPM:=RPM;
     End;
     if ROP <> LastROP then
     Begin
-      DrillSim.ROPValue.Caption:=FloatToStr(Round2(ROP/UoMConverter[1],2)); { API -> displayed }
+      DrillSim.ROPValue.Caption:=FloatToStrF(Round2(ROP/UoMConverter[1],2), ffNumber, 8, 2); { API -> displayed }
       LastROP:=ROP;
     End;
   End;
@@ -241,12 +241,12 @@ Begin
   Begin
     if BHPAnn <> LastBHPAnn then
     Begin
-      DrillSim.AnnularPressureValue.Caption:=FloatToStr(Round2(BHPAnn/UoMConverter[3],2)); { API -> displayed }
+      DrillSim.AnnularPressureValue.Caption:=FloatToStrF(Round2(BHPAnn/UoMConverter[3],2), ffNumber, 8, 2); { API -> displayed }
       LastBHPAnn:=BHPAnn;
     End;
     if CasingPressure <> LastCasingPressure then
     Begin
-      DrillSim.CasingPressureValue.Caption:=FloatToStr(Round2(CasingPressure/UoMConverter[3],2)); { API -> displayed }
+      DrillSim.CasingPressureValue.Caption:=FloatToStrF(Round2(CasingPressure/UoMConverter[3],2), ffNumber, 8, 2); { API -> displayed }
       LastCasingPressure:=CasingPressure;
     End;
   End;
@@ -327,10 +327,14 @@ Begin
   End else
     ShutInUpdate;
 
-  With Data do writeln(FloatToStr(Round2(BitTD,2)) + ', ' + FloatToStr(Round2(WOB,2)) + ', ' +
+{  With Data do writeln(FloatToStrF(Round2(BitTD,2), ffNumber, 8, 2) + ', ' + FloatToStrF(Round2(WOB,2), ffNumber, 8, 2) + ', ' +
                        FloatToStr(Round2(RPM,2)) + ', ' + FloatToStr(Round2(Pump[1,3]+Pump[2,3]+Pump[3,3],2)) + ', ' +
-                       FloatToStr(Round2(ROP,2))  + ', ' + FloatToStr(Round2(MWIn,2))
-                        + ', ' + FloatToStr(Round2(MWOut,2)) );
+                       FloatToStrF(Round2(ROP,2), ffNumber, 8, 2)  + ', ' + FloatToStrF(Round2(MWIn,2), ffNumber, 8, 2)
+                        + ', ' + FloatToStrF(Round2(MWOut,2), ffNumber, 8, 2) );
+}
+
+
+
 End;
 
 Begin
