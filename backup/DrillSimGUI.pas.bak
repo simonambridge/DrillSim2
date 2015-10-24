@@ -1073,17 +1073,21 @@ begin
 end;
 
 Procedure TMyThread.WriteToSocket;
+var TimeStamp : String20;
 Begin
   //writeln(t.seconds);  { about 1000 updates/sec }
+  TimeStamp:=IntToStr(Trunc((Now - EncodeDate(1970, 1 ,1)) * 24 * 60 * 60));
   With Data do
   Begin
-      sock.SendString(FloatToStrF(Round2(BitTD,2), ffNumber, 8, 2));
-      sock.SendString(FloatToStrF(Round2(WOB,2), ffNumber, 8, 2));
-      sock.SendString(FloatToStr(Round2(RPM,2)));
-      sock.SendString(FloatToStr(Round2(Pump[1,3]+Pump[2,3]+Pump[3,3],2)));
-      sock.SendString(FloatToStrF(Round2(ROP,2), ffNumber, 8, 2));
-      sock.SendString(FloatToStrF(Round2(MWIn,2), ffNumber, 8, 2));
-      sock.SendString(FloatToStrF(Round2(MWOut,2), ffNumber, 8, 2));
+      sock.SendString(TimeStamp+',1'+FloatToStrF(Round2(TD,2), ffNumber, 8, 2)+#13#10);
+      sock.SendString(TimeStamp+',2'+FloatToStrF(Round2(WOB,2), ffNumber, 8, 2)+#13#10);
+      sock.SendString(TimeStamp+',3'+FloatToStr(Round2(RPM,2))+#13#10);
+      sock.SendString(TimeStamp+',4'+FloatToStrF(Round2(ROP,2), ffNumber, 8, 2)+#13#10);
+      sock.SendString(TimeStamp+',5'+FloatToStrF(Round2(FlowIn,2), ffNumber, 8, 2)+#13#10);
+      sock.SendString(TimeStamp+',6'+FloatToStrF(Round2(FlowOut,2), ffNumber, 8, 2)+#13#10);
+      sock.SendString(TimeStamp+',7'+FloatToStrF(Round2(PlCirc,2), ffNumber, 8, 2)+#13#10);
+      sock.SendString(TimeStamp+',8'+FloatToStrF(Round2(MWIn,2), ffNumber, 8, 2)+#13#10);
+      sock.SendString(TimeStamp+',9'+FloatToStrF(Round2(MWOut,2), ffNumber, 8, 2)+#13#10);
   End;
   if sock.lasterror<>0 then writeln(sock.LastErrorDesc);
 
@@ -1131,9 +1135,9 @@ begin
 
          DrillCalc;
 
-         sock.SendString('DrillSim calling....'#13#10#13#10);
-         if sock.lasterror<>0 then StringToMemo(sock.LastErrorDesc);
-
+         //sock.SendString('DrillSim calling....'#13#10#13#10);
+         //if sock.lasterror<>0 then StringToMemo(sock.LastErrorDesc);
+         Synchronize(@WriteToSocket);
 
          KickCalc;
 

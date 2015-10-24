@@ -4,8 +4,7 @@ Interface
 
 Uses sysutils,
      DrillSimVariables,
-     DrillSimUtilities,
-     DrillSimMessageToMemo;
+     DrillSimUtilities;
 
 Procedure ScreenService;
 Procedure DrawKelly;    { draws appropriate kelly and bushing @ KelHt }

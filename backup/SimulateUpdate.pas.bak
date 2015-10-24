@@ -327,14 +327,6 @@ Begin
   End else
     ShutInUpdate;
 
-{  With Data do writeln(FloatToStrF(Round2(BitTD,2), ffNumber, 8, 2) + ', ' + FloatToStrF(Round2(WOB,2), ffNumber, 8, 2) + ', ' +
-                       FloatToStr(Round2(RPM,2)) + ', ' + FloatToStr(Round2(Pump[1,3]+Pump[2,3]+Pump[3,3],2)) + ', ' +
-                       FloatToStrF(Round2(ROP,2), ffNumber, 8, 2)  + ', ' + FloatToStrF(Round2(MWIn,2), ffNumber, 8, 2)
-                        + ', ' + FloatToStrF(Round2(MWOut,2), ffNumber, 8, 2) );
-}
-
-
-
 End;
 
 Begin

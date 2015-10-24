@@ -129,6 +129,7 @@ Begin
   sock := TTCPBlockSocket.Create;
   sock.Connect('localhost', '9999');
   // Was there an error?
+  StringToMemo('=========================================================');
   if sock.LastError <> 0 then
   begin
     StringToMemo('Socket initialisation error: Could not connect to server.');
@@ -136,8 +137,9 @@ Begin
   end else
   Begin
     StringToMemo('Socket initialisation successful on localhost:9999');
-    sock.SendString('DrillSim calling....'#13#10#13#10);
+    sock.SendString('DrillSim calling....'#13#10);
   End;
+  StringToMemo('=========================================================');
 End;
 
 Begin

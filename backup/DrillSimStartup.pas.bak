@@ -132,7 +132,7 @@ Begin
   if sock.LastError <> 0 then
   begin
     StringToMemo('Socket initialisation error: Could not connect to server.');
-    StringToMemo(LastErrorDesc);
+    StringToMemo(sock.LastErrorDesc);
   end else
   Begin
     StringToMemo('Socket initialisation successful on localhost:9999');
