@@ -1077,17 +1077,21 @@ var TimeStamp : String20;
 Begin
   //writeln(t.seconds);  { about 1000 updates/sec }
   TimeStamp:=IntToStr(Trunc((Now - EncodeDate(1970, 1 ,1)) * 24 * 60 * 60));
+  GetCurrentTime (t);
+  if t.Seconds <> LastSocketSeconds then
   With Data do
   Begin
-      sock.SendString(TimeStamp+',1,'+FloatToStrF(Round2(TD,2), ffNumber, 8, 2)+#13#10);
-      sock.SendString(TimeStamp+',2,'+FloatToStrF(Round2(WOB,2), ffNumber, 8, 2)+#13#10);
-      sock.SendString(TimeStamp+',3,'+FloatToStr(Round2(RPM,2))+#13#10);
-      sock.SendString(TimeStamp+',4,'+FloatToStrF(Round2(ROP,2), ffNumber, 8, 2)+#13#10);
-      sock.SendString(TimeStamp+',5,'+FloatToStrF(Round2(FlowIn,2), ffNumber, 8, 2)+#13#10);
-      sock.SendString(TimeStamp+',6,'+FloatToStrF(Round2(FlowOut,2), ffNumber, 8, 2)+#13#10);
-      sock.SendString(TimeStamp+',7,'+FloatToStrF(Round2(PlCirc,2), ffNumber, 8, 2)+#13#10);
-      sock.SendString(TimeStamp+',8,'+FloatToStrF(Round2(MWIn,2), ffNumber, 8, 2)+#13#10);
-      sock.SendString(TimeStamp+',9,'+FloatToStrF(Round2(MWOut,2), ffNumber, 8, 2)+#13#10);
+    sock.SendString('1,'+FloatToStrF(Round2(TD,2), ffFixed, 8, 2)+','+ TimeStamp+#13#10);
+    sock.SendString('2,'+FloatToStrF(Round2(BitTD,2), ffFixed, 8, 2)+','+ TimeStamp+#13#10);
+    sock.SendString('3,'+FloatToStrF(Round2(WOB,2), ffNumber, 8, 2)+','+ TimeStamp+#13#10);
+    sock.SendString('4,'+FloatToStr(Round2(RPM,2))+','+ TimeStamp+#13#10);
+    sock.SendString('5,'+FloatToStrF(Round2(ROP,2), ffNumber, 8, 2)+','+ TimeStamp+#13#10);
+    sock.SendString('6,'+FloatToStrF(Round2(FlowIn,2), ffNumber, 8, 2)+','+ TimeStamp+#13#10);
+    sock.SendString('7,'+FloatToStrF(Round2(FlowOut,2), ffNumber, 8, 2)+','+ TimeStamp+#13#10);
+    sock.SendString('8,'+FloatToStrF(Round2(PlCirc,2), ffNumber, 8, 2)+','+ TimeStamp+#13#10);
+    sock.SendString('9,'+FloatToStrF(Round2(MWIn,2), ffNumber, 8, 2)+','+ TimeStamp+#13#10);
+    sock.SendString('10,'+FloatToStrF(Round2(MWOut,2), ffNumber, 8, 2)+','+ TimeStamp+#13#10);
+    LastSocketSeconds:=t.Seconds;
   End;
   if sock.lasterror<>0 then writeln(sock.LastErrorDesc);
 

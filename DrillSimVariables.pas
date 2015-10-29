@@ -405,6 +405,7 @@ Var
    Status              : integer;
 
    LastSeconds         : integer;
+   LastSocketSeconds   : integer;
    LastHundredths      : integer;
 
    LastInflux          : real;

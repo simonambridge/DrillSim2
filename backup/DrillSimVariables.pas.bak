@@ -9,8 +9,8 @@ Type
 
 
     String120 =  string[120];
-    String20  =  string[20];
     String60  =  string[60];
+    String20  =  string[20];
     String3   =  string[3];
 
     AttrType  =  byte;
