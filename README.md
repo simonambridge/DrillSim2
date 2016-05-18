@@ -33,19 +33,28 @@ DrillSim 3.0.0
 * extrafpc.cfg
 
   ```
-  #-FUunits
-  #-Fu./units
-  -Fu../../../lib/$fpctarget
-  -Fu/usr/share/lazarus/1.2.6/lcl/units/x86_64-linux/gtk2
-  -Fu/usr/share/lazarus/1.2.6/lcl/units/x86_64-linux
-  -Fu/usr/share/lazarus/1.2.6/components/lazutils/lib/x86_64-linux
-  #-Fu/Software/FPC_G/lib/x86_64-linux
-  -Xs
-  -XX
-  -CX
-  #ifdef mswindows
-  -WG
-  #endif
+-vut 
+-B  
+-MObjFPC 
+-Scghi 
+-O1
+-Tlinux 
+-Px86_64 
+-g 
+-gl 
+-vewnhi 
+-Filib/x86_64-linux 
+-Fl/opt/gnome/lib 
+-Fu/usr/lib/fpc/2.6.4/units/x86_64-linux 
+-Fu/usr/share/lazarus/1.2.6/lcl/units/x86_64-linux/gtk2 
+-Fu/usr/share/lazarus/1.2.6/lcl/units/x86_64-linux 
+-Fu/usr/share/lazarus/1.2.6/components/lazutils/lib/x86_64-linux 
+-Fu/usr/share/lazarus/1.2.6/packager/units/x86_64-linux 
+-Fu. 
+-FUlib/x86_64-linux 
+-l 
+-dLCL 
+-dLCLgtk2
   ```
 * Additional Units:
 
