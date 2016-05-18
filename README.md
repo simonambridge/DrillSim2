@@ -8,16 +8,16 @@
 
 * Additional Units:
 
-•	splash – splash/help screen - extract in code directory
+- splash – splash/help screen - extract in code directory
 
-•	synapse40 – networking library - extract in code directory
+- synapse40 – networking library - extract in code directory
 
 * Additional sub-directories:
 
-•	backup – created by Lazarus
+- backup – created by Lazarus
 
-•	lib – created by Lazarus
+- lib – created by Lazarus
 
-•	images – location of Kelly etc image files
+- images – location of Kelly etc image files
 
 
