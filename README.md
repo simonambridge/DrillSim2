@@ -26,21 +26,22 @@ DrillSim 3.0.0
   fpc -vut -B @extrafpc.cfg DrillSim3.lpr
   ```
 * extrafpc.cfg
+
   ```
   #-FUunits
   #-Fu./units
--Fu../../../lib/$fpctarget
--Fu/usr/share/lazarus/1.2.6/lcl/units/x86_64-linux/gtk2
--Fu/usr/share/lazarus/1.2.6/lcl/units/x86_64-linux
--Fu/usr/share/lazarus/1.2.6/components/lazutils/lib/x86_64-linux
-#-Fu/Software/FPC_G/lib/x86_64-linux
--Xs
--XX
--CX
-#ifdef mswindows
--WG
-#endif
-```
+  -Fu../../../lib/$fpctarget
+  -Fu/usr/share/lazarus/1.2.6/lcl/units/x86_64-linux/gtk2
+  -Fu/usr/share/lazarus/1.2.6/lcl/units/x86_64-linux
+  -Fu/usr/share/lazarus/1.2.6/components/lazutils/lib/x86_64-linux
+  #-Fu/Software/FPC_G/lib/x86_64-linux
+  -Xs
+  -XX
+  -CX
+  #ifdef mswindows
+  -WG
+  #endif
+  ```
 * Additional Units:
 
   - splash – splash/help screen - extract in code directory
