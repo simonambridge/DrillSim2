@@ -28,7 +28,7 @@ DrillSim 3.0.0
 * extrafpc.cfg
   ```
   #-FUunits
-#-Fu./units
+  #-Fu./units
 -Fu../../../lib/$fpctarget
 -Fu/usr/share/lazarus/1.2.6/lcl/units/x86_64-linux/gtk2
 -Fu/usr/share/lazarus/1.2.6/lcl/units/x86_64-linux
