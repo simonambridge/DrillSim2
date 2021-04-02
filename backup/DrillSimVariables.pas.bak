@@ -3,7 +3,7 @@ Unit DrillSimVariables;
 Interface
 
 uses
-Forms, Controls, Graphics, Dialogs, Menus, ExtCtrls, blcksock;
+Forms, Controls, Graphics, Dialogs, Menus, ExtCtrls;
 
 Type
 
@@ -405,6 +405,7 @@ Var
    Status              : integer;
 
    LastSeconds         : integer;
+   LastSocketSeconds   : integer;
    LastHundredths      : integer;
 
    LastInflux          : real;
@@ -451,4 +452,4 @@ Implementation
 Begin
 End.
 
-
+

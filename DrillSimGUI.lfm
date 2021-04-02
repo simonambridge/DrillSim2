@@ -1,18 +1,18 @@
 object DrillSim: TDrillSim
-  Left = 249
-  Height = 668
-  Top = 221
-  Width = 999
+  Left = 0
+  Height = 677
+  Top = 61
+  Width = 988
   Caption = 'DrillSim 3.0'
-  ClientHeight = 645
-  ClientWidth = 999
+  ClientHeight = 651
+  ClientWidth = 988
   Menu = MainMenu1
   OnActivate = FormActivate
   OnClose = FormClose
   OnCreate = FormCreate
   OnDeactivate = FormDeactivate
   Position = poScreenCenter
-  LCLVersion = '1.2.6.0'
+  LCLVersion = '1.8.2.0'
   object PumpData: TGroupBox
     Left = 10
     Height = 192
@@ -589,7 +589,7 @@ object DrillSim: TDrillSim
       Left = 208
       Height = 24
       Top = 165
-      Width = 87
+      Width = 82
       BidiMode = bdRightToLeft
       Caption = 'AutoDrill'
       Color = clDefault
@@ -796,7 +796,7 @@ object DrillSim: TDrillSim
       Left = 112
       Height = 24
       Top = 96
-      Width = 99
+      Width = 95
       Caption = 'Power Law'
       Checked = True
       Font.Color = clBlack
@@ -811,7 +811,7 @@ object DrillSim: TDrillSim
       Left = 10
       Height = 24
       Top = 97
-      Width = 84
+      Width = 81
       Caption = 'Bingham'
       Font.Color = clBlack
       Font.Height = -13
@@ -827,12 +827,12 @@ object DrillSim: TDrillSim
     Top = 578
     Width = 970
     Caption = 'Commands'
-    ClientHeight = 43
+    ClientHeight = 40
     ClientWidth = 966
     TabOrder = 5
     object CommandLine: TEdit
       Left = 13
-      Height = 27
+      Height = 30
       Top = 8
       Width = 939
       OnClick = CommandLineClick

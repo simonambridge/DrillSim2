@@ -1082,7 +1082,7 @@ Begin
   With Data do
   Begin
     sock.SendString('1,'+FloatToStrF(Round2(TD,2), ffFixed, 8, 2)+','+ TimeStamp+#13#10);
-    sock.SendString('2,'+FloatToStrF(Round2(BitTD,2), ffNumber, 8, 2)+','+ TimeStamp+#13#10);
+    sock.SendString('2,'+FloatToStrF(Round2(BitTD,2), ffFixed, 8, 2)+','+ TimeStamp+#13#10);
     sock.SendString('3,'+FloatToStrF(Round2(WOB,2), ffNumber, 8, 2)+','+ TimeStamp+#13#10);
     sock.SendString('4,'+FloatToStr(Round2(RPM,2))+','+ TimeStamp+#13#10);
     sock.SendString('5,'+FloatToStrF(Round2(ROP,2), ffNumber, 8, 2)+','+ TimeStamp+#13#10);

@@ -11,16 +11,11 @@ uses
   Interfaces, // this includes the LCL widgetset
   Forms,
   { you can add units after this }
-  DrillSimVariables,
-  DrillSimStartup,
-  DrillSimFile,
-  DrillSimMessageToMemo,
-  DrillSimGUI,
-  FormGeneralData,
-  FormHoleData,
-  FormConfigDefaults, FormPipeData, FormBitData,
-FormPumpData, FormSurfaceEquipmentData, FormWellTestData,
-FormGeologyData, FormMudData, FormDisplayWellData, FormUnitsOfMeasure;
+  DrillSimVariables, DrillSimStartup, DrillSimFile, DrillSimMessageToMemo,
+  DrillSimGUI, FormGeneralData, FormHoleData, FormConfigDefaults, FormPipeData,
+  FormBitData, FormPumpData, FormSurfaceEquipmentData, FormWellTestData,
+  FormGeologyData, FormMudData, FormDisplayWellData, FormUnitsOfMeasure,
+  laz_synapse;
 
 {$R *.res}
 
