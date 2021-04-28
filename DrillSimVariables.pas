@@ -202,19 +202,6 @@ Type
 
                  End;
 
-      ColorSet    = (NormColors, { grey on blue }
-                     BlueonGray,
-                     WhiteOnBlue,
-                     YellowOnBlack,
-                     GrayOnBlack,
-                     DataColors,   { high cyan on blue }
-                     TitleColors,  { yellow on blue }
-                     RedOnGray,
-                     RedOnBlue,
-                     FlashColors,  { red on blue }
-                     BlackOnGreen,
-                     WhiteOnGreen,
-                     WhiteOnRed);
 
     Date       =  Record
                     DayOfWeek, Year, Month, Day               : word;
@@ -238,62 +225,17 @@ Const
     Rheocon13 = 0.2;                Rheocon14 = 1.86;
     Rheocon15 = 0.00015;            Rheocon16 = 38780.0;
     Rheocon17 = 0.000001;           Rheocon18 = 2.8;
-    VersionNumber = '3.0.0';
-    VersionDate   = '(6/2015)';
-    Title         = 'DrillSim';
 
-    PressPrompt = 'Press any key...';
-    CommandLine = '>                     ';
-    Extension   : String[4]  = '.WDF';
+    VersionNumber = '3.0.0';        { used in command line }
+    VersionDate   = '(6/2015)';     { used in command line }
+    Title         = 'DrillSim';     { used in command line }
     Space       :   char     = ' ';
-    CurrentMode = 'Mode : ';
-    UnitMode    = 'Select User Units';
-    SelectMode  = 'Main Menu';
-    FileMode    = 'File Utilities';
-    SetUpMode   = 'Setup';
-    CreateMode  = 'Create Data File';
-    UpdateMode  = 'Update Data File';
-    GenMode     = 'General Data';
-    HoleMode    = 'Hole Profile';
-    PipeMode    = 'Drill String';
-    BitMode     = 'Bit Data';
-    MudMode     = 'Mud Data';
-    PumpMode    = 'Pump Data';
-    SurfMode    = 'Surface Equipment';
-    OptMode     = 'Optimise';
-    HyPrMode    = 'Hydraulic Print';
-    ErrorMode   = 'Data Error';
-    NoHelp1     = 'Help file was not found in start-up directory';
-    NoHelp2     = 'No help messages available';
-    Yes         = 'Yes';
-    No          = ' No';
 
-{ hydvar constants }
-    LaminarText   = 'Laminar  ';
-    TurbulentText = 'Turbulent';
-    Blank4      = '    ';
-    Blank5      = '     ';
-    Blank6      = '      ';
-    Blank7      = '       ';
-    Blank9      = '         ';
-    Blank11     = '           ';
-    Dollar4      = '$$$$';
-    Dollar5      = '$$$$$';
-    Dollar6      = '$$$$$$';
-    Dollar7      = '$$$$$$$';
-    Dollar9      = '$$$$$$$$$';
 
-{ Simvar constants }
-   KickMode = 'DrillSim Data';   { used by DrillSim for UpdateKick }
-   HelpPrompt = 'Press ENTER to continue or ESC to exit';
-   Slash      : char = '/';
 Var
    DataFile            : File of WellData;
    Data                : WellData;
    TextFile            : Text;
-   SubProgram          : File;
-   HelpFile            : File of HelpSet;
-   Help                : HelpSet;
 
    d                   : Date;
    t                   : Time;
@@ -321,84 +263,62 @@ Var
    LastString          : String120;
    PreviousString      : String120;
    ThisString          : String120;
-   Enter               : String[3];
-   YesNo               : string[4];
    Input               : String[1]; { was char; }  { Utility input char' }
    CharInput           : char;                     {   ----- " -----     }
-//   Util                : char;                { Box building  char' }
-
-//   OutString           : String120;    { FastDisp variables }{ not used @4/21}
    TempString          : String120;    { utility diplsy string }
-//   Row, Col            : integer;
-//   AttrByte            : byte;         { current Disp colour }
-//   TAttr               : byte;         { store current Disp Colour }
-
-   Code                : integer;           { used by Proc. }
-   Name                : String20;        { GetDirectory  }
 
    SystemPropertiesFile  : String120;
    DefaultWellDataFile   : String120;        { used for .CFG file }
    DefaultDirectory    : String120;
-//   PathString          : String120;         { Used for DOS Path - replaced }
    OriginDirectory     : String120;
    OriginalExitProc    : Pointer;
-
-//   IntParam            : integer;        { not used @4/21}
-   RealParam           : real;
 
    HoleError           : boolean;
    Edited              : boolean;
    Simulating          : boolean;
    SimulateMessageCode : integer;
    Paused              : boolean;
-   Valid               : boolean;
-   Esc                 : boolean;
 
-//   MinChoice           : integer;   { not used @4/21}
-//   MaxChoice           : integer;   { not used @4/21}
-//   OldChoice           : integer;   { not used @4/21}
-//   NewChoice           : integer;   { not used @4/21}
-//   Choice              : integer;   { not used @4/21}
-   Menu                : array [1..10] of String120;
 
 { Hydvar vars }
-   Bhcp                             : real;
+   Bhcp                             : real;      {unused @4/21}
    PosCounter                       : integer;
-//   LineCnt                          : integer; { not used @4/21}
-   ColorCount                       : integer;
 { Simvar vars }
-   LastTD, LastBitTD   : real;
+   LastTD              : real;
+   LastBitTD           : real;
    LastCasingPressure  : real;
    LastBHPAnn          : real;
    LastPitGain         : real;
-   LastPlBit           : real;
-   LastPlAnn           : real;
-   LastPlSurf          : real;
-   LastPlPipe          : real;
+   LastPlBit           : real;   { not used @4/21}
+   LastPlAnn           : real;   { not used @4/21}
+   LastPlSurf          : real;   { not used @4/21}
+   LastPlPipe          : real;   { not used @4/21}
    LastPlCirc          : real;
-   LastPlChoke         : real;
+   LastPlChoke         : real;   { not used @4/21}
 
    LastFlowOut         : real;
    LastFlowIn          : real;
-   LastElapsedFlow     : real;
+   LastElapsedFlow     : real;   { not used @4/21}
    LastCalculatedFlow  : real;
 
    LastRetPitVol       : real;
 
-   LastJetVel          : real;
-   LastImpForce        : real;
-   LastBitHp           : real;
-   LastEff             : real;
-   LastTotHp           : real;
-   LastFf, LastRn      : real;
-   LastFn, LastFk      : real;
+   LastJetVel          : real;   { not used @4/21}
+   LastImpForce        : real;   { not used @4/21}
+   LastBitHp           : real;   { not used @4/21}
+   LastEff             : real;   { not used @4/21}
+   LastTotHp           : real;   { not used @4/21}
+   LastFf              : real;
+   LastRn              : real;   { not used @4/21}
+   LastFn              : real;   { not used @4/21}
+   LastFk              : real;
 
    LastKellyHeight     : real;
    KellyImageIndex     : integer;
 
    LastWOB             : real;
-   LastWOH             : real;
-   LastStrWt           : real;
+   LastWOH             : real;   { not used @4/21}
+   LastStrWt           : real;   { not used @4/21}
 
    LastROP             : real;
    LastRPM             : real;
@@ -408,8 +328,8 @@ Var
    LastSocketSeconds   : integer;
    LastHundredths      : integer;
 
-   LastInflux          : real;
-   LastInfluxRate      : real;
+   LastInflux          : real;   { not used @4/21}
+   LastInfluxRate      : real;   { not used @4/21}
    LastECD             : real;
    LastChoke           : integer;
 
@@ -421,14 +341,14 @@ Var
    OriginalPitVolume   : real;
    LastMwOut           : real;
    LastMwIn            : real;
-   LastMudPv           : real;
-   LastMudYp           : real;
-   LastMudGel          : real;
+   LastMudPv           : real;   { not used @4/21}
+   LastMudYp           : real;   { not used @4/21}
+   LastMudGel          : real;   { not used @4/21}
    LastCalculatedMudWt : real;
 
-   LastTotStrks        : real;
+   LastTotStrks        : real;   { not used @4/21}
    LastStrokeCounter   : real;
-   LastSPM             : array[1..3] of real;
+   LastSPM             : array[1..3] of real;   { not used @4/21}
    DrilledHoleVol      : real;
    ExtraVolume         : real;
    ChokeLinePl         : real;

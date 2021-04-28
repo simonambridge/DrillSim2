@@ -1,0 +1,459 @@
+Unit DrillSimVariables;
+
+Interface
+
+uses
+Forms, Controls, Graphics, Dialogs, Menus, ExtCtrls, blcksock;
+
+Type
+
+
+    String120 =  string[120];
+    String60  =  string[60];
+    String20  =  string[20];
+    String3   =  string[3];
+
+    AttrType  =  byte;
+
+    MudRec     =  Record
+                    StartStrokes : real;  { StrokeCounter @ start circ' }
+                    MW           : real;  { New MW }
+                    PV           : real;  {     PV }
+                    YP           : real;  {     YP }
+                  End;
+
+    GasRec     =  Record
+                    Spare1 : real;
+                    Spare2 : real;
+                    Spare3 : real;
+                    Spare4 : real;
+                  End;
+
+    FormationRecord = Record
+                        Depth             : real;
+                        Hardness          : real;
+                        FP                : real;
+                        Porosity          : real;
+                      End;
+
+    HelpSet    = Record
+                   HelpText : array[1..200] of String60;
+                 End;
+    Test              = array[1..7] of real;
+
+    WellData   = Record
+                   WellOperator                : String120;
+                   WellName                    : String120;
+                   TD, BitTD                   : real;
+                   API                         : boolean;
+                   Offshore                    : boolean;
+                   SubSeaWellHead              : boolean;
+
+                   Riser                       : boolean;
+                   RiserTD                     : real;
+                   RiserID                     : real;
+
+                   Casing                      : boolean;
+                   CasingID                    : real;
+                   CasingTD                    : real;
+
+                   Liner                       : boolean;
+                   LinerTopTD                  : real;
+                   LinerBottomTD               : real;
+                   LinerID                     : real;
+
+                   Surf                        : array[1..4,1..2] of real;  { length, ID }
+
+                   MaxHoles                    : integer;
+                   Hole                        : array[1..3,1..3] of real; { TD, ID, OD }
+
+                   MaxPipes                    : integer;                  { we only use three sections of }
+                   Pipe                        : array[1..4,1..4] of real; { pipe length, ID, OD, lbs/ft }
+
+                   ChokeLineID                 : real;
+                   KillLineID                  : real;
+
+                   DeviationDegrees            : real;
+                   TVD                         : real;
+
+                   ElevationRKB                : real;
+                   WaterDepth                  : real;
+
+                   MaxJets                     : integer;
+                   Jet                         : array[1..4] of integer;
+                   BitNumber                   : integer;
+                   BitType                     : String20;
+
+                   MaxPumps                    : integer;
+                   Pump                        : array[1..3,1..5] of real;
+                   { output, efficiency, @strokes, slow pump spm, slow pump flow rate gpm }
+                   MaxPumpPressure             : real;
+
+                   ExcessMud                   : real;
+
+                   MudWt                       : real;
+                   MudPv                       : real;
+                   MudYp                       : real;
+                   MudGel                      : real;
+                   RetPitVol                   : real;
+
+                   LotTD                       : real;
+                   LotEMW                      : real;
+                   LotMW                       : real;
+                   LotPressure                 : real;
+
+                   FormationPointer            : integer;
+                   Formation                   : array[1..10] of FormationRecord;
+
+                   Gas                         : array[1..200] of GasRec;
+
+                   DrillMult                   : integer;
+
+                   NeverSimulated              : boolean;  { has this file ever been 'simulated'? }
+
+                   FormationPressureGradient   : real;
+                   CasingBurstPressure         : real;
+                   InfluxDensity               : real;
+
+                   PipeRAMRating               : real;
+                   HydrilRating                : real;
+
+                   Pumping                     : boolean;
+                   Drilling                    : boolean;
+                   AutoDrill                   : boolean;
+                   ShutIn                      : boolean;
+                   BlindRam                    : boolean;
+                   PipeRam                     : boolean;
+                   Hydril                      : boolean;
+                   FlowLine                    : boolean;
+                   Bingham                     : boolean;
+                   UpdateFlow                  : boolean;
+                   PmpOp                       : array[1..3] of real;
+                   FillCE                      : array[1..4] of real;
+                   FillOE                      : array[1..4] of real;
+                   LagDT, LagDS                : real;
+                   LagUT,   LagUS              : real;
+                   WellVol, HoleVol            : real;
+                   AnnVol,  MudVol             : real;
+                   PipeCap, PipeDis            : real;
+                   TotHoleSections             : integer;
+                   HoleSection                 : array[1..9,1..4] of real;
+                   Vel                         : array[1..9,1..3] of real;
+
+                   StackPointer                : integer;
+                   CircStack                   : array[1..200] of MudRec;
+                   MudOut                      : MudRec;
+                   StrokeCounter               : real;
+                   TotStrks                    : real;
+                   TotCircStrks                : real;
+
+                   PipeMW                      : real;
+                   AnnMW                       : real;
+                   MwIn                        : real;
+                   MwOut                       : real;
+                   AnnPV                       : real;
+                   AnnYP                       : real;
+                   PipePV                      : real;
+                   PipeYP                      : real;
+
+                   FlowIn, FlowOut             : real;
+                   ElapsedTime                 : real;
+                   ElapsedFlow                 : real;
+                   PlSurf, PlPipe              : real;
+                   PlBit, PlAnn                : real;
+                   PlCirc                      : real;
+                   MACP                        : real;
+                   AnnUnderbalance             : real;
+                   CasingPressure              : real;
+                   DeltaCsgPr                  : real;
+                   PlChoke                     : real;
+                   Choke                       : integer;
+
+                   JetVel, ImpForce            : real;
+                   BitHp, Eff, TotHP           : real;
+                   AverageHhd                  : real;
+                   PipeHhd, AnnHhd             : real;
+                   BHPAnn                      : real;
+                   Ecd                         : real;
+                   Ff, Rn                      : real;
+                   Fn, Fk                      : real;
+                   WaterFraction               : real;
+                   OilFraction                 : real;
+                   SolidsFraction              : real;
+
+                   PipeTD                      : real;
+                   StringTD                    : real;
+                   KellyHeight                 : real;
+                   LastKD                      : real;
+                   WOB                         : real;
+                   WOH                         : real;
+                   StrWt                       : real;
+                   ROP                         : real;
+                   RPM                         : real;
+                   OverDrill                   : real;
+                   t1,t2                       : integer;
+                   ROPt1,ROPt2                 : integer;
+                   RPMt1,RPMt2                 : integer;
+
+                   Influx                      : real;
+                   InfluxRate                  : real;
+                   BleedOffRate                : real;
+                   BleedOff                    : real;
+
+                 End;
+
+      ColorSet    = (NormColors, { grey on blue }
+                     BlueonGray,
+                     WhiteOnBlue,
+                     YellowOnBlack,
+                     GrayOnBlack,
+                     DataColors,   { high cyan on blue }
+                     TitleColors,  { yellow on blue }
+                     RedOnGray,
+                     RedOnBlue,
+                     FlashColors,  { red on blue }
+                     BlackOnGreen,
+                     WhiteOnGreen,
+                     WhiteOnRed);
+
+    Date       =  Record
+                    DayOfWeek, Year, Month, Day               : word;
+                  End;
+
+    Time       =  Record
+                    Hours, Minutes, Seconds, Hundredths       : word;
+                  End;
+
+
+Const
+    volcon    = 1029;               HHPcon    = 1714;
+    StandLen  = 90;                 Bbl2Gal   = 42;
+    Presscon  = 0.052;              Zero      = 0;
+    Rheocon1  = 24.51;              Rheocon2  = 64.57;
+    Rheocon3  = 9.899999;           Rheocon4  = 0.079;
+    Rheocon5  = 49.56;              Rheocon6  = 0.25;
+    Rheocon7  = 93000.0;            Rheocon8  = 282;
+    Rheocon9  = 90000.0;            Rheocon10 = 1024;
+    Rheocon11 = 0.32068;            Rheocon12 = 10858;
+    Rheocon13 = 0.2;                Rheocon14 = 1.86;
+    Rheocon15 = 0.00015;            Rheocon16 = 38780.0;
+    Rheocon17 = 0.000001;           Rheocon18 = 2.8;
+
+    VersionNumber = '3.0.0';        { used in command line }
+    VersionDate   = '(6/2015)';     { used in command line }
+    Title         = 'DrillSim';     { used in command line }
+
+//    PressPrompt = 'Press any key...';
+//    CommandLine = '>                     ';
+//    Extension   : String[4]  = '.WDF';
+    Space       :   char     = ' ';
+//    CurrentMode = 'Mode : ';
+//    UnitMode    = 'Select User Units';
+//    SelectMode  = 'Main Menu';
+//    FileMode    = 'File Utilities';
+//    SetUpMode   = 'Setup';
+//    CreateMode  = 'Create Data File';
+//    UpdateMode  = 'Update Data File';
+//    GenMode     = 'General Data';
+//    HoleMode    = 'Hole Profile';
+//    PipeMode    = 'Drill String';
+//    BitMode     = 'Bit Data';
+//    MudMode     = 'Mud Data';
+//    PumpMode    = 'Pump Data';
+//    SurfMode    = 'Surface Equipment';
+//    OptMode     = 'Optimise';
+//    HyPrMode    = 'Hydraulic Print';
+//    ErrorMode   = 'Data Error';
+//    NoHelp1     = 'Help file was not found in start-up directory';
+//    NoHelp2     = 'No help messages available';
+//    Yes         = 'Yes';
+//    No          = ' No';
+
+{ hydvar constants }
+//    LaminarText   = 'Laminar  ';
+//    TurbulentText = 'Turbulent';
+//    Blank4      = '    ';
+//    Blank5      = '     ';
+//    Blank6      = '      ';
+//    Blank7      = '       ';
+//    Blank9      = '         ';
+//    Blank11     = '           ';
+//    Dollar4      = '$$$$';
+//    Dollar5      = '$$$$$';
+//    Dollar6      = '$$$$$$';
+//    Dollar7      = '$$$$$$$';
+//    Dollar9      = '$$$$$$$$$';
+
+{ Simvar constants }
+//   KickMode = 'DrillSim Data';   { used by DrillSim for UpdateKick }
+//   HelpPrompt = 'Press ENTER to continue or ESC to exit';   { edited out, not used @4/21}
+   Slash      : char = '/';
+Var
+   DataFile            : File of WellData;
+   Data                : WellData;
+   TextFile            : Text;
+
+   d                   : Date;
+   t                   : Time;
+
+   CurrentFQFileName     : String120;
+   CreateNewFile       : boolean;
+   Quit                : boolean;
+   NoFileDefined       : boolean;
+   HelpFileFound       : boolean;
+
+   UoMConverter        : array[1..8] of real;   { Units Of Measure }
+   UoMLabel            : array[1..8] of String3;
+   UoMDescriptor       : String[20];
+   ROPLabel            : String[20];
+
+   TurbFlag            : boolean;
+   FlowMode            : String20;
+   Model               : String20;
+
+   KellyImageFileName       : String120;
+   BushingImageFileName       : String120;
+
+   InString            : String120;          { Utility input string }
+   InputString         : String120;
+   LastString          : String120;
+   PreviousString      : String120;
+   ThisString          : String120;
+   Input               : String[1]; { was char; }  { Utility input char' }
+   CharInput           : char;                     {   ----- " -----     }
+
+//   Enter               : String[3];    { edited out, not used @4/21}
+//   YesNo               : string[4];    { edited out, not used @4/21}
+//   Util                : char;                { Box building  char' }
+//   OutString           : String120;    { FastDisp variables }{ edited out, not used @4/21}
+//   Row, Col            : integer;
+//   AttrByte            : byte;         { current Disp colour }
+//   TAttr               : byte;         { store current Disp Colour }
+//   Code                : integer;           { used by Proc. }  { edited out, not used @4/21}
+//   Name                : String20;        { GetDirectory  }
+//   SubProgram          : File;             { edited out, not used @4/21}
+//   HelpFile            : File of HelpSet;  { edited out, not used @4/21}
+//   Help                : HelpSet;          { edited out, not used @4/21}
+//   RealParam           : real;
+//   Valid               : boolean;      { edited out, not used @4/21}
+//   Esc                 : boolean;      { edited out, not used @4/21}
+//   PathString          : String120;         { Used for DOS Path - replaced }
+//   IntParam            : integer;        { edited out, not used @4/21}
+//   MinChoice           : integer;   { edited out, not used @4/21}
+//   MaxChoice           : integer;   { edited out, not used @4/21}
+//   OldChoice           : integer;   { edited out, not used @4/21}
+//   NewChoice           : integer;   { edited out, not used @4/21}
+//   Choice              : integer;   { edited out, not used @4/21}
+//   Menu                : array [1..10] of String120; { edited out, not used @4/21}
+//   LineCnt                          : integer; { edited out, not used @4/21}
+//   ColorCount                       : integer; { edited out, not used @4/21}
+
+   TempString          : String120;    { utility diplsy string }
+
+   SystemPropertiesFile  : String120;
+   DefaultWellDataFile   : String120;        { used for .CFG file }
+   DefaultDirectory    : String120;
+   OriginDirectory     : String120;
+   OriginalExitProc    : Pointer;
+
+
+   HoleError           : boolean;
+   Edited              : boolean;
+   Simulating          : boolean;
+   SimulateMessageCode : integer;
+   Paused              : boolean;
+
+
+{ Hydvar vars }
+   Bhcp                             : real;      {unused @4/21}
+   PosCounter                       : integer;
+{ Simvar vars }
+   LastTD              : real;
+   LastBitTD           : real;
+   LastCasingPressure  : real;
+   LastBHPAnn          : real;
+   LastPitGain         : real;
+   LastPlBit           : real;   { not used @4/21}
+   LastPlAnn           : real;   { not used @4/21}
+   LastPlSurf          : real;   { not used @4/21}
+   LastPlPipe          : real;   { not used @4/21}
+   LastPlCirc          : real;
+   LastPlChoke         : real;   { not used @4/21}
+
+   LastFlowOut         : real;
+   LastFlowIn          : real;
+   LastElapsedFlow     : real;   { not used @4/21}
+   LastCalculatedFlow  : real;
+
+   LastRetPitVol       : real;
+
+   LastJetVel          : real;   { not used @4/21}
+   LastImpForce        : real;   { not used @4/21}
+   LastBitHp           : real;   { not used @4/21}
+   LastEff             : real;   { not used @4/21}
+   LastTotHp           : real;   { not used @4/21}
+   LastFf              : real;
+   LastRn              : real;   { not used @4/21}
+   LastFn              : real;   { not used @4/21}
+   LastFk              : real;
+
+   LastKellyHeight     : real;
+   KellyImageIndex     : integer;
+
+   LastWOB             : real;
+   LastWOH             : real;   { not used @4/21}
+   LastStrWt           : real;   { not used @4/21}
+
+   LastROP             : real;
+   LastRPM             : real;
+   Status              : integer;
+
+   LastSeconds         : integer;
+   LastSocketSeconds   : integer;
+   LastHundredths      : integer;
+
+   LastInflux          : real;   { not used @4/21}
+   LastInfluxRate      : real;   { not used @4/21}
+   LastECD             : real;
+   LastChoke           : integer;
+
+   OriginalMudWt       : real;
+   OriginalMudPV       : real;
+   OriginalMudYP       : real;
+   OriginalHoleDepth   : real;
+   OriginalPipeDepth   : real;
+   OriginalPitVolume   : real;
+   LastMwOut           : real;
+   LastMwIn            : real;
+   LastMudPv           : real;   { not used @4/21}
+   LastMudYp           : real;   { not used @4/21}
+   LastMudGel          : real;   { not used @4/21}
+   LastCalculatedMudWt : real;
+
+   LastTotStrks        : real;   { not used @4/21}
+   LastStrokeCounter   : real;
+   LastSPM             : array[1..3] of real;   { not used @4/21}
+   DrilledHoleVol      : real;
+   ExtraVolume         : real;
+   ChokeLinePl         : real;
+   Twistoff            : real;
+   PitGain             : real;
+   Trace               : boolean;
+   PumpsOff            : boolean;
+
+   HoleCalcCounter     : real;         { depth of last HoleCalc }
+   HyCalcCounter       : integer;
+   ROPCalcCounter      : integer;
+   CalculatedSoFar     : integer;
+   StatusCounter       : integer;
+   CurrentBushing      : integer;
+   CurrentTurn         : real;
+
+   sock: TTCPBlockSocket;
+
+Implementation
+
+Begin
+End.
+
+

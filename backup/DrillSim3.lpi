@@ -1,0 +1,309 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CONFIG>
+  <ProjectOptions>
+    <Version Value="11"/>
+    <General>
+      <SessionStorage Value="InProjectDir"/>
+      <MainUnit Value="0"/>
+      <Title Value="DrillSim3"/>
+      <Scaled Value="True"/>
+      <UseXPManifest Value="True"/>
+      <XPManifest>
+        <DpiAware Value="True"/>
+      </XPManifest>
+      <Icon Value="0"/>
+    </General>
+    <VersionInfo>
+      <UseVersionInfo Value="True"/>
+      <MajorVersionNr Value="3"/>
+      <Attributes pvaPreRelease="True"/>
+      <StringTable Comments="DrillSim (1988) re-written for the 21st Century" CompanyName="Ambersoft (Langworth UK)" FileDescription="DrillSim" LegalCopyright="Ambersoft (Langworth UK)" ProductName="DrillSim" ProductVersion="3.0.0.0"/>
+    </VersionInfo>
+    <BuildModes Count="1">
+      <Item1 Name="Default" Default="True"/>
+    </BuildModes>
+    <PublishOptions>
+      <Version Value="2"/>
+      <UseFileFilters Value="True"/>
+    </PublishOptions>
+    <RunParams>
+      <FormatVersion Value="2"/>
+      <Modes Count="0"/>
+    </RunParams>
+    <RequiredPackages Count="5">
+      <Item1>
+        <PackageName Value="LazControls"/>
+      </Item1>
+      <Item2>
+        <PackageName Value="bgracontrols"/>
+      </Item2>
+      <Item3>
+        <PackageName Value="TAChartLazarusPkg"/>
+      </Item3>
+      <Item4>
+        <PackageName Value="laz_synapse"/>
+      </Item4>
+      <Item5>
+        <PackageName Value="LCL"/>
+      </Item5>
+    </RequiredPackages>
+    <Units Count="48">
+      <Unit0>
+        <Filename Value="DrillSim3.lpr"/>
+        <IsPartOfProject Value="True"/>
+      </Unit0>
+      <Unit1>
+        <Filename Value="DrillSimVariables.pas"/>
+        <IsPartOfProject Value="True"/>
+      </Unit1>
+      <Unit2>
+        <Filename Value="DrillSimGUI.pas"/>
+        <IsPartOfProject Value="True"/>
+        <ComponentName Value="DrillSim"/>
+        <HasResources Value="True"/>
+        <ResourceBaseClass Value="Form"/>
+      </Unit2>
+      <Unit3>
+        <Filename Value="uversion.pas"/>
+        <IsPartOfProject Value="True"/>
+      </Unit3>
+      <Unit4>
+        <Filename Value="DrillSimGUI.lfm"/>
+        <IsPartOfProject Value="True"/>
+        <ComponentName Value="DrillSim"/>
+        <HasResources Value="True"/>
+        <ResourceBaseClass Value="Form"/>
+      </Unit4>
+      <Unit5>
+        <Filename Value="FormGeneralData.lfm"/>
+        <IsPartOfProject Value="True"/>
+      </Unit5>
+      <Unit6>
+        <Filename Value="FormBitData.lfm"/>
+        <IsPartOfProject Value="True"/>
+      </Unit6>
+      <Unit7>
+        <Filename Value="FormConfigDefaults.lfm"/>
+        <IsPartOfProject Value="True"/>
+      </Unit7>
+      <Unit8>
+        <Filename Value="FormDisplayWellData.lfm"/>
+        <IsPartOfProject Value="True"/>
+      </Unit8>
+      <Unit9>
+        <Filename Value="FormGeologyData.lfm"/>
+        <IsPartOfProject Value="True"/>
+      </Unit9>
+      <Unit10>
+        <Filename Value="FormHoleData.lfm"/>
+        <IsPartOfProject Value="True"/>
+      </Unit10>
+      <Unit11>
+        <Filename Value="FormMudData.lfm"/>
+        <IsPartOfProject Value="True"/>
+      </Unit11>
+      <Unit12>
+        <Filename Value="FormPipeData.lfm"/>
+        <IsPartOfProject Value="True"/>
+      </Unit12>
+      <Unit13>
+        <Filename Value="FormPumpData.lfm"/>
+        <IsPartOfProject Value="True"/>
+      </Unit13>
+      <Unit14>
+        <Filename Value="FormSurfaceEquipmentData.lfm"/>
+        <IsPartOfProject Value="True"/>
+      </Unit14>
+      <Unit15>
+        <Filename Value="FormUnitsOfMeasure.lfm"/>
+        <IsPartOfProject Value="True"/>
+      </Unit15>
+      <Unit16>
+        <Filename Value="FormWellTestData.lfm"/>
+        <IsPartOfProject Value="True"/>
+      </Unit16>
+      <Unit17>
+        <Filename Value="DrillSimDataResets.pas"/>
+        <IsPartOfProject Value="True"/>
+      </Unit17>
+      <Unit18>
+        <Filename Value="DrillSimFile.pas"/>
+        <IsPartOfProject Value="True"/>
+      </Unit18>
+      <Unit19>
+        <Filename Value="DrillSimHoleChecks.pas"/>
+        <IsPartOfProject Value="True"/>
+      </Unit19>
+      <Unit20>
+        <Filename Value="DrillSimMessageToMemo.pas"/>
+        <IsPartOfProject Value="True"/>
+      </Unit20>
+      <Unit21>
+        <Filename Value="DrillSimUnitsOfMeasure.pas"/>
+        <IsPartOfProject Value="True"/>
+      </Unit21>
+      <Unit22>
+        <Filename Value="DrillSimUtilities.pas"/>
+        <IsPartOfProject Value="True"/>
+      </Unit22>
+      <Unit23>
+        <Filename Value="FormBitData.pas"/>
+        <IsPartOfProject Value="True"/>
+        <HasResources Value="True"/>
+      </Unit23>
+      <Unit24>
+        <Filename Value="FormConfigDefaults.pas"/>
+        <IsPartOfProject Value="True"/>
+        <HasResources Value="True"/>
+      </Unit24>
+      <Unit25>
+        <Filename Value="FormDisplayWellData.pas"/>
+        <IsPartOfProject Value="True"/>
+        <HasResources Value="True"/>
+      </Unit25>
+      <Unit26>
+        <Filename Value="FormGeneralData.pas"/>
+        <IsPartOfProject Value="True"/>
+        <HasResources Value="True"/>
+      </Unit26>
+      <Unit27>
+        <Filename Value="FormGeologyData.pas"/>
+        <IsPartOfProject Value="True"/>
+        <HasResources Value="True"/>
+      </Unit27>
+      <Unit28>
+        <Filename Value="FormHoleData.pas"/>
+        <IsPartOfProject Value="True"/>
+        <HasResources Value="True"/>
+      </Unit28>
+      <Unit29>
+        <Filename Value="FormMudData.pas"/>
+        <IsPartOfProject Value="True"/>
+        <HasResources Value="True"/>
+      </Unit29>
+      <Unit30>
+        <Filename Value="FormPipeData.pas"/>
+        <IsPartOfProject Value="True"/>
+        <HasResources Value="True"/>
+      </Unit30>
+      <Unit31>
+        <Filename Value="FormPumpData.pas"/>
+        <IsPartOfProject Value="True"/>
+        <HasResources Value="True"/>
+      </Unit31>
+      <Unit32>
+        <Filename Value="FormSurfaceEquipmentData.pas"/>
+        <IsPartOfProject Value="True"/>
+        <HasResources Value="True"/>
+      </Unit32>
+      <Unit33>
+        <Filename Value="FormUnitsOfMeasure.pas"/>
+        <IsPartOfProject Value="True"/>
+        <ComponentName Value="UnitsOfMeasureForm"/>
+        <HasResources Value="True"/>
+        <ResourceBaseClass Value="Form"/>
+      </Unit33>
+      <Unit34>
+        <Filename Value="FormWellTestData.pas"/>
+        <IsPartOfProject Value="True"/>
+        <HasResources Value="True"/>
+      </Unit34>
+      <Unit35>
+        <Filename Value="SimulateCommandProcessor.pas"/>
+        <IsPartOfProject Value="True"/>
+      </Unit35>
+      <Unit36>
+        <Filename Value="SimulateDrillingCalcs.pas"/>
+        <IsPartOfProject Value="True"/>
+      </Unit36>
+      <Unit37>
+        <Filename Value="SimulateHoleCalcs.pas"/>
+        <IsPartOfProject Value="True"/>
+      </Unit37>
+      <Unit38>
+        <Filename Value="SimulateHydraulicCalcs.pas"/>
+        <IsPartOfProject Value="True"/>
+      </Unit38>
+      <Unit39>
+        <Filename Value="SimulateHydrostaticCalcs.pas"/>
+        <IsPartOfProject Value="True"/>
+      </Unit39>
+      <Unit40>
+        <Filename Value="SimulateKick.pas"/>
+        <IsPartOfProject Value="True"/>
+      </Unit40>
+      <Unit41>
+        <Filename Value="SimulateRAMs.pas"/>
+        <IsPartOfProject Value="True"/>
+      </Unit41>
+      <Unit42>
+        <Filename Value="SimulateRheology.pas"/>
+        <IsPartOfProject Value="True"/>
+      </Unit42>
+      <Unit43>
+        <Filename Value="SimulateUpdate.pas"/>
+        <IsPartOfProject Value="True"/>
+      </Unit43>
+      <Unit44>
+        <Filename Value="SimulateVolumes.pas"/>
+        <IsPartOfProject Value="True"/>
+      </Unit44>
+      <Unit45>
+        <Filename Value="usplashabout.pas"/>
+        <IsPartOfProject Value="True"/>
+      </Unit45>
+      <Unit46>
+        <Filename Value="DrillSimMath.pas"/>
+        <IsPartOfProject Value="True"/>
+      </Unit46>
+      <Unit47>
+        <Filename Value="DrillSimStartup.pas"/>
+        <IsPartOfProject Value="True"/>
+      </Unit47>
+    </Units>
+  </ProjectOptions>
+  <CompilerOptions>
+    <Version Value="11"/>
+    <Target>
+      <Filename Value="DrillSim3"/>
+    </Target>
+    <SearchPaths>
+      <IncludeFiles Value="$(ProjOutDir)"/>
+      <UnitOutputDirectory Value="lib/$(TargetCPU)-$(TargetOS)"/>
+    </SearchPaths>
+    <CodeGeneration>
+      <Optimizations>
+        <OptimizationLevel Value="0"/>
+      </Optimizations>
+    </CodeGeneration>
+    <Linking>
+      <Debugging>
+        <DebugInfoType Value="dsDwarf2Set"/>
+      </Debugging>
+      <Options>
+        <Win32>
+          <GraphicApplication Value="True"/>
+        </Win32>
+      </Options>
+    </Linking>
+    <Other>
+      <Verbosity>
+        <ShowAll Value="True"/>
+        <ShowHintsForUnusedUnitsInMainSrc Value="True"/>
+      </Verbosity>
+    </Other>
+  </CompilerOptions>
+  <Debugging>
+    <Exceptions Count="3">
+      <Item1>
+        <Name Value="EAbort"/>
+      </Item1>
+      <Item2>
+        <Name Value="ECodetoolError"/>
+      </Item2>
+      <Item3>
+        <Name Value="EFOpenError"/>
+      </Item3>
+    </Exceptions>
+  </Debugging>
+</CONFIG>
