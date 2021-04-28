@@ -1,0 +1,231 @@
+object PumpDataForm: TPumpDataForm
+  Left = 65
+  Height = 419
+  Top = 30
+  Width = 492
+  Caption = 'Rig Pump Data'
+  ClientHeight = 419
+  ClientWidth = 492
+  OnActivate = FormActivate
+  OnCreate = FormCreate
+  OnDeactivate = FormDeactivate
+  LCLVersion = '1.2.6.0'
+  object QuitButton: TButton
+    Left = 272
+    Height = 25
+    Hint = 'Click to exit without saving'
+    Top = 344
+    Width = 75
+    Caption = 'Quit'
+    OnClick = QuitButtonClick
+    ParentShowHint = False
+    ShowHint = True
+    TabOrder = 8
+  end
+  object SaveButton: TButton
+    Left = 352
+    Height = 25
+    Hint = 'Click to save and exit'
+    Top = 344
+    Width = 75
+    Caption = 'Save'
+    OnClick = SaveButtonClick
+    ParentShowHint = False
+    ShowHint = True
+    TabOrder = 9
+  end
+  object Pump1Label: TLabel
+    Left = 40
+    Height = 24
+    Top = 152
+    Width = 69
+    AutoSize = False
+    Caption = 'Pump 1'
+    ParentColor = False
+    ParentShowHint = False
+    ShowHint = True
+  end
+  object OutputColumnLabel: TLabel
+    Left = 174
+    Height = 17
+    Top = 120
+    Width = 48
+    Caption = 'Output'
+    ParentColor = False
+  end
+  object EfficiencyColumnLabel: TLabel
+    Left = 304
+    Height = 17
+    Top = 120
+    Width = 90
+    Caption = 'Efficiency (%)'
+    ParentColor = False
+  end
+  object OutputUoMLabel: TLabel
+    Left = 228
+    Height = 17
+    Top = 120
+    Width = 40
+    AutoSize = False
+    ParentColor = False
+  end
+  object Pump1OutputData: TEdit
+    Left = 168
+    Height = 27
+    Hint = 'Pump 1 output'
+    Top = 147
+    Width = 109
+    Alignment = taRightJustify
+    OnChange = Pump1OutputDataChange
+    OnKeyPress = NumericOnlyKeyPress
+    ParentShowHint = False
+    ShowHint = True
+    TabOrder = 1
+  end
+  object Pump1EfficiencyData: TEdit
+    Left = 304
+    Height = 27
+    Hint = 'Efficiency rating of Pump 1'
+    Top = 147
+    Width = 72
+    Alignment = taRightJustify
+    OnChange = Pump1EfficiencyDataChange
+    OnKeyPress = NumericOnlyKeyPress
+    ParentShowHint = False
+    ShowHint = True
+    TabOrder = 2
+  end
+  object Pump2Label: TLabel
+    Left = 40
+    Height = 24
+    Top = 187
+    Width = 72
+    AutoSize = False
+    Caption = 'Pump 2'
+    ParentColor = False
+    ParentShowHint = False
+    ShowHint = True
+  end
+  object Pump2OutputData: TEdit
+    Left = 168
+    Height = 27
+    Hint = 'Pump 2 output'
+    Top = 184
+    Width = 109
+    Alignment = taRightJustify
+    OnChange = Pump2OutputDataChange
+    OnKeyPress = NumericOnlyKeyPress
+    ParentShowHint = False
+    ShowHint = True
+    TabOrder = 3
+  end
+  object Pump2EfficiencyData: TEdit
+    Left = 304
+    Height = 27
+    Hint = 'Efficiency rating of Pump 2'
+    Top = 184
+    Width = 72
+    Alignment = taRightJustify
+    OnChange = Pump2EfficiencyDataChange
+    OnKeyPress = NumericOnlyKeyPress
+    ParentShowHint = False
+    ShowHint = True
+    TabOrder = 4
+  end
+  object Pump3Label: TLabel
+    Left = 40
+    Height = 24
+    Top = 227
+    Width = 69
+    AutoSize = False
+    Caption = 'Pump 3'
+    ParentColor = False
+    ParentShowHint = False
+    ShowHint = True
+  end
+  object Pump3OutputData: TEdit
+    Left = 168
+    Height = 27
+    Hint = 'Pump 3 output'
+    Top = 224
+    Width = 109
+    Alignment = taRightJustify
+    OnChange = Pump3OutputDataChange
+    OnKeyPress = NumericOnlyKeyPress
+    ParentShowHint = False
+    ShowHint = True
+    TabOrder = 5
+  end
+  object Pump3EfficiencyData: TEdit
+    Left = 304
+    Height = 27
+    Hint = 'Efficiency rating of Pump 3'
+    Top = 224
+    Width = 72
+    Alignment = taRightJustify
+    OnChange = Pump3EfficiencyDataChange
+    OnKeyPress = NumericOnlyKeyPress
+    ParentShowHint = False
+    ShowHint = True
+    TabOrder = 6
+  end
+  object NumPumps: TLabel
+    Left = 32
+    Height = 27
+    Top = 74
+    Width = 113
+    AutoSize = False
+    Caption = '# Pumps'
+    ParentColor = False
+    ParentShowHint = False
+    ShowHint = True
+  end
+  object NumPumpsComboBox: TComboBox
+    Left = 168
+    Height = 29
+    Hint = '# of pumps (max 3)'
+    Top = 72
+    Width = 100
+    ItemHeight = 0
+    Items.Strings = (
+      '1'
+      '2'
+      '3'
+    )
+    OnChange = NumPumpsComboBoxChange
+    ParentShowHint = False
+    ShowHint = True
+    TabOrder = 0
+    Text = '<select>'
+  end
+  object MaxPumpPressureLabel: TLabel
+    Left = 40
+    Height = 17
+    Top = 288
+    Width = 182
+    AutoSize = False
+    Caption = 'Maximum Pump Pressure'
+    ParentColor = False
+  end
+  object MaxPumpPressureData: TEdit
+    Left = 236
+    Height = 27
+    Hint = 'Maximum pump working pressure'
+    Top = 282
+    Width = 88
+    Alignment = taRightJustify
+    OnChange = MaxPumpPressureDataChange
+    OnKeyPress = NumericOnlyKeyPress
+    ParentShowHint = False
+    ShowHint = True
+    TabOrder = 7
+  end
+  object MaxPumpPressureUoMLabel: TLabel
+    Left = 337
+    Height = 25
+    Top = 283
+    Width = 45
+    AutoSize = False
+    ParentColor = False
+  end
+end

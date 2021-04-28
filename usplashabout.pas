@@ -519,7 +519,7 @@ begin
         lbl_Title.AutoSize := False;
         lbl_Title.Width := bevel.Width;
         lbl_Title.Font.Size := 20;
-        lbl_Title.Font.Color:=clWhite;   // added by S Ambridge
+        lbl_Title.Font.Color:=clBlack;   // added by S Ambridge
         lbl_Title.Font.Style := [];
         lbl_Title.Height := 32;
         lbl_Title.Alignment := taCenter;
@@ -584,4 +584,4 @@ begin
   end;
 end;
 
-end.
+end.

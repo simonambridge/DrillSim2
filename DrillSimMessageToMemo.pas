@@ -14,6 +14,7 @@ Implementation
 Uses DrillSimGUI,
      DrillSimDataResets;
 
+
 Procedure StringToMemo(S : String);
 Begin
   if length(S) > Zero then   // display it
@@ -342,7 +343,7 @@ Begin
     Begin
       DrillSim.Memo1.Lines.Add(ThisString);
       DrillSim.Memo1.SelStart:=Length(DrillSim.Memo1.Text);
-      writeln(ThisString);  {* write to the console too *}
+      //writeln(ThisString);  {* write to the console too *}
       ThisString:='';
     End;
   End;
@@ -352,4 +353,4 @@ Begin
 End.
 
 
-
+

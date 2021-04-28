@@ -5,7 +5,6 @@ Interface
 Uses Crt,
      SysUtils,
      DrillSimVariables,
-     DrillSimDataResets,
      DrillSimUtilities,
      SimulateHoleCalcs,
      DrillSimMath;
@@ -247,4 +246,4 @@ End;
 Begin
 End.
 
-
+

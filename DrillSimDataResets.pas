@@ -26,10 +26,10 @@ Procedure InitGeology;        { called on each entry into Simulator, and    }
 
 Implementation
 
-Procedure InitData;     { Used to set everything to empty at start-up}
+Procedure InitData;     { Set everything to empty at start-up}
 Var i : integer;
 Begin
-  StringToMemo('Initialise - DrillSimDataResets:InitData called');
+  StringToMemo('DrillSImDatResets : InitData - initialise data');
   With Data do
   Begin
     Simulating:=False;
@@ -368,4 +368,4 @@ End;
 
 Begin
 End.
-
+

@@ -5,7 +5,6 @@ Interface
 Uses Classes, SysUtils, FileUtil, Forms, Controls, Graphics, Dialogs,
   ExtCtrls, blcksock,
      DrillSimVariables,
-     DrillSimUtilities,
      DrillSimFile,
      DrillSimMessageToMemo,
      DrillSimDataResets;
@@ -20,23 +19,23 @@ Procedure LoadDefaultWellDataFile(S : String120);
 Begin                                        { Extract path string }
   if FileExists(S) then
   Begin
-    CurrentFQFileName:=S;      { set file to user defined file }
-    CreateNewFile:=False;      { its an existing file }
+    CurrentFQFileName:=S;      { global - set file to user defined file }
+    CreateNewFile:=False;      { global - its an existing file }
 
     LoadData;  { sets NoFileDefined=True if error during read }
 
     if NoFileDefined=True then // on return, is a valid file loaded?
     Begin                      // then notify the error
-      StringToMemo('DrillSimStartup.LoadDefaultWellDataFile: Error loading ' + CurrentFQFileName);
+      StringToMemo('DrillSimStartup.LoadDefaultWellDataFile - Error loading ' + CurrentFQFileName);
       ShowMessage('Error loading well data file ' + CurrentFQFileName);
     end else
     Begin                      // otherwise confirm well name loaded
-      StringToMemo('DrillSimStartup.LoadDefaultWellDataFile: ' + CurrentFQFileName + ' loaded');
-      StringToMemo('DrillSimStartup.LoadDefaultWellDataFile: Simulating Well ' + Data.WellName);
+      StringToMemo('DrillSimStartup.LoadDefaultWellDataFile - ' + CurrentFQFileName + ' load completed');
+      StringToMemo('DrillSimStartup.LoadDefaultWellDataFile - Simulating Well ' + Data.WellName);
     End;
   End else
   Begin
-    StringToMemo('DrillSimStartup.LoadDefaultWellDataFile: Error - missing well data file ' + CurrentFQFileName);
+    StringToMemo('DrillSimStartup.LoadDefaultWellDataFile - Error, missing well data file ' + CurrentFQFileName);
     NoFileDefined:=True;
   end;
 End;
@@ -45,7 +44,7 @@ End;
 
 Procedure StartUp;
 Begin
-  StringToMemo('DrillSimStartup.StartUp: Running DrillSim StartUp.................');
+  StringToMemo('DrillSimStartup.StartUp - Running DrillSim StartUp.................');
   OriginalExitProc:=ExitProc;
 {  ExitProc:=@Abort; }                  { Set Error trap vector  }
 
@@ -69,11 +68,10 @@ Begin
 
     { ------- get default directory ------- }
 
-  GetDir(0,OriginDirectory);               { get current directory spec}
-  StringToMemo('DrillSimStartup.StartUp: Current directory is ' + OriginDirectory);
-  SystemPropertiesFile:=OriginDirectory + '/' + 'DrillSim.cfg';
-  StringToMemo('DrillSimStartup.StartUp: Configuration file is ' + SystemPropertiesFile);
-  StringToMemo('Loading system onfiguration');
+
+  SystemPropertiesFile:=OriginDirectory + 'DrillSim.cfg';
+  StringToMemo('DrillSimStartup.StartUp - Configuration file is ' + SystemPropertiesFile);
+  StringToMemo('DrillSimStartUp.StartUp - loading system configuration from ' + SystemPropertiesFile);
 
     { ------- get defaults file ------- }
 
@@ -85,44 +83,42 @@ Begin
   Begin
     While not EOF(TextFile) do
     Begin
-      Readln(TextFile,DefaultWellDataFile); { read FQFN of default well file into DefaultWellDataFile }
+      { read FQFN of default well file into DefaultWellDataFile }
+      Readln(TextFile,DefaultWellDataFile);
     End;
     CloseFile(TextFile);
 
     if DefaultWellDataFile=''
     then
-      StringToMemo('DrillSimStartup.StartUp: Default well not defined ')
+      StringToMemo('DrillSimStartup.StartUp - No default well defined ')
     else
     Begin
-      StringToMemo('DrillSimStartup.StartUp: Default well data file is ' + DefaultWellDataFile);
+      StringToMemo('DrillSimStartup.StartUp - Default well data file is ' + DefaultWellDataFile);
       LoadDefaultWellDataFile(DefaultWellDataFile);     // Load the default data file !!!
     end;
   End else
   Begin
-    ShowMessage('Error loading ' + DefaultWellDataFile); { defaults file not found }
+    ShowMessage('DrillSimStartup.StartUp - Error loading ' + DefaultWellDataFile); { defaults file not found }
   End;
 
   {* --------- Load Help File --------- *}
 
   MessageToMemo(103); // 'Loading application help file...'
-
-  Assign(HelpFile,'DrillSim.hlp');                   { load help messages }
-  {$I-}
-  Reset(HelpFile);
-  {$I+}
-  if OK then
-  Begin
-    HelpFileFound:=True;
+  StringToMemo('Skipping help file load...');
+   //Assign(HelpFile,'DrillSim.hlp');                   { load help messages }
+  //{$I-}
+  //Reset(HelpFile);
+  //{$I+}
+  //if OK then
+  //Begin
+  //  HelpFileFound:=True;
     //Read(HelpFile,Help);
-    Close(HelpFile);
-  End else
-  Begin
-    HelpFileFound:=False;
-    ShowMessage('Error loading DrillSim help file');
-  End;
-  StringToMemo('DrillSimStartup.StartUp: DrillSim Startup complete');
-  StringToMemo('DrillSimStartup.StartUp: Using Well ' + Data.WellName);
-
+  //  Close(HelpFile);
+  //End else
+  //Begin
+  //  HelpFileFound:=False;
+  //  ShowMessage('DrillSimStartup.StartUp - Error loading DrillSim help file');
+  //End;
 
   { -- create local network socket on port 9999 -- }
 
@@ -132,17 +128,24 @@ Begin
   StringToMemo('=========================================================');
   if sock.LastError <> 0 then
   begin
-    StringToMemo('Socket initialisation error: Could not connect to server.');
+    StringToMemo('DrillSimStartup.StartUp - Socket initialisation error: Could not connect to server.');
     StringToMemo(sock.LastErrorDesc);
   end else
   Begin
-    StringToMemo('Socket initialisation successful on localhost:9999');
+    StringToMemo('DrillSimStartup.StartUp - Socket initialisation successful on localhost:9999');
     sock.SendString('DrillSim calling....'#13#10);
   End;
   StringToMemo('=========================================================');
+
+  StringToMemo('DrillSimStartup.StartUp - DrillSim Startup complete');
+  StringToMemo('DrillSimStartup.StartUp - Using Well ' + Data.WellName);
+
 End;
+
+
+
 
 Begin
 End.
 
-
+

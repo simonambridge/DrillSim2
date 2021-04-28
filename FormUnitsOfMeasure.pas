@@ -120,7 +120,7 @@ end;
 
 procedure TUnitsOfMeasureForm.FormCreate(Sender: TObject);
 begin
-  StringToMemo('TUnitsOfMeasureDataForm.FormCreate');
+  StringToMemo('FormUnitsOfMeasure : TUnitsOfMeasureDataForm.FormCreate');
   FormCreateActions;
 end;
 

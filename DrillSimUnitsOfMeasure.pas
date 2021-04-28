@@ -58,7 +58,7 @@ Begin
   UoMLabel[8]:='ins';     { hidden - not used - ID's are always inches }
 
   DisplayLabels;
-  StringToMemo('Metric Units selected. Depth units are '+UoMLabel[1]);
+  StringToMemo('DrillSimUnitsOfMeasure.MetricUnits - Metric Units selected. Depth units are '+UoMLabel[1]);
 End;
 
 
@@ -85,8 +85,8 @@ Begin
   UoMLabel[8]:='ins';      { hidden - not used - ID's are always inches }
 
   DisplayLabels;
-  StringToMemo('API Units selected. Depth units are '+UoMLabel[1]);
+  StringToMemo('DrillSimUnitsOfMeasure.APIUnits - API Units selected. Depth units are '+UoMLabel[1]);
 End;
 
 Begin
-End.
+End.

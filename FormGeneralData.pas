@@ -41,7 +41,7 @@ type
     KillLineIDUoMLabel: TLabel;
     ChokeLineID: TStaticText;
     Save: TButton;
-    Quit: TButton;
+    //Quit: TButton; not used
 
     procedure WellOperatorDataChange(Sender: TObject);
     procedure WellNameDataChange(Sender: TObject);
@@ -315,8 +315,7 @@ end;
 
 procedure TGeneralDataForm.FormCreate(Sender: TObject);
 begin
-  StringToMemo('TGeneralDataForm.FormCreate');
-
+  StringToMemo('FormGeneralData : TGeneralDataForm.FormCreate');
 end;
 
 procedure TGeneralDataForm.QuitClick(Sender: TObject);

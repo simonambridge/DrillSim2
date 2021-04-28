@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CONFIG>
+  <Compiler Value="/usr/local/bin/fpc" Date="1590953228"/>
+  <Params Value=" -MObjFPC -Scgh -gw2 -godwarfsets -k-framework -kCocoa -l -vabq -Fi/Users/simonambridge/Documents/MyProjects/Drillsim3/lib/x86_64-darwin/cocoa -Fu/Applications/Lazarus/lcl/units/x86_64-darwin/cocoa -Fu/Applications/Lazarus/lcl/units/x86_64-darwin -Fu/Users/simonambridge/.lazarus/onlinepackagemanager/packages/synapse40.1/lib/x86_64-darwin -Fu/Applications/Lazarus/components/lazutils/lib/x86_64-darwin -Fu/Applications/Lazarus/packager/units/x86_64-darwin -Fu/Users/simonambridge/Documents/MyProjects/Drillsim3/ -FU/Users/simonambridge/Documents/MyProjects/Drillsim3/lib/x86_64-darwin/cocoa/ -FE/Users/simonambridge/Documents/MyProjects/Drillsim3/ -o/Users/simonambridge/Documents/MyProjects/Drillsim3/DrillSim3 -dLCL -dLCLcocoa -dUseCThreads -ddsdebug DrillSim3.lpr"/>
+</CONFIG>

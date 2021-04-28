@@ -63,7 +63,7 @@ Const
 Implementation
 
 Uses
-  resource, versiontypes, versionresource, LCLVersion, InterfaceBase;
+  resource, versiontypes, versionresource, LCLVersion, InterfaceBase, LCLPlatformDef;
 
 Type
   TVersionInfo = Class
@@ -221,6 +221,7 @@ Begin
   Else
     Result := 'No build information available';
 End;
+
 {%H-}Function Reload(Inst:THandle):Boolean;
 begin
      FreeAndNil(FInfo);
@@ -229,6 +230,7 @@ begin
           FInfo := TVersionInfo.Create;
           FInfo.Load(Inst);
      End;
+     Result:=True;
 end;
 
 Function GetFileVersion: String;

@@ -8,8 +8,7 @@ uses
   Classes, SysUtils, FileUtil, Forms, Controls, Graphics, Dialogs, StdCtrls,
   LCLType,
   DrillSimVariables,
-  DrillSimMessageToMemo,
-  DrillSimFile;
+  DrillSimMessageToMemo;
 
 type
 
@@ -119,7 +118,7 @@ end;
 
 procedure TSystemDefaultsForm.FormCreate(Sender: TObject);
 begin
-  StringToMemo('TSystemDefaultsForm.FormCreate');
+  StringToMemo('FormConfigDefaults : TSystemDefaultsForm.FormCreate');
   FormCreateActions;
 end;
 

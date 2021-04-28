@@ -449,7 +449,7 @@ end;
 
 procedure TGeologyDataForm.FormCreate(Sender: TObject);
 begin
-  StringToMemo('TGeologyDataForm.FormCreate');
+  StringToMemo('FormGeologyData : TGeologyDataForm.FormCreate');
 
 end;
 

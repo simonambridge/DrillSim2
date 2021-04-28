@@ -5,8 +5,7 @@ Interface
 Uses Crt,
      DrillSimVariables,
      DrillSimUtilities,
-     DrillSimDataResets,
-     DrillSimMath;
+    DrillSimMath;
 
 Procedure KickCalc;
 
@@ -75,7 +74,7 @@ Begin
   With Data do
   Begin
     GetCurrentTime(t);
-    //ScreenService;
+
     ElapsedTime:=t.Hundredths + ((LastHundredths - t.hundredths) / 2);
     if ElapsedTime <= Zero then ElapsedTime:=ElapsedTime + 100;
     LastHundredths:=t.Hundredths;
@@ -221,4 +220,4 @@ Begin
 End;
 
 Begin
-End.
+End.

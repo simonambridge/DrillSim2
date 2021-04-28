@@ -327,7 +327,7 @@ Var
    CharInput           : char;                     {   ----- " -----     }
 //   Util                : char;                { Box building  char' }
 
-   OutString           : String120;    { FastDisp variables }
+//   OutString           : String120;    { FastDisp variables }{ not used @4/21}
    TempString          : String120;    { utility diplsy string }
 //   Row, Col            : integer;
 //   AttrByte            : byte;         { current Disp colour }
@@ -343,7 +343,7 @@ Var
    OriginDirectory     : String120;
    OriginalExitProc    : Pointer;
 
-   IntParam            : integer;
+//   IntParam            : integer;        { not used @4/21}
    RealParam           : real;
 
    HoleError           : boolean;
@@ -354,17 +354,17 @@ Var
    Valid               : boolean;
    Esc                 : boolean;
 
-   MinChoice           : integer;
-   MaxChoice           : integer;
-   OldChoice           : integer;
-   NewChoice           : integer;
-   Choice              : integer;
+//   MinChoice           : integer;   { not used @4/21}
+//   MaxChoice           : integer;   { not used @4/21}
+//   OldChoice           : integer;   { not used @4/21}
+//   NewChoice           : integer;   { not used @4/21}
+//   Choice              : integer;   { not used @4/21}
    Menu                : array [1..10] of String120;
 
 { Hydvar vars }
    Bhcp                             : real;
    PosCounter                       : integer;
-   LineCnt                          : integer;
+//   LineCnt                          : integer; { not used @4/21}
    ColorCount                       : integer;
 { Simvar vars }
    LastTD, LastBitTD   : real;
@@ -417,7 +417,7 @@ Var
    OriginalMudPV       : real;
    OriginalMudYP       : real;
    OriginalHoleDepth   : real;
-   OriginalPipeDepth   : real; { not used yet }
+   OriginalPipeDepth   : real;
    OriginalPitVolume   : real;
    LastMwOut           : real;
    LastMwIn            : real;

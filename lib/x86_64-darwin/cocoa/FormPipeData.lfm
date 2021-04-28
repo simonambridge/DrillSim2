@@ -1,0 +1,314 @@
+object PipeDataForm: TPipeDataForm
+  Left = 729
+  Height = 403
+  Top = 167
+  Width = 634
+  Caption = 'Drill String Data'
+  ClientHeight = 403
+  ClientWidth = 634
+  OnActivate = FormActivate
+  OnCreate = FormCreate
+  OnDeactivate = FormDeactivate
+  LCLVersion = '1.2.6.0'
+  object DrillCollarLabel: TLabel
+    Left = 40
+    Height = 24
+    Top = 152
+    Width = 85
+    AutoSize = False
+    Caption = 'Drill Collars'
+    ParentColor = False
+    ParentShowHint = False
+    ShowHint = True
+  end
+  object LengthColumnLabel: TLabel
+    Left = 168
+    Height = 17
+    Top = 120
+    Width = 46
+    Caption = 'Length'
+    ParentColor = False
+  end
+  object IDColumnLabel: TLabel
+    Left = 304
+    Height = 17
+    Top = 120
+    Width = 14
+    Caption = 'ID'
+    ParentColor = False
+  end
+  object PipeLengthUoMLabel: TLabel
+    Left = 224
+    Height = 17
+    Top = 120
+    Width = 51
+    AutoSize = False
+    ParentColor = False
+  end
+  object PipeIDUoMLabel: TLabel
+    Left = 330
+    Height = 17
+    Top = 120
+    Width = 58
+    AutoSize = False
+    ParentColor = False
+  end
+  object DrillCollarLengthData: TEdit
+    Left = 168
+    Height = 27
+    Hint = 'Length of pipe section 1'
+    Top = 147
+    Width = 109
+    Alignment = taRightJustify
+    OnChange = DrillCollarLengthDataChange
+    OnKeyPress = NumericOnlyKeyPress
+    ParentShowHint = False
+    ShowHint = True
+    TabOrder = 1
+  end
+  object DrillCollarIDData: TEdit
+    Left = 304
+    Height = 27
+    Hint = 'Internal diameter of pipe section 1 (in inches)'
+    Top = 147
+    Width = 72
+    Alignment = taRightJustify
+    OnChange = DrillCollarIDDataChange
+    OnKeyPress = NumericOnlyKeyPress
+    ParentShowHint = False
+    ShowHint = True
+    TabOrder = 2
+  end
+  object HWDrillPipeLabel: TLabel
+    Left = 40
+    Height = 24
+    Top = 187
+    Width = 104
+    AutoSize = False
+    Caption = 'HW Drill Pipe'
+    ParentColor = False
+    ParentShowHint = False
+    ShowHint = True
+  end
+  object HWDrillPipeLengthData: TEdit
+    Left = 168
+    Height = 27
+    Hint = 'Length of pipe section 2'
+    Top = 184
+    Width = 109
+    Alignment = taRightJustify
+    OnChange = HWDrillPipeLengthDataChange
+    OnKeyPress = NumericOnlyKeyPress
+    ParentShowHint = False
+    ShowHint = True
+    TabOrder = 5
+  end
+  object HWDrillPipeIDData: TEdit
+    Left = 304
+    Height = 27
+    Hint = 'Internal diameter of pipe section 2 (in inches)'
+    Top = 184
+    Width = 72
+    Alignment = taRightJustify
+    OnChange = HWDrillPipeIDDataChange
+    OnKeyPress = NumericOnlyKeyPress
+    ParentShowHint = False
+    ShowHint = True
+    TabOrder = 6
+  end
+  object DrillPipeLabel: TLabel
+    Left = 40
+    Height = 24
+    Top = 227
+    Width = 85
+    AutoSize = False
+    Caption = 'Drill Pipe'
+    ParentColor = False
+    ParentShowHint = False
+    ShowHint = True
+  end
+  object DrillPipeLengthData: TEdit
+    Left = 168
+    Height = 27
+    Hint = 'Length of pipe section 3'
+    Top = 224
+    Width = 109
+    Alignment = taRightJustify
+    OnChange = DrillPipeLengthDataChange
+    OnKeyPress = NumericOnlyKeyPress
+    ParentShowHint = False
+    ShowHint = True
+    TabOrder = 9
+  end
+  object DrillPipeIDData: TEdit
+    Left = 304
+    Height = 27
+    Hint = 'Internal diameter of pipe section 3 (in inches)'
+    Top = 224
+    Width = 72
+    Alignment = taRightJustify
+    OnChange = DrillPipeIDDataChange
+    OnKeyPress = NumericOnlyKeyPress
+    ParentShowHint = False
+    ShowHint = True
+    TabOrder = 10
+  end
+  object ODColumnLabel: TLabel
+    Left = 400
+    Height = 17
+    Top = 120
+    Width = 21
+    Caption = 'OD'
+    ParentColor = False
+  end
+  object PipeODUoMLabel: TLabel
+    Left = 424
+    Height = 17
+    Top = 120
+    Width = 58
+    AutoSize = False
+    ParentColor = False
+  end
+  object DrillCollarODData: TEdit
+    Left = 400
+    Height = 27
+    Hint = 'External diameter of pipe section 1 (in inches)'
+    Top = 147
+    Width = 72
+    Alignment = taRightJustify
+    OnChange = DrillCollarODDataChange
+    OnKeyPress = NumericOnlyKeyPress
+    ParentShowHint = False
+    ShowHint = True
+    TabOrder = 3
+  end
+  object HWDrillPipeODData: TEdit
+    Left = 400
+    Height = 27
+    Hint = 'External diameter of pipe section 2 (in inches)'
+    Top = 184
+    Width = 72
+    Alignment = taRightJustify
+    OnChange = HWDrillPipeODDataChange
+    OnKeyPress = NumericOnlyKeyPress
+    ParentShowHint = False
+    ShowHint = True
+    TabOrder = 7
+  end
+  object DrillPipeODData: TEdit
+    Left = 400
+    Height = 27
+    Hint = 'External diameter of pipe section 3 (in inches)'
+    Top = 224
+    Width = 72
+    Alignment = taRightJustify
+    OnChange = DrillPipeODDataChange
+    OnKeyPress = NumericOnlyKeyPress
+    ParentShowHint = False
+    ShowHint = True
+    TabOrder = 11
+  end
+  object Label1: TLabel
+    Left = 32
+    Height = 17
+    Top = 32
+    Width = 456
+    AutoSize = False
+    Caption = 'Enter pipe sections from the bottom up e.g. start with drill collars'
+    ParentColor = False
+  end
+  object QuitButton: TButton
+    Left = 312
+    Height = 25
+    Top = 290
+    Width = 75
+    Caption = 'Quit'
+    OnClick = QuitButtonClick
+    TabOrder = 13
+  end
+  object SaveButton: TButton
+    Left = 413
+    Height = 25
+    Top = 290
+    Width = 75
+    Caption = 'Save'
+    OnClick = SaveButtonClick
+    TabOrder = 14
+  end
+  object NumPipeSections: TLabel
+    Left = 32
+    Height = 27
+    Top = 74
+    Width = 113
+    AutoSize = False
+    Caption = '# Pipe Sections'
+    ParentColor = False
+    ParentShowHint = False
+    ShowHint = True
+  end
+  object NumPipeSectionsComboBox: TComboBox
+    Left = 168
+    Height = 29
+    Hint = '# of pipe sections (max 3)'
+    Top = 72
+    Width = 100
+    ItemHeight = 0
+    Items.Strings = (
+      '1'
+      '2'
+      '3'
+    )
+    OnChange = NumPipeSectionsComboBoxChange
+    ParentShowHint = False
+    ShowHint = True
+    TabOrder = 0
+    Text = '<select>'
+  end
+  object WeightColumnLabel: TLabel
+    Left = 504
+    Height = 17
+    Top = 120
+    Width = 99
+    Caption = 'Weight (lbs/ft)'
+    ParentColor = False
+  end
+  object DrillCollarWeightData: TEdit
+    Left = 496
+    Height = 27
+    Hint = 'Weight of pipe section 1 (in lbs per foot)'
+    Top = 147
+    Width = 72
+    Alignment = taRightJustify
+    OnChange = DrillCollarWeightDataChange
+    OnKeyPress = NumericOnlyKeyPress
+    ParentShowHint = False
+    ShowHint = True
+    TabOrder = 4
+  end
+  object HWDrillPipeWeightData: TEdit
+    Left = 496
+    Height = 27
+    Hint = 'Weight of pipe section 2 (in lbs per foot)'
+    Top = 184
+    Width = 72
+    Alignment = taRightJustify
+    OnChange = HWDrillPipeWeightDataChange
+    OnKeyPress = NumericOnlyKeyPress
+    ParentShowHint = False
+    ShowHint = True
+    TabOrder = 8
+  end
+  object DrillPipeWeightData: TEdit
+    Left = 496
+    Height = 27
+    Hint = 'Weight of pipe section 3 (in lbs per foot)'
+    Top = 224
+    Width = 72
+    Alignment = taRightJustify
+    OnChange = DrillPipeWeightDataChange
+    OnKeyPress = NumericOnlyKeyPress
+    ParentShowHint = False
+    ShowHint = True
+    TabOrder = 12
+  end
+end

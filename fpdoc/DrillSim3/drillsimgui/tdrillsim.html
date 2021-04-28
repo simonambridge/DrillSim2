@@ -1,0 +1,576 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+<title>TDrillSim</title>
+<link rel="stylesheet" href="../fpdoc.css" type="text/css">
+
+</head>
+<body>
+<table class="bar" width="100%" border="0" cellpadding="4" cellspacing="0">
+<tr>
+<td><b>[<a href="../drillsimgui/index.html">Overview</a>][<a href="../drillsimgui/index-4.html">Classes</a>][<a href="../drillsimgui/index-6.html">Variables</a>][<a href="../drillsimgui/index-8.html">Index</a>]</b></td>
+<td align="right"><span class="bartitle">Reference for unit 'DrillSimGUI' (<a href="../index.html">#DrillSim3</a>)</span></td>
+</tr>
+</table>
+<h1>TDrillSim</h1>
+<p>[<a href="../drillsimgui/tdrillsim-1.html" onClick="window.open('../drillsimgui/tdrillsim-1.html', 'list', 'dependent=yes,resizable=yes,scrollbars=yes,height=400,width=300'); return false;">Properties</a> (<a href="../drillsimgui/tdrillsim-2.html" onClick="window.open('../drillsimgui/tdrillsim-2.html', 'list', 'dependent=yes,resizable=yes,scrollbars=yes,height=400,width=300'); return false;">by Name</a>)] [<a href="../drillsimgui/tdrillsim-3.html" onClick="window.open('../drillsimgui/tdrillsim-3.html', 'list', 'dependent=yes,resizable=yes,scrollbars=yes,height=400,width=300'); return false;">Methods</a> (<a href="../drillsimgui/tdrillsim-4.html" onClick="window.open('../drillsimgui/tdrillsim-4.html', 'list', 'dependent=yes,resizable=yes,scrollbars=yes,height=400,width=300'); return false;">by Name</a>)] [<a href="../drillsimgui/tdrillsim-5.html" onClick="window.open('../drillsimgui/tdrillsim-5.html', 'list', 'dependent=yes,resizable=yes,scrollbars=yes,height=400,width=300'); return false;">Events</a> (<a href="../drillsimgui/tdrillsim-6.html" onClick="window.open('../drillsimgui/tdrillsim-6.html', 'list', 'dependent=yes,resizable=yes,scrollbars=yes,height=400,width=300'); return false;">by Name</a>)] </p>
+<p></p>
+<h2>Declaration</h2>
+<p>Source position: DrillSimGUI.pas line 58</p>
+<table cellpadding="0" cellspacing="0">
+<tr>
+<td><p><tt><span class="code"><span class="kw">type</span> TDrillSim <span class="sym">=</span> <span class="kw">class</span><span class="sym">(</span>TForm<span class="sym">)</span></span></tt></p></td>
+</tr>
+<tr>
+<td valign="top"><p><tt><span class="code">&nbsp;&nbsp;<a href="../drillsimgui/tdrillsim.autodrillcheckbox.html">AutoDrillCheckBox</a><span class="sym">: </span>TCheckBoxThemed<span class="sym">;</span></span></tt></p></td>
+</tr>
+<tr>
+<td valign="top"><p><tt><span class="code">&nbsp;&nbsp;<a href="../drillsimgui/tdrillsim.pipeminus.html">PipeMinus</a><span class="sym">: </span>TBCButton<span class="sym">;</span></span></tt></p></td>
+</tr>
+<tr>
+<td valign="top"><p><tt><span class="code">&nbsp;&nbsp;<a href="../drillsimgui/tdrillsim.kellyup.html">KellyUp</a><span class="sym">: </span>TBCButton<span class="sym">;</span></span></tt></p></td>
+</tr>
+<tr>
+<td valign="top"><p><tt><span class="code">&nbsp;&nbsp;<a href="../drillsimgui/tdrillsim.pipeplus.html">PipePlus</a><span class="sym">: </span>TBCButton<span class="sym">;</span></span></tt></p></td>
+</tr>
+<tr>
+<td valign="top"><p><tt><span class="code">&nbsp;&nbsp;<a href="../drillsimgui/tdrillsim.casingpressurevalue.html">CasingPressureValue</a><span class="sym">: </span>TLabel<span class="sym">;</span></span></tt></p></td>
+</tr>
+<tr>
+<td valign="top"><p><tt><span class="code">&nbsp;&nbsp;<a href="../drillsimgui/tdrillsim.bitdata.html">BitData</a><span class="sym">: </span>TGroupBox<span class="sym">;</span></span></tt></p></td>
+</tr>
+<tr>
+<td valign="top"><p><tt><span class="code">&nbsp;&nbsp;<a href="../drillsimgui/tdrillsim.bitdepthvalue.html">BitDepthValue</a><span class="sym">: </span>TLabel<span class="sym">;</span></span></tt></p></td>
+</tr>
+<tr>
+<td valign="top"><p><tt><span class="code">&nbsp;&nbsp;<a href="../drillsimgui/tdrillsim.bitdepthuomlabel.html">BitDepthUoMLabel</a><span class="sym">: </span>TStaticText<span class="sym">;</span></span></tt></p></td>
+</tr>
+<tr>
+<td valign="top"><p><tt><span class="code">&nbsp;&nbsp;<a href="../drillsimgui/tdrillsim.hydrilvalue.html">HydrilValue</a><span class="sym">: </span>TLabel<span class="sym">;</span></span></tt></p></td>
+</tr>
+<tr>
+<td valign="top"><p><tt><span class="code">&nbsp;&nbsp;<a href="../drillsimgui/tdrillsim.blindramsvalue.html">BlindRAMsValue</a><span class="sym">: </span>TLabel<span class="sym">;</span></span></tt></p></td>
+</tr>
+<tr>
+<td valign="top"><p><tt><span class="code">&nbsp;&nbsp;<a href="../drillsimgui/tdrillsim.flowinvalue.html">FlowInValue</a><span class="sym">: </span>TLabel<span class="sym">;</span></span></tt></p></td>
+</tr>
+<tr>
+<td valign="top"><p><tt><span class="code">&nbsp;&nbsp;<a href="../drillsimgui/tdrillsim.flowoutvalue.html">FlowOutValue</a><span class="sym">: </span>TLabel<span class="sym">;</span></span></tt></p></td>
+</tr>
+<tr>
+<td valign="top"><p><tt><span class="code">&nbsp;&nbsp;<a href="../drillsimgui/tdrillsim.diffflowvalue.html">DiffFlowValue</a><span class="sym">: </span>TLabel<span class="sym">;</span></span></tt></p></td>
+</tr>
+<tr>
+<td valign="top"><p><tt><span class="code">&nbsp;&nbsp;<a href="../drillsimgui/tdrillsim.bushingimage.html">BushingImage</a><span class="sym">: </span>TImage<span class="sym">;</span></span></tt></p></td>
+</tr>
+<tr>
+<td valign="top"><p><tt><span class="code">&nbsp;&nbsp;<a href="../drillsimgui/tdrillsim.kellyscale.html">KellyScale</a><span class="sym">: </span>TImage<span class="sym">;</span></span></tt></p></td>
+</tr>
+<tr>
+<td valign="top"><p><tt><span class="code">&nbsp;&nbsp;<a href="../drillsimgui/tdrillsim.kellyimage.html">KellyImage</a><span class="sym">: </span>TImage<span class="sym">;</span></span></tt></p></td>
+</tr>
+<tr>
+<td valign="top"><p><tt><span class="code">&nbsp;&nbsp;<a href="../drillsimgui/tdrillsim.annularpressurevalue.html">AnnularPressureValue</a><span class="sym">: </span>TLabel<span class="sym">;</span></span></tt></p></td>
+</tr>
+<tr>
+<td valign="top"><p><tt><span class="code">&nbsp;&nbsp;<a href="../drillsimgui/tdrillsim.mainmenu1.html">MainMenu1</a><span class="sym">: </span>TMainMenu<span class="sym">;</span></span></tt></p></td>
+</tr>
+<tr>
+<td valign="top"><p><tt><span class="code">&nbsp;&nbsp;<a href="../drillsimgui/tdrillsim.menuitem1file.html">MenuItem1File</a><span class="sym">: </span>TMenuItem<span class="sym">;</span></span></tt></p></td>
+</tr>
+<tr>
+<td valign="top"><p><tt><span class="code">&nbsp;&nbsp;<a href="../drillsimgui/tdrillsim.menuitem1openfile.html">MenuItem1OpenFile</a><span class="sym">: </span>TMenuItem<span class="sym">;</span></span></tt></p></td>
+</tr>
+<tr>
+<td valign="top"><p><tt><span class="code">&nbsp;&nbsp;<a href="../drillsimgui/tdrillsim.menuitem1savefile.html">MenuItem1SaveFile</a><span class="sym">: </span>TMenuItem<span class="sym">;</span></span></tt></p></td>
+</tr>
+<tr>
+<td valign="top"><p><tt><span class="code">&nbsp;&nbsp;<a href="../drillsimgui/tdrillsim.menuitem1saveas.html">MenuItem1SaveAs</a><span class="sym">: </span>TMenuItem<span class="sym">;</span></span></tt></p></td>
+</tr>
+<tr>
+<td valign="top"><p><tt><span class="code">&nbsp;&nbsp;<a href="../drillsimgui/tdrillsim.menuitem1quit.html">MenuItem1Quit</a><span class="sym">: </span>TMenuItem<span class="sym">;</span></span></tt></p></td>
+</tr>
+<tr>
+<td valign="top"><p><tt><span class="code">&nbsp;&nbsp;<a href="../drillsimgui/tdrillsim.menuitem1createfile.html">MenuItem1CreateFile</a><span class="sym">: </span>TMenuItem<span class="sym">;</span></span></tt></p></td>
+</tr>
+<tr>
+<td valign="top"><p><tt><span class="code">&nbsp;&nbsp;<a href="../drillsimgui/tdrillsim.menuitem2edit.html">MenuItem2Edit</a><span class="sym">: </span>TMenuItem<span class="sym">;</span></span></tt></p></td>
+</tr>
+<tr>
+<td valign="top"><p><tt><span class="code">&nbsp;&nbsp;<a href="../drillsimgui/tdrillsim.menuitem2drillstring.html">MenuItem2DrillString</a><span class="sym">: </span>TMenuItem<span class="sym">;</span></span></tt></p></td>
+</tr>
+<tr>
+<td valign="top"><p><tt><span class="code">&nbsp;&nbsp;<a href="../drillsimgui/tdrillsim.menuitem2bitdata.html">MenuItem2BitData</a><span class="sym">: </span>TMenuItem<span class="sym">;</span></span></tt></p></td>
+</tr>
+<tr>
+<td valign="top"><p><tt><span class="code">&nbsp;&nbsp;<a href="../drillsimgui/tdrillsim.menuitem2surfaceequipment.html">MenuItem2SurfaceEquipment</a><span class="sym">: </span>TMenuItem<span class="sym">;</span></span></tt></p></td>
+</tr>
+<tr>
+<td valign="top"><p><tt><span class="code">&nbsp;&nbsp;<a href="../drillsimgui/tdrillsim.menuitem2pumpdata.html">MenuItem2PumpData</a><span class="sym">: </span>TMenuItem<span class="sym">;</span></span></tt></p></td>
+</tr>
+<tr>
+<td valign="top"><p><tt><span class="code">&nbsp;&nbsp;<a href="../drillsimgui/tdrillsim.menuitem2muddata.html">MenuItem2MudData</a><span class="sym">: </span>TMenuItem<span class="sym">;</span></span></tt></p></td>
+</tr>
+<tr>
+<td valign="top"><p><tt><span class="code">&nbsp;&nbsp;<a href="../drillsimgui/tdrillsim.menuitem2welltestdata.html">MenuItem2WellTestData</a><span class="sym">: </span>TMenuItem<span class="sym">;</span></span></tt></p></td>
+</tr>
+<tr>
+<td valign="top"><p><tt><span class="code">&nbsp;&nbsp;<a href="../drillsimgui/tdrillsim.menuitem2editfile.html">MenuItem2EditFile</a><span class="sym">: </span>TMenuItem<span class="sym">;</span></span></tt></p></td>
+</tr>
+<tr>
+<td valign="top"><p><tt><span class="code">&nbsp;&nbsp;<a href="../drillsimgui/tdrillsim.menuitem2geology.html">MenuItem2Geology</a><span class="sym">: </span>TMenuItem<span class="sym">;</span></span></tt></p></td>
+</tr>
+<tr>
+<td valign="top"><p><tt><span class="code">&nbsp;&nbsp;<a href="../drillsimgui/tdrillsim.menuitem2defaults.html">MenuItem2Defaults</a><span class="sym">: </span>TMenuItem<span class="sym">;</span></span></tt></p></td>
+</tr>
+<tr>
+<td valign="top"><p><tt><span class="code">&nbsp;&nbsp;<a href="../drillsimgui/tdrillsim.menuitem2units.html">MenuItem2Units</a><span class="sym">: </span>TMenuItem<span class="sym">;</span></span></tt></p></td>
+</tr>
+<tr>
+<td valign="top"><p><tt><span class="code">&nbsp;&nbsp;<a href="../drillsimgui/tdrillsim.menuitem2displaywelldata.html">MenuItem2DisplayWellData</a><span class="sym">: </span>TMenuItem<span class="sym">;</span></span></tt></p></td>
+</tr>
+<tr>
+<td valign="top"><p><tt><span class="code">&nbsp;&nbsp;<a href="../drillsimgui/tdrillsim.menuitem2holeprofile.html">MenuItem2HoleProfile</a><span class="sym">: </span>TMenuItem<span class="sym">;</span></span></tt></p></td>
+</tr>
+<tr>
+<td valign="top"><p><tt><span class="code">&nbsp;&nbsp;<a href="../drillsimgui/tdrillsim.menuitem2generaldata.html">MenuItem2GeneralData</a><span class="sym">: </span>TMenuItem<span class="sym">;</span></span></tt></p></td>
+</tr>
+<tr>
+<td valign="top"><p><tt><span class="code">&nbsp;&nbsp;<a href="../drillsimgui/tdrillsim.menuitem2preferences.html">MenuItem2Preferences</a><span class="sym">: </span>TMenuItem<span class="sym">;</span></span></tt></p></td>
+</tr>
+<tr>
+<td valign="top"><p><tt><span class="code">&nbsp;&nbsp;<a href="../drillsimgui/tdrillsim.menuitem3simulate.html">MenuItem3Simulate</a><span class="sym">: </span>TMenuItem<span class="sym">;</span></span></tt></p></td>
+</tr>
+<tr>
+<td valign="top"><p><tt><span class="code">&nbsp;&nbsp;<a href="../drillsimgui/tdrillsim.menuitem3pause.html">MenuItem3Pause</a><span class="sym">: </span>TMenuItem<span class="sym">;</span></span></tt></p></td>
+</tr>
+<tr>
+<td valign="top"><p><tt><span class="code">&nbsp;&nbsp;<a href="../drillsimgui/tdrillsim.menuitem3stop.html">MenuItem3Stop</a><span class="sym">: </span>TMenuItem<span class="sym">;</span></span></tt></p></td>
+</tr>
+<tr>
+<td valign="top"><p><tt><span class="code">&nbsp;&nbsp;<a href="../drillsimgui/tdrillsim.menuitem3start.html">MenuItem3Start</a><span class="sym">: </span>TMenuItem<span class="sym">;</span></span></tt></p></td>
+</tr>
+<tr>
+<td valign="top"><p><tt><span class="code">&nbsp;&nbsp;<a href="../drillsimgui/tdrillsim.menuitem4help.html">MenuItem4Help</a><span class="sym">: </span>TMenuItem<span class="sym">;</span></span></tt></p></td>
+</tr>
+<tr>
+<td valign="top"><p><tt><span class="code">&nbsp;&nbsp;<a href="../drillsimgui/tdrillsim.menuitem4about.html">MenuItem4About</a><span class="sym">: </span>TMenuItem<span class="sym">;</span></span></tt></p></td>
+</tr>
+<tr>
+<td valign="top"><p><tt><span class="code">&nbsp;&nbsp;<a href="../drillsimgui/tdrillsim.menuitem4showhelp.html">MenuItem4ShowHelp</a><span class="sym">: </span>TMenuItem<span class="sym">;</span></span></tt></p></td>
+</tr>
+<tr>
+<td valign="top"><p><tt><span class="code">&nbsp;&nbsp;<a href="../drillsimgui/tdrillsim.fileopendialog1.html">FileOpenDialog1</a><span class="sym">: </span>TOpenDialog<span class="sym">;</span></span></tt></p></td>
+</tr>
+<tr>
+<td valign="top"><p><tt><span class="code">&nbsp;&nbsp;<a href="../drillsimgui/tdrillsim.filesavedialog1.html">FileSaveDialog1</a><span class="sym">: </span>TSaveDialog<span class="sym">;</span></span></tt></p></td>
+</tr>
+<tr>
+<td valign="top"><p><tt><span class="code">&nbsp;&nbsp;<a href="../drillsimgui/tdrillsim.kellydown.html">KellyDown</a><span class="sym">: </span>TBCButton<span class="sym">;</span></span></tt></p></td>
+</tr>
+<tr>
+<td valign="top"><p><tt><span class="code">&nbsp;&nbsp;<a href="../drillsimgui/tdrillsim.rpmminus.html">RPMminus</a><span class="sym">: </span>TButton<span class="sym">;</span></span></tt></p></td>
+</tr>
+<tr>
+<td valign="top"><p><tt><span class="code">&nbsp;&nbsp;<a href="../drillsimgui/tdrillsim.selectdirectorydialog1.html">SelectDirectoryDialog1</a><span class="sym">: </span>TSelectDirectoryDialog<span class="sym">;</span></span></tt></p></td>
+</tr>
+<tr>
+<td valign="top"><p><tt><span class="code">&nbsp;&nbsp;<a href="../drillsimgui/tdrillsim.annularpressuretext.html">AnnularPressureText</a><span class="sym">: </span>TStaticText<span class="sym">;</span></span></tt></p></td>
+</tr>
+<tr>
+<td valign="top"><p><tt><span class="code">&nbsp;&nbsp;<a href="../drillsimgui/tdrillsim.casingpressuretext.html">CasingPressureText</a><span class="sym">: </span>TStaticText<span class="sym">;</span></span></tt></p></td>
+</tr>
+<tr>
+<td valign="top"><p><tt><span class="code">&nbsp;&nbsp;<a href="../drillsimgui/tdrillsim.annularpressureuomlabel.html">AnnularPressureUoMLabel</a><span class="sym">: </span>TStaticText<span class="sym">;</span></span></tt></p></td>
+</tr>
+<tr>
+<td valign="top"><p><tt><span class="code">&nbsp;&nbsp;<a href="../drillsimgui/tdrillsim.casingpressureuomlabel.html">CasingPressureUoMLabel</a><span class="sym">: </span>TStaticText<span class="sym">;</span></span></tt></p></td>
+</tr>
+<tr>
+<td valign="top"><p><tt><span class="code">&nbsp;&nbsp;<a href="../drillsimgui/tdrillsim.standpipepressurevalue.html">StandPipePressureValue</a><span class="sym">: </span>TLabel<span class="sym">;</span></span></tt></p></td>
+</tr>
+<tr>
+<td valign="top"><p><tt><span class="code">&nbsp;&nbsp;<a href="../drillsimgui/tdrillsim.returnpitvalue.html">ReturnPitValue</a><span class="sym">: </span>TLabel<span class="sym">;</span></span></tt></p></td>
+</tr>
+<tr>
+<td valign="top"><p><tt><span class="code">&nbsp;&nbsp;<a href="../drillsimgui/tdrillsim.piperamsvalue.html">PipeRAMsValue</a><span class="sym">: </span>TLabel<span class="sym">;</span></span></tt></p></td>
+</tr>
+<tr>
+<td valign="top"><p><tt><span class="code">&nbsp;&nbsp;<a href="../drillsimgui/tdrillsim.chokevalue.html">ChokeValue</a><span class="sym">: </span>TLabel<span class="sym">;</span></span></tt></p></td>
+</tr>
+<tr>
+<td valign="top"><p><tt><span class="code">&nbsp;&nbsp;<a href="../drillsimgui/tdrillsim.standpipepressureuomlabel.html">StandPipePressureUoMLabel</a><span class="sym">: </span>TStaticText<span class="sym">;</span></span></tt></p></td>
+</tr>
+<tr>
+<td valign="top"><p><tt><span class="code">&nbsp;&nbsp;<a href="../drillsimgui/tdrillsim.commandline.html">CommandLine</a><span class="sym">: </span>TEdit<span class="sym">;</span></span></tt></p></td>
+</tr>
+<tr>
+<td valign="top"><p><tt><span class="code">&nbsp;&nbsp;<a href="../drillsimgui/tdrillsim.commands.html">Commands</a><span class="sym">: </span>TGroupBox<span class="sym">;</span></span></tt></p></td>
+</tr>
+<tr>
+<td valign="top"><p><tt><span class="code">&nbsp;&nbsp;<a href="../drillsimgui/tdrillsim.flowoutuomlabel.html">FlowOutUoMLabel</a><span class="sym">: </span>TStaticText<span class="sym">;</span></span></tt></p></td>
+</tr>
+<tr>
+<td valign="top"><p><tt><span class="code">&nbsp;&nbsp;<a href="../drillsimgui/tdrillsim.diffflowuomlabel.html">DiffFlowUoMLabel</a><span class="sym">: </span>TStaticText<span class="sym">;</span></span></tt></p></td>
+</tr>
+<tr>
+<td valign="top"><p><tt><span class="code">&nbsp;&nbsp;<a href="../drillsimgui/tdrillsim.returnpituomlabel.html">ReturnPitUoMLabel</a><span class="sym">: </span>TStaticText<span class="sym">;</span></span></tt></p></td>
+</tr>
+<tr>
+<td valign="top"><p><tt><span class="code">&nbsp;&nbsp;<a href="../drillsimgui/tdrillsim.chokeminus.html">ChokeMinus</a><span class="sym">: </span>TButton<span class="sym">;</span></span></tt></p></td>
+</tr>
+<tr>
+<td valign="top"><p><tt><span class="code">&nbsp;&nbsp;<a href="../drillsimgui/tdrillsim.chokeplus.html">ChokePlus</a><span class="sym">: </span>TButton<span class="sym">;</span></span></tt></p></td>
+</tr>
+<tr>
+<td valign="top"><p><tt><span class="code">&nbsp;&nbsp;<a href="../drillsimgui/tdrillsim.bopbox.html">BOPBox</a><span class="sym">: </span>TGroupBox<span class="sym">;</span></span></tt></p></td>
+</tr>
+<tr>
+<td valign="top"><p><tt><span class="code">&nbsp;&nbsp;<a href="../drillsimgui/tdrillsim.flowbox.html">FlowBox</a><span class="sym">: </span>TGroupBox<span class="sym">;</span></span></tt></p></td>
+</tr>
+<tr>
+<td valign="top"><p><tt><span class="code">&nbsp;&nbsp;<a href="../drillsimgui/tdrillsim.kellyheighttext.html">KellyHeightText</a><span class="sym">: </span>TLabel<span class="sym">;</span></span></tt></p></td>
+</tr>
+<tr>
+<td valign="top"><p><tt><span class="code">&nbsp;&nbsp;<a href="../drillsimgui/tdrillsim.drillingstatustext.html">DrillingStatusText</a><span class="sym">: </span>TLabel<span class="sym">;</span></span></tt></p></td>
+</tr>
+<tr>
+<td valign="top"><p><tt><span class="code">&nbsp;&nbsp;<a href="../drillsimgui/tdrillsim.kellyheightvalue.html">KellyHeightValue</a><span class="sym">: </span>TLabel<span class="sym">;</span></span></tt></p></td>
+</tr>
+<tr>
+<td valign="top"><p><tt><span class="code">&nbsp;&nbsp;<a href="../drillsimgui/tdrillsim.drillingstatusvalue.html">DrillingStatusValue</a><span class="sym">: </span>TLabel<span class="sym">;</span></span></tt></p></td>
+</tr>
+<tr>
+<td valign="top"><p><tt><span class="code">&nbsp;&nbsp;<a href="../drillsimgui/tdrillsim.ecdvalue.html">ECDValue</a><span class="sym">: </span>TLabel<span class="sym">;</span></span></tt></p></td>
+</tr>
+<tr>
+<td valign="top"><p><tt><span class="code">&nbsp;&nbsp;<a href="../drillsimgui/tdrillsim.memo1.html">Memo1</a><span class="sym">: </span>TMemo<span class="sym">;</span></span></tt></p></td>
+</tr>
+<tr>
+<td valign="top"><p><tt><span class="code">&nbsp;&nbsp;<a href="../drillsimgui/tdrillsim.mudweightoutvalue.html">MudWeightOutValue</a><span class="sym">: </span>TLabel<span class="sym">;</span></span></tt></p></td>
+</tr>
+<tr>
+<td valign="top"><p><tt><span class="code">&nbsp;&nbsp;<a href="../drillsimgui/tdrillsim.mudweightinvalue.html">MudWeightInValue</a><span class="sym">: </span>TLabel<span class="sym">;</span></span></tt></p></td>
+</tr>
+<tr>
+<td valign="top"><p><tt><span class="code">&nbsp;&nbsp;<a href="../drillsimgui/tdrillsim.mudweightinuomlabel.html">MudWeightInUoMLabel</a><span class="sym">: </span>TStaticText<span class="sym">;</span></span></tt></p></td>
+</tr>
+<tr>
+<td valign="top"><p><tt><span class="code">&nbsp;&nbsp;<a href="../drillsimgui/tdrillsim.mudweightoutuomlabel.html">MudWeightOutUoMLabel</a><span class="sym">: </span>TStaticText<span class="sym">;</span></span></tt></p></td>
+</tr>
+<tr>
+<td valign="top"><p><tt><span class="code">&nbsp;&nbsp;<a href="../drillsimgui/tdrillsim.mudweightintext.html">MudWeightInText</a><span class="sym">: </span>TStaticText<span class="sym">;</span></span></tt></p></td>
+</tr>
+<tr>
+<td valign="top"><p><tt><span class="code">&nbsp;&nbsp;<a href="../drillsimgui/tdrillsim.mudweightouttext.html">MudWeightOutText</a><span class="sym">: </span>TStaticText<span class="sym">;</span></span></tt></p></td>
+</tr>
+<tr>
+<td valign="top"><p><tt><span class="code">&nbsp;&nbsp;<a href="../drillsimgui/tdrillsim.ecdtext.html">ECDText</a><span class="sym">: </span>TStaticText<span class="sym">;</span></span></tt></p></td>
+</tr>
+<tr>
+<td valign="top"><p><tt><span class="code">&nbsp;&nbsp;<a href="../drillsimgui/tdrillsim.ecduomlabel.html">ECDUoMLabel</a><span class="sym">: </span>TStaticText<span class="sym">;</span></span></tt></p></td>
+</tr>
+<tr>
+<td valign="top"><p><tt><span class="code">&nbsp;&nbsp;<a href="../drillsimgui/tdrillsim.powerlawradiobutton.html">PowerLawRadioButton</a><span class="sym">: </span>TRadioButton<span class="sym">;</span></span></tt></p></td>
+</tr>
+<tr>
+<td valign="top"><p><tt><span class="code">&nbsp;&nbsp;<a href="../drillsimgui/tdrillsim.binghamradiobutton.html">BinghamRadioButton</a><span class="sym">: </span>TRadioButton<span class="sym">;</span></span></tt></p></td>
+</tr>
+<tr>
+<td valign="top"><p><tt><span class="code">&nbsp;&nbsp;<a href="../drillsimgui/tdrillsim.hydriltext.html">HydrilText</a><span class="sym">: </span>TStaticText<span class="sym">;</span></span></tt></p></td>
+</tr>
+<tr>
+<td valign="top"><p><tt><span class="code">&nbsp;&nbsp;<a href="../drillsimgui/tdrillsim.blindramstext.html">BlindRAMsText</a><span class="sym">: </span>TStaticText<span class="sym">;</span></span></tt></p></td>
+</tr>
+<tr>
+<td valign="top"><p><tt><span class="code">&nbsp;&nbsp;<a href="../drillsimgui/tdrillsim.piperamstext.html">PipeRAMsText</a><span class="sym">: </span>TStaticText<span class="sym">;</span></span></tt></p></td>
+</tr>
+<tr>
+<td valign="top"><p><tt><span class="code">&nbsp;&nbsp;<a href="../drillsimgui/tdrillsim.chokelinetext.html">ChokeLineText</a><span class="sym">: </span>TStaticText<span class="sym">;</span></span></tt></p></td>
+</tr>
+<tr>
+<td valign="top"><p><tt><span class="code">&nbsp;&nbsp;<a href="../drillsimgui/tdrillsim.flowintext.html">FlowInText</a><span class="sym">: </span>TStaticText<span class="sym">;</span></span></tt></p></td>
+</tr>
+<tr>
+<td valign="top"><p><tt><span class="code">&nbsp;&nbsp;<a href="../drillsimgui/tdrillsim.flowouttext.html">FlowOutText</a><span class="sym">: </span>TStaticText<span class="sym">;</span></span></tt></p></td>
+</tr>
+<tr>
+<td valign="top"><p><tt><span class="code">&nbsp;&nbsp;<a href="../drillsimgui/tdrillsim.returnpittext.html">ReturnPitText</a><span class="sym">: </span>TStaticText<span class="sym">;</span></span></tt></p></td>
+</tr>
+<tr>
+<td valign="top"><p><tt><span class="code">&nbsp;&nbsp;<a href="../drillsimgui/tdrillsim.diffflowtext.html">DiffFlowText</a><span class="sym">: </span>TStaticText<span class="sym">;</span></span></tt></p></td>
+</tr>
+<tr>
+<td valign="top"><p><tt><span class="code">&nbsp;&nbsp;<a href="../drillsimgui/tdrillsim.standpipepressuretext.html">StandPipePressureText</a><span class="sym">: </span>TStaticText<span class="sym">;</span></span></tt></p></td>
+</tr>
+<tr>
+<td valign="top"><p><tt><span class="code">&nbsp;&nbsp;<a href="../drillsimgui/tdrillsim.ropuomlabel.html">ROPUoMLabel</a><span class="sym">: </span>TStaticText<span class="sym">;</span></span></tt></p></td>
+</tr>
+<tr>
+<td valign="top"><p><tt><span class="code">&nbsp;&nbsp;<a href="../drillsimgui/tdrillsim.chokeuom.html">ChokeUoM</a><span class="sym">: </span>TStaticText<span class="sym">;</span></span></tt></p></td>
+</tr>
+<tr>
+<td valign="top"><p><tt><span class="code">&nbsp;&nbsp;<a href="../drillsimgui/tdrillsim.flowinuomlabel.html">FlowInUoMLabel</a><span class="sym">: </span>TStaticText<span class="sym">;</span></span></tt></p></td>
+</tr>
+<tr>
+<td valign="top"><p><tt><span class="code">&nbsp;&nbsp;<a href="../drillsimgui/tdrillsim.timevalue.html">TimeValue</a><span class="sym">: </span>TLabel<span class="sym">;</span></span></tt></p></td>
+</tr>
+<tr>
+<td valign="top"><p><tt><span class="code">&nbsp;&nbsp;<a href="../drillsimgui/tdrillsim.ropvalue.html">ROPValue</a><span class="sym">: </span>TLabel<span class="sym">;</span></span></tt></p></td>
+</tr>
+<tr>
+<td valign="top"><p><tt><span class="code">&nbsp;&nbsp;<a href="../drillsimgui/tdrillsim.roptext.html">ROPText</a><span class="sym">: </span>TLabel<span class="sym">;</span></span></tt></p></td>
+</tr>
+<tr>
+<td valign="top"><p><tt><span class="code">&nbsp;&nbsp;<a href="../drillsimgui/tdrillsim.pumpstrokestotaltext.html">PumpStrokesTotalText</a><span class="sym">: </span>TStaticText<span class="sym">;</span></span></tt></p></td>
+</tr>
+<tr>
+<td valign="top"><p><tt><span class="code">&nbsp;&nbsp;<a href="../drillsimgui/tdrillsim.kellyheightuomlabel.html">KellyHeightUoMLabel</a><span class="sym">: </span>TStaticText<span class="sym">;</span></span></tt></p></td>
+</tr>
+<tr>
+<td valign="top"><p><tt><span class="code">&nbsp;&nbsp;<a href="../drillsimgui/tdrillsim.timetext.html">TimeText</a><span class="sym">: </span>TLabel<span class="sym">;</span></span></tt></p></td>
+</tr>
+<tr>
+<td valign="top"><p><tt><span class="code">&nbsp;&nbsp;<a href="../drillsimgui/tdrillsim.wobuomlabel.html">WOBUoMLabel</a><span class="sym">: </span>TStaticText<span class="sym">;</span></span></tt></p></td>
+</tr>
+<tr>
+<td valign="top"><p><tt><span class="code">&nbsp;&nbsp;<a href="../drillsimgui/tdrillsim.totaldepthuomlabel.html">TotalDepthUoMLabel</a><span class="sym">: </span>TStaticText<span class="sym">;</span></span></tt></p></td>
+</tr>
+<tr>
+<td valign="top"><p><tt><span class="code">&nbsp;&nbsp;<a href="../drillsimgui/tdrillsim.wobvalue.html">WOBValue</a><span class="sym">: </span>TLabel<span class="sym">;</span></span></tt></p></td>
+</tr>
+<tr>
+<td valign="top"><p><tt><span class="code">&nbsp;&nbsp;<a href="../drillsimgui/tdrillsim.totaldepthvalue.html">TotalDepthValue</a><span class="sym">: </span>TLabel<span class="sym">;</span></span></tt></p></td>
+</tr>
+<tr>
+<td valign="top"><p><tt><span class="code">&nbsp;&nbsp;<a href="../drillsimgui/tdrillsim.pump3plus.html">Pump3Plus</a><span class="sym">: </span>TButton<span class="sym">;</span></span></tt></p></td>
+</tr>
+<tr>
+<td valign="top"><p><tt><span class="code">&nbsp;&nbsp;<a href="../drillsimgui/tdrillsim.pump3minus.html">Pump3Minus</a><span class="sym">: </span>TButton<span class="sym">;</span></span></tt></p></td>
+</tr>
+<tr>
+<td valign="top"><p><tt><span class="code">&nbsp;&nbsp;<a href="../drillsimgui/tdrillsim.pump2plus.html">Pump2Plus</a><span class="sym">: </span>TButton<span class="sym">;</span></span></tt></p></td>
+</tr>
+<tr>
+<td valign="top"><p><tt><span class="code">&nbsp;&nbsp;<a href="../drillsimgui/tdrillsim.pump2minus.html">Pump2Minus</a><span class="sym">: </span>TButton<span class="sym">;</span></span></tt></p></td>
+</tr>
+<tr>
+<td valign="top"><p><tt><span class="code">&nbsp;&nbsp;<a href="../drillsimgui/tdrillsim.pumpstrokesvalue.html">PumpStrokesValue</a><span class="sym">: </span>TLabel<span class="sym">;</span></span></tt></p></td>
+</tr>
+<tr>
+<td valign="top"><p><tt><span class="code">&nbsp;&nbsp;<a href="../drillsimgui/tdrillsim.pump3value.html">Pump3Value</a><span class="sym">: </span>TLabel<span class="sym">;</span></span></tt></p></td>
+</tr>
+<tr>
+<td valign="top"><p><tt><span class="code">&nbsp;&nbsp;<a href="../drillsimgui/tdrillsim.pump2value.html">Pump2Value</a><span class="sym">: </span>TLabel<span class="sym">;</span></span></tt></p></td>
+</tr>
+<tr>
+<td valign="top"><p><tt><span class="code">&nbsp;&nbsp;<a href="../drillsimgui/tdrillsim.pump1minus.html">Pump1Minus</a><span class="sym">: </span>TButton<span class="sym">;</span></span></tt></p></td>
+</tr>
+<tr>
+<td valign="top"><p><tt><span class="code">&nbsp;&nbsp;<a href="../drillsimgui/tdrillsim.pump1plus.html">Pump1Plus</a><span class="sym">: </span>TButton<span class="sym">;</span></span></tt></p></td>
+</tr>
+<tr>
+<td valign="top"><p><tt><span class="code">&nbsp;&nbsp;<a href="../drillsimgui/tdrillsim.drillfloor.html">DrillFloor</a><span class="sym">: </span>TGroupBox<span class="sym">;</span></span></tt></p></td>
+</tr>
+<tr>
+<td valign="top"><p><tt><span class="code">&nbsp;&nbsp;<a href="../drillsimgui/tdrillsim.pump1value.html">Pump1Value</a><span class="sym">: </span>TLabel<span class="sym">;</span></span></tt></p></td>
+</tr>
+<tr>
+<td valign="top"><p><tt><span class="code">&nbsp;&nbsp;<a href="../drillsimgui/tdrillsim.pumpdata.html">PumpData</a><span class="sym">: </span>TGroupBox<span class="sym">;</span></span></tt></p></td>
+</tr>
+<tr>
+<td valign="top"><p><tt><span class="code">&nbsp;&nbsp;<a href="../drillsimgui/tdrillsim.drillingfluids.html">DrillingFluids</a><span class="sym">: </span>TGroupBox<span class="sym">;</span></span></tt></p></td>
+</tr>
+<tr>
+<td valign="top"><p><tt><span class="code">&nbsp;&nbsp;<a href="../drillsimgui/tdrillsim.messages.html">Messages</a><span class="sym">: </span>TGroupBox<span class="sym">;</span></span></tt></p></td>
+</tr>
+<tr>
+<td valign="top"><p><tt><span class="code">&nbsp;&nbsp;<a href="../drillsimgui/tdrillsim.bitdepthtext.html">BitDepthText</a><span class="sym">: </span>TStaticText<span class="sym">;</span></span></tt></p></td>
+</tr>
+<tr>
+<td valign="top"><p><tt><span class="code">&nbsp;&nbsp;<a href="../drillsimgui/tdrillsim.pumpstrokestext.html">PumpStrokesText</a><span class="sym">: </span>TStaticText<span class="sym">;</span></span></tt></p></td>
+</tr>
+<tr>
+<td valign="top"><p><tt><span class="code">&nbsp;&nbsp;<a href="../drillsimgui/tdrillsim.pump1text.html">Pump1Text</a><span class="sym">: </span>TStaticText<span class="sym">;</span></span></tt></p></td>
+</tr>
+<tr>
+<td valign="top"><p><tt><span class="code">&nbsp;&nbsp;<a href="../drillsimgui/tdrillsim.pump2text.html">Pump2Text</a><span class="sym">: </span>TStaticText<span class="sym">;</span></span></tt></p></td>
+</tr>
+<tr>
+<td valign="top"><p><tt><span class="code">&nbsp;&nbsp;<a href="../drillsimgui/tdrillsim.pump3text.html">Pump3Text</a><span class="sym">: </span>TStaticText<span class="sym">;</span></span></tt></p></td>
+</tr>
+<tr>
+<td valign="top"><p><tt><span class="code">&nbsp;&nbsp;<a href="../drillsimgui/tdrillsim.weightonbittext.html">WeightOnBitText</a><span class="sym">: </span>TStaticText<span class="sym">;</span></span></tt></p></td>
+</tr>
+<tr>
+<td valign="top"><p><tt><span class="code">&nbsp;&nbsp;<a href="../drillsimgui/tdrillsim.totaldepthtext.html">TotalDepthText</a><span class="sym">: </span>TStaticText<span class="sym">;</span></span></tt></p></td>
+</tr>
+<tr>
+<td valign="top"><p><tt><span class="code">&nbsp;&nbsp;<a href="../drillsimgui/tdrillsim.rpmplus.html">RPMplus</a><span class="sym">: </span>TButton<span class="sym">;</span></span></tt></p></td>
+</tr>
+<tr>
+<td valign="top"><p><tt><span class="code">&nbsp;&nbsp;<a href="../drillsimgui/tdrillsim.rpmvalue.html">RPMvalue</a><span class="sym">: </span>TLabel<span class="sym">;</span></span></tt></p></td>
+</tr>
+<tr>
+<td valign="top"><p><tt><span class="code">&nbsp;&nbsp;<a href="../drillsimgui/tdrillsim.rotaryrpmtext.html">RotaryRPMText</a><span class="sym">: </span>TStaticText<span class="sym">;</span></span></tt></p></td>
+</tr>
+<tr>
+<td valign="top"><p><tt><span class="code">&nbsp;&nbsp;<span class="kw">procedure </span><a href="../drillsimgui/tdrillsim.autodrillcheckboxchange.html">AutoDrillCheckBoxChange</a><span class="sym">();</span></span></tt></p></td>
+</tr>
+<tr>
+<td valign="top"><p><tt><span class="code">&nbsp;&nbsp;<span class="kw">procedure </span><a href="../drillsimgui/tdrillsim.chokeminusclick.html">ChokeMinusClick</a><span class="sym">();</span></span></tt></p></td>
+</tr>
+<tr>
+<td valign="top"><p><tt><span class="code">&nbsp;&nbsp;<span class="kw">procedure </span><a href="../drillsimgui/tdrillsim.chokeplusclick.html">ChokePlusClick</a><span class="sym">();</span></span></tt></p></td>
+</tr>
+<tr>
+<td valign="top"><p><tt><span class="code">&nbsp;&nbsp;<span class="kw">procedure </span><a href="../drillsimgui/tdrillsim.commandlineclick.html">CommandLineClick</a><span class="sym">();</span></span></tt></p></td>
+</tr>
+<tr>
+<td valign="top"><p><tt><span class="code">&nbsp;&nbsp;<span class="kw">procedure </span><a href="../drillsimgui/tdrillsim.commandlinekeypress.html">CommandLineKeyPress</a><span class="sym">();</span></span></tt></p></td>
+</tr>
+<tr>
+<td valign="top"><p><tt><span class="code">&nbsp;&nbsp;<span class="kw">procedure </span><a href="../drillsimgui/tdrillsim.formactivate.html">FormActivate</a><span class="sym">();</span></span></tt></p></td>
+</tr>
+<tr>
+<td valign="top"><p><tt><span class="code">&nbsp;&nbsp;<span class="kw">procedure </span><a href="../drillsimgui/tdrillsim.formclose.html">FormClose</a><span class="sym">();</span></span></tt></p></td>
+</tr>
+<tr>
+<td valign="top"><p><tt><span class="code">&nbsp;&nbsp;<span class="kw">procedure </span><a href="../drillsimgui/tdrillsim.formdeactivate.html">FormDeactivate</a><span class="sym">();</span></span></tt></p></td>
+</tr>
+<tr>
+<td valign="top"><p><tt><span class="code">&nbsp;&nbsp;<span class="kw">procedure </span><a href="../drillsimgui/tdrillsim.memo1change.html">Memo1Change</a><span class="sym">();</span></span></tt></p></td>
+</tr>
+<tr>
+<td valign="top"><p><tt><span class="code">&nbsp;&nbsp;<span class="kw">procedure </span><a href="../drillsimgui/tdrillsim.menuitem1openfileclick.html">MenuItem1OpenFileClick</a><span class="sym">();</span></span></tt></p></td>
+</tr>
+<tr>
+<td valign="top"><p><tt><span class="code">&nbsp;&nbsp;<span class="kw">procedure </span><a href="../drillsimgui/tdrillsim.menuitem1saveasclick.html">MenuItem1SaveAsClick</a><span class="sym">();</span></span></tt></p></td>
+</tr>
+<tr>
+<td valign="top"><p><tt><span class="code">&nbsp;&nbsp;<span class="kw">procedure </span><a href="../drillsimgui/tdrillsim.menuitem1savefileclick.html">MenuItem1SaveFileClick</a><span class="sym">();</span></span></tt></p></td>
+</tr>
+<tr>
+<td valign="top"><p><tt><span class="code">&nbsp;&nbsp;<span class="kw">procedure </span><a href="../drillsimgui/tdrillsim.menuitem2defaultsclick.html">MenuItem2DefaultsClick</a><span class="sym">();</span></span></tt></p></td>
+</tr>
+<tr>
+<td valign="top"><p><tt><span class="code">&nbsp;&nbsp;<span class="kw">procedure </span><a href="../drillsimgui/tdrillsim.menuitem2displaywelldataclick.html">MenuItem2DisplayWellDataClick</a><span class="sym">();</span></span></tt></p></td>
+</tr>
+<tr>
+<td valign="top"><p><tt><span class="code">&nbsp;&nbsp;<span class="kw">procedure </span><a href="../drillsimgui/tdrillsim.menuitem2generaldataclick.html">MenuItem2GeneralDataClick</a><span class="sym">();</span></span></tt></p></td>
+</tr>
+<tr>
+<td valign="top"><p><tt><span class="code">&nbsp;&nbsp;<span class="kw">procedure </span><a href="../drillsimgui/tdrillsim.menuitem2geologyclick.html">MenuItem2GeologyClick</a><span class="sym">();</span></span></tt></p></td>
+</tr>
+<tr>
+<td valign="top"><p><tt><span class="code">&nbsp;&nbsp;<span class="kw">procedure </span><a href="../drillsimgui/tdrillsim.menuitem2holeprofileclick.html">MenuItem2HoleProfileClick</a><span class="sym">();</span></span></tt></p></td>
+</tr>
+<tr>
+<td valign="top"><p><tt><span class="code">&nbsp;&nbsp;<span class="kw">procedure </span><a href="../drillsimgui/tdrillsim.menuitem1createfileclick.html">MenuItem1CreateFileClick</a><span class="sym">();</span></span></tt></p></td>
+</tr>
+<tr>
+<td valign="top"><p><tt><span class="code">&nbsp;&nbsp;<span class="kw">procedure </span><a href="../drillsimgui/tdrillsim.menuitem1quitclick.html">MenuItem1QuitClick</a><span class="sym">();</span></span></tt></p></td>
+</tr>
+<tr>
+<td valign="top"><p><tt><span class="code">&nbsp;&nbsp;<span class="kw">procedure </span><a href="../drillsimgui/tdrillsim.kellydownclick.html">KellyDownClick</a><span class="sym">();</span></span></tt></p></td>
+</tr>
+<tr>
+<td valign="top"><p><tt><span class="code">&nbsp;&nbsp;<span class="kw">procedure </span><a href="../drillsimgui/tdrillsim.kellyupclick.html">KellyUpClick</a><span class="sym">();</span></span></tt></p></td>
+</tr>
+<tr>
+<td valign="top"><p><tt><span class="code">&nbsp;&nbsp;<span class="kw">procedure </span><a href="../drillsimgui/tdrillsim.binghamradiobuttonchange.html">BinghamRadioButtonChange</a><span class="sym">();</span></span></tt></p></td>
+</tr>
+<tr>
+<td valign="top"><p><tt><span class="code">&nbsp;&nbsp;<span class="kw">procedure </span><a href="../drillsimgui/tdrillsim.menuitem3pauseclick.html">MenuItem3PauseClick</a><span class="sym">();</span></span></tt></p></td>
+</tr>
+<tr>
+<td valign="top"><p><tt><span class="code">&nbsp;&nbsp;<span class="kw">procedure </span><a href="../drillsimgui/tdrillsim.menuitem3startclick.html">MenuItem3StartClick</a><span class="sym">();</span></span></tt></p></td>
+</tr>
+<tr>
+<td valign="top"><p><tt><span class="code">&nbsp;&nbsp;<span class="kw">procedure </span><a href="../drillsimgui/tdrillsim.menuitem2drillstringclick.html">MenuItem2DrillStringClick</a><span class="sym">();</span></span></tt></p></td>
+</tr>
+<tr>
+<td valign="top"><p><tt><span class="code">&nbsp;&nbsp;<span class="kw">procedure </span><a href="../drillsimgui/tdrillsim.menuitem2bitdataclick.html">MenuItem2BitDataClick</a><span class="sym">();</span></span></tt></p></td>
+</tr>
+<tr>
+<td valign="top"><p><tt><span class="code">&nbsp;&nbsp;<span class="kw">procedure </span><a href="../drillsimgui/tdrillsim.menuitem2muddataclick.html">MenuItem2MudDataClick</a><span class="sym">();</span></span></tt></p></td>
+</tr>
+<tr>
+<td valign="top"><p><tt><span class="code">&nbsp;&nbsp;<span class="kw">procedure </span><a href="../drillsimgui/tdrillsim.menuitem2pumpdataclick.html">MenuItem2PumpDataClick</a><span class="sym">();</span></span></tt></p></td>
+</tr>
+<tr>
+<td valign="top"><p><tt><span class="code">&nbsp;&nbsp;<span class="kw">procedure </span><a href="../drillsimgui/tdrillsim.menuitem2surfaceequipmentclick.html">MenuItem2SurfaceEquipmentClick</a><span class="sym">();</span></span></tt></p></td>
+</tr>
+<tr>
+<td valign="top"><p><tt><span class="code">&nbsp;&nbsp;<span class="kw">procedure </span><a href="../drillsimgui/tdrillsim.menuitem2welltestdataclick.html">MenuItem2WellTestDataClick</a><span class="sym">();</span></span></tt></p></td>
+</tr>
+<tr>
+<td valign="top"><p><tt><span class="code">&nbsp;&nbsp;<span class="kw">procedure </span><a href="../drillsimgui/tdrillsim.menuitem2unitsclick.html">MenuItem2UnitsClick</a><span class="sym">();</span></span></tt></p></td>
+</tr>
+<tr>
+<td valign="top"><p><tt><span class="code">&nbsp;&nbsp;<span class="kw">procedure </span><a href="../drillsimgui/tdrillsim.menuitem3stopclick.html">MenuItem3StopClick</a><span class="sym">();</span></span></tt></p></td>
+</tr>
+<tr>
+<td valign="top"><p><tt><span class="code">&nbsp;&nbsp;<span class="kw">procedure </span><a href="../drillsimgui/tdrillsim.menuitem4aboutclick.html">MenuItem4AboutClick</a><span class="sym">();</span></span></tt></p></td>
+</tr>
+<tr>
+<td valign="top"><p><tt><span class="code">&nbsp;&nbsp;<span class="kw">procedure </span><a href="../drillsimgui/tdrillsim.pipeminusclick.html">PipeMinusClick</a><span class="sym">();</span></span></tt></p></td>
+</tr>
+<tr>
+<td valign="top"><p><tt><span class="code">&nbsp;&nbsp;<span class="kw">procedure </span><a href="../drillsimgui/tdrillsim.pipeplusclick.html">PipePlusClick</a><span class="sym">();</span></span></tt></p></td>
+</tr>
+<tr>
+<td valign="top"><p><tt><span class="code">&nbsp;&nbsp;<span class="kw">procedure </span><a href="../drillsimgui/tdrillsim.powerlawradiobuttonchange.html">PowerLawRadioButtonChange</a><span class="sym">();</span></span></tt></p></td>
+</tr>
+<tr>
+<td valign="top"><p><tt><span class="code">&nbsp;&nbsp;<span class="kw">procedure </span><a href="../drillsimgui/tdrillsim.pump1minusclick.html">Pump1MinusClick</a><span class="sym">();</span></span></tt></p></td>
+</tr>
+<tr>
+<td valign="top"><p><tt><span class="code">&nbsp;&nbsp;<span class="kw">procedure </span><a href="../drillsimgui/tdrillsim.pump1plusclick.html">Pump1PlusClick</a><span class="sym">();</span></span></tt></p></td>
+</tr>
+<tr>
+<td valign="top"><p><tt><span class="code">&nbsp;&nbsp;<span class="kw">procedure </span><a href="../drillsimgui/tdrillsim.pump2minusclick.html">Pump2MinusClick</a><span class="sym">();</span></span></tt></p></td>
+</tr>
+<tr>
+<td valign="top"><p><tt><span class="code">&nbsp;&nbsp;<span class="kw">procedure </span><a href="../drillsimgui/tdrillsim.pump2plusclick.html">Pump2PlusClick</a><span class="sym">();</span></span></tt></p></td>
+</tr>
+<tr>
+<td valign="top"><p><tt><span class="code">&nbsp;&nbsp;<span class="kw">procedure </span><a href="../drillsimgui/tdrillsim.pump3minusclick.html">Pump3MinusClick</a><span class="sym">();</span></span></tt></p></td>
+</tr>
+<tr>
+<td valign="top"><p><tt><span class="code">&nbsp;&nbsp;<span class="kw">procedure </span><a href="../drillsimgui/tdrillsim.pump3plusclick.html">Pump3PlusClick</a><span class="sym">();</span></span></tt></p></td>
+</tr>
+<tr>
+<td valign="top"><p><tt><span class="code">&nbsp;&nbsp;<span class="kw">procedure </span><a href="../drillsimgui/tdrillsim.rpmminusclick.html">RPMminusClick</a><span class="sym">();</span></span></tt></p></td>
+</tr>
+<tr>
+<td valign="top"><p><tt><span class="code">&nbsp;&nbsp;<span class="kw">procedure </span><a href="../drillsimgui/tdrillsim.rpmplusclick.html">RPMplusClick</a><span class="sym">();</span></span></tt></p></td>
+</tr>
+<tr>
+<td valign="top"><p><tt><span class="code">&nbsp;&nbsp;<span class="kw">procedure </span><a href="../drillsimgui/tdrillsim.formcreate.html">FormCreate</a><span class="sym">();</span></span></tt></p></td>
+</tr>
+<tr>
+<td><p><tt><span class="code"> <span class="kw">end</span><span class="sym">;</span></span></tt></p></td>
+</tr>
+</table>
+<h2>Inheritance</h2>
+<table cellpadding="0" cellspacing="0">
+<tr>
+<td align="center" valign="top"><p><tt><span class="code"><a href="../drillsimgui/tdrillsim.html">TDrillSim</a></span></tt></p></td>
+</tr>
+<tr>
+<td align="center">|</td>
+</tr>
+<tr>
+<td align="center"><p><tt><span class="code">TForm</span></tt></p></td>
+</tr>
+<tr>
+<td align="center">?</td>
+</tr>
+<tr>
+<td align="center"><p><tt><span class="code">TObject</span></tt></p></td>
+</tr>
+</table>
+</body>
+</html>

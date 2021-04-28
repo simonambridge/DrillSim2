@@ -6,7 +6,6 @@ Uses Crt,
      sysutils,
      DrillSimVariables,
      DrillSimUnitsOfMeasure,
-     DrillSimUtilities,
      DrillSimMessageToMemo,
      DrillSimDataResets,
      DrillSimHoleChecks,
@@ -36,24 +35,24 @@ Procedure LoadData;{ Entry : "CurrentFQFileName" contains FQFN of file to load }
 var i : integer;
 Begin
   NoFileDefined:=True;
-  StringToMemo('DrillSimFile.LoadData: Loading ' + CurrentFQFileName + '....');
+  StringToMemo('DrillSimFile.LoadData - Loading ' + CurrentFQFileName + '....');
   Assign(DataFile,CurrentFQFileName);
   Reset(DataFile);
   try
     Read(DataFile,Data);
     CloseFile(DataFile);
 
-    StringToMemo('DrillSimFile.LoadData: Loaded '   + CurrentFQFileName);
-    StringToMemo('DrillSimFile.LoadData: Operator ' + Data.WellOperator);
-    StringToMemo('DrillSimFile.LoadData: Well Name ' + Data.WellName);
+    StringToMemo('DrillSimFile.LoadData - Loaded '   + CurrentFQFileName);
+    StringToMemo('DrillSimFile.LoadData - Operator ' + Data.WellOperator);
+    StringToMemo('DrillSimFile.LoadData - Well Name ' + Data.WellName);
 
     if Data.API = True then APIUnits  { set array contents to api or metric }
     else MetricUnits;
-    StringToMemo('DrillSimFile.LoadData: Units selected: '+ UoMDescriptor);
+    StringToMemo('DrillSimFile.LoadData - Units selected: '+ UoMDescriptor);
   except
     on E: EInOutError do
     Begin
-      StringToMemo('DrillSimFile.LoadData: File handling error occurred. Details: ' + E.Message);
+      StringToMemo('DrillSimFile.LoadData - File handling error occurred. Details: ' + E.Message);
       InitData;   // if load borks then clear all well data elements,
       Exit;       // set NoFileDefine to True and clear CurrentFQFileName
     end;
@@ -64,8 +63,8 @@ Begin
   InitGeology;        { locate correct current position within geology table}
   InitKick;           { initialise system variables, and set up if NeverSimulated }
 
-  { call DrillSimHoleChecks:CheckHoleData - calls DSHoleCalc - check hole and pipe data }
-  StringToMemo('Validating well geometry...');
+  { call DrillSimHoleChecks:CheckHoleData - call DSHoleCalc - check hole and pipe data }
+  StringToMemo('DrillSimFile.LoadData - Validating well geometry...');
 
   CheckHoleData;
   StringWtCalc;
@@ -100,7 +99,7 @@ Begin
 
   if CreateNewFile then
   Begin
-    StringToMemo('DrillSimFile.SaveData: CreateNewFile=True');
+    StringToMemo('DrillSimFile.SaveData - CreateNewFile=True');
     Assign(DataFile,CurrentFQFileName);
     rewrite(DataFile);
     write(DataFile,Data);
@@ -108,7 +107,7 @@ Begin
     CreateNewFile:=False;  {now reset it }
   End else
   Begin
-    StringToMemo('DrillSimFile.SaveData: CreateNewFile=False');
+    StringToMemo('DrillSimFile.SaveData - CreateNewFile=False');
     Reset(DataFile);
     try
       write(DataFile,Data);
@@ -116,13 +115,13 @@ Begin
     except
       on E: EInOutError do
       Begin
-        StringToMemo('DrillSimFile.SaveData: File handling error occurred. Details: ' + E.Message);
+        StringToMemo('DrillSimFile.SaveData - File handling error occurred. Details: ' + E.Message);
         Exit;
       end;
     end;
   End;
   Edited:=False;                           { reset edit flag after save }
-  StringToMemo('DrillSimFile.SaveData: ' + CurrentFQFileName + ' saved.');
+  StringToMemo('DrillSimFile.SaveData -  ' + CurrentFQFileName + ' saved.');
 End;
 
 Begin
@@ -131,4 +130,4 @@ End.
 
 
 
-
+

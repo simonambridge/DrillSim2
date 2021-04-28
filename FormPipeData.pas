@@ -454,7 +454,7 @@ end;
 
 procedure TPipeDataForm.FormCreate(Sender: TObject);
 begin
-  StringToMemo('TPipeDataForm.FormCreate');
+  StringToMemo('FormPipeData : TPipeDataForm.FormCreate');
 
 end;
 

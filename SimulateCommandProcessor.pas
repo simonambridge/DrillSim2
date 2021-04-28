@@ -7,11 +7,10 @@ Uses Crt,
      DrillSimFile,
      DrillSimDataResets,
      DrillSimMessageToMemo,
-     SimulateVolumes,
      SimulateUpdate,
      SimulateHoleCalcs,
      SimulateHydrostaticCalcs,
-     SimulateHelp,
+//     SimulateHelp,
      SimulateRAMs;
 
 Procedure CommandProcessor;
@@ -94,7 +93,7 @@ Begin
       'L' : Begin
               LoadData;
               SimHoleCalc;         { do HoleCalc and initialise volumes }
-              SetKelly;          { move it to drilling position    }
+              SetKelly;            { move it to drilling position    }
               SetSurfControls;
               StackCalc;
             End;
@@ -109,11 +108,6 @@ Procedure HCommands;
 Begin
   if length(InputString)>1 then
   Begin
-    if copy(InputString,1,4)='HELP' then
-    Begin
-      ShowHelp;
-      Exit;
-    End;
     Input:=copy(InputString,2,1);
     Case Input[1] of
       'B' : MessageToMemo(17);  { HHP bit }
@@ -454,4 +448,4 @@ End; { Procedure CommandProcessor; }
 
 Begin
 End.
-
+

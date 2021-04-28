@@ -1,0 +1,548 @@
+object GeologyDataForm: TGeologyDataForm
+  Left = 65
+  Height = 485
+  Top = 138
+  Width = 653
+  Caption = 'Well Geology Data'
+  ClientHeight = 485
+  ClientWidth = 653
+  OnActivate = FormActivate
+  OnCreate = FormCreate
+  OnDeactivate = FormDeactivate
+  LCLVersion = '1.2.6.0'
+  object QuitButton: TButton
+    Left = 488
+    Height = 25
+    Hint = 'Click to exit without saving'
+    Top = 416
+    Width = 75
+    Caption = 'Quit'
+    OnClick = QuitButtonClick
+    ParentShowHint = False
+    ShowHint = True
+    TabOrder = 0
+  end
+  object SaveButton: TButton
+    Left = 568
+    Height = 25
+    Hint = 'Click to save and exit'
+    Top = 416
+    Width = 75
+    Caption = 'Save'
+    OnClick = SaveButtonClick
+    ParentShowHint = False
+    ShowHint = True
+    TabOrder = 1
+  end
+  object Horizon1Label: TLabel
+    Left = 32
+    Height = 17
+    Top = 56
+    Width = 64
+    Caption = 'Horizon 1'
+    ParentColor = False
+  end
+  object Horizon1DepthData: TEdit
+    Left = 114
+    Height = 27
+    Hint = 'Horizon 1 top depth'
+    Top = 56
+    Width = 110
+    Alignment = taRightJustify
+    OnChange = Horizon1DepthDataChange
+    OnKeyPress = NumericOnlyKeyPress
+    ParentShowHint = False
+    ShowHint = True
+    TabOrder = 2
+  end
+  object HorizonColumnLabel: TLabel
+    Left = 104
+    Height = 17
+    Top = 32
+    Width = 69
+    Caption = 'Top Depth'
+    ParentColor = False
+  end
+  object HorizonTopDepthUoMLabel: TLabel
+    Left = 182
+    Height = 17
+    Top = 33
+    Width = 58
+    AutoSize = False
+    ParentColor = False
+  end
+  object HardnessColumnLabel: TLabel
+    Left = 256
+    Height = 17
+    Top = 35
+    Width = 137
+    Caption = 'Hardness (0.1 to 1.0)'
+    ParentColor = False
+  end
+  object ReservoirPressureColumnLabel: TLabel
+    Left = 419
+    Height = 17
+    Top = 34
+    Width = 136
+    AutoSize = False
+    Caption = 'Reservoir Pressure'
+    ParentColor = False
+  end
+  object ReservoirPressureUoMLabel: TLabel
+    Left = 555
+    Height = 17
+    Top = 35
+    Width = 28
+    AutoSize = False
+    ParentColor = False
+  end
+  object Horizon1HardnessData: TEdit
+    Left = 267
+    Height = 27
+    Hint = 'Horizon 1 hardness'
+    Top = 56
+    Width = 110
+    Alignment = taRightJustify
+    OnChange = Horizon1HardnessDataChange
+    OnKeyPress = NumericOnlyKeyPress
+    ParentShowHint = False
+    ShowHint = True
+    TabOrder = 3
+  end
+  object Horizon1FormationPressureData: TEdit
+    Left = 435
+    Height = 27
+    Hint = 'Horizon 1 formation pressure'
+    Top = 56
+    Width = 110
+    Alignment = taRightJustify
+    OnChange = Horizon1FormationPressureDataChange
+    OnKeyPress = NumericOnlyKeyPress
+    ParentShowHint = False
+    ShowHint = True
+    TabOrder = 4
+  end
+  object Horizon2Label: TLabel
+    Left = 32
+    Height = 17
+    Top = 88
+    Width = 64
+    Caption = 'Horizon 2'
+    ParentColor = False
+  end
+  object Horizon2DepthData: TEdit
+    Left = 114
+    Height = 27
+    Hint = 'Horizon 2 top depth'
+    Top = 88
+    Width = 110
+    Alignment = taRightJustify
+    OnChange = Horizon2DepthDataChange
+    OnKeyPress = NumericOnlyKeyPress
+    ParentShowHint = False
+    ShowHint = True
+    TabOrder = 5
+  end
+  object Horizon2HardnessData: TEdit
+    Left = 267
+    Height = 27
+    Hint = 'Horizon 2 hardness'
+    Top = 88
+    Width = 110
+    Alignment = taRightJustify
+    OnChange = Horizon2HardnessDataChange
+    OnKeyPress = NumericOnlyKeyPress
+    ParentShowHint = False
+    ShowHint = True
+    TabOrder = 6
+  end
+  object Horizon2FormationPressureData: TEdit
+    Left = 435
+    Height = 27
+    Hint = 'Horizon 2 formation pressure'
+    Top = 88
+    Width = 110
+    Alignment = taRightJustify
+    OnChange = Horizon2FormationPressureDataChange
+    OnKeyPress = NumericOnlyKeyPress
+    ParentShowHint = False
+    ShowHint = True
+    TabOrder = 7
+  end
+  object Horizon3Label: TLabel
+    Left = 32
+    Height = 17
+    Top = 120
+    Width = 64
+    Caption = 'Horizon 3'
+    ParentColor = False
+  end
+  object Horizon3DepthData: TEdit
+    Left = 114
+    Height = 27
+    Hint = 'Horizon 3 top depth'
+    Top = 120
+    Width = 110
+    Alignment = taRightJustify
+    OnChange = Horizon3DepthDataChange
+    OnKeyPress = NumericOnlyKeyPress
+    ParentShowHint = False
+    ShowHint = True
+    TabOrder = 8
+  end
+  object Horizon3HardnessData: TEdit
+    Left = 267
+    Height = 27
+    Hint = 'Horizon 3 hardness'
+    Top = 120
+    Width = 110
+    Alignment = taRightJustify
+    OnChange = Horizon3HardnessDataChange
+    OnKeyPress = NumericOnlyKeyPress
+    ParentShowHint = False
+    ShowHint = True
+    TabOrder = 9
+  end
+  object Horizon3FormationPressureData: TEdit
+    Left = 435
+    Height = 27
+    Hint = 'Horizon 3 formation pressure'
+    Top = 120
+    Width = 110
+    Alignment = taRightJustify
+    OnChange = Horizon3FormationPressureDataChange
+    OnKeyPress = NumericOnlyKeyPress
+    ParentShowHint = False
+    ShowHint = True
+    TabOrder = 10
+  end
+  object Horizon4Label: TLabel
+    Left = 32
+    Height = 17
+    Top = 152
+    Width = 64
+    Caption = 'Horizon 4'
+    ParentColor = False
+  end
+  object Horizon4DepthData: TEdit
+    Left = 114
+    Height = 27
+    Hint = 'Horizon 4 top depth'
+    Top = 152
+    Width = 110
+    Alignment = taRightJustify
+    OnChange = Horizon4DepthDataChange
+    OnKeyPress = NumericOnlyKeyPress
+    ParentShowHint = False
+    ShowHint = True
+    TabOrder = 11
+  end
+  object Horizon4HardnessData: TEdit
+    Left = 267
+    Height = 27
+    Hint = 'Horizon 4 hardness'
+    Top = 152
+    Width = 110
+    Alignment = taRightJustify
+    OnChange = Horizon4HardnessDataChange
+    OnKeyPress = NumericOnlyKeyPress
+    ParentShowHint = False
+    ShowHint = True
+    TabOrder = 12
+  end
+  object Horizon4FormationPressureData: TEdit
+    Left = 435
+    Height = 27
+    Hint = 'Horizon 4 formation pressure'
+    Top = 152
+    Width = 110
+    Alignment = taRightJustify
+    OnChange = Horizon4FormationPressureDataChange
+    OnKeyPress = NumericOnlyKeyPress
+    ParentShowHint = False
+    ShowHint = True
+    TabOrder = 13
+  end
+  object Horizon5Label5: TLabel
+    Left = 32
+    Height = 17
+    Top = 184
+    Width = 64
+    Caption = 'Horizon 5'
+    ParentColor = False
+  end
+  object Horizon5DepthData: TEdit
+    Left = 114
+    Height = 27
+    Hint = 'Horizon 5 top depth'
+    Top = 184
+    Width = 110
+    Alignment = taRightJustify
+    OnChange = Horizon5DepthDataChange
+    OnKeyPress = NumericOnlyKeyPress
+    ParentShowHint = False
+    ShowHint = True
+    TabOrder = 14
+  end
+  object Horizon5HardnessData: TEdit
+    Left = 267
+    Height = 27
+    Hint = 'Horizon 5 hardness'
+    Top = 184
+    Width = 110
+    Alignment = taRightJustify
+    OnChange = Horizon5HardnessDataChange
+    OnKeyPress = NumericOnlyKeyPress
+    ParentShowHint = False
+    ShowHint = True
+    TabOrder = 15
+  end
+  object Horizon5FormationPressureData: TEdit
+    Left = 435
+    Height = 27
+    Hint = 'Horizon 5 formation pressure'
+    Top = 184
+    Width = 110
+    Alignment = taRightJustify
+    OnChange = Horizon5FormationPressureDataChange
+    OnKeyPress = NumericOnlyKeyPress
+    ParentShowHint = False
+    ShowHint = True
+    TabOrder = 16
+  end
+  object Horizon6Label: TLabel
+    Left = 32
+    Height = 17
+    Top = 216
+    Width = 64
+    Caption = 'Horizon 6'
+    ParentColor = False
+  end
+  object Horizon6DepthData: TEdit
+    Left = 114
+    Height = 27
+    Hint = 'Horizon 6 top depth'
+    Top = 216
+    Width = 110
+    Alignment = taRightJustify
+    OnChange = Horizon6DepthDataChange
+    OnKeyPress = NumericOnlyKeyPress
+    ParentShowHint = False
+    ShowHint = True
+    TabOrder = 17
+  end
+  object Horizon6HardnessData: TEdit
+    Left = 267
+    Height = 27
+    Hint = 'Horizon 6 hardness'
+    Top = 216
+    Width = 110
+    Alignment = taRightJustify
+    OnChange = Horizon6HardnessDataChange
+    OnKeyPress = NumericOnlyKeyPress
+    ParentShowHint = False
+    ShowHint = True
+    TabOrder = 18
+  end
+  object Horizon6FormationPressureData: TEdit
+    Left = 435
+    Height = 27
+    Hint = 'Horizon 6 formation pressure'
+    Top = 216
+    Width = 110
+    Alignment = taRightJustify
+    OnChange = Horizon6FormationPressureDataChange
+    OnKeyPress = NumericOnlyKeyPress
+    ParentShowHint = False
+    ShowHint = True
+    TabOrder = 19
+  end
+  object Horizon7Label: TLabel
+    Left = 32
+    Height = 17
+    Top = 248
+    Width = 64
+    Caption = 'Horizon 7'
+    ParentColor = False
+  end
+  object Horizon7DepthData: TEdit
+    Left = 114
+    Height = 27
+    Hint = 'Horizon 7 top depth'
+    Top = 248
+    Width = 110
+    Alignment = taRightJustify
+    OnChange = Horizon7DepthDataChange
+    OnKeyPress = NumericOnlyKeyPress
+    ParentShowHint = False
+    ShowHint = True
+    TabOrder = 20
+  end
+  object Horizon7HardnessData: TEdit
+    Left = 267
+    Height = 27
+    Hint = 'Horizon 7 hardness'
+    Top = 248
+    Width = 110
+    Alignment = taRightJustify
+    OnChange = Horizon7HardnessDataChange
+    OnKeyPress = NumericOnlyKeyPress
+    ParentShowHint = False
+    ShowHint = True
+    TabOrder = 21
+  end
+  object Horizon7FormationPressureData: TEdit
+    Left = 435
+    Height = 27
+    Hint = 'Horizon 7 formation pressure'
+    Top = 248
+    Width = 110
+    Alignment = taRightJustify
+    OnChange = Horizon7FormationPressureDataChange
+    OnKeyPress = NumericOnlyKeyPress
+    ParentShowHint = False
+    ShowHint = True
+    TabOrder = 22
+  end
+  object Horizon8Label: TLabel
+    Left = 32
+    Height = 17
+    Top = 280
+    Width = 64
+    Caption = 'Horizon 8'
+    ParentColor = False
+  end
+  object Horizon8DepthData: TEdit
+    Left = 114
+    Height = 27
+    Hint = 'Horizon 8 top depth'
+    Top = 280
+    Width = 110
+    Alignment = taRightJustify
+    OnChange = Horizon8DepthDataChange
+    OnKeyPress = NumericOnlyKeyPress
+    ParentShowHint = False
+    ShowHint = True
+    TabOrder = 23
+  end
+  object Horizon8HardnessData: TEdit
+    Left = 267
+    Height = 27
+    Hint = 'Horizon 8 hardness'
+    Top = 280
+    Width = 110
+    Alignment = taRightJustify
+    OnChange = Horizon8HardnessDataChange
+    OnKeyPress = NumericOnlyKeyPress
+    ParentShowHint = False
+    ShowHint = True
+    TabOrder = 24
+  end
+  object Horizon8FormationPressureData: TEdit
+    Left = 435
+    Height = 27
+    Hint = 'Horizon 8 formation pressure'
+    Top = 280
+    Width = 110
+    Alignment = taRightJustify
+    OnChange = Horizon8FormationPressureDataChange
+    OnKeyPress = NumericOnlyKeyPress
+    ParentShowHint = False
+    ShowHint = True
+    TabOrder = 25
+  end
+  object Horizon9Label: TLabel
+    Left = 32
+    Height = 17
+    Top = 312
+    Width = 64
+    Caption = 'Horizon 9'
+    ParentColor = False
+  end
+  object Horizon9DepthData: TEdit
+    Left = 114
+    Height = 27
+    Hint = 'Horizon 9 top depth'
+    Top = 312
+    Width = 110
+    Alignment = taRightJustify
+    OnChange = Horizon9DepthDataChange
+    OnKeyPress = NumericOnlyKeyPress
+    ParentShowHint = False
+    ShowHint = True
+    TabOrder = 26
+  end
+  object Horizon9HardnessData: TEdit
+    Left = 267
+    Height = 27
+    Hint = 'Horizon 9 hardness'
+    Top = 312
+    Width = 110
+    Alignment = taRightJustify
+    OnChange = Horizon9HardnessDataChange
+    OnKeyPress = NumericOnlyKeyPress
+    ParentShowHint = False
+    ShowHint = True
+    TabOrder = 27
+  end
+  object Horizon9FormationPressureData: TEdit
+    Left = 435
+    Height = 27
+    Hint = 'Horizon 9 formation pressure'
+    Top = 312
+    Width = 110
+    Alignment = taRightJustify
+    OnChange = Horizon9FormationPressureDataChange
+    OnKeyPress = NumericOnlyKeyPress
+    ParentShowHint = False
+    ShowHint = True
+    TabOrder = 28
+  end
+  object Horizon10Label: TLabel
+    Left = 32
+    Height = 17
+    Top = 344
+    Width = 72
+    Caption = 'Horizon 10'
+    ParentColor = False
+  end
+  object Horizon10DepthData: TEdit
+    Left = 114
+    Height = 27
+    Hint = 'Horizon 10 top depth'
+    Top = 344
+    Width = 110
+    Alignment = taRightJustify
+    OnChange = Horizon10DepthDataChange
+    OnKeyPress = NumericOnlyKeyPress
+    ParentShowHint = False
+    ShowHint = True
+    TabOrder = 29
+  end
+  object Horizon10HardnessData: TEdit
+    Left = 267
+    Height = 27
+    Hint = 'Horizon 10 hardness'
+    Top = 344
+    Width = 110
+    Alignment = taRightJustify
+    OnChange = Horizon10HardnessDataChange
+    OnKeyPress = NumericOnlyKeyPress
+    ParentShowHint = False
+    ShowHint = True
+    TabOrder = 30
+  end
+  object Horizon10FormationPressureData: TEdit
+    Left = 435
+    Height = 27
+    Hint = 'Horizon 10 formation pressure'
+    Top = 344
+    Width = 110
+    Alignment = taRightJustify
+    OnChange = Horizon10FormationPressureDataChange
+    OnKeyPress = NumericOnlyKeyPress
+    ParentShowHint = False
+    ShowHint = True
+    TabOrder = 31
+  end
+end

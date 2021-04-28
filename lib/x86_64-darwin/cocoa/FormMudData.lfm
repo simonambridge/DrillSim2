@@ -1,0 +1,152 @@
+object MudDataForm: TMudDataForm
+  Left = 74
+  Height = 286
+  Top = 28
+  Width = 493
+  Caption = 'Drilling Fluid Data'
+  ClientHeight = 286
+  ClientWidth = 493
+  OnActivate = FormActivate
+  OnCreate = FormCreate
+  OnDeactivate = FormDeactivate
+  LCLVersion = '1.2.6.0'
+  object QuitButton: TButton
+    Left = 272
+    Height = 25
+    Top = 224
+    Width = 75
+    Caption = 'Quit'
+    OnClick = QuitButtonClick
+    TabOrder = 4
+  end
+  object SaveButton: TButton
+    Left = 359
+    Height = 25
+    Top = 224
+    Width = 75
+    Caption = 'Save'
+    OnClick = SaveButtonClick
+    TabOrder = 5
+  end
+  object MudWeightLabel: TLabel
+    Left = 48
+    Height = 17
+    Top = 56
+    Width = 101
+    AutoSize = False
+    Caption = 'Mud Weight'
+    ParentColor = False
+  end
+  object MudWeightData: TEdit
+    Left = 168
+    Height = 27
+    Hint = 'Mud weight from the latest rheology report'
+    Top = 56
+    Width = 79
+    OnChange = MudWeightDataChange
+    OnKeyPress = NumericOnlyKeyPress
+    ParentShowHint = False
+    ShowHint = True
+    TabOrder = 0
+  end
+  object MudWeightUoMLabel: TLabel
+    Left = 293
+    Height = 24
+    Top = 56
+    Width = 59
+    AutoSize = False
+    ParentColor = False
+  end
+  object MudPVLabel: TLabel
+    Left = 48
+    Height = 17
+    Top = 88
+    Width = 112
+    AutoSize = False
+    Caption = 'Plastic Viscosity'
+    ParentColor = False
+  end
+  object MudPVData: TEdit
+    Left = 168
+    Height = 27
+    Hint = 'Mud PV from the latest rheology report'
+    Top = 88
+    Width = 79
+    OnChange = MudPVDataChange
+    OnKeyPress = NumericOnlyKeyPress
+    ParentShowHint = False
+    ShowHint = True
+    TabOrder = 1
+  end
+  object MudPVUoMLabel: TLabel
+    Left = 293
+    Height = 24
+    Top = 88
+    Width = 91
+    AutoSize = False
+    Caption = 'Centipoise'
+    ParentColor = False
+  end
+  object MudYPLabel: TLabel
+    Left = 48
+    Height = 17
+    Top = 120
+    Width = 112
+    AutoSize = False
+    Caption = 'Yield Point'
+    ParentColor = False
+  end
+  object MudYPData: TEdit
+    Left = 168
+    Height = 27
+    Hint = 'Mud YP from the latest rheology report'
+    Top = 120
+    Width = 79
+    OnChange = MudYPDataChange
+    OnKeyPress = NumericOnlyKeyPress
+    ParentShowHint = False
+    ShowHint = True
+    TabOrder = 2
+  end
+  object MudYPUoMLabel: TLabel
+    Left = 293
+    Height = 24
+    Top = 120
+    Width = 91
+    HelpType = htKeyword
+    AutoSize = False
+    Caption = 'Lbs 100 ft2'
+    ParentColor = False
+  end
+  object MudGelLabel: TLabel
+    Left = 48
+    Height = 17
+    Top = 152
+    Width = 112
+    AutoSize = False
+    Caption = 'Gel Strength'
+    ParentColor = False
+  end
+  object MudGelData: TEdit
+    Left = 168
+    Height = 27
+    Hint = 'Mud Gel Strength from the latest rheology report'
+    Top = 152
+    Width = 79
+    OnChange = MudGelDataChange
+    OnKeyPress = NumericOnlyKeyPress
+    ParentShowHint = False
+    ShowHint = True
+    TabOrder = 3
+  end
+  object MudGelUoMLabel: TLabel
+    Left = 293
+    Height = 24
+    Top = 152
+    Width = 59
+    HelpType = htKeyword
+    AutoSize = False
+    Caption = '-'
+    ParentColor = False
+  end
+end

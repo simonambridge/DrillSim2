@@ -304,7 +304,7 @@ end;
 
 procedure TPumpDataForm.FormCreate(Sender: TObject);
 begin
-  StringToMemo('TPumpDataForm.FormCreate');
+  StringToMemo('FormPumpData : TPumpDataForm.FormCreate');
 
 end;
 

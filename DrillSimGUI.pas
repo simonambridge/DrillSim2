@@ -5,20 +5,25 @@ unit DrillSimGUI;
 interface
 
 uses
-  cthreads,
+  {$ifdef unix}
+    cthreads,
+    // cmem, // the c memory manager is on some systems much faster for multi-threading
+  {$endif}
   crt,      // for Readkey
   SysUtils, // for FileExists
   Forms,
-  Graphics,
-  FileUtil,
+  Graphics, bcbutton, BCListBox,
+  FileUtil, CheckBoxThemed,
   Controls,
   Dialogs,
   StdCtrls,
   Menus,
   ExtCtrls,
   LCLType,
-  Classes,blcksock,
+  Classes,
+  blcksock,
   usplashabout,
+
   DrillSimVariables,
   DrillSimStartup,
   DrillSimFile,
@@ -26,7 +31,6 @@ uses
   DrillSimUtilities,
   DrillSimHoleChecks,
   DrillSimMessageToMemo,
-  DrillSimUnitsOfMeasure,
 
   FormConfigDefaults,
   FormUnitsOfMeasure,
@@ -54,12 +58,23 @@ type
   { TDrillSim }
 
   TDrillSim = class(TForm)
+    AnnularPressureText: TStaticText;
+    AnnularPressureUoMLabel: TStaticText;
+    AnnularPressureValue: TLabel;
+    AutoDrillCheckBox: TCheckBoxThemed;
+    CasingPressureText: TStaticText;
+    CasingPressureUoMLabel: TStaticText;
     CasingPressureValue: TLabel;
+    PressureBox: TGroupBox;
+    FlowInText: TStaticText;
+    PipeMinus: TBCButton;
+    KellyUp: TBCButton;
+    PipePlus: TBCButton;
+
 
     BitData: TGroupBox;
     BitDepthValue: TLabel;
     BitDepthUoMLabel: TStaticText;
-    AutoDrillCheckBox: TCheckBox;
     HydrilValue: TLabel;
     BlindRAMsValue: TLabel;
     FlowInValue: TLabel;
@@ -68,7 +83,24 @@ type
     BushingImage: TImage;
     KellyScale: TImage;
     KellyImage: TImage;
-    AnnularPressureValue: TLabel;
+
+    MainMenu1: TMainMenu;
+
+    MenuItem1File: TMenuItem;
+    MenuItem1OpenFile: TMenuItem;
+    MenuItem1SaveFile: TMenuItem;
+    MenuItem1SaveAs: TMenuItem;
+    MenuItem1Quit: TMenuItem;
+    MenuItem1CreateFile: TMenuItem;
+
+    MenuItem2Edit: TMenuItem;
+    MenuItem2DrillString: TMenuItem;
+    MenuItem2BitData: TMenuItem;
+    MenuItem2SurfaceEquipment: TMenuItem;
+    MenuItem2PumpData: TMenuItem;
+    MenuItem2MudData: TMenuItem;
+    MenuItem2WellTestData: TMenuItem;
+    MenuItem2EditFile: TMenuItem;
     MenuItem2Geology: TMenuItem;
     MenuItem2Defaults: TMenuItem;
     MenuItem2Units: TMenuItem;
@@ -76,61 +108,44 @@ type
     MenuItem2HoleProfile: TMenuItem;
     MenuItem2GeneralData: TMenuItem;
     MenuItem2Preferences: TMenuItem;
+
+    MenuItem3Simulate: TMenuItem;
     MenuItem3Pause: TMenuItem;
     MenuItem3Stop: TMenuItem;
     MenuItem3Start: TMenuItem;
-    MenuItem3Simulate: TMenuItem;
-    MenuItem1CreateFile: TMenuItem;
-    MenuItem2DrillString: TMenuItem;
-    MenuItem2BitData: TMenuItem;
-    MenuItem2SurfaceEquipment: TMenuItem;
-    MenuItem2PumpData: TMenuItem;
-    MenuItem2MudData: TMenuItem;
-    MenuItem2WellTestData: TMenuItem;
+
+    MenuItem4Help: TMenuItem;
+    MenuItem4About: TMenuItem;
+    MenuItem4ShowHelp: TMenuItem;
 
     FileOpenDialog1: TOpenDialog;
     FileSaveDialog1: TSaveDialog;
+    KellyDown: TBCButton;
+    RPMminus: TButton;
 
     SelectDirectoryDialog1: TSelectDirectoryDialog;
-    AnnularPressureText: TStaticText;
-    CasingPressureText: TStaticText;
-    AnnularPressureUoMLabel: TStaticText;
-    CasingPressureUoMLabel: TStaticText;
-    StandPipePressureValue: TLabel;
+    StandPipePressureText: TStaticText;
+    StandPipePressureUoMLabel: TStaticText;
     ReturnPitValue: TLabel;
     PipeRAMsValue: TLabel;
     ChokeValue: TLabel;
-    StandPipePressureUoMLabel: TStaticText;
     CommandLine: TEdit;
     Commands: TGroupBox;
     FlowOutUoMLabel: TStaticText;
     DiffFlowUoMLabel: TStaticText;
     ReturnPitUoMLabel: TStaticText;
-    PipeMinus: TButton;
-    PipePlus: TButton;
+
+
     ChokeMinus: TButton;
     ChokePlus: TButton;
-    BOPBox1: TGroupBox;
+    BOPBox: TGroupBox;
     FlowBox: TGroupBox;
-    KellyDown: TButton;
-    KellyUp: TButton;
     KellyHeightText: TLabel;
     DrillingStatusText: TLabel;
     KellyHeightValue: TLabel;
     DrillingStatusValue: TLabel;
     ECDValue: TLabel;
-    MainMenu1: TMainMenu;
     Memo1: TMemo;
-    MenuItem1Quit: TMenuItem;
-    MenuItem4ShowHelp: TMenuItem;
-    MenuItem4About: TMenuItem;
-    MenuItem4Help: TMenuItem;
-    MenuItem1SaveAs: TMenuItem;
-    MenuItem1SaveFile: TMenuItem;
-    MenuItem2Edit: TMenuItem;
-    MenuItem1OpenFile: TMenuItem;
-    MenuItem2EditFile: TMenuItem;
-    MenuItem1File: TMenuItem;
     MudWeightOutValue: TLabel;
     MudWeightInValue: TLabel;
     MudWeightInUoMLabel: TStaticText;
@@ -145,14 +160,13 @@ type
     BlindRAMsText: TStaticText;
     PipeRAMsText: TStaticText;
     ChokeLineText: TStaticText;
-    FlowInText: TStaticText;
     FlowOutText: TStaticText;
     ReturnPitText: TStaticText;
     DiffFlowText: TStaticText;
-    StandPipePressureText: TStaticText;
     ROPUoMLabel: TStaticText;
     ChokeUoM: TStaticText;
     FlowInUoMLabel: TStaticText;
+    StandPipePressureValue: TLabel;
     TimeValue: TLabel;
     ROPValue: TLabel;
     ROPText: TLabel;
@@ -184,7 +198,6 @@ type
     Pump3Text: TStaticText;
     WeightOnBitText: TStaticText;
     TotalDepthText: TStaticText;
-    RPMminus: TButton;
     RPMplus: TButton;
     RPMvalue: TLabel;
     RotaryRPMText: TStaticText;
@@ -197,6 +210,7 @@ type
     procedure FormActivate(Sender: TObject);
     procedure FormClose(Sender: TObject);
     procedure FormDeactivate(Sender: TObject);
+    procedure Memo1Change(Sender: TObject);
     procedure MenuItem1OpenFileClick(Sender: TObject);
     procedure MenuItem1SaveAsClick(Sender: TObject);
     procedure MenuItem1SaveFileClick(Sender: TObject);
@@ -267,6 +281,10 @@ var
   UnitsOfMeasureForm  : TUnitsOfMeasureForm;
   SystemDefaultsForm  : TSystemDefaultsForm;
 
+  {$IFDEF DARWIN}
+  AppMenu     : TMenuItem;
+  {$ENDIF}
+
 implementation
 
 {$R *.lfm}
@@ -278,14 +296,15 @@ begin
   // The splashunit optional properties are normally set in the FormCreate method
   splash.DelaySeconds := 3;
   splash.Title := 'DrillSim3';
-  splash.IconFilePath := 'ambersoft-icon.ico';
-  splash.BackGroundImageFilePath := 'rig.jpg';
-  splash.MaskImageFilePath := 'roundedrect.bmp';
+  splash.IconFilePath := OriginDirectory + 'Resources/ambersoft-icon.ico';
+
+  splash.BackGroundImageFilePath := OriginDirectory + 'Resources/rig.jpg';
+  //splash.MaskImageFilePath := 'roundedrect.bmp';
   // Must be .bmp file to make a shaped window
   // Note: if MaskImageFilePath is specified as a .jpg file, the jpg will
   // be automatically converted to a bmp file on first run.
   // Use a graphics app to reduce the bmp's color depth and thus - its file size
-  splash.BackGroundColor := clSkyBlue;
+  splash.BackGroundColor := clWhite;
   splash.LicenseFilePath := 'dsl.txt';
   splash.LicenseType := 'Copyright';
   splash.CreditString := 'Do Not Distribute';
@@ -293,7 +312,7 @@ begin
   splash.SupportContact := 'simon@ntier-db.com';
 end;
 
-{* =========================== Input Controls ================================ *}
+{* =========================== GUI Input Controls ================================ *}
 
 { ------------------------------ checks -----------------------------------------}
 
@@ -542,7 +561,8 @@ end;
 
 
 
-{* ======================= Memo Input ======================================= *}
+
+{* ======================= Memo Text Input =============================== *}
 
 procedure TDrillSim.CommandLineKeyPress(Sender: TObject; var Key: char);
 begin
@@ -578,17 +598,21 @@ begin
 
 end;
 
+procedure TDrillSim.Memo1Change(Sender: TObject);
+
+begin
+end;
 {* ======================== Form Controls =========================== *}
 
 procedure TDrillSim.FormActivate(Sender: TObject);
+
 begin
-  StringToMemo('Running DrillSimGUI FormActivate...............................');
+  StringToMemo('DrillSimGUI.FormActivate...............................');
   Edited:=False;  { start clean }
   Simulating:=False;
   SimulateMessageCode:=0;
   Paused:=False;
 
-  { DrillSim start up sequence }
   StringToMemo('DrillSimGUI.FormaActivate: Running DrillSim start up sequence');
   { ***************************************** }
   StartUp;     { call DrillSim StartUp }
@@ -596,9 +620,9 @@ begin
 
   DrillingStatusValue.Caption:='Checking...';
 
-  KellyScale.Picture.LoadFromFile('kellyscale.png');  { draw kelly starting position }
-  KellyImage.Picture.LoadFromFile('kellyup-0.png');
-  BushingImage.Picture.LoadFromFile('kellybushingup.png');
+  KellyScale.Picture.LoadFromFile(OriginDirectory + 'Resources/kellyscale.png');  { draw kelly starting position }
+  KellyImage.Picture.LoadFromFile(OriginDirectory + 'Resources/kellyup-0.png');
+  BushingImage.Picture.LoadFromFile(OriginDirectory + 'Resources/kellybushingup.png');
 
   KellyHeightValue.Caption:=FloatToStrF(Round2(Data.KellyHeight/UoMConverter[1],2), ffNumber, 4, 2); { API -> displayed }
   StringToMemo('Initial kelly height = ' + FloatToStr(Data.KellyHeight));
@@ -626,7 +650,6 @@ begin
 
   ChokeValue.Caption:=FloatToStr(Data.Choke);
 
-
   AnnularPressureValue.Caption:=FloatToStr(Round2(Data.BHPAnn/UoMConverter[3],2)); { API -> displayed }
   CasingPressureValue.Caption:=FloatToStr(Round2(Data.CasingPressure/UoMConverter[3],2)); { API -> displayed }
   if Data.ShutIn then
@@ -643,13 +666,54 @@ begin
 end;
 
 procedure TDrillSim.FormCreate(Sender: TObject);
+
+function slash(value:string):string;
+begin
+  if (value='')
+    then result:=''
+    else begin
+      {$IFDEF WINDOWS}
+      if (value[length(value)]<>'\')
+        then result:=value+'\'
+      {$ELSE}
+      if (value[length(value)]<>'/')
+        then result:=value+'/'
+      {$ENDIF}
+    else result:=value;
+  end;
+end;
+
+function GetInstallDir:string;
+begin
+  StringToMemo('DrillSimGUI.FormCreate - paramstr = ' + paramstr(0));
+  result:=slash(extractfiledir(paramstr(0)));
+end;
+
+function GetBaseDir:string;
+Begin
+  {$IFDEF WINDOWS}
+    result:=GetInstallDir;
+  {$ELSE}
+    result:=copy(GetInstallDir,1,pos(extractfilename(paramstr(0))+'.app/Contents/MacOS',GetInstallDir)-1);
+  {$ENDIF}
+end;
+
 begin
   Memo1.SelStart:=Length(Memo1.Text);
-  StringToMemo('DrillSimGUI.FormCreate:Running DrillSimGUI FormCreate...');
+  StringToMemo('DrillSimGUI.FormCreate - Running DrillSimGUI FormCreate...');
+
+  OriginDirectory:=GetInstallDir();
+  StringToMemo('DrillSimGUI.FormActivate - Current directory is ' + OriginDirectory);
 
   splash := TSplashAbout.Create(nil);
-  SetDefaultValues; // splash - optional
+  SetDefaultValues; // splash
   splash.ShowSplash;
+
+  {$IFDEF DARWIN}
+  AppMenu := TMenuItem.Create(Self);  {Application menu}
+  AppMenu.Caption := #$EF#$A3#$BF;  {Unicode Apple logo char}
+  DrillSim.MainMenu1.Items.Insert(0, AppMenu);
+  {$ENDIF}
 
 end;
 
@@ -668,18 +732,18 @@ Begin
       if Reply = IDYES then
       Begin
         SaveData;
-        StringToMemo('DrillSimGUI.OnClose: File ' + CurrentFQFileName + ' saved');
+        StringToMemo('DrillSimGUI.CheckExit - File ' + CurrentFQFileName + ' saved');
       end;
     end;
     if Simulating then
     Begin
-      StringToMemo('Terminating simulation thread');
+      StringToMemo('DrillSimGUI.CheckExit - Terminating simulation thread');
       MyThread.Terminate;
-      StringToMemo(' - Waiting for simulation thread to terminate.....');
+      StringToMemo('DrillSimGUI.CheckExit - Waiting for simulation thread to terminate.....');
       MyThread.WaitFor;
-      StringToMemo(' - Simulation thread terminated');
+      StringToMemo('DrillSimGUI.CheckExit - Simulation thread terminated');
     end;
-    StringToMemo('Terminating application');
+    StringToMemo('DrillSimGUI.CheckExit - Terminating application');
     Application.Terminate;
   end
   else
@@ -763,19 +827,19 @@ end;
 
 procedure TDrillSim.MenuItem1CreateFileClick(Sender: TObject);
 begin
-  CreateNewFile:=True;
-  InitData;                             { Set NeverSimulated }
-  APIUnits;                             { Default to API units    }
+//  CreateNewFile:=True;
+//  InitData;                             { Set NeverSimulated }
+//  APIUnits;                             { Default to API units    }
 //  UpdateGen;
-  CheckHoleData;         { get hole data and redo pipe/hole screens if error }
-  CheckPipeData;         { get pipe data and redo hole/pipe screens if error }
+//  CheckHoleData;         { get hole data and redo pipe/hole screens if error }
+//  CheckPipeData;         { get pipe data and redo hole/pipe screens if error }
 //  UpdateBit;
 //  UpdateMud;
 //  UpdatePump;
 //  UpdateSurf;
 //  UpDateWellTests;
-  SaveData;
-  CreateNewFile:=False;
+//  SaveData;
+//  CreateNewFile:=False;
 end;
 
 
@@ -1013,7 +1077,7 @@ end;
 
 procedure TDrillSim.MenuItem3StartClick(Sender: TObject);
 begin
-  StringToMemo('Starting Simulation');
+  StringToMemo('DrillSImGui.TDrillSim.MenuItem3StartClick - starting simulation');
   MessageToMemo(100);               { Please wait...  }
   if not Simulating then
   Begin
@@ -1026,8 +1090,8 @@ begin
       InitMud;                      { set the system OriginalMudWt etc.      }
 
       InitDepth;                    { depths used for reset are the current  }
-                                   { depths at the start of this session    }
-                                   { which may not be the original depths   }
+                                    { depths at the start of this session    }
+                                    { which may not be the original depths   }
       InitKick;                     { Set up and initialise if NeverSimulated }
 
       InitGeology;                  { find current position within geological}
@@ -1062,19 +1126,21 @@ End;
 
 constructor TMyThread.Create(CreateSuspended : boolean);
 begin
-  FreeOnTerminate := True;
+  writeln('DrillSImGUI.TMyThread.Create - create suspended Simulation Thread');
   inherited Create(CreateSuspended);
+  FreeOnTerminate := True;
 end;
 
 procedure TMyThread.ShowStatus;
 // this method is executed by the mainthread and can therefore access all GUI elements.
 begin
-  StringToMemo('Simulation Thread Status Change - '+ ThreadStatus);
+  writeln('DrillSimGUI.ShowStatus - Simulation Thread Status Change - '+ ThreadStatus);
 end;
 
 Procedure TMyThread.WriteToSocket;
 var TimeStamp : String20;
 Begin
+  //writeln('DrillSImGui.TMyThread.WriteToSocket');
   //writeln(t.seconds);  { about 1000 updates/sec }
   TimeStamp:=IntToStr(Trunc((Now - EncodeDate(1970, 1 ,1)) * 24 * 60 * 60));
   GetCurrentTime (t);
@@ -1100,7 +1166,9 @@ end;
 procedure TMyThread.UpdateGUI;
 // this method is executed by the mainthread and can therefore access all GUI elements.
 begin { use SimulateMessageCode to pass messages from the thread }
-  if SimulateMessageCode<>0 then MessageToMemo(SimulateMessageCode);
+  if SimulateMessageCode<>0 then
+     MessageToMemo(SimulateMessageCode);
+
   SimulateMessageCode:=0;           { reset it }
 
   ScreenService;                    { update screen }
@@ -1110,10 +1178,15 @@ procedure TMyThread.Execute;
 var
   NewStatus : string;
 begin
+  // Do not use StringToMemo until after thread initialisation is complete and the main form is created
+  writeln('DrillSimGUI.TMyThread.Execute - Simulation Thread starting...');
   ThreadStatus := 'TMyThread Starting...';
+  writeln('DrillSimGUI.TMyThread.Execute - syncing Showstatus...');
   Synchronize(@Showstatus);
+  writeln('DrillSimGUI.TMyThread.Execute   - sync complete');
   ThreadStatus := 'TMyThread Running...';
-
+  writeln('DrillSimGUI.TMyThread.Execute - Simulation Thread running...');
+  writeln('DrillSimGUI.TMyThread.Execute - syncing UpdateGUI...');
   Synchronize(@UpdateGUI);
 
   while (not Terminated) do
@@ -1141,7 +1214,8 @@ begin
 
          //sock.SendString('DrillSim calling....'#13#10#13#10);
          //if sock.lasterror<>0 then StringToMemo(sock.LastErrorDesc);
-         Synchronize(@WriteToSocket);
+
+         //?? Synchronize(@WriteToSocket);
 
          KickCalc;
 
@@ -1162,12 +1236,11 @@ end;
 
 
 Initialization
- writeln('DrillSimGUI : Initialization - creating Thread before FormCreate is run');
-
+ writeln('DrillSimGUI.Initialization - calling MyThread.Create, creating Simulation Thread before FormCreate is run');
  MyThread := TMyThread.Create(True); // set True = it doesn't start automatically
-
+ writeln('DrillSimGUI.Initialization   - Simulation Thread created');
  {* Here initialise anything required before the threads starts executing *}
-
+ writeln('DrillSimGUI.Initialization - init complete, calling MyThread.Start');
  MyThread.Start;
 
 end.

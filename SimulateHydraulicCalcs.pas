@@ -29,10 +29,9 @@ Begin
       TotStrks:=TotStrks + Pump[i,3];
       FlowIn :=FlowIn + PmpOp[i];
     End;
-    //ScreenService;
+
     if (TotStrks > Zero) and (FlowIn > Zero) then Pumping:=True
                                              else Pumping:=False;
-    //ScreenService;
     GetCurrentTime (t);
     t1:=t2;
     t2:=t.Seconds;
@@ -42,12 +41,12 @@ Begin
       if t2<>t1 then StrokeCounter:=StrokeCounter+((t2-t1)/60*TotStrks);
       LagDT:=PipeCap * Bbl2Gal / FlowIn;                    { Down Time    }
       LagUT:=AnnVol  * Bbl2Gal / FlowIn;                    { Up   Time    }
-      //ScreenService;
+
       LagDS:=LagDT   * TotStrks;                          { Down Strokes }
       LagUS:=LagUT   * TotStrks;                          { Up   Strokes }
       TotCircStrks:=LagDS + LagUS;
     End;
-    //ScreenService;
+
   End;
 End;
 
@@ -65,14 +64,13 @@ Begin
       StackCalc;
       HyCalcCounter:=Zero;
     End;
-    //ScreenService;     { CalculatedSoFar varies between 0 and 3. If set to }
     if Pumping then    { zero it forces a complete hydraulic calculation.  }
     Begin              { if pumping, calcs are requested by HoleCalcCounter}
 
       if MudWt  <> LastCalculatedMudWt then CalculatedSoFar:=Zero; { new ave. MW }
       if FlowIn <> LastCalculatedFlow  then CalculatedSoFar:=Zero;
       if PlCirc=Zero then CalculatedSoFar:=Zero;
-      //ScreenService;
+
       if CalculatedSoFar < 3 then
       Begin
         Case HyCalcCounter of
@@ -108,4 +106,4 @@ End;
 
 Begin
 End.
-
+

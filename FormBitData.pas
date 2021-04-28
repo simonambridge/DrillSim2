@@ -7,7 +7,6 @@ interface
 uses
   Classes, SysUtils, FileUtil, Forms, Controls, Graphics, Dialogs, StdCtrls,
   DrillSimVariables,
-  DrillSimUtilities,
   DrillSimMessageToMemo;
 
 type
@@ -266,7 +265,7 @@ end;
 
 procedure TBitDataForm.FormCreate(Sender: TObject);
 begin
-  StringToMemo('TBitDataForm.FormCreate');
+  StringToMemo('FormBitData : TBitDataForm.FormCreate');
 
 end;
 

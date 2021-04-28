@@ -1,0 +1,55 @@
+object SystemDefaultsForm: TSystemDefaultsForm
+  Left = 138
+  Height = 154
+  Top = 259
+  Width = 853
+  Caption = 'System Defaults'
+  ClientHeight = 154
+  ClientWidth = 853
+  OnActivate = FormActivate
+  OnClose = FormClose
+  LCLVersion = '1.2.6.0'
+  object DefaultWellFile: TLabel
+    Left = 24
+    Height = 17
+    Top = 38
+    Width = 110
+    Caption = 'Default Well File'
+    ParentColor = False
+  end
+  object DefaultWellFileData: TEdit
+    Left = 145
+    Height = 27
+    Top = 32
+    Width = 499
+    OnChange = DefaultWellFileDataChange
+    TabOrder = 0
+  end
+  object DefaultWellFileButton: TButton
+    Left = 655
+    Height = 22
+    Top = 33
+    Width = 105
+    Caption = 'Change'
+    OnClick = DefaultWellFileButtonClick
+    TabOrder = 1
+  end
+  object Cancel: TButton
+    Left = 567
+    Height = 30
+    Top = 98
+    Width = 86
+    Caption = 'Cancel'
+    OnClick = CancelClick
+    TabOrder = 2
+  end
+  object Save: TButton
+    Left = 664
+    Height = 30
+    Top = 98
+    Width = 86
+    Caption = 'Save'
+    OnClick = SaveClick
+    TabOrder = 3
+  end
+end

@@ -29,7 +29,7 @@ End;
 Begin
   With Data do
   Begin
-    //ScreenService;
+
     TurbFlag:=False;                          { Default Is Laminar }
     FlowMode:='Laminar  ';
     PlAnn:=Zero;
@@ -39,14 +39,14 @@ Begin
     if Bingham then
     Begin
       Model:='Bingham  ';
-      //ScreenService;
+
       For i:=1 to TotHoleSections do
       Begin
         AnnVelCalc;
         P:=Rheocon2 * MudPv;               { Critical Velocity }
         Q:=Rheocon2 * Sqrt(Sqr(MudPv) + Rheocon3 * AnnMW * Sqr(Y) *MudYp);
         Vel[i,2]:=(P + Q) / (AnnMW * Y);
-        //ScreenService;
+
         if (Vel[i,1]>Vel[i,2]) then
         Begin                      { Turbulent }
           { InputScan; }
@@ -56,23 +56,23 @@ Begin
           Ff:=Rheocon4 / Power(Rn,Rheocon6);
           Vel[i,3]:=( (Ff * AnnMW * Sqr(Vel[i,1])) / (Rheocon7 * Y) );
           Vel[i,3]:=Vel[i,3] * HoleSection[i,1];
-          //ScreenService;
+
         End else
         Begin                      { Laminar }
-          { InputScan; }
+
           P:=(MudYp / (Y * Rheocon8));
           P:=P+((MudPv * Vel[i,1])/(Sqr(Y) * Rheocon9));
           Vel[i,3]:=P * HoleSection[i,1];
-          //ScreenService;
+
         End;
         PlAnn:=PlAnn + Vel[i,3];
       End;
-      //ScreenService;
+
     End else
 
     Begin
       Model:='Power Law';
-      //ScreenService;
+
       For i:=1 to TotHoleSections do
       Begin
         AnnVelCalc;
@@ -80,26 +80,26 @@ Begin
         Vel[i,2]:=Power(Rheocon16 * Fk / AnnMW, 1/(2-Fn));
         Vel[i,2]:=Vel[i,2] *
                  Power((2.4/Y)*((2*Fn+1)/(3*Fn)), Fn/(2-Fn));
-        //ScreenService;
+
         if (Vel[i,1]>Vel[i,2]) then
         Begin                                   { Turbulent }
-          { InputScan; }
+
           TurbFlag:=True;
           FlowMode:='Turbulent';
           Rn:=(15.47 * AnnMW * Vel[i,1] * Y) / (MudPv / 3.2);
           Ff:=0.046 / Power(Rn,Rheocon13);
           Vel[i,3]:=((AnnMW * Sqr(Vel[i,1]) * Ff) / (Rheocon7 * Y)) * HoleSection[i,1];
-          //ScreenService;
+
         End else
         Begin                                   { Laminar }
-          { InputScan; }
+
           P:=Power((2.4 * Vel[i,1] / Y) * ((2 * Fn+1) / (3 * Fn)), Fn );
           Vel[i,3]:=P * ((Fk * HoleSection[i,1]) / (300 * Y));
-          //ScreenService;
+
         End;
         PlAnn:=PlAnn + Vel[i,3];
       End;
-      //ScreenService;
+
     End;
   End;
 End;
@@ -111,7 +111,7 @@ Var Y,P : real;
 Begin
   WIth Data do
   Begin
-    //ScreenService;
+
     PlPipe:=Zero;
     PlSurf:=Zero;
     if Bingham then
@@ -124,7 +124,7 @@ Begin
         Y:=(Ff * PipeMW * Sqr(P)/ (Rheocon7 * Pipe[i,2])) * Pipe[i,1];
         PlPipe:=PlPipe + Y;
       End;
-      //ScreenService;
+
 
       For i:=1 to 4 do                    { Surf. Eqpt. dP's    }
       Begin
@@ -133,7 +133,7 @@ Begin
         Ff:=Rheocon4 / Power(Rn, Rheocon6);
         Y:=(Ff * PipeMW * Sqr(P)/ (Rheocon7 * Surf[i,2])) * Surf[i,1];
         PlSurf:=PlSurf + Y;
-        //ScreenService;
+
       End;
     End else
     Begin                                    { **** too low **** }
@@ -145,7 +145,7 @@ Begin
         Y:=((Ff * PipeMW * Sqr(P)) / (Rheocon7 * Pipe[i,2])) * Pipe[i,1];
         PlPipe:=PlPipe + Y;
       End;
-      //ScreenService;
+
       For i:=1 to 4 do
       Begin
         P:=FlowIn * Rheocon1 / Sqr(Surf[i,2]);
@@ -153,7 +153,6 @@ Begin
         Ff:=0.046 / Power(Rn, Rheocon13);
         Y:=(Ff * PipeMW * Sqr(P)/ (Rheocon7 * Surf[i,2])) * Surf[i,1];
         PlSurf:=PlSurf + Y;
-        //ScreenService;
       End;
     End;
   End;
@@ -166,7 +165,7 @@ Var P : real;
 Begin
   With Data do
   Begin
-    //ScreenService;
+
     P:=Zero;
     For i:=1 to MaxJets do
     Begin
@@ -179,9 +178,9 @@ Begin
     BitHp  :=PlBit * FlowIn / 1714;
     Eff    :=PlBit / PlCirc * 100;
     TotHP  :=PlCirc * (FlowIn / 1714);
-    //ScreenService;
+
   End;
 End;
 
 Begin
-End.
+End.

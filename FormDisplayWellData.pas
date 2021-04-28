@@ -102,7 +102,7 @@ end;
 procedure TDisplayWellDataForm.FormCreate(Sender: TObject);
 begin
   FormCreateActions;
-  StringToMemo('TDisplayWellDataForm.FormCreate');
+  StringToMemo('FormDisplayWellData : TDisplayWellDataForm.FormCreate');
 end;
 
 procedure TDisplayWellDataForm.CloseDisplayWellDataClick(Sender: TObject);

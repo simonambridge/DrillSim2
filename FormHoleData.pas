@@ -546,7 +546,7 @@ end;
 
 procedure THoleDataForm.FormCreate(Sender: TObject);
 begin
-  StringToMemo('THoleDataForm.FormCreate');
+  StringToMemo('FormHoleData : THoleDataForm.FormCreate');
 end;
 
 procedure THoleDataForm.QuitButtonClick(Sender: TObject);

@@ -23,26 +23,26 @@ Uses DrillSimGUI;
 
 Procedure DrawKelly;    { draws appropriate kelly and bushing @ KelHt }
 Begin
-
+  writeln('SimulateUpdate.DrawKelly');
   KellyImageIndex:=trunc((33-Data.KellyHeight) * 2.667);  { 80 px /30 feet = 2.667 px/foot }
   //KellyImageIndex:=KellyImageIndex div 10;
 
   //StringToMemo('Kelly height = ' + FloatToStr(Data.KellyHeight) + '    KellyImageIndex = ' + IntToStr(KellyImageIndex));
-
+  writeln('Kelly pics are at  = ' + OriginDirectory + 'Resources/kellyup-2.png');
   { quick and dirty code }
-  if (KellyImageIndex = 0) then  KellyImageFileName:='kellyup-0.png'
-  else if (KellyImageIndex > 0) and (KellyImageIndex <= 2) then  KellyImageFileName:='kellyup-2.png'
-  else if (KellyImageIndex > 2) and (KellyImageIndex <= 4) then  KellyImageFileName:='kellyup-4.png'
-  else if (KellyImageIndex > 4) and (KellyImageIndex <= 6) then  KellyImageFileName:='kellyup-6.png'
-  else if (KellyImageIndex > 6) and (KellyImageIndex <= 8) then  KellyImageFileName:='kellyup-8.png'
-  else if (KellyImageIndex > 8) and (KellyImageIndex <= 10) then  KellyImageFileName:='kellyup-8.png'
-  else if (KellyImageIndex > 10) and (KellyImageIndex <= 20) then  KellyImageFileName:='kellyup-18.png'
-  else if (KellyImageIndex > 20) and (KellyImageIndex <= 30) then  KellyImageFileName:='kellyup-30.png'
-  else if (KellyImageIndex > 30) and (KellyImageIndex <= 40) then  KellyImageFileName:='kellyup-30.png'
-  else if (KellyImageIndex > 40) and (KellyImageIndex <= 50) then  KellyImageFileName:='kellyup-42.png'
-  else if (KellyImageIndex > 50) and (KellyImageIndex <= 60) then  KellyImageFileName:='kellyup-54.png'
-  else if (KellyImageIndex > 60) and (KellyImageIndex <= 70) then  KellyImageFileName:='kellyup-66.png'
-  else if (KellyImageIndex > 70) and (KellyImageIndex <= 80) then  KellyImageFileName:='kellyup-80.png';
+  if (KellyImageIndex = 0) then  KellyImageFileName:=OriginDirectory + 'Resources/kellyup-0.png'
+  else if (KellyImageIndex > 0) and (KellyImageIndex <= 2) then  KellyImageFileName:=OriginDirectory + 'Resources/kellyup-2.png'
+  else if (KellyImageIndex > 2) and (KellyImageIndex <= 4) then  KellyImageFileName:=OriginDirectory + 'Resources/kellyup-4.png'
+  else if (KellyImageIndex > 4) and (KellyImageIndex <= 6) then  KellyImageFileName:=OriginDirectory + 'Resources/kellyup-6.png'
+  else if (KellyImageIndex > 6) and (KellyImageIndex <= 8) then  KellyImageFileName:=OriginDirectory + 'Resources/kellyup-8.png'
+  else if (KellyImageIndex > 8) and (KellyImageIndex <= 10) then  KellyImageFileName:=OriginDirectory + 'Resources/kellyup-8.png'
+  else if (KellyImageIndex > 10) and (KellyImageIndex <= 20) then  KellyImageFileName:=OriginDirectory + 'Resources/kellyup-18.png'
+  else if (KellyImageIndex > 20) and (KellyImageIndex <= 30) then  KellyImageFileName:=OriginDirectory + 'Resources/kellyup-30.png'
+  else if (KellyImageIndex > 30) and (KellyImageIndex <= 40) then  KellyImageFileName:=OriginDirectory + 'Resources/kellyup-30.png'
+  else if (KellyImageIndex > 40) and (KellyImageIndex <= 50) then  KellyImageFileName:=OriginDirectory + 'Resources/kellyup-42.png'
+  else if (KellyImageIndex > 50) and (KellyImageIndex <= 60) then  KellyImageFileName:=OriginDirectory + 'Resources/kellyup-54.png'
+  else if (KellyImageIndex > 60) and (KellyImageIndex <= 70) then  KellyImageFileName:=OriginDirectory + 'Resources/kellyup-66.png'
+  else if (KellyImageIndex > 70) and (KellyImageIndex <= 80) then  KellyImageFileName:=OriginDirectory + 'Resources/kellyup-80.png';
 
   DrillSim.KellyImage.Picture.LoadFromFile(KellyImageFileName);
 
@@ -50,14 +50,14 @@ Begin
   Begin
     if Data.RPM > Zero then Data.RPM:=Zero;
 
-    BushingImageFileName:='kellybushingup.png';
+    BushingImageFileName:=OriginDirectory + 'Resources/kellybushingup.png';
     DrillSim.BushingImage.Picture.LoadFromFile(BushingImageFileName);
 
   End else
   if (LastKellyHeight = 33) and (LastKellyHeight <> Data.KellyHeight)
   or (Data.RPM = 0) then { check if its just come off slips... }
   Begin
-    BushingImageFileName:='kellybushingdown-1.png';
+    BushingImageFileName:=OriginDirectory + 'Resources/kellybushingdown-1.png';
     DrillSim.BushingImage.Picture.LoadFromFile(BushingImageFileName);
   end;
 
@@ -107,7 +107,7 @@ Begin
       CurrentTurn:=Zero;
       CurrentBushing:=CurrentBushing + 1;
       if CurrentBushing > 9 then CurrentBushing:=1;
-      BushingImageFileName:='kellybushingdown-'+ IntToStr(CurrentBushing) + '.png';
+      BushingImageFileName:=OriginDirectory + 'Resources/kellybushingdown-'+ IntToStr(CurrentBushing) + '.png';
       DrillSim.BushingImage.Picture.LoadFromFile(BushingImageFileName);
     End;
   End;
@@ -304,13 +304,11 @@ End;
 
 Procedure ScreenService;
 Begin
-  //writeln('ScreenService');
   StatusCounter:=StatusCounter + 1;
   if StatusCounter>10 then               { check every 10 loops }
   Begin
     StatusUpdate;
     StatusCounter:=Zero;
-    //writeln('StatusCounter='+IntToStr(StatusCounter));
   End;
 
   if Data.RPM > Zero then TurnBushing;
@@ -329,4 +327,4 @@ Begin
 End;
 
 Begin
-End.
+End.

@@ -14,24 +14,6 @@ Procedure CheckPipeData;
 
 Implementation
 
-Procedure ErrorScreen;
-Begin
-   StringToMemo('Temp message - there is an error');
-  //Box(13,5,67,19);
-  //Box(30,6,49,8);
-  //Disp(32,7,'INPUT DATA ERROR');
-  //Disp(16,9,Help.HelpText[191]);   { There is an error in the... }
-  //Disp(16,10,Help.HelpText[192]);
-  //Disp(16,11,Help.HelpText[193]);
-  //Disp(16,12,Help.HelpText[194]);
-  //Disp(16,13,Help.HelpText[195]);
-  //Disp(16,14,Help.HelpText[196]);
-  //Disp(16,15,Help.HelpText[197]);
-  //Disp(16,16,Help.HelpText[198]);
-  //Disp(16,17,Help.HelpText[199]);
-  //Disp(16,18,Help.HelpText[200]);
-End;
-
 Procedure CheckHoleData; // called when a file is loaded
 Begin
   DSHoleCalc;                { Check hole for errors and initialise volumes  }
@@ -82,7 +64,7 @@ Var
 Begin
   With Data do
   Begin
-    StringToMemo('Running DSHoleCalc to validate well geometry...');
+    StringToMemo('DrillSimHoleChecks.DSHoleCalc - Running DSHoleCalc to validate well geometry...');
 
     TS_TD_Index:=Zero;              { Create and Edit set NeverSimulated }
 
@@ -111,8 +93,8 @@ Begin
       TempSection[TS_TD_Index,2]:=LinerID;
     End;
 
-    StringToMemo('DSHoleCalc: MaxHoles = ' + IntToStr(MaxHoles));
-    StringToMemo('DSHoleCalc: TS_TD_Index = ' + IntToStr(TS_TD_Index));
+    StringToMemo('DrillSimHoleChecks.DSHoleCalc - MaxHoles = ' + IntToStr(MaxHoles));
+    StringToMemo('DrillSimHoleChecks.DSHoleCalc - TS_TD_Index = ' + IntToStr(TS_TD_Index));
 
     Counter:=0;
     if MaxHoles>Zero then
@@ -120,7 +102,7 @@ Begin
       For Counter:=1 to MaxHoles do
       Begin
         TS_TD_Index:=TS_TD_Index+1;
-        StringToMemo('DSHoleCalc: Counter = ' + IntToStr(Counter) + ' Hole TD='+FloatToStr(Hole[Counter,1]));
+        StringToMemo('DrillSimHoleChecks.DSHoleCalc - Counter = ' + IntToStr(Counter) + ' Hole TD='+FloatToStr(Hole[Counter,1]));
 
         if (Counter=1) then
         Begin
@@ -139,23 +121,23 @@ Begin
       End;
     End;
 
-    StringToMemo('DSHoleCalc: TS_TD_Index = ' + IntToStr(TS_TD_Index));
+    StringToMemo('DrillSimHoleChecks.DSHoleCalc - TS_TD_Index = ' + IntToStr(TS_TD_Index));
     For i:=1 to TS_TD_Index do
     Begin
-      StringToMemo('TempSection Depth='+FloatToStr(TempSection[i,1])+' feet, ID='+FloatToStr(TempSection[i,2]));
+      StringToMemo('DrillSimHoleChecks.DSHoleCalc - TempSection Depth='+FloatToStr(TempSection[i,1])+' feet, ID='+FloatToStr(TempSection[i,2]));
     end;
 
 { vvvvvv this section is what makes DSHoleCalc different from SimHoleCalc vvvvvv }
 
     { -- Calculate TD, TVD using TempSection[i,1] -- }
 
-    StringToMemo('- Check hole and pipe TDs...');
+    StringToMemo('DrillSimHoleChecks.DSHoleCalc - Check hole and pipe TDs...');
     TD:=Zero;
     For i:=1 to TS_TD_Index do TD:=TD+TempSection[i,1];
-    StringToMemo('DSHoleCalc: Hole TD='+FloatToStr(TD));
+    StringToMemo('DrillSimHoleChecks.DSHoleCalc - Hole TD='+FloatToStr(TD));
 
     Tvd:=TD * Cos(DeviationDegrees * Pi / 180);
-    StringToMemo('DSHoleCalc: TvD='+FloatToStr(TvD));
+    StringToMemo('DrillSimHoleChecks.DSHoleCalc - TvD='+FloatToStr(TvD));
 
 
     { -- Calculate PipeTD using Pipe[i,1] -- }
@@ -170,7 +152,7 @@ Begin
       OverPipe:=PipeTD - TD;
       if OverPipe >= Pipe[MaxPipes,1] then          { if it can't be accomodated in   }
       Begin                                         { Drill Pipe, then error and Exit }
-        StringToMemo('DSHoleCalc Error: Overpipe >= Pipe[MaxPipes,1]');
+        StringToMemo('DrillSimHoleChecks.DSHoleCalc - Error: Overpipe >= Pipe[MaxPipes,1]');
 
         HoleError:=True;
         Exit;
@@ -185,12 +167,12 @@ Begin
       End;
     End;
 
-    StringToMemo('DSHoleCalc: Pipe TD='+FloatToStr(PipeTD));
-    StringToMemo('DSHoleCalc: Bit TD='+FloatToStr(BitTD));
+    StringToMemo('DrillSimHoleChecks.DSHoleCalc - Pipe TD='+FloatToStr(PipeTD));
+    StringToMemo('DrillSimHoleChecks.DSHoleCalc - Bit TD='+FloatToStr(BitTD));
 
 { ^^^^^^^ end of extra section ^^^^^^^ }
 
-    StringToMemo('- Calculate Hole Profile...');
+    StringToMemo('DrillSimHoleChecks.DSHoleCalc - Calculate Hole Profile...');
 
     TS_ID_Index:=1; PipeIndex:=MaxPipes;                   { Calculate Hole Profile }
     i:=1;
@@ -281,7 +263,7 @@ Begin
       End;
     End;
 
-    StringToMemo('- Set up well volume...');
+    StringToMemo('DrillSimHoleChecks.DSHoleCalc - Set up well volume...');
 
     TotHoleSections:=i;
 

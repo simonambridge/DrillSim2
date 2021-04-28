@@ -1,0 +1,326 @@
+object BitDataForm: TBitDataForm
+  Left = 65
+  Height = 271
+  Top = 145
+  Width = 755
+  HorzScrollBar.Page = 724
+  HorzScrollBar.Range = 724
+  VertScrollBar.Page = 241
+  VertScrollBar.Range = 241
+  Caption = 'Drill Bit Data'
+  ClientHeight = 271
+  ClientWidth = 755
+  OnActivate = FormActivate
+  OnCreate = FormCreate
+  OnDeactivate = FormDeActivate
+  LCLVersion = '1.2.6.0'
+  object QuitButton: TButton
+    Left = 560
+    Height = 25
+    Top = 216
+    Width = 75
+    Caption = 'Quit'
+    OnClick = QuitButtonClick
+    TabOrder = 6
+  end
+  object SaveButton: TButton
+    Left = 648
+    Height = 25
+    Top = 216
+    Width = 75
+    Caption = 'Save'
+    OnClick = SaveButtonClick
+    TabOrder = 7
+  end
+  object BitNumberLabel: TLabel
+    Left = 32
+    Height = 17
+    Top = 32
+    Width = 101
+    AutoSize = False
+    Caption = 'Bit Number'
+    ParentColor = False
+  end
+  object BitNumberData: TEdit
+    Left = 152
+    Height = 27
+    Hint = 'The sequence number of this drill bit'
+    Top = 24
+    Width = 79
+    OnChange = BitNumberDataChange
+    OnKeyPress = NumericOnlyKeyPress
+    ParentShowHint = False
+    ShowHint = True
+    TabOrder = 0
+  end
+  object Jet1Label: TLabel
+    Left = 32
+    Height = 17
+    Top = 144
+    Width = 50
+    AutoSize = False
+    Caption = 'Jet 1'
+    ParentColor = False
+  end
+  object Jet2Label: TLabel
+    Left = 208
+    Height = 17
+    Top = 144
+    Width = 50
+    AutoSize = False
+    Caption = 'Jet 2'
+    ParentColor = False
+  end
+  object Jet3Label: TLabel
+    Left = 392
+    Height = 17
+    Top = 144
+    Width = 50
+    AutoSize = False
+    Caption = 'Jet 3'
+    ParentColor = False
+  end
+  object Jet4Label: TLabel
+    Left = 568
+    Height = 17
+    Top = 144
+    Width = 50
+    AutoSize = False
+    Caption = 'Jet 4'
+    ParentColor = False
+  end
+  object Jet1ComboBox: TComboBox
+    Left = 88
+    Height = 29
+    Hint = 'Jet 1 diameter in 1/32" (min 0 max 32)'
+    Top = 136
+    Width = 100
+    ItemHeight = 0
+    Items.Strings = (
+      '0'
+      '1'
+      '2'
+      '3'
+      '4'
+      '5'
+      '6'
+      '7'
+      '8'
+      '9'
+      '10'
+      '11'
+      '12'
+      '13'
+      '14'
+      '15'
+      '16'
+      '17'
+      '18'
+      '19'
+      '20'
+      '21'
+      '22'
+      '23'
+      '24'
+      '25'
+      '26'
+      '27'
+      '28'
+      '29'
+      '30'
+      '31'
+      '32'
+    )
+    OnChange = Jet1ComboBoxChange
+    OnKeyPress = NumericOnlyKeyPress
+    ParentShowHint = False
+    ShowHint = True
+    TabOrder = 2
+    Text = '<0/32"s>'
+  end
+  object Jet2ComboBox: TComboBox
+    Left = 264
+    Height = 29
+    Hint = 'Jet 2 diameter in 1/32" (min 0 max 32)'
+    Top = 136
+    Width = 100
+    ItemHeight = 0
+    Items.Strings = (
+      '0'
+      '1'
+      '2'
+      '3'
+      '4'
+      '5'
+      '6'
+      '7'
+      '8'
+      '9'
+      '10'
+      '11'
+      '12'
+      '13'
+      '14'
+      '15'
+      '16'
+      '17'
+      '18'
+      '19'
+      '20'
+      '21'
+      '22'
+      '23'
+      '24'
+      '25'
+      '26'
+      '27'
+      '28'
+      '29'
+      '30'
+      '31'
+      '32'
+    )
+    OnChange = Jet2ComboBoxChange
+    OnKeyPress = NumericOnlyKeyPress
+    ParentShowHint = False
+    ShowHint = True
+    TabOrder = 3
+    Text = '<0/32"s>'
+  end
+  object Jet3ComboBox: TComboBox
+    Left = 448
+    Height = 29
+    Hint = 'Jet 3 diameter in 1/32" (min 0 max 32)'
+    Top = 136
+    Width = 100
+    ItemHeight = 0
+    Items.Strings = (
+      '0'
+      '1'
+      '2'
+      '3'
+      '4'
+      '5'
+      '6'
+      '7'
+      '8'
+      '9'
+      '10'
+      '11'
+      '12'
+      '13'
+      '14'
+      '15'
+      '16'
+      '17'
+      '18'
+      '19'
+      '20'
+      '21'
+      '22'
+      '23'
+      '24'
+      '25'
+      '26'
+      '27'
+      '28'
+      '29'
+      '30'
+      '31'
+      '32'
+    )
+    OnChange = Jet3ComboBoxChange
+    OnKeyPress = NumericOnlyKeyPress
+    ParentShowHint = False
+    ShowHint = True
+    TabOrder = 4
+    Text = '<0/32"s>'
+  end
+  object Jet4ComboBox: TComboBox
+    Left = 624
+    Height = 29
+    Hint = 'Jet 4 diameter in 1/32" (min 0 max 32)'
+    Top = 136
+    Width = 100
+    ItemHeight = 0
+    Items.Strings = (
+      '0'
+      '1'
+      '2'
+      '3'
+      '4'
+      '5'
+      '6'
+      '7'
+      '8'
+      '9'
+      '10'
+      '11'
+      '12'
+      '13'
+      '14'
+      '15'
+      '16'
+      '17'
+      '18'
+      '19'
+      '20'
+      '21'
+      '22'
+      '23'
+      '24'
+      '25'
+      '26'
+      '27'
+      '28'
+      '29'
+      '30'
+      '31'
+      '32'
+    )
+    OnChange = Jet4ComboBoxChange
+    OnKeyPress = NumericOnlyKeyPress
+    ParentShowHint = False
+    ShowHint = True
+    TabOrder = 5
+    Text = '<0/32"s>'
+  end
+  object BitTypeLabel: TLabel
+    Left = 32
+    Height = 17
+    Top = 71
+    Width = 80
+    AutoSize = False
+    Caption = 'Bit Type:'
+    ParentColor = False
+  end
+  object BitTypeData: TEdit
+    Left = 152
+    Height = 27
+    Hint = 'A description of this drill bit'
+    Top = 71
+    Width = 423
+    OnChange = BitTypeDataChange
+    ParentShowHint = False
+    ShowHint = True
+    TabOrder = 1
+  end
+  object MaxJetsLabel: TLabel
+    Left = 88
+    Height = 23
+    Top = 211
+    Width = 53
+    AutoSize = False
+    Caption = 'Jets'
+    ParentColor = False
+  end
+  object MaxJetsData: TLabel
+    Left = 30
+    Height = 17
+    Top = 211
+    Width = 52
+    Alignment = taRightJustify
+    AutoSize = False
+    ParentColor = False
+  end
+end

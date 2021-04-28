@@ -1,0 +1,182 @@
+object WellTestDataForm: TWellTestDataForm
+  Left = 65
+  Height = 351
+  Top = 77
+  Width = 428
+  Caption = 'Well Test Data'
+  ClientHeight = 351
+  ClientWidth = 428
+  OnActivate = FormActivate
+  OnCreate = FormCreate
+  OnDeactivate = FormDeactivate
+  LCLVersion = '1.2.6.0'
+  object QuitButton: TButton
+    Left = 205
+    Height = 25
+    Hint = 'Click to exit without saving'
+    Top = 280
+    Width = 75
+    Caption = 'Quit'
+    OnClick = QuitButtonClick
+    ParentShowHint = False
+    ShowHint = True
+    TabOrder = 0
+  end
+  object SaveButton: TButton
+    Left = 285
+    Height = 25
+    Hint = 'Click to save and exit'
+    Top = 280
+    Width = 75
+    Caption = 'Save'
+    OnClick = SaveButtonClick
+    ParentShowHint = False
+    ShowHint = True
+    TabOrder = 1
+  end
+  object LastLeakOffDepthLabel: TLabel
+    Left = 22
+    Height = 17
+    Top = 40
+    Width = 133
+    Caption = 'Last Leak Off Depth'
+    ParentColor = False
+  end
+  object LastLeakOffMWLabel: TLabel
+    Left = 21
+    Height = 17
+    Top = 81
+    Width = 173
+    Caption = 'Last Leak Off Mud Weight'
+    ParentColor = False
+  end
+  object LastLeakOffEMWLabel: TLabel
+    Left = 21
+    Height = 17
+    Top = 120
+    Width = 127
+    Caption = 'Last Leak Off EMW'
+    ParentColor = False
+  end
+  object LastLeakOffPressureLabel: TLabel
+    Left = 21
+    Height = 17
+    Top = 160
+    Width = 151
+    Caption = 'Last Leak Off Pressure'
+    ParentColor = False
+  end
+  object LastLeakOffDepthData: TEdit
+    Left = 200
+    Height = 27
+    Hint = 'Depth of the last Leak Off test'
+    Top = 40
+    Width = 104
+    Alignment = taRightJustify
+    OnChange = LastLeakOffDepthDataChange
+    OnKeyPress = NumericOnlyKeyPress
+    ParentShowHint = False
+    ShowHint = True
+    TabOrder = 2
+  end
+  object LastLeakOffMWData: TEdit
+    Left = 200
+    Height = 27
+    Hint = 'Mud Weight in use for the last Leak Off test'
+    Top = 81
+    Width = 104
+    Alignment = taRightJustify
+    OnChange = LastLeakOffMWDataChange
+    OnKeyPress = NumericOnlyKeyPress
+    ParentShowHint = False
+    ShowHint = True
+    TabOrder = 3
+  end
+  object LastLeakOffEMWData: TEdit
+    Left = 200
+    Height = 27
+    Hint = 'EMW (Equivalent Mud Weight) of the last Leak Off test'
+    Top = 120
+    Width = 104
+    Alignment = taRightJustify
+    OnChange = LastLeakOffEMWDataChange
+    OnKeyPress = NumericOnlyKeyPress
+    ParentShowHint = False
+    ShowHint = True
+    TabOrder = 4
+  end
+  object LastLeakOffPressureData: TEdit
+    Left = 200
+    Height = 27
+    Hint = 'Recorded pressure for the last Leak Off test'
+    Top = 160
+    Width = 104
+    Alignment = taRightJustify
+    OnChange = LastLeakOffPressureDataChange
+    OnKeyPress = NumericOnlyKeyPress
+    ParentShowHint = False
+    ShowHint = True
+    TabOrder = 5
+  end
+  object LastLeakOffDepthUoMLabel: TLabel
+    Left = 320
+    Height = 24
+    Top = 43
+    Width = 56
+    AutoSize = False
+    ParentColor = False
+  end
+  object LastLeakOffMWUoMLabel: TLabel
+    Left = 320
+    Height = 24
+    Top = 84
+    Width = 56
+    AutoSize = False
+    ParentColor = False
+  end
+  object LastLeakOffEMWUoMLabel: TLabel
+    Left = 320
+    Height = 24
+    Top = 123
+    Width = 56
+    AutoSize = False
+    ParentColor = False
+  end
+  object LastLeakOffPressureUoMLabel: TLabel
+    Left = 320
+    Height = 24
+    Top = 160
+    Width = 56
+    AutoSize = False
+    ParentColor = False
+  end
+  object CasingBurstPressureLabel: TLabel
+    Left = 21
+    Height = 17
+    Top = 200
+    Width = 145
+    Caption = 'Casing Burst Pressure'
+    ParentColor = False
+  end
+  object CasingBurstPressureData: TEdit
+    Left = 200
+    Height = 27
+    Hint = 'The casing burst pressure'
+    Top = 200
+    Width = 104
+    Alignment = taRightJustify
+    OnChange = CasingBurstPressureDataChange
+    OnKeyPress = NumericOnlyKeyPress
+    ParentShowHint = False
+    ShowHint = True
+    TabOrder = 6
+  end
+  object CasingBurstPressureUoMLabel: TLabel
+    Left = 320
+    Height = 24
+    Top = 203
+    Width = 56
+    AutoSize = False
+    ParentColor = False
+  end
+end
