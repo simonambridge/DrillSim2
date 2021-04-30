@@ -1,6 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<CONFIG>
-  <Compiler Value="/usr/bin/fpc" Date="1535575190"/>
-  <Params Value=" -Tlinux -Px86_64 -MObjFPC -Scghi -Cg -O1 -g -gl -l -vewnhibq -Fi/u02/dev/dse_dev/DrillSim/DrillSim3/lib/x86_64-linux -Fu/usr/lib/fpc/2.6.4/units/x86_64-linux -Fu/usr/lib/lazarus/1.8.2/lcl/units/x86_64-linux/gtk2 -Fu/usr/lib/lazarus/1.8.2/lcl/units/x86_64-linux -Fu/u02/dev/dse_dev/DrillSim/DrillSim3/synapse40/source/lib/lib/x86_64-linux -Fu/usr/lib/lazarus/1.8.2/components/lazutils/lib/x86_64-linux -Fu/usr/lib/lazarus/1.8.2/packager/units/x86_64-linux -Fu/u02/dev/dse_dev/DrillSim/DrillSim3/ -FU/u02/dev/dse_dev/DrillSim/DrillSim3/lib/x86_64-linux/ -dLCL -dLCLgtk2 DrillSim3.lpr"/>
-  <Complete Value="False"/>
-</CONFIG>
