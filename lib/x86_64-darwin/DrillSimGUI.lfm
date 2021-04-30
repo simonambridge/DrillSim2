@@ -1,7 +1,7 @@
 object DrillSim: TDrillSim
-  Left = 235
+  Left = 491
   Height = 677
-  Top = 238
+  Top = 278
   Width = 960
   Caption = 'DrillSim 3.0'
   ClientHeight = 677

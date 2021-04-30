@@ -202,19 +202,6 @@ Type
 
                  End;
 
-      ColorSet    = (NormColors, { grey on blue }
-                     BlueonGray,
-                     WhiteOnBlue,
-                     YellowOnBlack,
-                     GrayOnBlack,
-                     DataColors,   { high cyan on blue }
-                     TitleColors,  { yellow on blue }
-                     RedOnGray,
-                     RedOnBlue,
-                     FlashColors,  { red on blue }
-                     BlackOnGreen,
-                     WhiteOnGreen,
-                     WhiteOnRed);
 
     Date       =  Record
                     DayOfWeek, Year, Month, Day               : word;
@@ -242,52 +229,9 @@ Const
     VersionNumber = '3.0.0';        { used in command line }
     VersionDate   = '(6/2015)';     { used in command line }
     Title         = 'DrillSim';     { used in command line }
-
-//    PressPrompt = 'Press any key...';
-//    CommandLine = '>                     ';
-//    Extension   : String[4]  = '.WDF';
     Space       :   char     = ' ';
-//    CurrentMode = 'Mode : ';
-//    UnitMode    = 'Select User Units';
-//    SelectMode  = 'Main Menu';
-//    FileMode    = 'File Utilities';
-//    SetUpMode   = 'Setup';
-//    CreateMode  = 'Create Data File';
-//    UpdateMode  = 'Update Data File';
-//    GenMode     = 'General Data';
-//    HoleMode    = 'Hole Profile';
-//    PipeMode    = 'Drill String';
-//    BitMode     = 'Bit Data';
-//    MudMode     = 'Mud Data';
-//    PumpMode    = 'Pump Data';
-//    SurfMode    = 'Surface Equipment';
-//    OptMode     = 'Optimise';
-//    HyPrMode    = 'Hydraulic Print';
-//    ErrorMode   = 'Data Error';
-//    NoHelp1     = 'Help file was not found in start-up directory';
-//    NoHelp2     = 'No help messages available';
-//    Yes         = 'Yes';
-//    No          = ' No';
 
-{ hydvar constants }
-//    LaminarText   = 'Laminar  ';
-//    TurbulentText = 'Turbulent';
-//    Blank4      = '    ';
-//    Blank5      = '     ';
-//    Blank6      = '      ';
-//    Blank7      = '       ';
-//    Blank9      = '         ';
-//    Blank11     = '           ';
-//    Dollar4      = '$$$$';
-//    Dollar5      = '$$$$$';
-//    Dollar6      = '$$$$$$';
-//    Dollar7      = '$$$$$$$';
-//    Dollar9      = '$$$$$$$$$';
 
-{ Simvar constants }
-//   KickMode = 'DrillSim Data';   { used by DrillSim for UpdateKick }
-//   HelpPrompt = 'Press ENTER to continue or ESC to exit';   { edited out, not used @4/21}
-   Slash      : char = '/';
 Var
    DataFile            : File of WellData;
    Data                : WellData;
@@ -321,33 +265,6 @@ Var
    ThisString          : String120;
    Input               : String[1]; { was char; }  { Utility input char' }
    CharInput           : char;                     {   ----- " -----     }
-
-//   Enter               : String[3];    { edited out, not used @4/21}
-//   YesNo               : string[4];    { edited out, not used @4/21}
-//   Util                : char;                { Box building  char' }
-//   OutString           : String120;    { FastDisp variables }{ edited out, not used @4/21}
-//   Row, Col            : integer;
-//   AttrByte            : byte;         { current Disp colour }
-//   TAttr               : byte;         { store current Disp Colour }
-//   Code                : integer;           { used by Proc. }  { edited out, not used @4/21}
-//   Name                : String20;        { GetDirectory  }
-//   SubProgram          : File;             { edited out, not used @4/21}
-//   HelpFile            : File of HelpSet;  { edited out, not used @4/21}
-//   Help                : HelpSet;          { edited out, not used @4/21}
-//   RealParam           : real;
-//   Valid               : boolean;      { edited out, not used @4/21}
-//   Esc                 : boolean;      { edited out, not used @4/21}
-//   PathString          : String120;         { Used for DOS Path - replaced }
-//   IntParam            : integer;        { edited out, not used @4/21}
-//   MinChoice           : integer;   { edited out, not used @4/21}
-//   MaxChoice           : integer;   { edited out, not used @4/21}
-//   OldChoice           : integer;   { edited out, not used @4/21}
-//   NewChoice           : integer;   { edited out, not used @4/21}
-//   Choice              : integer;   { edited out, not used @4/21}
-//   Menu                : array [1..10] of String120; { edited out, not used @4/21}
-//   LineCnt                          : integer; { edited out, not used @4/21}
-//   ColorCount                       : integer; { edited out, not used @4/21}
-
    TempString          : String120;    { utility diplsy string }
 
    SystemPropertiesFile  : String120;
@@ -355,7 +272,6 @@ Var
    DefaultDirectory    : String120;
    OriginDirectory     : String120;
    OriginalExitProc    : Pointer;
-
 
    HoleError           : boolean;
    Edited              : boolean;

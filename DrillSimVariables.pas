@@ -263,7 +263,7 @@ Var
    LastString          : String120;
    PreviousString      : String120;
    ThisString          : String120;
-   Input               : String[1]; { was char; }  { Utility input char' }
+   Input               : String[1];    { was char; }  { Utility input char' }
    CharInput           : char;                     {   ----- " -----     }
    TempString          : String120;    { utility diplsy string }
 
@@ -278,7 +278,6 @@ Var
    Simulating          : boolean;
    SimulateMessageCode : integer;
    Paused              : boolean;
-
 
 { Hydvar vars }
    Bhcp                             : real;      {unused @4/21}

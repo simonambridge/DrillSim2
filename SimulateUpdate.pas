@@ -291,11 +291,11 @@ Loop : if i<>Status then                   { i=current status, so update    }
            1 : TempString:=' On Slips ';   { this table maintains a pointer }
            2 : TempString:='Kelly Down';   { to the current operating       }
            3 : TempString:=' Drilling ';   { situation, but only updated    }
-           4 : TempString:='Off Bottom';   { every 10 loops of Proc. Control}
+           4 : TempString:='Off Bottom';   { every 10 loops of Proc. ScreenService }
            5 : TempString:='On Bottom ';
            6 : TempString:=' Shut-In  ';
          End;
-         DrillSim.DrillingStatusValue.Caption:=TempString;           { display status on screen       }
+         DrillSim.DrillingStatusValue.Caption:=TempString; { display status on screen       }
          Status:=i;
        End;
   End;

@@ -1165,8 +1165,8 @@ end;
 
 procedure TMyThread.UpdateGUI;
 // this method is executed by the mainthread and can therefore access all GUI elements.
-begin { use SimulateMessageCode to pass messages from the thread }
-  if SimulateMessageCode<>0 then
+begin
+  if SimulateMessageCode<>0 then   { use SimulateMessageCode to pass messages from the thread }
      MessageToMemo(SimulateMessageCode);
 
   SimulateMessageCode:=0;           { reset it }

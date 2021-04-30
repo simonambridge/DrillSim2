@@ -11,8 +11,7 @@ Procedure MessageToMemo(x : integer);
 
 Implementation
 
-Uses DrillSimGUI,
-     DrillSimDataResets;
+Uses DrillSimGUI;
 
 
 Procedure StringToMemo(S : String);
@@ -34,18 +33,18 @@ Begin
     Case x of
       1 : ThisString:='Autodrill is ON';
       2 : ThisString:='Autodrill is OFF';
-      3 : ThisString:='ERROR : not pumping';
-      4 : ThisString:='ERROR : not rotating';
+//      3 : ThisString:='ERROR : not pumping';
+//      4 : ThisString:='ERROR : not rotating';
       5 : ThisString:='Unknown Command';
-      6 : ThisString:='Blind Rams are CLOSED';
-      7 : ThisString:='Blind Rams are OPEN';
-      8 : ThisString:='Pipe Rams are CLOSED';
-      9 : ThisString:='Pipe Rams are OPEN';
-     10 : ThisString:='Are you sure (Y/N)? ';
-     11 : ThisString:='Hydril is CLOSED';
-     12 : ThisString:='Hydril is OPEN';
-     13 : ThisString:='Unable to close RAMs';
-     14 : ThisString:='Circulating through Choke';
+//      6 : ThisString:='Blind Rams are CLOSED';
+//      7 : ThisString:='Blind Rams are OPEN';
+//      8 : ThisString:='Pipe Rams are CLOSED';
+//      9 : ThisString:='Pipe Rams are OPEN';
+//     10 : ThisString:='Are you sure (Y/N)? ';
+//     11 : ThisString:='Hydril is CLOSED';
+//     12 : ThisString:='Hydril is OPEN';
+//     13 : ThisString:='Unable to close RAMs';
+//     14 : ThisString:='Circulating through Choke';
      15 : Begin
             Str(LagDS:6:Zero,ThisString);
             ThisString:='Lag Down :' + ThisString + ' str';
@@ -113,22 +112,22 @@ Begin
      31 : ThisString:='Rheology Mode = Bingham';
      32 : ThisString:='Rheology Mode = Power Law';
      33 : ThisString:='Pump # ? ';
-     34 : Begin
-            Str(Pump[1,4]:5:Zero,ThisString);
-            ThisString:='' + ThisString  + Space + '   SPM ?'
-          End;
-     35 : Begin
-            Str(Pump[1,5] / UoMConverter[3]:8:2,ThisString);
-            ThisString:='' + ThisString  + Space + UoMLabel[3] + ' ? ';
-          End;
-     36 : Begin
-            Str(Pump[2,4]:5:Zero,ThisString);
-            ThisString:='' + ThisString  + Space + '   SPM ?';
-          End;
-     37 : Begin
-            Str(Pump[2,5] / UoMConverter[3]:8:2,ThisString);
-            ThisString:='' + ThisString  + Space + UoMLabel[3] + ' ? ';
-          End;
+//     34 : Begin
+//            Str(Pump[1,4]:5:Zero,ThisString);
+//            ThisString:='' + ThisString  + Space + '   SPM ?'
+//          End;
+//     35 : Begin
+//            Str(Pump[1,5] / UoMConverter[3]:8:2,ThisString);
+//            ThisString:='' + ThisString  + Space + UoMLabel[3] + ' ? ';
+//          End;
+//     36 : Begin
+//            Str(Pump[2,4]:5:Zero,ThisString);
+//            ThisString:='' + ThisString  + Space + '   SPM ?';
+//          End;
+//     37 : Begin
+//            Str(Pump[2,5] / UoMConverter[3]:8:2,ThisString);
+//            ThisString:='' + ThisString  + Space + UoMLabel[3] + ' ? ';
+//          End;
      38 : Begin
             Str(WOH / UoMConverter[7]:6:2,ThisString);
             ThisString:='WOH : ' + ThisString + Space + UoMLabel[7];
@@ -190,7 +189,7 @@ Begin
             Str((Formation[FormationPointer].FP + MACP) / UoMConverter[3]:5:2,ThisString);
             ThisString:='MACP : ' + ThisString  + Space + UoMLabel[3];
           End;
-     54 : ThisString:='Losing to formation';
+//     54 : ThisString:='Losing to formation';
      55 : Begin
             Str((PlChoke+ChokeLinePl) / UoMConverter[3]:5:2,ThisString);
             ThisString:='Pl Choke: ' + ThisString + Space + UoMLabel[3];
@@ -230,39 +229,39 @@ Begin
 
      66 : ThisString:='Stroke counter zeroed';
 
-     67 : ThisString:='Blow Out Preventers are OPEN';
+//     67 : ThisString:='Blow Out Preventers are OPEN';
 
      68 : ThisString:='Turn off pumps';
 
      69 : Begin
             Str(Data.Formation[FormationPointer].FP / UoMConverter[3]:5:2,ThisString);
-            ThisString:='Form Pr.: ' + ThisString + Space + UoMLabel[3];
+            ThisString:='Form Pressure : ' + ThisString + Space + UoMLabel[3];
           End;
 
-     70 : Begin
-            ThisString:='Casing Failure!!!!!!!';
-            ShowMessage('Burst Casing! Game over :( ');
-            Clear;
-          End;
+//     70 : Begin
+//            ThisString:='Casing Failure!!!!!!!';
+//            ShowMessage('Burst Casing! Game over :( ');
+//            Clear;
+//          End;
 
-     71 : ThisString:='PRESS ANY KEY...';
+//     71 : ThisString:='PRESS ANY KEY...';
 
-     72 : Begin
-            ThisString:='Pits empty - no mud';
-            ShowMessage('Pits Empty! Game over :( ');
-            Clear;
-          End;
+//     72 : Begin
+//            ThisString:='Pits empty - no mud';
+//            ShowMessage('Pits Empty! Game over :( ');
+//            Clear;
+//          End;
 
      73 : Begin
             Str(DrillMult,ThisString);
             ThisString:='Accelerator : ' + ThisString;
           End;
 
-     74 : Begin
-            ThisString:='Twisted off!!!!!!!';
-            ShowMessage('Twisted Off! Game over :( ');
-            Clear;
-          end;
+//     74 : Begin
+//            ThisString:='Twisted off!!!!!!!';
+//            ShowMessage('Twisted Off! Game over :( ');
+//            Clear;
+//          end;
 
      75 : Begin
             Str(TwistOff / UoMConverter[7]:5:2,ThisString);
@@ -280,63 +279,63 @@ Begin
             ThisString:='Saving '+ CurrentFQFileName;    { called by SaveData }
           End;
 
-     80 : Begin
-            ThisString:='Riser dimension error';
-          End;
+//    80 : Begin
+//           ThisString:='Riser dimension error';
+//         End;
 
-     81 : Begin
-            ThisString:='Casing dimension error';
-          End;
-     82 : Begin
-            ThisString:='You must have a casing if offshore';
-          End;
-     83 : Begin
-            ThisString:='Liner Dimension Error';
-          End;
-     84 : Begin
-            ThisString:='Hole Dimensions Error';
-          End;
-     85 : Begin
-            ThisString:='Number of pipes must be 1 to 4';
-          End;
-     86 : Begin
-            ThisString:='Enter pipe from BHA up to surface';
-          End;
-     87 : Begin
-            ThisString:='Pipe dimensions must not be zero';
-          End;
-     88 : Begin
-            ThisString:='Bit jets must be greater than zero';
-          End;
-     89 : Begin
-            ThisString:='Mud data must be greater than zero';
-          End;
-     90 : Begin
-            ThisString:='Invalid number of pumps (1 to 3)';
-          End;
-     91 : Begin
-            ThisString:='At least one pump must be defined';
-          End;
-     92 : Begin
-            ThisString:='At least one pump must be defined';
-          End;
+//     81 : Begin
+//            ThisString:='Casing dimension error';
+//          End;
+//     82 : Begin
+//            ThisString:='You must have a casing if offshore';
+//          End;
+//     83 : Begin
+//            ThisString:='Liner Dimension Error';
+//          End;
+//     84 : Begin
+//            ThisString:='Hole Dimensions Error';
+//          End;
+//     85 : Begin
+//            ThisString:='Number of pipes must be 1 to 4';
+//          End;
+//     86 : Begin
+//            ThisString:='Enter pipe from BHA up to surface';
+//          End;
+//     87 : Begin
+//            ThisString:='Pipe dimensions must not be zero';
+//          End;
+//    88 : Begin
+//            ThisString:='Bit jets must be greater than zero';
+//          End;
+//     89 : Begin
+//            ThisString:='Mud data must be greater than zero';
+//          End;
+//     90 : Begin
+//            ThisString:='Invalid number of pumps (1 to 3)';
+//          End;
+//     91 : Begin
+//            ThisString:='At least one pump must be defined';
+//          End;
+//     92 : Begin
+//            ThisString:='At least one pump must be defined';
+//          End;
 
 
      100 : Begin
             ThisString:='Please Wait';
           End;
 
-     101 : ThisString:='Blow Out Preventers are CLOSED';
-
-     102 : Begin
-            ThisString:='Loading application configuration file';
-          End;
-     103 : Begin
-            ThisString:='Loading application help file';
-          End;
-     104 : Begin
-            ThisString:='<Empty>';
-          End;
+//     101 : ThisString:='Blow Out Preventers are CLOSED';
+//
+//     102 : Begin
+//            ThisString:='Loading application configuration file';
+//          End;
+//     103 : Begin
+//            ThisString:='Loading application help file';
+//          End;
+//     104 : Begin
+//            ThisString:='<Empty>';
+//          End;
 
     End;
     if length(ThisString) > Zero then   // display it
