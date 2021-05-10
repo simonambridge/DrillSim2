@@ -1,25 +1,25 @@
 object SystemDefaultsForm: TSystemDefaultsForm
-  Left = 138
+  Left = 804
   Height = 154
-  Top = 259
+  Top = 431
   Width = 853
   Caption = 'System Defaults'
   ClientHeight = 154
   ClientWidth = 853
   OnActivate = FormActivate
   OnClose = FormClose
-  LCLVersion = '1.2.6.0'
+  LCLVersion = '2.0.12.0'
   object DefaultWellFile: TLabel
     Left = 24
-    Height = 17
+    Height = 16
     Top = 38
-    Width = 110
+    Width = 97
     Caption = 'Default Well File'
     ParentColor = False
   end
   object DefaultWellFileData: TEdit
     Left = 145
-    Height = 27
+    Height = 22
     Top = 32
     Width = 499
     OnChange = DefaultWellFileDataChange

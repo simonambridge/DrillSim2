@@ -1,14 +1,14 @@
 object DisplayWellDataForm: TDisplayWellDataForm
-  Left = 751
+  Left = 998
   Height = 722
-  Top = 24
+  Top = 56
   Width = 687
   Caption = 'Well Data Summary'
   ClientHeight = 722
   ClientWidth = 687
   OnActivate = FormActivate
   OnCreate = FormCreate
-  LCLVersion = '1.2.6.0'
+  LCLVersion = '2.0.12.0'
   object WellDataSummaryTitle: TStaticText
     Left = 80
     Height = 25
@@ -53,9 +53,9 @@ object DisplayWellDataForm: TDisplayWellDataForm
     Left = 241
     Height = 22
     Top = 96
-    Width = 24
+    Width = 32
     AutoSize = False
-    Caption = 'Ft'
+    Caption = 'Units'
     ParentColor = False
   end
   object CloseDisplayWellData: TButton
@@ -79,9 +79,9 @@ object DisplayWellDataForm: TDisplayWellDataForm
     Left = 240
     Height = 22
     Top = 208
-    Width = 24
+    Width = 33
     AutoSize = False
-    Caption = 'Ft'
+    Caption = 'Units'
     ParentColor = False
   end
   object RiserID: TStaticText
@@ -98,7 +98,7 @@ object DisplayWellDataForm: TDisplayWellDataForm
     Top = 232
     Width = 32
     AutoSize = False
-    Caption = 'Ins'
+    Caption = 'Units'
     ParentColor = False
   end
   object CasingYN: TStaticText
@@ -114,7 +114,7 @@ object DisplayWellDataForm: TDisplayWellDataForm
     Height = 24
     Top = 152
     Width = 191
-    Caption = 'Sub Sea Well Head (Y/N'
+    Caption = 'Sub Sea Well Head (Y/N)'
     TabOrder = 9
   end
   object ChokeLineLength: TStaticText
@@ -129,9 +129,9 @@ object DisplayWellDataForm: TDisplayWellDataForm
     Left = 240
     Height = 22
     Top = 264
-    Width = 24
+    Width = 33
     AutoSize = False
-    Caption = 'Ft'
+    Caption = 'Units'
     ParentColor = False
   end
   object ChokeLineID: TStaticText
@@ -148,16 +148,16 @@ object DisplayWellDataForm: TDisplayWellDataForm
     Top = 288
     Width = 32
     AutoSize = False
-    Caption = 'Ins'
+    Caption = 'Units'
     ParentColor = False
   end
   object WaterDepthUoMLabel: TLabel
     Left = 240
     Height = 22
     Top = 176
-    Width = 24
+    Width = 32
     AutoSize = False
-    Caption = 'Ft'
+    Caption = 'Units'
     ParentColor = False
   end
   object WaterDepth: TStaticText
@@ -180,9 +180,9 @@ object DisplayWellDataForm: TDisplayWellDataForm
     Left = 240
     Height = 22
     Top = 352
-    Width = 24
+    Width = 32
     AutoSize = False
-    Caption = 'Ft'
+    Caption = 'Units'
     ParentColor = False
   end
   object CasingIDUoMLabel: TLabel
@@ -191,7 +191,7 @@ object DisplayWellDataForm: TDisplayWellDataForm
     Top = 376
     Width = 32
     AutoSize = False
-    Caption = 'Ins'
+    Caption = 'Units'
     ParentColor = False
   end
   object CasingID: TStaticText
@@ -222,9 +222,9 @@ object DisplayWellDataForm: TDisplayWellDataForm
     Left = 240
     Height = 22
     Top = 432
-    Width = 24
+    Width = 33
     AutoSize = False
-    Caption = 'Ft'
+    Caption = 'Units'
     ParentColor = False
   end
   object LinerShoeTD: TStaticText
@@ -239,9 +239,9 @@ object DisplayWellDataForm: TDisplayWellDataForm
     Left = 240
     Height = 22
     Top = 456
-    Width = 24
+    Width = 32
     AutoSize = False
-    Caption = 'Ft'
+    Caption = 'Units'
     ParentColor = False
   end
   object LinerID: TStaticText
@@ -258,8 +258,9 @@ object DisplayWellDataForm: TDisplayWellDataForm
     Top = 480
     Width = 32
     AutoSize = False
-    Caption = 'Ins'
+    Caption = 'Units'
     ParentColor = False
+    OnClick = LinerIDUoMLabelClick
   end
   object NumberOfOpenHoleSections: TStaticText
     Left = 304
@@ -375,32 +376,69 @@ object DisplayWellDataForm: TDisplayWellDataForm
     Left = 122
     Height = 17
     Top = 56
-    Width = 110
+    Width = 143
     AutoSize = False
+    Caption = '$OPERATOR'
     ParentColor = False
   end
   object WellNameValue: TLabel
     Left = 120
     Height = 17
     Top = 72
-    Width = 110
+    Width = 143
     AutoSize = False
+    Caption = '$WELLNAME'
     ParentColor = False
   end
   object ElevationRKBValue: TLabel
-    Left = 112
-    Height = 17
+    Left = 183
+    Height = 16
     Top = 96
-    Width = 110
+    Width = 44
     AutoSize = False
+    Caption = '999.99'
     ParentColor = False
   end
   object OffshoreYNValue: TLabel
-    Left = 122
-    Height = 17
+    Left = 215
+    Height = 16
     Top = 120
-    Width = 110
+    Width = 15
     AutoSize = False
+    Caption = '?'
+    ParentColor = False
+  end
+  object SubSeaWellHeadYNValue: TLabel
+    Left = 215
+    Height = 16
+    Top = 152
+    Width = 15
+    AutoSize = False
+    Caption = '?'
+    ParentColor = False
+  end
+  object WaterDepthValue: TLabel
+    Left = 186
+    Height = 16
+    Top = 176
+    Width = 44
+    Caption = '999.99'
+    ParentColor = False
+  end
+  object RiserTDValue: TLabel
+    Left = 186
+    Height = 16
+    Top = 204
+    Width = 44
+    Caption = '999.99'
+    ParentColor = False
+  end
+  object RiserIDValue: TLabel
+    Left = 186
+    Height = 16
+    Top = 232
+    Width = 44
+    Caption = '999.99'
     ParentColor = False
   end
 end

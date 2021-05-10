@@ -23,54 +23,76 @@ type
 
   TDisplayWellDataForm = class(TForm)
     Button1: TButton;
-    ElevationRKBValue: TLabel;
-    OffshoreYNValue: TLabel;
+
+    WellDataSummaryTitle: TStaticText;
+
+    WellOperator: TStaticText;
     WellOperatorValue: TLabel;
-    OpenHoleSection2IDUoMLabel: TLabel;
-    OpenHoleSection1TDUoMLabel: TLabel;
-    LinerID: TStaticText;
-    LinerIDUoMLabel: TLabel;
-    LinerShoeTDUoMLabel: TLabel;
-    LinerHangerTD: TStaticText;
-    LinerHangerUoMLabel: TLabel;
-    ChokeLineID: TStaticText;
-    CasingShoeTDUoMLabel: TLabel;
+
+    WellName: TStaticText;
+    WellNameValue: TLabel;
+
     ElevationRKB: TStaticText;
+    ElevationRKBValue: TLabel;
     ElevationRKBUoMLabel: TLabel;
-    ChokeLineLength: TStaticText;
-    ChokeLineLengthUoMLabel: TLabel;
+
+    OffshoreYN: TStaticText;
+    OffshoreYNValue: TLabel;
+
+    SubSeaWellHeadYN: TStaticText;
+    SubSeaWellHeadYNValue: TLabel;
+
+    WaterDepth: TStaticText;
+    WaterDepthValue: TLabel;
+    WaterDepthUoMLabel: TLabel;
+
+    RiserID: TStaticText;
+    RiserIDValue: TLabel;
+    RiserIDUoMLabel: TLabel;
+
+    RiserTD: TStaticText;
+    RiserTDValue: TLabel;
+    RiserTDUoMLabel: TLabel;
+
+    CasingYN: TStaticText;
     CasingID: TStaticText;
-    LinerShoeTD: TStaticText;
-    ChokeLineIDUoMLabel: TLabel;
-    CasingShoeTD: TStaticText;
     CasingIDUoMLabel: TLabel;
-    LinerYN: TStaticText;
+    CasingShoeTD: TStaticText;
+    CasingShoeTDUoMLabel: TLabel;
+
     NumberOfOpenHoleSections: TStaticText;
-    OpenHoleSection3IDUoMLabel: TLabel;
-    OpenHoleSection2TDUoMLabel: TLabel;
-    OpenHoleSection2ID: TStaticText;
-    OpenHoleSection1TD: TStaticText;
-    OpenHoleSection3TDUoMLabel: TLabel;
-    OpenHoleSection3ID: TStaticText;
-    OpenHoleSection2TD: TStaticText;
-    OpenHoleSection3TD: TStaticText;
     OpenHoleSection1ID: TStaticText;
     OpenHoleSection1IDUoMLabel: TLabel;
-    WaterDepth: TStaticText;
-    WaterDepthUoMLabel: TLabel;
-    SubSeaWellHeadYN: TStaticText;
-    RiserID: TStaticText;
-    RiserTDUoMLabel: TLabel;
-    OffshoreYN: TStaticText;
+    OpenHoleSection1TD: TStaticText;
+    OpenHoleSection1TDUoMLabel: TLabel;
+
+    OpenHoleSection2ID: TStaticText;
+    OpenHoleSection2IDUoMLabel: TLabel;
+    OpenHoleSection2TD: TStaticText;
+    OpenHoleSection2TDUoMLabel: TLabel;
+
+    OpenHoleSection3ID: TStaticText;
+    OpenHoleSection3IDUoMLabel: TLabel;
+    OpenHoleSection3TD: TStaticText;
+    OpenHoleSection3TDUoMLabel: TLabel;
+
+    LinerYN: TStaticText;
+    LinerID: TStaticText;
+    LinerIDUoMLabel: TLabel;
+    LinerShoeTD: TStaticText;
+    LinerShoeTDUoMLabel: TLabel;
+    LinerHangerTD: TStaticText;
+    LinerHangerUoMLabel: TLabel;          {refactor to TDUoMLabel }
+
+    ChokeLineID: TStaticText;
+    ChokeLineIDUoMLabel: TLabel;
+    ChokeLineLength: TStaticText;
+    ChokeLineLengthUoMLabel: TLabel;
+
     CloseDisplayWellData: TButton;
-    RiserIDUoMLabel: TLabel;
-    WellDataSummaryTitle: TStaticText;
-    RiserTD: TStaticText;
-    CasingYN: TStaticText;
-    WellName: TStaticText;
-    WellOperator: TStaticText;
-    WellNameValue: TLabel;
+
     procedure FormActivate(Sender: TObject);
+    procedure LinerIDUoMLabelClick(Sender: TObject);
     Procedure OnClose(Sender: TObject);
     procedure CloseDisplayWellDataClick(Sender: TObject);
     procedure FormCreate(Sender: TObject);
@@ -117,11 +139,48 @@ end;
 
 procedure TDisplayWellDataForm.FormActivate(Sender: TObject);
 begin
+ ElevationRKBUoMLabel.Caption:=UoMLabel[1];  { user depth }
+ WaterDepthUoMLabel.Caption:=UoMLabel[1];    { user depth }
+ RiserTDUoMLabel.Caption:=UoMLabel[1];       { user depth }
+ RiserIDUoMLabel.Caption:=UoMLabel[8];       { always inches }
+
+
  StringToMemo('Form Well Data Summary activated....');
  WellOperatorValue.Caption:=Data.WellOperator;
  WellNameValue.Caption:=Data.WellName;
  ElevationRKBValue.Caption:=FloatToStr(Data.ElevationRKB);
+
  OffshoreYNValue.Caption:=BoolToStr(Data.Offshore);
+
+ if Data.Offshore then
+ begin
+   OffshoreYNValue.Caption:='Y';
+   WaterDepthValue.Caption:=FloatToStr(Data.WaterDepth);
+
+   if Data.SubSeaWellHead then
+     begin
+       SubSeaWellHeadYNValue.Caption:='Y';
+       RiserIDValue.Caption:=FloatToStr(Data.RiserID);
+       RiserTDValue.Caption:=FloatToStr(Data.RiserTD);
+     end else
+     begin
+       SubSeaWellHeadYNValue.Caption:='N';
+       RiserIDValue.Caption:='N/A';
+       RiserTDValue.Caption:='N/A';
+     end;
+ end
+ else
+ begin
+   OffshoreYNValue.Caption:='N';
+   WaterDepthValue.Caption:='N/A';
+ end;
+
+
+end;
+
+procedure TDisplayWellDataForm.LinerIDUoMLabelClick(Sender: TObject);
+begin
+
 end;
 
 end.

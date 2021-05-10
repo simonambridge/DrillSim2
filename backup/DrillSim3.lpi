@@ -154,17 +154,23 @@
       <Unit24>
         <Filename Value="FormConfigDefaults.pas"/>
         <IsPartOfProject Value="True"/>
+        <ComponentName Value="SystemDefaultsForm"/>
         <HasResources Value="True"/>
+        <ResourceBaseClass Value="Form"/>
       </Unit24>
       <Unit25>
         <Filename Value="FormDisplayWellData.pas"/>
         <IsPartOfProject Value="True"/>
+        <ComponentName Value="DisplayWellDataForm"/>
         <HasResources Value="True"/>
+        <ResourceBaseClass Value="Form"/>
       </Unit25>
       <Unit26>
         <Filename Value="FormGeneralData.pas"/>
         <IsPartOfProject Value="True"/>
+        <ComponentName Value="GeneralDataForm"/>
         <HasResources Value="True"/>
+        <ResourceBaseClass Value="Form"/>
       </Unit26>
       <Unit27>
         <Filename Value="FormGeologyData.pas"/>
