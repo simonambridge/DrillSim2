@@ -39,7 +39,7 @@ Type
     HelpSet    = Record
                    HelpText : array[1..200] of String60;
                  End;
-    Test              = array[1..7] of real;
+    //Test              = array[1..7] of real;
 
     WellData   = Record
                    WellOperator                : String120;
@@ -213,22 +213,35 @@ Type
 
 
 Const
-    volcon    = 1029;               HHPcon    = 1714;
-    StandLen  = 90;                 Bbl2Gal   = 42;
-    Presscon  = 0.052;              Zero      = 0;
-    Rheocon1  = 24.51;              Rheocon2  = 64.57;
-    Rheocon3  = 9.899999;           Rheocon4  = 0.079;
-    Rheocon5  = 49.56;              Rheocon6  = 0.25;
-    Rheocon7  = 93000.0;            Rheocon8  = 282;
-    Rheocon9  = 90000.0;            Rheocon10 = 1024;
-    Rheocon11 = 0.32068;            Rheocon12 = 10858;
-    Rheocon13 = 0.2;                Rheocon14 = 1.86;
-    Rheocon15 = 0.00015;            Rheocon16 = 38780.0;
-    Rheocon17 = 0.000001;           Rheocon18 = 2.8;
+    VolCon    = 1029;
+    // HHPcon    = 1714;   { not used 5/21 }
+    StandLen  = 90;
+    Bbl2Gal   = 42;
+    Presscon  = 0.052;
+    Zero      = 0;
 
-    VersionNumber = '3.0.0';        { used in command line }
-    VersionDate   = '(6/2015)';     { used in command line }
-    Title         = 'DrillSim';     { used in command line }
+    Rheocon1  = 24.51;
+    Rheocon2  = 64.57;
+    Rheocon3  = 9.899999;
+    Rheocon4  = 0.079;
+    // Rheocon5  = 49.56;   { not used 5/21 }
+    Rheocon6  = 0.25;
+    Rheocon7  = 93000.0;
+    Rheocon8  = 282;
+    Rheocon9  = 90000.0;
+    Rheocon10 = 1024;
+    Rheocon11 = 0.32068;
+    Rheocon12 = 10858;
+    Rheocon13 = 0.2;
+    // Rheocon14 = 1.86;     { not used 5/21 }
+    Rheocon15 = 0.00015;
+    Rheocon16 = 38780.0;
+    Rheocon17 = 0.000001;
+    Rheocon18 = 2.8;
+
+    VersionNumber = '3.1.0';        { used in command line }
+    VersionDate   = '(4/2021)';     { used in command line }
+    //Title         = 'DrillSim';     { not used 5/21 }
     Space       :   char     = ' ';
 
 
@@ -263,7 +276,7 @@ Var
    LastString          : String120;
    PreviousString      : String120;
    ThisString          : String120;
-   Input               : String[1]; { was char; }  { Utility input char' }
+   Input               : String[1];    { was char; }  { Utility input char' }
    CharInput           : char;                     {   ----- " -----     }
    TempString          : String120;    { utility diplsy string }
 
@@ -279,9 +292,8 @@ Var
    SimulateMessageCode : integer;
    Paused              : boolean;
 
-
 { Hydvar vars }
-   Bhcp                             : real;      {unused @4/21}
+   // Bhcp                             : real;      {unused @4/21}
    PosCounter                       : integer;
 { Simvar vars }
    LastTD              : real;
@@ -289,36 +301,36 @@ Var
    LastCasingPressure  : real;
    LastBHPAnn          : real;
    LastPitGain         : real;
-   LastPlBit           : real;   { not used @4/21}
-   LastPlAnn           : real;   { not used @4/21}
-   LastPlSurf          : real;   { not used @4/21}
-   LastPlPipe          : real;   { not used @4/21}
+   // LastPlBit           : real;   { not used @4/21}
+   // LastPlAnn           : real;   { not used @4/21}
+   // LastPlSurf          : real;   { not used @4/21}
+   // LastPlPipe          : real;   { not used @4/21}
    LastPlCirc          : real;
-   LastPlChoke         : real;   { not used @4/21}
+   // LastPlChoke         : real;   { not used @4/21}
 
    LastFlowOut         : real;
    LastFlowIn          : real;
-   LastElapsedFlow     : real;   { not used @4/21}
+   // LastElapsedFlow     : real;   { not used @4/21}
    LastCalculatedFlow  : real;
 
    LastRetPitVol       : real;
 
-   LastJetVel          : real;   { not used @4/21}
-   LastImpForce        : real;   { not used @4/21}
-   LastBitHp           : real;   { not used @4/21}
-   LastEff             : real;   { not used @4/21}
-   LastTotHp           : real;   { not used @4/21}
-   LastFf              : real;
-   LastRn              : real;   { not used @4/21}
-   LastFn              : real;   { not used @4/21}
-   LastFk              : real;
+   // LastJetVel          : real;   { not used @4/21}
+   // LastImpForce        : real;   { not used @4/21}
+   // LastBitHp           : real;   { not used @4/21}
+   // LastEff             : real;   { not used @4/21}
+   // LastTotHp           : real;   { not used @4/21}
+   // LastFf              : real;   { not used @4/21}
+   // LastRn              : real;   { not used @4/21}
+   // LastFn              : real;   { not used @4/21}
+   // LastFk              : real;   { not used @4/21}
 
    LastKellyHeight     : real;
    KellyImageIndex     : integer;
 
    LastWOB             : real;
-   LastWOH             : real;   { not used @4/21}
-   LastStrWt           : real;   { not used @4/21}
+   //LastWOH             : real;   { not used @4/21}
+   //LastStrWt           : real;   { not used @4/21}
 
    LastROP             : real;
    LastRPM             : real;
@@ -328,8 +340,8 @@ Var
    LastSocketSeconds   : integer;
    LastHundredths      : integer;
 
-   LastInflux          : real;   { not used @4/21}
-   LastInfluxRate      : real;   { not used @4/21}
+   // LastInflux          : real;   { not used @4/21}
+   // LastInfluxRate      : real;   { not used @4/21}
    LastECD             : real;
    LastChoke           : integer;
 
@@ -341,14 +353,14 @@ Var
    OriginalPitVolume   : real;
    LastMwOut           : real;
    LastMwIn            : real;
-   LastMudPv           : real;   { not used @4/21}
-   LastMudYp           : real;   { not used @4/21}
-   LastMudGel          : real;   { not used @4/21}
+   // LastMudPv           : real;   { not used @4/21}
+   // LastMudYp           : real;   { not used @4/21}
+   // LastMudGel          : real;   { not used @4/21}
    LastCalculatedMudWt : real;
 
-   LastTotStrks        : real;   { not used @4/21}
+   // LastTotStrks        : real;   { not used @4/21}
    LastStrokeCounter   : real;
-   LastSPM             : array[1..3] of real;   { not used @4/21}
+   // LastSPM             : array[1..3] of real;   { not used @4/21}
    DrilledHoleVol      : real;
    ExtraVolume         : real;
    ChokeLinePl         : real;

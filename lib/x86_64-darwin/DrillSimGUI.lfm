@@ -1,11 +1,11 @@
 object DrillSim: TDrillSim
-  Left = 491
-  Height = 677
-  Top = 278
-  Width = 960
+  Left = 81
+  Height = 671
+  Top = 190
+  Width = 1497
   Caption = 'DrillSim 3.0'
-  ClientHeight = 677
-  ClientWidth = 960
+  ClientHeight = 671
+  ClientWidth = 1497
   Menu = MainMenu1
   OnActivate = FormActivate
   OnClose = FormClose
@@ -264,6 +264,7 @@ object DrillSim: TDrillSim
       Top = 112
       Width = 24
       Caption = '+'
+      Color = clBlue
       Font.Color = clBlack
       Font.Height = -13
       Font.Name = 'Sans'
@@ -953,7 +954,7 @@ object DrillSim: TDrillSim
       Left = 216
       Height = 18
       Top = 167
-      Width = 74
+      Width = 70
       Caption = 'AutoDrill'
       Font.Color = clBlack
       Font.Height = 10
@@ -1135,7 +1136,7 @@ object DrillSim: TDrillSim
       Left = 112
       Height = 18
       Top = 104
-      Width = 87
+      Width = 91
       Caption = 'Power Law'
       Checked = True
       Font.Color = clBlack
@@ -1150,7 +1151,7 @@ object DrillSim: TDrillSim
       Left = 10
       Height = 18
       Top = 103
-      Width = 75
+      Width = 79
       Caption = 'Bingham'
       Font.Color = clMaroon
       Font.Height = -13
@@ -1647,6 +1648,16 @@ object DrillSim: TDrillSim
       ParentColor = False
       ParentFont = False
     end
+  end
+  object DataBox: TGroupBox
+    Left = 960
+    Height = 651
+    Top = 8
+    Width = 522
+    Caption = 'Data Viewer'
+    Color = clActiveCaption
+    ParentColor = False
+    TabOrder = 9
   end
   object MainMenu1: TMainMenu
     Left = 64

@@ -65,6 +65,7 @@ type
     CasingPressureText: TStaticText;
     CasingPressureUoMLabel: TStaticText;
     CasingPressureValue: TLabel;
+    DataBox: TGroupBox;
     PressureBox: TGroupBox;
     FlowInText: TStaticText;
     PipeMinus: TBCButton;
@@ -663,6 +664,8 @@ begin
     PipeRAMsValue.Caption:='Open';
     BlindRAMsValue.Caption:='Open';
   End;
+
+   CommandLine.SetFocus;
 end;
 
 procedure TDrillSim.FormCreate(Sender: TObject);
