@@ -312,9 +312,9 @@ begin
     case Data.MaxPipes of
       1: Begin
            NumPipeSectionsComboBox.ItemIndex:=0;
-           DrillCollarLengthData.Text:=FloatToStr(Round2(Data.Pipe[1,1]*UoMConverter[1],2));  { API->user depth }
-           _WellPipe[1,1]:=Data.Pipe[1,1]; { API internal }              
            DrillCollarLengthData.Enabled:=True;
+           DrillCollarLengthData.Text:=FloatToStr(Round2(Data.Pipe[1,1]*UoMConverter[1],2));  { API->user depth }
+           _WellPipe[1,1]:=Data.Pipe[1,1]; { API internal }
 
            DrillCollarIDData.Enabled:=True;
            DrillCollarIDData.Text:=FloatToStr(Round2(Data.Pipe[1,2]*UoMConverter[8],4));  { inches }

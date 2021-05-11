@@ -1,7 +1,7 @@
 object DisplayWellDataForm: TDisplayWellDataForm
-  Left = 998
+  Left = 1011
   Height = 722
-  Top = 56
+  Top = 44
   Width = 687
   Caption = 'Well Data Summary'
   ClientHeight = 722
@@ -22,38 +22,38 @@ object DisplayWellDataForm: TDisplayWellDataForm
     Height = 24
     Top = 51
     Width = 112
-    Caption = 'Well Operator'
+    Caption = 'Well Operator:'
     TabOrder = 1
   end
   object WellName: TStaticText
     Left = 8
     Height = 24
-    Top = 72
+    Top = 79
     Width = 112
-    Caption = 'Well Name'
+    Caption = 'Well Name:'
     TabOrder = 2
   end
   object ElevationRKB: TStaticText
     Left = 9
     Height = 24
-    Top = 96
+    Top = 120
     Width = 112
-    Caption = 'Elevation RKB'
+    Caption = 'Elevation RKB:'
     TabOrder = 3
   end
   object OffshoreYN: TStaticText
     Left = 9
     Height = 24
-    Top = 120
+    Top = 144
     Width = 112
-    Caption = 'Offshore (Y/N)'
+    Caption = 'Offshore (Y/N):'
     TabOrder = 4
   end
   object ElevationRKBUoMLabel: TLabel
     Left = 241
     Height = 22
-    Top = 96
-    Width = 24
+    Top = 120
+    Width = 33
     AutoSize = False
     Caption = 'Units'
     ParentColor = False
@@ -68,94 +68,77 @@ object DisplayWellDataForm: TDisplayWellDataForm
     TabOrder = 5
   end
   object RiserTD: TStaticText
-    Left = 9
+    Left = 10
     Height = 22
-    Top = 208
+    Top = 232
     Width = 103
-    Caption = 'Riser TD'
+    Caption = 'Riser TD:'
     TabOrder = 6
   end
   object RiserTDUoMLabel: TLabel
     Left = 240
     Height = 22
-    Top = 208
-    Width = 24
+    Top = 232
+    Width = 33
     AutoSize = False
     Caption = 'Units'
     ParentColor = False
   end
   object RiserID: TStaticText
-    Left = 8
+    Left = 10
     Height = 22
-    Top = 232
+    Top = 256
     Width = 103
-    Caption = 'Riser ID'
+    Caption = 'Riser ID:'
     TabOrder = 7
   end
   object RiserIDUoMLabel: TLabel
     Left = 240
     Height = 22
-    Top = 232
+    Top = 256
     Width = 32
     AutoSize = False
     Caption = 'Units'
     ParentColor = False
   end
   object CasingYN: TStaticText
-    Left = 9
+    Left = 8
     Height = 25
     Top = 328
     Width = 97
-    Caption = 'Casing (Y/N)'
+    Caption = 'Casing (Y/N):'
     TabOrder = 8
   end
   object SubSeaWellHeadYN: TStaticText
     Left = 8
     Height = 24
-    Top = 152
+    Top = 176
     Width = 191
-    Caption = 'Sub Sea Well Head (Y/N)'
+    Caption = 'Sub Sea Well Head (Y/N):'
     TabOrder = 9
   end
-  object ChokeLineLength: TStaticText
+  object ChokeLineID: TStaticText
     Left = 8
     Height = 25
-    Top = 264
+    Top = 280
     Width = 135
-    Caption = 'Choke Line Length'
+    Caption = 'Choke Line ID:'
     TabOrder = 10
   end
-  object ChokeLineLengthUoMLabel: TLabel
-    Left = 240
-    Height = 22
-    Top = 264
-    Width = 24
-    AutoSize = False
-    Caption = 'Ft'
-    ParentColor = False
-  end
-  object ChokeLineID: TStaticText
-    Left = 9
-    Height = 25
-    Top = 288
-    Width = 135
-    Caption = 'Choke Line ID'
-    TabOrder = 11
-  end
   object ChokeLineIDUoMLabel: TLabel
-    Left = 240
+    Left = 239
     Height = 22
-    Top = 288
+    Top = 280
     Width = 32
     AutoSize = False
-    Caption = 'Ins'
+    Caption = 'Units'
     ParentColor = False
   end
   object WaterDepthUoMLabel: TLabel
     Left = 240
     Height = 22
-    Top = 176
-    Width = 24
+    Top = 200
+    Width = 32
     AutoSize = False
     Caption = 'Units'
     ParentColor = False
@@ -163,185 +146,186 @@ object DisplayWellDataForm: TDisplayWellDataForm
   object WaterDepth: TStaticText
     Left = 8
     Height = 22
-    Top = 176
+    Top = 200
     Width = 103
-    Caption = 'Water Depth'
-    TabOrder = 12
+    Caption = 'Water Depth:'
+    TabOrder = 11
   end
-  object CasingShoeTD: TStaticText
-    Left = 9
+  object CasingTD: TStaticText
+    Left = 8
     Height = 24
     Top = 352
     Width = 161
-    Caption = 'Casing Shoe TD'
-    TabOrder = 13
+    Caption = 'Casing Shoe TD:'
+    TabOrder = 12
   end
-  object CasingShoeTDUoMLabel: TLabel
-    Left = 240
+  object CasingTDUoMLabel: TLabel
+    Left = 239
     Height = 22
     Top = 352
-    Width = 24
+    Width = 32
     AutoSize = False
-    Caption = 'Ft'
+    Caption = 'Units'
     ParentColor = False
   end
   object CasingIDUoMLabel: TLabel
-    Left = 240
+    Left = 239
     Height = 22
     Top = 376
     Width = 32
     AutoSize = False
-    Caption = 'Ins'
+    Caption = 'Units'
     ParentColor = False
   end
   object CasingID: TStaticText
-    Left = 9
+    Left = 8
     Height = 22
     Top = 376
     Width = 103
-    Caption = 'Casing ID'
-    TabOrder = 14
+    Caption = 'Casing ID:'
+    TabOrder = 13
   end
   object LinerYN: TStaticText
     Left = 8
     Height = 25
-    Top = 408
+    Top = 400
     Width = 97
-    Caption = 'Liner (Y/N)'
-    TabOrder = 15
+    Caption = 'Liner (Y/N):'
+    TabOrder = 14
   end
   object LinerHangerTD: TStaticText
     Left = 9
     Height = 24
-    Top = 432
+    Top = 424
     Width = 161
-    Caption = 'Liner Hanger TD'
-    TabOrder = 16
+    Caption = 'Liner Hanger TD:'
+    TabOrder = 15
   end
-  object LinerHangerUoMLabel: TLabel
+  object LinerTopTDUoMLabel: TLabel
     Left = 240
     Height = 22
-    Top = 432
-    Width = 24
+    Top = 424
+    Width = 33
     AutoSize = False
-    Caption = 'Ft'
+    Caption = 'Units'
     ParentColor = False
   end
   object LinerShoeTD: TStaticText
     Left = 9
     Height = 24
-    Top = 456
+    Top = 448
     Width = 161
-    Caption = 'Liner Shoe TD'
-    TabOrder = 17
+    Caption = 'Liner Shoe TD:'
+    TabOrder = 16
   end
-  object LinerShoeTDUoMLabel: TLabel
+  object LinerBottomTDUoMLabel: TLabel
     Left = 240
     Height = 22
-    Top = 456
-    Width = 24
+    Top = 448
+    Width = 32
     AutoSize = False
-    Caption = 'Ft'
+    Caption = 'Units'
     ParentColor = False
   end
   object LinerID: TStaticText
-    Left = 8
+    Left = 9
     Height = 22
-    Top = 480
+    Top = 472
     Width = 103
-    Caption = 'Liner ID'
-    TabOrder = 18
+    Caption = 'Liner ID:'
+    TabOrder = 17
   end
   object LinerIDUoMLabel: TLabel
     Left = 240
     Height = 22
-    Top = 480
+    Top = 472
     Width = 32
     AutoSize = False
-    Caption = 'Ins'
+    Caption = 'Units'
     ParentColor = False
+    OnClick = LinerIDUoMLabelClick
   end
   object NumberOfOpenHoleSections: TStaticText
     Left = 304
     Height = 20
     Top = 51
     Width = 244
-    Caption = 'Number of Open Hole Sections'
-    TabOrder = 19
+    Caption = 'Number of Open Hole Sections:'
+    TabOrder = 18
   end
   object OpenHoleSection1TD: TStaticText
-    Left = 304
+    Left = 312
     Height = 21
     Top = 79
     Width = 178
-    Caption = 'Open Hole Section #1 TD'
-    TabOrder = 20
+    Caption = 'Open Hole Section #1 TD:'
+    TabOrder = 19
   end
   object OpenHoleSection2TD: TStaticText
-    Left = 304
+    Left = 312
     Height = 21
     Top = 128
     Width = 178
-    Caption = 'Open Hole Section #2 TD'
-    TabOrder = 21
+    Caption = 'Open Hole Section #2 TD:'
+    TabOrder = 20
   end
   object OpenHoleSection3TD: TStaticText
-    Left = 304
+    Left = 312
     Height = 21
-    Top = 192
+    Top = 176
     Width = 178
-    Caption = 'Open Hole Section #3 TD'
-    TabOrder = 22
+    Caption = 'Open Hole Section #3 TD:'
+    TabOrder = 21
   end
   object OpenHoleSection1ID: TStaticText
-    Left = 449
+    Left = 448
     Height = 25
     Top = 103
     Width = 33
-    Caption = 'ID'
-    TabOrder = 23
+    Caption = 'ID:'
+    TabOrder = 22
   end
   object OpenHoleSection2ID: TStaticText
-    Left = 449
+    Left = 448
     Height = 25
-    Top = 160
+    Top = 152
     Width = 33
-    Caption = 'ID'
-    TabOrder = 24
+    Caption = 'ID:'
+    TabOrder = 23
   end
   object OpenHoleSection3ID: TStaticText
-    Left = 449
+    Left = 448
     Height = 25
-    Top = 224
+    Top = 200
     Width = 33
-    Caption = 'ID'
-    TabOrder = 25
+    Caption = 'ID:'
+    TabOrder = 24
   end
   object OpenHoleSection1TDUoMLabel: TLabel
     Left = 560
     Height = 22
     Top = 79
-    Width = 24
+    Width = 32
     AutoSize = False
-    Caption = 'Ft'
+    Caption = 'Units'
     ParentColor = False
   end
   object OpenHoleSection2TDUoMLabel: TLabel
     Left = 560
     Height = 22
     Top = 128
-    Width = 24
+    Width = 32
     AutoSize = False
-    Caption = 'Ft'
+    Caption = 'Units'
     ParentColor = False
   end
   object OpenHoleSection3TDUoMLabel: TLabel
     Left = 560
     Height = 22
-    Top = 192
-    Width = 24
+    Top = 176
+    Width = 32
     AutoSize = False
-    Caption = 'Ft'
+    Caption = 'Units'
     ParentColor = False
   end
   object OpenHoleSection1IDUoMLabel: TLabel
@@ -350,25 +334,25 @@ object DisplayWellDataForm: TDisplayWellDataForm
     Top = 103
     Width = 32
     AutoSize = False
-    Caption = 'Ins'
+    Caption = 'Units'
     ParentColor = False
   end
   object OpenHoleSection2IDUoMLabel: TLabel
     Left = 560
     Height = 22
-    Top = 160
+    Top = 152
     Width = 32
     AutoSize = False
-    Caption = 'Ins'
+    Caption = 'Units'
     ParentColor = False
   end
   object OpenHoleSection3IDUoMLabel: TLabel
     Left = 560
     Height = 22
-    Top = 224
+    Top = 200
     Width = 32
     AutoSize = False
-    Caption = 'Ins'
+    Caption = 'Units'
     ParentColor = False
   end
   object WellOperatorValue: TLabel
@@ -376,6 +360,7 @@ object DisplayWellDataForm: TDisplayWellDataForm
     Height = 17
     Top = 56
     Width = 143
+    Alignment = taCenter
     AutoSize = False
     Caption = '$OPERATOR'
     ParentColor = False
@@ -384,16 +369,18 @@ object DisplayWellDataForm: TDisplayWellDataForm
     Left = 120
     Height = 17
     Top = 72
-    Width = 143
+    Width = 144
+    Alignment = taCenter
     AutoSize = False
     Caption = '$WELLNAME'
     ParentColor = False
   end
   object ElevationRKBValue: TLabel
-    Left = 183
+    Left = 159
     Height = 16
-    Top = 96
-    Width = 44
+    Top = 120
+    Width = 68
+    Alignment = taRightJustify
     AutoSize = False
     Caption = '999.99'
     ParentColor = False
@@ -401,8 +388,9 @@ object DisplayWellDataForm: TDisplayWellDataForm
   object OffshoreYNValue: TLabel
     Left = 215
     Height = 16
-    Top = 120
+    Top = 144
     Width = 15
+    Alignment = taRightJustify
     AutoSize = False
     Caption = '?'
     ParentColor = False
@@ -410,8 +398,9 @@ object DisplayWellDataForm: TDisplayWellDataForm
   object SubSeaWellHeadYNValue: TLabel
     Left = 215
     Height = 16
-    Top = 152
+    Top = 176
     Width = 15
+    Alignment = taRightJustify
     AutoSize = False
     Caption = '?'
     ParentColor = False
@@ -419,25 +408,524 @@ object DisplayWellDataForm: TDisplayWellDataForm
   object WaterDepthValue: TLabel
     Left = 186
     Height = 16
-    Top = 176
+    Top = 200
     Width = 44
+    Alignment = taRightJustify
     Caption = '999.99'
     ParentColor = False
   end
   object RiserTDValue: TLabel
     Left = 186
     Height = 16
-    Top = 204
+    Top = 228
     Width = 44
+    Alignment = taRightJustify
     Caption = '999.99'
     ParentColor = False
   end
   object RiserIDValue: TLabel
     Left = 186
     Height = 16
-    Top = 232
+    Top = 256
     Width = 44
+    Alignment = taRightJustify
     Caption = '999.99'
+    ParentColor = False
+  end
+  object KillLineID: TStaticText
+    Left = 8
+    Height = 25
+    Top = 303
+    Width = 135
+    Alignment = taRightJustify
+    Caption = 'Kill Line ID:'
+    OnClick = KillLineIDClick
+    TabOrder = 25
+  end
+  object ChokeLineIDValue: TLabel
+    Left = 185
+    Height = 16
+    Top = 280
+    Width = 44
+    Alignment = taRightJustify
+    Caption = '999.99'
+    ParentColor = False
+  end
+  object KillLineIDValue: TLabel
+    Left = 185
+    Height = 16
+    Top = 303
+    Width = 44
+    Alignment = taRightJustify
+    Caption = '999.99'
+    ParentColor = False
+  end
+  object KillLineIDUoMLabel: TLabel
+    Left = 239
+    Height = 22
+    Top = 303
+    Width = 32
+    AutoSize = False
+    Caption = 'Units'
+    ParentColor = False
+  end
+  object CasingTDValue: TLabel
+    Left = 184
+    Height = 16
+    Top = 352
+    Width = 44
+    Alignment = taRightJustify
+    Caption = '999.99'
+    ParentColor = False
+  end
+  object CasingIDValue: TLabel
+    Left = 184
+    Height = 16
+    Top = 376
+    Width = 44
+    Alignment = taRightJustify
+    Caption = '999.99'
+    ParentColor = False
+  end
+  object CasingYNValue: TLabel
+    Left = 213
+    Height = 16
+    Top = 328
+    Width = 15
+    Alignment = taRightJustify
+    AutoSize = False
+    Caption = '?'
+    ParentColor = False
+  end
+  object LinerYNValue: TLabel
+    Left = 214
+    Height = 16
+    Top = 400
+    Width = 15
+    Alignment = taRightJustify
+    AutoSize = False
+    Caption = '?'
+    ParentColor = False
+  end
+  object LinerTopTDValue: TLabel
+    Left = 183
+    Height = 16
+    Top = 424
+    Width = 44
+    Alignment = taRightJustify
+    Caption = '999.99'
+    ParentColor = False
+  end
+  object LinerBottomTDValue: TLabel
+    Left = 185
+    Height = 16
+    Top = 448
+    Width = 44
+    Alignment = taRightJustify
+    Caption = '999.99'
+    ParentColor = False
+  end
+  object LinerIDValue: TLabel
+    Left = 185
+    Height = 16
+    Top = 472
+    Width = 44
+    Alignment = taRightJustify
+    Caption = '999.99'
+    ParentColor = False
+  end
+  object NumOpenHoleSectionsValue: TLabel
+    Left = 524
+    Height = 16
+    Top = 51
+    Width = 68
+    Alignment = taRightJustify
+    AutoSize = False
+    Caption = '999.99'
+    ParentColor = False
+  end
+  object NumberOfPipeSections: TStaticText
+    Left = 304
+    Height = 20
+    Top = 235
+    Width = 244
+    Caption = 'Number of Pipe Sections:'
+    TabOrder = 26
+  end
+  object PipeSection1TD: TStaticText
+    Left = 344
+    Height = 21
+    Top = 263
+    Width = 146
+    Caption = 'Pipe Section #1 TD:'
+    TabOrder = 27
+  end
+  object PipeSection2TD: TStaticText
+    Left = 344
+    Height = 21
+    Top = 338
+    Width = 154
+    Caption = 'PipeSection #2 TD:'
+    TabOrder = 28
+  end
+  object PipeSection3TD: TStaticText
+    Left = 344
+    Height = 21
+    Top = 410
+    Width = 154
+    Caption = 'Pipe Section #3 TD:'
+    TabOrder = 29
+  end
+  object PipeSection1ID: TStaticText
+    Left = 448
+    Height = 25
+    Top = 280
+    Width = 33
+    Caption = 'ID:'
+    TabOrder = 30
+  end
+  object PipeSection2ID: TStaticText
+    Left = 448
+    Height = 25
+    Top = 354
+    Width = 33
+    Caption = 'ID:'
+    TabOrder = 31
+  end
+  object PipeSection3ID: TStaticText
+    Left = 448
+    Height = 25
+    Top = 427
+    Width = 33
+    Caption = 'ID:'
+    TabOrder = 32
+  end
+  object PipeSection1TDUoMLabel: TLabel
+    Left = 560
+    Height = 22
+    Top = 263
+    Width = 32
+    AutoSize = False
+    Caption = 'Units'
+    ParentColor = False
+  end
+  object PipeSection2TDUoMLabel: TLabel
+    Left = 560
+    Height = 22
+    Top = 338
+    Width = 32
+    AutoSize = False
+    Caption = 'Units'
+    ParentColor = False
+  end
+  object PipeSection3TDUoMLabel: TLabel
+    Left = 560
+    Height = 22
+    Top = 410
+    Width = 32
+    AutoSize = False
+    Caption = 'Units'
+    ParentColor = False
+  end
+  object PipeSection1IDUoMLabel: TLabel
+    Left = 560
+    Height = 22
+    Top = 280
+    Width = 32
+    AutoSize = False
+    Caption = 'Units'
+    ParentColor = False
+  end
+  object PipeSection2IDUoMLabel: TLabel
+    Left = 560
+    Height = 22
+    Top = 354
+    Width = 32
+    AutoSize = False
+    Caption = 'Units'
+    ParentColor = False
+  end
+  object PipeSection3IDUoMLabel: TLabel
+    Left = 560
+    Height = 22
+    Top = 427
+    Width = 32
+    AutoSize = False
+    Caption = 'Units'
+    ParentColor = False
+  end
+  object NumPipeSectionsValue: TLabel
+    Left = 524
+    Height = 16
+    Top = 235
+    Width = 68
+    Alignment = taRightJustify
+    AutoSize = False
+    Caption = '999.99'
+    ParentColor = False
+  end
+  object OpenHoleSection1TDValue: TLabel
+    Left = 504
+    Height = 16
+    Top = 80
+    Width = 44
+    Alignment = taRightJustify
+    Caption = '999.99'
+    ParentColor = False
+  end
+  object OpenHoleSection2TDValue: TLabel
+    Left = 504
+    Height = 16
+    Top = 128
+    Width = 44
+    Alignment = taRightJustify
+    Caption = '999.99'
+    ParentColor = False
+  end
+  object OpenHoleSection3TDValue: TLabel
+    Left = 504
+    Height = 16
+    Top = 176
+    Width = 44
+    Alignment = taRightJustify
+    Caption = '999.99'
+    ParentColor = False
+  end
+  object PipeSection1TDValue: TLabel
+    Left = 504
+    Height = 16
+    Top = 263
+    Width = 44
+    Alignment = taRightJustify
+    Caption = '999.99'
+    ParentColor = False
+  end
+  object PipeSection2TDValue: TLabel
+    Left = 504
+    Height = 16
+    Top = 338
+    Width = 44
+    Alignment = taRightJustify
+    Caption = '999.99'
+    ParentColor = False
+  end
+  object PipeSection3TDValue: TLabel
+    Left = 504
+    Height = 16
+    Top = 410
+    Width = 44
+    Alignment = taRightJustify
+    Caption = '999.99'
+    ParentColor = False
+  end
+  object OpenHoleSection1IDValue: TLabel
+    Left = 504
+    Height = 16
+    Top = 103
+    Width = 44
+    Alignment = taRightJustify
+    Caption = '999.99'
+    ParentColor = False
+  end
+  object OpenHoleSection2IDValue: TLabel
+    Left = 504
+    Height = 16
+    Top = 152
+    Width = 44
+    Alignment = taRightJustify
+    Caption = '999.99'
+    ParentColor = False
+  end
+  object OpenHoleSection3IDValue: TLabel
+    Left = 504
+    Height = 16
+    Top = 200
+    Width = 44
+    Alignment = taRightJustify
+    Caption = '999.99'
+    ParentColor = False
+  end
+  object PipeSection1IDValue: TLabel
+    Left = 504
+    Height = 16
+    Top = 280
+    Width = 44
+    Alignment = taRightJustify
+    Caption = '999.99'
+    ParentColor = False
+  end
+  object PipeSection2IDValue: TLabel
+    Left = 504
+    Height = 16
+    Top = 354
+    Width = 44
+    Alignment = taRightJustify
+    Caption = '999.99'
+    ParentColor = False
+  end
+  object PipeSection3IDValue: TLabel
+    Left = 504
+    Height = 16
+    Top = 427
+    Width = 44
+    Alignment = taRightJustify
+    Caption = '999.99'
+    ParentColor = False
+  end
+  object PipeSection1OD: TStaticText
+    Left = 440
+    Height = 25
+    Top = 297
+    Width = 33
+    Caption = 'OD:'
+    TabOrder = 33
+  end
+  object PipeSection1ODValue: TLabel
+    Left = 504
+    Height = 16
+    Top = 297
+    Width = 44
+    Alignment = taRightJustify
+    Caption = '999.99'
+    ParentColor = False
+  end
+  object PipeSection1ODUoMLabel: TLabel
+    Left = 560
+    Height = 22
+    Top = 297
+    Width = 32
+    AutoSize = False
+    Caption = 'Units'
+    ParentColor = False
+  end
+  object PipeSection1Wt: TStaticText
+    Left = 416
+    Height = 25
+    Top = 312
+    Width = 57
+    Caption = 'Weight:'
+    TabOrder = 34
+  end
+  object PipeSection1WtValue: TLabel
+    Left = 504
+    Height = 16
+    Top = 312
+    Width = 44
+    Alignment = taRightJustify
+    Caption = '999.99'
+    ParentColor = False
+  end
+  object PipeSection1WtUoMLabel: TLabel
+    Left = 560
+    Height = 22
+    Top = 312
+    Width = 32
+    AutoSize = False
+    Caption = 'Units'
+    ParentColor = False
+  end
+  object PipeSection2OD: TStaticText
+    Left = 440
+    Height = 25
+    Top = 370
+    Width = 33
+    Caption = 'OD:'
+    TabOrder = 35
+  end
+  object PipeSection2ODValue: TLabel
+    Left = 504
+    Height = 16
+    Top = 370
+    Width = 44
+    Alignment = taRightJustify
+    Caption = '999.99'
+    ParentColor = False
+  end
+  object PipeSection2ODUoMLabel: TLabel
+    Left = 560
+    Height = 22
+    Top = 370
+    Width = 32
+    AutoSize = False
+    Caption = 'Units'
+    ParentColor = False
+  end
+  object PipeSection2Wt: TStaticText
+    Left = 416
+    Height = 25
+    Top = 386
+    Width = 57
+    Caption = 'Weight:'
+    TabOrder = 36
+  end
+  object PipeSection2WtValue: TLabel
+    Left = 504
+    Height = 16
+    Top = 386
+    Width = 44
+    Alignment = taRightJustify
+    Caption = '999.99'
+    ParentColor = False
+  end
+  object PipeSection2WtUoMLabel: TLabel
+    Left = 560
+    Height = 22
+    Top = 386
+    Width = 32
+    AutoSize = False
+    Caption = 'Units'
+    ParentColor = False
+  end
+  object PipeSection3OD: TStaticText
+    Left = 440
+    Height = 25
+    Top = 444
+    Width = 33
+    Caption = 'OD:'
+    TabOrder = 37
+  end
+  object PipeSection3ODValue: TLabel
+    Left = 504
+    Height = 16
+    Top = 444
+    Width = 44
+    Alignment = taRightJustify
+    Caption = '999.99'
+    ParentColor = False
+  end
+  object PipeSection3ODUoMLabel: TLabel
+    Left = 560
+    Height = 22
+    Top = 444
+    Width = 32
+    AutoSize = False
+    Caption = 'Units'
+    ParentColor = False
+  end
+  object PipeSection3Wt: TStaticText
+    Left = 416
+    Height = 25
+    Top = 463
+    Width = 57
+    Caption = 'Weight:'
+    TabOrder = 38
+  end
+  object PipeSection3WtValue: TLabel
+    Left = 504
+    Height = 16
+    Top = 463
+    Width = 44
+    Alignment = taRightJustify
+    Caption = '999.99'
+    ParentColor = False
+  end
+  object PipeSection3WtUoMLabel: TLabel
+    Left = 560
+    Height = 22
+    Top = 463
+    Width = 32
+    AutoSize = False
+    Caption = 'Units'
     ParentColor = False
   end
 end
