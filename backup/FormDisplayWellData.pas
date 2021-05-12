@@ -25,6 +25,7 @@ type
   TDisplayWellDataForm = class(TForm)
     Button1: TButton;
     CasingIDValue: TLabel;
+    FormationText: TStaticText;
     OpenHoleSection2IDValue: TLabel;
     OpenHoleSection1TDValue: TLabel;
     NumberOfPipeSections: TStaticText;
@@ -43,45 +44,43 @@ type
     OpenHoleSection1IDValue: TLabel;
     OpenHoleSection3IDValue: TLabel;
     OpenHoleSection2TDValue: TLabel;
-    PipeSection2OD: TStaticText;
-    PipeSection3OD: TStaticText;
-    PipeSection2ODUoMLabel: TLabel;
-    PipeSection3ODUoMLabel: TLabel;
+    TitlePanel: TPanel;
+    FormationPanel: TPanel;
+    PumpsPanel: TPanel;
+    BitPanel: TPanel;
+    ElevationsPanel: TPanel;
+    RiserPanel: TPanel;
+    ChokeKillPanel: TPanel;
+    CasingPanel: TPanel;
+    LinerPanel: TPanel;
+    HolePanel: TPanel;
+    PipePanel: TPanel;
+    TestsPanel: TPanel;
     PipeSection2ODValue: TLabel;
     PipeSection3ODValue: TLabel;
-    PipeSection2Wt: TStaticText;
-    PipeSection1WtUoMLabel: TLabel;
-    PipeSection3Wt: TStaticText;
-    PipeSection2WtUoMLabel: TLabel;
+    PipeWtUoMLabel: TLabel;
     PipeSection1WtValue: TLabel;
     PipeSection1Wt: TStaticText;
-    PipeSection1ODUoMLabel: TLabel;
+    PipeODUoMLabel: TLabel;
     PipeSection1ODValue: TLabel;
     PipeSection1OD: TStaticText;
     PipeSection1IDValue: TLabel;
     OpenHoleSection3TDValue: TLabel;
-    PipeSection3WtUoMLabel: TLabel;
     PipeSection2WtValue: TLabel;
     PipeSection2IDValue: TLabel;
     PipeSection1TDValue: TLabel;
     PipeSection1ID: TStaticText;
-    PipeSection1IDUoMLabel: TLabel;
+    PipeIDUoMLabel: TLabel;
     PipeSection1TD: TStaticText;
-    PipeSection1TDUoMLabel: TLabel;
+    PipeTDUoMLabel: TLabel;
     PipeSection3WtValue: TLabel;
     PipeSection3IDValue: TLabel;
     PipeSection2TDValue: TLabel;
-    PipeSection2ID: TStaticText;
-    PipeSection2IDUoMLabel: TLabel;
+    TD: TStaticText;
     PipeSection2TD: TStaticText;
-    PipeSection2TDUoMLabel: TLabel;
     PipeSection3TDValue: TLabel;
-    PipeSection3ID: TStaticText;
-    PipeSection3IDUoMLabel: TLabel;
     PipeSection3TD: TStaticText;
-    PipeSection3TDUoMLabel: TLabel;
 
-    WellDataSummaryTitle: TStaticText;
 
     WellOperator: TStaticText;
     WellOperatorValue: TLabel;
@@ -146,9 +145,7 @@ type
 
     CloseDisplayWellData: TButton;
 
-    procedure KillLineIDClick(Sender: TObject);
     procedure FormActivate(Sender: TObject);
-    procedure LinerIDUoMLabelClick(Sender: TObject);
     Procedure OnClose(Sender: TObject);
     procedure CloseDisplayWellDataClick(Sender: TObject);
     procedure FormCreate(Sender: TObject);
@@ -326,76 +323,60 @@ begin
   NumPipeSectionsValue.Caption:=IntToStr(Data.MaxPipes);
 
   PipeSection1TDValue.Caption:='N/A';
-  PipeSection1TDUoMLabel.Caption:='-';
+  PipeTDUoMLabel.Caption:='-';
   PipeSection1IDValue.Caption:='N/A';
-  PipeSection1IDUoMLabel.Caption:='-';
+  PipeIDUoMLabel.Caption:='-';
   PipeSection1ODValue.Caption:='N/A';
-  PipeSection1ODUoMLabel.Caption:='-';
+  PipeODUoMLabel.Caption:='-';
   PipeSection1WtValue.Caption:='N/A';
-  PipeSection1WtUoMLabel.Caption:='-';
+  PipeWtUoMLabel.Caption:='-';
 
   PipeSection2TDValue.Caption:='N/A';
-  PipeSection2TDUoMLabel.Caption:='-';
   PipeSection2IDValue.Caption:='N/A';
-  PipeSection2IDUoMLabel.Caption:='-';
   PipeSection2ODValue.Caption:='N/A';
-  PipeSection2ODUoMLabel.Caption:='-';
   PipeSection2WtValue.Caption:='N/A';
-  PipeSection2WtUoMLabel.Caption:='-';
 
   PipeSection3TDValue.Caption:='N/A';
-  PipeSection3TDUoMLabel.Caption:='-';
   PipeSection3IDValue.Caption:='N/A';
-  PipeSection3IDUoMLabel.Caption:='-';
   PipeSection3ODValue.Caption:='N/A';
-  PipeSection3ODUoMLabel.Caption:='-';
   PipeSection3WtValue.Caption:='N/A';
-  PipeSection3WtUoMLabel.Caption:='-';
 
   if Data.MaxPipes > 0 then
   begin
     // do pipe 1
     PipeSection1TDValue.Caption:=FloatToStr(Round2(Data.Pipe[1,1]*UoMConverter[1],2));
-    PipeSection1TDUoMLabel.Caption:=UoMLabel[1];    { user depth }
+    PipeTDUoMLabel.Caption:=UoMLabel[1];    { user depth }
 
     PipeSection1IDValue.Caption:=FloatToStr(Round2(Data.Pipe[1,2]*UoMConverter[8],4));
-    PipeSection1IDUoMLabel.Caption:=UoMLabel[8];       { always inches }
+    PipeIDUoMLabel.Caption:=UoMLabel[8];       { always inches }
 
     PipeSection1ODValue.Caption:=FloatToStr(Round2(Data.Pipe[1,3]*UoMConverter[8],4));
-    PipeSection1ODUoMLabel.Caption:=UoMLabel[8];       { always inches }
+    PipeODUoMLabel.Caption:=UoMLabel[8];       { always inches }
 
     PipeSection1WtValue.Caption:=FloatToStr(Round2(Data.Pipe[1,4],2));  { lbs per foot }
-    PipeSection1WtUoMLabel.Caption:='lbs/ft';       { always lbs/ft }
+    PipeWtUoMLabel.Caption:='lbs/ft';       { always lbs/ft }
 
     if Data.MaxPipes > 1 then
     begin
       // do pipe 2
       PipeSection2TDValue.Caption:=FloatToStr(Round2(Data.Pipe[2,1]*UoMConverter[1],2));
-      PipeSection2TDUoMLabel.Caption:=UoMLabel[1];    { user depth }
 
       PipeSection2IDValue.Caption:=FloatToStr(Round2(Data.Pipe[2,2]*UoMConverter[8],4));
-      PipeSection2IDUoMLabel.Caption:=UoMLabel[8];       { always inches }
 
       PipeSection2ODValue.Caption:=FloatToStr(Round2(Data.Pipe[2,3]*UoMConverter[8],4));
-      PipeSection2ODUoMLabel.Caption:=UoMLabel[8];       { always inches }
 
       PipeSection2WtValue.Caption:=FloatToStr(Round2(Data.Pipe[2,4],2));  { lbs per foot }
-      PipeSection2WtUoMLabel.Caption:='lbs/ft';       { always lbs/ft }
 
       if Data.MaxPipes > 2 then
       begin
         // do pipe 3
         PipeSection3TDValue.Caption:=FloatToStr(Round2(Data.Pipe[3,1]*UoMConverter[1],2));
-        PipeSection3TDUoMLabel.Caption:=UoMLabel[1];    { user depth }
 
         PipeSection3IDValue.Caption:=FloatToStr(Round2(Data.Pipe[3,2]*UoMConverter[8],4));
-        PipeSection3IDUoMLabel.Caption:=UoMLabel[8];       { always inches }
-      
+
         PipeSection3ODValue.Caption:=FloatToStr(Round2(Data.Pipe[3,3]*UoMConverter[8],4));
-        PipeSection3ODUoMLabel.Caption:=UoMLabel[8];       { always inches }
 
         PipeSection3WtValue.Caption:=FloatToStr(Round2(Data.Pipe[3,4],2));  { lbs per foot }
-        PipeSection3WtUoMLabel.Caption:='lbs/ft';       { always lbs/ft }
 
       end;
     end;
@@ -407,15 +388,6 @@ begin
 
 end;
 
-procedure TDisplayWellDataForm.KillLineIDClick(Sender: TObject);
-begin
-
-end;
-
-procedure TDisplayWellDataForm.LinerIDUoMLabelClick(Sender: TObject);
-begin
-
-end;
 
 end.
 

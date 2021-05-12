@@ -66,6 +66,7 @@ type
     CasingPressureUoMLabel: TStaticText;
     CasingPressureValue: TLabel;
     DataBox: TGroupBox;
+    Panel1: TPanel;
     PressureBox: TGroupBox;
     FlowInText: TStaticText;
     PipeMinus: TBCButton;
@@ -590,6 +591,7 @@ begin
   Key:=#0;
 end;
 
+
 procedure TDrillSim.CommandLineClick(Sender: TObject);
 begin
   InputString:='';
@@ -702,6 +704,7 @@ Begin
 end;
 
 begin
+
   Memo1.SelStart:=Length(Memo1.Text);
   StringToMemo('DrillSimGUI.FormCreate - Running DrillSimGUI FormCreate...');
 

@@ -20,6 +20,7 @@ Begin
   Begin
     DrillSim.Memo1.Lines.Add(S);
     DrillSim.Memo1.SelStart:=Length(DrillSim.Memo1.Text);
+
     writeln(S);             {* write to the console too *}
   End;
 End;
