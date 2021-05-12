@@ -36,9 +36,9 @@ Type
                         Porosity          : real;
                       End;
 
-    HelpSet    = Record
-                   HelpText : array[1..200] of String60;
-                 End;
+    //HelpSet    = Record
+    //               HelpText : array[1..200] of String60;
+    //             End;
     //Test              = array[1..7] of real;
 
     WellData   = Record

@@ -26,6 +26,73 @@ type
     Button1: TButton;
     CasingIDValue: TLabel;
     FormationText: TStaticText;
+    FormationText1: TStaticText;
+    FormationText10: TStaticText;
+    FormationText11: TStaticText;
+    FormationText12: TStaticText;
+    FormationText13: TStaticText;
+    FormationText2: TStaticText;
+    FormationText3: TStaticText;
+    FormationText4: TStaticText;
+    FormationText5: TStaticText;
+    FormationText6: TStaticText;
+    FormationText7: TStaticText;
+    FormationText8: TStaticText;
+    FormationText9: TStaticText;
+    Horizon2Hardness: TLabel;
+    Horizon3Hardness: TLabel;
+    Horizon4Hardness: TLabel;
+    Horizon5Hardness: TLabel;
+    Horizon6Hardness: TLabel;
+    Horizon7Hardness: TLabel;
+    Horizon8Hardness: TLabel;
+    Horizon9Hardness: TLabel;
+    Horizon10Hardness: TLabel;
+    Horizon2Pressure: TLabel;
+    Horizon3Pressure: TLabel;
+    Horizon4Pressure: TLabel;
+    Horizon5Pressure: TLabel;
+    Horizon6Pressure: TLabel;
+    Horizon7Pressure: TLabel;
+    Horizon8Pressure: TLabel;
+    Horizon9Pressure: TLabel;
+    Horizon10Pressure: TLabel;
+    Horizon2Top: TLabel;
+    Horizon3Top: TLabel;
+    Horizon4Top: TLabel;
+    Horizon5Top: TLabel;
+    Horizon6Top: TLabel;
+    Horizon7Top: TLabel;
+    Horizon8Top: TLabel;
+    Horizon9Top: TLabel;
+    Horizon10Top: TLabel;
+    Jet2Label: TStaticText;
+    Jet2: TLabel;
+    Jet3Label: TStaticText;
+    Jet4Label: TStaticText;
+    JetUoMLabel: TStaticText;
+    Jet3: TLabel;
+    Jet4: TLabel;
+    NumberOfJets: TLabel;
+    BitNumber: TLabel;
+    NumberOfJetsLabel: TStaticText;
+    Jet1Label: TStaticText;
+    BitNumberLabel: TStaticText;
+    BitTypeLabel: TStaticText;
+    NumberOfPumps: TStaticText;
+    MaxPumpPressureText: TStaticText;
+    NumPumps: TLabel;
+    MaxPumpPressure: TLabel;
+    PumpEffText: TStaticText;
+    PumpOutputUoM: TLabel;
+    PumpEfficiency2: TLabel;
+    PumpEfficiency3: TLabel;
+    PumpOutputText: TStaticText;
+    PumpOutput1: TLabel;
+    PumpOutput2: TLabel;
+    PumpOutput3: TLabel;
+    PumpEfficiency1: TLabel;
+    Pump1: TStaticText;
     OpenHoleSection2IDValue: TLabel;
     OpenHoleSection1TDValue: TLabel;
     NumberOfPipeSections: TStaticText;
@@ -44,6 +111,17 @@ type
     OpenHoleSection1IDValue: TLabel;
     OpenHoleSection3IDValue: TLabel;
     OpenHoleSection2TDValue: TLabel;
+    Jet1: TLabel;
+    Horizon1Hardness: TLabel;
+    Horizon1Pressure: TLabel;
+    Horizon1Top: TLabel;
+    FormationTopUoMLabel: TLabel;
+    FormationHardnessUoMLabel: TLabel;
+    FormationPressureUoMLabel: TLabel;
+    Pump2: TStaticText;
+    Pump3: TStaticText;
+    PumpEffUoM: TLabel;
+    MaxPumpPressureUoM: TLabel;
     TitlePanel: TPanel;
     FormationPanel: TPanel;
     PumpsPanel: TPanel;
@@ -122,15 +200,10 @@ type
     OpenHoleSection1TD: TStaticText;
     OpenHoleSection1TDUoMLabel: TLabel;
 
-    OpenHoleSection2ID: TStaticText;
-    OpenHoleSection2IDUoMLabel: TLabel;
+    OpenHoleSectionTD: TStaticText;
     OpenHoleSection2TD: TStaticText;
-    OpenHoleSection2TDUoMLabel: TLabel;
 
-    OpenHoleSection3ID: TStaticText;
-    OpenHoleSection3IDUoMLabel: TLabel;
     OpenHoleSection3TD: TStaticText;
-    OpenHoleSection3TDUoMLabel: TLabel;
 
     LinerYN: TStaticText;
     LinerID: TStaticText;
@@ -144,6 +217,7 @@ type
     ChokeLineIDUoMLabel: TLabel;
 
     CloseDisplayWellData: TButton;
+    BitType: TLabel;
 
     procedure FormActivate(Sender: TObject);
     Procedure OnClose(Sender: TObject);
@@ -282,14 +356,10 @@ begin
   OpenHoleSection1IDUoMLabel.Caption:='-';
 
   OpenHoleSection2TDValue.Caption:='N/A';
-  OpenHoleSection2TDUoMLabel.Caption:='-';
   OpenHoleSection2IDValue.Caption:='N/A';
-  OpenHoleSection2IDUoMLabel.Caption:='-';
 
   OpenHoleSection3TDValue.Caption:='N/A';
-  OpenHoleSection3TDUoMLabel.Caption:='-';
   OpenHoleSection3IDValue.Caption:='N/A';
-  OpenHoleSection3IDUoMLabel.Caption:='-';
 
   if Data.MaxHoles > 0 then
   begin
@@ -303,16 +373,12 @@ begin
     begin
       // do hole 2
       OpenHoleSection2TDValue.Caption:=FloatToStr(Round2(Data.Hole[2,1]*UoMConverter[1],2));
-      OpenHoleSection2TDUoMLabel.Caption:=UoMLabel[1];    { user depth }
       OpenHoleSection2IDValue.Caption:=FloatToStr(Round2(Data.Hole[2,2]*UoMConverter[8],4));
-      OpenHoleSection2IDUoMLabel.Caption:=UoMLabel[8];       { always inches }
       if Data.MaxHoles > 2 then
       begin
         // do hole 3
         OpenHoleSection3TDValue.Caption:=FloatToStr(Round2(Data.Hole[3,1]*UoMConverter[1],2));
-        OpenHoleSection3TDUoMLabel.Caption:=UoMLabel[1];    { user depth }
         OpenHoleSection3IDValue.Caption:=FloatToStr(Round2(Data.Hole[3,2]*UoMConverter[8],4));
-        OpenHoleSection3IDUoMLabel.Caption:=UoMLabel[8];       { always inches }
       end
     end;
   end else
@@ -346,13 +412,10 @@ begin
     // do pipe 1
     PipeSection1TDValue.Caption:=FloatToStr(Round2(Data.Pipe[1,1]*UoMConverter[1],2));
     PipeTDUoMLabel.Caption:=UoMLabel[1];    { user depth }
-
     PipeSection1IDValue.Caption:=FloatToStr(Round2(Data.Pipe[1,2]*UoMConverter[8],4));
     PipeIDUoMLabel.Caption:=UoMLabel[8];       { always inches }
-
     PipeSection1ODValue.Caption:=FloatToStr(Round2(Data.Pipe[1,3]*UoMConverter[8],4));
     PipeODUoMLabel.Caption:=UoMLabel[8];       { always inches }
-
     PipeSection1WtValue.Caption:=FloatToStr(Round2(Data.Pipe[1,4],2));  { lbs per foot }
     PipeWtUoMLabel.Caption:='lbs/ft';       { always lbs/ft }
 
@@ -360,24 +423,17 @@ begin
     begin
       // do pipe 2
       PipeSection2TDValue.Caption:=FloatToStr(Round2(Data.Pipe[2,1]*UoMConverter[1],2));
-
       PipeSection2IDValue.Caption:=FloatToStr(Round2(Data.Pipe[2,2]*UoMConverter[8],4));
-
       PipeSection2ODValue.Caption:=FloatToStr(Round2(Data.Pipe[2,3]*UoMConverter[8],4));
-
       PipeSection2WtValue.Caption:=FloatToStr(Round2(Data.Pipe[2,4],2));  { lbs per foot }
 
       if Data.MaxPipes > 2 then
       begin
         // do pipe 3
         PipeSection3TDValue.Caption:=FloatToStr(Round2(Data.Pipe[3,1]*UoMConverter[1],2));
-
         PipeSection3IDValue.Caption:=FloatToStr(Round2(Data.Pipe[3,2]*UoMConverter[8],4));
-
         PipeSection3ODValue.Caption:=FloatToStr(Round2(Data.Pipe[3,3]*UoMConverter[8],4));
-
         PipeSection3WtValue.Caption:=FloatToStr(Round2(Data.Pipe[3,4],2));  { lbs per foot }
-
       end;
     end;
   end else
@@ -386,7 +442,84 @@ begin
   end;
 
 
+
+  BitNumber.Caption:=IntToStr(Data.BitNumber);
+  BitType.Caption:=Data.BitType;
+  NumberofJets.Caption:=IntToStr(Data.MaxJets);
+  if Data.MaxJets > 0 then
+  begin
+    Jet1.Caption:=FloatToStr(Round2(Data.Jet[1],2));
+    if Data.MaxJets > 1 then
+    begin
+      Jet2.Caption:=FloatToStr(Round2(Data.Jet[2],2));
+      if Data.MaxJets > 2 then
+      begin
+        Jet3.Caption:=FloatToStr(Round2(Data.Jet[3],2));
+        if Data.MaxJets > 3 then
+        begin
+          Jet4.Caption:=FloatToStr(Round2(Data.Jet[4],2));
+        end;
+      end;
+    end;
+  end;
+
+  FormationTopUoMLabel.Caption:=UoMLabel[1];    { user depth }
+  FormationHardnessUoMLabel.Caption:='0-1';
+  FormationPressureUoMLabel.Caption:=UoMLabel[3];    { pressure }
+
+  Horizon1Top.Caption:=FloatToStr(Round2(Data.Formation[1].Depth*UoMConverter[1],2));       {depth }
+  Horizon1Hardness.Caption:=FloatToStr(Round2(Data.Formation[1].Hardness,2));
+  Horizon1Pressure.Caption:=FloatToStr(Round2(Data.Formation[1].FP*UoMConverter[3],2));  {pressure}
+  Horizon2Top.Caption:=FloatToStr(Round2(Data.Formation[2].Depth*UoMConverter[1],2));       {depth }
+  Horizon2Hardness.Caption:=FloatToStr(Round2(Data.Formation[2].Hardness,2));
+  Horizon2Pressure.Caption:=FloatToStr(Round2(Data.Formation[2].FP*UoMConverter[3],2));  {pressure}
+  Horizon3Top.Caption:=FloatToStr(Round2(Data.Formation[3].Depth*UoMConverter[1],2));       {depth }
+  Horizon3Hardness.Caption:=FloatToStr(Round2(Data.Formation[3].Hardness,2));
+  Horizon3Pressure.Caption:=FloatToStr(Round2(Data.Formation[3].FP*UoMConverter[3],2));  {pressure}
+  Horizon4Top.Caption:=FloatToStr(Round2(Data.Formation[4].Depth*UoMConverter[1],2));       {depth }
+  Horizon4Hardness.Caption:=FloatToStr(Round2(Data.Formation[4].Hardness,2));
+  Horizon4Pressure.Caption:=FloatToStr(Round2(Data.Formation[4].FP*UoMConverter[3],2));  {pressure}
+  Horizon5Top.Caption:=FloatToStr(Round2(Data.Formation[5].Depth*UoMConverter[1],2));       {depth }
+  Horizon5Hardness.Caption:=FloatToStr(Round2(Data.Formation[5].Hardness,2));
+  Horizon5Pressure.Caption:=FloatToStr(Round2(Data.Formation[5].FP*UoMConverter[3],2));  {pressure}
+  Horizon6Top.Caption:=FloatToStr(Round2(Data.Formation[6].Depth*UoMConverter[1],2));       {depth }
+  Horizon6Hardness.Caption:=FloatToStr(Round2(Data.Formation[6].Hardness,2));
+  Horizon6Pressure.Caption:=FloatToStr(Round2(Data.Formation[6].FP*UoMConverter[3],2));  {pressure}
+  Horizon7Top.Caption:=FloatToStr(Round2(Data.Formation[7].Depth*UoMConverter[1],2));       {depth }
+  Horizon7Hardness.Caption:=FloatToStr(Round2(Data.Formation[7].Hardness,2));
+  Horizon7Pressure.Caption:=FloatToStr(Round2(Data.Formation[7].FP*UoMConverter[3],2));  {pressure}
+  Horizon8Top.Caption:=FloatToStr(Round2(Data.Formation[8].Depth*UoMConverter[1],2));       {depth }
+  Horizon8Hardness.Caption:=FloatToStr(Round2(Data.Formation[8].Hardness,2));
+  Horizon8Pressure.Caption:=FloatToStr(Round2(Data.Formation[8].FP*UoMConverter[3],2));  {pressure}
+  Horizon9Top.Caption:=FloatToStr(Round2(Data.Formation[9].Depth*UoMConverter[1],2));       {depth }
+  Horizon9Hardness.Caption:=FloatToStr(Round2(Data.Formation[9].Hardness,2));
+  Horizon9Pressure.Caption:=FloatToStr(Round2(Data.Formation[9].FP*UoMConverter[3],2));  {pressure}
+  Horizon10Top.Caption:=FloatToStr(Round2(Data.Formation[10].Depth*UoMConverter[1],2));       {depth }
+  Horizon10Hardness.Caption:=FloatToStr(Round2(Data.Formation[10].Hardness,2));
+  Horizon10Pressure.Caption:=FloatToStr(Round2(Data.Formation[10].FP*UoMConverter[3],2));  {pressure}
+
+  { 1..3,1..5 PumpOutputText, efficiency, @strokes, slow pump spm, slow pump flow rate gpm }
+  PumpOutputUoM.Caption:=UoMLabel[5];    { gal/litre}
+  MaxPumpPressureUoM.Caption:=UoMLabel[3];    { psi/kpa}
+
+  NumPumps.Caption:=IntToStr(Data.MaxPumps);
+
+  PumpOutput1.Caption:=FloatToStr(Round2(Data.Pump[1,1]*UoMConverter[5],2));  { API->user volume }
+  PumpEfficiency1.Caption:=FloatToStr(Round2(Data.Pump[1,2],3));  { % }
+  PumpOutput2.Caption:=FloatToStr(Round2(Data.Pump[2,1]*UoMConverter[5],2));  { API->user volume }
+  PumpEfficiency2.Caption:=FloatToStr(Round2(Data.Pump[2,2],3));  { % }
+  PumpOutput3.Caption:=FloatToStr(Round2(Data.Pump[3,1]*UoMConverter[5],2));  { API->user volume }
+  PumpEfficiency3.Caption:=FloatToStr(Round2(Data.Pump[3,2],3));  { % }
+
+  MaxPumpPressure.Caption:=FloatToStr(Round2(Data.MaxPumpPressure*UoMConverter[3],2));  { API->user pressure }
+
+
+
+
+  // UoM, TD etc?
+
 end;
+
 
 
 end.

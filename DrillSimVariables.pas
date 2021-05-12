@@ -86,7 +86,7 @@ Type
 
                    MaxPumps                    : integer;
                    Pump                        : array[1..3,1..5] of real;
-                   { output, efficiency, @strokes, slow pump spm, slow pump flow rate gpm }
+                   { 1..3,1..5 output, efficiency, @strokes, slow pump spm, slow pump flow rate gpm }
                    MaxPumpPressure             : real;
 
                    ExcessMud                   : real;
