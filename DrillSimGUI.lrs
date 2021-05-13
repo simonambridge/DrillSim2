@@ -1,11 +1,11 @@
 LazarusResources.Add('TDrillSim','FORMDATA',[
-  'TPF0'#9'TDrillSim'#8'DrillSim'#4'Left'#2's'#6'Height'#3#159#2#3'Top'#3#136#0
-  +#5'Width'#3#134#5#7'Caption'#6#12'DrillSim 3.0'#12'ClientHeight'#3#159#2#11
-  +'ClientWidth'#3#134#5#4'Menu'#7#9'MainMenu1'#10'OnActivate'#7#12'FormActivat'
-  +'e'#7'OnClose'#7#9'FormClose'#8'OnCreate'#7#10'FormCreate'#12'OnDeactivate'#7
-  +#14'FormDeactivate'#8'Position'#7#14'poScreenCenter'#10'LCLVersion'#6#8'2.0.'
-  +'12.0'#0#9'TGroupBox'#8'PumpData'#4'Left'#2#10#6'Height'#3#184#0#3'Top'#3#200
-  +#0#5'Width'#3#14#1#7'Caption'#6#13'Pump Controls'#12'ClientHeight'#3#165#0#11
+  'TPF0'#9'TDrillSim'#8'DrillSim'#4'Left'#2#31#6'Height'#3#159#2#3'Top'#3#145#0
+  +#5'Width'#3'i'#5#7'Caption'#6#12'DrillSim 3.0'#12'ClientHeight'#3#159#2#11'C'
+  +'lientWidth'#3'i'#5#4'Menu'#7#9'MainMenu1'#10'OnActivate'#7#12'FormActivate'
+  +#7'OnClose'#7#9'FormClose'#8'OnCreate'#7#10'FormCreate'#12'OnDeactivate'#7#14
+  +'FormDeactivate'#8'Position'#7#14'poScreenCenter'#10'LCLVersion'#6#8'2.0.12.'
+  +'0'#0#9'TGroupBox'#8'PumpData'#4'Left'#2#10#6'Height'#3#184#0#3'Top'#3#200#0
+  +#5'Width'#3#14#1#7'Caption'#6#13'Pump Controls'#12'ClientHeight'#3#165#0#11
   +'ClientWidth'#3#4#1#5'Color'#4#255#189'I'#0#10'Font.Color'#7#6'clTeal'#11'Fo'
   +'nt.Height'#2#240#9'Font.Name'#6#4'Sans'#10'Font.Style'#11#6'fsBold'#0#11'Pa'
   +'rentColor'#8#10'ParentFont'#8#8'TabOrder'#2#3#0#7'TButton'#10'Pump1Minus'#4
@@ -546,46 +546,189 @@ LazarusResources.Add('TDrillSim','FORMDATA',[
   +#9'Alignment'#7#14'taRightJustify'#8'AutoSize'#8#7'Caption'#6#7'999.999'#10
   +'Font.Color'#7#7'clBlack'#11'Font.Height'#2#243#9'Font.Name'#6#4'Sans'#10'Fo'
   +'nt.Style'#11#6'fsBold'#0#11'ParentColor'#8#10'ParentFont'#8#0#0#0#9'TGroupB'
-  +'ox'#7'DataBox'#4'Left'#3'p'#3#6'Height'#3#139#2#3'Top'#2#8#5'Width'#3#10#2#7
-  +'Caption'#6#11'Data Viewer'#5'Color'#7#7'clWhite'#11'ParentColor'#8#8'TabOrd'
-  +'er'#2#9#0#0#9'TMainMenu'#9'MainMenu1'#4'Left'#2'P'#3'Top'#4#248#255#0#0#0#9
-  +'TMenuItem'#13'MenuItem1File'#7'Caption'#6#4'File'#0#9'TMenuItem'#17'MenuIte'
-  +'m1OpenFile'#7'Caption'#6#9'Open File'#7'OnClick'#7#22'MenuItem1OpenFileClic'
-  +'k'#0#0#9'TMenuItem'#19'MenuItem1CreateFile'#7'Caption'#6#11'Create File'#7
-  +'OnClick'#7#24'MenuItem1CreateFileClick'#0#0#9'TMenuItem'#17'MenuItem1SaveFi'
-  +'le'#7'Caption'#6#9'Save File'#7'OnClick'#7#22'MenuItem1SaveFileClick'#0#0#9
-  +'TMenuItem'#15'MenuItem1SaveAs'#7'Caption'#6#10'Save As...'#7'OnClick'#7#20
-  +'MenuItem1SaveAsClick'#0#0#9'TMenuItem'#13'MenuItem1Quit'#7'Caption'#6#4'Qui'
-  +'t'#7'OnClick'#7#18'MenuItem1QuitClick'#0#0#0#9'TMenuItem'#13'MenuItem2Edit'
-  +#7'Caption'#6#4'Edit'#0#9'TMenuItem'#17'MenuItem2EditFile'#7'Caption'#6#14'E'
-  +'dit Well File'#0#9'TMenuItem'#24'MenuItem2DisplayWellData'#7'Caption'#6#17
-  +'Well Data Summary'#7'Default'#9#7'OnClick'#7#29'MenuItem2DisplayWellDataCli'
-  +'ck'#0#0#9'TMenuItem'#20'MenuItem2GeneralData'#7'Caption'#6#17'General Well '
-  +'Data'#7'OnClick'#7#25'MenuItem2GeneralDataClick'#0#0#9'TMenuItem'#20'MenuIt'
-  +'em2HoleProfile'#7'Caption'#6#17'Hole Profile Data'#7'OnClick'#7#25'MenuItem'
-  +'2HoleProfileClick'#0#0#9'TMenuItem'#20'MenuItem2DrillString'#7'Caption'#6#12
-  +'Drill String'#7'OnClick'#7#25'MenuItem2DrillStringClick'#0#0#9'TMenuItem'#16
-  +'MenuItem2BitData'#7'Caption'#6#8'Bit Data'#7'OnClick'#7#21'MenuItem2BitData'
-  +'Click'#0#0#9'TMenuItem'#16'MenuItem2MudData'#7'Caption'#6#8'Mud Data'#7'OnC'
-  +'lick'#7#21'MenuItem2MudDataClick'#0#0#9'TMenuItem'#17'MenuItem2PumpData'#7
-  +'Caption'#6#9'Pump Data'#7'OnClick'#7#22'MenuItem2PumpDataClick'#0#0#9'TMenu'
-  +'Item'#25'MenuItem2SurfaceEquipment'#7'Caption'#6#22'Surface Equipment Data'
-  +#7'OnClick'#7#30'MenuItem2SurfaceEquipmentClick'#0#0#9'TMenuItem'#21'MenuIte'
-  +'m2WellTestData'#7'Caption'#6#14'Well Test Data'#7'OnClick'#7#26'MenuItem2We'
-  +'llTestDataClick'#0#0#9'TMenuItem'#16'MenuItem2Geology'#7'Caption'#6#7'Geolo'
-  +'gy'#7'OnClick'#7#21'MenuItem2GeologyClick'#0#0#0#9'TMenuItem'#20'MenuItem2P'
-  +'references'#7'Caption'#6#11'Preferences'#0#9'TMenuItem'#17'MenuItem2Default'
-  ,'s'#7'Caption'#6#8'Defaults'#7'OnClick'#7#22'MenuItem2DefaultsClick'#0#0#9'T'
-  +'MenuItem'#14'MenuItem2Units'#7'Caption'#6#16'Units Of Measure'#7'OnClick'#7
-  +#19'MenuItem2UnitsClick'#0#0#0#0#9'TMenuItem'#17'MenuItem3Simulate'#7'Captio'
-  +'n'#6#8'Simulate'#0#9'TMenuItem'#14'MenuItem3Start'#7'Caption'#6#5'Start'#7
-  +'OnClick'#7#19'MenuItem3StartClick'#0#0#9'TMenuItem'#13'MenuItem3Stop'#7'Cap'
-  +'tion'#6#4'Stop'#7'OnClick'#7#18'MenuItem3StopClick'#0#0#9'TMenuItem'#14'Men'
-  +'uItem3Pause'#7'Caption'#6#5'Pause'#7'OnClick'#7#19'MenuItem3PauseClick'#0#0
-  +#0#9'TMenuItem'#13'MenuItem4Help'#7'Caption'#6#4'Help'#0#9'TMenuItem'#14'Men'
-  +'uItem4About'#7'Caption'#6#5'About'#7'OnClick'#7#19'MenuItem4AboutClick'#0#0
-  +#9'TMenuItem'#17'MenuItem4ShowHelp'#7'Caption'#6#9'Show Help'#0#0#0#0#11'TOp'
-  +'enDialog'#15'FileOpenDialog1'#4'Left'#3#144#0#3'Top'#4#248#255#0#0#0#0#11'T'
-  +'SaveDialog'#15'FileSaveDialog1'#4'Left'#3#192#0#3'Top'#4#248#255#0#0#0#0#22
-  +'TSelectDirectoryDialog'#22'SelectDirectoryDialog1'#4'Left'#3#240#0#0#0#0
+  +'ox'#7'DataBox'#4'Left'#3'p'#3#6'Height'#3#139#2#3'Top'#2#8#5'Width'#3#242#1
+  +#7'Caption'#6#11'Data Viewer'#12'ClientHeight'#3'x'#2#11'ClientWidth'#3#232#1
+  +#5'Color'#7#7'clCream'#11'ParentColor'#8#8'TabOrder'#2#9#0#6'TPanel'#6'Panel'
+  +'2'#4'Left'#2#8#6'Height'#3'3'#1#3'Top'#2#7#5'Width'#3#232#0#10'BevelColor'#7
+  +#7'clBlack'#7'Caption'#6#6'Panel2'#12'ClientHeight'#3'3'#1#11'ClientWidth'#3
+  +#232#0#8'TabOrder'#2#0#0#11'TStaticText'#17'AnnularVolumeText'#4'Left'#2#10#6
+  +'Height'#2#20#3'Top'#2#29#5'Width'#2'r'#7'Caption'#6#14'Annular Volume'#10'F'
+  +'ont.Color'#7#7'clBlack'#11'Font.Height'#2#243#9'Font.Name'#6#4'Sans'#10'Par'
+  +'entFont'#8#8'TabOrder'#2#0#0#0#11'TStaticText'#8'WellText'#4'Left'#2#10#6'H'
+  +'eight'#2#20#3'Top'#2'5'#5'Width'#2'r'#7'Caption'#6#11'Well Volume'#10'Font.'
+  +'Color'#7#7'clBlack'#11'Font.Height'#2#243#9'Font.Name'#6#4'Sans'#10'ParentF'
+  +'ont'#8#8'TabOrder'#2#1#0#0#11'TStaticText'#14'HoleVolumeText'#4'Left'#2#10#6
+  +'Height'#2#20#3'Top'#2'M'#5'Width'#2'r'#7'Caption'#6#11'Hole Volume'#10'Font'
+  +'.Color'#7#7'clBlack'#11'Font.Height'#2#243#9'Font.Name'#6#4'Sans'#10'Parent'
+  +'Font'#8#8'TabOrder'#2#2#0#0#11'TStaticText'#13'MudVolumeText'#4'Left'#2#10#6
+  +'Height'#2#20#3'Top'#2'e'#5'Width'#2'r'#7'Caption'#6#10'Mud Volume'#10'Font.'
+  +'Color'#7#7'clBlack'#11'Font.Height'#2#243#9'Font.Name'#6#4'Sans'#10'ParentF'
+  +'ont'#8#8'TabOrder'#2#3#0#0#11'TStaticText'#15'LagDownTimeText'#4'Left'#2#10
+  +#6'Height'#2#20#3'Top'#3#133#0#5'Width'#2'r'#7'Caption'#6#13'Lag Down Time'
+  +#10'Font.Color'#7#7'clBlack'#11'Font.Height'#2#243#9'Font.Name'#6#4'Sans'#10
+  +'ParentFont'#8#8'TabOrder'#2#4#0#0#11'TStaticText'#16'PipeCapacityText'#4'Le'
+  +'ft'#2#10#6'Height'#2#20#3'Top'#3#229#0#5'Width'#2'r'#7'Caption'#6#13'Pipe C'
+  +'apacity'#10'Font.Color'#7#7'clBlack'#11'Font.Height'#2#243#9'Font.Name'#6#4
+  +'Sans'#10'ParentFont'#8#8'TabOrder'#2#5#0#0#11'TStaticText'#17'LagDownStroke'
+  +'Text'#4'Left'#2#10#6'Height'#2#20#3'Top'#3#157#0#5'Width'#2'r'#7'Caption'#6
+  +#16'Lag Down Strokes'#10'Font.Color'#7#7'clBlack'#11'Font.Height'#2#243#9'Fo'
+  +'nt.Name'#6#4'Sans'#10'ParentFont'#8#8'TabOrder'#2#6#0#0#11'TStaticText'#15
+  +'LagUpStrokeText'#4'Left'#2#10#6'Height'#2#20#3'Top'#3#205#0#5'Width'#2'r'#7
+  +'Caption'#6#14'Lag Up Strokes'#10'Font.Color'#7#7'clBlack'#11'Font.Height'#2
+  ,#243#9'Font.Name'#6#4'Sans'#10'ParentFont'#8#8'TabOrder'#2#7#0#0#11'TStaticT'
+  +'ext'#13'LagUpTimeText'#4'Left'#2#10#6'Height'#2#20#3'Top'#3#181#0#5'Width'#2
+  +'r'#7'Caption'#6#11'Lag Up Time'#10'Font.Color'#7#7'clBlack'#11'Font.Height'
+  +#2#243#9'Font.Name'#6#4'Sans'#10'ParentFont'#8#8'TabOrder'#2#8#0#0#11'TStati'
+  +'cText'#20'PipeDisplacementText'#4'Left'#2#10#6'Height'#2#20#3'Top'#3#253#0#5
+  +'Width'#2'~'#7'Caption'#6#17'Pipe Displacement'#10'Font.Color'#7#7'clBlack'
+  +#11'Font.Height'#2#243#9'Font.Name'#6#4'Sans'#10'ParentFont'#8#8'TabOrder'#2
+  +#9#0#0#0#6'TPanel'#6'Panel3'#4'Left'#2#8#6'Height'#3'3'#1#3'Top'#3'A'#1#5'Wi'
+  +'dth'#3#232#0#10'BevelColor'#7#7'clBlack'#7'Caption'#6#6'Panel3'#12'ClientHe'
+  +'ight'#3'3'#1#11'ClientWidth'#3#232#0#8'TabOrder'#2#1#0#11'TStaticText'#11'M'
+  +'udWtInText'#4'Left'#2#10#6'Height'#2#20#3'Top'#2#28#5'Width'#2'r'#7'Caption'
+  +#6#10'Mud Wt. In'#10'Font.Color'#7#7'clBlack'#11'Font.Height'#2#243#9'Font.N'
+  +'ame'#6#4'Sans'#10'ParentFont'#8#8'TabOrder'#2#0#0#0#11'TStaticText'#13'Pipe'
+  +'MudWtText'#4'Left'#2#10#6'Height'#2#20#3'Top'#2'4'#5'Width'#2'r'#7'Caption'
+  +#6#12'Pipe Mud Wt.'#10'Font.Color'#7#7'clBlack'#11'Font.Height'#2#243#9'Font'
+  +'.Name'#6#4'Sans'#10'ParentFont'#8#8'TabOrder'#2#1#0#0#11'TStaticText'#16'An'
+  +'nularMudWtText'#4'Left'#2#10#6'Height'#2#20#3'Top'#2'L'#5'Width'#2'r'#7'Cap'
+  +'tion'#6#15'Annular Mud Wt.'#10'Font.Color'#7#7'clBlack'#11'Font.Height'#2
+  +#243#9'Font.Name'#6#4'Sans'#10'ParentFont'#8#8'TabOrder'#2#2#0#0#11'TStaticT'
+  +'ext'#12'MudWtOutText'#4'Left'#2#10#6'Height'#2#20#3'Top'#2'd'#5'Width'#2'r'
+  +#7'Caption'#6#11'Mud Wt. Out'#10'Font.Color'#7#7'clBlack'#11'Font.Height'#2
+  +#243#9'Font.Name'#6#4'Sans'#10'ParentFont'#8#8'TabOrder'#2#3#0#0#11'TStaticT'
+  +'ext'#13'AnnularPVText'#4'Left'#2#10#6'Height'#2#20#3'Top'#3#132#0#5'Width'#2
+  +'r'#7'Caption'#6#11'Annnular PV'#10'Font.Color'#7#7'clBlack'#11'Font.Height'
+  +#2#243#9'Font.Name'#6#4'Sans'#10'ParentFont'#8#8'TabOrder'#2#4#0#0#11'TStati'
+  +'cText'#17'StrokeCounterText'#4'Left'#2#10#6'Height'#2#20#3'Top'#3#228#0#5'W'
+  +'idth'#2'r'#7'Caption'#6#13'StrokeCounter'#10'Font.Color'#7#7'clBlack'#11'Fo'
+  +'nt.Height'#2#243#9'Font.Name'#6#4'Sans'#10'ParentFont'#8#8'TabOrder'#2#5#0#0
+  +#11'TStaticText'#13'AnnularYPText'#4'Left'#2#10#6'Height'#2#20#3'Top'#3#156#0
+  +#5'Width'#2'r'#7'Caption'#6#9'AnnularYP'#10'Font.Color'#7#7'clBlack'#11'Font'
+  +'.Height'#2#243#9'Font.Name'#6#4'Sans'#10'ParentFont'#8#8'TabOrder'#2#6#0#0
+  +#11'TStaticText'#10'PipeYPText'#4'Left'#2#10#6'Height'#2#20#3'Top'#3#204#0#5
+  +'Width'#2'r'#7'Caption'#6#6'PipeYP'#10'Font.Color'#7#7'clBlack'#11'Font.Heig'
+  +'ht'#2#243#9'Font.Name'#6#4'Sans'#10'ParentFont'#8#8'TabOrder'#2#7#0#0#11'TS'
+  +'taticText'#10'PipePVText'#4'Left'#2#10#6'Height'#2#20#3'Top'#3#180#0#5'Widt'
+  +'h'#2'r'#7'Caption'#6#7'Pipe PV'#10'Font.Color'#7#7'clBlack'#11'Font.Height'
+  +#2#243#9'Font.Name'#6#4'Sans'#10'ParentFont'#8#8'TabOrder'#2#8#0#0#11'TStati'
+  +'cText'#12'TotStrksText'#4'Left'#2#8#6'Height'#2#20#3'Top'#3#252#0#5'Width'#2
+  +'~'#7'Caption'#6#13'Total Strokes'#10'Font.Color'#7#7'clBlack'#11'Font.Heigh'
+  +'t'#2#243#9'Font.Name'#6#4'Sans'#10'ParentFont'#8#8'TabOrder'#2#9#0#0#11'TSt'
+  +'aticText'#16'TotCircStrksText'#4'Left'#2#10#6'Height'#2#20#3'Top'#3#16#1#5
+  +'Width'#2'~'#7'Caption'#6#25'Total Circulating Strokes'#10'Font.Color'#7#7'c'
+  +'lBlack'#11'Font.Height'#2#243#9'Font.Name'#6#4'Sans'#10'ParentFont'#8#8'Tab'
+  +'Order'#2#10#0#0#0#6'TPanel'#6'Panel4'#4'Left'#3#248#0#6'Height'#3'3'#1#3'To'
+  +'p'#2#7#5'Width'#3#232#0#10'BevelColor'#7#7'clBlack'#7'Caption'#6#6'Panel4'
+  +#12'ClientHeight'#3'3'#1#11'ClientWidth'#3#232#0#8'TabOrder'#2#2#0#11'TStati'
+  +'cText'#12'MudWtInText1'#4'Left'#2#10#6'Height'#2#20#3'Top'#2#28#5'Width'#2
+  +'r'#7'Caption'#6#10'Mud Wt. In'#10'Font.Color'#7#7'clBlack'#11'Font.Height'#2
+  +#243#9'Font.Name'#6#4'Sans'#10'ParentFont'#8#8'TabOrder'#2#0#0#0#11'TStaticT'
+  +'ext'#14'PipeMudWtText1'#4'Left'#2#10#6'Height'#2#20#3'Top'#2'4'#5'Width'#2
+  +'r'#7'Caption'#6#12'Pipe Mud Wt.'#10'Font.Color'#7#7'clBlack'#11'Font.Height'
+  +#2#243#9'Font.Name'#6#4'Sans'#10'ParentFont'#8#8'TabOrder'#2#1#0#0#11'TStati'
+  +'cText'#17'AnnularMudWtText1'#4'Left'#2#10#6'Height'#2#20#3'Top'#2'L'#5'Widt'
+  +'h'#2'r'#7'Caption'#6#15'Annular Mud Wt.'#10'Font.Color'#7#7'clBlack'#11'Fon'
+  +'t.Height'#2#243#9'Font.Name'#6#4'Sans'#10'ParentFont'#8#8'TabOrder'#2#2#0#0
+  +#11'TStaticText'#13'MudWtOutText1'#4'Left'#2#10#6'Height'#2#20#3'Top'#2'd'#5
+  +'Width'#2'r'#7'Caption'#6#11'Mud Wt. Out'#10'Font.Color'#7#7'clBlack'#11'Fon'
+  +'t.Height'#2#243#9'Font.Name'#6#4'Sans'#10'ParentFont'#8#8'TabOrder'#2#3#0#0
+  +#11'TStaticText'#14'AnnularPVText1'#4'Left'#2#10#6'Height'#2#20#3'Top'#3#132
+  +#0#5'Width'#2'r'#7'Caption'#6#11'Annnular PV'#10'Font.Color'#7#7'clBlack'#11
+  +'Font.Height'#2#243#9'Font.Name'#6#4'Sans'#10'ParentFont'#8#8'TabOrder'#2#4#0
+  +#0#11'TStaticText'#18'StrokeCounterText1'#4'Left'#2#10#6'Height'#2#20#3'Top'
+  +#3#228#0#5'Width'#2'r'#7'Caption'#6#13'StrokeCounter'#10'Font.Color'#7#7'clB'
+  +'lack'#11'Font.Height'#2#243#9'Font.Name'#6#4'Sans'#10'ParentFont'#8#8'TabOr'
+  ,'der'#2#5#0#0#11'TStaticText'#14'AnnularYPText1'#4'Left'#2#10#6'Height'#2#20
+  +#3'Top'#3#156#0#5'Width'#2'r'#7'Caption'#6#9'AnnularYP'#10'Font.Color'#7#7'c'
+  +'lBlack'#11'Font.Height'#2#243#9'Font.Name'#6#4'Sans'#10'ParentFont'#8#8'Tab'
+  +'Order'#2#6#0#0#11'TStaticText'#11'PipeYPText1'#4'Left'#2#10#6'Height'#2#20#3
+  +'Top'#3#204#0#5'Width'#2'r'#7'Caption'#6#6'PipeYP'#10'Font.Color'#7#7'clBlac'
+  +'k'#11'Font.Height'#2#243#9'Font.Name'#6#4'Sans'#10'ParentFont'#8#8'TabOrder'
+  +#2#7#0#0#11'TStaticText'#11'PipePVText1'#4'Left'#2#10#6'Height'#2#20#3'Top'#3
+  +#180#0#5'Width'#2'r'#7'Caption'#6#7'Pipe PV'#10'Font.Color'#7#7'clBlack'#11
+  +'Font.Height'#2#243#9'Font.Name'#6#4'Sans'#10'ParentFont'#8#8'TabOrder'#2#8#0
+  +#0#11'TStaticText'#13'TotStrksText1'#4'Left'#2#8#6'Height'#2#20#3'Top'#3#252
+  +#0#5'Width'#2'~'#7'Caption'#6#13'Total Strokes'#10'Font.Color'#7#7'clBlack'
+  +#11'Font.Height'#2#243#9'Font.Name'#6#4'Sans'#10'ParentFont'#8#8'TabOrder'#2
+  +#9#0#0#11'TStaticText'#17'TotCircStrksText1'#4'Left'#2#10#6'Height'#2#20#3'T'
+  +'op'#3#16#1#5'Width'#2'~'#7'Caption'#6#25'Total Circulating Strokes'#10'Font'
+  +'.Color'#7#7'clBlack'#11'Font.Height'#2#243#9'Font.Name'#6#4'Sans'#10'Parent'
+  +'Font'#8#8'TabOrder'#2#10#0#0#0#6'TPanel'#6'Panel5'#4'Left'#3#248#0#6'Height'
+  +#3'3'#1#3'Top'#3'A'#1#5'Width'#3#232#0#10'BevelColor'#7#7'clBlack'#7'Caption'
+  +#6#6'Panel5'#12'ClientHeight'#3'3'#1#11'ClientWidth'#3#232#0#8'TabOrder'#2#3
+  +#0#11'TStaticText'#12'MudWtInText2'#4'Left'#2#10#6'Height'#2#20#3'Top'#2#28#5
+  +'Width'#2'r'#7'Caption'#6#10'Mud Wt. In'#10'Font.Color'#7#7'clBlack'#11'Font'
+  +'.Height'#2#243#9'Font.Name'#6#4'Sans'#10'ParentFont'#8#8'TabOrder'#2#0#0#0
+  +#11'TStaticText'#14'PipeMudWtText2'#4'Left'#2#10#6'Height'#2#20#3'Top'#2'4'#5
+  +'Width'#2'r'#7'Caption'#6#12'Pipe Mud Wt.'#10'Font.Color'#7#7'clBlack'#11'Fo'
+  +'nt.Height'#2#243#9'Font.Name'#6#4'Sans'#10'ParentFont'#8#8'TabOrder'#2#1#0#0
+  +#11'TStaticText'#17'AnnularMudWtText2'#4'Left'#2#10#6'Height'#2#20#3'Top'#2
+  +'L'#5'Width'#2'r'#7'Caption'#6#15'Annular Mud Wt.'#10'Font.Color'#7#7'clBlac'
+  +'k'#11'Font.Height'#2#243#9'Font.Name'#6#4'Sans'#10'ParentFont'#8#8'TabOrder'
+  +#2#2#0#0#11'TStaticText'#13'MudWtOutText2'#4'Left'#2#10#6'Height'#2#20#3'Top'
+  +#2'd'#5'Width'#2'r'#7'Caption'#6#11'Mud Wt. Out'#10'Font.Color'#7#7'clBlack'
+  +#11'Font.Height'#2#243#9'Font.Name'#6#4'Sans'#10'ParentFont'#8#8'TabOrder'#2
+  +#3#0#0#11'TStaticText'#14'AnnularPVText2'#4'Left'#2#10#6'Height'#2#20#3'Top'
+  +#3#132#0#5'Width'#2'r'#7'Caption'#6#11'Annnular PV'#10'Font.Color'#7#7'clBla'
+  +'ck'#11'Font.Height'#2#243#9'Font.Name'#6#4'Sans'#10'ParentFont'#8#8'TabOrde'
+  +'r'#2#4#0#0#11'TStaticText'#18'StrokeCounterText2'#4'Left'#2#10#6'Height'#2
+  +#20#3'Top'#3#228#0#5'Width'#2'r'#7'Caption'#6#13'StrokeCounter'#10'Font.Colo'
+  +'r'#7#7'clBlack'#11'Font.Height'#2#243#9'Font.Name'#6#4'Sans'#10'ParentFont'
+  +#8#8'TabOrder'#2#5#0#0#11'TStaticText'#14'AnnularYPText2'#4'Left'#2#10#6'Hei'
+  +'ght'#2#20#3'Top'#3#156#0#5'Width'#2'r'#7'Caption'#6#9'AnnularYP'#10'Font.Co'
+  +'lor'#7#7'clBlack'#11'Font.Height'#2#243#9'Font.Name'#6#4'Sans'#10'ParentFon'
+  +'t'#8#8'TabOrder'#2#6#0#0#11'TStaticText'#11'PipeYPText2'#4'Left'#2#10#6'Hei'
+  +'ght'#2#20#3'Top'#3#204#0#5'Width'#2'r'#7'Caption'#6#6'PipeYP'#10'Font.Color'
+  +#7#7'clBlack'#11'Font.Height'#2#243#9'Font.Name'#6#4'Sans'#10'ParentFont'#8#8
+  +'TabOrder'#2#7#0#0#11'TStaticText'#11'PipePVText2'#4'Left'#2#10#6'Height'#2
+  +#20#3'Top'#3#180#0#5'Width'#2'r'#7'Caption'#6#7'Pipe PV'#10'Font.Color'#7#7
+  +'clBlack'#11'Font.Height'#2#243#9'Font.Name'#6#4'Sans'#10'ParentFont'#8#8'Ta'
+  +'bOrder'#2#8#0#0#11'TStaticText'#13'TotStrksText2'#4'Left'#2#8#6'Height'#2#20
+  +#3'Top'#3#252#0#5'Width'#2'~'#7'Caption'#6#13'Total Strokes'#10'Font.Color'#7
+  +#7'clBlack'#11'Font.Height'#2#243#9'Font.Name'#6#4'Sans'#10'ParentFont'#8#8
+  +'TabOrder'#2#9#0#0#11'TStaticText'#17'TotCircStrksText2'#4'Left'#2#10#6'Heig'
+  +'ht'#2#20#3'Top'#3#16#1#5'Width'#2'~'#7'Caption'#6#25'Total Circulating Stro'
+  +'kes'#10'Font.Color'#7#7'clBlack'#11'Font.Height'#2#243#9'Font.Name'#6#4'San'
+  +'s'#10'ParentFont'#8#8'TabOrder'#2#10#0#0#0#0#9'TMainMenu'#9'MainMenu1'#4'Le'
+  +'ft'#2'P'#3'Top'#4#248#255#0#0#0#9'TMenuItem'#13'MenuItem1File'#7'Caption'#6
+  +#4'File'#0#9'TMenuItem'#17'MenuItem1OpenFile'#7'Caption'#6#9'Open File'#7'On'
+  +'Click'#7#22'MenuItem1OpenFileClick'#0#0#9'TMenuItem'#19'MenuItem1CreateFile'
+  +#7'Caption'#6#11'Create File'#7'OnClick'#7#24'MenuItem1CreateFileClick'#0#0#9
+  +'TMenuItem'#17'MenuItem1SaveFile'#7'Caption'#6#9'Save File'#7'OnClick'#7#22
+  +'MenuItem1SaveFileClick'#0#0#9'TMenuItem'#15'MenuItem1SaveAs'#7'Caption'#6#10
+  +'Save As...'#7'OnClick'#7#20'MenuItem1SaveAsClick'#0#0#9'TMenuItem'#13'MenuI'
+  +'tem1Quit'#7'Caption'#6#4'Quit'#7'OnClick'#7#18'MenuItem1QuitClick'#0#0#0#9
+  +'TMenuItem'#13'MenuItem2Edit'#7'Caption'#6#4'Edit'#0#9'TMenuItem'#17'MenuIte'
+  +'m2EditFile'#7'Caption'#6#14'Edit Well File'#0#9'TMenuItem'#24'MenuItem2Disp'
+  +'layWellData'#7'Caption'#6#17'Well Data Summary'#7'Default'#9#7'OnClick'#7#29
+  +'MenuItem2DisplayWellDataClick'#0#0#9'TMenuItem'#20'MenuItem2GeneralData'#7
+  ,'Caption'#6#17'General Well Data'#7'OnClick'#7#25'MenuItem2GeneralDataClick'
+  +#0#0#9'TMenuItem'#20'MenuItem2HoleProfile'#7'Caption'#6#17'Hole Profile Data'
+  +#7'OnClick'#7#25'MenuItem2HoleProfileClick'#0#0#9'TMenuItem'#20'MenuItem2Dri'
+  +'llString'#7'Caption'#6#12'Drill String'#7'OnClick'#7#25'MenuItem2DrillStrin'
+  +'gClick'#0#0#9'TMenuItem'#16'MenuItem2BitData'#7'Caption'#6#8'Bit Data'#7'On'
+  +'Click'#7#21'MenuItem2BitDataClick'#0#0#9'TMenuItem'#16'MenuItem2MudData'#7
+  +'Caption'#6#8'Mud Data'#7'OnClick'#7#21'MenuItem2MudDataClick'#0#0#9'TMenuIt'
+  +'em'#17'MenuItem2PumpData'#7'Caption'#6#9'Pump Data'#7'OnClick'#7#22'MenuIte'
+  +'m2PumpDataClick'#0#0#9'TMenuItem'#25'MenuItem2SurfaceEquipment'#7'Caption'#6
+  +#22'Surface Equipment Data'#7'OnClick'#7#30'MenuItem2SurfaceEquipmentClick'#0
+  +#0#9'TMenuItem'#21'MenuItem2WellTestData'#7'Caption'#6#14'Well Test Data'#7
+  +'OnClick'#7#26'MenuItem2WellTestDataClick'#0#0#9'TMenuItem'#16'MenuItem2Geol'
+  +'ogy'#7'Caption'#6#7'Geology'#7'OnClick'#7#21'MenuItem2GeologyClick'#0#0#0#9
+  +'TMenuItem'#20'MenuItem2Preferences'#7'Caption'#6#11'Preferences'#0#9'TMenuI'
+  +'tem'#17'MenuItem2Defaults'#7'Caption'#6#8'Defaults'#7'OnClick'#7#22'MenuIte'
+  +'m2DefaultsClick'#0#0#9'TMenuItem'#14'MenuItem2Units'#7'Caption'#6#16'Units '
+  +'Of Measure'#7'OnClick'#7#19'MenuItem2UnitsClick'#0#0#0#0#9'TMenuItem'#17'Me'
+  +'nuItem3Simulate'#7'Caption'#6#8'Simulate'#0#9'TMenuItem'#14'MenuItem3Start'
+  +#7'Caption'#6#5'Start'#7'OnClick'#7#19'MenuItem3StartClick'#0#0#9'TMenuItem'
+  +#13'MenuItem3Stop'#7'Caption'#6#4'Stop'#7'OnClick'#7#18'MenuItem3StopClick'#0
+  +#0#9'TMenuItem'#14'MenuItem3Pause'#7'Caption'#6#5'Pause'#7'OnClick'#7#19'Men'
+  +'uItem3PauseClick'#0#0#0#9'TMenuItem'#13'MenuItem4Help'#7'Caption'#6#4'Help'
+  +#0#9'TMenuItem'#14'MenuItem4About'#7'Caption'#6#5'About'#7'OnClick'#7#19'Men'
+  +'uItem4AboutClick'#0#0#9'TMenuItem'#17'MenuItem4ShowHelp'#7'Caption'#6#9'Sho'
+  +'w Help'#0#0#0#0#11'TOpenDialog'#15'FileOpenDialog1'#4'Left'#3#144#0#3'Top'#4
+  +#248#255#0#0#0#0#11'TSaveDialog'#15'FileSaveDialog1'#4'Left'#3#192#0#3'Top'#4
+  +#248#255#0#0#0#0#22'TSelectDirectoryDialog'#22'SelectDirectoryDialog1'#4'Lef'
+  +'t'#3#240#0#0#0#0
 ]);

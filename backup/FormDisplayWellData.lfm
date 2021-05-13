@@ -1,38 +1,38 @@
 object DisplayWellDataForm: TDisplayWellDataForm
-  Left = 21
+  Left = 56
   Height = 705
-  Top = 172
-  Width = 926
+  Top = 45
+  Width = 949
   Caption = 'Well Data Summary'
   ClientHeight = 705
-  ClientWidth = 926
+  ClientWidth = 949
   OnActivate = FormActivate
   OnCreate = FormCreate
   LCLVersion = '2.0.12.0'
   object BitPanel: TPanel
-    Left = 295
-    Height = 88
+    Left = 290
+    Height = 125
     Top = 304
     Width = 321
-    ClientHeight = 88
+    ClientHeight = 125
     ClientWidth = 321
     Color = 11828736
     ParentColor = False
     TabOrder = 12
     object NumberOfJetsLabel: TStaticText
-      Left = 9
+      Left = 12
       Height = 20
-      Top = 43
+      Top = 68
       Width = 104
       Caption = 'Number of Jets:'
       Font.Color = clSkyBlue
       ParentFont = False
       TabOrder = 0
     end
-    object Jet1Label: TStaticText
-      Left = 9
+    object Jet1Text: TStaticText
+      Left = 12
       Height = 20
-      Top = 62
+      Top = 87
       Width = 40
       Caption = 'Jet  1:'
       Font.Color = clSkyBlue
@@ -40,9 +40,9 @@ object DisplayWellDataForm: TDisplayWellDataForm
       TabOrder = 1
     end
     object Jet1: TLabel
-      Left = 49
+      Left = 52
       Height = 16
-      Top = 63
+      Top = 88
       Width = 36
       Caption = '99.99'
       Font.Color = clWhite
@@ -50,9 +50,9 @@ object DisplayWellDataForm: TDisplayWellDataForm
       ParentFont = False
     end
     object Jet2: TLabel
-      Left = 113
+      Left = 116
       Height = 16
-      Top = 63
+      Top = 88
       Width = 36
       Caption = '99.99'
       Font.Color = clWhite
@@ -60,39 +60,39 @@ object DisplayWellDataForm: TDisplayWellDataForm
       ParentFont = False
     end
     object Jet3: TLabel
-      Left = 178
+      Left = 181
       Height = 16
-      Top = 63
+      Top = 88
       Width = 36
       Caption = '99.99'
       Font.Color = clWhite
       ParentColor = False
       ParentFont = False
     end
-    object Jet2Label: TStaticText
-      Left = 97
+    object Jet2Text: TStaticText
+      Left = 100
       Height = 20
-      Top = 62
+      Top = 87
       Width = 16
       Caption = '2:'
       Font.Color = clSkyBlue
       ParentFont = False
       TabOrder = 2
     end
-    object Jet3Label: TStaticText
-      Left = 163
+    object Jet3Text: TStaticText
+      Left = 166
       Height = 20
-      Top = 62
+      Top = 87
       Width = 22
       Caption = '3:'
       Font.Color = clSkyBlue
       ParentFont = False
       TabOrder = 3
     end
-    object Jet4Label: TStaticText
-      Left = 225
+    object Jet4Text: TStaticText
+      Left = 228
       Height = 20
-      Top = 62
+      Top = 87
       Width = 22
       Caption = '4:'
       Font.Color = clSkyBlue
@@ -100,9 +100,9 @@ object DisplayWellDataForm: TDisplayWellDataForm
       TabOrder = 4
     end
     object Jet4: TLabel
-      Left = 241
+      Left = 244
       Height = 16
-      Top = 63
+      Top = 88
       Width = 36
       Caption = '99.99'
       Font.Color = clWhite
@@ -110,19 +110,19 @@ object DisplayWellDataForm: TDisplayWellDataForm
       ParentFont = False
     end
     object NumberOfJets: TLabel
-      Left = 118
+      Left = 121
       Height = 16
-      Top = 43
+      Top = 68
       Width = 36
       Caption = '99.99'
       Font.Color = clWhite
       ParentColor = False
       ParentFont = False
     end
-    object JetUoMLabel: TStaticText
-      Left = 286
+    object JetUoM: TStaticText
+      Left = 289
       Height = 20
-      Top = 62
+      Top = 87
       Width = 34
       Caption = '/32"'
       Font.Color = clSkyBlue
@@ -130,9 +130,9 @@ object DisplayWellDataForm: TDisplayWellDataForm
       TabOrder = 5
     end
     object BitNumberLabel: TStaticText
-      Left = 9
+      Left = 12
       Height = 20
-      Top = 4
+      Top = 29
       Width = 40
       Caption = 'Bit #'
       Font.Color = clSkyBlue
@@ -140,9 +140,9 @@ object DisplayWellDataForm: TDisplayWellDataForm
       TabOrder = 6
     end
     object BitNumber: TLabel
-      Left = 48
+      Left = 51
       Height = 16
-      Top = 4
+      Top = 29
       Width = 36
       AutoSize = False
       Caption = '99'
@@ -150,10 +150,10 @@ object DisplayWellDataForm: TDisplayWellDataForm
       ParentColor = False
       ParentFont = False
     end
-    object BitTypeLabel: TStaticText
-      Left = 9
+    object BitTypeText: TStaticText
+      Left = 12
       Height = 20
-      Top = 21
+      Top = 46
       Width = 60
       Caption = 'Bit Type'
       Font.Color = clSkyBlue
@@ -161,9 +161,9 @@ object DisplayWellDataForm: TDisplayWellDataForm
       TabOrder = 7
     end
     object BitType: TLabel
-      Left = 72
+      Left = 75
       Height = 18
-      Top = 23
+      Top = 48
       Width = 234
       AutoSize = False
       Caption = '$BIT$'
@@ -171,29 +171,185 @@ object DisplayWellDataForm: TDisplayWellDataForm
       ParentColor = False
       ParentFont = False
     end
+    object BitTitleText: TStaticText
+      Left = 8
+      Height = 20
+      Top = 5
+      Width = 160
+      Caption = 'Bit Details'
+      Font.Color = clBlue
+      ParentFont = False
+      TabOrder = 8
+    end
   end
   object TestsPanel: TPanel
-    Left = 624
-    Height = 234
+    Left = 619
+    Height = 138
     Top = 8
-    Width = 288
-    Caption = 'Tests'
+    Width = 320
+    ClientHeight = 138
+    ClientWidth = 320
     Color = 6652856
     ParentColor = False
     TabOrder = 9
+    object LeakOffPressureUoM: TLabel
+      Left = 237
+      Height = 22
+      Top = 89
+      Width = 32
+      AutoSize = False
+      Caption = 'Units'
+      ParentColor = False
+    end
+    object LeakOffEMWUoM: TLabel
+      Left = 237
+      Height = 22
+      Top = 71
+      Width = 32
+      AutoSize = False
+      Caption = 'Units'
+      ParentColor = False
+    end
+    object LeakOffMWUoM: TLabel
+      Left = 237
+      Height = 22
+      Top = 52
+      Width = 33
+      AutoSize = False
+      Caption = 'Units'
+      ParentColor = False
+    end
+    object LeakOffPressure: TLabel
+      Left = 182
+      Height = 16
+      Top = 90
+      Width = 44
+      Alignment = taRightJustify
+      Caption = '999.99'
+      ParentColor = False
+    end
+    object LeakOffEMW: TLabel
+      Left = 182
+      Height = 16
+      Top = 72
+      Width = 44
+      Alignment = taRightJustify
+      Caption = '999.99'
+      ParentColor = False
+    end
+    object LeakOffMW: TLabel
+      Left = 182
+      Height = 16
+      Top = 53
+      Width = 44
+      Alignment = taRightJustify
+      Caption = '999.99'
+      ParentColor = False
+    end
+    object LeakOffTDText: TStaticText
+      Left = 14
+      Height = 25
+      Top = 34
+      Width = 130
+      Caption = 'Last Leak Off Depth'
+      TabOrder = 0
+    end
+    object LeakOffMWText: TStaticText
+      Left = 15
+      Height = 24
+      Top = 52
+      Width = 137
+      Alignment = taRightJustify
+      Caption = 'Mud Weight'
+      TabOrder = 1
+    end
+    object LeakOffEMWText: TStaticText
+      Left = 15
+      Height = 24
+      Top = 71
+      Width = 150
+      Alignment = taRightJustify
+      Caption = 'Equivalent Mud Weight'
+      TabOrder = 2
+    end
+    object LeakOffPressureText: TStaticText
+      Left = 15
+      Height = 17
+      Top = 89
+      Width = 127
+      Alignment = taRightJustify
+      Caption = 'Leak Off Pressure'
+      TabOrder = 3
+    end
+    object LeakOffTD: TLabel
+      Left = 157
+      Height = 16
+      Top = 34
+      Width = 68
+      Alignment = taRightJustify
+      AutoSize = False
+      Caption = '999.99'
+      ParentColor = False
+    end
+    object LeakOffTDUoM: TLabel
+      Left = 237
+      Height = 22
+      Top = 34
+      Width = 33
+      AutoSize = False
+      Caption = 'Units'
+      ParentColor = False
+    end
+    object CasingBurstPressureUoM: TLabel
+      Left = 237
+      Height = 22
+      Top = 109
+      Width = 32
+      AutoSize = False
+      Caption = 'Units'
+      ParentColor = False
+    end
+    object CasingBurstPressureText: TStaticText
+      Left = 15
+      Height = 17
+      Top = 109
+      Width = 143
+      Alignment = taRightJustify
+      Caption = 'Casing Burst Pressure'
+      TabOrder = 4
+    end
+    object CasingBurstPressure: TLabel
+      Left = 182
+      Height = 16
+      Top = 110
+      Width = 44
+      Alignment = taRightJustify
+      Caption = '999.99'
+      ParentColor = False
+    end
+    object TestTitleText: TStaticText
+      Left = 12
+      Height = 22
+      Top = 9
+      Width = 208
+      Caption = 'Geology & Formation Pressures'
+      Font.Color = 207169
+      ParentFont = False
+      TabOrder = 5
+    end
   end
   object FormationPanel: TPanel
-    Left = 295
-    Height = 240
-    Top = 400
+    Left = 619
+    Height = 277
+    Top = 152
     Width = 320
-    ClientHeight = 240
+    ClientHeight = 277
     ClientWidth = 320
     Color = 2852023
     ParentColor = False
     TabOrder = 10
-    object FormationText: TStaticText
-      Left = 16
+    object FormationTitleText: TStaticText
+      Left = 11
       Height = 22
       Top = 9
       Width = 208
@@ -205,7 +361,7 @@ object DisplayWellDataForm: TDisplayWellDataForm
     object FormationText1: TStaticText
       Left = 16
       Height = 22
-      Top = 62
+      Top = 70
       Width = 72
       Caption = 'Horizon 1'
       Font.Color = clMaroon
@@ -215,7 +371,7 @@ object DisplayWellDataForm: TDisplayWellDataForm
     object FormationText2: TStaticText
       Left = 16
       Height = 22
-      Top = 79
+      Top = 90
       Width = 72
       Caption = 'Horizon 2'
       Font.Color = clMaroon
@@ -225,7 +381,7 @@ object DisplayWellDataForm: TDisplayWellDataForm
     object FormationText3: TStaticText
       Left = 16
       Height = 22
-      Top = 96
+      Top = 108
       Width = 72
       Caption = 'Horizon 3'
       Font.Color = clMaroon
@@ -235,7 +391,7 @@ object DisplayWellDataForm: TDisplayWellDataForm
     object FormationText4: TStaticText
       Left = 16
       Height = 22
-      Top = 112
+      Top = 127
       Width = 72
       Caption = 'Horizon 4'
       Font.Color = clMaroon
@@ -245,7 +401,7 @@ object DisplayWellDataForm: TDisplayWellDataForm
     object FormationText5: TStaticText
       Left = 16
       Height = 22
-      Top = 128
+      Top = 146
       Width = 72
       Caption = 'Horizon 5'
       Font.Color = clMaroon
@@ -255,7 +411,7 @@ object DisplayWellDataForm: TDisplayWellDataForm
     object FormationText6: TStaticText
       Left = 16
       Height = 22
-      Top = 145
+      Top = 166
       Width = 72
       Caption = 'Horizon 6'
       Font.Color = clMaroon
@@ -265,7 +421,7 @@ object DisplayWellDataForm: TDisplayWellDataForm
     object FormationText7: TStaticText
       Left = 16
       Height = 22
-      Top = 164
+      Top = 187
       Width = 72
       Caption = 'Horizon 7'
       Font.Color = clMaroon
@@ -275,7 +431,7 @@ object DisplayWellDataForm: TDisplayWellDataForm
     object FormationText8: TStaticText
       Left = 16
       Height = 22
-      Top = 181
+      Top = 206
       Width = 72
       Caption = 'Horizon 8'
       Font.Color = clMaroon
@@ -285,7 +441,7 @@ object DisplayWellDataForm: TDisplayWellDataForm
     object FormationText9: TStaticText
       Left = 16
       Height = 22
-      Top = 197
+      Top = 225
       Width = 72
       Caption = 'Horizon 9'
       Font.Color = clMaroon
@@ -295,47 +451,47 @@ object DisplayWellDataForm: TDisplayWellDataForm
     object FormationText10: TStaticText
       Left = 16
       Height = 22
-      Top = 214
+      Top = 245
       Width = 72
       Caption = 'Horizon 10'
       Font.Color = clMaroon
       ParentFont = False
       TabOrder = 10
     end
-    object FormationText11: TStaticText
+    object TopDepthText: TStaticText
       Left = 80
       Height = 22
-      Top = 28
+      Top = 36
       Width = 72
       Caption = 'Top Depth'
       Font.Color = clMaroon
       ParentFont = False
       TabOrder = 11
     end
-    object FormationText12: TStaticText
+    object HardnessText: TStaticText
       Left = 153
       Height = 22
-      Top = 28
+      Top = 36
       Width = 72
       Caption = 'Hardness'
       Font.Color = clMaroon
       ParentFont = False
       TabOrder = 12
     end
-    object FormationText13: TStaticText
+    object FormationPressureText: TStaticText
       Left = 225
       Height = 22
-      Top = 28
+      Top = 36
       Width = 87
       Caption = 'Reservoir Pr.'
       Font.Color = clMaroon
       ParentFont = False
       TabOrder = 13
     end
-    object FormationTopUoMLabel: TLabel
+    object FormationTopUoM: TLabel
       Left = 93
       Height = 22
-      Top = 44
+      Top = 52
       Width = 37
       Alignment = taRightJustify
       AutoSize = False
@@ -344,10 +500,10 @@ object DisplayWellDataForm: TDisplayWellDataForm
       ParentColor = False
       ParentFont = False
     end
-    object FormationHardnessUoMLabel: TLabel
+    object FormationHardnessUoM: TLabel
       Left = 167
       Height = 22
-      Top = 44
+      Top = 52
       Width = 37
       Alignment = taRightJustify
       AutoSize = False
@@ -356,10 +512,10 @@ object DisplayWellDataForm: TDisplayWellDataForm
       ParentColor = False
       ParentFont = False
     end
-    object FormationPressureUoMLabel: TLabel
+    object FormationPressureUoM: TLabel
       Left = 247
       Height = 22
-      Top = 44
+      Top = 52
       Width = 37
       Alignment = taRightJustify
       AutoSize = False
@@ -371,7 +527,7 @@ object DisplayWellDataForm: TDisplayWellDataForm
     object Horizon1Top: TLabel
       Left = 89
       Height = 16
-      Top = 62
+      Top = 70
       Width = 44
       Alignment = taRightJustify
       Caption = '999.99'
@@ -382,7 +538,7 @@ object DisplayWellDataForm: TDisplayWellDataForm
     object Horizon1Hardness: TLabel
       Left = 160
       Height = 16
-      Top = 62
+      Top = 70
       Width = 44
       Alignment = taRightJustify
       Caption = '999.99'
@@ -393,7 +549,7 @@ object DisplayWellDataForm: TDisplayWellDataForm
     object Horizon1Pressure: TLabel
       Left = 240
       Height = 16
-      Top = 62
+      Top = 70
       Width = 44
       Alignment = taRightJustify
       Caption = '999.99'
@@ -404,7 +560,7 @@ object DisplayWellDataForm: TDisplayWellDataForm
     object Horizon2Top: TLabel
       Left = 89
       Height = 16
-      Top = 78
+      Top = 89
       Width = 44
       Alignment = taRightJustify
       Caption = '999.99'
@@ -415,7 +571,7 @@ object DisplayWellDataForm: TDisplayWellDataForm
     object Horizon2Hardness: TLabel
       Left = 160
       Height = 16
-      Top = 78
+      Top = 89
       Width = 44
       Alignment = taRightJustify
       Caption = '999.99'
@@ -426,7 +582,7 @@ object DisplayWellDataForm: TDisplayWellDataForm
     object Horizon2Pressure: TLabel
       Left = 240
       Height = 16
-      Top = 78
+      Top = 89
       Width = 44
       Alignment = taRightJustify
       Caption = '999.99'
@@ -437,7 +593,7 @@ object DisplayWellDataForm: TDisplayWellDataForm
     object Horizon3Top: TLabel
       Left = 89
       Height = 16
-      Top = 96
+      Top = 108
       Width = 44
       Alignment = taRightJustify
       Caption = '999.99'
@@ -448,7 +604,7 @@ object DisplayWellDataForm: TDisplayWellDataForm
     object Horizon3Hardness: TLabel
       Left = 160
       Height = 16
-      Top = 96
+      Top = 108
       Width = 44
       Alignment = taRightJustify
       Caption = '999.99'
@@ -459,7 +615,7 @@ object DisplayWellDataForm: TDisplayWellDataForm
     object Horizon3Pressure: TLabel
       Left = 240
       Height = 16
-      Top = 96
+      Top = 108
       Width = 44
       Alignment = taRightJustify
       Caption = '999.99'
@@ -470,7 +626,7 @@ object DisplayWellDataForm: TDisplayWellDataForm
     object Horizon4Top: TLabel
       Left = 89
       Height = 16
-      Top = 113
+      Top = 128
       Width = 44
       Alignment = taRightJustify
       Caption = '999.99'
@@ -481,7 +637,7 @@ object DisplayWellDataForm: TDisplayWellDataForm
     object Horizon4Hardness: TLabel
       Left = 160
       Height = 16
-      Top = 113
+      Top = 128
       Width = 44
       Alignment = taRightJustify
       Caption = '999.99'
@@ -492,7 +648,7 @@ object DisplayWellDataForm: TDisplayWellDataForm
     object Horizon4Pressure: TLabel
       Left = 240
       Height = 16
-      Top = 113
+      Top = 128
       Width = 44
       Alignment = taRightJustify
       Caption = '999.99'
@@ -503,7 +659,7 @@ object DisplayWellDataForm: TDisplayWellDataForm
     object Horizon5Top: TLabel
       Left = 89
       Height = 16
-      Top = 130
+      Top = 148
       Width = 44
       Alignment = taRightJustify
       Caption = '999.99'
@@ -514,7 +670,7 @@ object DisplayWellDataForm: TDisplayWellDataForm
     object Horizon5Hardness: TLabel
       Left = 160
       Height = 16
-      Top = 130
+      Top = 148
       Width = 44
       Alignment = taRightJustify
       Caption = '999.99'
@@ -525,7 +681,7 @@ object DisplayWellDataForm: TDisplayWellDataForm
     object Horizon5Pressure: TLabel
       Left = 240
       Height = 16
-      Top = 130
+      Top = 148
       Width = 44
       Alignment = taRightJustify
       Caption = '999.99'
@@ -536,7 +692,7 @@ object DisplayWellDataForm: TDisplayWellDataForm
     object Horizon6Top: TLabel
       Left = 90
       Height = 16
-      Top = 147
+      Top = 168
       Width = 44
       Alignment = taRightJustify
       Caption = '999.99'
@@ -547,7 +703,7 @@ object DisplayWellDataForm: TDisplayWellDataForm
     object Horizon6Hardness: TLabel
       Left = 161
       Height = 16
-      Top = 147
+      Top = 168
       Width = 44
       Alignment = taRightJustify
       Caption = '999.99'
@@ -558,7 +714,7 @@ object DisplayWellDataForm: TDisplayWellDataForm
     object Horizon6Pressure: TLabel
       Left = 241
       Height = 16
-      Top = 147
+      Top = 168
       Width = 44
       Alignment = taRightJustify
       Caption = '999.99'
@@ -569,7 +725,7 @@ object DisplayWellDataForm: TDisplayWellDataForm
     object Horizon7Top: TLabel
       Left = 89
       Height = 16
-      Top = 164
+      Top = 187
       Width = 44
       Alignment = taRightJustify
       Caption = '999.99'
@@ -580,7 +736,7 @@ object DisplayWellDataForm: TDisplayWellDataForm
     object Horizon7Hardness: TLabel
       Left = 160
       Height = 16
-      Top = 164
+      Top = 187
       Width = 44
       Alignment = taRightJustify
       Caption = '999.99'
@@ -591,7 +747,7 @@ object DisplayWellDataForm: TDisplayWellDataForm
     object Horizon7Pressure: TLabel
       Left = 240
       Height = 16
-      Top = 164
+      Top = 187
       Width = 44
       Alignment = taRightJustify
       Caption = '999.99'
@@ -602,7 +758,7 @@ object DisplayWellDataForm: TDisplayWellDataForm
     object Horizon8Top: TLabel
       Left = 89
       Height = 16
-      Top = 181
+      Top = 206
       Width = 44
       Alignment = taRightJustify
       Caption = '999.99'
@@ -613,7 +769,7 @@ object DisplayWellDataForm: TDisplayWellDataForm
     object Horizon8Hardness: TLabel
       Left = 160
       Height = 16
-      Top = 181
+      Top = 206
       Width = 44
       Alignment = taRightJustify
       Caption = '999.99'
@@ -624,7 +780,7 @@ object DisplayWellDataForm: TDisplayWellDataForm
     object Horizon8Pressure: TLabel
       Left = 240
       Height = 16
-      Top = 181
+      Top = 206
       Width = 44
       Alignment = taRightJustify
       Caption = '999.99'
@@ -635,7 +791,7 @@ object DisplayWellDataForm: TDisplayWellDataForm
     object Horizon9Top: TLabel
       Left = 89
       Height = 16
-      Top = 197
+      Top = 225
       Width = 44
       Alignment = taRightJustify
       Caption = '999.99'
@@ -646,7 +802,7 @@ object DisplayWellDataForm: TDisplayWellDataForm
     object Horizon9Hardness: TLabel
       Left = 160
       Height = 16
-      Top = 197
+      Top = 225
       Width = 44
       Alignment = taRightJustify
       Caption = '999.99'
@@ -657,7 +813,7 @@ object DisplayWellDataForm: TDisplayWellDataForm
     object Horizon9Pressure: TLabel
       Left = 240
       Height = 16
-      Top = 197
+      Top = 225
       Width = 44
       Alignment = taRightJustify
       Caption = '999.99'
@@ -666,9 +822,9 @@ object DisplayWellDataForm: TDisplayWellDataForm
       ParentFont = False
     end
     object Horizon10Top: TLabel
-      Left = 89
+      Left = 90
       Height = 16
-      Top = 214
+      Top = 245
       Width = 44
       Alignment = taRightJustify
       Caption = '999.99'
@@ -677,9 +833,9 @@ object DisplayWellDataForm: TDisplayWellDataForm
       ParentFont = False
     end
     object Horizon10Hardness: TLabel
-      Left = 160
+      Left = 161
       Height = 16
-      Top = 214
+      Top = 245
       Width = 44
       Alignment = taRightJustify
       Caption = '999.99'
@@ -688,9 +844,9 @@ object DisplayWellDataForm: TDisplayWellDataForm
       ParentFont = False
     end
     object Horizon10Pressure: TLabel
-      Left = 240
+      Left = 241
       Height = 16
-      Top = 214
+      Top = 245
       Width = 44
       Alignment = taRightJustify
       Caption = '999.99'
@@ -702,7 +858,7 @@ object DisplayWellDataForm: TDisplayWellDataForm
   object PumpsPanel: TPanel
     Left = 8
     Height = 152
-    Top = 408
+    Top = 536
     Width = 272
     ClientHeight = 152
     ClientWidth = 272
@@ -861,7 +1017,7 @@ object DisplayWellDataForm: TDisplayWellDataForm
     object PumpEffText: TStaticText
       Left = 149
       Height = 20
-      Top = 24
+      Top = 22
       Width = 67
       Caption = 'Efficiency'
       Font.Color = clSkyBlue
@@ -873,13 +1029,13 @@ object DisplayWellDataForm: TDisplayWellDataForm
       Height = 20
       Top = 118
       Width = 160
-      Caption = 'Maximum Pump Pressure'
+      Caption = 'Max Pump Pressure'
       Font.Color = clSkyBlue
       ParentFont = False
       TabOrder = 6
     end
     object MaxPumpPressure: TLabel
-      Left = 192
+      Left = 162
       Height = 16
       Top = 120
       Width = 44
@@ -890,7 +1046,7 @@ object DisplayWellDataForm: TDisplayWellDataForm
       ParentFont = False
     end
     object MaxPumpPressureUoM: TLabel
-      Left = 240
+      Left = 210
       Height = 22
       Top = 120
       Width = 32
@@ -902,7 +1058,7 @@ object DisplayWellDataForm: TDisplayWellDataForm
     end
   end
   object PipePanel: TPanel
-    Left = 295
+    Left = 290
     Height = 144
     Top = 152
     Width = 321
@@ -921,7 +1077,7 @@ object DisplayWellDataForm: TDisplayWellDataForm
       ParentFont = False
       TabOrder = 0
     end
-    object PipeSection1TD: TStaticText
+    object PipeSection1TDText: TStaticText
       Left = 9
       Height = 21
       Top = 66
@@ -931,7 +1087,7 @@ object DisplayWellDataForm: TDisplayWellDataForm
       ParentFont = False
       TabOrder = 1
     end
-    object PipeSection2TD: TStaticText
+    object PipeSection2TDText: TStaticText
       Left = 9
       Height = 21
       Top = 91
@@ -941,7 +1097,7 @@ object DisplayWellDataForm: TDisplayWellDataForm
       ParentFont = False
       TabOrder = 2
     end
-    object PipeSection3TD: TStaticText
+    object PipeSection3TDText: TStaticText
       Left = 9
       Height = 21
       Top = 116
@@ -951,7 +1107,7 @@ object DisplayWellDataForm: TDisplayWellDataForm
       ParentFont = False
       TabOrder = 3
     end
-    object PipeSection1ID: TStaticText
+    object PipeSection1IDText: TStaticText
       Left = 197
       Height = 25
       Top = 32
@@ -973,7 +1129,7 @@ object DisplayWellDataForm: TDisplayWellDataForm
       ParentFont = False
       TabOrder = 5
     end
-    object PipeTDUoMLabel: TLabel
+    object PipeTDUoM: TLabel
       Left = 132
       Height = 22
       Top = 48
@@ -985,7 +1141,7 @@ object DisplayWellDataForm: TDisplayWellDataForm
       ParentColor = False
       ParentFont = False
     end
-    object PipeIDUoMLabel: TLabel
+    object PipeIDUoM: TLabel
       Left = 181
       Height = 22
       Top = 48
@@ -997,7 +1153,7 @@ object DisplayWellDataForm: TDisplayWellDataForm
       ParentColor = False
       ParentFont = False
     end
-    object NumPipeSectionsValue: TLabel
+    object NumPipeSections: TLabel
       Left = 169
       Height = 19
       Top = 6
@@ -1006,7 +1162,7 @@ object DisplayWellDataForm: TDisplayWellDataForm
       Caption = '99'
       ParentColor = False
     end
-    object PipeSection1TDValue: TLabel
+    object PipeSection1TD: TLabel
       Left = 120
       Height = 16
       Top = 66
@@ -1017,7 +1173,7 @@ object DisplayWellDataForm: TDisplayWellDataForm
       ParentColor = False
       ParentFont = False
     end
-    object PipeSection2TDValue: TLabel
+    object PipeSection2TD: TLabel
       Left = 120
       Height = 16
       Top = 92
@@ -1028,7 +1184,7 @@ object DisplayWellDataForm: TDisplayWellDataForm
       ParentColor = False
       ParentFont = False
     end
-    object PipeSection3TDValue: TLabel
+    object PipeSection3TD: TLabel
       Left = 120
       Height = 16
       Top = 116
@@ -1039,7 +1195,7 @@ object DisplayWellDataForm: TDisplayWellDataForm
       ParentColor = False
       ParentFont = False
     end
-    object PipeSection1IDValue: TLabel
+    object PipeSection1ID: TLabel
       Left = 169
       Height = 16
       Top = 66
@@ -1050,7 +1206,7 @@ object DisplayWellDataForm: TDisplayWellDataForm
       ParentColor = False
       ParentFont = False
     end
-    object PipeSection2IDValue: TLabel
+    object PipeSection2ID: TLabel
       Left = 169
       Height = 16
       Top = 91
@@ -1061,7 +1217,7 @@ object DisplayWellDataForm: TDisplayWellDataForm
       ParentColor = False
       ParentFont = False
     end
-    object PipeSection3IDValue: TLabel
+    object PipeSection3ID: TLabel
       Left = 168
       Height = 16
       Top = 116
@@ -1072,7 +1228,7 @@ object DisplayWellDataForm: TDisplayWellDataForm
       ParentColor = False
       ParentFont = False
     end
-    object PipeSection1OD: TStaticText
+    object PipeSection1ODText: TStaticText
       Left = 240
       Height = 25
       Top = 32
@@ -1083,7 +1239,7 @@ object DisplayWellDataForm: TDisplayWellDataForm
       ParentFont = False
       TabOrder = 6
     end
-    object PipeSection1ODValue: TLabel
+    object PipeSection1OD: TLabel
       Left = 216
       Height = 16
       Top = 66
@@ -1094,7 +1250,7 @@ object DisplayWellDataForm: TDisplayWellDataForm
       ParentColor = False
       ParentFont = False
     end
-    object PipeODUoMLabel: TLabel
+    object PipeODUoM: TLabel
       Left = 228
       Height = 22
       Top = 48
@@ -1106,7 +1262,7 @@ object DisplayWellDataForm: TDisplayWellDataForm
       ParentColor = False
       ParentFont = False
     end
-    object PipeSection1Wt: TStaticText
+    object PipeSection1WtText: TStaticText
       Left = 288
       Height = 17
       Top = 32
@@ -1117,7 +1273,7 @@ object DisplayWellDataForm: TDisplayWellDataForm
       ParentFont = False
       TabOrder = 7
     end
-    object PipeSection1WtValue: TLabel
+    object PipeSection1Wt: TLabel
       Left = 265
       Height = 16
       Top = 66
@@ -1128,7 +1284,7 @@ object DisplayWellDataForm: TDisplayWellDataForm
       ParentColor = False
       ParentFont = False
     end
-    object PipeWtUoMLabel: TLabel
+    object PipeWtUoM: TLabel
       Left = 272
       Height = 22
       Top = 48
@@ -1140,7 +1296,7 @@ object DisplayWellDataForm: TDisplayWellDataForm
       ParentColor = False
       ParentFont = False
     end
-    object PipeSection2ODValue: TLabel
+    object PipeSection2OD: TLabel
       Left = 216
       Height = 16
       Top = 91
@@ -1151,7 +1307,7 @@ object DisplayWellDataForm: TDisplayWellDataForm
       ParentColor = False
       ParentFont = False
     end
-    object PipeSection2WtValue: TLabel
+    object PipeSection2Wt: TLabel
       Left = 265
       Height = 16
       Top = 91
@@ -1162,7 +1318,7 @@ object DisplayWellDataForm: TDisplayWellDataForm
       ParentColor = False
       ParentFont = False
     end
-    object PipeSection3ODValue: TLabel
+    object PipeSection3OD: TLabel
       Left = 216
       Height = 16
       Top = 116
@@ -1173,7 +1329,7 @@ object DisplayWellDataForm: TDisplayWellDataForm
       ParentColor = False
       ParentFont = False
     end
-    object PipeSection3WtValue: TLabel
+    object PipeSection3Wt: TLabel
       Left = 265
       Height = 16
       Top = 116
@@ -1186,7 +1342,7 @@ object DisplayWellDataForm: TDisplayWellDataForm
     end
   end
   object HolePanel: TPanel
-    Left = 296
+    Left = 291
     Height = 138
     Top = 8
     Width = 320
@@ -1195,7 +1351,7 @@ object DisplayWellDataForm: TDisplayWellDataForm
     Color = 10971066
     ParentColor = False
     TabOrder = 7
-    object OpenHoleSection3IDValue: TLabel
+    object OpenHoleSection3ID: TLabel
       Left = 240
       Height = 16
       Top = 110
@@ -1206,7 +1362,7 @@ object DisplayWellDataForm: TDisplayWellDataForm
       ParentColor = False
       ParentFont = False
     end
-    object OpenHoleSection3TDValue: TLabel
+    object OpenHoleSection3TD: TLabel
       Left = 167
       Height = 16
       Top = 110
@@ -1218,7 +1374,7 @@ object DisplayWellDataForm: TDisplayWellDataForm
       ParentColor = False
       ParentFont = False
     end
-    object OpenHoleSection2IDValue: TLabel
+    object OpenHoleSection2ID: TLabel
       Left = 239
       Height = 16
       Top = 88
@@ -1229,7 +1385,7 @@ object DisplayWellDataForm: TDisplayWellDataForm
       ParentColor = False
       ParentFont = False
     end
-    object OpenHoleSection2TDValue: TLabel
+    object OpenHoleSection2TD: TLabel
       Left = 167
       Height = 16
       Top = 88
@@ -1241,16 +1397,17 @@ object DisplayWellDataForm: TDisplayWellDataForm
       ParentColor = False
       ParentFont = False
     end
-    object OpenHoleSection1IDUoMLabel: TLabel
+    object OpenHoleSectionIDUoM: TLabel
       Left = 251
       Height = 22
       Top = 43
       Width = 32
+      Alignment = taRightJustify
       AutoSize = False
       Caption = 'Units'
       ParentColor = False
     end
-    object OpenHoleSection1IDValue: TLabel
+    object OpenHoleSection1ID: TLabel
       Left = 239
       Height = 16
       Top = 63
@@ -1261,7 +1418,7 @@ object DisplayWellDataForm: TDisplayWellDataForm
       ParentColor = False
       ParentFont = False
     end
-    object OpenHoleSection1TDValue: TLabel
+    object OpenHoleSection1TD: TLabel
       Left = 168
       Height = 16
       Top = 63
@@ -1273,7 +1430,7 @@ object DisplayWellDataForm: TDisplayWellDataForm
       ParentColor = False
       ParentFont = False
     end
-    object NumOpenHoleSectionsValue: TLabel
+    object NumOpenHoleSections: TLabel
       Left = 207
       Height = 20
       Top = 5
@@ -1282,11 +1439,12 @@ object DisplayWellDataForm: TDisplayWellDataForm
       Caption = '99'
       ParentColor = False
     end
-    object OpenHoleSection1TDUoMLabel: TLabel
+    object OpenHoleSectionTDUoM: TLabel
       Left = 196
       Height = 22
       Top = 43
       Width = 32
+      Alignment = taRightJustify
       AutoSize = False
       Caption = 'Units'
       ParentColor = False
@@ -1299,7 +1457,7 @@ object DisplayWellDataForm: TDisplayWellDataForm
       Caption = 'Number of Open Hole Sections:'
       TabOrder = 0
     end
-    object OpenHoleSection1TD: TStaticText
+    object OpenHoleSection1Text: TStaticText
       Left = 11
       Height = 21
       Top = 57
@@ -1307,7 +1465,7 @@ object DisplayWellDataForm: TDisplayWellDataForm
       Caption = 'Open Hole Section #1'
       TabOrder = 1
     end
-    object OpenHoleSection2TD: TStaticText
+    object OpenHoleSection2Text: TStaticText
       Left = 10
       Height = 21
       Top = 82
@@ -1315,7 +1473,7 @@ object DisplayWellDataForm: TDisplayWellDataForm
       Caption = 'Open Hole Section #2'
       TabOrder = 2
     end
-    object OpenHoleSection3TD: TStaticText
+    object OpenHoleSection3Terxt: TStaticText
       Left = 11
       Height = 21
       Top = 109
@@ -1323,7 +1481,7 @@ object DisplayWellDataForm: TDisplayWellDataForm
       Caption = 'Open Hole Section #3'
       TabOrder = 3
     end
-    object OpenHoleSection1ID: TStaticText
+    object OpenHoleSectionIDText: TStaticText
       Left = 267
       Height = 25
       Top = 28
@@ -1332,7 +1490,7 @@ object DisplayWellDataForm: TDisplayWellDataForm
       Caption = 'ID'#10
       TabOrder = 4
     end
-    object OpenHoleSectionTD: TStaticText
+    object OpenHoleSectionTDText: TStaticText
       Left = 207
       Height = 25
       Top = 28
@@ -1344,14 +1502,14 @@ object DisplayWellDataForm: TDisplayWellDataForm
   object LinerPanel: TPanel
     Left = 9
     Height = 89
-    Top = 312
+    Top = 437
     Width = 271
     ClientHeight = 89
     ClientWidth = 271
     Color = 5142062
     ParentColor = False
     TabOrder = 6
-    object LinerIDUoMLabel: TLabel
+    object LinerIDUoM: TLabel
       Left = 232
       Height = 22
       Top = 63
@@ -1360,7 +1518,7 @@ object DisplayWellDataForm: TDisplayWellDataForm
       Caption = 'Units'
       ParentColor = False
     end
-    object LinerBottomTDUoMLabel: TLabel
+    object LinerBottomTDUoM: TLabel
       Left = 232
       Height = 22
       Top = 45
@@ -1369,7 +1527,7 @@ object DisplayWellDataForm: TDisplayWellDataForm
       Caption = 'Units'
       ParentColor = False
     end
-    object LinerTopTDUoMLabel: TLabel
+    object LinerTopTDUoM: TLabel
       Left = 232
       Height = 22
       Top = 26
@@ -1378,7 +1536,7 @@ object DisplayWellDataForm: TDisplayWellDataForm
       Caption = 'Units'
       ParentColor = False
     end
-    object LinerIDValue: TLabel
+    object LinerID: TLabel
       Left = 177
       Height = 16
       Top = 64
@@ -1387,7 +1545,7 @@ object DisplayWellDataForm: TDisplayWellDataForm
       Caption = '999.99'
       ParentColor = False
     end
-    object LinerBottomTDValue: TLabel
+    object LinerBottomTD: TLabel
       Left = 177
       Height = 16
       Top = 46
@@ -1396,7 +1554,7 @@ object DisplayWellDataForm: TDisplayWellDataForm
       Caption = '999.99'
       ParentColor = False
     end
-    object LinerTopTDValue: TLabel
+    object LinerTopTD: TLabel
       Left = 177
       Height = 16
       Top = 27
@@ -1405,7 +1563,7 @@ object DisplayWellDataForm: TDisplayWellDataForm
       Caption = '999.99'
       ParentColor = False
     end
-    object LinerYNValue: TLabel
+    object LinerYN: TLabel
       Left = 80
       Height = 16
       Top = 8
@@ -1415,7 +1573,7 @@ object DisplayWellDataForm: TDisplayWellDataForm
       Caption = '?'
       ParentColor = False
     end
-    object LinerYN: TStaticText
+    object LinerYNText: TStaticText
       Left = 9
       Height = 25
       Top = 8
@@ -1423,7 +1581,7 @@ object DisplayWellDataForm: TDisplayWellDataForm
       Caption = 'Liner (Y/N):'
       TabOrder = 0
     end
-    object LinerHangerTD: TStaticText
+    object LinerHangerTDText: TStaticText
       Left = 10
       Height = 24
       Top = 26
@@ -1432,7 +1590,7 @@ object DisplayWellDataForm: TDisplayWellDataForm
       Caption = 'Liner Hanger TD:'
       TabOrder = 1
     end
-    object LinerShoeTD: TStaticText
+    object LinerShoeTDText: TStaticText
       Left = 10
       Height = 24
       Top = 45
@@ -1441,7 +1599,7 @@ object DisplayWellDataForm: TDisplayWellDataForm
       Caption = 'Liner Shoe TD:'
       TabOrder = 2
     end
-    object LinerID: TStaticText
+    object LinerIDText: TStaticText
       Left = 10
       Height = 22
       Top = 63
@@ -1454,14 +1612,14 @@ object DisplayWellDataForm: TDisplayWellDataForm
   object CasingPanel: TPanel
     Left = 9
     Height = 56
-    Top = 248
+    Top = 373
     Width = 271
     ClientHeight = 56
     ClientWidth = 271
     Color = 6203648
     ParentColor = False
     TabOrder = 5
-    object CasingIDUoMLabel: TLabel
+    object CasingIDUoM: TLabel
       Left = 230
       Height = 22
       Top = 32
@@ -1470,7 +1628,7 @@ object DisplayWellDataForm: TDisplayWellDataForm
       Caption = 'Units'
       ParentColor = False
     end
-    object CasingTDUoMLabel: TLabel
+    object CasingTDUoM: TLabel
       Left = 230
       Height = 22
       Top = 17
@@ -1479,7 +1637,7 @@ object DisplayWellDataForm: TDisplayWellDataForm
       Caption = 'Units'
       ParentColor = False
     end
-    object CasingIDValue: TLabel
+    object CasingID: TLabel
       Left = 175
       Height = 16
       Top = 32
@@ -1488,7 +1646,7 @@ object DisplayWellDataForm: TDisplayWellDataForm
       Caption = '999.99'
       ParentColor = False
     end
-    object CasingTDValue: TLabel
+    object CasingTD: TLabel
       Left = 175
       Height = 16
       Top = 17
@@ -1497,7 +1655,7 @@ object DisplayWellDataForm: TDisplayWellDataForm
       Caption = '999.99'
       ParentColor = False
     end
-    object CasingYNValue: TLabel
+    object CasingYN: TLabel
       Left = 96
       Height = 16
       Top = 1
@@ -1507,7 +1665,7 @@ object DisplayWellDataForm: TDisplayWellDataForm
       Caption = '?'
       ParentColor = False
     end
-    object CasingYN: TStaticText
+    object CasingYNText: TStaticText
       Left = 8
       Height = 25
       Top = 1
@@ -1515,7 +1673,7 @@ object DisplayWellDataForm: TDisplayWellDataForm
       Caption = 'Casing (Y/N):'
       TabOrder = 0
     end
-    object CasingTD: TStaticText
+    object CasingTDText: TStaticText
       Left = 8
       Height = 18
       Top = 18
@@ -1523,7 +1681,7 @@ object DisplayWellDataForm: TDisplayWellDataForm
       Caption = 'Casing Shoe TD:'
       TabOrder = 1
     end
-    object CasingID: TStaticText
+    object CasingIDText: TStaticText
       Left = 8
       Height = 22
       Top = 33
@@ -1535,14 +1693,14 @@ object DisplayWellDataForm: TDisplayWellDataForm
   object ChokeKillPanel: TPanel
     Left = 9
     Height = 40
-    Top = 200
+    Top = 325
     Width = 271
     ClientHeight = 40
     ClientWidth = 271
     Color = 7173927
     ParentColor = False
     TabOrder = 4
-    object KillLineIDUoMLabel: TLabel
+    object KillLineIDUoM: TLabel
       Left = 230
       Height = 22
       Top = 23
@@ -1551,7 +1709,7 @@ object DisplayWellDataForm: TDisplayWellDataForm
       Caption = 'Units'
       ParentColor = False
     end
-    object ChokeLineIDUoMLabel: TLabel
+    object ChokeLineIDUoM: TLabel
       Left = 230
       Height = 22
       Top = 4
@@ -1560,7 +1718,7 @@ object DisplayWellDataForm: TDisplayWellDataForm
       Caption = 'Units'
       ParentColor = False
     end
-    object KillLineIDValue: TLabel
+    object KillLineID: TLabel
       Left = 176
       Height = 16
       Top = 23
@@ -1569,7 +1727,7 @@ object DisplayWellDataForm: TDisplayWellDataForm
       Caption = '999.99'
       ParentColor = False
     end
-    object ChokeLineIDValue: TLabel
+    object ChokeLineID: TLabel
       Left = 176
       Height = 16
       Top = 4
@@ -1578,7 +1736,7 @@ object DisplayWellDataForm: TDisplayWellDataForm
       Caption = '999.99'
       ParentColor = False
     end
-    object ChokeLineID: TStaticText
+    object ChokeLineIDText: TStaticText
       Left = 8
       Height = 25
       Top = 4
@@ -1586,7 +1744,7 @@ object DisplayWellDataForm: TDisplayWellDataForm
       Caption = 'Choke Line ID:'
       TabOrder = 0
     end
-    object KillLineID: TStaticText
+    object KillLineIDText: TStaticText
       Left = 9
       Height = 25
       Top = 23
@@ -1599,14 +1757,14 @@ object DisplayWellDataForm: TDisplayWellDataForm
   object RiserPanel: TPanel
     Left = 9
     Height = 43
-    Top = 149
+    Top = 272
     Width = 271
     ClientHeight = 43
     ClientWidth = 271
     Color = 8365824
     ParentColor = False
     TabOrder = 3
-    object RiserIDUoMLabel: TLabel
+    object RiserIDUoM: TLabel
       Left = 231
       Height = 22
       Top = 21
@@ -1615,7 +1773,7 @@ object DisplayWellDataForm: TDisplayWellDataForm
       Caption = 'Units'
       ParentColor = False
     end
-    object RiserTDUoMLabel: TLabel
+    object RiserTDUoM: TLabel
       Left = 231
       Height = 22
       Top = 3
@@ -1624,7 +1782,7 @@ object DisplayWellDataForm: TDisplayWellDataForm
       Caption = 'Units'
       ParentColor = False
     end
-    object RiserIDValue: TLabel
+    object RiserID: TLabel
       Left = 177
       Height = 16
       Top = 21
@@ -1633,7 +1791,7 @@ object DisplayWellDataForm: TDisplayWellDataForm
       Caption = '999.99'
       ParentColor = False
     end
-    object RiserTDValue: TLabel
+    object RiserTD: TLabel
       Left = 177
       Height = 16
       Top = 3
@@ -1642,7 +1800,7 @@ object DisplayWellDataForm: TDisplayWellDataForm
       Caption = '999.99'
       ParentColor = False
     end
-    object RiserTD: TStaticText
+    object RiserTDText: TStaticText
       Left = 9
       Height = 22
       Top = 3
@@ -1652,7 +1810,7 @@ object DisplayWellDataForm: TDisplayWellDataForm
       ParentColor = False
       TabOrder = 0
     end
-    object RiserID: TStaticText
+    object RiserIDText: TStaticText
       Left = 9
       Height = 22
       Top = 20
@@ -1664,14 +1822,14 @@ object DisplayWellDataForm: TDisplayWellDataForm
   object ElevationsPanel: TPanel
     Left = 9
     Height = 82
-    Top = 62
+    Top = 184
     Width = 271
     ClientHeight = 82
     ClientWidth = 271
     Color = clGreen
     ParentColor = False
     TabOrder = 2
-    object ElevationRKBValue: TLabel
+    object ElevationRKB: TLabel
       Left = 152
       Height = 16
       Top = 8
@@ -1681,7 +1839,7 @@ object DisplayWellDataForm: TDisplayWellDataForm
       Caption = '999.99'
       ParentColor = False
     end
-    object ElevationRKBUoMLabel: TLabel
+    object ElevationRKBUoM: TLabel
       Left = 232
       Height = 22
       Top = 8
@@ -1690,7 +1848,7 @@ object DisplayWellDataForm: TDisplayWellDataForm
       Caption = 'Units'
       ParentColor = False
     end
-    object OffshoreYNValue: TLabel
+    object OffshoreYN: TLabel
       Left = 106
       Height = 16
       Top = 24
@@ -1700,7 +1858,7 @@ object DisplayWellDataForm: TDisplayWellDataForm
       Caption = '?'
       ParentColor = False
     end
-    object SubSeaWellHeadYNValue: TLabel
+    object SubSeaWellHeadYN: TLabel
       Left = 160
       Height = 16
       Top = 43
@@ -1710,7 +1868,7 @@ object DisplayWellDataForm: TDisplayWellDataForm
       Caption = '?'
       ParentColor = False
     end
-    object WaterDepthValue: TLabel
+    object WaterDepth: TLabel
       Left = 152
       Height = 16
       Top = 64
@@ -1720,7 +1878,7 @@ object DisplayWellDataForm: TDisplayWellDataForm
       Caption = '999.99'
       ParentColor = False
     end
-    object WaterDepthUoMLabel: TLabel
+    object WaterDepthUoM: TLabel
       Left = 230
       Height = 22
       Top = 64
@@ -1729,7 +1887,7 @@ object DisplayWellDataForm: TDisplayWellDataForm
       Caption = 'Units'
       ParentColor = False
     end
-    object ElevationRKB: TStaticText
+    object ElevationRKBText: TStaticText
       Left = 8
       Height = 24
       Top = 5
@@ -1737,7 +1895,7 @@ object DisplayWellDataForm: TDisplayWellDataForm
       Caption = 'Elevation RKB:'
       TabOrder = 0
     end
-    object OffshoreYN: TStaticText
+    object OffshoreYNText: TStaticText
       Left = 8
       Height = 24
       Top = 24
@@ -1745,7 +1903,7 @@ object DisplayWellDataForm: TDisplayWellDataForm
       Caption = 'Offshore (Y/N):'
       TabOrder = 1
     end
-    object SubSeaWellHeadYN: TStaticText
+    object SubSeaWellHeadYNText: TStaticText
       Left = 9
       Height = 24
       Top = 43
@@ -1753,7 +1911,7 @@ object DisplayWellDataForm: TDisplayWellDataForm
       Caption = 'Sub Sea Well Head (Y/N):'
       TabOrder = 2
     end
-    object WaterDepth: TStaticText
+    object WaterDepthText: TStaticText
       Left = 9
       Height = 22
       Top = 61
@@ -1764,15 +1922,15 @@ object DisplayWellDataForm: TDisplayWellDataForm
   end
   object TitlePanel: TPanel
     Left = 10
-    Height = 48
+    Height = 64
     Top = 8
     Width = 271
-    ClientHeight = 48
+    ClientHeight = 64
     ClientWidth = 271
     Color = 12480328
     ParentColor = False
     TabOrder = 1
-    object WellOperatorValue: TLabel
+    object WellOperator: TLabel
       Left = 112
       Height = 17
       Top = 8
@@ -1782,7 +1940,7 @@ object DisplayWellDataForm: TDisplayWellDataForm
       Caption = '$OPERATOR'
       ParentColor = False
     end
-    object WellNameValue: TLabel
+    object WellName: TLabel
       Left = 112
       Height = 17
       Top = 24
@@ -1792,7 +1950,7 @@ object DisplayWellDataForm: TDisplayWellDataForm
       Caption = '$WELLNAME'
       ParentColor = False
     end
-    object WellOperator: TStaticText
+    object WellOperatorText: TStaticText
       Left = 8
       Height = 24
       Top = 8
@@ -1800,13 +1958,31 @@ object DisplayWellDataForm: TDisplayWellDataForm
       Caption = 'Well Operator:'
       TabOrder = 0
     end
-    object WellName: TStaticText
+    object WellNameText: TStaticText
       Left = 8
       Height = 24
       Top = 24
       Width = 80
       Caption = 'Well Name:'
       TabOrder = 1
+    end
+    object MeasurementUnitsText: TStaticText
+      Left = 8
+      Height = 17
+      Top = 43
+      Width = 127
+      Alignment = taRightJustify
+      Caption = 'Measurement Units'
+      TabOrder = 2
+    end
+    object MeasurementUnits: TLabel
+      Left = 195
+      Height = 16
+      Top = 44
+      Width = 24
+      Alignment = taRightJustify
+      Caption = '$$$'
+      ParentColor = False
     end
   end
   object CloseDisplayWellData: TButton
@@ -1817,5 +1993,459 @@ object DisplayWellDataForm: TDisplayWellDataForm
     Caption = 'Close'
     OnClick = CloseDisplayWellDataClick
     TabOrder = 0
+  end
+  object DetailPanel: TPanel
+    Left = 9
+    Height = 96
+    Top = 80
+    Width = 271
+    ClientHeight = 96
+    ClientWidth = 271
+    Color = 5142062
+    ParentColor = False
+    TabOrder = 13
+    object TVDUoM: TLabel
+      Left = 232
+      Height = 22
+      Top = 61
+      Width = 32
+      AutoSize = False
+      Caption = 'Units'
+      ParentColor = False
+    end
+    object DeviationUoM: TLabel
+      Left = 232
+      Height = 22
+      Top = 42
+      Width = 33
+      AutoSize = False
+      Caption = 'Deg'
+      ParentColor = False
+    end
+    object TVD: TLabel
+      Left = 177
+      Height = 16
+      Top = 62
+      Width = 44
+      Alignment = taRightJustify
+      Caption = '999.99'
+      ParentColor = False
+    end
+    object DeviationDeg: TLabel
+      Left = 177
+      Height = 16
+      Top = 43
+      Width = 44
+      Alignment = taRightJustify
+      Caption = '999.99'
+      ParentColor = False
+    end
+    object CurrentTDText: TStaticText
+      Left = 11
+      Height = 25
+      Top = 6
+      Width = 97
+      Caption = 'TD'
+      TabOrder = 0
+    end
+    object DevText: TStaticText
+      Left = 11
+      Height = 24
+      Top = 42
+      Width = 118
+      Alignment = taRightJustify
+      Caption = 'Deviation'
+      TabOrder = 1
+    end
+    object TVDText: TStaticText
+      Left = 10
+      Height = 24
+      Top = 61
+      Width = 118
+      Alignment = taRightJustify
+      Caption = 'TVD'
+      TabOrder = 2
+    end
+    object CurrentTD: TLabel
+      Left = 177
+      Height = 16
+      Top = 7
+      Width = 44
+      Alignment = taRightJustify
+      Caption = '999.99'
+      ParentColor = False
+    end
+    object CurrentTDUoM: TLabel
+      Left = 231
+      Height = 22
+      Top = 7
+      Width = 32
+      AutoSize = False
+      Caption = 'Units'
+      ParentColor = False
+    end
+    object BitTDText: TStaticText
+      Left = 11
+      Height = 25
+      Top = 25
+      Width = 97
+      Caption = 'Bit TD'
+      TabOrder = 3
+    end
+    object BitTD: TLabel
+      Left = 177
+      Height = 16
+      Top = 25
+      Width = 44
+      Alignment = taRightJustify
+      Caption = '999.99'
+      ParentColor = False
+    end
+    object BitTDUoM: TLabel
+      Left = 231
+      Height = 22
+      Top = 24
+      Width = 32
+      AutoSize = False
+      Caption = 'Units'
+      ParentColor = False
+    end
+  end
+  object MudPanel: TPanel
+    Left = 290
+    Height = 138
+    Top = 437
+    Width = 320
+    ClientHeight = 138
+    ClientWidth = 320
+    Color = 6652856
+    ParentColor = False
+    TabOrder = 14
+    object MudGelUoM: TLabel
+      Left = 237
+      Height = 22
+      Top = 89
+      Width = 32
+      AutoSize = False
+      Caption = '-'
+      ParentColor = False
+    end
+    object MudYPUoM: TLabel
+      Left = 237
+      Height = 22
+      Top = 71
+      Width = 71
+      AutoSize = False
+      Caption = 'lbs/100ft2'
+      ParentColor = False
+    end
+    object MudPVUoM: TLabel
+      Left = 237
+      Height = 22
+      Top = 52
+      Width = 73
+      AutoSize = False
+      Caption = 'Centipoise'
+      ParentColor = False
+    end
+    object MudGel: TLabel
+      Left = 182
+      Height = 16
+      Top = 90
+      Width = 44
+      Alignment = taRightJustify
+      Caption = '999.99'
+      ParentColor = False
+    end
+    object MudYP: TLabel
+      Left = 182
+      Height = 16
+      Top = 72
+      Width = 44
+      Alignment = taRightJustify
+      Caption = '999.99'
+      ParentColor = False
+    end
+    object MudPV: TLabel
+      Left = 182
+      Height = 16
+      Top = 53
+      Width = 44
+      Alignment = taRightJustify
+      Caption = '999.99'
+      ParentColor = False
+    end
+    object MudWText: TStaticText
+      Left = 14
+      Height = 25
+      Top = 34
+      Width = 58
+      Caption = 'Weight'
+      TabOrder = 0
+    end
+    object MudPVText: TStaticText
+      Left = 15
+      Height = 24
+      Top = 52
+      Width = 105
+      Alignment = taRightJustify
+      Caption = 'Plastic Viscocity'
+      TabOrder = 1
+    end
+    object MudYPText: TStaticText
+      Left = 15
+      Height = 24
+      Top = 71
+      Width = 105
+      Alignment = taRightJustify
+      Caption = 'Yield Point'
+      TabOrder = 2
+    end
+    object MudGelText: TStaticText
+      Left = 15
+      Height = 17
+      Top = 89
+      Width = 105
+      Alignment = taRightJustify
+      Caption = 'Gel Strength'
+      TabOrder = 3
+    end
+    object MudWt: TLabel
+      Left = 157
+      Height = 16
+      Top = 34
+      Width = 68
+      Alignment = taRightJustify
+      AutoSize = False
+      Caption = '999.99'
+      ParentColor = False
+      WordWrap = True
+    end
+    object MudWtUoM: TLabel
+      Left = 237
+      Height = 22
+      Top = 34
+      Width = 33
+      AutoSize = False
+      Caption = 'Units'
+      ParentColor = False
+    end
+    object ReturnPitUoM: TLabel
+      Left = 237
+      Height = 22
+      Top = 109
+      Width = 32
+      AutoSize = False
+      Caption = 'Units'
+      ParentColor = False
+    end
+    object ReturnPitVolumeText: TStaticText
+      Left = 15
+      Height = 17
+      Top = 109
+      Width = 143
+      Alignment = taRightJustify
+      Caption = 'Return Pit Volume'
+      TabOrder = 4
+    end
+    object ReturnPitVolume: TLabel
+      Left = 182
+      Height = 16
+      Top = 110
+      Width = 44
+      Alignment = taRightJustify
+      Caption = '999.99'
+      ParentColor = False
+    end
+    object MudTitleText: TStaticText
+      Left = 12
+      Height = 22
+      Top = 9
+      Width = 208
+      Caption = 'Drilling Fluids'
+      Font.Color = 207169
+      ParentFont = False
+      TabOrder = 5
+    end
+  end
+  object SurfaceEquipmentPanel: TPanel
+    Left = 616
+    Height = 163
+    Top = 437
+    Width = 320
+    ClientHeight = 163
+    ClientWidth = 320
+    Color = 10971066
+    ParentColor = False
+    TabOrder = 15
+    object HoseID: TLabel
+      Left = 240
+      Height = 16
+      Top = 104
+      Width = 44
+      Alignment = taRightJustify
+      Caption = '999.99'
+      Font.Color = clPurple
+      ParentColor = False
+      ParentFont = False
+    end
+    object HoseLength: TLabel
+      Left = 167
+      Height = 16
+      Top = 105
+      Width = 60
+      Alignment = taRightJustify
+      AutoSize = False
+      Caption = '999.99'
+      Font.Color = clPurple
+      ParentColor = False
+      ParentFont = False
+    end
+    object SwivelID: TLabel
+      Left = 239
+      Height = 16
+      Top = 80
+      Width = 44
+      Alignment = taRightJustify
+      Caption = '999.99'
+      Font.Color = clPurple
+      ParentColor = False
+      ParentFont = False
+    end
+    object SwivelLength: TLabel
+      Left = 167
+      Height = 16
+      Top = 80
+      Width = 60
+      Alignment = taRightJustify
+      AutoSize = False
+      Caption = '999.99'
+      Font.Color = clPurple
+      ParentColor = False
+      ParentFont = False
+    end
+    object SEIDUoM: TLabel
+      Left = 251
+      Height = 22
+      Top = 38
+      Width = 32
+      Alignment = taRightJustify
+      AutoSize = False
+      Caption = 'Units'
+      ParentColor = False
+    end
+    object KellyID: TLabel
+      Left = 239
+      Height = 16
+      Top = 57
+      Width = 44
+      Alignment = taRightJustify
+      Caption = '999.99'
+      Font.Color = clPurple
+      ParentColor = False
+      ParentFont = False
+    end
+    object KellyLength: TLabel
+      Left = 168
+      Height = 16
+      Top = 57
+      Width = 60
+      Alignment = taRightJustify
+      AutoSize = False
+      Caption = '999.99'
+      Font.Color = clPurple
+      ParentColor = False
+      ParentFont = False
+    end
+    object SELengthUoM: TLabel
+      Left = 196
+      Height = 22
+      Top = 38
+      Width = 32
+      Alignment = taRightJustify
+      AutoSize = False
+      Caption = 'Units'
+      ParentColor = False
+    end
+    object SurfaceEquipmentText: TStaticText
+      Left = 14
+      Height = 20
+      Top = 9
+      Width = 123
+      Caption = 'SurfaceEquipment'
+      TabOrder = 0
+    end
+    object KellyText: TStaticText
+      Left = 21
+      Height = 21
+      Top = 57
+      Width = 44
+      Caption = 'Kelly'
+      TabOrder = 1
+    end
+    object SwivelText: TStaticText
+      Left = 20
+      Height = 21
+      Top = 80
+      Width = 54
+      Caption = 'Swivel'
+      TabOrder = 2
+    end
+    object HoseText: TStaticText
+      Left = 21
+      Height = 21
+      Top = 104
+      Width = 53
+      Caption = 'Hose'
+      TabOrder = 3
+    end
+    object SEIDText: TStaticText
+      Left = 267
+      Height = 25
+      Top = 23
+      Width = 17
+      Alignment = taRightJustify
+      Caption = 'ID'#10
+      TabOrder = 4
+    end
+    object SELengthText: TStaticText
+      Left = 207
+      Height = 25
+      Top = 23
+      Width = 25
+      Caption = 'TD'
+      TabOrder = 5
+    end
+    object StandpipeText: TStaticText
+      Left = 21
+      Height = 21
+      Top = 127
+      Width = 83
+      Caption = 'Standpipe'
+      TabOrder = 6
+    end
+    object StandpipeLength: TLabel
+      Left = 167
+      Height = 16
+      Top = 128
+      Width = 60
+      Alignment = taRightJustify
+      AutoSize = False
+      Caption = '999.99'
+      Font.Color = clPurple
+      ParentColor = False
+      ParentFont = False
+    end
+    object StandpipeID: TLabel
+      Left = 240
+      Height = 16
+      Top = 128
+      Width = 44
+      Alignment = taRightJustify
+      Caption = '999.99'
+      Font.Color = clPurple
+      ParentColor = False
+      ParentFont = False
+    end
   end
 end

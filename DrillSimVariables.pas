@@ -257,7 +257,7 @@ Var
    CreateNewFile       : boolean;
    Quit                : boolean;
    NoFileDefined       : boolean;
-   HelpFileFound       : boolean;
+   //HelpFileFound       : boolean;
 
    UoMConverter        : array[1..8] of real;   { Units Of Measure }
    UoMLabel            : array[1..8] of String3;

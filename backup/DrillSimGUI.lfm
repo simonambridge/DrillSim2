@@ -1,7 +1,7 @@
 object DrillSim: TDrillSim
-  Left = 115
+  Left = 31
   Height = 671
-  Top = 136
+  Top = 145
   Width = 1414
   Caption = 'DrillSim 3.0'
   ClientHeight = 671
@@ -1001,7 +1001,7 @@ object DrillSim: TDrillSim
       Top = 8
       Width = 857
       Color = clBlack
-      Font.Color = clGreen
+      Font.Color = clOlive
       Font.Height = -13
       Font.Name = 'Sans'
       Lines.Strings = (      )
@@ -1669,9 +1669,285 @@ object DrillSim: TDrillSim
     Top = 8
     Width = 522
     Caption = 'Data Viewer'
-    Color = clWhite
+    ClientHeight = 632
+    ClientWidth = 512
+    Color = clCream
     ParentColor = False
     TabOrder = 9
+    object Panel2: TPanel
+      Left = 8
+      Height = 283
+      Top = 7
+      Width = 232
+      BevelColor = clBlack
+      Caption = 'Panel2'
+      ClientHeight = 283
+      ClientWidth = 232
+      TabOrder = 0
+      object AnnularVolumeText: TStaticText
+        Left = 10
+        Height = 20
+        Top = 29
+        Width = 114
+        Caption = 'Annular Volume'
+        Font.Color = clBlack
+        Font.Height = -13
+        Font.Name = 'Sans'
+        ParentFont = False
+        TabOrder = 0
+      end
+      object WellText: TStaticText
+        Left = 10
+        Height = 20
+        Top = 53
+        Width = 114
+        Caption = 'Well Volume'
+        Font.Color = clBlack
+        Font.Height = -13
+        Font.Name = 'Sans'
+        ParentFont = False
+        TabOrder = 1
+      end
+      object HoleVolumeText: TStaticText
+        Left = 10
+        Height = 20
+        Top = 77
+        Width = 114
+        Caption = 'Hole Volume'
+        Font.Color = clBlack
+        Font.Height = -13
+        Font.Name = 'Sans'
+        ParentFont = False
+        TabOrder = 2
+      end
+      object MudVolumeText: TStaticText
+        Left = 10
+        Height = 20
+        Top = 101
+        Width = 114
+        Caption = 'Mud Volume'
+        Font.Color = clBlack
+        Font.Height = -13
+        Font.Name = 'Sans'
+        ParentFont = False
+        TabOrder = 3
+      end
+      object LagDownTimeText: TStaticText
+        Left = 10
+        Height = 20
+        Top = 133
+        Width = 114
+        Caption = 'Lag Down Time'
+        Font.Color = clBlack
+        Font.Height = -13
+        Font.Name = 'Sans'
+        ParentFont = False
+        TabOrder = 4
+      end
+      object PipeCapacityText: TStaticText
+        Left = 10
+        Height = 20
+        Top = 229
+        Width = 114
+        Caption = 'Pipe Capacity'
+        Font.Color = clBlack
+        Font.Height = -13
+        Font.Name = 'Sans'
+        ParentFont = False
+        TabOrder = 5
+      end
+      object LagDownStrokeText: TStaticText
+        Left = 10
+        Height = 20
+        Top = 157
+        Width = 114
+        Caption = 'Lag Down Strokes'
+        Font.Color = clBlack
+        Font.Height = -13
+        Font.Name = 'Sans'
+        ParentFont = False
+        TabOrder = 6
+      end
+      object LagUpStrokeText: TStaticText
+        Left = 10
+        Height = 20
+        Top = 205
+        Width = 114
+        Caption = 'Lag Up Strokes'
+        Font.Color = clBlack
+        Font.Height = -13
+        Font.Name = 'Sans'
+        ParentFont = False
+        TabOrder = 7
+      end
+      object LagUpTimeText: TStaticText
+        Left = 10
+        Height = 20
+        Top = 181
+        Width = 114
+        Caption = 'Lag Up Time'
+        Font.Color = clBlack
+        Font.Height = -13
+        Font.Name = 'Sans'
+        ParentFont = False
+        TabOrder = 8
+      end
+      object PipeDisplacementText: TStaticText
+        Left = 10
+        Height = 20
+        Top = 253
+        Width = 126
+        Caption = 'Pipe Displacement'
+        Font.Color = clBlack
+        Font.Height = -13
+        Font.Name = 'Sans'
+        ParentFont = False
+        TabOrder = 9
+      end
+    end
+    object Panel3: TPanel
+      Left = 8
+      Height = 307
+      Top = 296
+      Width = 232
+      BevelColor = clBlack
+      Caption = 'Panel3'
+      ClientHeight = 307
+      ClientWidth = 232
+      TabOrder = 1
+      object MudWtInText: TStaticText
+        Left = 10
+        Height = 20
+        Top = 28
+        Width = 114
+        Caption = 'Mud Wt. In'
+        Font.Color = clBlack
+        Font.Height = -13
+        Font.Name = 'Sans'
+        ParentFont = False
+        TabOrder = 0
+      end
+      object PipeMudWtText: TStaticText
+        Left = 10
+        Height = 20
+        Top = 52
+        Width = 114
+        Caption = 'Pipe Mud Wt.'
+        Font.Color = clBlack
+        Font.Height = -13
+        Font.Name = 'Sans'
+        ParentFont = False
+        TabOrder = 1
+      end
+      object AnnularMudWtText: TStaticText
+        Left = 10
+        Height = 20
+        Top = 76
+        Width = 114
+        Caption = 'Annular Mud Wt.'
+        Font.Color = clBlack
+        Font.Height = -13
+        Font.Name = 'Sans'
+        ParentFont = False
+        TabOrder = 2
+      end
+      object MudWtOutText: TStaticText
+        Left = 10
+        Height = 20
+        Top = 100
+        Width = 114
+        Caption = 'Mud Wt. Out'
+        Font.Color = clBlack
+        Font.Height = -13
+        Font.Name = 'Sans'
+        ParentFont = False
+        TabOrder = 3
+      end
+      object AnnularPVText: TStaticText
+        Left = 10
+        Height = 20
+        Top = 132
+        Width = 114
+        Caption = 'Annnular PV'
+        Font.Color = clBlack
+        Font.Height = -13
+        Font.Name = 'Sans'
+        ParentFont = False
+        TabOrder = 4
+      end
+      object StrokeCounterText: TStaticText
+        Left = 10
+        Height = 20
+        Top = 228
+        Width = 114
+        Caption = 'StrokeCounter'
+        Font.Color = clBlack
+        Font.Height = -13
+        Font.Name = 'Sans'
+        ParentFont = False
+        TabOrder = 5
+      end
+      object AnnularYPText: TStaticText
+        Left = 10
+        Height = 20
+        Top = 156
+        Width = 114
+        Caption = 'AnnularYP'
+        Font.Color = clBlack
+        Font.Height = -13
+        Font.Name = 'Sans'
+        ParentFont = False
+        TabOrder = 6
+      end
+      object PipeYPText: TStaticText
+        Left = 10
+        Height = 20
+        Top = 204
+        Width = 114
+        Caption = 'PipeYP'
+        Font.Color = clBlack
+        Font.Height = -13
+        Font.Name = 'Sans'
+        ParentFont = False
+        TabOrder = 7
+      end
+      object PipePVText: TStaticText
+        Left = 10
+        Height = 20
+        Top = 180
+        Width = 114
+        Caption = 'Pipe PV'
+        Font.Color = clBlack
+        Font.Height = -13
+        Font.Name = 'Sans'
+        ParentFont = False
+        TabOrder = 8
+      end
+      object TotStrksText: TStaticText
+        Left = 8
+        Height = 20
+        Top = 252
+        Width = 126
+        Caption = 'Total Strokes'
+        Font.Color = clBlack
+        Font.Height = -13
+        Font.Name = 'Sans'
+        ParentFont = False
+        TabOrder = 9
+      end
+      object TotCircStrksText: TStaticText
+        Left = 10
+        Height = 20
+        Top = 272
+        Width = 126
+        Caption = 'Total Circulating Strokes'
+        Font.Color = clBlack
+        Font.Height = -13
+        Font.Name = 'Sans'
+        ParentFont = False
+        TabOrder = 10
+      end
+    end
   end
   object MainMenu1: TMainMenu
     Left = 80

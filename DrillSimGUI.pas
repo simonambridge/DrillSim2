@@ -58,15 +58,62 @@ type
   { TDrillSim }
 
   TDrillSim = class(TForm)
+    AnnularMudWtText1: TStaticText;
+    AnnularMudWtText2: TStaticText;
     AnnularPressureText: TStaticText;
     AnnularPressureUoMLabel: TStaticText;
     AnnularPressureValue: TLabel;
+    AnnularPVText1: TStaticText;
+    AnnularPVText2: TStaticText;
+    AnnularYPText1: TStaticText;
+    AnnularYPText2: TStaticText;
+    MudWtInText1: TStaticText;
+    MudWtInText2: TStaticText;
+    MudWtOutText1: TStaticText;
+    MudWtOutText2: TStaticText;
+    Panel4: TPanel;
+    Panel5: TPanel;
+    PipeMudWtText1: TStaticText;
+    PipeMudWtText2: TStaticText;
+    PipePVText1: TStaticText;
+    PipePVText2: TStaticText;
+    PipeYPText1: TStaticText;
+    PipeYPText2: TStaticText;
+    StrokeCounterText1: TStaticText;
+    StrokeCounterText2: TStaticText;
+    TotCircStrksText: TStaticText;
+    TotCircStrksText1: TStaticText;
+    TotCircStrksText2: TStaticText;
+    TotStrksText1: TStaticText;
+    TotStrksText2: TStaticText;
+    WellText: TStaticText;
+    MudWtInText: TStaticText;
+    PipeMudWtText: TStaticText;
+    StrokeCounterText: TStaticText;
+    AnnularMudWtText: TStaticText;
+    AnnularYPText: TStaticText;
+    AnnularPVText: TStaticText;
+    PipeYPText: TStaticText;
+    PipePVText: TStaticText;
+    MudWtOutText: TStaticText;
+    Panel3: TPanel;
+    PipeDisplacementText: TStaticText;
+    HoleVolumeText: TStaticText;
+    LagDownStrokeText: TStaticText;
+    LagUpStrokeText: TStaticText;
+    LagUpTimeText: TStaticText;
+    MudVolumeText: TStaticText;
+    LagDownTimeText: TStaticText;
+    PipeCapacityText: TStaticText;
     AutoDrillCheckBox: TCheckBoxThemed;
     CasingPressureText: TStaticText;
     CasingPressureUoMLabel: TStaticText;
     CasingPressureValue: TLabel;
     DataBox: TGroupBox;
+    AnnularVolumeText: TStaticText;
     Panel1: TPanel;
+    Panel2: TPanel;
+    TotStrksText: TStaticText;
     PressureBox: TGroupBox;
     FlowInText: TStaticText;
     PipeMinus: TBCButton;
@@ -1052,6 +1099,7 @@ procedure TDrillSim.MenuItem4AboutClick(Sender: TObject);
 begin
     splash.ShowAbout;
 end;
+
 
 { ----------- Simulate Menu Options ---------------------------- }
 

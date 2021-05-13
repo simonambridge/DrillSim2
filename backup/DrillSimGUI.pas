@@ -61,12 +61,35 @@ type
     AnnularPressureText: TStaticText;
     AnnularPressureUoMLabel: TStaticText;
     AnnularPressureValue: TLabel;
+    TotCircStrksText: TStaticText;
+    WellText: TStaticText;
+    MudWtInText: TStaticText;
+    PipeMudWtText: TStaticText;
+    StrokeCounterText: TStaticText;
+    AnnularMudWtText: TStaticText;
+    AnnularYPText: TStaticText;
+    AnnularPVText: TStaticText;
+    PipeYPText: TStaticText;
+    PipePVText: TStaticText;
+    MudWtOutText: TStaticText;
+    Panel3: TPanel;
+    PipeDisplacementText: TStaticText;
+    HoleVolumeText: TStaticText;
+    LagDownStrokeText: TStaticText;
+    LagUpStrokeText: TStaticText;
+    LagUpTimeText: TStaticText;
+    MudVolumeText: TStaticText;
+    LagDownTimeText: TStaticText;
+    PipeCapacityText: TStaticText;
     AutoDrillCheckBox: TCheckBoxThemed;
     CasingPressureText: TStaticText;
     CasingPressureUoMLabel: TStaticText;
     CasingPressureValue: TLabel;
     DataBox: TGroupBox;
+    AnnularVolumeText: TStaticText;
     Panel1: TPanel;
+    Panel2: TPanel;
+    TotStrksText: TStaticText;
     PressureBox: TGroupBox;
     FlowInText: TStaticText;
     PipeMinus: TBCButton;
@@ -1052,6 +1075,7 @@ procedure TDrillSim.MenuItem4AboutClick(Sender: TObject);
 begin
     splash.ShowAbout;
 end;
+
 
 { ----------- Simulate Menu Options ---------------------------- }
 

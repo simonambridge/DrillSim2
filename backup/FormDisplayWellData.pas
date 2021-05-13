@@ -24,13 +24,59 @@ type
 
   TDisplayWellDataForm = class(TForm)
     Button1: TButton;
-    CasingIDValue: TLabel;
-    FormationText: TStaticText;
+    BitTDUoM: TLabel;
+    StandpipeID: TLabel;
+    StandpipeLength: TLabel;
+    StandpipeText: TStaticText;
+    SurfaceEquipmentPanel: TPanel;
+    SurfaceEquipmentText: TStaticText;
+    KellyID: TLabel;
+    KellyLength: TLabel;
+    KellyText: TStaticText;
+    SwivelID: TLabel;
+    SwivelLength: TLabel;
+    SwivelText: TStaticText;
+    HoseID: TLabel;
+    HoseLength: TLabel;
+    HoseText: TStaticText;
+    SEIDText: TStaticText;
+    SEIDUoM: TLabel;
+    SELengthText: TStaticText;
+    SELengthUoM: TLabel;
+    ReturnPitVolumeText: TStaticText;
+    CasingID: TLabel;
+    BitTDText: TStaticText;
+    BitTD: TLabel;
+    MudYP: TLabel;
+    MudYPText: TStaticText;
+    MudYPUoM: TLabel;
+    MudPV: TLabel;
+    MudPVText: TStaticText;
+    MudPVUoM: TLabel;
+    MudGel: TLabel;
+    MudGelText: TStaticText;
+    MudGelUoM: TLabel;
+    ReturnPitUoM: TLabel;
+    MudWt: TLabel;
+    MudWText: TStaticText;
+    MudWtUoM: TLabel;
+    CurrentTDUoM: TLabel;
+    ReturnPitVolume: TLabel;
+    MudPanel: TPanel;
+    TestTitleText: TStaticText;
+    LeakOffMWText: TStaticText;
+    BitTitleText: TStaticText;
+    CasingBurstPressure: TLabel;
+    CasingBurstPressureText: TStaticText;
+    CasingBurstPressureUoM: TLabel;
+    LeakOffTDUoM: TLabel;
+    LeakOffTD: TLabel;
+    FormationTitleText: TStaticText;
     FormationText1: TStaticText;
     FormationText10: TStaticText;
-    FormationText11: TStaticText;
-    FormationText12: TStaticText;
-    FormationText13: TStaticText;
+    TopDepthText: TStaticText;
+    HardnessText: TStaticText;
+    FormationPressureText: TStaticText;
     FormationText2: TStaticText;
     FormationText3: TStaticText;
     FormationText4: TStaticText;
@@ -66,19 +112,39 @@ type
     Horizon8Top: TLabel;
     Horizon9Top: TLabel;
     Horizon10Top: TLabel;
-    Jet2Label: TStaticText;
+    Jet2Text: TStaticText;
     Jet2: TLabel;
-    Jet3Label: TStaticText;
-    Jet4Label: TStaticText;
-    JetUoMLabel: TStaticText;
+    Jet3Text: TStaticText;
+    Jet4Text: TStaticText;
+    JetUoM: TStaticText;
     Jet3: TLabel;
     Jet4: TLabel;
+    TVDUoM: TLabel;
+    LeakOffEMWUoM: TLabel;
+    MudTitleText: TStaticText;
+    TVD: TLabel;
+    DevText: TStaticText;
+    LeakOffEMW: TLabel;
+    LeakOffPressureUoM: TLabel;
+    LeakOffPressure: TLabel;
+    LeakOffMWUoM: TLabel;
+    LeakOffMW: TLabel;
+    LeakOffTDText: TStaticText;
+    LeakOffEMWText: TStaticText;
+    MeasurementUnitsText: TStaticText;
+    MeasurementUnits: TLabel;
+    DetailPanel: TPanel;
+    CurrentTD: TLabel;
+    TVDText: TStaticText;
+    DeviationUoM: TLabel;
+    DeviationDeg: TLabel;
+    CurrentTDText: TStaticText;
     NumberOfJets: TLabel;
     BitNumber: TLabel;
     NumberOfJetsLabel: TStaticText;
-    Jet1Label: TStaticText;
+    Jet1Text: TStaticText;
     BitNumberLabel: TStaticText;
-    BitTypeLabel: TStaticText;
+    BitTypeText: TStaticText;
     NumberOfPumps: TStaticText;
     MaxPumpPressureText: TStaticText;
     NumPumps: TLabel;
@@ -93,31 +159,31 @@ type
     PumpOutput3: TLabel;
     PumpEfficiency1: TLabel;
     Pump1: TStaticText;
-    OpenHoleSection2IDValue: TLabel;
-    OpenHoleSection1TDValue: TLabel;
+    OpenHoleSection2ID: TLabel;
+    OpenHoleSection1TD: TLabel;
     NumberOfPipeSections: TStaticText;
-    NumOpenHoleSectionsValue: TLabel;
-    LinerIDValue: TLabel;
-    LinerTopTDValue: TLabel;
-    LinerBottomTDValue: TLabel;
-    LinerYNValue: TLabel;
-    KillLineIDUoMLabel: TLabel;
-    KillLineIDValue: TLabel;
-    KillLineID: TStaticText;
-    ChokeLineIDValue: TLabel;
-    CasingTDValue: TLabel;
-    CasingYNValue: TLabel;
-    NumPipeSectionsValue: TLabel;
-    OpenHoleSection1IDValue: TLabel;
-    OpenHoleSection3IDValue: TLabel;
-    OpenHoleSection2TDValue: TLabel;
+    NumOpenHoleSections: TLabel;
+    LinerID: TLabel;
+    LinerTopTD: TLabel;
+    LinerBottomTD: TLabel;
+    LinerYN: TLabel;
+    KillLineIDUoM: TLabel;
+    KillLineID: TLabel;
+    KillLineIDText: TStaticText;
+    ChokeLineID: TLabel;
+    CasingTD: TLabel;
+    CasingYN: TLabel;
+    NumPipeSections: TLabel;
+    OpenHoleSection1ID: TLabel;
+    OpenHoleSection3ID: TLabel;
+    OpenHoleSection2TD: TLabel;
     Jet1: TLabel;
     Horizon1Hardness: TLabel;
     Horizon1Pressure: TLabel;
     Horizon1Top: TLabel;
-    FormationTopUoMLabel: TLabel;
-    FormationHardnessUoMLabel: TLabel;
-    FormationPressureUoMLabel: TLabel;
+    FormationTopUoM: TLabel;
+    FormationHardnessUoM: TLabel;
+    FormationPressureUoM: TLabel;
     Pump2: TStaticText;
     Pump3: TStaticText;
     PumpEffUoM: TLabel;
@@ -134,87 +200,88 @@ type
     HolePanel: TPanel;
     PipePanel: TPanel;
     TestsPanel: TPanel;
-    PipeSection2ODValue: TLabel;
-    PipeSection3ODValue: TLabel;
-    PipeWtUoMLabel: TLabel;
-    PipeSection1WtValue: TLabel;
-    PipeSection1Wt: TStaticText;
-    PipeODUoMLabel: TLabel;
-    PipeSection1ODValue: TLabel;
-    PipeSection1OD: TStaticText;
-    PipeSection1IDValue: TLabel;
-    OpenHoleSection3TDValue: TLabel;
-    PipeSection2WtValue: TLabel;
-    PipeSection2IDValue: TLabel;
-    PipeSection1TDValue: TLabel;
-    PipeSection1ID: TStaticText;
-    PipeIDUoMLabel: TLabel;
-    PipeSection1TD: TStaticText;
-    PipeTDUoMLabel: TLabel;
-    PipeSection3WtValue: TLabel;
-    PipeSection3IDValue: TLabel;
-    PipeSection2TDValue: TLabel;
+    PipeSection2OD: TLabel;
+    PipeSection3OD: TLabel;
+    PipeWtUoM: TLabel;
+    PipeSection1Wt: TLabel;
+    PipeSection1WtText: TStaticText;
+    PipeODUoM: TLabel;
+    PipeSection1OD: TLabel;
+    PipeSection1ODText: TStaticText;
+    PipeSection1ID: TLabel;
+    OpenHoleSection3TD: TLabel;
+    PipeSection2Wt: TLabel;
+    PipeSection2ID: TLabel;
+    PipeSection1TD: TLabel;
+    PipeSection1IDText: TStaticText;
+    PipeIDUoM: TLabel;
+    PipeSection1TDText: TStaticText;
+    PipeTDUoM: TLabel;
+    PipeSection3Wt: TLabel;
+    PipeSection3ID: TLabel;
+    PipeSection2TD: TLabel;
     TD: TStaticText;
-    PipeSection2TD: TStaticText;
-    PipeSection3TDValue: TLabel;
-    PipeSection3TD: TStaticText;
+    PipeSection2TDText: TStaticText;
+    PipeSection3TD: TLabel;
+    PipeSection3TDText: TStaticText;
+    LeakOffPressureText: TStaticText;
 
 
-    WellOperator: TStaticText;
-    WellOperatorValue: TLabel;
+    WellOperatorText: TStaticText;
+    WellOperator: TLabel;
 
-    WellName: TStaticText;
-    WellNameValue: TLabel;
+    WellNameText: TStaticText;
+    WellName: TLabel;
 
-    ElevationRKB: TStaticText;
-    ElevationRKBValue: TLabel;
-    ElevationRKBUoMLabel: TLabel;
+    ElevationRKBText: TStaticText;
+    ElevationRKB: TLabel;
+    ElevationRKBUoM: TLabel;
 
-    OffshoreYN: TStaticText;
-    OffshoreYNValue: TLabel;
+    OffshoreYNText: TStaticText;
+    OffshoreYN: TLabel;
 
-    SubSeaWellHeadYN: TStaticText;
-    SubSeaWellHeadYNValue: TLabel;
+    SubSeaWellHeadYNText: TStaticText;
+    SubSeaWellHeadYN: TLabel;
 
-    WaterDepth: TStaticText;
-    WaterDepthValue: TLabel;
-    WaterDepthUoMLabel: TLabel;
+    WaterDepthText: TStaticText;
+    WaterDepth: TLabel;
+    WaterDepthUoM: TLabel;
 
-    RiserID: TStaticText;
-    RiserIDValue: TLabel;
-    RiserIDUoMLabel: TLabel;
+    RiserIDText: TStaticText;
+    RiserID: TLabel;
+    RiserIDUoM: TLabel;
 
-    RiserTD: TStaticText;
-    RiserTDValue: TLabel;
-    RiserTDUoMLabel: TLabel;
+    RiserTDText: TStaticText;
+    RiserTD: TLabel;
+    RiserTDUoM: TLabel;
 
-    CasingYN: TStaticText;
-    CasingID: TStaticText;
-    CasingIDUoMLabel: TLabel;
-    CasingTD: TStaticText;
-    CasingTDUoMLabel: TLabel;
+    CasingYNText: TStaticText;
+    CasingIDText: TStaticText;
+    CasingIDUoM: TLabel;
+    CasingTDText: TStaticText;
+    CasingTDUoM: TLabel;
 
     NumberOfOpenHoleSections: TStaticText;
-    OpenHoleSection1ID: TStaticText;
-    OpenHoleSection1IDUoMLabel: TLabel;
-    OpenHoleSection1TD: TStaticText;
-    OpenHoleSection1TDUoMLabel: TLabel;
+    OpenHoleSectionIDText: TStaticText;
+    OpenHoleSectionIDUoM: TLabel;
+    OpenHoleSection1Text: TStaticText;
+    OpenHoleSectionTDUoM: TLabel;
 
-    OpenHoleSectionTD: TStaticText;
-    OpenHoleSection2TD: TStaticText;
+    OpenHoleSectionTDText: TStaticText;
+    OpenHoleSection2Text: TStaticText;
 
-    OpenHoleSection3TD: TStaticText;
+    OpenHoleSection3Terxt: TStaticText;
 
-    LinerYN: TStaticText;
-    LinerID: TStaticText;
-    LinerIDUoMLabel: TLabel;
-    LinerShoeTD: TStaticText;
-    LinerBottomTDUoMLabel: TLabel;
-    LinerHangerTD: TStaticText;
-    LinerTopTDUoMLabel: TLabel;          {refactor to TDUoMLabel }
+    LinerYNText: TStaticText;
+    LinerIDText: TStaticText;
+    LinerIDUoM: TLabel;
+    LinerShoeTDText: TStaticText;
+    LinerBottomTDUoM: TLabel;
+    LinerHangerTDText: TStaticText;
+    LinerTopTDUoM: TLabel;          {refactor to CurrentTDUoM }
 
-    ChokeLineID: TStaticText;
-    ChokeLineIDUoMLabel: TLabel;
+    ChokeLineIDText: TStaticText;
+    ChokeLineIDUoM: TLabel;
 
     CloseDisplayWellData: TButton;
     BitType: TLabel;
@@ -269,116 +336,121 @@ begin
 
   StringToMemo('Form Well Data Summary activated....');
 
-  WellOperatorValue.Caption:=Data.WellOperator;
-  WellNameValue.Caption:=Data.WellName;
+  WellOperator.Caption:=Data.WellOperator;
+  WellName.Caption:=Data.WellName;
+  if Data.API then MeasurementUnits.Caption:='API'
+              else MeasurementUnits.Caption:='Metric';
 
  // API->user depth
-  ElevationRKBValue.Caption:=FloatToStr(Round2(Data.ElevationRKB*UoMConverter[1],2));
-  ElevationRKBUoMLabel.Caption:=UoMLabel[1];  { user depth }
+  ElevationRKB.Caption:=FloatToStr(Round2(Data.ElevationRKB*UoMConverter[1],2));
+  ElevationRKBUoM.Caption:=UoMLabel[1];  { user depth }
 
-  OffshoreYNValue.Caption:=BoolToStr(Data.Offshore);
+  OffshoreYN.Caption:=BoolToStr(Data.Offshore);
 
   if Data.Offshore then
   begin
-    OffshoreYNValue.Caption:='Y';
+    OffshoreYN.Caption:='Y';
     // API->user depth
-    WaterDepthValue.Caption:=FloatToStr(Round2(Data.WaterDepth*UoMConverter[1],2));
-    WaterDepthUoMLabel.Caption:=UoMLabel[1];    { user depth }
+    WaterDepth.Caption:=FloatToStr(Round2(Data.WaterDepth*UoMConverter[1],2));
+    WaterDepthUoM.Caption:=UoMLabel[1];    { user depth }
 
     if Data.SubSeaWellHead then
       begin
-        SubSeaWellHeadYNValue.Caption:='Y';
-        RiserIDValue.Caption:=FloatToStr(Round2(Data.RiserID*UoMConverter[8],4));
-        RiserIDUoMLabel.Caption:=UoMLabel[8];       { always inches }
+        SubSeaWellHeadYN.Caption:='Y';
+        RiserID.Caption:=FloatToStr(Round2(Data.RiserID*UoMConverter[8],4));
+        RiserIDUoM.Caption:=UoMLabel[8];       { always inches }
         // API->user depth
-        RiserTDValue.Caption:=FloatToStr(Round2(Data.RiserTD*UoMConverter[1],2));
-        RiserTDUoMLabel.Caption:=UoMLabel[1];       { user depth }
+        RiserTD.Caption:=FloatToStr(Round2(Data.RiserTD*UoMConverter[1],2));
+        RiserTDUoM.Caption:=UoMLabel[1];       { user depth }
       end else
       begin
-        SubSeaWellHeadYNValue.Caption:='N';
-        RiserIDValue.Caption:='N/A';
-        RiserIDUoMLabel.Caption:='-';
-        RiserTDValue.Caption:='N/A';
-        RiserTDUoMLabel.Caption:='-';
+        SubSeaWellHeadYN.Caption:='N';
+        RiserID.Caption:='N/A';
+        RiserIDUoM.Caption:='-';
+        RiserTD.Caption:='N/A';
+        RiserTDUoM.Caption:='-';
       end;
   end
   else
   begin
-    OffshoreYNValue.Caption:='N';
-    WaterDepthValue.Caption:='N/A';
-    WaterDepthUoMLabel.Caption:='-';
+    OffshoreYN.Caption:='N';
+    WaterDepth.Caption:='N/A';
+    WaterDepthUoM.Caption:='-';
   end;
 
-  ChokeLineIDValue.Caption:=FloatToStr(Round2(Data.ChokeLineID*UoMConverter[8],4));
-  ChokeLineIDUoMLabel.Caption:=UoMLabel[8];       { always inches }
+  // Choke & kill
+  ChokeLineID.Caption:=FloatToStr(Round2(Data.ChokeLineID*UoMConverter[8],4));
+  ChokeLineIDUoM.Caption:=UoMLabel[8];       { always inches }
   // API->user depth
-  KillLineIDValue.Caption:=FloatToStr(Round2(Data.KillLineID*UoMConverter[8],4));
-  KillLineIDUoMLabel.Caption:=UoMLabel[8];       { always inches }
+  KillLineID.Caption:=FloatToStr(Round2(Data.KillLineID*UoMConverter[8],4));
+  KillLineIDUoM.Caption:=UoMLabel[8];       { always inches }
 
-  CasingYNValue.Caption:='N';
-  CasingTDValue.Caption:='N/A';
-  CasingTDUoMLabel.Caption:='-';    { user depth }
-  CasingIDValue.Caption:='N/A';
-  CasingIDUoMLabel.Caption:='-';       { always inches }
+  // Casing & Liner
+  CasingYN.Caption:='N';
+  CasingTD.Caption:='N/A';
+  CasingTDUoM.Caption:='-';    { user depth }
+  CasingID.Caption:='N/A';
+  CasingIDUoM.Caption:='-';       { always inches }
 
-  LinerYNValue.Caption:='N';
-  LinerTopTDValue.Caption:='N/A';
-  LinerBottomTDUoMLabel.Caption:='-';    { user depth }
-  LinerBottomTDValue.Caption:='N/A';
-  LinerTopTDUoMLabel.Caption:='-';    { user depth }
-  LinerIDValue.Caption:='N/A';
-  LinerIDUoMLabel.Caption:='-';       { always inches }
+  LinerYN.Caption:='N';
+  LinerTopTD.Caption:='N/A';
+  LinerBottomTDUoM.Caption:='-';    { user depth }
+  LinerBottomTD.Caption:='N/A';
+  LinerTopTDUoM.Caption:='-';    { user depth }
+  LinerID.Caption:='N/A';
+  LinerIDUoM.Caption:='-';       { always inches }
 
   if Data.Casing then
   begin
-    CasingYNValue.Caption:='Y';
-    CasingTDValue.Caption:=FloatToStr(Round2(Data.CasingTD*UoMConverter[1],2));
-    CasingTDUoMLabel.Caption:=UoMLabel[1];    { user depth }
-    CasingIDValue.Caption:=FloatToStr(Round2(Data.KillLineID*UoMConverter[8],4));
-    CasingIDUoMLabel.Caption:=UoMLabel[8];       { always inches }
+    CasingYN.Caption:='Y';
+    CasingTD.Caption:=FloatToStr(Round2(Data.CasingTD*UoMConverter[1],2));
+    CasingTDUoM.Caption:=UoMLabel[1];    { user depth }
+    CasingID.Caption:=FloatToStr(Round2(Data.KillLineID*UoMConverter[8],4));
+    CasingIDUoM.Caption:=UoMLabel[8];       { always inches }
     if Data.Liner then
     begin
-      LinerYNValue.Caption:='Y';
-      LinerTopTDValue.Caption:=FloatToStr(Round2(Data.LinerTopTD*UoMConverter[1],2));
-      LinerTopTDUoMLabel.Caption:=UoMLabel[1];    { user depth }
-      LinerBottomTDValue.Caption:=FloatToStr(Round2(Data.LinerBottomTD*UoMConverter[1],2));
-      LinerBottomTDUoMLabel.Caption:=UoMLabel[1];    { user depth }
-      LinerIDValue.Caption:=FloatToStr(Round2(Data.LinerID*UoMConverter[8],4));
-      LinerIDUoMLabel.Caption:=UoMLabel[8];       { always inches }
+      LinerYN.Caption:='Y';
+      LinerTopTD.Caption:=FloatToStr(Round2(Data.LinerTopTD*UoMConverter[1],2));
+      LinerTopTDUoM.Caption:=UoMLabel[1];    { user depth }
+      LinerBottomTD.Caption:=FloatToStr(Round2(Data.LinerBottomTD*UoMConverter[1],2));
+      LinerBottomTDUoM.Caption:=UoMLabel[1];    { user depth }
+      LinerID.Caption:=FloatToStr(Round2(Data.LinerID*UoMConverter[8],4));
+      LinerIDUoM.Caption:=UoMLabel[8];       { always inches }
     end;
   end;
 
-  NumOpenHoleSectionsValue.Caption:=IntToStr(Data.MaxHoles);
+  // Hole
+  NumOpenHoleSections.Caption:=IntToStr(Data.MaxHoles);
 
-  OpenHoleSection1TDValue.Caption:='N/A';
-  OpenHoleSection1TDUoMLabel.Caption:='-';
-  OpenHoleSection1IDValue.Caption:='N/A';
-  OpenHoleSection1IDUoMLabel.Caption:='-';
+  OpenHoleSection1TD.Caption:='N/A';
+  OpenHoleSectionTDUoM.Caption:='-';
+  OpenHoleSection1ID.Caption:='N/A';
+  OpenHoleSectionIDUoM.Caption:='-';
 
-  OpenHoleSection2TDValue.Caption:='N/A';
-  OpenHoleSection2IDValue.Caption:='N/A';
+  OpenHoleSection2TD.Caption:='N/A';
+  OpenHoleSection2ID.Caption:='N/A';
 
-  OpenHoleSection3TDValue.Caption:='N/A';
-  OpenHoleSection3IDValue.Caption:='N/A';
+  OpenHoleSection3TD.Caption:='N/A';
+  OpenHoleSection3ID.Caption:='N/A';
 
   if Data.MaxHoles > 0 then
   begin
     // do hole 1
-    OpenHoleSection1TDValue.Caption:=FloatToStr(Round2(Data.Hole[1,1]*UoMConverter[1],2));
-    OpenHoleSection1TDUoMLabel.Caption:=UoMLabel[1];    { user depth }
-    OpenHoleSection1IDValue.Caption:=FloatToStr(Round2(Data.Hole[1,2]*UoMConverter[8],4));
-    OpenHoleSection1IDUoMLabel.Caption:=UoMLabel[8];       { always inches }
+    OpenHoleSection1TD.Caption:=FloatToStr(Round2(Data.Hole[1,1]*UoMConverter[1],2));
+    OpenHoleSectionTDUoM.Caption:=UoMLabel[1];    { user depth }
+    OpenHoleSection1ID.Caption:=FloatToStr(Round2(Data.Hole[1,2]*UoMConverter[8],4));
+    OpenHoleSectionIDUoM.Caption:=UoMLabel[8];       { always inches }
 
     if Data.MaxHoles > 1 then
     begin
       // do hole 2
-      OpenHoleSection2TDValue.Caption:=FloatToStr(Round2(Data.Hole[2,1]*UoMConverter[1],2));
-      OpenHoleSection2IDValue.Caption:=FloatToStr(Round2(Data.Hole[2,2]*UoMConverter[8],4));
+      OpenHoleSection2TD.Caption:=FloatToStr(Round2(Data.Hole[2,1]*UoMConverter[1],2));
+      OpenHoleSection2ID.Caption:=FloatToStr(Round2(Data.Hole[2,2]*UoMConverter[8],4));
       if Data.MaxHoles > 2 then
       begin
         // do hole 3
-        OpenHoleSection3TDValue.Caption:=FloatToStr(Round2(Data.Hole[3,1]*UoMConverter[1],2));
-        OpenHoleSection3IDValue.Caption:=FloatToStr(Round2(Data.Hole[3,2]*UoMConverter[8],4));
+        OpenHoleSection3TD.Caption:=FloatToStr(Round2(Data.Hole[3,1]*UoMConverter[1],2));
+        OpenHoleSection3ID.Caption:=FloatToStr(Round2(Data.Hole[3,2]*UoMConverter[8],4));
       end
     end;
   end else
@@ -386,54 +458,55 @@ begin
     // no hole defined!
   end;
 
-  NumPipeSectionsValue.Caption:=IntToStr(Data.MaxPipes);
+  // Pipe
+  NumPipeSections.Caption:=IntToStr(Data.MaxPipes);
 
-  PipeSection1TDValue.Caption:='N/A';
-  PipeTDUoMLabel.Caption:='-';
-  PipeSection1IDValue.Caption:='N/A';
-  PipeIDUoMLabel.Caption:='-';
-  PipeSection1ODValue.Caption:='N/A';
-  PipeODUoMLabel.Caption:='-';
-  PipeSection1WtValue.Caption:='N/A';
-  PipeWtUoMLabel.Caption:='-';
+  PipeSection1TD.Caption:='N/A';
+  PipeTDUoM.Caption:='-';
+  PipeSection1ID.Caption:='N/A';
+  PipeIDUoM.Caption:='-';
+  PipeSection1OD.Caption:='N/A';
+  PipeODUoM.Caption:='-';
+  PipeSection1Wt.Caption:='N/A';
+  PipeWtUoM.Caption:='-';
 
-  PipeSection2TDValue.Caption:='N/A';
-  PipeSection2IDValue.Caption:='N/A';
-  PipeSection2ODValue.Caption:='N/A';
-  PipeSection2WtValue.Caption:='N/A';
+  PipeSection2TD.Caption:='N/A';
+  PipeSection2ID.Caption:='N/A';
+  PipeSection2OD.Caption:='N/A';
+  PipeSection2Wt.Caption:='N/A';
 
-  PipeSection3TDValue.Caption:='N/A';
-  PipeSection3IDValue.Caption:='N/A';
-  PipeSection3ODValue.Caption:='N/A';
-  PipeSection3WtValue.Caption:='N/A';
+  PipeSection3TD.Caption:='N/A';
+  PipeSection3ID.Caption:='N/A';
+  PipeSection3OD.Caption:='N/A';
+  PipeSection3Wt.Caption:='N/A';
 
   if Data.MaxPipes > 0 then
   begin
     // do pipe 1
-    PipeSection1TDValue.Caption:=FloatToStr(Round2(Data.Pipe[1,1]*UoMConverter[1],2));
-    PipeTDUoMLabel.Caption:=UoMLabel[1];    { user depth }
-    PipeSection1IDValue.Caption:=FloatToStr(Round2(Data.Pipe[1,2]*UoMConverter[8],4));
-    PipeIDUoMLabel.Caption:=UoMLabel[8];       { always inches }
-    PipeSection1ODValue.Caption:=FloatToStr(Round2(Data.Pipe[1,3]*UoMConverter[8],4));
-    PipeODUoMLabel.Caption:=UoMLabel[8];       { always inches }
-    PipeSection1WtValue.Caption:=FloatToStr(Round2(Data.Pipe[1,4],2));  { lbs per foot }
-    PipeWtUoMLabel.Caption:='lbs/ft';       { always lbs/ft }
+    PipeSection1TD.Caption:=FloatToStr(Round2(Data.Pipe[1,1]*UoMConverter[1],2));
+    PipeTDUoM.Caption:=UoMLabel[1];    { user depth }
+    PipeSection1ID.Caption:=FloatToStr(Round2(Data.Pipe[1,2]*UoMConverter[8],4));
+    PipeIDUoM.Caption:=UoMLabel[8];       { always inches }
+    PipeSection1OD.Caption:=FloatToStr(Round2(Data.Pipe[1,3]*UoMConverter[8],4));
+    PipeODUoM.Caption:=UoMLabel[8];       { always inches }
+    PipeSection1Wt.Caption:=FloatToStr(Round2(Data.Pipe[1,4],2));  { lbs per foot }
+    PipeWtUoM.Caption:='lbs/ft';       { always lbs/ft }
 
     if Data.MaxPipes > 1 then
     begin
       // do pipe 2
-      PipeSection2TDValue.Caption:=FloatToStr(Round2(Data.Pipe[2,1]*UoMConverter[1],2));
-      PipeSection2IDValue.Caption:=FloatToStr(Round2(Data.Pipe[2,2]*UoMConverter[8],4));
-      PipeSection2ODValue.Caption:=FloatToStr(Round2(Data.Pipe[2,3]*UoMConverter[8],4));
-      PipeSection2WtValue.Caption:=FloatToStr(Round2(Data.Pipe[2,4],2));  { lbs per foot }
+      PipeSection2TD.Caption:=FloatToStr(Round2(Data.Pipe[2,1]*UoMConverter[1],2));
+      PipeSection2ID.Caption:=FloatToStr(Round2(Data.Pipe[2,2]*UoMConverter[8],4));
+      PipeSection2OD.Caption:=FloatToStr(Round2(Data.Pipe[2,3]*UoMConverter[8],4));
+      PipeSection2Wt.Caption:=FloatToStr(Round2(Data.Pipe[2,4],2));  { lbs per foot }
 
       if Data.MaxPipes > 2 then
       begin
         // do pipe 3
-        PipeSection3TDValue.Caption:=FloatToStr(Round2(Data.Pipe[3,1]*UoMConverter[1],2));
-        PipeSection3IDValue.Caption:=FloatToStr(Round2(Data.Pipe[3,2]*UoMConverter[8],4));
-        PipeSection3ODValue.Caption:=FloatToStr(Round2(Data.Pipe[3,3]*UoMConverter[8],4));
-        PipeSection3WtValue.Caption:=FloatToStr(Round2(Data.Pipe[3,4],2));  { lbs per foot }
+        PipeSection3TD.Caption:=FloatToStr(Round2(Data.Pipe[3,1]*UoMConverter[1],2));
+        PipeSection3ID.Caption:=FloatToStr(Round2(Data.Pipe[3,2]*UoMConverter[8],4));
+        PipeSection3OD.Caption:=FloatToStr(Round2(Data.Pipe[3,3]*UoMConverter[8],4));
+        PipeSection3Wt.Caption:=FloatToStr(Round2(Data.Pipe[3,4],2));  { lbs per foot }
       end;
     end;
   end else
@@ -441,8 +514,7 @@ begin
     // no pipe defined!
   end;
 
-
-
+  // bit
   BitNumber.Caption:=IntToStr(Data.BitNumber);
   BitType.Caption:=Data.BitType;
   NumberofJets.Caption:=IntToStr(Data.MaxJets);
@@ -463,9 +535,10 @@ begin
     end;
   end;
 
-  FormationTopUoMLabel.Caption:=UoMLabel[1];    { user depth }
-  FormationHardnessUoMLabel.Caption:='0-1';
-  FormationPressureUoMLabel.Caption:=UoMLabel[3];    { pressure }
+  // Formation & geology
+  FormationTopUoM.Caption:=UoMLabel[1];    { user depth }
+  FormationHardnessUoM.Caption:='0-1';
+  FormationPressureUoM.Caption:=UoMLabel[3];    { pressure }
 
   Horizon1Top.Caption:=FloatToStr(Round2(Data.Formation[1].Depth*UoMConverter[1],2));       {depth }
   Horizon1Hardness.Caption:=FloatToStr(Round2(Data.Formation[1].Hardness,2));
@@ -498,7 +571,8 @@ begin
   Horizon10Hardness.Caption:=FloatToStr(Round2(Data.Formation[10].Hardness,2));
   Horizon10Pressure.Caption:=FloatToStr(Round2(Data.Formation[10].FP*UoMConverter[3],2));  {pressure}
 
-  { 1..3,1..5 PumpOutputText, efficiency, @strokes, slow pump spm, slow pump flow rate gpm }
+  // Pumps
+  { Pump 1..3,1..5 PumpOutputText, efficiency, @strokes, slow pump spm, slow pump flow rate gpm }
   PumpOutputUoM.Caption:=UoMLabel[5];    { gal/litre}
   MaxPumpPressureUoM.Caption:=UoMLabel[3];    { psi/kpa}
 
@@ -513,10 +587,48 @@ begin
 
   MaxPumpPressure.Caption:=FloatToStr(Round2(Data.MaxPumpPressure*UoMConverter[3],2));  { API->user pressure }
 
+  // mud
+  MudWtUoM.Caption:=UoMLabel[2]; { mud weight }
+  MudWt.Caption:=FloatToStr(Round2(Data.MudWt*UoMConverter[2],3));  { API->user }
+  MudYP.Caption:=FloatToStr(Round2(Data.MudYP,3));    { no conversion req'd }
+  MudPV.Caption:=FloatToStr(Round2(Data.MudPV,3));    { no conversion req'd }
+  MudGel.Caption:=FloatToStr(Round2(Data.MudGel,3));  { no conversion req'd }
 
+  // general eg TD, tvd, dev, uom
+  CurrentTDUoM.Caption:=UoMLabel[1];    { user depth }
+  BitTDUoM.Caption:=UoMLabel[1];    { user depth }
+  TVDUoM.Caption:=UoMLabel[1];    { user depth }
+  CurrentTD.Caption:=FloatToStr(Round2(Data.TD/UoMConverter[1],2)); { API -> displayed }
+  BitTD.Caption:=FloatToStr(Round2(Data.BitTD/UoMConverter[1],2)); { API -> displayed }
+  DeviationDeg.Caption:=FloatToStr(Round2(Data.DeviationDegrees,2));
+  TVD.Caption:=FloatToStr(Round2(Data.TVD/UoMConverter[1],2)); { API -> displayed }
 
+  // tests
+  LeakOffTDUoM.Caption:=UoMLabel[1];    { user depth }
+  LeakOffMWUoM.Caption:=UoMLabel[2];    { user mw }
+  LeakOffEMWUoM.Caption:=UoMLabel[2];    { user mw }
+  LeakOffPressureUoM.Caption:=UoMLabel[3];    { user pressure }
+  CasingBurstPressureUoM.Caption:=UoMLabel[3];    { user pressure }
 
-  // UoM, TD etc?
+  LeakOffTD.Caption:=FloatToStr(Round2(Data.LoTTD/UoMConverter[1],2)); { API -> displayed }
+  LeakOffMW.Caption:=FloatToStr(Round2(Data.LoTMW*UoMConverter[2],3));  { API->user }
+  LeakOffEMW.Caption:=FloatToStr(Round2(Data.LoTEMW*UoMConverter[2],3));  { API->user }
+  LeakOffPressure.Caption:=FloatToStr(Round2(Data.LoTPressure*UoMConverter[3],2));  {pressure}
+  CasingBurstPressure.Caption:=FloatToStr(Round2(Data.CasingBurstPressure*UoMConverter[3],2));  { API->user pressure }
+
+  // surf eq
+  SELengthUoM.Caption:=UoMLabel[1];        { depth }
+  SEIDUoM.Caption:=UoMLabel[8];        { inches }
+
+  KellyLength.Caption:=FloatToStr(Round2(Data.Surf[1,1]*UoMConverter[1],2));      { depth }
+  KellyID.Caption:=FloatToStr(Data.Surf[1,2]*UoMConverter[8]);                    { inches }
+  SwivelLength.Caption:=FloatToStr(Round2(Data.Surf[2,1]*UoMConverter[1],2));     { depth }
+  SwivelID.Caption:=FloatToStr(Data.Surf[2,2]*UoMConverter[8]);                   { inches }
+  HoseLength.Caption:=FloatToStr(Round2(Data.Surf[3,1]*UoMConverter[1],2));       { depth }
+  HoseID.Caption:=FloatToStr(Data.Surf[3,2]*UoMConverter[8]);                     { inches }
+  StandPipeLength.Caption:=FloatToStr(Round2(Data.Surf[4,1]*UoMConverter[1],2));  { depth }
+  StandPipeID.Caption:=FloatToStr(Data.Surf[4,2]*UoMConverter[8]);                { inches }
+
 
 end;
 
