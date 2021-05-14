@@ -58,10 +58,115 @@ type
   { TDrillSim }
 
   TDrillSim = class(TForm)
+    ChokePLText: TStaticText;
+    BitPLText: TStaticText;
+    BitHPText: TStaticText;
     AnnularPressureText: TStaticText;
     AnnularPressureUoMLabel: TStaticText;
     AnnularPressureValue: TLabel;
+    CirculatingPLText: TStaticText;
+    AnnularBHPText: TStaticText;
+    MudVolUoM: TStaticText;
+    DiffFlowUoMLabel10: TStaticText;
+    DiffFlowUoMLabel11: TStaticText;
+    DiffFlowUoMLabel12: TStaticText;
+    LagUpStrokesUoM: TStaticText;
+    PipeDisplacementUoM: TStaticText;
+    DiffFlowUoMLabel4: TStaticText;
+    DiffFlowUoMLabel5: TStaticText;
+    DiffFlowUoMLabel6: TStaticText;
+    DiffFlowUoMLabel7: TStaticText;
+    DiffFlowUoMLabel8: TStaticText;
+    DiffFlowUoMLabel9: TStaticText;
+    MudVol: TLabel;
+    DiffFlowValue10: TLabel;
+    DiffFlowValue11: TLabel;
+    DiffFlowValue12: TLabel;
+    LagUpStrokes: TLabel;
+    PipeDisplacement: TLabel;
+    DiffFlowValue4: TLabel;
+    DiffFlowValue5: TLabel;
+    DiffFlowValue6: TLabel;
+    DiffFlowValue7: TLabel;
+    DiffFlowValue8: TLabel;
+    DiffFlowValue9: TLabel;
+    AnnVolUoM: TStaticText;
+    LagDownTimeUoM: TStaticText;
+    FlowInUoMLabel3: TStaticText;
+    FlowInUoMLabel4: TStaticText;
+    FlowInUoMLabel5: TStaticText;
+    FlowInUoMLabel6: TStaticText;
+    FlowInUoMLabel7: TStaticText;
+    FlowInUoMLabel8: TStaticText;
+    AnnVol: TLabel;
+    LagDownTime: TLabel;
+    FlowInValue3: TLabel;
+    FlowInValue4: TLabel;
+    FlowInValue5: TLabel;
+    FlowInValue6: TLabel;
+    FlowInValue7: TLabel;
+    FlowInValue8: TLabel;
+    WellVolUoM: TStaticText;
+    LagDownStrokesUoM: TStaticText;
+    FlowOutUoMLabel3: TStaticText;
+    FlowOutUoMLabel4: TStaticText;
+    FlowOutUoMLabel5: TStaticText;
+    FlowOutUoMLabel6: TStaticText;
+    FlowOutUoMLabel7: TStaticText;
+    FlowOutUoMLabel8: TStaticText;
+    WellVol: TLabel;
+    LagDownStrokes: TLabel;
+    FlowOutValue3: TLabel;
+    FlowOutValue4: TLabel;
+    FlowOutValue5: TLabel;
+    FlowOutValue6: TLabel;
+    FlowOutValue7: TLabel;
+    FlowOutValue8: TLabel;
+    FormationPressureGradientText: TStaticText;
+    BitEffText: TStaticText;
+    AverageHhdText: TStaticText;
+    PressureLossesText: TStaticText;
+    JetVelocityText: TStaticText;
+    AnnulusPLText: TStaticText;
+    HoleVolUoM: TStaticText;
+    ReturnPitUoMLabel10: TStaticText;
+    ReturnPitUoMLabel11: TStaticText;
+    ReturnPitUoMLabel12: TStaticText;
+    ReturnPitUoMLabel13: TStaticText;
+    LagUpTimUoM: TStaticText;
+    PipeCapacityUoM: TStaticText;
+    ReturnPitUoMLabel4: TStaticText;
+    ReturnPitUoMLabel5: TStaticText;
+    ReturnPitUoMLabel6: TStaticText;
+    ReturnPitUoMLabel7: TStaticText;
+    ReturnPitUoMLabel8: TStaticText;
+    ReturnPitUoMLabel9: TStaticText;
+    HoleVol: TLabel;
+    ReturnPitValue10: TLabel;
+    ReturnPitValue11: TLabel;
+    ReturnPitValue12: TLabel;
+    ReturnPitValue13: TLabel;
+    LagUpTime: TLabel;
+    PipeCapacity: TLabel;
+    ReturnPitValue4: TLabel;
+    ReturnPitValue5: TLabel;
+    ReturnPitValue6: TLabel;
+    ReturnPitValue7: TLabel;
+    ReturnPitValue8: TLabel;
+    ReturnPitValue9: TLabel;
+    TotalHPText: TStaticText;
+    Panel4: TPanel;
+    Panel5: TPanel;
+    PipePLText: TStaticText;
+    ImpactForceText: TStaticText;
+    MACPText1: TStaticText;
+    PipeHhdText: TStaticText;
+    AnulusHhdText: TStaticText;
+    SurfaceEquipmentPLText: TStaticText;
+    WOHText: TStaticText;
     TotCircStrksText: TStaticText;
+    ExcessMudText: TStaticText;
+    StringWeightText: TStaticText;
     WellText: TStaticText;
     MudWtInText: TStaticText;
     PipeMudWtText: TStaticText;
@@ -689,6 +794,21 @@ begin
     PipeRAMsValue.Caption:='Open';
     BlindRAMsValue.Caption:='Open';
   End;
+
+  AnnVol.Caption:=FloatToStrF(Round2(Data.AnnVol/UoMConverter[4],2), ffNumber, 8, 2); { bbl/m3 -> displayed }
+  WellVol.Caption:=FloatToStrF(Round2(Data.WellVol/UoMConverter[4],2), ffNumber, 8, 2); { bbl/m3 -> displayed }
+  HoleVol.Caption:=FloatToStrF(Round2(Data.HoleVol/UoMConverter[4],2), ffNumber, 8, 2); { bbl/m3 -> displayed }
+  MudVol.Caption:=FloatToStrF(Round2(Data.MudVol/UoMConverter[4],2), ffNumber, 8, 2); { bbl/m3 -> displayed }
+
+  LagDownTime.Caption:=FloatToStrF(Round2(Data.LagDT,2), ffNumber, 8, 2); { time }
+  LagDownStrokes.Caption:=FloatToStrF(Round2(Data.LagDS,2), ffNumber, 8, 2); { num }
+  LagUpTime.Caption:=FloatToStrF(Round2(Data.LagUT,2), ffNumber, 8, 2); { time }
+  LagUpStrokes.Caption:=FloatToStrF(Round2(Data.LagUS,2), ffNumber, 8, 2); { num }
+
+  PipeCapacity.Caption:=FloatToStrF(Round2(Data.PipeCap/UoMConverter[4],2), ffNumber, 8, 2); { bbl/m3 -> displayed }
+  PipeDisplacement.Caption:=FloatToStrF(Round2(Data.PipeDis/UoMConverter[4],2), ffNumber, 8, 2); { bbl/m3 -> displayed }
+
+
 
    CommandLine.SetFocus;
 end;

@@ -251,6 +251,26 @@ Begin
   End;
 End;
 
+Procedure DataPanelUpdate;
+Begin
+  With Data do
+  Begin
+    DrillSim.AnnVol.Caption:=FloatToStrF(Round2(Data.AnnVol/UoMConverter[4],2), ffNumber, 8, 2); { bbl/m3 -> displayed }
+    DrillSim.WellVol.Caption:=FloatToStrF(Round2(Data.WellVol/UoMConverter[4],2), ffNumber, 8, 2); { bbl/m3 -> displayed }
+    DrillSim.HoleVol.Caption:=FloatToStrF(Round2(Data.HoleVol/UoMConverter[4],2), ffNumber, 8, 2); { bbl/m3 -> displayed }
+    DrillSim.MudVol.Caption:=FloatToStrF(Round2(Data.MudVol/UoMConverter[4],2), ffNumber, 8, 2); { bbl/m3 -> displayed }
+
+    DrillSim.LagDownTime.Caption:=FloatToStrF(Round2(Data.LagDT,2), ffNumber, 8, 2); { time }
+    DrillSim.LagDownStrokes.Caption:=FloatToStrF(Round2(Data.LagDS,2), ffNumber, 8, 2); { num }
+    DrillSim.LagUpTime.Caption:=FloatToStrF(Round2(Data.LagUT,2), ffNumber, 8, 2); { time }
+    DrillSim.LagUpStrokes.Caption:=FloatToStrF(Round2(Data.LagUS,2), ffNumber, 8, 2); { num }
+
+    DrillSim.PipeCapacity.Caption:=FloatToStrF(Round2(Data.PipeCap/UoMConverter[4],2), ffNumber, 8, 2); { bbl/m3 -> displayed }
+    DrillSim.PipeDisplacement.Caption:=FloatToStrF(Round2(Data.PipeDis/UoMConverter[4],2), ffNumber, 8, 2); { bbl/m3 -> displayed }
+
+
+  End;
+End;
 
 Procedure TimeUpdate;
 Begin
@@ -324,6 +344,7 @@ Begin
   End else
     ShutInUpdate;
 
+  DataPanelUpdate;
 End;
 
 Begin

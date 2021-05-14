@@ -1,11 +1,11 @@
 object DrillSim: TDrillSim
-  Left = 31
+  Left = 39
   Height = 671
-  Top = 145
-  Width = 1385
+  Top = 261
+  Width = 1449
   Caption = 'DrillSim 3.0'
   ClientHeight = 671
-  ClientWidth = 1385
+  ClientWidth = 1449
   Menu = MainMenu1
   OnActivate = FormActivate
   OnClose = FormClose
@@ -1398,7 +1398,7 @@ object DrillSim: TDrillSim
       TabOrder = 0
     end
     object StandPipePressureUoMLabel: TStaticText
-      Left = 186
+      Left = 192
       Height = 20
       Top = 8
       Width = 55
@@ -1455,9 +1455,9 @@ object DrillSim: TDrillSim
       ParentFont = False
     end
     object AnnularPressureUoMLabel: TStaticText
-      Left = 186
+      Left = 192
       Height = 20
-      Top = 31
+      Top = 30
       Width = 55
       Caption = 'Units'
       Font.Color = clBlack
@@ -1467,7 +1467,7 @@ object DrillSim: TDrillSim
       TabOrder = 2
     end
     object CasingPressureUoMLabel: TStaticText
-      Left = 186
+      Left = 192
       Height = 20
       Top = 56
       Width = 55
@@ -1654,7 +1654,7 @@ object DrillSim: TDrillSim
       Width = 56
       Alignment = taRightJustify
       AutoSize = False
-      Caption = '999.999'
+      Caption = '999.99'
       Font.Color = clBlack
       Font.Height = -13
       Font.Name = 'Sans'
@@ -1667,29 +1667,28 @@ object DrillSim: TDrillSim
     Left = 880
     Height = 651
     Top = 8
-    Width = 498
+    Width = 554
     Caption = 'Data Viewer'
     ClientHeight = 632
-    ClientWidth = 488
+    ClientWidth = 544
     Color = clCream
     ParentColor = False
     TabOrder = 9
     object Panel2: TPanel
       Left = 8
-      Height = 307
+      Height = 279
       Top = 7
-      Width = 232
+      Width = 264
       BevelColor = clBlack
-      Caption = 'Panel2'
-      ClientHeight = 307
-      ClientWidth = 232
+      ClientHeight = 279
+      ClientWidth = 264
       TabOrder = 0
       object AnnularVolumeText: TStaticText
         Left = 10
         Height = 20
         Top = 29
         Width = 114
-        Caption = 'Annular Volume'
+        Caption = 'Ann Volume'
         Font.Color = clBlack
         Font.Height = -13
         Font.Name = 'Sans'
@@ -1735,7 +1734,7 @@ object DrillSim: TDrillSim
       object LagDownTimeText: TStaticText
         Left = 10
         Height = 20
-        Top = 133
+        Top = 181
         Width = 114
         Caption = 'Lag Down Time'
         Font.Color = clBlack
@@ -1747,7 +1746,7 @@ object DrillSim: TDrillSim
       object PipeCapacityText: TStaticText
         Left = 10
         Height = 20
-        Top = 229
+        Top = 128
         Width = 114
         Caption = 'Pipe Capacity'
         Font.Color = clBlack
@@ -1759,7 +1758,7 @@ object DrillSim: TDrillSim
       object LagDownStrokeText: TStaticText
         Left = 10
         Height = 20
-        Top = 157
+        Top = 205
         Width = 114
         Caption = 'Lag Down Strokes'
         Font.Color = clBlack
@@ -1771,7 +1770,7 @@ object DrillSim: TDrillSim
       object LagUpStrokeText: TStaticText
         Left = 10
         Height = 20
-        Top = 205
+        Top = 256
         Width = 114
         Caption = 'Lag Up Strokes'
         Font.Color = clBlack
@@ -1783,7 +1782,7 @@ object DrillSim: TDrillSim
       object LagUpTimeText: TStaticText
         Left = 10
         Height = 20
-        Top = 181
+        Top = 232
         Width = 114
         Caption = 'Lag Up Time'
         Font.Color = clBlack
@@ -1795,8 +1794,8 @@ object DrillSim: TDrillSim
       object PipeDisplacementText: TStaticText
         Left = 10
         Height = 20
-        Top = 253
-        Width = 126
+        Top = 152
+        Width = 118
         Caption = 'Pipe Displacement'
         Font.Color = clBlack
         Font.Height = -13
@@ -1804,22 +1803,291 @@ object DrillSim: TDrillSim
         ParentFont = False
         TabOrder = 9
       end
+      object AnnVolUoM: TStaticText
+        Left = 221
+        Height = 20
+        Top = 29
+        Width = 39
+        Caption = 'Units'
+        Font.Color = clBlack
+        Font.Height = -13
+        Font.Name = 'Sans'
+        ParentFont = False
+        TabOrder = 10
+      end
+      object WellVolUoM: TStaticText
+        Left = 221
+        Height = 20
+        Top = 50
+        Width = 39
+        Caption = 'Units'
+        Font.Color = clBlack
+        Font.Height = -13
+        Font.Name = 'Sans'
+        ParentFont = False
+        TabOrder = 11
+      end
+      object HoleVolUoM: TStaticText
+        Left = 221
+        Height = 20
+        Top = 75
+        Width = 40
+        Caption = 'Units'
+        Font.Color = clBlack
+        Font.Height = -13
+        Font.Name = 'Sans'
+        ParentFont = False
+        TabOrder = 12
+      end
+      object MudVolUoM: TStaticText
+        Left = 220
+        Height = 20
+        Top = 100
+        Width = 40
+        Caption = 'Units'
+        Font.Color = clBlack
+        Font.Height = -13
+        Font.Name = 'Sans'
+        ParentFont = False
+        TabOrder = 13
+      end
+      object AnnVol: TLabel
+        Left = 127
+        Height = 15
+        Top = 29
+        Width = 92
+        Alignment = taRightJustify
+        AutoSize = False
+        Caption = '9999.99'
+        Font.Color = clBlack
+        Font.Height = -13
+        Font.Name = 'Sans'
+        Font.Style = [fsBold]
+        ParentColor = False
+        ParentFont = False
+      end
+      object WellVol: TLabel
+        Left = 127
+        Height = 15
+        Top = 53
+        Width = 92
+        Alignment = taRightJustify
+        AutoSize = False
+        Caption = '9999.99'
+        Font.Color = clBlack
+        Font.Height = -13
+        Font.Name = 'Sans'
+        Font.Style = [fsBold]
+        ParentColor = False
+        ParentFont = False
+      end
+      object HoleVol: TLabel
+        Left = 128
+        Height = 15
+        Top = 77
+        Width = 90
+        Alignment = taRightJustify
+        AutoSize = False
+        Caption = '9999.99'
+        Font.Color = clBlack
+        Font.Height = -13
+        Font.Name = 'Sans'
+        Font.Style = [fsBold]
+        ParentColor = False
+        ParentFont = False
+      end
+      object MudVol: TLabel
+        Left = 127
+        Height = 15
+        Top = 101
+        Width = 92
+        Alignment = taRightJustify
+        AutoSize = False
+        Caption = '9999.99'
+        Font.Color = clBlack
+        Font.Height = -13
+        Font.Name = 'Sans'
+        Font.Style = [fsBold]
+        ParentColor = False
+        ParentFont = False
+      end
+      object LagDownTimeUoM: TStaticText
+        Left = 220
+        Height = 20
+        Top = 184
+        Width = 39
+        Caption = 'Units'
+        Font.Color = clBlack
+        Font.Height = -13
+        Font.Name = 'Sans'
+        ParentFont = False
+        TabOrder = 14
+      end
+      object LagDownStrokesUoM: TStaticText
+        Left = 220
+        Height = 20
+        Top = 208
+        Width = 39
+        Caption = 'Units'
+        Font.Color = clBlack
+        Font.Height = -13
+        Font.Name = 'Sans'
+        ParentFont = False
+        TabOrder = 15
+      end
+      object LagUpTimUoM: TStaticText
+        Left = 220
+        Height = 20
+        Top = 232
+        Width = 39
+        Caption = 'Units'
+        Font.Color = clBlack
+        Font.Height = -13
+        Font.Name = 'Sans'
+        ParentFont = False
+        TabOrder = 16
+      end
+      object LagUpStrokesUoM: TStaticText
+        Left = 220
+        Height = 20
+        Top = 256
+        Width = 38
+        Caption = 'Units'
+        Font.Color = clBlack
+        Font.Height = -13
+        Font.Name = 'Sans'
+        ParentFont = False
+        TabOrder = 17
+      end
+      object LagDownTime: TLabel
+        Left = 128
+        Height = 15
+        Top = 184
+        Width = 90
+        Alignment = taRightJustify
+        AutoSize = False
+        Caption = '999.999'
+        Font.Color = clBlack
+        Font.Height = -13
+        Font.Name = 'Sans'
+        Font.Style = [fsBold]
+        ParentColor = False
+        ParentFont = False
+      end
+      object LagDownStrokes: TLabel
+        Left = 128
+        Height = 15
+        Top = 208
+        Width = 90
+        Alignment = taRightJustify
+        AutoSize = False
+        Caption = '999.999'
+        Font.Color = clBlack
+        Font.Height = -13
+        Font.Name = 'Sans'
+        Font.Style = [fsBold]
+        ParentColor = False
+        ParentFont = False
+      end
+      object LagUpTime: TLabel
+        Left = 127
+        Height = 15
+        Top = 232
+        Width = 90
+        Alignment = taRightJustify
+        AutoSize = False
+        Caption = '999.999'
+        Font.Color = clBlack
+        Font.Height = -13
+        Font.Name = 'Sans'
+        Font.Style = [fsBold]
+        ParentColor = False
+        ParentFont = False
+      end
+      object LagUpStrokes: TLabel
+        Left = 128
+        Height = 15
+        Top = 256
+        Width = 90
+        Alignment = taRightJustify
+        AutoSize = False
+        Caption = '999.999'
+        Font.Color = clBlack
+        Font.Height = -13
+        Font.Name = 'Sans'
+        Font.Style = [fsBold]
+        ParentColor = False
+        ParentFont = False
+      end
+      object PipeCapacity: TLabel
+        Left = 128
+        Height = 15
+        Top = 128
+        Width = 89
+        Alignment = taRightJustify
+        AutoSize = False
+        Caption = '999.999'
+        Font.Color = clBlack
+        Font.Height = -13
+        Font.Name = 'Sans'
+        Font.Style = [fsBold]
+        ParentColor = False
+        ParentFont = False
+      end
+      object PipeCapacityUoM: TStaticText
+        Left = 219
+        Height = 20
+        Top = 128
+        Width = 39
+        Caption = 'Units'
+        Font.Color = clBlack
+        Font.Height = -13
+        Font.Name = 'Sans'
+        ParentFont = False
+        TabOrder = 18
+      end
+      object PipeDisplacementUoM: TStaticText
+        Left = 221
+        Height = 15
+        Top = 152
+        Width = 38
+        Caption = 'Units'
+        Font.Color = clBlack
+        Font.Height = -13
+        Font.Name = 'Sans'
+        ParentFont = False
+        TabOrder = 19
+      end
+      object PipeDisplacement: TLabel
+        Left = 128
+        Height = 15
+        Top = 152
+        Width = 89
+        Alignment = taRightJustify
+        AutoSize = False
+        Caption = '999.999'
+        Font.Color = clBlack
+        Font.Height = -13
+        Font.Name = 'Sans'
+        Font.Style = [fsBold]
+        ParentColor = False
+        ParentFont = False
+      end
     end
     object Panel3: TPanel
       Left = 8
       Height = 307
-      Top = 321
-      Width = 232
+      Top = 294
+      Width = 264
       BevelColor = clBlack
-      Caption = 'Panel3'
       ClientHeight = 307
-      ClientWidth = 232
+      ClientWidth = 264
       TabOrder = 1
       object MudWtInText: TStaticText
         Left = 10
         Height = 20
-        Top = 28
-        Width = 114
+        Top = 8
+        Width = 78
         Caption = 'Mud Wt. In'
         Font.Color = clBlack
         Font.Height = -13
@@ -1830,8 +2098,8 @@ object DrillSim: TDrillSim
       object PipeMudWtText: TStaticText
         Left = 10
         Height = 20
-        Top = 52
-        Width = 114
+        Top = 32
+        Width = 94
         Caption = 'Pipe Mud Wt.'
         Font.Color = clBlack
         Font.Height = -13
@@ -1842,7 +2110,7 @@ object DrillSim: TDrillSim
       object AnnularMudWtText: TStaticText
         Left = 10
         Height = 20
-        Top = 76
+        Top = 56
         Width = 114
         Caption = 'Annular Mud Wt.'
         Font.Color = clBlack
@@ -1854,8 +2122,8 @@ object DrillSim: TDrillSim
       object MudWtOutText: TStaticText
         Left = 10
         Height = 20
-        Top = 100
-        Width = 114
+        Top = 80
+        Width = 90
         Caption = 'Mud Wt. Out'
         Font.Color = clBlack
         Font.Height = -13
@@ -1866,8 +2134,8 @@ object DrillSim: TDrillSim
       object AnnularPVText: TStaticText
         Left = 10
         Height = 20
-        Top = 132
-        Width = 114
+        Top = 123
+        Width = 90
         Caption = 'Annnular PV'
         Font.Color = clBlack
         Font.Height = -13
@@ -1878,8 +2146,8 @@ object DrillSim: TDrillSim
       object StrokeCounterText: TStaticText
         Left = 10
         Height = 20
-        Top = 228
-        Width = 114
+        Top = 219
+        Width = 102
         Caption = 'StrokeCounter'
         Font.Color = clBlack
         Font.Height = -13
@@ -1890,8 +2158,8 @@ object DrillSim: TDrillSim
       object AnnularYPText: TStaticText
         Left = 10
         Height = 20
-        Top = 156
-        Width = 114
+        Top = 147
+        Width = 78
         Caption = 'AnnularYP'
         Font.Color = clBlack
         Font.Height = -13
@@ -1902,8 +2170,8 @@ object DrillSim: TDrillSim
       object PipeYPText: TStaticText
         Left = 10
         Height = 20
-        Top = 204
-        Width = 114
+        Top = 195
+        Width = 58
         Caption = 'PipeYP'
         Font.Color = clBlack
         Font.Height = -13
@@ -1914,8 +2182,8 @@ object DrillSim: TDrillSim
       object PipePVText: TStaticText
         Left = 10
         Height = 20
-        Top = 180
-        Width = 114
+        Top = 171
+        Width = 62
         Caption = 'Pipe PV'
         Font.Color = clBlack
         Font.Height = -13
@@ -1926,8 +2194,8 @@ object DrillSim: TDrillSim
       object TotStrksText: TStaticText
         Left = 8
         Height = 20
-        Top = 252
-        Width = 126
+        Top = 243
+        Width = 88
         Caption = 'Total Strokes'
         Font.Color = clBlack
         Font.Height = -13
@@ -1936,10 +2204,10 @@ object DrillSim: TDrillSim
         TabOrder = 9
       end
       object TotCircStrksText: TStaticText
-        Left = 10
+        Left = 8
         Height = 20
-        Top = 272
-        Width = 126
+        Top = 263
+        Width = 112
         Caption = 'Total Circulating Strokes'
         Font.Color = clBlack
         Font.Height = -13
@@ -1947,291 +2215,1114 @@ object DrillSim: TDrillSim
         ParentFont = False
         TabOrder = 10
       end
+      object ExcessMudText: TStaticText
+        Left = 10
+        Height = 20
+        Top = 287
+        Width = 86
+        Caption = 'Excess Mud'
+        Font.Color = clBlack
+        Font.Height = -13
+        Font.Name = 'Sans'
+        ParentFont = False
+        TabOrder = 11
+      end
+      object FlowInUoMLabel3: TStaticText
+        Left = 203
+        Height = 20
+        Top = 16
+        Width = 39
+        Caption = 'Units'
+        Font.Color = clBlack
+        Font.Height = -13
+        Font.Name = 'Sans'
+        ParentFont = False
+        TabOrder = 12
+      end
+      object FlowOutUoMLabel3: TStaticText
+        Left = 203
+        Height = 20
+        Top = 34
+        Width = 39
+        Caption = 'Units'
+        Font.Color = clBlack
+        Font.Height = -13
+        Font.Name = 'Sans'
+        ParentFont = False
+        TabOrder = 13
+      end
+      object ReturnPitUoMLabel4: TStaticText
+        Left = 202
+        Height = 20
+        Top = 59
+        Width = 40
+        Caption = 'Units'
+        Font.Color = clBlack
+        Font.Height = -13
+        Font.Name = 'Sans'
+        ParentFont = False
+        TabOrder = 14
+      end
+      object DiffFlowUoMLabel4: TStaticText
+        Left = 202
+        Height = 20
+        Top = 79
+        Width = 40
+        Caption = 'Units'
+        Font.Color = clBlack
+        Font.Height = -13
+        Font.Name = 'Sans'
+        ParentFont = False
+        TabOrder = 15
+      end
+      object FlowInValue3: TLabel
+        Left = 106
+        Height = 15
+        Top = 16
+        Width = 90
+        Alignment = taRightJustify
+        AutoSize = False
+        Caption = '999.999'
+        Font.Color = clBlack
+        Font.Height = -13
+        Font.Name = 'Sans'
+        Font.Style = [fsBold]
+        ParentColor = False
+        ParentFont = False
+      end
+      object FlowOutValue3: TLabel
+        Left = 106
+        Height = 15
+        Top = 37
+        Width = 90
+        Alignment = taRightJustify
+        AutoSize = False
+        Caption = '999.999'
+        Font.Color = clBlack
+        Font.Height = -13
+        Font.Name = 'Sans'
+        Font.Style = [fsBold]
+        ParentColor = False
+        ParentFont = False
+      end
+      object ReturnPitValue4: TLabel
+        Left = 105
+        Height = 15
+        Top = 59
+        Width = 90
+        Alignment = taRightJustify
+        AutoSize = False
+        Caption = '999.999'
+        Font.Color = clBlack
+        Font.Height = -13
+        Font.Name = 'Sans'
+        Font.Style = [fsBold]
+        ParentColor = False
+        ParentFont = False
+      end
+      object DiffFlowValue4: TLabel
+        Left = 106
+        Height = 15
+        Top = 81
+        Width = 90
+        Alignment = taRightJustify
+        AutoSize = False
+        Caption = '999.999'
+        Font.Color = clBlack
+        Font.Height = -13
+        Font.Name = 'Sans'
+        Font.Style = [fsBold]
+        ParentColor = False
+        ParentFont = False
+      end
+      object FlowInUoMLabel4: TStaticText
+        Left = 203
+        Height = 20
+        Top = 120
+        Width = 39
+        Caption = 'Units'
+        Font.Color = clBlack
+        Font.Height = -13
+        Font.Name = 'Sans'
+        ParentFont = False
+        TabOrder = 16
+      end
+      object FlowOutUoMLabel4: TStaticText
+        Left = 203
+        Height = 20
+        Top = 138
+        Width = 39
+        Caption = 'Units'
+        Font.Color = clBlack
+        Font.Height = -13
+        Font.Name = 'Sans'
+        ParentFont = False
+        TabOrder = 17
+      end
+      object ReturnPitUoMLabel5: TStaticText
+        Left = 203
+        Height = 20
+        Top = 163
+        Width = 39
+        Caption = 'Units'
+        Font.Color = clBlack
+        Font.Height = -13
+        Font.Name = 'Sans'
+        ParentFont = False
+        TabOrder = 18
+      end
+      object DiffFlowUoMLabel5: TStaticText
+        Left = 204
+        Height = 20
+        Top = 183
+        Width = 38
+        Caption = 'Units'
+        Font.Color = clBlack
+        Font.Height = -13
+        Font.Name = 'Sans'
+        ParentFont = False
+        TabOrder = 19
+      end
+      object FlowInValue4: TLabel
+        Left = 107
+        Height = 15
+        Top = 120
+        Width = 90
+        Alignment = taRightJustify
+        AutoSize = False
+        Caption = '999.999'
+        Font.Color = clBlack
+        Font.Height = -13
+        Font.Name = 'Sans'
+        Font.Style = [fsBold]
+        ParentColor = False
+        ParentFont = False
+      end
+      object FlowOutValue4: TLabel
+        Left = 107
+        Height = 15
+        Top = 141
+        Width = 90
+        Alignment = taRightJustify
+        AutoSize = False
+        Caption = '999.999'
+        Font.Color = clBlack
+        Font.Height = -13
+        Font.Name = 'Sans'
+        Font.Style = [fsBold]
+        ParentColor = False
+        ParentFont = False
+      end
+      object ReturnPitValue5: TLabel
+        Left = 106
+        Height = 15
+        Top = 163
+        Width = 90
+        Alignment = taRightJustify
+        AutoSize = False
+        Caption = '999.999'
+        Font.Color = clBlack
+        Font.Height = -13
+        Font.Name = 'Sans'
+        Font.Style = [fsBold]
+        ParentColor = False
+        ParentFont = False
+      end
+      object DiffFlowValue5: TLabel
+        Left = 107
+        Height = 15
+        Top = 185
+        Width = 90
+        Alignment = taRightJustify
+        AutoSize = False
+        Caption = '999.999'
+        Font.Color = clBlack
+        Font.Height = -13
+        Font.Name = 'Sans'
+        Font.Style = [fsBold]
+        ParentColor = False
+        ParentFont = False
+      end
+      object ReturnPitValue6: TLabel
+        Left = 106
+        Height = 15
+        Top = 208
+        Width = 90
+        Alignment = taRightJustify
+        AutoSize = False
+        Caption = '999.999'
+        Font.Color = clBlack
+        Font.Height = -13
+        Font.Name = 'Sans'
+        Font.Style = [fsBold]
+        ParentColor = False
+        ParentFont = False
+      end
+      object ReturnPitUoMLabel6: TStaticText
+        Left = 203
+        Height = 20
+        Top = 208
+        Width = 39
+        Caption = 'Units'
+        Font.Color = clBlack
+        Font.Height = -13
+        Font.Name = 'Sans'
+        ParentFont = False
+        TabOrder = 20
+      end
+      object DiffFlowUoMLabel6: TStaticText
+        Left = 204
+        Height = 20
+        Top = 228
+        Width = 38
+        Caption = 'Units'
+        Font.Color = clBlack
+        Font.Height = -13
+        Font.Name = 'Sans'
+        ParentFont = False
+        TabOrder = 21
+      end
+      object DiffFlowValue6: TLabel
+        Left = 107
+        Height = 15
+        Top = 230
+        Width = 90
+        Alignment = taRightJustify
+        AutoSize = False
+        Caption = '999.999'
+        Font.Color = clBlack
+        Font.Height = -13
+        Font.Name = 'Sans'
+        Font.Style = [fsBold]
+        ParentColor = False
+        ParentFont = False
+      end
+      object ReturnPitValue7: TLabel
+        Left = 105
+        Height = 15
+        Top = 248
+        Width = 90
+        Alignment = taRightJustify
+        AutoSize = False
+        Caption = '999.999'
+        Font.Color = clBlack
+        Font.Height = -13
+        Font.Name = 'Sans'
+        Font.Style = [fsBold]
+        ParentColor = False
+        ParentFont = False
+      end
+      object ReturnPitUoMLabel7: TStaticText
+        Left = 202
+        Height = 20
+        Top = 248
+        Width = 39
+        Caption = 'Units'
+        Font.Color = clBlack
+        Font.Height = -13
+        Font.Name = 'Sans'
+        ParentFont = False
+        TabOrder = 22
+      end
+      object DiffFlowUoMLabel7: TStaticText
+        Left = 203
+        Height = 20
+        Top = 268
+        Width = 38
+        Caption = 'Units'
+        Font.Color = clBlack
+        Font.Height = -13
+        Font.Name = 'Sans'
+        ParentFont = False
+        TabOrder = 23
+      end
+      object DiffFlowValue7: TLabel
+        Left = 106
+        Height = 15
+        Top = 270
+        Width = 90
+        Alignment = taRightJustify
+        AutoSize = False
+        Caption = '999.999'
+        Font.Color = clBlack
+        Font.Height = -13
+        Font.Name = 'Sans'
+        Font.Style = [fsBold]
+        ParentColor = False
+        ParentFont = False
+      end
     end
     object Panel4: TPanel
-      Left = 248
+      Left = 280
       Height = 307
       Top = 7
       Width = 232
       BevelColor = clBlack
-      Caption = 'Panel4'
       ClientHeight = 307
       ClientWidth = 232
       TabOrder = 2
-      object MudWtInText1: TStaticText
+      object PressureLossesText: TStaticText
         Left = 10
         Height = 20
-        Top = 28
+        Top = 0
         Width = 114
-        Caption = 'Mud Wt. In'
+        Caption = 'Pressure Losses'
         Font.Color = clBlack
         Font.Height = -13
         Font.Name = 'Sans'
         ParentFont = False
         TabOrder = 0
       end
-      object PipeMudWtText1: TStaticText
+      object PipePLText: TStaticText
         Left = 10
         Height = 20
         Top = 52
         Width = 114
-        Caption = 'Pipe Mud Wt.'
+        Caption = 'Pipe'
         Font.Color = clBlack
         Font.Height = -13
         Font.Name = 'Sans'
         ParentFont = False
         TabOrder = 1
       end
-      object AnnularMudWtText1: TStaticText
+      object BitPLText: TStaticText
         Left = 10
         Height = 20
         Top = 76
         Width = 114
-        Caption = 'Annular Mud Wt.'
+        Caption = 'Bit'
         Font.Color = clBlack
         Font.Height = -13
         Font.Name = 'Sans'
         ParentFont = False
         TabOrder = 2
       end
-      object MudWtOutText1: TStaticText
+      object AnnulusPLText: TStaticText
         Left = 10
         Height = 20
         Top = 100
         Width = 114
-        Caption = 'Mud Wt. Out'
+        Caption = 'Annulus'
         Font.Color = clBlack
         Font.Height = -13
         Font.Name = 'Sans'
         ParentFont = False
         TabOrder = 3
       end
-      object AnnularPVText1: TStaticText
+      object CirculatingPLText: TStaticText
         Left = 10
         Height = 20
-        Top = 132
+        Top = 157
         Width = 114
-        Caption = 'Annnular PV'
+        Caption = 'Circulating'
         Font.Color = clBlack
         Font.Height = -13
         Font.Name = 'Sans'
         ParentFont = False
         TabOrder = 4
       end
-      object StrokeCounterText1: TStaticText
+      object WOHText: TStaticText
         Left = 10
         Height = 20
         Top = 228
         Width = 114
-        Caption = 'StrokeCounter'
+        Caption = 'WOH'
         Font.Color = clBlack
         Font.Height = -13
         Font.Name = 'Sans'
         ParentFont = False
         TabOrder = 5
       end
-      object AnnularYPText1: TStaticText
+      object FormationPressureGradientText: TStaticText
         Left = 10
         Height = 20
-        Top = 156
-        Width = 114
-        Caption = 'AnnularYP'
+        Top = 181
+        Width = 142
+        Caption = 'Formation Pr Gradient'
         Font.Color = clBlack
         Font.Height = -13
         Font.Name = 'Sans'
         ParentFont = False
         TabOrder = 6
       end
-      object PipeYPText1: TStaticText
+      object MACPText1: TStaticText
         Left = 10
         Height = 20
-        Top = 204
+        Top = 205
         Width = 114
-        Caption = 'PipeYP'
+        Caption = 'MACP'
         Font.Color = clBlack
         Font.Height = -13
         Font.Name = 'Sans'
         ParentFont = False
         TabOrder = 7
       end
-      object PipePVText1: TStaticText
-        Left = 10
+      object StringWeightText: TStaticText
+        Left = 8
         Height = 20
-        Top = 180
-        Width = 114
-        Caption = 'Pipe PV'
+        Top = 252
+        Width = 126
+        Caption = 'String Weight'
         Font.Color = clBlack
         Font.Height = -13
         Font.Name = 'Sans'
         ParentFont = False
         TabOrder = 8
       end
-      object TotStrksText1: TStaticText
-        Left = 8
+      object SurfaceEquipmentPLText: TStaticText
+        Left = 10
         Height = 20
-        Top = 252
-        Width = 126
-        Caption = 'Total Strokes'
+        Top = 28
+        Width = 134
+        Caption = 'Surface Equipment'
         Font.Color = clBlack
         Font.Height = -13
         Font.Name = 'Sans'
         ParentFont = False
         TabOrder = 9
       end
-      object TotCircStrksText1: TStaticText
+      object ChokePLText: TStaticText
         Left = 10
         Height = 20
-        Top = 272
-        Width = 126
-        Caption = 'Total Circulating Strokes'
+        Top = 133
+        Width = 114
+        Caption = 'Choke'
         Font.Color = clBlack
         Font.Height = -13
         Font.Name = 'Sans'
         ParentFont = False
         TabOrder = 10
+      end
+      object FlowInUoMLabel5: TStaticText
+        Left = 194
+        Height = 20
+        Top = 28
+        Width = 39
+        Caption = 'Units'
+        Font.Color = clBlack
+        Font.Height = -13
+        Font.Name = 'Sans'
+        ParentFont = False
+        TabOrder = 11
+      end
+      object FlowOutUoMLabel5: TStaticText
+        Left = 193
+        Height = 20
+        Top = 50
+        Width = 39
+        Caption = 'Units'
+        Font.Color = clBlack
+        Font.Height = -13
+        Font.Name = 'Sans'
+        ParentFont = False
+        TabOrder = 12
+      end
+      object ReturnPitUoMLabel8: TStaticText
+        Left = 193
+        Height = 20
+        Top = 75
+        Width = 40
+        Caption = 'Units'
+        Font.Color = clBlack
+        Font.Height = -13
+        Font.Name = 'Sans'
+        ParentFont = False
+        TabOrder = 13
+      end
+      object DiffFlowUoMLabel8: TStaticText
+        Left = 192
+        Height = 20
+        Top = 95
+        Width = 40
+        Caption = 'Units'
+        Font.Color = clBlack
+        Font.Height = -13
+        Font.Name = 'Sans'
+        ParentFont = False
+        TabOrder = 14
+      end
+      object FlowInValue5: TLabel
+        Left = 105
+        Height = 15
+        Top = 29
+        Width = 90
+        Alignment = taRightJustify
+        AutoSize = False
+        Caption = '999.999'
+        Font.Color = clBlack
+        Font.Height = -13
+        Font.Name = 'Sans'
+        Font.Style = [fsBold]
+        ParentColor = False
+        ParentFont = False
+      end
+      object FlowOutValue5: TLabel
+        Left = 105
+        Height = 15
+        Top = 53
+        Width = 90
+        Alignment = taRightJustify
+        AutoSize = False
+        Caption = '999.999'
+        Font.Color = clBlack
+        Font.Height = -13
+        Font.Name = 'Sans'
+        Font.Style = [fsBold]
+        ParentColor = False
+        ParentFont = False
+      end
+      object ReturnPitValue8: TLabel
+        Left = 104
+        Height = 15
+        Top = 75
+        Width = 90
+        Alignment = taRightJustify
+        AutoSize = False
+        Caption = '999.999'
+        Font.Color = clBlack
+        Font.Height = -13
+        Font.Name = 'Sans'
+        Font.Style = [fsBold]
+        ParentColor = False
+        ParentFont = False
+      end
+      object DiffFlowValue8: TLabel
+        Left = 105
+        Height = 15
+        Top = 97
+        Width = 90
+        Alignment = taRightJustify
+        AutoSize = False
+        Caption = '999.999'
+        Font.Color = clBlack
+        Font.Height = -13
+        Font.Name = 'Sans'
+        Font.Style = [fsBold]
+        ParentColor = False
+        ParentFont = False
+      end
+      object FlowInUoMLabel6: TStaticText
+        Left = 194
+        Height = 16
+        Top = 132
+        Width = 39
+        Caption = 'Units'
+        Font.Color = clBlack
+        Font.Height = -13
+        Font.Name = 'Sans'
+        ParentFont = False
+        TabOrder = 15
+      end
+      object FlowOutUoMLabel6: TStaticText
+        Left = 194
+        Height = 16
+        Top = 156
+        Width = 39
+        Caption = 'Units'
+        Font.Color = clBlack
+        Font.Height = -13
+        Font.Name = 'Sans'
+        ParentFont = False
+        TabOrder = 16
+      end
+      object ReturnPitUoMLabel9: TStaticText
+        Left = 193
+        Height = 17
+        Top = 179
+        Width = 39
+        Caption = 'Units'
+        Font.Color = clBlack
+        Font.Height = -13
+        Font.Name = 'Sans'
+        ParentFont = False
+        TabOrder = 17
+      end
+      object DiffFlowUoMLabel9: TStaticText
+        Left = 194
+        Height = 20
+        Top = 199
+        Width = 38
+        Caption = 'Units'
+        Font.Color = clBlack
+        Font.Height = -13
+        Font.Name = 'Sans'
+        ParentFont = False
+        TabOrder = 18
+      end
+      object FlowInValue6: TLabel
+        Left = 106
+        Height = 15
+        Top = 133
+        Width = 90
+        Alignment = taRightJustify
+        AutoSize = False
+        Caption = '999.999'
+        Font.Color = clBlack
+        Font.Height = -13
+        Font.Name = 'Sans'
+        Font.Style = [fsBold]
+        ParentColor = False
+        ParentFont = False
+      end
+      object FlowOutValue6: TLabel
+        Left = 106
+        Height = 15
+        Top = 157
+        Width = 90
+        Alignment = taRightJustify
+        AutoSize = False
+        Caption = '999.999'
+        Font.Color = clBlack
+        Font.Height = -13
+        Font.Name = 'Sans'
+        Font.Style = [fsBold]
+        ParentColor = False
+        ParentFont = False
+      end
+      object ReturnPitValue9: TLabel
+        Left = 105
+        Height = 15
+        Top = 179
+        Width = 90
+        Alignment = taRightJustify
+        AutoSize = False
+        Caption = '999.999'
+        Font.Color = clBlack
+        Font.Height = -13
+        Font.Name = 'Sans'
+        Font.Style = [fsBold]
+        ParentColor = False
+        ParentFont = False
+      end
+      object DiffFlowValue9: TLabel
+        Left = 106
+        Height = 15
+        Top = 201
+        Width = 90
+        Alignment = taRightJustify
+        AutoSize = False
+        Caption = '999.999'
+        Font.Color = clBlack
+        Font.Height = -13
+        Font.Name = 'Sans'
+        Font.Style = [fsBold]
+        ParentColor = False
+        ParentFont = False
+      end
+      object ReturnPitValue10: TLabel
+        Left = 105
+        Height = 15
+        Top = 224
+        Width = 90
+        Alignment = taRightJustify
+        AutoSize = False
+        Caption = '999.999'
+        Font.Color = clBlack
+        Font.Height = -13
+        Font.Name = 'Sans'
+        Font.Style = [fsBold]
+        ParentColor = False
+        ParentFont = False
+      end
+      object ReturnPitUoMLabel10: TStaticText
+        Left = 193
+        Height = 20
+        Top = 224
+        Width = 39
+        Caption = 'Units'
+        Font.Color = clBlack
+        Font.Height = -13
+        Font.Name = 'Sans'
+        ParentFont = False
+        TabOrder = 19
+      end
+      object DiffFlowUoMLabel10: TStaticText
+        Left = 194
+        Height = 20
+        Top = 244
+        Width = 38
+        Caption = 'Units'
+        Font.Color = clBlack
+        Font.Height = -13
+        Font.Name = 'Sans'
+        ParentFont = False
+        TabOrder = 20
+      end
+      object DiffFlowValue10: TLabel
+        Left = 106
+        Height = 15
+        Top = 246
+        Width = 90
+        Alignment = taRightJustify
+        AutoSize = False
+        Caption = '999.999'
+        Font.Color = clBlack
+        Font.Height = -13
+        Font.Name = 'Sans'
+        Font.Style = [fsBold]
+        ParentColor = False
+        ParentFont = False
       end
     end
     object Panel5: TPanel
-      Left = 248
+      Left = 280
       Height = 307
-      Top = 321
+      Top = 320
       Width = 232
       BevelColor = clBlack
-      Caption = 'Panel5'
       ClientHeight = 307
       ClientWidth = 232
       TabOrder = 3
-      object MudWtInText2: TStaticText
+      object JetVelocityText: TStaticText
         Left = 10
         Height = 20
         Top = 28
         Width = 114
-        Caption = 'Mud Wt. In'
+        Caption = 'Jet Velocity'
         Font.Color = clBlack
         Font.Height = -13
         Font.Name = 'Sans'
         ParentFont = False
         TabOrder = 0
       end
-      object PipeMudWtText2: TStaticText
+      object ImpactForceText: TStaticText
         Left = 10
         Height = 20
         Top = 52
         Width = 114
-        Caption = 'Pipe Mud Wt.'
+        Caption = 'Impact Force'
         Font.Color = clBlack
         Font.Height = -13
         Font.Name = 'Sans'
         ParentFont = False
         TabOrder = 1
       end
-      object AnnularMudWtText2: TStaticText
+      object BitHPText: TStaticText
         Left = 10
         Height = 20
         Top = 76
         Width = 114
-        Caption = 'Annular Mud Wt.'
+        Caption = 'Bit Horsepower'
         Font.Color = clBlack
         Font.Height = -13
         Font.Name = 'Sans'
         ParentFont = False
         TabOrder = 2
       end
-      object MudWtOutText2: TStaticText
+      object TotalHPText: TStaticText
         Left = 10
         Height = 20
-        Top = 100
+        Top = 112
         Width = 114
-        Caption = 'Mud Wt. Out'
+        Caption = 'Total HP'
         Font.Color = clBlack
         Font.Height = -13
         Font.Name = 'Sans'
         ParentFont = False
         TabOrder = 3
       end
-      object AnnularPVText2: TStaticText
+      object AnnularBHPText: TStaticText
         Left = 10
         Height = 20
         Top = 132
         Width = 114
-        Caption = 'Annnular PV'
+        Caption = 'Annnular BHP'
         Font.Color = clBlack
         Font.Height = -13
         Font.Name = 'Sans'
         ParentFont = False
         TabOrder = 4
       end
-      object StrokeCounterText2: TStaticText
+      object BitEffText: TStaticText
         Left = 10
         Height = 20
-        Top = 228
+        Top = 96
         Width = 114
-        Caption = 'StrokeCounter'
+        Caption = 'Bit Efficiency'
         Font.Color = clBlack
         Font.Height = -13
         Font.Name = 'Sans'
         ParentFont = False
         TabOrder = 5
       end
-      object AnnularYPText2: TStaticText
+      object AnulusHhdText: TStaticText
         Left = 10
         Height = 20
-        Top = 156
+        Top = 204
         Width = 114
-        Caption = 'AnnularYP'
+        Caption = 'Annulus Hhd'
         Font.Color = clBlack
         Font.Height = -13
         Font.Name = 'Sans'
         ParentFont = False
         TabOrder = 6
       end
-      object PipeYPText2: TStaticText
+      object PipeHhdText: TStaticText
         Left = 10
         Height = 20
-        Top = 204
+        Top = 180
         Width = 114
-        Caption = 'PipeYP'
+        Caption = 'Pipe Hhd'
         Font.Color = clBlack
         Font.Height = -13
         Font.Name = 'Sans'
         ParentFont = False
         TabOrder = 7
       end
-      object PipePVText2: TStaticText
+      object AverageHhdText: TStaticText
         Left = 10
         Height = 20
-        Top = 180
+        Top = 152
         Width = 114
-        Caption = 'Pipe PV'
+        Caption = 'Average Hhd'
         Font.Color = clBlack
         Font.Height = -13
         Font.Name = 'Sans'
         ParentFont = False
         TabOrder = 8
       end
-      object TotStrksText2: TStaticText
-        Left = 8
+      object FlowInUoMLabel7: TStaticText
+        Left = 193
         Height = 20
-        Top = 252
-        Width = 126
-        Caption = 'Total Strokes'
+        Top = 32
+        Width = 39
+        Caption = 'Units'
         Font.Color = clBlack
         Font.Height = -13
         Font.Name = 'Sans'
         ParentFont = False
         TabOrder = 9
       end
-      object TotCircStrksText2: TStaticText
-        Left = 10
+      object FlowOutUoMLabel7: TStaticText
+        Left = 193
         Height = 20
-        Top = 272
-        Width = 126
-        Caption = 'Total Circulating Strokes'
+        Top = 50
+        Width = 39
+        Caption = 'Units'
         Font.Color = clBlack
         Font.Height = -13
         Font.Name = 'Sans'
         ParentFont = False
         TabOrder = 10
+      end
+      object ReturnPitUoMLabel11: TStaticText
+        Left = 192
+        Height = 20
+        Top = 75
+        Width = 40
+        Caption = 'Units'
+        Font.Color = clBlack
+        Font.Height = -13
+        Font.Name = 'Sans'
+        ParentFont = False
+        TabOrder = 11
+      end
+      object DiffFlowUoMLabel11: TStaticText
+        Left = 192
+        Height = 20
+        Top = 95
+        Width = 40
+        Caption = 'Units'
+        Font.Color = clBlack
+        Font.Height = -13
+        Font.Name = 'Sans'
+        ParentFont = False
+        TabOrder = 12
+      end
+      object FlowInValue7: TLabel
+        Left = 105
+        Height = 15
+        Top = 32
+        Width = 90
+        Alignment = taRightJustify
+        AutoSize = False
+        Caption = '999.999'
+        Font.Color = clBlack
+        Font.Height = -13
+        Font.Name = 'Sans'
+        Font.Style = [fsBold]
+        ParentColor = False
+        ParentFont = False
+      end
+      object FlowOutValue7: TLabel
+        Left = 105
+        Height = 15
+        Top = 53
+        Width = 90
+        Alignment = taRightJustify
+        AutoSize = False
+        Caption = '999.999'
+        Font.Color = clBlack
+        Font.Height = -13
+        Font.Name = 'Sans'
+        Font.Style = [fsBold]
+        ParentColor = False
+        ParentFont = False
+      end
+      object ReturnPitValue11: TLabel
+        Left = 104
+        Height = 15
+        Top = 75
+        Width = 90
+        Alignment = taRightJustify
+        AutoSize = False
+        Caption = '999.999'
+        Font.Color = clBlack
+        Font.Height = -13
+        Font.Name = 'Sans'
+        Font.Style = [fsBold]
+        ParentColor = False
+        ParentFont = False
+      end
+      object DiffFlowValue11: TLabel
+        Left = 105
+        Height = 15
+        Top = 97
+        Width = 90
+        Alignment = taRightJustify
+        AutoSize = False
+        Caption = '999.999'
+        Font.Color = clBlack
+        Font.Height = -13
+        Font.Name = 'Sans'
+        Font.Style = [fsBold]
+        ParentColor = False
+        ParentFont = False
+      end
+      object FlowInUoMLabel8: TStaticText
+        Left = 193
+        Height = 20
+        Top = 136
+        Width = 39
+        Caption = 'Units'
+        Font.Color = clBlack
+        Font.Height = -13
+        Font.Name = 'Sans'
+        ParentFont = False
+        TabOrder = 13
+      end
+      object FlowOutUoMLabel8: TStaticText
+        Left = 193
+        Height = 20
+        Top = 154
+        Width = 39
+        Caption = 'Units'
+        Font.Color = clBlack
+        Font.Height = -13
+        Font.Name = 'Sans'
+        ParentFont = False
+        TabOrder = 14
+      end
+      object ReturnPitUoMLabel12: TStaticText
+        Left = 193
+        Height = 20
+        Top = 179
+        Width = 39
+        Caption = 'Units'
+        Font.Color = clBlack
+        Font.Height = -13
+        Font.Name = 'Sans'
+        ParentFont = False
+        TabOrder = 15
+      end
+      object DiffFlowUoMLabel12: TStaticText
+        Left = 194
+        Height = 20
+        Top = 199
+        Width = 38
+        Caption = 'Units'
+        Font.Color = clBlack
+        Font.Height = -13
+        Font.Name = 'Sans'
+        ParentFont = False
+        TabOrder = 16
+      end
+      object FlowInValue8: TLabel
+        Left = 106
+        Height = 15
+        Top = 136
+        Width = 90
+        Alignment = taRightJustify
+        AutoSize = False
+        Caption = '999.999'
+        Font.Color = clBlack
+        Font.Height = -13
+        Font.Name = 'Sans'
+        Font.Style = [fsBold]
+        ParentColor = False
+        ParentFont = False
+      end
+      object FlowOutValue8: TLabel
+        Left = 106
+        Height = 15
+        Top = 157
+        Width = 90
+        Alignment = taRightJustify
+        AutoSize = False
+        Caption = '999.999'
+        Font.Color = clBlack
+        Font.Height = -13
+        Font.Name = 'Sans'
+        Font.Style = [fsBold]
+        ParentColor = False
+        ParentFont = False
+      end
+      object ReturnPitValue12: TLabel
+        Left = 105
+        Height = 15
+        Top = 179
+        Width = 90
+        Alignment = taRightJustify
+        AutoSize = False
+        Caption = '999.999'
+        Font.Color = clBlack
+        Font.Height = -13
+        Font.Name = 'Sans'
+        Font.Style = [fsBold]
+        ParentColor = False
+        ParentFont = False
+      end
+      object DiffFlowValue12: TLabel
+        Left = 106
+        Height = 15
+        Top = 201
+        Width = 90
+        Alignment = taRightJustify
+        AutoSize = False
+        Caption = '999.999'
+        Font.Color = clBlack
+        Font.Height = -13
+        Font.Name = 'Sans'
+        Font.Style = [fsBold]
+        ParentColor = False
+        ParentFont = False
+      end
+      object ReturnPitValue13: TLabel
+        Left = 105
+        Height = 15
+        Top = 224
+        Width = 90
+        Alignment = taRightJustify
+        AutoSize = False
+        Caption = '999.999'
+        Font.Color = clBlack
+        Font.Height = -13
+        Font.Name = 'Sans'
+        Font.Style = [fsBold]
+        ParentColor = False
+        ParentFont = False
+      end
+      object ReturnPitUoMLabel13: TStaticText
+        Left = 193
+        Height = 20
+        Top = 224
+        Width = 39
+        Caption = 'Units'
+        Font.Color = clBlack
+        Font.Height = -13
+        Font.Name = 'Sans'
+        ParentFont = False
+        TabOrder = 17
       end
     end
   end
