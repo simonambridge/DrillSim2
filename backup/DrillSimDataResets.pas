@@ -130,6 +130,7 @@ Begin
       UnitType:='Undefined';
     End;
     *}
+
     AnnVol:=0;
     WellVol:=0;
     HoleVol:=0;
@@ -142,6 +143,12 @@ Begin
     LagUS:=0;
     PipeCap:=0;
     PipeDis:=0;
+    WoB:=0;
+    RPM:=0;
+    ROP:=0;
+    ECD:=0;
+
+    Total
 
 
   End;

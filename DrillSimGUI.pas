@@ -66,16 +66,17 @@ type
     AnnularPressureValue: TLabel;
     CirculatingPLText: TStaticText;
     AnnularBHPText: TStaticText;
+    TotalStrokesText: TStaticText;
+    TotalCircStrksText: TStaticText;
     MudVolUoM: TStaticText;
     DiffFlowUoMLabel10: TStaticText;
     DiffFlowUoMLabel11: TStaticText;
     DiffFlowUoMLabel12: TStaticText;
     LagUpStrokesUoM: TStaticText;
     PipeDisplacementUoM: TStaticText;
-    DiffFlowUoMLabel4: TStaticText;
-    DiffFlowUoMLabel5: TStaticText;
-    DiffFlowUoMLabel6: TStaticText;
-    DiffFlowUoMLabel7: TStaticText;
+    PipeYPUoM: TStaticText;
+    TotalStrokesUoM: TStaticText;
+    ExcessMudUoM: TStaticText;
     DiffFlowUoMLabel8: TStaticText;
     DiffFlowUoMLabel9: TStaticText;
     MudVol: TLabel;
@@ -84,40 +85,37 @@ type
     DiffFlowValue12: TLabel;
     LagUpStrokes: TLabel;
     PipeDisplacement: TLabel;
-    DiffFlowValue4: TLabel;
-    DiffFlowValue5: TLabel;
-    DiffFlowValue6: TLabel;
-    DiffFlowValue7: TLabel;
+    PipeYP: TLabel;
+    StrokeCounter: TLabel;
+    ExcessMud: TLabel;
     DiffFlowValue8: TLabel;
     DiffFlowValue9: TLabel;
     AnnVolUoM: TStaticText;
     LagDownTimeUoM: TStaticText;
-    FlowInUoMLabel3: TStaticText;
-    FlowInUoMLabel4: TStaticText;
+    AnnPVUoM: TStaticText;
     FlowInUoMLabel5: TStaticText;
     FlowInUoMLabel6: TStaticText;
     FlowInUoMLabel7: TStaticText;
     FlowInUoMLabel8: TStaticText;
     AnnVol: TLabel;
     LagDownTime: TLabel;
-    FlowInValue3: TLabel;
-    FlowInValue4: TLabel;
+    AnnPV: TLabel;
     FlowInValue5: TLabel;
     FlowInValue6: TLabel;
     FlowInValue7: TLabel;
     FlowInValue8: TLabel;
     WellVolUoM: TStaticText;
     LagDownStrokesUoM: TStaticText;
-    FlowOutUoMLabel3: TStaticText;
-    FlowOutUoMLabel4: TStaticText;
+    PipeMWUoM: TStaticText;
+    AnnYPUoM: TStaticText;
     FlowOutUoMLabel5: TStaticText;
     FlowOutUoMLabel6: TStaticText;
     FlowOutUoMLabel7: TStaticText;
     FlowOutUoMLabel8: TStaticText;
     WellVol: TLabel;
     LagDownStrokes: TLabel;
-    FlowOutValue3: TLabel;
-    FlowOutValue4: TLabel;
+    PipeMW: TLabel;
+    AnnYP: TLabel;
     FlowOutValue5: TLabel;
     FlowOutValue6: TLabel;
     FlowOutValue7: TLabel;
@@ -133,12 +131,12 @@ type
     ReturnPitUoMLabel11: TStaticText;
     ReturnPitUoMLabel12: TStaticText;
     ReturnPitUoMLabel13: TStaticText;
-    LagUpTimUoM: TStaticText;
+    LagUpTimeUoM: TStaticText;
     PipeCapacityUoM: TStaticText;
-    ReturnPitUoMLabel4: TStaticText;
-    ReturnPitUoMLabel5: TStaticText;
-    ReturnPitUoMLabel6: TStaticText;
-    ReturnPitUoMLabel7: TStaticText;
+    AnnMWUoM: TStaticText;
+    PipePVUoM: TStaticText;
+    StrokeCounterUoM: TStaticText;
+    TotalCircStrksUoM: TStaticText;
     ReturnPitUoMLabel8: TStaticText;
     ReturnPitUoMLabel9: TStaticText;
     HoleVol: TLabel;
@@ -148,10 +146,10 @@ type
     ReturnPitValue13: TLabel;
     LagUpTime: TLabel;
     PipeCapacity: TLabel;
-    ReturnPitValue4: TLabel;
-    ReturnPitValue5: TLabel;
-    ReturnPitValue6: TLabel;
-    ReturnPitValue7: TLabel;
+    AnnMW: TLabel;
+    PipePV: TLabel;
+    TotalCircStrks: TLabel;
+    TotalStrokes: TLabel;
     ReturnPitValue8: TLabel;
     ReturnPitValue9: TLabel;
     TotalHPText: TStaticText;
@@ -164,19 +162,16 @@ type
     AnulusHhdText: TStaticText;
     SurfaceEquipmentPLText: TStaticText;
     WOHText: TStaticText;
-    TotCircStrksText: TStaticText;
     ExcessMudText: TStaticText;
     StringWeightText: TStaticText;
-    WellText: TStaticText;
-    MudWtInText: TStaticText;
-    PipeMudWtText: TStaticText;
+    WellVolumeText: TStaticText;
+    PipeMWText: TStaticText;
     StrokeCounterText: TStaticText;
-    AnnularMudWtText: TStaticText;
-    AnnularYPText: TStaticText;
-    AnnularPVText: TStaticText;
+    AnnMWText: TStaticText;
+    AnnYPText: TStaticText;
+    AnnPVText: TStaticText;
     PipeYPText: TStaticText;
     PipePVText: TStaticText;
-    MudWtOutText: TStaticText;
     Panel3: TPanel;
     PipeDisplacementText: TStaticText;
     HoleVolumeText: TStaticText;
@@ -191,10 +186,10 @@ type
     CasingPressureUoMLabel: TStaticText;
     CasingPressureValue: TLabel;
     DataBox: TGroupBox;
-    AnnularVolumeText: TStaticText;
+    AnnVolumeText: TStaticText;
     Panel1: TPanel;
     Panel2: TPanel;
-    TotStrksText: TStaticText;
+    TotalStrksText: TStaticText;
     PressureBox: TGroupBox;
     FlowInText: TStaticText;
     PipeMinus: TBCButton;
@@ -745,6 +740,7 @@ begin
   Paused:=False;
 
   StringToMemo('DrillSimGUI.FormaActivate: Running DrillSim start up sequence');
+
   { ***************************************** }
   StartUp;     { call DrillSim StartUp }
   { ***************************************** }
@@ -758,59 +754,19 @@ begin
   KellyHeightValue.Caption:=FloatToStrF(Round2(Data.KellyHeight/UoMConverter[1],2), ffNumber, 4, 2); { API -> displayed }
   StringToMemo('Initial kelly height = ' + FloatToStr(Data.KellyHeight));
 
-  BitDepthValue.Caption:=FloatToStrF(Round2(Data.BitTD/UoMConverter[1],2), ffNumber, 4, 2); { API -> displayed }
-  TotalDepthValue.Caption:=FloatToStrF(Round2(Data.TD/UoMConverter[1],2), ffNumber, 4, 2); { API -> displayed }
-  WOBValue.Caption:=FloatToStrF(Round2(Data.WOB/UoMConverter[7],2), ffNumber, 4, 2); { API -> displayed }
-  RPMValue.Caption:=FloatToStr(Round2(Data.RPM,2));
-  ROPValue.Caption:=FloatToStr(Round2(Data.ROP/UoMConverter[1],2)); { API -> displayed }
-
-  MudWeightInValue.Caption:=FloatToStrF(Round2(Data.MwIn/UoMConverter[2],2), ffNumber, 4, 2); { ppg API -> displayed }
-  MudWeightOutValue.Caption:=FloatToStrF(Round2(Data.MwOut/UoMConverter[2],2), ffNumber, 4, 2); { ppg API -> displayed }
-  ECDValue.Caption:=FloatToStrF(Round2(Data.ECD/UoMConverter[2],2), ffNumber, 4, 2); { ppg API -> displayed }
-
   Pump1Value.Caption:=FloatToStr(Round2(Data.Pump[1,3],0));
   Pump2Value.Caption:=FloatToStr(Round2(Data.Pump[2,3],0));
   Pump3Value.Caption:=FloatToStr(Round2(Data.Pump[3,3],0));
   PumpStrokesValue.Caption:=FloatToStr(Round2(Data.StrokeCounter,0));
 
-  FlowInValue.Caption:=FloatToStr(Round2(Data.FlowIn/UoMConverter[5],2)); { API -> displayed }
-  FlowOutValue.Caption:=FloatToStr(Round2(Data.FlowOut/UoMConverter[5],2)); { API -> displayed }
-  StandPipePressureValue.Caption:=FloatToStr(Round2(Data.PlCirc/UoMConverter[3],2)); { API -> displayed }
-  ReturnPitValue.Caption:=FloatToStr(Round2(Data.RetPitVol/UoMConverter[4],2)); { API -> displayed }
-  DiffFlowValue.Caption:=FloatToStr(Round2(PitGain/UoMConverter[4],2)); { API -> displayed }
+  DepthUpdate;
+  DrillUpdate;
+  MudUpdate;
+  FlowUpdate;
+  BOPUpdate;
+  DataPanelUpdate;
 
-  ChokeValue.Caption:=FloatToStr(Data.Choke);
-
-  AnnularPressureValue.Caption:=FloatToStr(Round2(Data.BHPAnn/UoMConverter[3],2)); { API -> displayed }
-  CasingPressureValue.Caption:=FloatToStr(Round2(Data.CasingPressure/UoMConverter[3],2)); { API -> displayed }
-  if Data.ShutIn then
-  Begin
-    HydrilValue.Caption:='Closed';
-    PipeRAMsValue.Caption:='Closed';
-    BlindRAMsValue.Caption:='Closed';
-  End else
-  Begin
-    HydrilValue.Caption:='Open';
-    PipeRAMsValue.Caption:='Open';
-    BlindRAMsValue.Caption:='Open';
-  End;
-
-  AnnVol.Caption:=FloatToStrF(Round2(Data.AnnVol/UoMConverter[4],2), ffNumber, 8, 2); { bbl/m3 -> displayed }
-  WellVol.Caption:=FloatToStrF(Round2(Data.WellVol/UoMConverter[4],2), ffNumber, 8, 2); { bbl/m3 -> displayed }
-  HoleVol.Caption:=FloatToStrF(Round2(Data.HoleVol/UoMConverter[4],2), ffNumber, 8, 2); { bbl/m3 -> displayed }
-  MudVol.Caption:=FloatToStrF(Round2(Data.MudVol/UoMConverter[4],2), ffNumber, 8, 2); { bbl/m3 -> displayed }
-
-  LagDownTime.Caption:=FloatToStrF(Round2(Data.LagDT,2), ffNumber, 8, 2); { time }
-  LagDownStrokes.Caption:=FloatToStrF(Round2(Data.LagDS,2), ffNumber, 8, 2); { num }
-  LagUpTime.Caption:=FloatToStrF(Round2(Data.LagUT,2), ffNumber, 8, 2); { time }
-  LagUpStrokes.Caption:=FloatToStrF(Round2(Data.LagUS,2), ffNumber, 8, 2); { num }
-
-  PipeCapacity.Caption:=FloatToStrF(Round2(Data.PipeCap/UoMConverter[4],2), ffNumber, 8, 2); { bbl/m3 -> displayed }
-  PipeDisplacement.Caption:=FloatToStrF(Round2(Data.PipeDis/UoMConverter[4],2), ffNumber, 8, 2); { bbl/m3 -> displayed }
-
-
-
-   CommandLine.SetFocus;
+  CommandLine.SetFocus;
 end;
 
 procedure TDrillSim.FormCreate(Sender: TObject);
@@ -1349,7 +1305,7 @@ begin
 
          HydraulicCalc;              { SimulateHydraulicCalcs:HyCalc }
 
-         Synchronize(@UpdateGUI);
+         // Synchronize(@UpdateGUI);
 
          { check for hole deeper then next horizon          }
          { if yes, check if next horizon data is valid (>0) }
@@ -1369,14 +1325,16 @@ begin
 
          KickCalc;
 
-         Synchronize(@UpdateGUI);
+         // Synchronize(@UpdateGUI);
 
        end else
        Begin
          NewStatus:=('Not Simulating');
        end;
 
-      if NewStatus <> ThreadStatus then
+       Synchronize(@UpdateGUI);
+
+       if NewStatus <> ThreadStatus then
         begin
           ThreadStatus := NewStatus;
           Synchronize(@Showstatus);

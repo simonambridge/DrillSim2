@@ -32,6 +32,33 @@ Begin
     StandPipePressureUoMLabel.Caption:=UoMLabel[3];  { pressure psi or KPa }
     AnnularPressureUoMLabel.Caption:=UoMLabel[3];    { pressure psi or KPa }
     CasingPressureUoMLabel.Caption:=UoMLabel[3];     { pressure psi or KPa }
+
+    AnnVolUoM.Caption:=UoMLabel[4];
+    HoleVolUoM.Caption:=UoMLabel[4];
+    WellVolUoM.Caption:=UoMLabel[4];
+    MudVolUoM.Caption:=UoMLabel[4];
+    ExcessMudUoM.Caption:=UoMLabel[2];  { specific gravity ppg or sg }
+
+    PipeCapacityUom.Caption:=UoMLabel[4];
+    PipeDisplacementUoM.Caption:=UoMLabel[4];
+
+    LagUpTimeUoM.Caption:='Secs';
+    LagDownTimeUoM.Caption:='Secs';
+    LagUpStrokesUoM.Caption:='Strk';
+    LagDownStrokesUoM.Caption:='Strk';
+
+    TotalCircStrksUoM.Caption:='Strk';
+    TotalStrokesUoM.Caption:='Strk';
+    StrokeCounterUoM.Caption:='Strk';
+
+    PipeMWUoM.Caption:=UoMLabel[2];     { specific gravity ppg or sg }
+    AnnMWUoM.Caption:=UoMLabel[2];      { specific gravity ppg or sg }
+    AnnMWUoM.Caption:=UoMLabel[2];      { specific gravity ppg or sg }
+    AnnYPUoM.Caption:='Cpoise';
+    AnnPVUoM.Caption:='Lbs 100foot2';
+    PipeYPUoM.Caption:='Cpoise';
+    pipePVUoM.Caption:='Lbs 100foot2';
+
   End;
 end;
 
